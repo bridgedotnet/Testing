@@ -12,7 +12,7 @@ namespace ClientTestLibrary
     [FileName("testRunner.js")]
     class TestRunner
     {
-        [DOMContentLoaded]
+        [Ready]
         public static void Main()
         {
             TestHelper.Module("Reference types");
