@@ -60,25 +60,25 @@ namespace ClientTestLibrary
             Data = d;
         }
 
-        //[#89] temporarly commented out
+        //[#89]
         public ClassA(params object[] p)
             : this()
         {
             if (p == null || p.Length < 6)
                 throw new Exception("Should pass six parameters");
 
-            //if (p[0] is int)
-            //    NumberA = (int)p[0];
-            //if (p[1] is string)
-            //    StringA = (string)p[1];
-            //if (p[2] is bool)
-            //    BoolA = (bool)p[2];
-            //if (p[3] is double)
-            //    DoubleA = (double)p[3];
-            //if (p[4] is decimal)
-            //    DecimalA = (decimal)p[4];
-            //if (p[5] is Aux1)
-            //    Data = (Aux1)p[5];
+            if (p[0] is int)
+                NumberA = (int)p[0];
+            if (p[1] is string)
+                StringA = (string)p[1];
+            if (p[2] is bool)
+                BoolA = (bool)p[2];
+            if (p[3] is double)
+                DoubleA = (double)p[3];
+            if (p[4] is decimal)
+                DecimalA = (decimal)p[4];
+            if (p[5] is Aux1)
+                Data = (Aux1)p[5];
         }
 
         public ClassA.Aux1 Method1()
@@ -123,14 +123,13 @@ namespace ClientTestLibrary
             return new ClassA() { DoubleA = d };
         }
 
-        //[#89] temporarly commented out
+        //[#89]
         public static ClassA StaticMethod2(params object[] p)
         {
-            //var i = (int)p[0] + 1000;
-            //var s = (string)p[1];
-            //var d = (double)p[2];
-            //return StaticMethod1(i, s, d);
-            return null;
+            var i = (int)p[0] + 1000;
+            var s = (string)p[1];
+            var d = (double)p[2];
+            return StaticMethod1(i, s, d);
         }
 
         public static bool TryParse(object o, out int i)
