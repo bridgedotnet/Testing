@@ -32,7 +32,7 @@ namespace ClientTestLibrary
             TestHelper.Test("String", (Action)TestSystemFunctions.Test2);
 
             TestHelper.Module("Try/catch");
-            TestHelper.Test("DateTime", (Action)TestCatchBlocks.Test1);
+            TestHelper.Test("Try/Catch", (Action)TestCatchBlocks.Test1);
         }
     }
 }
