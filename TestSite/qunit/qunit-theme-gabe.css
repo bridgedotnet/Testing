@@ -130,9 +130,13 @@ h2#qunit-banner.qunit-fail:after {
     font-size:14px;
 }
 
-#qunit-testrunner-toolbar:after {
+form.qunit-filter {
+    display: inline;
+ }
+
+/*#qunit-testrunner-toolbar:after {
     content:' }';
-}
+}*/
 
 #qunit-modulefilter-container label {
     display: inline-block;
