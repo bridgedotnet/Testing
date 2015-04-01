@@ -47,8 +47,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="qunit\qunit-1.17.1.css" />
     <None Include="runIISExpress.cmd" />
+    <Content Include="qunit\qunit-theme-gabe.css" />
     <Content Include="TestIt.html" />
     <Content Include="Tests\readme.txt" />
     <Content Include="Web.config" />
