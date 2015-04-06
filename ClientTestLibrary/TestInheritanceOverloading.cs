@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Bridge;
+using Bridge.QUnit1;
 
 namespace ClientTestLibrary
 {
@@ -13,9 +9,9 @@ namespace ClientTestLibrary
     [FileName("testSets.js")]
     class TestInheritanceOverloading
     {
-        public static void Test1()
+        public static void Test1(Assert assert)
         {
-            TestHelper.Expect(0);
+            assert.Expect(0);
         }
     }
 }

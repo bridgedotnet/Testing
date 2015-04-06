@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Bridge;
+using Bridge.QUnit1;
 
 namespace ClientTestLibrary
 {
@@ -13,15 +9,15 @@ namespace ClientTestLibrary
     class TestSystemFunctions
     {
         // DateTime functions
-        public static void Test1()
+        public static void Test1(Assert assert)
         {
-            TestHelper.Expect(2);
+            assert.Expect(2);
 
             //[#83] by C#
             var str = "2015-03-24T10:48:09.1500225+03:00";
             var bridgeDate = DateTime.Parse(str);
             var bridgeDate1 = new DateTime(str);
-            TestHelper.DeepEqual(bridgeDate, bridgeDate1, "[#83] C# bridgeDate = bridgeDate1");
+            assert.DeepEqual(bridgeDate, bridgeDate1, "[#83] C# bridgeDate = bridgeDate1");
 
             //[#83] by js
             Script.Write<dynamic>(@"var str = ""2015-03-24T10:48:09.1500225+03:00"",
@@ -32,9 +28,15 @@ namespace ClientTestLibrary
         }
 
         // String functions
-        public static void Test2()
+        public static void Test2(Assert assert)
         {
-            TestHelper.Expect(0);
+            assert.Expect(2);
+
+            var msg = "HELLO".ToLowerCase();
+            assert.DeepEqual(msg, "hello", "'HELLO'.ToLowerCase()");
+
+            msg = "hello".ToUpperCase();
+            assert.DeepEqual(msg, "HELLO", "'hello'.ToUpperCase()");
         }
     }
 }

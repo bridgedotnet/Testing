@@ -34,7 +34,6 @@
     <Compile Include="MarkupCheckRequired.cs" />
     <Compile Include="NotCompiling.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestHelper.cs" />
     <Compile Include="TestInheritanceOverloading.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -42,7 +41,7 @@
     <Compile Include="TestReferenceTypes.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TestRunner.cs">
+    <Compile Include="RunTests.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="TestSystemFunctions.cs">
@@ -56,7 +55,6 @@
     <None Include="Bridge\bridge.json" />
     <None Include="Bridge\build\deploy.bat" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\Bridge\Bridge\Bridge.csproj">
       <Project>{de78b8b7-c0f5-415b-a70b-02194433f450}</Project>
@@ -66,10 +64,15 @@
       <Project>{99decd28-d3e3-4ea7-acae-ab5dfc9913bd}</Project>
       <Name>Bridge.Html5</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bridge.QUnit1\Bridge.QUnit1.csproj">
+      <Project>{96cb97f5-1bac-433d-b5ce-ad6e7b244f12}</Project>
+      <Name>Bridge.QUnit1</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bridge\output\readme.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>"$(ProjectDir)..\..\Builder\Builder\$(OutDir)Bridge.Builder.exe" -p "$(ProjectPath)" -b "$(ProjectDir)$(OutDir)Bridge.dll"</PostBuildEvent>
