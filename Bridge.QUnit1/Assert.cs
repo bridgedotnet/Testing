@@ -221,18 +221,8 @@ namespace Bridge.QUnit1
         /// Test if a callback throws an exception, and optionally compare the thrown error.
         /// </summary>
         /// <param name="block">Function to execute</param>
-        /// <param name="expected">Error Object (instance), Error Function (constructor), a RegExp that matches (or partially matches) the String representation, or a callback Function that must return true to pass the assertion check.</param>
-        public virtual void Throws(Action block, object expected)
-        {
-        }
-
-        /// <summary>
-        /// Test if a callback throws an exception, and optionally compare the thrown error.
-        /// </summary>
-        /// <param name="block">Function to execute</param>
-        /// <param name="expected">Error Object (instance), Error Function (constructor), a RegExp that matches (or partially matches) the String representation, or a callback Function that must return true to pass the assertion check.</param>
         /// <param name="message">A short description of the assertion</param>
-        public virtual void Throws(Action block, object expected, string message)
+        public virtual void Throws(Action block, string message)
         {
         }
     }

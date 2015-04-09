@@ -34,6 +34,7 @@
     <Compile Include="MarkupCheckRequired.cs" />
     <Compile Include="NotCompiling.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestBridgeIssues.cs" />
     <Compile Include="TestInheritanceOverloading.cs">
       <SubType>Code</SubType>
     </Compile>

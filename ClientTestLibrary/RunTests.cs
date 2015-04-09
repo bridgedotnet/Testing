@@ -65,9 +65,14 @@ namespace ClientTestLibrary
             QUnit.Module("System functions");
             QUnit.Test("DateTime", TestSystemFunctions.Test1);
             QUnit.Test("String", TestSystemFunctions.Test2);
+            QUnit.Test("StringBuilder", TestSystemFunctions.Test3);
 
             QUnit.Module("Try/catch");
             QUnit.Test("Try/Catch", TestCatchBlocks.Test1);
+
+
+            QUnit.Module("Bridge GitHub issues");
+            QUnit.Test("#169", TestBridgeIssues.N169);
         }
     }
 }
