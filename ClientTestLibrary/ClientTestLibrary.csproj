@@ -65,7 +65,7 @@
       <Project>{99decd28-d3e3-4ea7-acae-ab5dfc9913bd}</Project>
       <Name>Bridge.Html5</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Bridge.QUnit1\Bridge.QUnit1.csproj">
+    <ProjectReference Include="..\..\Frameworks\QUnit1\Bridge.QUnit1.csproj">
       <Project>{96cb97f5-1bac-433d-b5ce-ad6e7b244f12}</Project>
       <Name>Bridge.QUnit1</Name>
     </ProjectReference>
