@@ -5,60 +5,45 @@ using Bridge.QUnit1;
 
 namespace DemoApp
 {
-    [FileName("tests.js")]
+    [FileName("test.js")]
     public class Test
     {
         [Ready]
         public static void RunTests()
         {
-            QUnit.Test("Method GetPerson()", TestGetPerson);
-            QUnit.Test("Method GetDoubleCount()", TestGetDoubleCount);
+            QUnit.Module("PersonService");
 
-            QUnit.Test("DOM create label", TestCreateLabel);
-            QUnit.Test("DOM Person label", TestPersonLabel);
-            QUnit.Test("DOM Count label", TestCountLabel);
+            QUnit.Test("Method GetPerson()", (assert) =>
+            {
+                var service = GetService();
+                var person = service.GetPerson(55);
+
+                assert.Expect(3);
+
+                assert.Ok(person != null, "Person created");
+                assert.DeepEqual(person.Id, 55, "person.Id = 55");
+                assert.DeepEqual(person.Name, "Frank", "person.Name = 'Frank'");
+            });
+
+            QUnit.Module("PersonView");
+            QUnit.Test("Method CreateLabelElement", TestCreateLabel);
+
+            QUnit.Module("PersonApplication");
+            QUnit.Test("RenderPerson", TestCreatePersonUIElements);
         }
 
-        #region Method tests
-
-        public static void TestGetPerson(Assert assert)
-        {
-            var person = App.GetPerson(55);
-
-            assert.Expect(4);
-
-            assert.Ok(person != null, "Person created");
-            assert.DeepEqual(person.Id, 55, "person.Id = 55");
-            assert.DeepEqual(person.Name, "Frank", "person.Name = 'Frank'");
-            assert.DeepEqual(person.Company, "ABC Tech", "person.Company = 'ABC Tech'");
-        }
-
-        public static void TestGetDoubleCount(Assert assert)
-        {
-            assert.Expect(2);
-
-            assert.Throws(() => { App.GetDoubleCount(null); }, "Throws exception on null argument");
-
-            var person = App.GetPerson(55);
-            var sum = App.GetDoubleCount(person);
-
-            assert.DeepEqual(sum, 154, "sum = 154");
-        }
-
-        #endregion Method tests
-
-        #region DOM tests
+        #region PersonView tests
 
         private static void TestCreateLabel(Assert assert)
         {
             assert.Expect(6);
 
-            var fixture = EnsureTestFixture();
+            var view = GetView();
 
-            var label = App.CreateLabelElement("someLabel", "Title", "10px", true, HTMLColor.Blue);
+            var label = view.CreateLabelElement("someLabel", "Title", "10px", true, HTMLColor.Blue);
             assert.Ok(label != null, "label created");
 
-            fixture.AppendChild(label);
+            view.Root.AppendChild(label);
             var foundLabel = Document.GetElementById<LabelElement>("someLabel");
 
             assert.Ok(foundLabel != null, "foundLabel");
@@ -68,38 +53,42 @@ namespace DemoApp
             assert.DeepEqual(foundLabel.Style.FontWeight, "bold", "foundLabel.Style.FontWeight = 'bold'");
         }
 
-        private static void TestPersonLabel(Assert assert)
+        #endregion PersonView tests
+
+        #region PersonApplication tests
+
+        private static void TestCreatePersonUIElements(Assert assert)
         {
             assert.Expect(2);
 
-            var fixture = EnsureTestFixture();
+            var application = GetApplication();
 
-            var person = App.GetPerson(55);
-
-            App.CreatePersonUIElements(fixture, person);
-
-            var lblPersonCount = Document.GetElementById<LabelElement>("lblPersonCount");
-            assert.Ok(lblPersonCount != null, "lblPersonCount created");
-            assert.DeepEqual(lblPersonCount.InnerHTML, "77", "lblPersonCount = '77'");
-        }
-
-        private static void TestCountLabel(Assert assert)
-        {
-            assert.Expect(2);
-
-            var fixture = EnsureTestFixture();
-
-            var person = App.GetPerson(55);
-
-            App.CreatePersonUIElements(fixture, person);
+            application.RenderPerson();
 
             var lblPersonName = Document.GetElementById<LabelElement>("lblPersonName");
-
             assert.Ok(lblPersonName != null, "lblPersonName created");
             assert.DeepEqual(lblPersonName.InnerHTML, "Frank", "lblPersonName = 'Frank'");
         }
 
-        #endregion DOM tests
+        #endregion PersonApplication tests
+
+        #region Helper methods
+
+        private static PersonService GetService()
+        {
+            return new PersonService();
+        }
+
+        private static PersonView GetView()
+        {
+            return new PersonView(EnsureTestFixture());
+        }
+
+        private static PersonApplication GetApplication()
+        {
+            return new PersonApplication(EnsureTestFixture());
+        }
+
 
         /// <summary>
         /// Ensures the div element with qunit-fixture exists.
@@ -122,5 +111,7 @@ namespace DemoApp
 
             return fixture;
         }
+
+        #endregion Helper methods
     }
 }
