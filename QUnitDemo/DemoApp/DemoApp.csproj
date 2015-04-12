@@ -40,6 +40,7 @@
     <Content Include="App_Readme\Bridge.NET\LICENSE.txt" />
     <Content Include="App_Readme\Bridge.NET\README.QUnit.txt" />
     <Content Include="App_Readme\Bridge.NET\README.txt" />
+    <Content Include="App_Readme\Bridge.NET\README.QUnit.Sample.txt" />
     <Content Include="Bridge\output\readme.txt" />
     <Content Include="App.html" />
     <Content Include="Test.html" />
