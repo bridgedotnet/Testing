@@ -48,9 +48,9 @@ namespace DemoApp
 
         public void CreatePersonUIElements(Person person)
         {
-            this.Root.AppendChild(CreateLabelElement(null, "Person:", "5px", true, HTMLColor.Black));
+            this.Root.AppendChild(this.CreateLabelElement(null, "Person:", "5px", true, HTMLColor.Black));
 
-            this.Root.AppendChild(CreateLabelElement("lblPersonName", person.Name, null, false, HTMLColor.Blue));
+            this.Root.AppendChild(this.CreateLabelElement("lblPersonName", person.Name, null, false, HTMLColor.Blue));
         }
     }
 
@@ -67,9 +67,9 @@ namespace DemoApp
 
         public void RenderPerson()
         {
-            var person = Service.GetPerson(55);
+            var person = this.Service.GetPerson(55);
 
-            View.CreatePersonUIElements(person);
+            this.View.CreatePersonUIElements(person);
         }
     }
 }

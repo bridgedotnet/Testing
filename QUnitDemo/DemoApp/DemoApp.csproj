@@ -32,9 +32,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="Code.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test.cs" />
+    <Compile Include="Сode.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Readme\Bridge.NET\LICENSE.txt" />

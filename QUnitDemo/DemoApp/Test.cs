@@ -15,7 +15,7 @@ namespace DemoApp
 
             QUnit.Test("Method GetPerson()", (assert) =>
             {
-                var service = GetService();
+                var service = Test.GetService();
                 var person = service.GetPerson(55);
 
                 assert.Expect(3);
@@ -26,10 +26,10 @@ namespace DemoApp
             });
 
             QUnit.Module("PersonView");
-            QUnit.Test("Method CreateLabelElement", TestCreateLabel);
+            QUnit.Test("Method CreateLabelElement", Test.TestCreateLabel);
 
             QUnit.Module("PersonApplication");
-            QUnit.Test("RenderPerson", TestCreatePersonUIElements);
+            QUnit.Test("RenderPerson", Test.TestCreatePersonUIElements);
         }
 
         #region PersonView tests
@@ -38,7 +38,7 @@ namespace DemoApp
         {
             assert.Expect(6);
 
-            var view = GetView();
+            var view = Test.GetView();
 
             var label = view.CreateLabelElement("someLabel", "Title", "10px", true, HTMLColor.Blue);
             assert.Ok(label != null, "label created");
@@ -61,7 +61,7 @@ namespace DemoApp
         {
             assert.Expect(2);
 
-            var application = GetApplication();
+            var application = Test.GetApplication();
 
             application.RenderPerson();
 
@@ -81,12 +81,12 @@ namespace DemoApp
 
         private static PersonView GetView()
         {
-            return new PersonView(EnsureTestFixture());
+            return new PersonView(Test.EnsureTestFixture());
         }
 
         private static PersonApplication GetApplication()
         {
-            return new PersonApplication(EnsureTestFixture());
+            return new PersonApplication(Test.EnsureTestFixture());
         }
 
 
