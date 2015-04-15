@@ -1,4 +1,6 @@
-﻿using System;
+﻿// For more information please visit  http://bridge.net/kb/bridge-qunit-sample-application/
+
+using System;
 using Bridge;
 using Bridge.Html5;
 
