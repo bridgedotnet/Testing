@@ -1,0 +1,4 @@
+{
+    output: "Bridge\\output",
+	//afterBuild: "..\\..\\..\\..\\Testing\\ClientTestLibrary\\Bridge\\build\\deploy.bat"
+}

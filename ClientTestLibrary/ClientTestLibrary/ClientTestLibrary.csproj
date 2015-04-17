@@ -57,35 +57,36 @@
     <None Include="Bridge\build\deploy.bat" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Bridge\Bridge\Bridge.csproj">
+    <ProjectReference Include="..\..\..\Bridge\Bridge\Bridge.csproj">
       <Project>{de78b8b7-c0f5-415b-a70b-02194433f450}</Project>
       <Name>Bridge</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Bridge\Html5\Bridge.Html5.csproj">
+    <ProjectReference Include="..\..\..\Bridge\Html5\Bridge.Html5.csproj">
       <Project>{99decd28-d3e3-4ea7-acae-ab5dfc9913bd}</Project>
       <Name>Bridge.Html5</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Frameworks\QUnit1\Bridge.QUnit1.csproj">
+    <ProjectReference Include="..\..\..\Frameworks\QUnit1\Bridge.QUnit1.csproj">
       <Project>{96cb97f5-1bac-433d-b5ce-ad6e7b244f12}</Project>
       <Name>Bridge.QUnit1</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bridge\output\readme.txt" />
+    <Content Include="QUnit\qunit-1.17.1.js" />
+    <Content Include="QUnit\qunit-theme-gabe.css" />
+    <Content Include="QUnit\TestIt.html" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"$(ProjectDir)..\..\Builder\Builder\$(OutDir)Bridge.Builder.exe" -p "$(ProjectPath)" -b "$(ProjectDir)$(OutDir)Bridge.dll"</PostBuildEvent>
+    <PostBuildEvent>"$(ProjectDir)..\..\..\Builder\Builder\$(OutDir)Bridge.Builder.exe" -p "$(ProjectPath)" -b "$(ProjectDir)$(OutDir)Bridge.dll"</PostBuildEvent>
     <NoStdLib>True</NoStdLib>
     <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
     <AdditionalExplicitAssemblyReferences />
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>REM Clear source
-cd "$(ProjectDir)"
-cd "..\ClientTestLibrary\Bridge\output"
-del *.js /f /s /q</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

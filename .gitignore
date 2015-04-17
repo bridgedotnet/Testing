@@ -181,19 +181,5 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
-/ClientTestLibrary/Bridge/output/*.js
-/TestSite/Tests/*.js
-/QUnitDemo/DemoApp/Bridge/output/Chutzpah.json
-/QUnitDemo/DemoApp/Bridge/output/bridge.js
-/QUnitDemo/DemoApp/Bridge/output/bridge.min.js
-/QUnitDemo/DemoApp/Bridge/output/demoApp.js
-/QUnitDemo/DemoApp/Bridge/output/demoApp.min.js
-/QUnitDemo/DemoApp/Bridge/output/tests.js
-/QUnitDemo/DemoApp/Bridge/output/tests.min.js
-/QUnitDemo/DemoAppSite/js/bridge.js
-/QUnitDemo/DemoAppSite/js/bridge.min.js
-/QUnitDemo/DemoAppSite/js/demoApp.js
-/QUnitDemo/DemoAppSite/js/demoApp.min.js
-/QUnitDemo/DemoAppSite/js/tests.js
-/QUnitDemo/DemoAppSite/js/tests.min.js
+/ClientTestLibrary/ClientTestLibrary/Bridge/output/*.js
 /QUnitDemo/DemoApp/Bridge/output
