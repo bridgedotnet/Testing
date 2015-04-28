@@ -1,8 +1,4 @@
 {
     output: "..\\..\\www\\js",
-    outputBy: "Class",
-    //beforeBuild: "C:\\NET\\Bridge\\Testing\\ClientTestLibrary\\ClientTestLibrary\\Bridge\\build\\clean.bat",
-    //afterBuild: "C:\\NET\\Bridge\\Testing\\ClientTestLibrary\\ClientTestLibrary\\Bridge\\build\\deploy.bat"
-    //afterBuild: "build\\deploy.bat"
-    //afterBuild: "/../../../../Testing/ClientTestLibrary/ClientTestLibrary/Bridge/Build/deploy.bat"
+    outputBy: "Class"
 }
