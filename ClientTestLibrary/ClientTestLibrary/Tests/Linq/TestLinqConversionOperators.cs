@@ -36,7 +36,7 @@ namespace ClientTestLibrary.Linq
 
             var sameDoubles = from d in doubles select d;
             var doublesArray = sameDoubles.ToArray();
-            assert.DeepEqual(doublesArray.GetType().ToString(), "function Array() { [native code] }", "ToArray() conversion for doubles - check type name.");
+            assert.Ok(doublesArray.GetType().ToString().Contains("function Array()"), "ToArray() conversion for doubles - check type name.");
             assert.DeepEqual(doublesArray, doubles, "ToArray() conversion for doubles - check content.");
 
 

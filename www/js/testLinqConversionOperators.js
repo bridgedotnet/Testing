@@ -9,7 +9,7 @@
                 return d;
             });
             var doublesArray = sameDoubles.toArray();
-            assert.deepEqual(Bridge.getType(doublesArray).toString(), "function Array() { [native code] }", "ToArray() conversion for doubles - check type name.");
+            assert.ok(Bridge.String.contains(Bridge.getType(doublesArray).toString(),"function Array()"), "ToArray() conversion for doubles - check type name.");
             assert.deepEqual(doublesArray, doubles, "ToArray() conversion for doubles - check content.");
 
 
