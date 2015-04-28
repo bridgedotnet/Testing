@@ -31,7 +31,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientTestLibrary", "Client
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F00A1EC1-76F1-4946-9819-966FB785BFF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bridge.QUnit1", "..\..\Frameworks\QUnit1\Bridge.QUnit1.csproj", "{96CB97F5-1BAC-433D-B5CE-AD6E7B244F12}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bridge.QUnit", "..\..\Frameworks\QUnit\Bridge.QUnit.csproj", "{96CB97F5-1BAC-433D-B5CE-AD6E7B244F12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

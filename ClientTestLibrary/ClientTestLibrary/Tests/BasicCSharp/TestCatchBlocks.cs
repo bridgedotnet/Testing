@@ -1,11 +1,10 @@
 ﻿using System;
 using Bridge;
-using Bridge.QUnit1;
+using Bridge.QUnit;
 
 namespace ClientTestLibrary
 {
     // Tests catch, finally etc
-    [FileName("testSets.js")]
     class TestCatchBlocks
     {
         //[#84] Does not compile

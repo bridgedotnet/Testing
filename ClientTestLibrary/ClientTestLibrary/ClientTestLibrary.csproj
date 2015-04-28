@@ -31,30 +31,50 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="MarkupCheckRequired.cs" />
-    <Compile Include="NotCompiling.cs" />
+    <Compile Include="Tests\Linq\TestLinqGroupingOperators.cs" />
+    <Compile Include="Tests\Linq\TestLinqConversionOperators.cs" />
+    <Compile Include="Tests\Linq\TestLinqAggregateOperators.cs" />
+    <Compile Include="Tests\Linq\TestLinqElementOperators.cs" />
+    <Compile Include="Tests\Linq\TestLinqGenerationOperators.cs" />
+    <Compile Include="Tests\Linq\TestLinqJoinOperators.cs" />
+    <Compile Include="Tests\Linq\TestLinqMiscellaneousOperators.cs" />
+    <Compile Include="Tests\Linq\TestLinqOrderingOperators.cs" />
+    <Compile Include="Tests\Linq\TestLinqPartitioningOperators.cs" />
+    <Compile Include="Tests\Linq\TestLinqProjectionOperators.cs" />
+    <Compile Include="Tests\Linq\TestLinqQuantifiers.cs" />
+    <Compile Include="Tests\Linq\TestLinqQueryExecution.cs" />
+    <Compile Include="Tests\Linq\TestLinqRestrictionOperators.cs" />
+    <Compile Include="Tests\Linq\TestLinqSetOperators.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestBridgeIssues.cs" />
-    <Compile Include="TestInheritanceOverloading.cs">
+    <Compile Include="Tests\BridgeIssues\TestBridgeIssues.cs" />
+    <Compile Include="Tests\BasicCSharp\TestInheritanceOverloading.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TestCatchBlocks.cs" />
-    <Compile Include="TestReferenceTypes.cs">
+    <Compile Include="Tests\BasicCSharp\TestCatchBlocks.cs" />
+    <Compile Include="Tests\BasicCSharp\TestReferenceTypes.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="RunTests.cs">
+    <Compile Include="Tests\MarkupCheckRequired.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TestSystemFunctions.cs">
+    <Compile Include="Tests\NotCompiling.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TestValueTypes.cs">
+    <Compile Include="Tests\RunTests.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Tests\SystemFunctions\TestSystemFunctions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tests\BasicCSharp\TestValueTypes.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utilities\TypeHelper.cs" />
+    <Compile Include="Utilities\TestData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Bridge\bridge.json" />
-    <None Include="Bridge\build\deploy.bat" />
+    <None Include="Bridge\build\clean.bat" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Bridge\Bridge\Bridge.csproj">
@@ -65,9 +85,9 @@
       <Project>{99decd28-d3e3-4ea7-acae-ab5dfc9913bd}</Project>
       <Name>Bridge.Html5</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Frameworks\QUnit1\Bridge.QUnit1.csproj">
+    <ProjectReference Include="..\..\..\Frameworks\QUnit\Bridge.QUnit.csproj">
       <Project>{96cb97f5-1bac-433d-b5ce-ad6e7b244f12}</Project>
-      <Name>Bridge.QUnit1</Name>
+      <Name>Bridge.QUnit</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

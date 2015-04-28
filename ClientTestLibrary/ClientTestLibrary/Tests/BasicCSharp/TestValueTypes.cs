@@ -1,11 +1,11 @@
 ﻿using System;
 using Bridge;
 using Bridge.Html5;
-using Bridge.QUnit1;
+using Bridge.QUnit;
 
 namespace ClientTestLibrary
 {
-    [FileName("testSets.js")]
+    [FileName("testValueTypes.js")]
     public struct Point
     {
         //TODO Add more types
@@ -40,7 +40,7 @@ namespace ClientTestLibrary
         }
     }
 
-    [FileName("testSets.js")]
+    [FileName("testValueTypes.js")]
     public struct Rectangle
     {
         public Point l;
@@ -67,7 +67,6 @@ namespace ClientTestLibrary
 
     // Tests:
     // Check value types
-    [FileName("testSets.js")]
     class TestValueTypes
     {
         //Check instance methods and constructors

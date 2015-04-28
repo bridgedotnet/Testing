@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Text;
 using Bridge;
-using Bridge.QUnit1;
+using Bridge.QUnit;
 
 namespace ClientTestLibrary
 {
     // Tests DateTime functions
-    [FileName("testSets.js")]
     class TestSystemFunctions
     {
         // DateTime functions
-        public static void Test1(Assert assert)
+        public static void DateTimes(Assert assert)
         {
             assert.Expect(2);
 
@@ -29,7 +28,7 @@ namespace ClientTestLibrary
         }
 
         // String functions
-        public static void Test2(Assert assert)
+        public static void Strings(Assert assert)
         {
             assert.Expect(2);
 
@@ -41,7 +40,7 @@ namespace ClientTestLibrary
         }
 
         // StringBuilder functions
-        public static void Test3(Assert assert)
+        public static void StringBuilders(Assert assert)
         {
             assert.Expect(1);
 

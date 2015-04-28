@@ -1,10 +1,10 @@
 ﻿using System;
 using Bridge;
-using Bridge.QUnit1;
+using Bridge.QUnit;
 
 namespace ClientTestLibrary
 {
-    [FileName("testSets.js")]
+    [FileName("testReferenceTypes.js")]
     class ClassA
     {
         //TODO Add more types
@@ -164,7 +164,7 @@ namespace ClientTestLibrary
             return default(int);
         }
 
-        [FileName("testSets.js")]
+        [FileName("testReferenceTypes.js")]
         //due to [#73] needs priority to be generated after the parent class
         //[Priority(-1)]
         public class Aux1
@@ -179,7 +179,7 @@ namespace ClientTestLibrary
         }
     }
 
-    [FileName("testSets.js")]
+    [FileName("testReferenceTypes.js")]
     //[#68] Multiple field declaration renders incorrectly
     public class Class68
     {
@@ -197,7 +197,6 @@ namespace ClientTestLibrary
     // Tests:
     // Reference type constructors, params method parameters, method overloading, nested classes, [FileName]
     // Full properties, short get/set properties, exceptions
-    [FileName("testSets.js")]
     class TestReferenceTypes
     {
         //Check instance methods and constructors
@@ -330,7 +329,7 @@ namespace ClientTestLibrary
         }
     }
 
-    [FileName("testSets.js")]
+    [FileName("testReferenceTypes.js")]
     public class TestSet1FailureHelper
     {
         //For testing exception throwing in constructors we need a separate method as constructors cannot be delegates

@@ -1,4 +1,5 @@
 {
     output: "Bridge\\output",
-	//afterBuild: "..\\..\\..\\..\\Testing\\ClientTestLibrary\\Bridge\\build\\deploy.bat"
+    outputBy: "Class"
+    //beforeBuild: "C:\\NET\\Bridge\\Testing\\ClientTestLibrary\\ClientTestLibrary\\Bridge\\build\\clean.bat"
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 using Bridge;
-using Bridge.QUnit1;
+using Bridge.QUnit;
 
 namespace ClientTestLibrary
 {
@@ -21,7 +21,6 @@ namespace ClientTestLibrary
     }
 
     // Tests Bridge GitHub issues
-    [FileName("testBridgeIssues.js")]
     class TestBridgeIssues
     {
 
