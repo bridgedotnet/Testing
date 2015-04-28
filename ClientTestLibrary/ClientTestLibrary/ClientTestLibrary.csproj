@@ -91,9 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bridge\output\readme.txt" />
-    <Content Include="QUnit\qunit-1.17.1.js" />
-    <Content Include="QUnit\qunit-theme-gabe.css" />
-    <Content Include="QUnit\TestIt.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Bridge\build\" />

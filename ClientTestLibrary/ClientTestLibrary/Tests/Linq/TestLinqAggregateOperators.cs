@@ -138,6 +138,7 @@ namespace ClientTestLibrary.Linq
             assert.DeepEqual(averageNum, 2.125, "Average() number.");
 
             double averageWordLength = words.Average(w => w.Length);
+            //&gl;a href='https://github.com/bridgedotnet/Bridge/issues/223'&gt;Issue #172/#223&lt;/a&gt;
             assert.DeepEqual(averageWordLength, 3.66666666666667, "Issue #172/#223. Average() for longest word.");
 
             var groupedAverage = (from p in Person.GetPersons()
