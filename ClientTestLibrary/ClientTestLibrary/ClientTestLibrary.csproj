@@ -74,7 +74,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Bridge\bridge.json" />
-    <None Include="Bridge\build\clean.bat" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Bridge\Bridge\Bridge.csproj">
@@ -96,17 +95,15 @@
     <Content Include="QUnit\qunit-theme-gabe.css" />
     <Content Include="QUnit\TestIt.html" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Bridge\build\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>"$(ProjectDir)..\..\..\Builder\Builder\$(OutDir)Bridge.Builder.exe" -p "$(ProjectPath)" -b "$(ProjectDir)$(OutDir)Bridge.dll"</PostBuildEvent>
     <NoStdLib>True</NoStdLib>
     <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
     <AdditionalExplicitAssemblyReferences />
-  </PropertyGroup>
-  <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

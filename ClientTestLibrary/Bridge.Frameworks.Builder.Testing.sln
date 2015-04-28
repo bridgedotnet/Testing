@@ -33,6 +33,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F00A1E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bridge.QUnit", "..\..\Frameworks\QUnit\Bridge.QUnit.csproj", "{96CB97F5-1BAC-433D-B5CE-AD6E7B244F12}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "www", "http://localhost:62185", "{E5BAFC79-0312-4CBD-B5FF-D1270FC5E223}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_62185"
+		Debug.AspNetCompiler.PhysicalPath = "..\www\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62185\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_62185"
+		Release.AspNetCompiler.PhysicalPath = "..\www\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62185\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "..\www\"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +100,10 @@ Global
 		{96CB97F5-1BAC-433D-B5CE-AD6E7B244F12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96CB97F5-1BAC-433D-B5CE-AD6E7B244F12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96CB97F5-1BAC-433D-B5CE-AD6E7B244F12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5BAFC79-0312-4CBD-B5FF-D1270FC5E223}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5BAFC79-0312-4CBD-B5FF-D1270FC5E223}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5BAFC79-0312-4CBD-B5FF-D1270FC5E223}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5BAFC79-0312-4CBD-B5FF-D1270FC5E223}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,5 +119,6 @@ Global
 		{44124331-C60A-4071-B387-4B8E71324B10} = {47D6D365-36CE-43C2-91D0-5A071928C62A}
 		{306AD788-87E9-4DF9-A216-95948E024BC8} = {4466FE4E-78E3-46A8-BAA4-C304D7FFABD9}
 		{96CB97F5-1BAC-433D-B5CE-AD6E7B244F12} = {7C762820-1165-4EB4-B7A3-3BB45DF33CE7}
+		{E5BAFC79-0312-4CBD-B5FF-D1270FC5E223} = {4466FE4E-78E3-46A8-BAA4-C304D7FFABD9}
 	EndGlobalSection
 EndGlobal
