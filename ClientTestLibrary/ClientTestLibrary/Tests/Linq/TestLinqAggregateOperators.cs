@@ -138,7 +138,7 @@ namespace ClientTestLibrary.Linq
             assert.DeepEqual(averageNum, 2.125, "Average() number.");
 
             double averageWordLength = words.Average(w => w.Length);
-            assert.DeepEqual(averageWordLength, 3.66666666666667, "Issue #223. Average() for longest word.");
+            assert.DeepEqual(averageWordLength, 3.66666666666667, "Issue #172/#223. Average() for longest word.");
 
             var groupedAverage = (from p in Person.GetPersons()
                                   group p by p.Group into g
@@ -154,7 +154,7 @@ namespace ClientTestLibrary.Linq
 
             // Aggregate
             double product = doubles.Aggregate((runningProduct, nextFactor) => runningProduct * nextFactor);
-            assert.DeepEqual(product, 88.33081, "Issue #223. Aggregate() within doubles.");
+            assert.DeepEqual(product, 88.33081, "Issues #172/#223. Aggregate() within doubles.");
 
             var startBalance = 100.0;
             var attemptedWithdrawals = new[] { 20, 10, 40, 50, 10, 70, 30 };
