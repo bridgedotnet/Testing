@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Bridge;
-using Bridge.QUnit;
-
+﻿using Bridge.QUnit;
 using ClientTestLibrary.Utilities;
+using System.Linq;
 
 namespace ClientTestLibrary.Linq
 {
@@ -19,6 +14,7 @@ namespace ClientTestLibrary.Linq
                    (from p in Person.GetPersons()
                     join g in Group.GetGroups() on p.Group equals g.Name
                     select new { Name = p.Name, Limit = g.Limit }).ToArray();
+            
             var personsExpected = new object[] {
                  new { Name = "Frank", Limit = 1000},
                  new { Name = "Zeppa", Limit = 800},
@@ -28,8 +24,8 @@ namespace ClientTestLibrary.Linq
                  new { Name = "Ian", Limit = 400},
                  new { Name = "Mary", Limit = 400}
                  };
-            assert.DeepEqual(persons, personsExpected, "Join Persons and Groups.");
 
+            assert.DeepEqual(persons, personsExpected, "Join Persons and Groups");
 
             var personsByLambda = Person.GetPersons()
                                     .Join(Group.GetGroups(),
@@ -47,19 +43,22 @@ namespace ClientTestLibrary.Linq
                  new { Name = "Ian", Limit = 400},
                  new { Name = "Mary", Limit = 400}
             };
-            assert.DeepEqual(personsByLambda, personsByLambdaExpected, "Join Persons and Groups by lambda.");
+
+            assert.DeepEqual(personsByLambda, personsByLambdaExpected, "Join Persons and Groups by lambda");
 
             var groupJoin = (from g in Group.GetGroups()
                              join p in Person.GetPersons() on g.Name equals p.Group into pg
                              select new { Group = g.Name, Persons = pg.Select(x => x.Name).ToArray() })
                              .ToArray();
+
             var groupJoinExpected = new object[] {
                 new { Group = "A", Persons = new [] {"Frank"} },
                 new { Group = "B", Persons = new [] {"John", "Dora", "Ian", "Mary"} },
                 new { Group = "C", Persons = new [] {"Zeppa", "Billy"} },
                 new { Group = "D", Persons = new string [] {} }
             };
-            assert.DeepEqual(groupJoin, groupJoinExpected, "Grouped join Persons and Groups.");
+
+            assert.DeepEqual(groupJoin, groupJoinExpected, "Grouped join Persons and Groups");
 
             var groupJoinWithDefault =
                             (from g in Group.GetGroups()
@@ -71,6 +70,7 @@ namespace ClientTestLibrary.Linq
                                  PersonName = ep != null ? ep.Name : string.Empty,
                              }
                             ).ToArray();
+
             var groupJoinWithDefaultExpected = new object[] {
                 new { GroupName = "A", PersonName = "Frank" },
                 new { GroupName = "B", PersonName = "John" },
@@ -81,7 +81,8 @@ namespace ClientTestLibrary.Linq
                 new { GroupName = "C", PersonName = "Billy" },
                 new { GroupName = "D", PersonName = string.Empty }
             };
-            assert.DeepEqual(groupJoinWithDefault, groupJoinWithDefaultExpected, "Grouped join Persons and Groups with DefaultIfEmpty.");
+
+            assert.DeepEqual(groupJoinWithDefault, groupJoinWithDefaultExpected, "Grouped join Persons and Groups with DefaultIfEmpty");
 
             var groupJoinWithDefaultAndComplexEquals =
                            (from g in Group.GetGroups()
@@ -94,6 +95,7 @@ namespace ClientTestLibrary.Linq
                                 PersonName = ep != null ? ep.Name : null,
                             }
                            ).ToArray();
+
             var groupJoinWithDefaultAndComplexEqualsExpected = new object[] {
                 new { GroupName = "C", PersonName = "Zeppa" },
                 new { GroupName = "B", PersonName = "Mary" },
@@ -104,7 +106,8 @@ namespace ClientTestLibrary.Linq
                 new { GroupName = "C", PersonName = "Billy" },
                 new { GroupName = "D", PersonName = (string)null }
             };
-            assert.DeepEqual(groupJoinWithDefaultAndComplexEquals, groupJoinWithDefaultAndComplexEqualsExpected, "Issue #209. Grouped join Persons and Groups with DefaultIfEmpty, complex equals and ordering.");
+
+            assert.DeepEqual(groupJoinWithDefaultAndComplexEquals, groupJoinWithDefaultAndComplexEqualsExpected, "Issue #209. Grouped join Persons and Groups with DefaultIfEmpty, complex equals and ordering");
         }
     }
 }

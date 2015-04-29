@@ -1,6 +1,4 @@
-﻿using System;
-using Bridge;
-using Bridge.Html5;
+﻿using Bridge;
 using Bridge.QUnit;
 
 namespace ClientTestLibrary
@@ -76,36 +74,43 @@ namespace ClientTestLibrary
 
             //Check parameterless constructor
             var a = new Point();
+
             assert.DeepEqual(a.x, 0, "x 0");
             assert.DeepEqual(a.y, 0, "y 0");
 
             var r = new Rectangle();
+
             assert.DeepEqual(r.l.x, 0, "r.l.x 0");
             assert.DeepEqual(r.l.y, 0, "r.l.y 0");
             assert.DeepEqual(r.t.x, 0, "r.t.x 0");
             assert.DeepEqual(r.t.y, 0, "r.t.y 0");
 
             r = new Rectangle(10, 20);
+
             assert.DeepEqual(r.l.x, 10, "r.l.x 10");
             assert.DeepEqual(r.l.y, 20, "r.l.y 20");
             assert.DeepEqual(r.t.x, 0, "r.t.x 0");
             assert.DeepEqual(r.t.y, 0, "r.t.y 0");
 
             r = new Rectangle(30, 40, 50, 60);
+
             assert.DeepEqual(r.l.x, 30, "r.l.x 30");
             assert.DeepEqual(r.l.y, 40, "r.l.y 40");
             assert.DeepEqual(r.t.x, 50, "r.t.x 50");
             assert.DeepEqual(r.t.y, 60, "r.t.y 60");
 
             var i = a.Test1();
+
             assert.DeepEqual(i, 500, "i 500");
             a.x = 300;
             i = a.Test1();
             assert.DeepEqual(i, 800, "i 800");
 
             a.y = 400;
+
             var b = new Point(){x = 5, y = 7};
             var c = b.Test2(a);
+
             assert.DeepEqual(c.x, 305, "c.x 305");
             assert.DeepEqual(c.y, 407, "c.y 407");
         }
@@ -123,6 +128,7 @@ namespace ClientTestLibrary
 
             Point.StatitIntNotInitialized = -1;
             assert.DeepEqual(Point.StatitIntNotInitialized, -1, "Point.StatitIntNotInitialized -1");
+            
             var i = Point.Test3();
             assert.DeepEqual(i, 499, "i 499");
         }

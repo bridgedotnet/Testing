@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using Bridge;
 using System.Collections.Generic;
-using Bridge;
 
 namespace ClientTestLibrary.Utilities
 {
@@ -17,6 +15,7 @@ namespace ClientTestLibrary.Utilities
         public static List<Person> GetPersons()
         {
             var persons = new List<Person>();
+
             persons.Add(new Person() { ID = 1, Name = "Frank", City = "Edmonton", Count = 300, Group = "A" });
             persons.Add(new Person() { ID = 2, Name = "Zeppa", City = "Tokyo", Count = 100, Group = "C" });
             persons.Add(new Person() { ID = 3, Name = "John", City = "Lisbon", Count = 700, Group = "B" });

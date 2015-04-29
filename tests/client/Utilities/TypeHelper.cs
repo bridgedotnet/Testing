@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Bridge;
+﻿using Bridge;
 
 namespace ClientTestLibrary.Utilities
 {

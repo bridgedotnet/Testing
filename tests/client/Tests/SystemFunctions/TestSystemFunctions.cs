@@ -1,7 +1,7 @@
-﻿using System;
-using System.Text;
-using Bridge;
+﻿using Bridge;
 using Bridge.QUnit;
+using System;
+using System.Text;
 
 namespace ClientTestLibrary
 {
@@ -17,6 +17,7 @@ namespace ClientTestLibrary
             var str = "2015-03-24T10:48:09.1500225+03:00";
             var bridgeDate = DateTime.Parse(str);
             var bridgeDate1 = new DateTime(str);
+
             assert.DeepEqual(bridgeDate, bridgeDate1, "[#83] C# bridgeDate = bridgeDate1");
 
             //[#83] by JavaScript code. This is to check the same issue as above and just to check another way of calling QUnit from JavaScript

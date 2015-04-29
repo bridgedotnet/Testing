@@ -1,11 +1,8 @@
-﻿using System;
+﻿using Bridge;
+using Bridge.QUnit;
+using ClientTestLibrary.Utilities;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Bridge;
-using Bridge.QUnit;
-
-using ClientTestLibrary.Utilities;
 
 namespace ClientTestLibrary.Linq
 {
@@ -49,6 +46,7 @@ namespace ClientTestLibrary.Linq
                     (from n in numbers
                      group n by n % 5 into g
                      select new { Remainder = g.Key, Numbers = g.ToArray() }).ToArray();
+           
             var numberGroupsExpected = new[]
                 {
                     new {Remainder = 2, Numbers = new[] { 2 } },
@@ -56,25 +54,29 @@ namespace ClientTestLibrary.Linq
                     new {Remainder = 3, Numbers = new[] { 3 } },
                     new {Remainder = 1, Numbers = new[] { 1 } }
                 };
-            assert.DeepEqual(numberGroups, numberGroupsExpected, "Group numbers by remainders.");
+
+            assert.DeepEqual(numberGroups, numberGroupsExpected, "Group numbers by remainders");
 
             var wordGroups =
                     (from w in words
                      group w by w[0] into g
                      select new { FirstLetter = g.Key, Words = g.ToArray() }).ToArray();
+            
             var wordGroupsExpected = new[]
                 {
                     new {FirstLetter = '1', Words = new[] { "1.one", "11.eleven" } },
                     new {FirstLetter = '3', Words = new[] { "3.three", "30.thirty" } },
                     new {FirstLetter = '2', Words = new[] { "2.two", "22.twentytwo" } }
                 };
-            assert.DeepEqual(wordGroups, wordGroupsExpected, "Group words by first letters.");
+
+            assert.DeepEqual(wordGroups, wordGroupsExpected, "Group words by first letters");
 
             var personGroups =
                    (from p in Person.GetPersons()
                     group p by p.Group into g
                     select new { Group = g.Key, Persons = g.Select(x => x.Name).ToArray() }
                    ).ToArray();
+
             var personGroupsExpected = new object[]
             {
                 new { Group = "A", Persons = new [] {"Frank"} },
@@ -82,7 +84,8 @@ namespace ClientTestLibrary.Linq
                 new { Group = "B", Persons = new [] {"John", "Dora", "Ian", "Mary"} },
                 new { Group = (string)null, Persons = new [] {"Nemo"} }
             };
-            assert.DeepEqual(personGroups, personGroupsExpected, "Person group by Group field.");
+
+            assert.DeepEqual(personGroups, personGroupsExpected, "Person group by Group field");
         }
 
         public static void TestComplexGrouping(Assert assert)
@@ -92,9 +95,8 @@ namespace ClientTestLibrary.Linq
             var numbers = new[] { 2, 10, 3, 5, 30, 1, -15 };
             var words = new[] { "1.one", "3.three", "2.two", "22.twentytwo", "11.eleven", "30.thirty" };
 
-
             var complexGrouping =
-           (
+            (
                from n in numbers
                select
                    new
@@ -125,7 +127,7 @@ namespace ClientTestLibrary.Linq
            ).ToArray();
 
             var complexGroupingExpected = GetComplexGroupingExpectedResult();
-            assert.DeepEqual(complexGrouping, complexGroupingExpected, "Complex grouping for numbers and words.");
+            assert.DeepEqual(complexGrouping, complexGroupingExpected, "Complex grouping for numbers and words");
         }
 
         public static void TestAnagrams(Assert assert)
@@ -140,16 +142,19 @@ namespace ClientTestLibrary.Linq
                     " near ",
                     " form "
             };
+
             var anagramsGroups = anagrams.GroupBy(w => w.Trim(), new AnagramEqualityComparer())
                                    .Select(x => new { Key = x.Key, Words = x.ToArray() })
                                    .ToArray();
+
             var anagramsGroupsExpected = new[]
                 {
                     new {Key = "from",  Words = new []{ " from ", " form "} },
                     new {Key = "salt",  Words = new []{ " salt ", " last "} },
                     new {Key = "earn",  Words = new []{ " earn ", " near "} }
                 };
-            assert.DeepEqual(anagramsGroups, anagramsGroupsExpected, "Anagram grouping with equality comparer.");
+
+            assert.DeepEqual(anagramsGroups, anagramsGroupsExpected, "Anagram grouping with equality comparer");
 
             var anagramsGroups1 = anagrams.GroupBy(w => w.Trim(), a => a.ToUpperCase(), new AnagramEqualityComparer())
                        .Select(x => new { Key = x.Key, Words = x.ToArray() })
@@ -160,7 +165,8 @@ namespace ClientTestLibrary.Linq
                     new {Key = "salt",  Words = new []{ " SALT ", " LAST "} },
                     new {Key = "earn",  Words = new []{ " EARN ", " NEAR "} }
                 };
-            assert.DeepEqual(anagramsGroups1, anagramsGroupsExpected1, "Anagram grouping with equality compare and upper case.");
+
+            assert.DeepEqual(anagramsGroups1, anagramsGroupsExpected1, "Anagram grouping with equality compare and upper case");
         }
 
         private static object GetComplexGroupingExpectedResult()
@@ -190,7 +196,8 @@ namespace ClientTestLibrary.Linq
                 {
                     Number = 3,
                     Words = new []
-                    { new
+                    { 
+                        new
                         {
                             Letter = '3',
                             LetterGroups = new[]
@@ -213,7 +220,8 @@ namespace ClientTestLibrary.Linq
                 {
                     Number = 1,
                     Words = new []
-                    { new
+                    { 
+                        new
                         {
                             Letter = '1',
                             LetterGroups = new[]
@@ -230,6 +238,7 @@ namespace ClientTestLibrary.Linq
                 },
 
             };
+
             return complexGroupingExpected;
         }
     }

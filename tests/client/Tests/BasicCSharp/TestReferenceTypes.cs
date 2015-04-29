@@ -51,7 +51,7 @@ namespace ClientTestLibrary
             : this()
         {
             if (d == null)
-                throw new Exception("Related should not be null.");
+                throw new Exception("Related should not be null");
 
             this.Data = d;
         }
@@ -206,6 +206,7 @@ namespace ClientTestLibrary
 
             //Check parameterless constructor
             var a = new ClassA();
+
             assert.DeepEqual(a.NumberA, 10, "NumberA 10");
             assert.DeepEqual(a.StringA, "Str", "StringA Str");
             assert.DeepEqual(a.BoolA, true, "BoolA true");
@@ -221,6 +222,7 @@ namespace ClientTestLibrary
             assert.Throws(TestSet1FailureHelper.TestConstructor2Failure, "Should pass six parameters");
 
             a = new ClassA(150, "151", true, 1.53d, 1.54m, new ClassA.Aux1() { Number = 155 });
+            
             assert.DeepEqual(a.NumberA, 150, "NumberA 150");
             assert.DeepEqual(a.StringA, "151", "StringA 151");
             assert.DeepEqual(a.BoolA, true, "BoolA true");
@@ -231,6 +233,7 @@ namespace ClientTestLibrary
 
             //Check instance methods
             var b = a.Method1();
+            
             assert.Ok(b != null, "b not null");
             assert.DeepEqual(b.Number, 2, "b Number 2");
             assert.Ok(b.Related != null, "b.Related not null");
@@ -243,10 +246,13 @@ namespace ClientTestLibrary
 
             //Check [#68]
             var c68 = new Class68();
+            
             assert.DeepEqual(c68.x, 0, "c68.x 0");
             assert.DeepEqual(c68.y, 1, "c68.y 1");
+
             //Check local vars do not get overridden by fields
             c68.Test();
+
             assert.DeepEqual(c68.x, 0, "c68.x 0");
             assert.DeepEqual(c68.y, 1, "c68.y 1");
         }
@@ -268,6 +274,7 @@ namespace ClientTestLibrary
 
             //Check static methods
             var a = ClassA.StaticMethod1(678, "ASD", double.NaN);
+
             assert.DeepEqual(ClassA.StatitIntNotInitialized, 678, "StatitIntNotInitialized 678");
             assert.DeepEqual(ClassA.StatitStringNotInitialized, "ASD", "ClassA.StatitStringNotInitialized ASD");
             assert.DeepEqual(a.DoubleA, double.NaN, "DoubleA double.NaN");
@@ -288,6 +295,7 @@ namespace ClientTestLibrary
             //Check default parameters
             var ra = new ClassA();
             int r = ra.Method5(5);
+
             assert.DeepEqual(r, 5, "r 5");
             r = ra.Method5(i: 15);
             assert.DeepEqual(r, 15, "r 15");
@@ -300,6 +308,7 @@ namespace ClientTestLibrary
             var a = new ClassA();
             var b = a.Method1();
             var c = b.Related;
+
             a.Method2(b);
             assert.Ok(b != null, "b not null");
             assert.DeepEqual(b.Number, 2, "b Number 2");
@@ -313,6 +322,7 @@ namespace ClientTestLibrary
             //Check value local parameter
             var input = 1;
             var result = a.Method4(input, 4);
+
             assert.DeepEqual(input, 1, "input 1");
             assert.DeepEqual(result, 5, "result 5");
 
@@ -324,6 +334,7 @@ namespace ClientTestLibrary
             //[#85]
             int i;
             var tryResult = ClassA.TryParse("", out i);
+
             assert.Ok(tryResult, "tryResult");
             assert.DeepEqual(i, 3, "i 3");
         }

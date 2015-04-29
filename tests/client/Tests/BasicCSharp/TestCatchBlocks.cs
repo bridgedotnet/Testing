@@ -1,6 +1,4 @@
-﻿using System;
-using Bridge;
-using Bridge.QUnit;
+﻿using Bridge.QUnit;
 
 namespace ClientTestLibrary
 {

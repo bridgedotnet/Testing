@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Bridge;
-using Bridge.QUnit;
-
+﻿using Bridge.QUnit;
 using ClientTestLibrary.Utilities;
+using System.Linq;
 
 namespace ClientTestLibrary.Linq
 {
@@ -16,15 +12,15 @@ namespace ClientTestLibrary.Linq
 
             string[] words = { "count", "tree", "mount", "five", "doubt" };
             bool anyOu = words.Any(w => w.Contains("ou"));
-            assert.Ok(anyOu, "Any() to return words containing 'ou'.");
+            assert.Ok(anyOu, "Any() to return words containing 'ou'");
 
             int[] oddNumbers = { 3, 7, 9, 5, 247, 1000001 };
             bool onlyOdd = oddNumbers.All(n => n % 2 == 1);
-            assert.Ok(onlyOdd, "All() is odd.");
+            assert.Ok(onlyOdd, "All() is odd");
 
             int[] someNumbers = { 2, 3, 7, 9, 5, 247, 1000001 };
             bool notOnlyOdd = !someNumbers.All(n => n % 2 == 1);
-            assert.Ok(notOnlyOdd, "All() is not only odd.");
+            assert.Ok(notOnlyOdd, "All() is not only odd");
 
             var productGroups =
                     (from p in Person.GetPersons()
@@ -37,7 +33,7 @@ namespace ClientTestLibrary.Linq
                                                  new {Group = (string)null, Names = new[]{"Nemo"}}
                                              };
 
-            assert.DeepEqual(productGroups, productGroupsExpected, "Any() to return a grouped array of names only for groups having any item with Count > 500.");
+            assert.DeepEqual(productGroups, productGroupsExpected, "Any() to return a grouped array of names only for groups having any item with Count > 500");
         }
     }
 }

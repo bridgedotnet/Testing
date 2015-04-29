@@ -1,5 +1,4 @@
-﻿using System;
-using Bridge;
+﻿using Bridge;
 
 namespace ClientTestLibrary
 {
