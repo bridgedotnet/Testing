@@ -513,6 +513,15 @@
             return s !== s.toLowerCase() && s === s.toUpperCase();
         },
 
+        getName: function (obj) {
+            if (obj.$$name) {
+                return obj.$$name;
+            }
+
+            var results = (/function (.{1,})\(/).exec((obj).constructor.toString());
+            return (results && results.length > 1) ? results[1] : "";
+        },
+
         fn: {
             call: function (obj, fnName){
                 var args = Array.prototype.slice.call(arguments, 2);

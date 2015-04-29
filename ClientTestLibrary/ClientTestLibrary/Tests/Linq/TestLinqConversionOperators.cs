@@ -79,7 +79,7 @@ namespace ClientTestLibrary.Linq
 
             object[] numbers = { null, 1.0, "two", 3, "four", 5, "six", 7.0 };
             var doubleNumbers = numbers.OfType<double>().ToArray();
-            assert.DeepEqual(doubleNumbers, new[] { 1.0, 7.0 }, "Issue #218. OfType<double> should get only double type items.");
+            assert.DeepEqual(doubleNumbers, new[] { 1.0, 3, 5,  7.0 }, "Issue #218. OfType<double> should get only double type items.");
         }
     }
 }

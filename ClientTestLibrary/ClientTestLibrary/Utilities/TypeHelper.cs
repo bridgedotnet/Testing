@@ -10,7 +10,8 @@ namespace ClientTestLibrary.Utilities
     {
         public static string GetTypeName(object o)
         {
-            return Script.Get<string>("o.__proto__.$$name");
+            return o.GetClassName();
+            //return Script.Get<string>("o.__proto__.$$name");
         }
     }
 }

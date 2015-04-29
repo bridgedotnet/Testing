@@ -108,7 +108,8 @@ Bridge.define('ClientTestLibrary.Utilities.Person', {
 Bridge.define('ClientTestLibrary.Utilities.TypeHelper', {
     statics: {
         getTypeName: function (o) {
-            return o.__proto__.$$name;
+            return Bridge.getName(o);
+            //return Script.Get<string>("o.__proto__.$$name");
         }
     }
 });

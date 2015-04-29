@@ -96,7 +96,7 @@
 
             var numbers = [null, 1.0, "two", 3, "four", 5, "six", 7.0];
             var doubleNumbers = Bridge.Linq.Enumerable.from(numbers).ofType(Number).toArray();
-            assert.deepEqual(doubleNumbers, [1.0, 7.0], "Issue #218. OfType<double> should get only double type items.");
+            assert.deepEqual(doubleNumbers, [1.0, 3, 5, 7.0], "Issue #218. OfType<double> should get only double type items.");
         }
     }
 });
