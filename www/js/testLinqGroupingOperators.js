@@ -65,10 +65,10 @@ Bridge.define('ClientTestLibrary.Linq.TestLinqGroupingOperators', {
                 }).groupBy(function (w) {
                     return w.charCodeAt(0);
                 }).select(function (g) {
-                    return { letter: g.key(), letterGroups: (g.groupBy(function (l) {
+                    return { letter: g.key(), letterGroups: (Bridge.Linq.Enumerable.from(g).groupBy(function (l) {
                         return l;
-                    }, null, null, function (l) {
-                        null
+                    }, function (l) {
+                        return l;
                     }).select(function (mg) {
                         return { letter: mg.key(), letters: mg.toArray() };
                     })).toArray() };

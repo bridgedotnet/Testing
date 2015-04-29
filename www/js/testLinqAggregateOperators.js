@@ -144,10 +144,11 @@
             assert.deepEqual(groupedAverage, groupedAverageExpected, "Average() within group.");
 
             // Aggregate
-            var product = Bridge.Linq.Enumerable.from(doubles).aggregate(function (runningProduct, nextFactor) {
+            var doublesForAggregate = [1.0, 2.0, 3.0, 4.0, 5.0];
+            var product = Bridge.Linq.Enumerable.from(doublesForAggregate).aggregate(function (runningProduct, nextFactor) {
                 return runningProduct * nextFactor;
             });
-            assert.deepEqual(product, 88.33081, "Issues #172/#223. Aggregate() within doubles.");
+            assert.deepEqual(product, 120, "Aggregate() within doubles.");
 
             var startBalance = 100.0;
             var attemptedWithdrawals = [20, 10, 40, 50, 10, 70, 30];

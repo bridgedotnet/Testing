@@ -154,8 +154,9 @@ namespace ClientTestLibrary.Linq
             assert.DeepEqual(groupedAverage, groupedAverageExpected, "Average() within group.");
 
             // Aggregate
-            double product = doubles.Aggregate((runningProduct, nextFactor) => runningProduct * nextFactor);
-            assert.DeepEqual(product, 88.33081, "Issues #172/#223. Aggregate() within doubles.");
+            var doublesForAggregate = new[] { 1.0, 2.0, 3.0, 4.0, 5.0 };
+            double product = doublesForAggregate.Aggregate((runningProduct, nextFactor) => runningProduct * nextFactor);
+            assert.DeepEqual(product, 120, "Aggregate() within doubles.");
 
             var startBalance = 100.0;
             var attemptedWithdrawals = new[] { 20, 10, 40, 50, 10, 70, 30 };

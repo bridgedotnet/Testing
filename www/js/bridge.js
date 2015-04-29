@@ -172,12 +172,40 @@
 
             if (typeof value == "object") {
                 var result = 0,
+                    removeCache = false,
+                    len,
+                    i,
+                    item,
+                    cacheItem,
                     temp;
+
+                if (!Bridge.$$hashCodeCache) {
+                    Bridge.$$hashCodeCache = [];
+                    Bridge.$$hashCodeCalculated = [];
+                    removeCache = true;
+                }
+
+                for (i = 0, len = Bridge.$$hashCodeCache.length; i < len; i += 1) {
+                    item = Bridge.$$hashCodeCache[i];
+                    if (item.obj === value) {
+                        return item.hash;
+                    }
+                }
+
+                cacheItem = { obj: value, hash: 0 };
+                Bridge.$$hashCodeCache.push(cacheItem);
+
                 for (var property in value) {
                     if (value.hasOwnProperty(property)) {
                         temp = Bridge.isEmpty(value[property], true) ? 0 : Bridge.getHashCode(value[property]);
                         result = 29 * result + temp;
                     }
+                }
+
+                cacheItem.hash = result;
+
+                if (removeCache) {
+                    delete Bridge.$$hashCodeCache;
                 }
 
                 return result;
@@ -444,10 +472,72 @@
             }
 
             if (typeof a == "object" && typeof b == "object") {
-                return Bridge.getHashCode(a) === Bridge.getHashCode(b);
+                return (Bridge.getHashCode(a) === Bridge.getHashCode(b)) && Bridge.objectEquals(a, b);
             }
         
             return a === b;
+        },
+
+        objectEquals: function (a, b) {
+            Bridge.$$leftChain = [];
+            Bridge.$$rightChain = [];
+
+            var result = Bridge.deepEquals(a, b);
+
+            delete Bridge.$$leftChain;
+            delete Bridge.$$rightChain;
+
+            return result;
+        },
+
+        deepEquals: function (a, b) {
+            if (typeof a == "object" && typeof b == "object") {
+                if (Bridge.$$leftChain.indexOf(a) > -1 || Bridge.$$rightChain.indexOf(b) > -1) {
+                    return false;
+                }
+
+                var p;
+
+                for (p in b) {
+                    if (b.hasOwnProperty(p) !== a.hasOwnProperty(p)) {
+                        return false;
+                    }
+                    else if (typeof b[p] !== typeof a[p]) {
+                        return false;
+                    }
+                }
+
+                for (p in a) {
+                    if (b.hasOwnProperty(p) !== a.hasOwnProperty(p)) {
+                        return false;
+                    }
+                    else if (typeof a[p] !== typeof b[p]) {
+                        return false;
+                    }
+
+                    if (typeof (a[p]) == "object") {
+                        Bridge.$$leftChain.push(a);
+                        Bridge.$$rightChain.push(b);
+
+                        if (!Bridge.deepEquals(a[p], b[p])) {
+                            return false;
+                        }
+
+                        Bridge.$$leftChain.pop();
+                        Bridge.$$rightChain.pop();
+                    }
+                    else {
+                        if(!Bridge.equals(a[p], b[p])) {
+                            return false;
+                        }
+                    }                    
+                }
+
+                return true;
+            }
+            else {
+                return Bridge.equals(a, b);
+            }
         },
 
         compare: function (a, b) {
