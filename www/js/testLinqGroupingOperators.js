@@ -11,13 +11,9 @@
             return null;
         }
 
-        // Imlementation of string.ToCharArray()
-        var wordChars = new Array(word.length);
-        for (var i = 0; i < word.length; i++) {
-            wordChars[i] = word.charCodeAt(i);
-        }
-
+        var wordChars = Bridge.String.toCharArray(word, 0, word.length);
         wordChars.sort();
+
         return String(wordChars);
     }
 });

@@ -29,14 +29,9 @@ namespace ClientTestLibrary.Linq
                 return null;
             }
 
-            // Imlementation of string.ToCharArray()
-            var wordChars = new char[word.Length];
-            for (int i = 0; i < word.Length; i++)
-			{
-                wordChars[i] = word[i];
-			}
-
+            var wordChars = word.ToCharArray();
             wordChars.Sort();
+
             return new string(wordChars);
         }
     }

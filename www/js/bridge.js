@@ -169,6 +169,19 @@
 
                 return hash;
             }
+
+            if (typeof value == "object") {
+                var result = 0,
+                    temp;
+                for (var property in value) {
+                    if (value.hasOwnProperty(property)) {
+                        temp = Bridge.isEmpty(value[property], true) ? 0 : Bridge.getHashCode(value[property]);
+                        result = 29 * result + temp;
+                    }
+                }
+
+                return result;
+            }
         
             return value.$$hashCode || (value.$$hashCode = (Math.random() * 0x100000000) | 0);
         },
@@ -428,6 +441,10 @@
             }
             else if (Bridge.isNull(a) && Bridge.isNull(b)) {
                 return true;
+            }
+
+            if (typeof a == "object" && typeof b == "object") {
+                return Bridge.getHashCode(a) === Bridge.getHashCode(b);
             }
         
             return a === b;
@@ -1093,6 +1110,24 @@
             }
 
             return strA.localeCompare(strB);
+        },
+
+        toCharArray: function (str, startIndex, length) {
+            if (startIndex < 0 || startIndex > str.length || startIndex > str.length - length) {
+                throw new Bridge.ArgumentOutOfRangeException("startIndex", "startIndex cannot be less than zero and must refer to a location within the string");
+            }
+
+            if (length < 0) {
+                throw new Bridge.ArgumentOutOfRangeException("length", "must be non-negative");
+            }
+
+            var arr = [];
+
+            for (var i = startIndex; i < startIndex + length; i++) {
+                arr.push(str.charCodeAt(i));
+            }
+
+            return arr;
         }
     };
 
