@@ -1,9 +1,9 @@
 ﻿Bridge.define('ClientTestLibrary.Linq.AnagramEqualityComparer', {
     inherits: [Bridge.EqualityComparer$1(String)],
-    equals$1: function (x, y) {
+    equals: function (x, y) {
         return this.getCanonicalString(x) === this.getCanonicalString(y);
     },
-    getHashCode$1: function (obj) {
+    getHashCode: function (obj) {
         return Bridge.getHashCode(this.getCanonicalString(obj));
     },
     getCanonicalString: function (word) {
@@ -87,7 +87,7 @@ Bridge.define('ClientTestLibrary.Linq.TestLinqGroupingOperators', {
             }, null, null, new ClientTestLibrary.Linq.AnagramEqualityComparer()).select(function (x) {
                 return { key: x.key(), words: x.toArray() };
             }).toArray();
-            var anagramsGroupsExpected = [{ key: "from", words: ["from", "form"] }, { key: "salt", words: ["salt", "last"] }, { key: "earn", words: ["earn", "near"] }];
+            var anagramsGroupsExpected = [{ key: "from", words: [" from ", " form "] }, { key: "salt", words: [" salt ", " last "] }, { key: "earn", words: [" earn ", " near "] }];
             assert.deepEqual(anagramsGroups, anagramsGroupsExpected, "Anagram grouping with equality comparer.");
 
             var anagramsGroups1 = Bridge.Linq.Enumerable.from(anagrams).groupBy(function (w) {
@@ -97,7 +97,7 @@ Bridge.define('ClientTestLibrary.Linq.TestLinqGroupingOperators', {
             }, null, new ClientTestLibrary.Linq.AnagramEqualityComparer()).select(function (x) {
                 return { key: x.key(), words: x.toArray() };
             }).toArray();
-            var anagramsGroupsExpected1 = [{ key: "from", words: ["FROM", "FORM"] }, { key: "salt", words: ["SALT", "LAST"] }, { key: "earn", words: ["EARN", "NEAR"] }];
+            var anagramsGroupsExpected1 = [{ key: "from", words: [" FROM ", " FORM "] }, { key: "salt", words: [" SALT ", " LAST "] }, { key: "earn", words: [" EARN ", " NEAR "] }];
             assert.deepEqual(anagramsGroups1, anagramsGroupsExpected1, "Anagram grouping with equality compare and upper case.");
         },
         getComplexGroupingExpectedResult: function () {

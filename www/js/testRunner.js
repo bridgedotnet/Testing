@@ -46,8 +46,8 @@
             QUnit.test("Generation operators", ClientTestLibrary.Linq.TestLinqGenerationOperators.test);
             QUnit.test("Join operators", ClientTestLibrary.Linq.TestLinqJoinOperators.test);
             QUnit.test("Grouping operators", ClientTestLibrary.Linq.TestLinqGroupingOperators.test);
-            QUnit.test("Complex grouping operators Issue #219", ClientTestLibrary.Linq.TestLinqGroupingOperators.testComplexGrouping);
-            QUnit.test("Anagram grouping operators. Issue #222", ClientTestLibrary.Linq.TestLinqGroupingOperators.testAnagrams);
+            QUnit.test("Complex grouping operators.", ClientTestLibrary.Linq.TestLinqGroupingOperators.testComplexGrouping);
+            QUnit.test("Anagram grouping operators.", ClientTestLibrary.Linq.TestLinqGroupingOperators.testAnagrams);
             QUnit.test("Miscellaneous operators", ClientTestLibrary.Linq.TestLinqMiscellaneousOperators.test);
             QUnit.test("Ordering operators", ClientTestLibrary.Linq.TestLinqOrderingOperators.test);
             QUnit.test("Partitioning operators", ClientTestLibrary.Linq.TestLinqPartitioningOperators.test);

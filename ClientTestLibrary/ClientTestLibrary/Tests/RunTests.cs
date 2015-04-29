@@ -55,8 +55,8 @@ namespace ClientTestLibrary
             QUnit.Test("Generation operators", TestLinqGenerationOperators.Test);
             QUnit.Test("Join operators", TestLinqJoinOperators.Test);
             QUnit.Test("Grouping operators", TestLinqGroupingOperators.Test);
-            QUnit.Test("Complex grouping operators Issue #219", TestLinqGroupingOperators.TestComplexGrouping);
-            QUnit.Test("Anagram grouping operators. Issue #222", TestLinqGroupingOperators.TestAnagrams);
+            QUnit.Test("Complex grouping operators.", TestLinqGroupingOperators.TestComplexGrouping);
+            QUnit.Test("Anagram grouping operators.", TestLinqGroupingOperators.TestAnagrams);
             QUnit.Test("Miscellaneous operators", TestLinqMiscellaneousOperators.Test);
             QUnit.Test("Ordering operators", TestLinqOrderingOperators.Test);
             QUnit.Test("Partitioning operators", TestLinqPartitioningOperators.Test);

@@ -145,9 +145,9 @@ namespace ClientTestLibrary.Linq
                                    .ToArray();
             var anagramsGroupsExpected = new[]
                 {
-                    new {Key = "from",  Words = new []{ "from", "form"} },
-                    new {Key = "salt",  Words = new []{ "salt", "last"} },
-                    new {Key = "earn",  Words = new []{ "earn", "near"} }
+                    new {Key = "from",  Words = new []{ " from ", " form "} },
+                    new {Key = "salt",  Words = new []{ " salt ", " last "} },
+                    new {Key = "earn",  Words = new []{ " earn ", " near "} }
                 };
             assert.DeepEqual(anagramsGroups, anagramsGroupsExpected, "Anagram grouping with equality comparer.");
 
@@ -156,9 +156,9 @@ namespace ClientTestLibrary.Linq
                        .ToArray();
             var anagramsGroupsExpected1 = new[]
                 {
-                    new {Key = "from",  Words = new []{ "FROM", "FORM"} },
-                    new {Key = "salt",  Words = new []{ "SALT", "LAST"} },
-                    new {Key = "earn",  Words = new []{ "EARN", "NEAR"} }
+                    new {Key = "from",  Words = new []{ " FROM ", " FORM "} },
+                    new {Key = "salt",  Words = new []{ " SALT ", " LAST "} },
+                    new {Key = "earn",  Words = new []{ " EARN ", " NEAR "} }
                 };
             assert.DeepEqual(anagramsGroups1, anagramsGroupsExpected1, "Anagram grouping with equality compare and upper case.");
         }

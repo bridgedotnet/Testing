@@ -103,10 +103,10 @@
 
 Bridge.define('ClientTestLibrary.Linq.TestLinqConversionOperatorsIEqualityComparer', {
     inherits: [Bridge.EqualityComparer$1(String)],
-    equals$1: function (x, y) {
+    equals: function (x, y) {
         return Bridge.equals(x, y);
     },
-    getHashCode$1: function (obj) {
+    getHashCode: function (obj) {
         if (obj === null)
             return 0;
 
