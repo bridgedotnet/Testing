@@ -207,6 +207,7 @@ namespace ClientTestLibrary
             //Check parameterless constructor
             var a = new ClassA();
 
+            // TEST
             assert.DeepEqual(a.NumberA, 10, "NumberA 10");
             assert.DeepEqual(a.StringA, "Str", "StringA Str");
             assert.DeepEqual(a.BoolA, true, "BoolA true");
@@ -215,9 +216,11 @@ namespace ClientTestLibrary
             assert.Ok(a.Data != null, "Data not null");
             assert.DeepEqual(a.Data.Number, 700, "Data.Number 700");
 
+            // TEST
             //Check constructor with parameter
             assert.Throws(TestSet1FailureHelper.TestConstructor1Failure, "Related should not be null");
 
+            // TEST
             //Check constructor with parameter
             assert.Throws(TestSet1FailureHelper.TestConstructor2Failure, "Should pass six parameters");
 
@@ -231,6 +234,7 @@ namespace ClientTestLibrary
             assert.Ok(a.Data != null, "Data not null");
             assert.DeepEqual(a.Data.Number, 155, "Data.Number 155");
 
+            // TEST
             //Check instance methods
             var b = a.Method1();
             
@@ -244,12 +248,14 @@ namespace ClientTestLibrary
             a.Data = null;
             assert.DeepEqual(a.Method3(), "no data", "Method3 no data");
 
+            // TEST
             //Check [#68]
             var c68 = new Class68();
             
             assert.DeepEqual(c68.x, 0, "c68.x 0");
             assert.DeepEqual(c68.y, 1, "c68.y 1");
 
+            // TEST
             //Check local vars do not get overridden by fields
             c68.Test();
 
@@ -262,16 +268,19 @@ namespace ClientTestLibrary
         {
             assert.Expect(13);
 
+            // TEST
             //Check static fields initialization
             assert.DeepEqual(ClassA.StatitIntNotInitialized, 0, "#74 StatitInt not initialized");
             assert.DeepEqual(ClassA.StatitStringNotInitialized, null, "#74 StatitString not initialized");
             assert.DeepEqual(ClassA.CONST_CHAR, 81, "#74 CONST_CHAR Q");
             assert.DeepEqual(ClassA.CONST_DECIMAL, 3.123456789324324324, "#74 CONST_DECIMAL 3.123456789324324324m");
 
+            // TEST
             //Check static constructor
             assert.DeepEqual(ClassA.StaticInt, -340, "StatitInt initialized");
             assert.DeepEqual(ClassA.StaticString, "Defined string", "StatitString initialized");
 
+            // TEST
             //Check static methods
             var a = ClassA.StaticMethod1(678, "ASD", double.NaN);
 
@@ -326,10 +335,12 @@ namespace ClientTestLibrary
             assert.DeepEqual(input, 1, "input 1");
             assert.DeepEqual(result, 5, "result 5");
 
+            // TEST
             //[#86]
             var di = ClassA.GetDefaultInt();
             assert.DeepEqual(di, 0, "di 0");
 
+            // TEST
             //Check  "out parameter"
             //[#85]
             int i;

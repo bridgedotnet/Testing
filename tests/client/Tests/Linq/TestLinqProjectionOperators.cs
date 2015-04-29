@@ -15,19 +15,23 @@ namespace ClientTestLibrary.Linq
         {
             assert.Expect(8);
 
+            // TEST
             var numbers = new[] { 1, 3, 5, 7 };
             var numberPlusOne = (from n in numbers select n + 1).ToArray();
             assert.DeepEqual(numberPlusOne, new[] { 2, 4, 6, 8 }, "A sequence of ints one higher than the numbers[]");
 
+            // TEST
             var persons = Person.GetPersons();
             var names = (from p in persons select p.Name).ToArray();
             assert.DeepEqual(names, new[] { "Frank", "Zeppa", "John", "Billy", "Dora", "Ian", "Mary", "Nemo" }, "Selects names as instance field");
 
+            // TEST
             string[] strings = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
             
             var textNumbers = (from n in numbers select strings[n]).ToArray();
             assert.DeepEqual(textNumbers, new[] { "one", "three", "five", "seven" }, "Selects names as items of another array");
 
+            // TEST
             var anonimNames = (from p in persons select new { Name = p.Name }).ToArray();
             
             object[] anonimNamesToCompare = {
@@ -37,6 +41,7 @@ namespace ClientTestLibrary.Linq
             
             assert.DeepEqual(anonimNames, anonimNamesToCompare, "Selects names as an anonymous type");
 
+            // TEST
             numbers = new[] { 0, 1, 3, 3 };
             
             var numberssInPlace = numbers
@@ -55,6 +60,7 @@ namespace ClientTestLibrary.Linq
             
             assert.DeepEqual(numberssInPlace, anonimNumbersToCompare, "Selects numbers as an anonymous type");
 
+            // TEST
             var numbersA = new[] { 1, 5, 2 };
             var numbersB = new[] { 3, 4, 2 };
             var simplePairs =
@@ -68,6 +74,7 @@ namespace ClientTestLibrary.Linq
             
             assert.DeepEqual(simplePairs, expectedSimplePairs, "Join two numeric arrays with one where clause");
 
+            // TEST
             numbersA = new[] { 1, 5, 2, 4, 3 };
             numbersB = new[] { 3, 4, 2, 5, 1 };
 
@@ -85,6 +92,7 @@ namespace ClientTestLibrary.Linq
             
             assert.DeepEqual(pairs, expectedPairs, "Join two numeric arrays with two where clauses");
 
+            // TEST
             numbersA = new[] { 1, 5, 2, 4, 3 };
             numbersB = new[] { 3, 4, 2, 5, 1 };
 

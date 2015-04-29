@@ -10,6 +10,7 @@ namespace ClientTestLibrary.Linq
         {
             assert.Expect(5);
 
+            // TEST
             var persons =
                    (from p in Person.GetPersons()
                     join g in Group.GetGroups() on p.Group equals g.Name
@@ -27,6 +28,7 @@ namespace ClientTestLibrary.Linq
 
             assert.DeepEqual(persons, personsExpected, "Join Persons and Groups");
 
+            // TEST
             var personsByLambda = Person.GetPersons()
                                     .Join(Group.GetGroups(),
                                           p => p.Group,
@@ -46,6 +48,7 @@ namespace ClientTestLibrary.Linq
 
             assert.DeepEqual(personsByLambda, personsByLambdaExpected, "Join Persons and Groups by lambda");
 
+            // TEST
             var groupJoin = (from g in Group.GetGroups()
                              join p in Person.GetPersons() on g.Name equals p.Group into pg
                              select new { Group = g.Name, Persons = pg.Select(x => x.Name).ToArray() })
@@ -60,6 +63,7 @@ namespace ClientTestLibrary.Linq
 
             assert.DeepEqual(groupJoin, groupJoinExpected, "Grouped join Persons and Groups");
 
+            // TEST
             var groupJoinWithDefault =
                             (from g in Group.GetGroups()
                              join p in Person.GetPersons() on g.Name equals p.Group into pg
@@ -84,6 +88,7 @@ namespace ClientTestLibrary.Linq
 
             assert.DeepEqual(groupJoinWithDefault, groupJoinWithDefaultExpected, "Grouped join Persons and Groups with DefaultIfEmpty");
 
+            // TEST
             var groupJoinWithDefaultAndComplexEquals =
                            (from g in Group.GetGroups()
                             join p in Person.GetPersons() on new { Name = g.Name, Digit = 1 } equals new { Name = p.Group , Digit = 1 } into pg

@@ -69,7 +69,7 @@ Bridge.define('ClientTestLibrary.ClassA', {
         this.$constructor();
 
         if (d === null)
-            throw new Bridge.Exception("Related should not be null.");
+            throw new Bridge.Exception("Related should not be null");
 
         this.setData(d);
     },
@@ -161,6 +161,8 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
 
             //Check parameterless constructor
             var a = new ClientTestLibrary.ClassA("constructor");
+
+            // TEST
             assert.deepEqual(a.getNumberA(), 10, "NumberA 10");
             assert.deepEqual(a.getStringA(), "Str", "StringA Str");
             assert.deepEqual(a.getBoolA(), true, "BoolA true");
@@ -169,15 +171,18 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
             assert.ok(a.getData() !== null, "Data not null");
             assert.deepEqual(a.getData().getNumber(), 700, "Data.Number 700");
 
+            // TEST
             //Check constructor with parameter
             assert.throws(ClientTestLibrary.TestSet1FailureHelper.testConstructor1Failure, "Related should not be null");
 
+            // TEST
             //Check constructor with parameter
             assert.throws(ClientTestLibrary.TestSet1FailureHelper.testConstructor2Failure, "Should pass six parameters");
 
             a = new ClientTestLibrary.ClassA("constructor$2", [150, "151", true, 1.53, 1.54, Bridge.merge(new ClientTestLibrary.ClassA.Aux1(), {
                 setNumber: 155
             } )]);
+
             assert.deepEqual(a.getNumberA(), 150, "NumberA 150");
             assert.deepEqual(a.getStringA(), "151", "StringA 151");
             assert.deepEqual(a.getBoolA(), true, "BoolA true");
@@ -186,8 +191,10 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
             assert.ok(a.getData() !== null, "Data not null");
             assert.deepEqual(a.getData().getNumber(), 155, "Data.Number 155");
 
+            // TEST
             //Check instance methods
             var b = a.method1();
+
             assert.ok(b !== null, "b not null");
             assert.deepEqual(b.getNumber(), 2, "b Number 2");
             assert.ok(b.getRelated() !== null, "b.Related not null");
@@ -198,30 +205,39 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
             a.setData(null);
             assert.deepEqual(a.method3(), "no data", "Method3 no data");
 
+            // TEST
             //Check [#68]
             var c68 = new ClientTestLibrary.Class68();
+
             assert.deepEqual(c68.x, 0, "c68.x 0");
             assert.deepEqual(c68.y, 1, "c68.y 1");
+
+            // TEST
             //Check local vars do not get overridden by fields
             c68.test();
+
             assert.deepEqual(c68.x, 0, "c68.x 0");
             assert.deepEqual(c68.y, 1, "c68.y 1");
         },
         test2: function (assert) {
             assert.expect(13);
 
+            // TEST
             //Check static fields initialization
             assert.deepEqual(ClientTestLibrary.ClassA.statitIntNotInitialized, 0, "#74 StatitInt not initialized");
             assert.deepEqual(ClientTestLibrary.ClassA.statitStringNotInitialized, null, "#74 StatitString not initialized");
             assert.deepEqual(ClientTestLibrary.ClassA.CONST_CHAR, 81, "#74 CONST_CHAR Q");
             assert.deepEqual(ClientTestLibrary.ClassA.CONST_DECIMAL, 3.1234567893243241, "#74 CONST_DECIMAL 3.123456789324324324m");
 
+            // TEST
             //Check static constructor
             assert.deepEqual(ClientTestLibrary.ClassA.staticInt, -340, "StatitInt initialized");
             assert.deepEqual(ClientTestLibrary.ClassA.staticString, "Defined string", "StatitString initialized");
 
+            // TEST
             //Check static methods
             var a = ClientTestLibrary.ClassA.staticMethod1(678, "ASD", Number.NaN);
+
             assert.deepEqual(ClientTestLibrary.ClassA.statitIntNotInitialized, 678, "StatitIntNotInitialized 678");
             assert.deepEqual(ClientTestLibrary.ClassA.statitStringNotInitialized, "ASD", "ClassA.StatitStringNotInitialized ASD");
             assert.deepEqual(a.getDoubleA(), Number.NaN, "DoubleA double.NaN");
@@ -239,6 +255,7 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
             //Check default parameters
             var ra = new ClientTestLibrary.ClassA("constructor");
             var r = ra.method5(5);
+
             assert.deepEqual(r, 5, "r 5");
             r = ra.method5(15);
             assert.deepEqual(r, 15, "r 15");
@@ -251,6 +268,7 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
             var a = new ClientTestLibrary.ClassA("constructor");
             var b = a.method1();
             var c = b.getRelated();
+
             a.method2(b);
             assert.ok(b !== null, "b not null");
             assert.deepEqual(b.getNumber(), 2, "b Number 2");
@@ -264,17 +282,21 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
             //Check value local parameter
             var input = 1;
             var result = a.method4(input, 4);
+
             assert.deepEqual(input, 1, "input 1");
             assert.deepEqual(result, 5, "result 5");
 
+            // TEST
             //[#86]
             var di = ClientTestLibrary.ClassA.getDefaultInt();
             assert.deepEqual(di, 0, "di 0");
 
+            // TEST
             //Check  "out parameter"
             //[#85]
             var i = { };
             var tryResult = ClientTestLibrary.ClassA.tryParse("", i);
+
             assert.ok(tryResult, "tryResult");
             assert.deepEqual(i.v, 3, "i 3");
         }

@@ -29,9 +29,11 @@ namespace ClientTestLibrary
         {
             assert.Expect(2);
 
+            // TEST
             Bridge169.M1();
             assert.DeepEqual(Bridge169.Number, 1, "M1()");
 
+            // TEST
             Bridge169.M2();
             assert.DeepEqual(Bridge169.Number, 2, "M2()");
         }

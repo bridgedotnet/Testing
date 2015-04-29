@@ -34,6 +34,7 @@ Bridge.define('ClientTestLibrary.Utilities.Person', {
     statics: {
         getPersons: function () {
             var persons = new Bridge.List$1(ClientTestLibrary.Utilities.Person)();
+
             persons.add(Bridge.merge(new ClientTestLibrary.Utilities.Person(), {
                 setID: 1, 
                 setName: "Frank", 

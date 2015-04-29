@@ -19,9 +19,11 @@ Bridge.define('ClientTestLibrary.TestBridgeIssues', {
         n169: function (assert) {
             assert.expect(2);
 
+            // TEST
             ClientTestLibrary.Bridge169.m1();
             assert.deepEqual(ClientTestLibrary.Bridge169.number, 1, "M1()");
 
+            // TEST
             ClientTestLibrary.Bridge169.m2();
             assert.deepEqual(ClientTestLibrary.Bridge169.number, 2, "M2()");
         }

@@ -10,7 +10,7 @@ namespace ClientTestLibrary.Linq
         {
             assert.Expect(26);
 
-            //First
+            // TEST
             var persons = Person.GetPersons();
             var person3 = (from p in Person.GetPersons() where p.ID == 3 select p).First();
             
@@ -21,14 +21,14 @@ namespace ClientTestLibrary.Linq
             assert.Throws(TestLinqElementOperators.ThrowExceptionOnFirst1, "First() should throw exception if no element found");
             assert.Throws(TestLinqElementOperators.ThrowExceptionOnFirst2, "First() should throw exception on empty collection");
 
-            //FirstOrDefault
+            // TEST
             assert.DeepEqual(persons.FirstOrDefault(x => x.ID == -1), null, "FirstOrDefault() unexisting element by lambda");
             assert.DeepEqual(persons.Where(x => x.ID == -1).FirstOrDefault(), null, "FirstOrDefault() with Where() unexisting element by lambda");
             assert.DeepEqual(persons.FirstOrDefault(x => x.Name == "Nemo"), persons[7], "FirstOrDefault() with Name = 'Nemo' by lambda");
             assert.DeepEqual(persons.Where(x => x.Name == "Nemo").FirstOrDefault(), persons[7], "FirstOrDefault() with Where() with Name = 'Nemo' by lambda");
             assert.DeepEqual((new object [] { }).FirstOrDefault(), null, "FirstOrDefault() within zero-length array by lambda");
 
-            //Last
+            // TEST
             var lastPerson = (from p in Person.GetPersons() select p).Last();
             
             assert.DeepEqual(lastPerson, Person.GetPersons()[7], "Last() person");
@@ -37,13 +37,13 @@ namespace ClientTestLibrary.Linq
             assert.Throws(TestLinqElementOperators.ThrowExceptionOnLast1, "Last() should throw exception if no element found");
             assert.Throws(TestLinqElementOperators.ThrowExceptionOnLast2, "Last() should throw exception on empty collection");
 
-            //LastOrDefault
+            // TEST
             assert.DeepEqual(persons.LastOrDefault(x => x.ID == -1), null, "LastOrDefault() unexisting element by lambda");
             assert.DeepEqual(persons.Where(x => x.ID == -1).LastOrDefault(), null, "LastOrDefault() with Where() unexisting element by lambda");
             assert.DeepEqual(persons.LastOrDefault(x => x.Name == "Nemo"), persons[7], "LastOrDefault() with Name = 'Nemo' by lambda");
             assert.DeepEqual((new object[] { }).LastOrDefault(), null, "LastOrDefault() within zero-length array by lambda");
 
-            //ElementAt
+            // TEST
             int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
             int elementAt1 = (from n in numbers where n > 5 select n).ElementAt(1);
             
@@ -51,16 +51,16 @@ namespace ClientTestLibrary.Linq
             assert.Throws(TestLinqElementOperators.ThrowExceptionOnElementAt1, "ElementAt() should throw exception if no element found");
             assert.Throws(TestLinqElementOperators.ThrowExceptionOnElementAt2, "ElementAt() should throw exception on empty collection");
 
-            //ElementAtOrDefault
+            // TEST
             int elementAt1OrDefault = numbers.ElementAtOrDefault(1);
             assert.DeepEqual(elementAt1OrDefault, 4, "ElementAtOrDefault() should return 4");
 
+            // TEST
             int elementAt2OrDefault = (from n in numbers where n > 5 select n).ElementAtOrDefault(2);
-            
             assert.DeepEqual(elementAt2OrDefault, 6, "ElementAtOrDefault() should return 6");
 
-            int elementAt100OrDefault = (from n in numbers where n > 5 select n).ElementAtOrDefault(100);
-            
+            // TEST
+            int elementAt100OrDefault = (from n in numbers where n > 5 select n).ElementAtOrDefault(100);            
             assert.DeepEqual(elementAt100OrDefault, 0, "ElementAtOrDefault() should return 0");
         }
 

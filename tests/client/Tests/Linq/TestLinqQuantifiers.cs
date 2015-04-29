@@ -10,18 +10,22 @@ namespace ClientTestLibrary.Linq
         {
             assert.Expect(4);
 
+            // TEST
             string[] words = { "count", "tree", "mount", "five", "doubt" };
             bool anyOu = words.Any(w => w.Contains("ou"));
             assert.Ok(anyOu, "Any() to return words containing 'ou'");
 
+            // TEST
             int[] oddNumbers = { 3, 7, 9, 5, 247, 1000001 };
             bool onlyOdd = oddNumbers.All(n => n % 2 == 1);
             assert.Ok(onlyOdd, "All() is odd");
 
+            // TEST
             int[] someNumbers = { 2, 3, 7, 9, 5, 247, 1000001 };
             bool notOnlyOdd = !someNumbers.All(n => n % 2 == 1);
             assert.Ok(notOnlyOdd, "All() is not only odd");
 
+            // TEST
             var productGroups =
                     (from p in Person.GetPersons()
                      group p by p.Group into pGroup

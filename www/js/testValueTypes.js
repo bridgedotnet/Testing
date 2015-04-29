@@ -95,39 +95,46 @@ Bridge.define('ClientTestLibrary.TestValueTypes', {
 
             //Check parameterless constructor
             var a = new ClientTestLibrary.Point();
+
             assert.deepEqual(a.x, 0, "x 0");
             assert.deepEqual(a.y, 0, "y 0");
 
             var r = new ClientTestLibrary.Rectangle("constructor");
+
             assert.deepEqual(r.l.x, 0, "r.l.x 0");
             assert.deepEqual(r.l.y, 0, "r.l.y 0");
             assert.deepEqual(r.t.x, 0, "r.t.x 0");
             assert.deepEqual(r.t.y, 0, "r.t.y 0");
 
             r = new ClientTestLibrary.Rectangle("constructor$1", 10, 20);
+
             assert.deepEqual(r.l.x, 10, "r.l.x 10");
             assert.deepEqual(r.l.y, 20, "r.l.y 20");
             assert.deepEqual(r.t.x, 0, "r.t.x 0");
             assert.deepEqual(r.t.y, 0, "r.t.y 0");
 
             r = new ClientTestLibrary.Rectangle("constructor$2", 30, 40, 50, 60);
+
             assert.deepEqual(r.l.x, 30, "r.l.x 30");
             assert.deepEqual(r.l.y, 40, "r.l.y 40");
             assert.deepEqual(r.t.x, 50, "r.t.x 50");
             assert.deepEqual(r.t.y, 60, "r.t.y 60");
 
             var i = a.test1();
+
             assert.deepEqual(i, 500, "i 500");
             a.x = 300;
             i = a.test1();
             assert.deepEqual(i, 800, "i 800");
 
             a.y = 400;
+
             var b = Bridge.merge(new ClientTestLibrary.Point(), {
                 x: 5, 
                 y: 7
             } );
             var c = b.test2(a.$clone());
+
             assert.deepEqual(c.x, 305, "c.x 305");
             assert.deepEqual(c.y, 407, "c.y 407");
         },
@@ -142,6 +149,7 @@ Bridge.define('ClientTestLibrary.TestValueTypes', {
 
             ClientTestLibrary.Point.statitIntNotInitialized = -1;
             assert.deepEqual(ClientTestLibrary.Point.statitIntNotInitialized, -1, "Point.StatitIntNotInitialized -1");
+
             var i = ClientTestLibrary.Point.test3();
             assert.deepEqual(i, 499, "i 499");
         }

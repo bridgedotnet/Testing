@@ -13,6 +13,7 @@ namespace ClientTestLibrary
         {
             assert.Expect(2);
 
+            // TEST
             //[#83] by C#
             var str = "2015-03-24T10:48:09.1500225+03:00";
             var bridgeDate = DateTime.Parse(str);
@@ -20,6 +21,7 @@ namespace ClientTestLibrary
 
             assert.DeepEqual(bridgeDate, bridgeDate1, "[#83] C# bridgeDate = bridgeDate1");
 
+            // TEST
             //[#83] by JavaScript code. This is to check the same issue as above and just to check another way of calling QUnit from JavaScript
             Script.Write<dynamic>(@"var str = ""2015-03-24T10:48:09.1500225+03:00"",
     bridgeDate = Bridge.Date.parse(str),
@@ -33,9 +35,11 @@ namespace ClientTestLibrary
         {
             assert.Expect(2);
 
+            // TEST
             var msg = "HELLO".ToLowerCase();
             assert.DeepEqual(msg, "hello", "'HELLO'.ToLowerCase()");
 
+            // TEST
             msg = "hello".ToUpperCase();
             assert.DeepEqual(msg, "HELLO", "'hello'.ToUpperCase()");
         }
@@ -45,6 +49,7 @@ namespace ClientTestLibrary
         {
             assert.Expect(1);
 
+            // TEST
             var sb = new StringBuilder("foo");
 
             assert.DeepEqual(sb.ToString(), "foo", "StringBuilder(string) .ctor");

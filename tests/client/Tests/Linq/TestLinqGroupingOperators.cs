@@ -39,6 +39,7 @@ namespace ClientTestLibrary.Linq
         {
             assert.Expect(3);
 
+            // TEST
             var numbers = new[] { 2, 10, 3, 5, 30, 1, -15 };
             var words = new[] { "1.one", "3.three", "2.two", "22.twentytwo", "11.eleven", "30.thirty" };
 
@@ -57,6 +58,7 @@ namespace ClientTestLibrary.Linq
 
             assert.DeepEqual(numberGroups, numberGroupsExpected, "Group numbers by remainders");
 
+            // TEST
             var wordGroups =
                     (from w in words
                      group w by w[0] into g
@@ -71,6 +73,7 @@ namespace ClientTestLibrary.Linq
 
             assert.DeepEqual(wordGroups, wordGroupsExpected, "Group words by first letters");
 
+            // TEST
             var personGroups =
                    (from p in Person.GetPersons()
                     group p by p.Group into g
@@ -92,6 +95,7 @@ namespace ClientTestLibrary.Linq
         {
             assert.Expect(1);
 
+            // TEST
             var numbers = new[] { 2, 10, 3, 5, 30, 1, -15 };
             var words = new[] { "1.one", "3.three", "2.two", "22.twentytwo", "11.eleven", "30.thirty" };
 
@@ -134,6 +138,7 @@ namespace ClientTestLibrary.Linq
         {
             assert.Expect(2);
 
+            // TEST
             var anagrams = new[]{
                     " from ",
                     " salt ",
@@ -156,6 +161,7 @@ namespace ClientTestLibrary.Linq
 
             assert.DeepEqual(anagramsGroups, anagramsGroupsExpected, "Anagram grouping with equality comparer");
 
+            // TEST
             var anagramsGroups1 = anagrams.GroupBy(w => w.Trim(), a => a.ToUpperCase(), new AnagramEqualityComparer())
                        .Select(x => new { Key = x.Key, Words = x.ToArray() })
                        .ToArray();
