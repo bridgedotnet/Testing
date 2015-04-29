@@ -127,11 +127,11 @@
             var averageNum = Bridge.Linq.Enumerable.from(numbers).average();
             assert.deepEqual(averageNum, 2.125, "Average() number.");
 
-            var averageWordLength = Bridge.Linq.Enumerable.from(words).average(function (w) {
+            var averageWordLengths = ["1", "22", "333", "4444", "55555"];
+            var averageWordLength = Bridge.Linq.Enumerable.from(averageWordLengths).average(function (w) {
                 return w.length;
             });
-            //&gl;a href='https://github.com/bridgedotnet/Bridge/issues/223'&gt;Issue #172/#223&lt;/a&gt;
-            assert.deepEqual(averageWordLength, 3.66666666666667, "Issue #172/#223. Average() for longest word.");
+            assert.deepEqual(averageWordLength, 3, "Average() for word lengths.");
 
             var groupedAverage = (Bridge.Linq.Enumerable.from(ClientTestLibrary.Utilities.Person.getPersons()).groupBy(function (p) {
                 return p.getGroup();
