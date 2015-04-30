@@ -32,8 +32,8 @@ namespace ClientTestLibrary
             QUnit.Test("Test1", TestInheritanceOverloading.Test1);
 
             QUnit.Module("Value types");
-            QUnit.Test("Test1", TestValueTypes.TestInstanceConstructorsAndMethods);
-            QUnit.Test("Test2", TestValueTypes.TestStaticConstructorsAndMethods);
+            QUnit.Test("Instance constructors and methods", TestValueTypes.TestInstanceConstructorsAndMethods);
+            QUnit.Test("Static constructors and methods", TestValueTypes.TestStaticConstructorsAndMethods);
 
             QUnit.Module("System functions");
             QUnit.Test("DateTime", TestDateFunctions.DateTimes);

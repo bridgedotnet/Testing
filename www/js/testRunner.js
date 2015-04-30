@@ -24,8 +24,8 @@
             QUnit.test("Test1", ClientTestLibrary.TestInheritanceOverloading.test1);
 
             QUnit.module("Value types");
-            QUnit.test("Test1", ClientTestLibrary.TestValueTypes.testInstanceConstructorsAndMethods);
-            QUnit.test("Test2", ClientTestLibrary.TestValueTypes.testStaticConstructorsAndMethods);
+            QUnit.test("Instance constructors and methods", ClientTestLibrary.TestValueTypes.testInstanceConstructorsAndMethods);
+            QUnit.test("Static constructors and methods", ClientTestLibrary.TestValueTypes.testStaticConstructorsAndMethods);
 
             QUnit.module("System functions");
             QUnit.test("DateTime", ClientTestLibrary.TestDateFunctions.dateTimes);
