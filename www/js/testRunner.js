@@ -16,16 +16,16 @@
             //QUnit.Module("Reference types", hooks);
 
             QUnit.module("Reference types");
-            QUnit.test("Test1", ClientTestLibrary.TestReferenceTypes.test1);
-            QUnit.test("Test2", ClientTestLibrary.TestReferenceTypes.test2);
-            QUnit.test("Test3", ClientTestLibrary.TestReferenceTypes.test3);
+            QUnit.test("Instance constructors and methods", ClientTestLibrary.TestReferenceTypes.testInstanceConstructorsAndMethods);
+            QUnit.test("Static constructors and methods", ClientTestLibrary.TestReferenceTypes.testStaticConstructorsAndMethods);
+            QUnit.test("Method parameters", ClientTestLibrary.TestReferenceTypes.testMethodParameters);
 
             QUnit.module("Inheritance and overloading");
             QUnit.test("Test1", ClientTestLibrary.TestInheritanceOverloading.test1);
 
             QUnit.module("Value types");
-            QUnit.test("Test1", ClientTestLibrary.TestValueTypes.test1);
-            QUnit.test("Test2", ClientTestLibrary.TestValueTypes.test2);
+            QUnit.test("Test1", ClientTestLibrary.TestValueTypes.testInstanceConstructorsAndMethods);
+            QUnit.test("Test2", ClientTestLibrary.TestValueTypes.testStaticConstructorsAndMethods);
 
             QUnit.module("System functions");
             QUnit.test("DateTime", ClientTestLibrary.TestDateFunctions.dateTimes);

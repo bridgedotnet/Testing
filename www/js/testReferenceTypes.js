@@ -156,7 +156,7 @@ Bridge.define('ClientTestLibrary.ClassA.Aux1', {
 
 Bridge.define('ClientTestLibrary.TestReferenceTypes', {
     statics: {
-        test1: function (assert) {
+        testInstanceConstructorsAndMethods: function (assert) {
             assert.expect(26);
 
             //Check parameterless constructor
@@ -219,7 +219,7 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
             assert.deepEqual(c68.x, 0, "c68.x 0");
             assert.deepEqual(c68.y, 1, "c68.y 1");
         },
-        test2: function (assert) {
+        testStaticConstructorsAndMethods: function (assert) {
             assert.expect(13);
 
             // TEST
@@ -249,7 +249,7 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
 
             assert.throws(ClientTestLibrary.TestSet1FailureHelper.staticMethod2Failure, "Unable to cast type String to type Bridge.Int", "Cast exception should occur");
         },
-        test3: function (assert) {
+        testMethodParameters: function (assert) {
             assert.expect(16);
 
             //Check default parameters

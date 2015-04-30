@@ -24,16 +24,16 @@ namespace ClientTestLibrary
             //QUnit.Module("Reference types", hooks);
 
             QUnit.Module("Reference types");
-            QUnit.Test("Test1", TestReferenceTypes.Test1);
-            QUnit.Test("Test2", TestReferenceTypes.Test2);
-            QUnit.Test("Test3", TestReferenceTypes.Test3);
+            QUnit.Test("Instance constructors and methods", TestReferenceTypes.TestInstanceConstructorsAndMethods);
+            QUnit.Test("Static constructors and methods", TestReferenceTypes.TestStaticConstructorsAndMethods);
+            QUnit.Test("Method parameters", TestReferenceTypes.TestMethodParameters);
 
             QUnit.Module("Inheritance and overloading");
             QUnit.Test("Test1", TestInheritanceOverloading.Test1);
 
             QUnit.Module("Value types");
-            QUnit.Test("Test1", TestValueTypes.Test1);
-            QUnit.Test("Test2", TestValueTypes.Test2);
+            QUnit.Test("Test1", TestValueTypes.TestInstanceConstructorsAndMethods);
+            QUnit.Test("Test2", TestValueTypes.TestStaticConstructorsAndMethods);
 
             QUnit.Module("System functions");
             QUnit.Test("DateTime", TestDateFunctions.DateTimes);

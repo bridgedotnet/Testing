@@ -200,7 +200,7 @@ namespace ClientTestLibrary
     class TestReferenceTypes
     {
         //Check instance methods and constructors
-        public static void Test1(Assert assert)
+        public static void TestInstanceConstructorsAndMethods(Assert assert)
         {
             assert.Expect(26);
 
@@ -264,7 +264,7 @@ namespace ClientTestLibrary
         }
 
         //Check static methods and constructor
-        public static void Test2(Assert assert)
+        public static void TestStaticConstructorsAndMethods(Assert assert)
         {
             assert.Expect(13);
 
@@ -297,7 +297,7 @@ namespace ClientTestLibrary
         }
 
         //Check default parameters, method parameters, default values
-        public static void Test3(Assert assert)
+        public static void TestMethodParameters(Assert assert)
         {
             assert.Expect(16);
 

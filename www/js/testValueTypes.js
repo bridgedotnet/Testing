@@ -90,7 +90,7 @@ Bridge.define('ClientTestLibrary.Rectangle', {
 
 Bridge.define('ClientTestLibrary.TestValueTypes', {
     statics: {
-        test1: function (assert) {
+        testInstanceConstructorsAndMethods: function (assert) {
             assert.expect(18);
 
             //Check parameterless constructor
@@ -138,7 +138,7 @@ Bridge.define('ClientTestLibrary.TestValueTypes', {
             assert.deepEqual(c.x, 305, "c.x 305");
             assert.deepEqual(c.y, 407, "c.y 407");
         },
-        test2: function (assert) {
+        testStaticConstructorsAndMethods: function (assert) {
             assert.expect(7);
 
             assert.deepEqual(ClientTestLibrary.Point.staticInt, 500, "Point.StaticInt 500");

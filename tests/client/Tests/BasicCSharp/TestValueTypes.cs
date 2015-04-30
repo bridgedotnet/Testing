@@ -68,7 +68,7 @@ namespace ClientTestLibrary
     class TestValueTypes
     {
         //Check instance methods and constructors
-        public static void Test1(Assert assert)
+        public static void TestInstanceConstructorsAndMethods(Assert assert)
         {
             assert.Expect(18);
 
@@ -116,7 +116,7 @@ namespace ClientTestLibrary
         }
 
         //Check static methods and constructor
-        public static void Test2(Assert assert)
+        public static void TestStaticConstructorsAndMethods(Assert assert)
         {
             assert.Expect(7);
 
