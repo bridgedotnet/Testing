@@ -40,8 +40,13 @@ namespace ClientTestLibrary
             QUnit.Test("String", TestStringFunctions.Strings);
             QUnit.Test("StringBuilder", TestStringBuilderFunctions.StringBuilders);
 
-            QUnit.Module("Try/catch");
-            QUnit.Test("Try/Catch", TestCatchBlocks.Test1);
+            QUnit.Module("Try/Catch");
+            QUnit.Test("Try/Catch simpe", TestTryCatchBlocks.SimpleTryCatch);
+            QUnit.Test("Try/Catch caught exceptions", TestTryCatchBlocks.CaughtExceptions);
+            QUnit.Test("Try/Catch thrown exceptions", TestTryCatchBlocks.ThrownExceptions);
+            QUnit.Test("Try/Catch/Finally simple", TestTryCatchFinallyBlocks.SimpleTryCatchFinally);
+            QUnit.Test("Try/Catch/Finally caught exceptions", TestTryCatchFinallyBlocks.CaughtExceptions);
+            QUnit.Test("Try/Catch/Finally thrown exceptions", TestTryCatchFinallyBlocks.ThrownExceptions);
 
             QUnit.Module("Bridge GitHub issues");
             QUnit.Test("#169", TestBridgeIssues.N169);

@@ -32,8 +32,13 @@
             QUnit.test("String", ClientTestLibrary.TestStringFunctions.strings);
             QUnit.test("StringBuilder", ClientTestLibrary.TestStringBuilderFunctions.stringBuilders);
 
-            QUnit.module("Try/catch");
-            QUnit.test("Try/Catch", ClientTestLibrary.TestCatchBlocks.test1);
+            QUnit.module("Try/Catch");
+            QUnit.test("Try/Catch simpe", ClientTestLibrary.TestTryCatchBlocks.simpleTryCatch);
+            QUnit.test("Try/Catch caught exceptions", ClientTestLibrary.TestTryCatchBlocks.caughtExceptions);
+            QUnit.test("Try/Catch thrown exceptions", ClientTestLibrary.TestTryCatchBlocks.thrownExceptions);
+            QUnit.test("Try/Catch/Finally simple", ClientTestLibrary.TestTryCatchFinallyBlocks.simpleTryCatchFinally);
+            QUnit.test("Try/Catch/Finally caught exceptions", ClientTestLibrary.TestTryCatchFinallyBlocks.caughtExceptions);
+            QUnit.test("Try/Catch/Finally thrown exceptions", ClientTestLibrary.TestTryCatchFinallyBlocks.thrownExceptions);
 
             QUnit.module("Bridge GitHub issues");
             QUnit.test("#169", ClientTestLibrary.TestBridgeIssues.n169);

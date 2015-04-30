@@ -218,11 +218,11 @@ namespace ClientTestLibrary
 
             // TEST
             //Check constructor with parameter
-            assert.Throws(TestSet1FailureHelper.TestConstructor1Failure, "Related should not be null");
+            assert.Throws(TestSet1FailureHelper.TestConstructor1Failure, "Related should not be null", "Related should not be null");
 
             // TEST
             //Check constructor with parameter
-            assert.Throws(TestSet1FailureHelper.TestConstructor2Failure, "Should pass six parameters");
+            assert.Throws(TestSet1FailureHelper.TestConstructor2Failure, "Should pass six parameters", "Should pass six parameters");
 
             a = new ClassA(150, "151", true, 1.53d, 1.54m, new ClassA.Aux1() { Number = 155 });
             
@@ -293,7 +293,7 @@ namespace ClientTestLibrary
             assert.DeepEqual(ClassA.StatitStringNotInitialized, "QWE", "ClassA.StatitStringNotInitialized QWE");
             assert.DeepEqual(a.DoubleA, 234, "DoubleA 234");
 
-            assert.Throws(TestSet1FailureHelper.TestConstructor2Failure, "Cast exception should occur");
+            assert.Throws(TestSet1FailureHelper.StaticMethod2Failure, "Unable to cast type String to type Bridge.Int", "Cast exception should occur");
         }
 
         //Check default parameters, method parameters, default values

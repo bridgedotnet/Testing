@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Tests\BasicCSharp\TestTryCatchFinallyBlocks.cs" />
     <Compile Include="Tests\Linq\TestLinqGroupingOperators.cs" />
     <Compile Include="Tests\Linq\TestLinqConversionOperators.cs" />
     <Compile Include="Tests\Linq\TestLinqAggregateOperators.cs" />
@@ -50,7 +51,7 @@
     <Compile Include="Tests\BasicCSharp\TestInheritanceOverloading.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Tests\BasicCSharp\TestCatchBlocks.cs" />
+    <Compile Include="Tests\BasicCSharp\TestTryCatchBlocks.cs" />
     <Compile Include="Tests\BasicCSharp\TestReferenceTypes.cs">
       <SubType>Code</SubType>
     </Compile>

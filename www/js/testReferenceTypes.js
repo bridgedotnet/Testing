@@ -173,11 +173,11 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
 
             // TEST
             //Check constructor with parameter
-            assert.throws(ClientTestLibrary.TestSet1FailureHelper.testConstructor1Failure, "Related should not be null");
+            assert.throws(ClientTestLibrary.TestSet1FailureHelper.testConstructor1Failure, "Related should not be null", "Related should not be null");
 
             // TEST
             //Check constructor with parameter
-            assert.throws(ClientTestLibrary.TestSet1FailureHelper.testConstructor2Failure, "Should pass six parameters");
+            assert.throws(ClientTestLibrary.TestSet1FailureHelper.testConstructor2Failure, "Should pass six parameters", "Should pass six parameters");
 
             a = new ClientTestLibrary.ClassA("constructor$2", [150, "151", true, 1.53, 1.54, Bridge.merge(new ClientTestLibrary.ClassA.Aux1(), {
                 setNumber: 155
@@ -247,7 +247,7 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
             assert.deepEqual(ClientTestLibrary.ClassA.statitStringNotInitialized, "QWE", "ClassA.StatitStringNotInitialized QWE");
             assert.deepEqual(a.getDoubleA(), 234, "DoubleA 234");
 
-            assert.throws(ClientTestLibrary.TestSet1FailureHelper.testConstructor2Failure, "Cast exception should occur");
+            assert.throws(ClientTestLibrary.TestSet1FailureHelper.staticMethod2Failure, "Unable to cast type String to type Bridge.Int", "Cast exception should occur");
         },
         test3: function (assert) {
             assert.expect(16);
