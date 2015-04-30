@@ -1,4 +1,4 @@
-﻿Bridge.define('ClientTestLibrary.TestSystemFunctions', {
+﻿Bridge.define('ClientTestLibrary.TestDateFunctions', {
     statics: {
         dateTimes: function (assert) {
             assert.expect(2);
@@ -18,25 +18,6 @@
     jsDate = new Date(Date.parse(str)),
     format = "yyyy-MM-dd hh:mm:ss";
     assert.deepEqual(Bridge.Date.format(bridgeDate, format), Bridge.Date.format(jsDate, format), "[#83] js");
-        },
-        strings: function (assert) {
-            assert.expect(2);
-
-            // TEST
-            var msg = "HELLO".toLowerCase();
-            assert.deepEqual(msg, "hello", "'HELLO'.ToLowerCase()");
-
-            // TEST
-            msg = "hello".toUpperCase();
-            assert.deepEqual(msg, "HELLO", "'hello'.ToUpperCase()");
-        },
-        stringBuilders: function (assert) {
-            assert.expect(1);
-
-            // TEST
-            var sb = new Bridge.Text.StringBuilder("foo");
-
-            assert.deepEqual(sb.toString(), "foo", "StringBuilder(string) .ctor");
         }
     }
 });

@@ -63,7 +63,9 @@
     <Compile Include="Tests\RunTests.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Tests\SystemFunctions\TestSystemFunctions.cs">
+    <Compile Include="Tests\SystemFunctions\TestDateFunctions.cs" />
+    <Compile Include="Tests\SystemFunctions\TestStringBuilderFunctions.cs" />
+    <Compile Include="Tests\SystemFunctions\TestStringFunctions.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Tests\BasicCSharp\TestValueTypes.cs">

@@ -28,9 +28,9 @@
             QUnit.test("Test2", ClientTestLibrary.TestValueTypes.test2);
 
             QUnit.module("System functions");
-            QUnit.test("DateTime", ClientTestLibrary.TestSystemFunctions.dateTimes);
-            QUnit.test("String", ClientTestLibrary.TestSystemFunctions.strings);
-            QUnit.test("StringBuilder", ClientTestLibrary.TestSystemFunctions.stringBuilders);
+            QUnit.test("DateTime", ClientTestLibrary.TestDateFunctions.dateTimes);
+            QUnit.test("String", ClientTestLibrary.TestStringFunctions.strings);
+            QUnit.test("StringBuilder", ClientTestLibrary.TestStringBuilderFunctions.stringBuilders);
 
             QUnit.module("Try/catch");
             QUnit.test("Try/Catch", ClientTestLibrary.TestCatchBlocks.test1);

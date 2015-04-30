@@ -6,7 +6,7 @@ using System.Text;
 namespace ClientTestLibrary
 {
     // Tests DateTime functions
-    class TestSystemFunctions
+    class TestDateFunctions
     {
         // DateTime functions
         public static void DateTimes(Assert assert)
@@ -28,31 +28,6 @@ namespace ClientTestLibrary
     jsDate = new Date(Date.parse(str)),
     format = ""yyyy-MM-dd hh:mm:ss"";
     assert.deepEqual(Bridge.Date.format(bridgeDate, format), Bridge.Date.format(jsDate, format), ""[#83] js"")");
-        }
-
-        // String functions
-        public static void Strings(Assert assert)
-        {
-            assert.Expect(2);
-
-            // TEST
-            var msg = "HELLO".ToLowerCase();
-            assert.DeepEqual(msg, "hello", "'HELLO'.ToLowerCase()");
-
-            // TEST
-            msg = "hello".ToUpperCase();
-            assert.DeepEqual(msg, "HELLO", "'hello'.ToUpperCase()");
-        }
-
-        // StringBuilder functions
-        public static void StringBuilders(Assert assert)
-        {
-            assert.Expect(1);
-
-            // TEST
-            var sb = new StringBuilder("foo");
-
-            assert.DeepEqual(sb.ToString(), "foo", "StringBuilder(string) .ctor");
         }
     }
 }

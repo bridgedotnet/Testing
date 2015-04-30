@@ -36,9 +36,9 @@ namespace ClientTestLibrary
             QUnit.Test("Test2", TestValueTypes.Test2);
 
             QUnit.Module("System functions");
-            QUnit.Test("DateTime", TestSystemFunctions.DateTimes);
-            QUnit.Test("String", TestSystemFunctions.Strings);
-            QUnit.Test("StringBuilder", TestSystemFunctions.StringBuilders);
+            QUnit.Test("DateTime", TestDateFunctions.DateTimes);
+            QUnit.Test("String", TestStringFunctions.Strings);
+            QUnit.Test("StringBuilder", TestStringBuilderFunctions.StringBuilders);
 
             QUnit.Module("Try/catch");
             QUnit.Test("Try/Catch", TestCatchBlocks.Test1);
