@@ -1,4 +1,6 @@
-﻿Bridge.define('ClientTestLibrary.Linq.TestLinqJoinOperators', {
+﻿/* global Bridge */
+
+Bridge.define('ClientTestLibrary.Linq.TestLinqJoinOperators', {
     statics: {
         test: function (assert) {
             assert.expect(5);

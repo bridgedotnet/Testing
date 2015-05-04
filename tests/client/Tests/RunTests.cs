@@ -9,27 +9,16 @@ namespace ClientTestLibrary
     [FileName("testRunner.js")]
     class RunTests
     {
-        //private static int MyCount;
-
         [Ready]
         public static void Main()
         {
-            //Test Module hooks
-            // Commented out due to issue [#130]
-            //var hooks = new ModuleHooks()
-            //{
-            //    BeforeEach = () => { TestRunner.MyCount++; This.Instance.ToDynamic().MyCount = MyCount; },
-            //    AfterEach = () => { Window.Alert(This.Instance.ToDynamic().MyCount); },
-            //};
-            //QUnit.Module("Reference types", hooks);
-
             QUnit.Module("Reference types");
             QUnit.Test("Instance constructors and methods", TestReferenceTypes.TestInstanceConstructorsAndMethods);
             QUnit.Test("Static constructors and methods", TestReferenceTypes.TestStaticConstructorsAndMethods);
             QUnit.Test("Method parameters", TestReferenceTypes.TestMethodParameters);
 
             QUnit.Module("Inheritance and overloading");
-            QUnit.Test("Test1", TestInheritanceOverloading.Test1);
+            QUnit.Test("Inheritance", TestInheritance.Test1);
 
             QUnit.Module("Value types");
             QUnit.Test("Instance constructors and methods", TestValueTypes.TestInstanceConstructorsAndMethods);

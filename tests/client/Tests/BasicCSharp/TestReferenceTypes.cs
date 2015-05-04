@@ -225,7 +225,7 @@ namespace ClientTestLibrary
             assert.Throws(TestSet1FailureHelper.TestConstructor2Failure, "Should pass six parameters", "Should pass six parameters");
 
             a = new ClassA(150, "151", true, 1.53d, 1.54m, new ClassA.Aux1() { Number = 155 });
-            
+
             assert.DeepEqual(a.NumberA, 150, "NumberA 150");
             assert.DeepEqual(a.StringA, "151", "StringA 151");
             assert.DeepEqual(a.BoolA, true, "BoolA true");
@@ -237,7 +237,7 @@ namespace ClientTestLibrary
             // TEST
             //Check instance methods
             var b = a.Method1();
-            
+
             assert.Ok(b != null, "b not null");
             assert.DeepEqual(b.Number, 2, "b Number 2");
             assert.Ok(b.Related != null, "b.Related not null");
@@ -251,7 +251,7 @@ namespace ClientTestLibrary
             // TEST
             //Check [#68]
             var c68 = new Class68();
-            
+
             assert.DeepEqual(c68.x, 0, "c68.x 0");
             assert.DeepEqual(c68.y, 1, "c68.y 1");
 

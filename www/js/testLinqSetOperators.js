@@ -1,4 +1,6 @@
-﻿Bridge.define('ClientTestLibrary.Linq.TestLinqSetOperators', {
+﻿/* global Bridge */
+
+Bridge.define('ClientTestLibrary.Linq.TestLinqSetOperators', {
     statics: {
         test: function (assert) {
             // TEST

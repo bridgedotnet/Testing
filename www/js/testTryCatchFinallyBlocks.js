@@ -1,4 +1,6 @@
-﻿Bridge.define('ClientTestLibrary.Data', {
+﻿/* global Bridge */
+
+Bridge.define('ClientTestLibrary.Data', {
     config: {
         properties: {
             Count: 0
@@ -55,10 +57,10 @@ Bridge.define('ClientTestLibrary.TestTryCatchFinallyBlocks', {
             assert.expect(16);
 
             //#230
-            //assert.Throws(TryCatchFinallyWithNotCaughtTypedException, "catch me", "A. Typed exception is not caught");
-            //assert.Ok(IsATry, "A. exception not caught - try section called");
-            //assert.Ok(!IsACatch, "A. exception not caught - catch section not called");
-            //assert.Ok(IsAFinally, "A. exception not caught - finally section called");
+            assert.throws(ClientTestLibrary.TestTryCatchFinallyBlocks.tryCatchFinallyWithNotCaughtTypedException, "catch me", "A. Typed exception is not caught");
+            assert.ok(ClientTestLibrary.TestTryCatchFinallyBlocks.getIsATry(), "A. exception not caught - try section called");
+            assert.ok(!ClientTestLibrary.TestTryCatchFinallyBlocks.getIsACatch(), "A. exception not caught - catch section not called");
+            assert.ok(ClientTestLibrary.TestTryCatchFinallyBlocks.getIsAFinally(), "A. exception not caught - finally section called");
 
             //#229
             assert.throws(ClientTestLibrary.TestTryCatchFinallyBlocks.tryCatchWithNotCaughtTypedExceptionAndArgument, "catch me", "[#229] B. Typed exception is not caught; and argument");
@@ -130,9 +132,35 @@ Bridge.define('ClientTestLibrary.TestTryCatchFinallyBlocks', {
 
                     return ex.getMessage();
                 }
+                else {
+                    throw $e;
+                }
             }
             finally {
                 data.setCount(data.getCount() + 4);
+            }
+        },
+        tryCatchFinallyWithNotCaughtTypedException: function () {
+            ClientTestLibrary.TestTryCatchFinallyBlocks.setIsATry(false);
+            ClientTestLibrary.TestTryCatchFinallyBlocks.setIsACatch(false);
+            ClientTestLibrary.TestTryCatchFinallyBlocks.setIsAFinally(false);
+
+            try {
+                ClientTestLibrary.TestTryCatchFinallyBlocks.setIsATry(true);
+                throw new Bridge.Exception("catch me");
+                ClientTestLibrary.TestTryCatchFinallyBlocks.setIsATry(false);
+            }
+            catch ($e) {
+                $e = Bridge.Exception.create($e);
+                if (Bridge.is($e, Bridge.ArgumentException)) {
+                    ClientTestLibrary.TestTryCatchFinallyBlocks.setIsACatch(true);
+                }
+                else {
+                    throw $e;
+                }
+            }
+            finally {
+                ClientTestLibrary.TestTryCatchFinallyBlocks.setIsAFinally(true);
             }
         },
         tryCatchWithNotCaughtTypedExceptionAndArgument: function () {
@@ -153,6 +181,9 @@ Bridge.define('ClientTestLibrary.TestTryCatchFinallyBlocks', {
                     var s = ex.getMessage();
                     ClientTestLibrary.TestTryCatchFinallyBlocks.setIsBCatch(true);
                 }
+                else {
+                    throw $e;
+                }
             }
             finally {
                 ClientTestLibrary.TestTryCatchFinallyBlocks.setIsBFinally(true);
@@ -170,7 +201,7 @@ Bridge.define('ClientTestLibrary.TestTryCatchFinallyBlocks', {
             }
             catch ($e) {
                 ClientTestLibrary.TestTryCatchFinallyBlocks.setIsCCatch(true);
-                throw null;
+                throw $e;
             }
             finally {
                 ClientTestLibrary.TestTryCatchFinallyBlocks.setIsCFinally(true);
