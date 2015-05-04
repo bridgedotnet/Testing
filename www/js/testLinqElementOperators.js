@@ -1,4 +1,6 @@
-﻿Bridge.define('ClientTestLibrary.Linq.TestLinqElementOperators', {
+﻿/* global Bridge */
+
+Bridge.define('ClientTestLibrary.Linq.TestLinqElementOperators', {
     statics: {
         test: function (assert) {
             assert.expect(26);

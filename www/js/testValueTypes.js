@@ -1,4 +1,6 @@
-﻿Bridge.define('ClientTestLibrary.Point', {
+﻿/* global Bridge */
+
+Bridge.define('ClientTestLibrary.Point', {
     statics: {
         constructor: function () {
             ClientTestLibrary.Point.staticInt = 500;

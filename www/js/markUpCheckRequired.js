@@ -1,4 +1,6 @@
-﻿Bridge.define('ClientTestLibrary.CI1');
+﻿/* global Bridge */
+
+Bridge.define('ClientTestLibrary.CI1');
 
 Bridge.define('ClientTestLibrary.CI2');
 

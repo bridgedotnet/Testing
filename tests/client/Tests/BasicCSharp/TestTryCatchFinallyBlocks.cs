@@ -51,10 +51,10 @@ namespace ClientTestLibrary
             assert.Expect(16);
 
             //#230
-            //assert.Throws(TryCatchFinallyWithNotCaughtTypedException, "catch me", "A. Typed exception is not caught");
-            //assert.Ok(IsATry, "A. exception not caught - try section called");
-            //assert.Ok(!IsACatch, "A. exception not caught - catch section not called");
-            //assert.Ok(IsAFinally, "A. exception not caught - finally section called");
+            assert.Throws(TryCatchFinallyWithNotCaughtTypedException, "catch me", "A. Typed exception is not caught");
+            assert.Ok(IsATry, "A. exception not caught - try section called");
+            assert.Ok(!IsACatch, "A. exception not caught - catch section not called");
+            assert.Ok(IsAFinally, "A. exception not caught - finally section called");
 
             //#229
             assert.Throws(TryCatchWithNotCaughtTypedExceptionAndArgument, "catch me", "[#229] B. Typed exception is not caught; and argument");
@@ -157,27 +157,27 @@ namespace ClientTestLibrary
         public static bool IsACatch { get; set; }
         public static bool IsAFinally { get; set; }
 
-        //private static void TryCatchFinallyWithNotCaughtTypedException()
-        //{
-        //    IsATry = false;
-        //    IsACatch = false;
-        //    IsAFinally = false;
+        private static void TryCatchFinallyWithNotCaughtTypedException()
+        {
+            IsATry = false;
+            IsACatch = false;
+            IsAFinally = false;
 
-        //    try
-        //    {
-        //        IsATry = true;
-        //        throw new Exception("catch me");
-        //        IsATry = false;
-        //    }
-        //    catch (ArgumentException)
-        //    {
-        //        IsACatch = true;
-        //    }
-        //    finally
-        //    {
-        //        IsAFinally = true;
-        //    }
-        //}
+            try
+            {
+                IsATry = true;
+                throw new Exception("catch me");
+                IsATry = false;
+            }
+            catch (ArgumentException)
+            {
+                IsACatch = true;
+            }
+            finally
+            {
+                IsAFinally = true;
+            }
+        }
 
         public static bool IsBTry { get; set; }
         public static bool IsBCatch { get; set; }

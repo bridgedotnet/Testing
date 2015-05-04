@@ -1,4 +1,6 @@
-﻿Bridge.define('ClientTestLibrary.TestStringBuilderFunctions', {
+﻿/* global Bridge */
+
+Bridge.define('ClientTestLibrary.TestStringBuilderFunctions', {
     statics: {
         stringBuilders: function (assert) {
             assert.expect(1);

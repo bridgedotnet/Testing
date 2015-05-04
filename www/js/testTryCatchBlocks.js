@@ -1,7 +1,11 @@
-﻿Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
+﻿/* global Bridge */
+
+Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
     statics: {
         config: {
             properties: {
+                IsATry: false,
+                IsACatch: false,
                 IsBTry: false,
                 IsBCatch: false,
                 IsCTry: false,
@@ -33,9 +37,9 @@
             assert.expect(12);
 
             //#230
-            //assert.Throws(TryCatchWithNotCaughtTypedException, "catch me", "A.Typed exception is not Caught");
-            //assert.Ok(IsATry, "A. exception not caught - try section called");
-            //assert.Ok(!IsACatch, "A. exception not caught - catch section not called");
+            assert.throws(ClientTestLibrary.TestTryCatchBlocks.tryCatchWithNotCaughtTypedException, "catch me", "A.Typed exception is not Caught");
+            assert.ok(ClientTestLibrary.TestTryCatchBlocks.getIsATry(), "A. exception not caught - try section called");
+            assert.ok(!ClientTestLibrary.TestTryCatchBlocks.getIsACatch(), "A. exception not caught - catch section not called");
 
             //#229
             assert.throws(ClientTestLibrary.TestTryCatchBlocks.tryCatchWithNotCaughtTypedExceptionAndArgument, "catch me", "[#229] B. Typed exception is not Caught; and argument");
@@ -86,7 +90,30 @@
                     ex = $e;
                     return ex.getMessage();
                 }
+                else {
+                    throw $e;
+                }
             }
+        },
+        tryCatchWithNotCaughtTypedException: function () {
+            ClientTestLibrary.TestTryCatchBlocks.setIsATry(false);
+            ClientTestLibrary.TestTryCatchBlocks.setIsACatch(false);
+
+            try {
+                ClientTestLibrary.TestTryCatchBlocks.setIsATry(true);
+                throw new Bridge.Exception("catch me");
+            }
+            catch ($e) {
+                $e = Bridge.Exception.create($e);
+                if (Bridge.is($e, Bridge.ArgumentException)) {
+                    ClientTestLibrary.TestTryCatchBlocks.setIsATry(true);
+                }
+                else {
+                    throw $e;
+                }
+            }
+
+            ClientTestLibrary.TestTryCatchBlocks.setIsATry(false);
         },
         tryCatchWithNotCaughtTypedExceptionAndArgument: function () {
             ClientTestLibrary.TestTryCatchBlocks.setIsBTry(false);
@@ -105,6 +132,9 @@
                     ClientTestLibrary.TestTryCatchBlocks.setIsBCatch(true);
                     var s = ex.getMessage();
                 }
+                else {
+                    throw $e;
+                }
             }
 
             ClientTestLibrary.TestTryCatchBlocks.setIsBTry(false);
@@ -120,7 +150,7 @@
             }
             catch ($e) {
                 ClientTestLibrary.TestTryCatchBlocks.setIsCCatch(true);
-                throw null;
+                throw $e;
             }
 
             ClientTestLibrary.TestTryCatchBlocks.setIsCTry(false);

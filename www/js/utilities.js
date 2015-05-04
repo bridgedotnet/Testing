@@ -1,4 +1,6 @@
-﻿Bridge.define('ClientTestLibrary.Utilities.Group', {
+﻿/* global Bridge */
+
+Bridge.define('ClientTestLibrary.Utilities.Group', {
     statics: {
         getGroups: function () {
             var groups = new Bridge.List$1(ClientTestLibrary.Utilities.Group)();
@@ -109,7 +111,7 @@ Bridge.define('ClientTestLibrary.Utilities.Person', {
 Bridge.define('ClientTestLibrary.Utilities.TypeHelper', {
     statics: {
         getTypeName: function (o) {
-            return Bridge.getName(o);
+            return Bridge.getTypeName(o);
             //return Script.Get<string>("o.__proto__.$$name");
         }
     }

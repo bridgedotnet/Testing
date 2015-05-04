@@ -1,4 +1,6 @@
-﻿Bridge.define('ClientTestLibrary.RunTests', {
+﻿/* global Bridge */
+
+Bridge.define('ClientTestLibrary.RunTests', {
     statics: {
         config: {
             init: function () {
@@ -6,22 +8,13 @@
             }
         },
         main: function () {
-            //Test Module hooks
-            // Commented out due to issue [#130]
-            //var hooks = new ModuleHooks()
-            //{
-            //    BeforeEach = () => { TestRunner.MyCount++; This.Instance.ToDynamic().MyCount = MyCount; },
-            //    AfterEach = () => { Window.Alert(This.Instance.ToDynamic().MyCount); },
-            //};
-            //QUnit.Module("Reference types", hooks);
-
             QUnit.module("Reference types");
             QUnit.test("Instance constructors and methods", ClientTestLibrary.TestReferenceTypes.testInstanceConstructorsAndMethods);
             QUnit.test("Static constructors and methods", ClientTestLibrary.TestReferenceTypes.testStaticConstructorsAndMethods);
             QUnit.test("Method parameters", ClientTestLibrary.TestReferenceTypes.testMethodParameters);
 
             QUnit.module("Inheritance and overloading");
-            QUnit.test("Test1", ClientTestLibrary.TestInheritanceOverloading.test1);
+            QUnit.test("Inheritance", ClientTestLibrary.TestInheritance.test1);
 
             QUnit.module("Value types");
             QUnit.test("Instance constructors and methods", ClientTestLibrary.TestValueTypes.testInstanceConstructorsAndMethods);

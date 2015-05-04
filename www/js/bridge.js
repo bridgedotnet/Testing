@@ -1,7 +1,7 @@
 /*
- * @version   : 1.3.0 - Bridge.NET
+ * @version   : 1.4.0 - Bridge.NET
  * @author    : Object.NET, Inc. http://www.bridge.net/
- * @date      : 2015-04-27
+ * @date      : 2015-05-11
  * @copyright : Copyright (c) 2008-2015, Object.NET, Inc. (http://www.object.net/). All rights reserved.
  * @license   : See license.txt and https://github.com/bridgedotnet/Bridge.NET/blob/master/LICENSE.
  */
@@ -234,8 +234,22 @@
             return null;
         },
 
-        getTypeName: function (type) {
-            return type.$$name || (type.toString().match(/^\s*function\s*([^\s(]+)/) || [])[1] || "Object";
+        getTypeName: function (obj) {
+            var str;
+
+            if (obj.$$name) {
+                return obj.$$name;
+            }            
+
+            if ((obj).constructor == Function) {
+                str = (obj).toString()
+            }
+            else {
+                str = (obj).constructor.toString();
+            }
+
+            var results = (/function (.{1,})\(/).exec(str);
+            return (results && results.length > 1) ? results[1] : "Object";
         },
 
         is: function (obj, type, ignoreFn) {
@@ -292,7 +306,7 @@
 	        var result = Bridge.as(obj, type);
 
 	        if (result == null) {
-	            throw new Bridge.InvalidCastException('Unable to cast type ' + Bridge.getTypeName(obj.constructor) + ' to type ' + Bridge.getTypeName(type));
+	            throw new Bridge.InvalidCastException('Unable to cast type ' + Bridge.getTypeName(obj) + ' to type ' + Bridge.getTypeName(type));
 	        }
 
 	        return result;
@@ -543,8 +557,11 @@
             }
         },
 
-        compare: function (a, b) {
+        compare: function (a, b, safe) {
             if (!Bridge.isDefined(a, true)) {
+                if (safe) {
+                    return 0;
+                }
                 throw new Bridge.NullReferenceException();
             }
             else if (Bridge.isNumber(a) || Bridge.isString(a) || Bridge.isBoolean(a)) {
@@ -552,6 +569,10 @@
             }
             else if (Bridge.isDate(a)) {
                 return Bridge.compare(a.valueOf(), b.valueOf());
+            }
+
+            if (safe && !a.compareTo) {
+                return 0;
             }
 
             return a.compareTo(b);
@@ -605,16 +626,7 @@
 
             return s !== s.toLowerCase() && s === s.toUpperCase();
         },
-
-        getName: function (obj) {
-            if (obj.$$name) {
-                return obj.$$name;
-            }
-
-            var results = (/function (.{1,})\(/).exec((obj).constructor.toString());
-            return (results && results.length > 1) ? results[1] : "";
-        },
-
+        
         fn: {
             call: function (obj, fnName){
                 var args = Array.prototype.slice.call(arguments, 2);
@@ -1115,6 +1127,14 @@
         },
 
         contains: function (str, value) {
+            if (value == null) {
+                throw new Bridge.ArgumentNullException();
+            }
+
+            if (str == null) {
+                return false;
+            }
+
             return str.indexOf(value) > -1;
         },
         
@@ -1206,7 +1226,7 @@
             }
 
             if (arguments.length == 3) {
-                if (!arguments[2]) {
+                if (arguments[2]) {
                     return strA.toLocaleUpperCase().localeCompare(strB.toLocaleUpperCase());
                 }
             }
@@ -1338,7 +1358,7 @@
             prop = prop || {};
             var extend = prop.$inherits || prop.inherits,
                 statics = prop.$statics || prop.statics,
-                base = extend ? extend[0].prototype : this.prototype,
+                base,
                 cacheName = prop.$cacheName,
                 prototype,
                 nameParts,
@@ -1350,10 +1370,7 @@
                 name,                
                 fn;
 
-            if (Bridge.isFunction(extend)) {
-                extend = null;
-            }
-            else if (prop.$inherits) {
+            if (prop.$inherits) {
                 delete prop.$inherits;
             }
             else {
@@ -1393,6 +1410,13 @@
                     this.$$initCtor.apply(this, arguments);
                 }
             }
+
+            scope = Bridge.Class.set(scope, className, Class);
+            if (extend && Bridge.isFunction(extend)) {
+                extend = extend();
+            }
+
+            base = extend ? extend[0].prototype : this.prototype;
 
             // Instantiate a base class (but only create the instance,
             // don't run the init constructor)
@@ -1477,9 +1501,7 @@
                 for (name in statics) {
                     Class[name] = statics[name];
                 }
-            }
-
-            scope = Bridge.Class.set(scope, className, Class);
+            }            
 
             if (!extend) {
                 extend = [Object];
@@ -7099,7 +7121,9 @@ Bridge.define('Bridge.PropertyChangedEventArgs', {
     // Overload:function(selector)
     Enumerable.prototype.max = function (selector) {
         if (selector == null) selector = Functions.Identity;
-        return this.select(selector).aggregate(function (a, b) { return (a > b) ? a : b; });
+        return this.select(selector).aggregate(function (a, b) {
+            return (Bridge.compare(a, b, true) === 1) ? a : b;
+        });
     };
 
     Enumerable.prototype.nullableMax = function (selector) {
@@ -7114,7 +7138,9 @@ Bridge.define('Bridge.PropertyChangedEventArgs', {
     // Overload:function(selector)
     Enumerable.prototype.min = function (selector) {
         if (selector == null) selector = Functions.Identity;
-        return this.select(selector).aggregate(function (a, b) { return (a < b) ? a : b; });
+        return this.select(selector).aggregate(function (a, b) {
+            return (Bridge.compare(a, b, true) === -1) ? a : b;
+        });
     };
 
     Enumerable.prototype.nullableMin = function (selector) {
@@ -7127,12 +7153,16 @@ Bridge.define('Bridge.PropertyChangedEventArgs', {
 
     Enumerable.prototype.maxBy = function (keySelector) {
         keySelector = Utils.createLambda(keySelector);
-        return this.aggregate(function (a, b) { return (keySelector(a) > keySelector(b)) ? a : b; });
+        return this.aggregate(function (a, b) {
+            return (Bridge.compare(keySelector(a), keySelector(b), true) === 1) ? a : b;
+        });
     };
 
     Enumerable.prototype.minBy = function (keySelector) {
         keySelector = Utils.createLambda(keySelector);
-        return this.aggregate(function (a, b) { return (keySelector(a) < keySelector(b)) ? a : b; });
+        return this.aggregate(function (a, b) {
+            return (Bridge.compare(keySelector(a), keySelector(b), true) === -1) ? a : b;
+        });
     };
 
     // Overload:function()

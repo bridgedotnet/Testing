@@ -37,9 +37,9 @@ namespace ClientTestLibrary
             assert.Expect(12);
 
             //#230
-            //assert.Throws(TryCatchWithNotCaughtTypedException, "catch me", "A.Typed exception is not Caught");
-            //assert.Ok(IsATry, "A. exception not caught - try section called");
-            //assert.Ok(!IsACatch, "A. exception not caught - catch section not called");
+            assert.Throws(TryCatchWithNotCaughtTypedException, "catch me", "A.Typed exception is not Caught");
+            assert.Ok(IsATry, "A. exception not caught - try section called");
+            assert.Ok(!IsACatch, "A. exception not caught - catch section not called");
 
             //#229
             assert.Throws(TryCatchWithNotCaughtTypedExceptionAndArgument, "catch me", "[#229] B. Typed exception is not Caught; and argument");
@@ -110,26 +110,26 @@ namespace ClientTestLibrary
 
         #region ThrownExceptions
 
-        //public static bool IsATry { get; set; }
-        //public static bool IsACatch { get; set; }
+        public static bool IsATry { get; set; }
+        public static bool IsACatch { get; set; }
 
-        //private static void TryCatchWithNotCaughtTypedException()
-        //{
-        //    IsATry = false;
-        //    IsACatch = false;
+        private static void TryCatchWithNotCaughtTypedException()
+        {
+            IsATry = false;
+            IsACatch = false;
 
-        //    try
-        //    {
-        //        IsATry = true;
-        //        throw new Exception("catch me");
-        //    }
-        //    catch (ArgumentException)
-        //    {
-        //        IsATry = true;
-        //    }
+            try
+            {
+                IsATry = true;
+                throw new Exception("catch me");
+            }
+            catch (ArgumentException)
+            {
+                IsATry = true;
+            }
 
-        //    IsATry = false;
-        //}
+            IsATry = false;
+        }
 
         public static bool IsBTry { get; set; }
         public static bool IsBCatch { get; set; }
