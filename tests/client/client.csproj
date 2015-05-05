@@ -31,6 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Tests\BasicCSharp\TestInterfaces.cs" />
+    <Compile Include="Tests\BasicCSharp\TestOverloadInstanceMethods.cs" />
+    <Compile Include="Tests\BasicCSharp\TestOverloadStaticMethods.cs" />
+    <Compile Include="Tests\BasicCSharp\TestVirtualMethods.cs" />
+    <Compile Include="Tests\BasicCSharp\TestAbstractClass.cs" />
     <Compile Include="Tests\BasicCSharp\TestTryCatchFinallyBlocks.cs" />
     <Compile Include="Tests\Linq\TestLinqGroupingOperators.cs" />
     <Compile Include="Tests\Linq\TestLinqConversionOperators.cs" />
@@ -48,7 +53,7 @@
     <Compile Include="Tests\Linq\TestLinqSetOperators.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\BridgeIssues\TestBridgeIssues.cs" />
-    <Compile Include="Tests\BasicCSharp\TestInheritanceOverloading.cs">
+    <Compile Include="Tests\BasicCSharp\TestInheritance.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Tests\BasicCSharp\TestTryCatchBlocks.cs" />

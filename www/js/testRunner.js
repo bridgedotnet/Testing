@@ -8,17 +8,30 @@ Bridge.define('ClientTestLibrary.RunTests', {
             }
         },
         main: function () {
+            QUnit.module("Inheritance, abstract, virtual and overloading");
+            QUnit.test("Overloading static methods", ClientTestLibrary.TestOverloadStaticMethods.testStatic);
+            QUnit.test("Overloading instance methods", ClientTestLibrary.TestOverloadInstanceMethods.testInstance);
+            QUnit.test("Inheritance A instance", ClientTestLibrary.TestInheritance.testA);
+            QUnit.test("Inheritance B instance", ClientTestLibrary.TestInheritance.testB);
+            QUnit.test("Inheritance B instance as A type", ClientTestLibrary.TestInheritance.testAB);
+            QUnit.test("Abstract B instance", ClientTestLibrary.TestAbstractClass.testB);
+            QUnit.test("Abstract C instance", ClientTestLibrary.TestAbstractClass.testC);
+            QUnit.test("Abstract BC instance as A type", ClientTestLibrary.TestAbstractClass.testBC);
+            QUnit.test("Virtual methods", ClientTestLibrary.TestVirtualMethods.testB);
+
             QUnit.module("Reference types");
             QUnit.test("Instance constructors and methods", ClientTestLibrary.TestReferenceTypes.testInstanceConstructorsAndMethods);
             QUnit.test("Static constructors and methods", ClientTestLibrary.TestReferenceTypes.testStaticConstructorsAndMethods);
             QUnit.test("Method parameters", ClientTestLibrary.TestReferenceTypes.testMethodParameters);
 
-            QUnit.module("Inheritance and overloading");
-            QUnit.test("Inheritance", ClientTestLibrary.TestInheritance.test1);
-
             QUnit.module("Value types");
             QUnit.test("Instance constructors and methods", ClientTestLibrary.TestValueTypes.testInstanceConstructorsAndMethods);
             QUnit.test("Static constructors and methods", ClientTestLibrary.TestValueTypes.testStaticConstructorsAndMethods);
+
+            QUnit.module("Interfaces");
+            QUnit.test("Interface method and property", ClientTestLibrary.TestInterfaces.testInterfaceMethodAndProperty);
+            QUnit.test("Explicit interface", ClientTestLibrary.TestInterfaces.testExplicitInterfaceMethodAndProperty);
+            QUnit.test("Simple two interfaces", ClientTestLibrary.TestInterfaces.testTwoInterfaces);
 
             QUnit.module("System functions");
             QUnit.test("DateTime", ClientTestLibrary.TestDateFunctions.dateTimes);
@@ -35,9 +48,9 @@ Bridge.define('ClientTestLibrary.RunTests', {
 
             QUnit.module("Bridge GitHub issues");
             QUnit.test("#169", ClientTestLibrary.TestBridgeIssues.n169);
+            QUnit.test("#240", ClientTestLibrary.TestBridgeIssues.n240);
 
             QUnit.module("LINQ");
-
             QUnit.test("Aggregate operators", ClientTestLibrary.Linq.TestLinqAggregateOperators.test);
             QUnit.test("Conversion operators", ClientTestLibrary.Linq.TestLinqConversionOperators.test);
             QUnit.test("Element operators", ClientTestLibrary.Linq.TestLinqElementOperators.test);

@@ -20,6 +20,22 @@ namespace ClientTestLibrary
         }
     }
 
+    [FileName("testBridgeIssues.js")]
+    abstract class Bridge240A
+    {
+        public int Data { get; set; }
+    }
+
+    [FileName("testBridgeIssues.js")]
+    class Bridge240B : Bridge240A
+    {
+        public string GetString()
+        {
+            base.Data++;
+            return "B";
+        }
+    }
+
     // Tests Bridge GitHub issues
     class TestBridgeIssues
     {
@@ -36,6 +52,18 @@ namespace ClientTestLibrary
             // TEST
             Bridge169.M2();
             assert.DeepEqual(Bridge169.Number, 2, "M2()");
+        }
+
+        // Bridge[#240]
+        public static void N240(Assert assert)
+        {
+            assert.Expect(3);
+
+            // TEST
+            var b = new Bridge240B();
+            assert.Ok(b != null, "Instance of B created");
+            assert.Equal(b.GetString(), "B", "b.GetString() = 'B'");
+            assert.Equal(b.Data, 1, "b.Data = 1");
         }
     }
 }

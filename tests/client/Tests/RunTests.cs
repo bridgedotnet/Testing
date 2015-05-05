@@ -12,17 +12,30 @@ namespace ClientTestLibrary
         [Ready]
         public static void Main()
         {
+            QUnit.Module("Inheritance, abstract, virtual and overloading");
+            QUnit.Test("Overloading static methods", TestOverloadStaticMethods.TestStatic);
+            QUnit.Test("Overloading instance methods", TestOverloadInstanceMethods.TestInstance);
+            QUnit.Test("Inheritance A instance", TestInheritance.TestA);
+            QUnit.Test("Inheritance B instance", TestInheritance.TestB);
+            QUnit.Test("Inheritance B instance as A type", TestInheritance.TestAB);
+            QUnit.Test("Abstract B instance", TestAbstractClass.TestB);
+            QUnit.Test("Abstract C instance", TestAbstractClass.TestC);
+            QUnit.Test("Abstract BC instance as A type", TestAbstractClass.TestBC);
+            QUnit.Test("Virtual methods", TestVirtualMethods.TestB);
+
             QUnit.Module("Reference types");
             QUnit.Test("Instance constructors and methods", TestReferenceTypes.TestInstanceConstructorsAndMethods);
             QUnit.Test("Static constructors and methods", TestReferenceTypes.TestStaticConstructorsAndMethods);
             QUnit.Test("Method parameters", TestReferenceTypes.TestMethodParameters);
 
-            QUnit.Module("Inheritance and overloading");
-            QUnit.Test("Inheritance", TestInheritance.Test1);
-
             QUnit.Module("Value types");
             QUnit.Test("Instance constructors and methods", TestValueTypes.TestInstanceConstructorsAndMethods);
             QUnit.Test("Static constructors and methods", TestValueTypes.TestStaticConstructorsAndMethods);
+
+            QUnit.Module("Interfaces");
+            QUnit.Test("Interface method and property", TestInterfaces.TestInterfaceMethodAndProperty);
+            QUnit.Test("Explicit interface", TestInterfaces.TestExplicitInterfaceMethodAndProperty);
+            QUnit.Test("Simple two interfaces", TestInterfaces.TestTwoInterfaces);
 
             QUnit.Module("System functions");
             QUnit.Test("DateTime", TestDateFunctions.DateTimes);
@@ -39,9 +52,9 @@ namespace ClientTestLibrary
 
             QUnit.Module("Bridge GitHub issues");
             QUnit.Test("#169", TestBridgeIssues.N169);
+            QUnit.Test("#240", TestBridgeIssues.N240);
 
             QUnit.Module("LINQ");
-
             QUnit.Test("Aggregate operators", TestLinqAggregateOperators.Test);
             QUnit.Test("Conversion operators", TestLinqConversionOperators.Test);
             QUnit.Test("Element operators", TestLinqElementOperators.Test);
