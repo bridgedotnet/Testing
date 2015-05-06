@@ -3,7 +3,8 @@
 Bridge.define('ClientTestLibrary.TestStringFunctions', {
     statics: {
         strings: function (assert) {
-            assert.expect(21);
+            var $t;
+            assert.expect(39);
 
             // TEST ToLowerCase
             var s = "HELLO".toLowerCase();
@@ -61,6 +62,23 @@ Bridge.define('ClientTestLibrary.TestStringFunctions', {
             assert.deepEqual(Bridge.String.compare(s1, s2, true), 0, "String.Compare('" + s1 + "', '" + s2 + "', true)");
             assert.deepEqual(Bridge.String.compare(s1, s2, false), 1, "String.Compare('" + s1 + "', '" + s2 + "', false)");
 
+            var threeIs = new Array(3);
+            threeIs[0] = "i";
+            threeIs[1] = "ı";
+            threeIs[2] = "I";
+
+            var scValues = [0, 1, 2, 3, 4, 5];
+
+            var expected = [-1, -1, 1, -1, 0, 1, -1, -1, 1, -1, 0, 1, -1, 1, 1, 0, 0, 0];
+            var expectedIndex = 0;
+
+            $t = Bridge.getEnumerator(scValues);
+            while ($t.moveNext()) {
+                var sc = $t.getCurrent();
+                ClientTestLibrary.TestStringFunctions.test(0, 1, sc, threeIs, expected, expectedIndex++, assert);
+                ClientTestLibrary.TestStringFunctions.test(0, 2, sc, threeIs, expected, expectedIndex++, assert);
+                ClientTestLibrary.TestStringFunctions.test(1, 2, sc, threeIs, expected, expectedIndex++, assert);
+            }
 
             // TEST Contains            
             s = "Hello Bridge.NET";
@@ -71,6 +89,11 @@ Bridge.define('ClientTestLibrary.TestStringFunctions', {
             assert.throws(function () {
                 return Bridge.String.contains(s,null);
             }, "null.Contains('Bridge')");
+        }        ,
+        test: function (x, y, comparison, testI, expected, expectedIndex, assert) {
+            var cmpValue = 0;
+            cmpValue = Bridge.String.compare(testI[x], testI[y], comparison);
+            assert.deepEqual(cmpValue, expected[expectedIndex], "String.Compare('" + testI[x] + "', '" + testI[y] + "'," + comparison + ")");
         }
     }
 });
