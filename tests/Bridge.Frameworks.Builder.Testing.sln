@@ -28,6 +28,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{4466FE4E-78E3-46A8-BAA4-C304D7FFABD9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "client", "client\client.csproj", "{306AD788-87E9-4DF9-A216-95948E024BC8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{243BB709-3912-4C65-82D4-787A5E2201D7} = {243BB709-3912-4C65-82D4-787A5E2201D7}
+		{28703D12-116A-4968-BD85-F26D7F7E7DA4} = {28703D12-116A-4968-BD85-F26D7F7E7DA4}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F00A1EC1-76F1-4946-9819-966FB785BFF8}"
 EndProject
@@ -52,6 +56,9 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "www", "http://localhost:621
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		SlnRelativePath = "..\www\"
+	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{306AD788-87E9-4DF9-A216-95948E024BC8} = {306AD788-87E9-4DF9-A216-95948E024BC8}
 	EndProjectSection
 EndProject
 Global
