@@ -19,7 +19,7 @@ namespace ClientTestLibrary
             string GetStringAsWell();
         }
 
-        [FileName("testInterfaces242.js")]
+        [FileName("testInterfaces.js")]
         class A : ISimple
         {
             public int Data { get; set; }
@@ -34,7 +34,7 @@ namespace ClientTestLibrary
             }
         }
 
-        [FileName("testInterfaces242.js")]
+        [FileName("testInterfaces.js")]
         class B : ISimple
         {
             int data;
@@ -50,7 +50,7 @@ namespace ClientTestLibrary
             }
         }
 
-        [FileName("testInterfaces242.js")]
+        [FileName("testInterfaces.js")]
         class C : ISimple, ISimpleAsWell
         {
             int data;
