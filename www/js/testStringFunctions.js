@@ -4,7 +4,7 @@ Bridge.define('ClientTestLibrary.TestStringFunctions', {
     statics: {
         strings: function (assert) {
             var $t;
-            assert.expect(39);
+            assert.expect(40);
 
             // TEST ToLowerCase
             var s = "HELLO".toLowerCase();
@@ -45,6 +45,7 @@ Bridge.define('ClientTestLibrary.TestStringFunctions', {
             assert.deepEqual(Bridge.String.indexOf(s, String.fromCharCode(101)), 1, "'" + s + "'.IndexOf('e')");
             assert.deepEqual(Bridge.String.indexOf(s, "e."), 11, "'" + s + "'.IndexOf('e.')");
             assert.deepEqual(Bridge.String.indexOf(s, String.fromCharCode(101), 6, 8), 11, "'" + s + "'.IndexOf('e', 6, 8)");
+            assert.deepEqual(Bridge.String.indexOf(s, "E", 6, 8, 1), 11, "'" + s + "'.IndexOf('E', 6, 8, StringComparison.CurrentCultureIgnoreCase)");
             assert.throws(function () {
                 return Bridge.String.indexOf(s, null);
             }, "'" + s + "'.IndexOf(null)");
