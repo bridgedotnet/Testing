@@ -11,7 +11,7 @@ namespace ClientTestLibrary
         // String functions
         public static void Strings(Assert assert)
         {
-            assert.Expect(39);
+            assert.Expect(40);
 
             // TEST ToLowerCase
             var s = "HELLO".ToLowerCase();
@@ -47,8 +47,9 @@ namespace ClientTestLibrary
 
             assert.DeepEqual(s.IndexOf('e'), 1, "'" + s + "'.IndexOf('e')");
             assert.DeepEqual(s.IndexOf("e."), 11, "'" + s + "'.IndexOf('e.')");
-            assert.DeepEqual(s.IndexOf('e', 6, 8), 11, "'" + s + "'.IndexOf('e', 6, 8)");            
-            assert.Throws(() => s.IndexOf(null), "'" + s + "'.IndexOf(null)");
+            assert.DeepEqual(s.IndexOf('e', 6, 8), 11, "'" + s + "'.IndexOf('e', 6, 8)");
+            assert.DeepEqual(s.IndexOf("E", 6, 8, StringComparison.CurrentCultureIgnoreCase), 11, "'" + s + "'.IndexOf('E', 6, 8, StringComparison.CurrentCultureIgnoreCase)");
+            assert.Throws(() => s.IndexOf(null), "'" + s + "'.IndexOf(null)");            
 
             s = string.Empty;
             assert.DeepEqual(s.IndexOf('e'), -1, "String.Empty.IndexOf('e')");
