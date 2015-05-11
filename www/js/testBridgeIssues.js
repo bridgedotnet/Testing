@@ -27,7 +27,7 @@ Bridge.define('ClientTestLibrary.Bridge240A', {
 Bridge.define('ClientTestLibrary.Bridge240B', {
     inherits: [ClientTestLibrary.Bridge240A],
     getString: function () {
-        ClientTestLibrary.Bridge240A.prototype.setData(ClientTestLibrary.Bridge240A.prototype.getData()+1);
+        this.setData(this.getData()+1);
         return "B";
     }
 });

@@ -93,14 +93,20 @@
         },
 
         ready: function (fn) {
+            var delayfn = function () {
+                setTimeout(function () {
+                    fn();
+                }, 1);
+            };
+
             if (typeof Bridge.global.jQuery !== 'undefined') {
-                Bridge.global.jQuery(fn);
+                Bridge.global.jQuery(delayfn);
             } else {
                 if (document.readyState == "complete" || document.readyState == "loaded") {
-                    fn();
+                    delayfn();
                 }
                 else {
-                    Bridge.on('DOMContentLoaded', document, fn);
+                    Bridge.on('DOMContentLoaded', document, delayfn);
                 }
             }
         },
@@ -1193,7 +1199,7 @@
             }
 
             if (value == "") {
-                return startIndex;
+                return (arguments.length > 2) ? startIndex : 0;
             }
 
             var length = (arguments.length > 3) ? arguments[3] : str.length - startIndex;
@@ -1208,9 +1214,16 @@
 
             var s = str.substr(startIndex, length);
 
-            var index = s.indexOf(value);
+            var index = (arguments.length == 5 && arguments[4] % 2 != 0) ? s.toLocaleUpperCase().indexOf(value.toLocaleUpperCase()) : s.indexOf(value);
+
             if (index > -1) {
-                return index + startIndex;
+                if (arguments.length == 5) {
+                    // StringComparison
+                    return (Bridge.String.compare(value, s.substr(index, value.length), arguments[4]) == 0) ? index + startIndex : -1;
+                }
+                else {
+                    return index + startIndex;
+                }
             }
 
             return -1;
@@ -1310,6 +1323,19 @@
 
             if (this.$constructor) {
                 this.$constructor.apply(this, arguments);
+            }
+        },
+
+        createAccessors: function (cfg, scope) {
+            var name,
+                config;
+
+            config = Bridge.isFunction(cfg) ? cfg() : cfg;
+
+            if (config.properties) {
+                for (name in config.properties) {
+                    Bridge.property(scope, name, config.properties[name]);
+                }
             }
         },
 
@@ -1473,7 +1499,16 @@
             var instanceConfig = prop.$config || prop.config;
 
             if (instanceConfig && !Bridge.isFunction(instanceConfig)) {
-                Bridge.Class.initConfig(extend, base, instanceConfig, false, prop);
+                Bridge.Class.initConfig(extend, base, instanceConfig, false, prop);                
+
+                if (document.readyState == "complete" || document.readyState == "loaded") {
+                    Bridge.Class.createAccessors(instanceConfig, prototype);
+                }
+                else {
+                    setTimeout(function () {
+                        Bridge.Class.createAccessors(instanceConfig, prototype);
+                    }, 0);
+                }
 
                 if (prop.$config) {
                     delete prop.$config;
