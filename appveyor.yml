@@ -202,7 +202,6 @@ notifications:
   # Email
   - provider: Email
     to:
-      - geoff@object.net
       - vladimir@object.net
       - daniil@object.net
       - fabricio@object.net
