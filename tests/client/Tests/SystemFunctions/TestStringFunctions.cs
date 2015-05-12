@@ -14,11 +14,11 @@ namespace ClientTestLibrary
             assert.Expect(40);
 
             // TEST ToLowerCase
-            var s = "HELLO".ToLowerCase();
+            var s = "HELLO".ToLower();
             assert.DeepEqual(s, "hello", "'HELLO'.ToLowerCase()");
 
             // TEST ToUpperCase
-            s = "hello".ToUpperCase();
+            s = "hello".ToUpper();
             assert.DeepEqual(s, "HELLO", "'hello'.ToUpperCase()");
 
             s = "Hello Bridge.NET";

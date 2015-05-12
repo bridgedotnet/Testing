@@ -162,7 +162,7 @@ namespace ClientTestLibrary.Linq
             assert.DeepEqual(anagramsGroups, anagramsGroupsExpected, "Anagram grouping with equality comparer");
 
             // TEST
-            var anagramsGroups1 = anagrams.GroupBy(w => w.Trim(), a => a.ToUpperCase(), new AnagramEqualityComparer())
+            var anagramsGroups1 = anagrams.GroupBy(w => w.Trim(), a => a.ToUpper(), new AnagramEqualityComparer())
                        .Select(x => new { Key = x.Key, Words = x.ToArray() })
                        .ToArray();
             var anagramsGroupsExpected1 = new[]

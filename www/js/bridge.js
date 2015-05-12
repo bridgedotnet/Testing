@@ -1250,6 +1250,7 @@
                             break;
                         case 3: // InvariantCultureIgnoreCase
                             return strA.localeCompare(strB, Bridge.CultureInfo.invariantCulture.name, { sensitivity: 'accent' });
+                            break;
                         case 4: // Ordinal
                             return (strA === strB) ? 0 : ((strA > strB) ? 1 : -1);
                             break;
