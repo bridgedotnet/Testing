@@ -1,5 +1,22 @@
 ﻿/* global Bridge */
 
+Bridge.define('ClientTestLibrary.Utilities.BrowserHelper', {
+    statics: {
+        isPhantomJs: function () {
+            return Bridge.String.contains(navigator.userAgent,"PhantomJS");
+        },
+        getBrowserInfo: function () {
+            var userAgent = navigator.userAgent;
+            var appVersion = navigator.appVersion;
+            var product = navigator.product;
+            var appName = navigator.appName;
+            var appCodeName = navigator.appCodeName;
+
+            return Bridge.String.format("userAgent:{0} appVersion:{1} product:{2} appName:{3} appCodeName:{4}", userAgent, appVersion, product, appName, appCodeName);
+        }
+    }
+});
+
 Bridge.define('ClientTestLibrary.Utilities.Group', {
     statics: {
         getGroups: function () {

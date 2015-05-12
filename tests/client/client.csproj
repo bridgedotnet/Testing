@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\Bridge\</SolutionDir>
-    <RestorePackages>true</RestorePackages>	
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -78,6 +78,7 @@
     <Compile Include="Tests\BasicCSharp\TestValueTypes.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Utilities\BrowserHelper.cs" />
     <Compile Include="Utilities\TypeHelper.cs" />
     <Compile Include="Utilities\TestData.cs" />
   </ItemGroup>
