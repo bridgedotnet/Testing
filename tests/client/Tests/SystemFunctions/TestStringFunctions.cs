@@ -76,7 +76,6 @@ namespace ClientTestLibrary
                 assert.DeepEqual(string.Compare(s1, s2, false), 1, "String.Compare('" + s1 + "', '" + s2 + "', false)");
             }
 
-
             if (!isPhantomJs)
             {
                 string[] threeIs = new string[3];
