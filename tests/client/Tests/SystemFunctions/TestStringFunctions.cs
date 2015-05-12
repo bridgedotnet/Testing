@@ -111,9 +111,13 @@ namespace ClientTestLibrary
             assert.Throws(() => s.Contains(null), "null.Contains('Bridge')");
         }
 
-        protected static void Test(int x, int y,
-                                   StringComparison comparison,
-                                   string[] testI, int[] expected, int expectedIndex, Assert assert)
+        protected static void Test(int x,
+                                    int y,
+                                    StringComparison comparison,
+                                    string[] testI,
+                                    int[] expected,
+                                    int expectedIndex,
+                                    Assert assert)
         {
             int cmpValue = 0;
             cmpValue = String.Compare(testI[x], testI[y], comparison);
