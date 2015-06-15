@@ -53,6 +53,7 @@ namespace ClientTestLibrary
             QUnit.Module("Bridge GitHub issues");
             QUnit.Test("#169", TestBridgeIssues.N169);
             QUnit.Test("#240", TestBridgeIssues.N240);
+            QUnit.Test("#266", TestBridgeIssues.N266);
 
             QUnit.Module("LINQ");
             QUnit.Test("Aggregate operators", TestLinqAggregateOperators.Test);

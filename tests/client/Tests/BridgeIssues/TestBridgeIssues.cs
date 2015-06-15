@@ -36,6 +36,28 @@ namespace ClientTestLibrary
         }
     }
 
+    [FileName("testBridgeIssues.js")]
+    class Bridge266A
+    {
+        public static object Test()
+        {
+            // Nothing gets written for Class1 in the output JavaScript due to the "new object()" argument.
+            // If null is used instead (as commented-out) then it works as expected.
+            // No compile error.
+            return Bridge266B.Test("test", new object());
+            //Bridge266B.Test("test", null);
+        }
+    }
+
+    [FileName("testBridgeIssues.js")]
+    class Bridge266B
+    {
+        public static object Test(string arg1, object arg2)
+        {
+            return arg2;
+        }
+    }
+
     // Tests Bridge GitHub issues
     class TestBridgeIssues
     {
@@ -64,6 +86,15 @@ namespace ClientTestLibrary
             assert.Ok(b != null, "Instance of B created");
             assert.Equal(b.GetString(), "B", "b.GetString() = 'B'");
             assert.Equal(b.Data, 1, "b.Data = 1");
+        }
+
+        // Bridge[#266]
+        public static void N266(Assert assert)
+        {
+            assert.Expect(1);
+
+            // TEST
+            assert.Ok(Bridge266A.Test() != null, "new object() call transpiled");
         }
     }
 }

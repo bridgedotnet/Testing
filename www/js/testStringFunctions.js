@@ -73,7 +73,6 @@ Bridge.define('ClientTestLibrary.TestStringFunctions', {
                 assert.deepEqual(Bridge.String.compare(s1, s2, false), 1, "String.Compare('" + s1 + "', '" + s2 + "', false)");
             }
 
-
             if (!isPhantomJs) {
                 var threeIs = new Array(3);
                 threeIs[0] = "i";

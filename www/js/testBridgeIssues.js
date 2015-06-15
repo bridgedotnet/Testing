@@ -32,6 +32,26 @@ Bridge.define('ClientTestLibrary.Bridge240B', {
     }
 });
 
+Bridge.define('ClientTestLibrary.Bridge266A', {
+    statics: {
+        test: function () {
+            // Nothing gets written for Class1 in the output JavaScript due to the "new object()" argument.
+            // If null is used instead (as commented-out) then it works as expected.
+            // No compile error.
+            return ClientTestLibrary.Bridge266B.test("test", { });
+            //Bridge266B.Test("test", null);
+        }
+    }
+});
+
+Bridge.define('ClientTestLibrary.Bridge266B', {
+    statics: {
+        test: function (arg1, arg2) {
+            return arg2;
+        }
+    }
+});
+
 Bridge.define('ClientTestLibrary.TestBridgeIssues', {
     statics: {
         n169: function (assert) {
@@ -53,6 +73,12 @@ Bridge.define('ClientTestLibrary.TestBridgeIssues', {
             assert.ok(b !== null, "Instance of B created");
             assert.equal(b.getString(), "B", "b.GetString() = 'B'");
             assert.equal(b.getData(), 1, "b.Data = 1");
+        },
+        n266: function (assert) {
+            assert.expect(1);
+
+            // TEST
+            assert.ok(ClientTestLibrary.Bridge266A.test() !== null, "new object() call transpiled");
         }
     }
 });
