@@ -58,6 +58,18 @@ namespace ClientTestLibrary
         }
     }
 
+    [FileName("testBridgeIssues.js")]
+    class Bridge272
+    {
+        [FileName("testBridgeIssues.js")]
+        public enum MyEnum { Abc = 1, Def = 2, Ghi = 3 };
+
+        public static MyEnum Test(int i)
+        {
+            return (MyEnum)i;
+        }
+    }
+
     // Tests Bridge GitHub issues
     class TestBridgeIssues
     {
@@ -95,6 +107,17 @@ namespace ClientTestLibrary
 
             // TEST
             assert.Ok(Bridge266A.Test() != null, "new object() call transpiled");
+        }
+
+        // Bridge[#272]
+        public static void N272(Assert assert)
+        {
+            assert.Expect(3);
+
+            // TEST
+            assert.DeepEqual(Bridge272.Test(1), Bridge272.MyEnum.Abc, "Casted MyEnum.Abc");
+            assert.DeepEqual(Bridge272.Test(3), Bridge272.MyEnum.Ghi, "Casted MyEnum.Ghi");
+            assert.DeepEqual(Bridge272.Test(4), 4, "Casted MyEnum.Abc");
         }
     }
 }

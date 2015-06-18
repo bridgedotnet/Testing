@@ -4744,7 +4744,7 @@ Bridge.Class.generic('Bridge.List$1', function (T) {
 
         slice: function (start, end) {
             this.checkReadOnly();
-            this.items.slice(start, end);
+            return new Bridge.List$1(this.$$name.substr(this.$$name.lastIndexOf('$')+1))(this.items.slice(start, end));
         },
 
         sort: function (comparison) {

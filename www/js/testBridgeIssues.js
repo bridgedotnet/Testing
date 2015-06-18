@@ -52,6 +52,22 @@ Bridge.define('ClientTestLibrary.Bridge266B', {
     }
 });
 
+Bridge.define('ClientTestLibrary.Bridge272', {
+    statics: {
+        test: function (i) {
+            return i;
+        }
+    }
+});
+
+Bridge.define('ClientTestLibrary.Bridge272.MyEnum', {
+    statics: {
+        abc: 1,
+        def: 2,
+        ghi: 3
+    }
+});
+
 Bridge.define('ClientTestLibrary.TestBridgeIssues', {
     statics: {
         n169: function (assert) {
@@ -79,6 +95,14 @@ Bridge.define('ClientTestLibrary.TestBridgeIssues', {
 
             // TEST
             assert.ok(ClientTestLibrary.Bridge266A.test() !== null, "new object() call transpiled");
+        },
+        n272: function (assert) {
+            assert.expect(3);
+
+            // TEST
+            assert.deepEqual(ClientTestLibrary.Bridge272.test(1), ClientTestLibrary.Bridge272.MyEnum.abc, "Casted MyEnum.Abc");
+            assert.deepEqual(ClientTestLibrary.Bridge272.test(3), ClientTestLibrary.Bridge272.MyEnum.ghi, "Casted MyEnum.Ghi");
+            assert.deepEqual(ClientTestLibrary.Bridge272.test(4), 4, "Casted MyEnum.Abc");
         }
     }
 });
