@@ -103,6 +103,31 @@ Bridge.define('ClientTestLibrary.TestBridgeIssues', {
             assert.deepEqual(ClientTestLibrary.Bridge272.test(1), ClientTestLibrary.Bridge272.MyEnum.abc, "Casted MyEnum.Abc");
             assert.deepEqual(ClientTestLibrary.Bridge272.test(3), ClientTestLibrary.Bridge272.MyEnum.ghi, "Casted MyEnum.Ghi");
             assert.deepEqual(ClientTestLibrary.Bridge272.test(4), 4, "Casted MyEnum.Abc");
+        },
+        n273: function (assert) {
+            assert.expect(4);
+
+            // TEST
+            var items = Bridge.merge(new Bridge.List$1(Bridge.Int)(), [
+                [0], 
+                [1], 
+                [2], 
+                [3], 
+                [4]
+            ] );
+
+            var r = items.slice(-1).toArray();
+            assert.deepEqual(r, [4], "Slices start = -1");
+
+            r = items.slice(1).toArray();
+            assert.deepEqual(r, [1, 2, 3, 4], "Slices start = 1");
+
+            r = items.slice(-3, 4).toArray();
+            assert.deepEqual(r, [2, 3], "Slices start = -3, end = 3");
+
+            r = items.slice(1, 3).toArray();
+            assert.deepEqual(r, [1, 2], "Slices start = 1, end = 2");
+
         }
     }
 });

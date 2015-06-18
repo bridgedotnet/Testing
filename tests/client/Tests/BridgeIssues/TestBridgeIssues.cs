@@ -1,6 +1,7 @@
 ﻿using Bridge;
 using Bridge.QUnit;
 using System;
+using System.Collections.Generic;
 
 namespace ClientTestLibrary
 {
@@ -118,6 +119,28 @@ namespace ClientTestLibrary
             assert.DeepEqual(Bridge272.Test(1), Bridge272.MyEnum.Abc, "Casted MyEnum.Abc");
             assert.DeepEqual(Bridge272.Test(3), Bridge272.MyEnum.Ghi, "Casted MyEnum.Ghi");
             assert.DeepEqual(Bridge272.Test(4), 4, "Casted MyEnum.Abc");
+        }
+
+        // Bridge[#273]
+        public static void N273(Assert assert)
+        {
+            assert.Expect(4);
+
+            // TEST
+            var items = new List<int>() { 0, 1, 2, 3, 4 };
+
+            var r = items.Slice(-1).ToArray();
+            assert.DeepEqual(r, new[] { 4 }, "Slices start = -1");
+
+            r = items.Slice(1).ToArray();
+            assert.DeepEqual(r, new[] { 1, 2, 3, 4 }, "Slices start = 1");
+
+            r = items.Slice(-3, 4).ToArray();
+            assert.DeepEqual(r, new[] { 2, 3 }, "Slices start = -3, end = 3");
+
+            r = items.Slice(1, 3).ToArray();
+            assert.DeepEqual(r, new[] { 1, 2 }, "Slices start = 1, end = 2");
+
         }
     }
 }
