@@ -71,6 +71,9 @@ namespace ClientTestLibrary
         }
     }
 
+    [FileName("testBridgeIssues.js")]
+    enum Bridge277 { Int }
+
     // Tests Bridge GitHub issues
     class TestBridgeIssues
     {
@@ -141,6 +144,14 @@ namespace ClientTestLibrary
             r = items.Slice(1, 3).ToArray();
             assert.DeepEqual(r, new[] { 1, 2 }, "Slices start = 1, end = 2");
 
+        }
+
+        // Bridge[#277]
+        public static void N277(Assert assert)
+        {
+            assert.Expect(1);
+
+            assert.Equal(Bridge277.Int, 0, "Enum member with reserved name initialized");
         }
     }
 }

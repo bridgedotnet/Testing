@@ -68,6 +68,12 @@ Bridge.define('ClientTestLibrary.Bridge272.MyEnum', {
     }
 });
 
+Bridge.define('ClientTestLibrary.Bridge277', {
+    statics: {
+        int: 0
+    }
+});
+
 Bridge.define('ClientTestLibrary.TestBridgeIssues', {
     statics: {
         n169: function (assert) {
@@ -128,6 +134,11 @@ Bridge.define('ClientTestLibrary.TestBridgeIssues', {
             r = items.slice(1, 3).toArray();
             assert.deepEqual(r, [1, 2], "Slices start = 1, end = 2");
 
+        },
+        n277: function (assert) {
+            assert.expect(1);
+
+            assert.equal(ClientTestLibrary.Bridge277.$int, 0, "Enum member with reserved name initialized");
         }
     }
 });
