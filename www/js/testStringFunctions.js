@@ -5,7 +5,7 @@
             //In PhantomJS some correct tests failed. We will skip them in this environment.
             var isPhantomJs = ClientTestLibrary.Utilities.BrowserHelper.isPhantomJs();
 
-            var expectedCount = isPhantomJs ? 20 : 40;
+            var expectedCount = isPhantomJs ? 21 : 41;
             assert.expect(expectedCount);
 
             // TEST ToLowerCase
@@ -100,6 +100,10 @@
             assert.throws(function () {
                 return Bridge.String.contains(s,null);
             }, "null.Contains('Bridge')");
+
+            // TEST Concat
+            s = String.concat("1", "2");
+            assert.deepEqual(s, "12", "string.Concat()");
         }        ,
         test: function (x, y, comparison, testI, expected, expectedIndex, assert) {
             var cmpValue = 0;
