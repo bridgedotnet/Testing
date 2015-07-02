@@ -1,6 +1,4 @@
-﻿/* global Bridge */
-
-Bridge.define('ClientTestLibrary.TestOverloadStaticMethods', {
+﻿Bridge.define('ClientTestLibrary.TestOverloadStaticMethods', {
     statics: {
         testStatic: function (assert) {
             assert.expect(16);

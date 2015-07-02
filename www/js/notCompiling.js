@@ -1,6 +1,4 @@
-﻿/* global Bridge */
-
-Bridge.define('ClientTestLibrary.Class59', {
+﻿Bridge.define('ClientTestLibrary.Class59', {
     statics: {
         method1: function () {
         }

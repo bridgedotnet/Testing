@@ -1,6 +1,4 @@
-﻿/* global Bridge */
-
-Bridge.define('ClientTestLibrary.Linq.TestLinqQueryExecution', {
+﻿Bridge.define('ClientTestLibrary.Linq.TestLinqQueryExecution', {
     statics: {
         test: function (assert) {
             assert.expect(6);

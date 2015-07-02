@@ -1,6 +1,4 @@
-﻿/* global Bridge */
-
-Bridge.define('ClientTestLibrary.TestDateFunctions', {
+﻿Bridge.define('ClientTestLibrary.TestDateFunctions', {
     statics: {
         dateTimes: function (assert) {
             assert.expect(2);

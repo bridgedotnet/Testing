@@ -1,6 +1,4 @@
-﻿/* global Bridge */
-
-Bridge.define('ClientTestLibrary.Linq.TestLinqQuantifiers', {
+﻿Bridge.define('ClientTestLibrary.Linq.TestLinqQuantifiers', {
     statics: {
         test: function (assert) {
             assert.expect(4);

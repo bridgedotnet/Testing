@@ -1,6 +1,4 @@
-﻿/* global Bridge */
-
-Bridge.define('ClientTestLibrary.RunTests', {
+﻿Bridge.define('ClientTestLibrary.RunTests', {
     statics: {
         config: {
             init: function () {

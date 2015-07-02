@@ -1,6 +1,4 @@
-﻿/* global Bridge */
-
-Bridge.define('ClientTestLibrary.Utilities.BrowserHelper', {
+﻿Bridge.define('ClientTestLibrary.Utilities.BrowserHelper', {
     statics: {
         isPhantomJs: function () {
             return Bridge.String.contains(navigator.userAgent,"PhantomJS");

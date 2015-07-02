@@ -1,6 +1,4 @@
-﻿/* global Bridge */
-
-Bridge.define('ClientTestLibrary.Linq.TestLinqProjectionOperators', {
+﻿Bridge.define('ClientTestLibrary.Linq.TestLinqProjectionOperators', {
     statics: {
         test: function (assert) {
             assert.expect(8);

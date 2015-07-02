@@ -1,6 +1,4 @@
-﻿/* global Bridge */
-
-Bridge.define('ClientTestLibrary.Data', {
+﻿Bridge.define('ClientTestLibrary.Data', {
     config: {
         properties: {
             Count: 0

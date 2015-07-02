@@ -1,6 +1,4 @@
-﻿/* global Bridge */
-
-Bridge.define('ClientTestLibrary.Linq.TestLinqOrderingOperators', {
+﻿Bridge.define('ClientTestLibrary.Linq.TestLinqOrderingOperators', {
     statics: {
         test: function (assert) {
             assert.expect(8);

@@ -1,6 +1,4 @@
-﻿/* global Bridge */
-
-Bridge.define('ClientTestLibrary.Bridge169', {
+﻿Bridge.define('ClientTestLibrary.Bridge169', {
     statics: {
         number: 0,
         m1: function () {
@@ -70,7 +68,7 @@ Bridge.define('ClientTestLibrary.Bridge272.MyEnum', {
 
 Bridge.define('ClientTestLibrary.Bridge277', {
     statics: {
-        int: 0
+        $int: 0
     }
 });
 

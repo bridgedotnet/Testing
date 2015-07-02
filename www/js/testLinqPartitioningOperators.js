@@ -1,6 +1,4 @@
-﻿/* global Bridge */
-
-Bridge.define('ClientTestLibrary.Linq.TestLinqPartitioningOperators', {
+﻿Bridge.define('ClientTestLibrary.Linq.TestLinqPartitioningOperators', {
     statics: {
         test: function (assert) {
             assert.expect(8);

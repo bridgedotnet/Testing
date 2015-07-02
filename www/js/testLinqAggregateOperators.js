@@ -1,6 +1,4 @@
-﻿/* global Bridge */
-
-Bridge.define('ClientTestLibrary.Linq.TestLinqAggregateOperators', {
+﻿Bridge.define('ClientTestLibrary.Linq.TestLinqAggregateOperators', {
     statics: {
         test: function (assert) {
             assert.expect(20);

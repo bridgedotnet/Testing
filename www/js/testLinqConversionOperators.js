@@ -1,6 +1,4 @@
-﻿/* global Bridge */
-
-Bridge.define('ClientTestLibrary.Linq.TestLinqConversionOperators', {
+﻿Bridge.define('ClientTestLibrary.Linq.TestLinqConversionOperators', {
     statics: {
         test: function (assert) {
             assert.expect(13);

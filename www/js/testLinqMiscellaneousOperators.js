@@ -1,6 +1,4 @@
-﻿/* global Bridge */
-
-Bridge.define('ClientTestLibrary.Linq.TestLinqMiscellaneousOperators', {
+﻿Bridge.define('ClientTestLibrary.Linq.TestLinqMiscellaneousOperators', {
     statics: {
         test: function (assert) {
             assert.expect(4);

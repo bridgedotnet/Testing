@@ -1,6 +1,4 @@
-﻿/* global Bridge */
-
-Bridge.define('ClientTestLibrary.TestStringFunctions', {
+﻿Bridge.define('ClientTestLibrary.TestStringFunctions', {
     statics: {
         strings: function (assert) {
             var $t;

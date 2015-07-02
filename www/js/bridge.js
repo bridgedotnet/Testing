@@ -1425,6 +1425,7 @@
                 v,
                 ctorCounter,
                 isCtor,
+                ctorName,
                 name,
                 fn;
 
@@ -1532,12 +1533,32 @@
             for (name in prop) {
                 v = prop[name];
                 isCtor = name === "constructor";
+                ctorName = isCtor ? "$constructor" : name;
 
                 if (Bridge.isFunction(v) && (isCtor || Bridge.String.startsWith(name, "constructor\\$"))) {
                     ctorCounter++;
+                    isCtor = true;
                 }
 
-                prototype[isCtor ? "$constructor" : name] = prop[name];
+                prototype[ctorName] = prop[name];
+
+                if (isCtor) {
+                    (function (ctorName) {
+                        Class[ctorName] = function () {
+                            var args = Array.prototype.slice.call(arguments);
+
+                            if (this.$initMembers) {
+                                this.$initMembers.apply(this, args);
+                            }
+
+                            args.unshift(ctorName)
+                            this.$$initCtor.apply(this, args);
+                        };
+                    })(ctorName);
+
+                    Class[ctorName].prototype = prototype;
+                    Class[ctorName].prototype.constructor = Class;
+                }
             }
 
             if (ctorCounter == 0) {
