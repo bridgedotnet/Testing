@@ -14,7 +14,7 @@ namespace ClientTestLibrary
             //In PhantomJS some correct tests failed. We will skip them in this environment.
             var isPhantomJs = Utilities.BrowserHelper.IsPhantomJs();
 
-            var expectedCount = isPhantomJs ? 21 : 41;
+            var expectedCount = isPhantomJs ? 24 : 44;
             assert.Expect(expectedCount);
 
             // TEST ToLowerCase
@@ -111,8 +111,17 @@ namespace ClientTestLibrary
             assert.Throws(() => s.Contains(null), "null.Contains('Bridge')");
 
             // TEST Concat
-            s = string.Concat("1", "2");
-            assert.DeepEqual(s, "12", "string.Concat()");
+            s = string.Concat(s, "2", "3", "4");
+            assert.DeepEqual(s, "Hello Bridge.NET234", "string.Concat()");
+
+            s = string.Concat(null,true,3,false);
+            assert.DeepEqual(s, "true3false", "string.Concat()");
+
+            s = string.Concat(new string[] { "1", "2", "3", "4", "5" });
+            assert.DeepEqual(s, "12345", "string.Concat()");
+
+            s = string.Concat(new object[] { 1, null, 2, null, 3 });
+            assert.DeepEqual(s, "123", "string.Concat()");
         }
 
         protected static void Test(int x,
