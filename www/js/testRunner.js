@@ -31,6 +31,9 @@
             QUnit.test("Explicit interface", ClientTestLibrary.TestInterfaces.testExplicitInterfaceMethodAndProperty);
             QUnit.test("Simple two interfaces", ClientTestLibrary.TestInterfaces.testTwoInterfaces);
 
+            QUnit.module("Method parameters");
+            QUnit.test("Default and params", ClientTestLibrary.TestMethodParametersClass.test);
+
             QUnit.module("System functions");
             QUnit.test("DateTime", ClientTestLibrary.TestDateFunctions.dateTimes);
             QUnit.test("String", ClientTestLibrary.TestStringFunctions.strings);

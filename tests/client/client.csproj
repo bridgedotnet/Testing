@@ -34,6 +34,7 @@
     <NoStdLib>True</NoStdLib>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Tests\BasicCSharp\TestMethodParametersClass.cs" />
     <Compile Include="Tests\BasicCSharp\TestInterfaces.cs" />
     <Compile Include="Tests\BasicCSharp\TestOverloadInstanceMethods.cs" />
     <Compile Include="Tests\BasicCSharp\TestOverloadStaticMethods.cs" />

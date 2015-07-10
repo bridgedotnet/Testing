@@ -770,6 +770,26 @@
         }
     };
 
+    if (!Object.create) {
+        Object.create = function (o, properties) {
+            if (typeof o !== "object" && typeof o !== "function") {
+                throw new TypeError("Object prototype may only be an Object: " + o);
+            }
+            else if (o === null) {
+                throw new Error("This browser's implementation of Object.create is a shim and doesn't support 'null' as the first argument");
+            }
+
+            if (typeof properties != "undefined") {
+                throw new Error("This browser's implementation of Object.create is a shim and doesn't support a second argument");
+            }
+
+            function F() { }
+            F.prototype = o;
+
+            return new F();
+        }
+    }
+
     Bridge = core;
 })();
 
@@ -3721,7 +3741,7 @@ Bridge.define('Bridge.TimeSpan', {
     },
 
     format: function (formatStr, provider) {
-        return this.format(formatStr, provider);
+        return this.toString(formatStr, provider);
     },
 
     toString: function (formatStr, provider) {
@@ -4379,7 +4399,7 @@ Bridge.Class.generic('Bridge.Dictionary$2', function (TKey, TValue) {
         },
 
         getValues: function () {
-            return new Bridge.DictionaryCollection$1(TKey)(this, false);
+            return new Bridge.DictionaryCollection$1(TValue)(this, false);
         },
 
         clear: function () {
@@ -4744,6 +4764,7 @@ Bridge.Class.generic('Bridge.List$1', function (T) {
 
             this.checkIndex(index);
             this.items.splice(index, 1);
+            return true;
         },
 
         removeAt: function (index) {
@@ -8316,3 +8337,11 @@ Bridge.define('Bridge.PropertyChangedEventArgs', {
     Bridge.Linq = {};
     Bridge.Linq.Enumerable = Enumerable;
 })(this);
+
+// module export
+if (typeof define === "function" && define.amd) { // AMD
+    define("bridge", [], function () { return Bridge; });
+}
+else if (typeof module !== "undefined" && module.exports) { // Node
+    module.exports = Bridge;
+}

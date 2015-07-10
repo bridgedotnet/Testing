@@ -37,6 +37,9 @@ namespace ClientTestLibrary
             QUnit.Test("Explicit interface", TestInterfaces.TestExplicitInterfaceMethodAndProperty);
             QUnit.Test("Simple two interfaces", TestInterfaces.TestTwoInterfaces);
 
+            QUnit.Module("Method parameters");
+            QUnit.Test("Default and params", TestMethodParametersClass.Test);
+
             QUnit.Module("System functions");
             QUnit.Test("DateTime", TestDateFunctions.DateTimes);
             QUnit.Test("String", TestStringFunctions.Strings);

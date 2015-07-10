@@ -102,16 +102,16 @@
             }, "null.Contains('Bridge')");
 
             // TEST Concat
-            s = s.concat("2", "3", "4");
+            s = [s, "2", "3", "4"].join('');
             assert.deepEqual(s, "Hello Bridge.NET234", "string.Concat()");
 
-            s = Bridge.String.concatArray([null, true, 3, false]);
+            s = [null, true, 3, false].join('');
             assert.deepEqual(s, "true3false", "string.Concat()");
 
-            s = Bridge.String.concatArray(["1", "2", "3", "4", "5"]);
+            s = [["1", "2", "3", "4", "5"]].toString().split(',').join('');
             assert.deepEqual(s, "12345", "string.Concat()");
 
-            s = Bridge.String.concatArray([1, null, 2, null, 3]);
+            s = [[1, null, 2, null, 3]].toString().split(',').join('');
             assert.deepEqual(s, "123", "string.Concat()");
         }        ,
         test: function (x, y, comparison, testI, expected, expectedIndex, assert) {
