@@ -1,34 +1,58 @@
 ﻿Bridge.define('Generics.GenericClass$1', function (T) { return {
+    instance: null,
+    constructor: function (instance) {
+        this.instance = instance;
+    },
     getSomething: function (input) {
         return input;
     }
 }; });
 
 Bridge.define('Generics.GenericINamedEntity$1', function (T) { return {
+    instance: null,
+    constructor: function (instance) {
+        this.instance = instance;
+    },
     getSomething: function (input) {
         return input;
     }
 }; });
 
 Bridge.define('Generics.GenericNamedEntity$1', function (T) { return {
+    instance: null,
+    constructor: function (instance) {
+        this.instance = instance;
+    },
     getSomething: function (input) {
         return input;
     }
 }; });
 
 Bridge.define('Generics.GenericNew$1', function (T) { return {
+    instance: null,
+    constructor: function (instance) {
+        this.instance = instance;
+    },
     getSomething: function (input) {
         return input;
     }
 }; });
 
 Bridge.define('Generics.GenericNewAndClass$1', function (T) { return {
+    instance: null,
+    constructor: function (instance) {
+        this.instance = instance;
+    },
     getSomething: function (input) {
         return input;
     }
 }; });
 
 Bridge.define('Generics.GenericStruct$1', function (T) { return {
+    instance: null,
+    constructor: function (instance) {
+        this.instance = instance;
+    },
     getSomething: function (input) {
         return input;
     }
@@ -38,14 +62,14 @@ Bridge.define('Generics.implementation', {
     statics: {
         config: {
             init: function () {
-                this.simpleGenericInt = new Generics.SimpleGeneric$1(Bridge.Int)();
-                this.simpleDoubleGenericIntString = new Generics.SimpleDoubleGeneric$2(Bridge.Int,String)();
-                this.genericINamedEntity = new Generics.GenericINamedEntity$1(Generics.INamedEntity)();
-                this.genericNamedEntity = new Generics.GenericNamedEntity$1(Generics.NamedEntity)();
-                this.genericClassObject = new Generics.GenericClass$1(Object)();
-                this.genericClassNamedEntity = new Generics.GenericClass$1(Generics.NamedEntity)();
-                this.genericNew = new Generics.GenericNew$1(Generics.NewClass)();
-                this.genericNewAndClass = new Generics.GenericNewAndClass$1(Generics.NewClass)();
+                this.simpleGenericInt = new Generics.SimpleGeneric$1(Bridge.Int)(1);
+                this.simpleDoubleGenericIntString = new Generics.SimpleDoubleGeneric$2(Bridge.Int,String)("constructor");
+                this.genericINamedEntity = new Generics.GenericINamedEntity$1(Generics.INamedEntity)(new Generics.NamedEntity());
+                this.genericNamedEntity = new Generics.GenericNamedEntity$1(Generics.NamedEntity)(new Generics.NamedEntity());
+                this.genericClassObject = new Generics.GenericClass$1(Object)(2);
+                this.genericClassNamedEntity = new Generics.GenericClass$1(Generics.NamedEntity)(new Generics.NamedEntity());
+                this.genericNew = new Generics.GenericNew$1(Generics.NewClass)(new Generics.NewClass());
+                this.genericNewAndClass = new Generics.GenericNewAndClass$1(Generics.NewClass)(new Generics.NewClass());
             }
         }
     }
@@ -76,6 +100,14 @@ Bridge.define('Generics.NewClass', {
 });
 
 Bridge.define('Generics.SimpleDoubleGeneric$2', function (T, K) { return {
+    instanceT: null,
+    instanceK: null,
+    constructor: function () {
+    },
+    constructor$1: function (instanceT, instanceK) {
+        this.instanceT = instanceT;
+        this.instanceK = instanceK;
+    },
     getSomething: function (input) {
         return input;
     },
@@ -85,10 +117,9 @@ Bridge.define('Generics.SimpleDoubleGeneric$2', function (T, K) { return {
 }; });
 
 Bridge.define('Generics.SimpleGeneric$1', function (T) { return {
-    statics: {
-        getInstance: function () {
-            return null;
-        }
+    instance: null,
+    constructor: function (instance) {
+        this.instance = instance;
     },
     getSomething: function (input) {
         return input;

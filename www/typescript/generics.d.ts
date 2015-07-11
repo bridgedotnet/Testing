@@ -12,21 +12,24 @@ declare module Generics {
     var NamedEntity: NamedEntityFunc;
 
     export interface SimpleGeneric$1<T> {
+        instance: T;
         getSomething(input: T): T;
     }
     export function SimpleGeneric$1<T>(T: {prototype: T}): {
         prototype: SimpleGeneric$1<T>;
-        new (): SimpleGeneric$1<T>;
-        getInstance(): Generics.SimpleGeneric$1<T>;
+        new (instance: T): SimpleGeneric$1<T>;
     }
 
     export interface SimpleDoubleGeneric$2<T,K> {
+        instanceT: T;
+        instanceK: K;
         getSomething(input: T): T;
         getSomethingMore(input: K): K;
     }
     export function SimpleDoubleGeneric$2<T,K>(T: {prototype: T}, K: {prototype: K}): {
         prototype: SimpleDoubleGeneric$2<T,K>;
         new (): SimpleDoubleGeneric$2<T,K>;
+        new (instanceT: T, instanceK: K): SimpleDoubleGeneric$2<T,K>;
     }
 
     export interface NewClass {
@@ -63,51 +66,57 @@ declare module Generics {
     var implementation: implementationFunc;
 
     export interface GenericNewAndClass$1<T> {
+        instance: T;
         getSomething(input: T): T;
     }
     export function GenericNewAndClass$1<T>(T: {prototype: T}): {
         prototype: GenericNewAndClass$1<T>;
-        new (): GenericNewAndClass$1<T>;
+        new (instance: T): GenericNewAndClass$1<T>;
     }
 
     export interface GenericNew$1<T> {
+        instance: T;
         getSomething(input: T): T;
     }
     export function GenericNew$1<T>(T: {prototype: T}): {
         prototype: GenericNew$1<T>;
-        new (): GenericNew$1<T>;
+        new (instance: T): GenericNew$1<T>;
     }
 
     export interface GenericNamedEntity$1<T> {
+        instance: T;
         getSomething(input: T): T;
     }
     export function GenericNamedEntity$1<T>(T: {prototype: T}): {
         prototype: GenericNamedEntity$1<T>;
-        new (): GenericNamedEntity$1<T>;
+        new (instance: T): GenericNamedEntity$1<T>;
     }
 
     export interface GenericINamedEntity$1<T> {
+        instance: T;
         getSomething(input: T): T;
     }
     export function GenericINamedEntity$1<T>(T: {prototype: T}): {
         prototype: GenericINamedEntity$1<T>;
-        new (): GenericINamedEntity$1<T>;
+        new (instance: T): GenericINamedEntity$1<T>;
     }
 
     export interface GenericClass$1<T> {
+        instance: T;
         getSomething(input: T): T;
     }
     export function GenericClass$1<T>(T: {prototype: T}): {
         prototype: GenericClass$1<T>;
-        new (): GenericClass$1<T>;
+        new (instance: T): GenericClass$1<T>;
     }
 
     export interface GenericStruct$1<T> {
+        instance: T;
         getSomething(input: T): T;
     }
     export function GenericStruct$1<T>(T: {prototype: T}): {
         prototype: GenericStruct$1<T>;
-        new (): GenericStruct$1<T>;
+        new (instance: T): GenericStruct$1<T>;
     }
 
 }

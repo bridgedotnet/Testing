@@ -3,7 +3,6 @@
 /// <reference path="..\..\www\typescript\generics.d.ts" />
 QUnit.module("TypeScript - Generics");
 QUnit.test("Check predefined generic instances", function (assert) {
-    // TODO How to create generic instance given by the d.ts
     var g1 = Generics.implementation.simpleGenericInt;
     QUnit.deepEqual(g1.getSomething(5), 5, "simpleGenericInt");
 
@@ -55,4 +54,68 @@ QUnit.test("Check predefined generic instances", function (assert) {
     var r8 = g8.getSomething(i8);
     QUnit.deepEqual(r8, i8, "genericNewAndClass");
     QUnit.deepEqual(r8 instanceof Generics.NewClass, true, "genericNewAndClass instance of NewClass");
+});
+
+QUnit.test("Create generic instances", function (assert) {
+    var name = "My name is Named Entity";
+    var namedEntity = new Generics.NamedEntity();
+    namedEntity.setName$1(name);
+
+    var c10 = new (Generics.SimpleGeneric$1(Number))(5);
+    QUnit.deepEqual(c10.getSomething(7), 7, "simpleGeneric$1(Number) getSomething");
+    QUnit.deepEqual(c10.instance, 5, "simpleGeneric$1(Number) instance");
+
+    var c11 = new (Generics.SimpleGeneric$1(Generics.NamedEntity))(namedEntity);
+    QUnit.deepEqual(c11.getSomething(namedEntity).getName$1(), name, "SimpleGeneric$1(Generics.NamedEntity) getSomething");
+    QUnit.deepEqual(c11.instance, namedEntity, "SimpleGeneric$1(Generics.NamedEntity) instance");
+
+    var c20 = new (Generics.SimpleDoubleGeneric$2(Object, Number))("I'm object", 35);
+    QUnit.deepEqual(c20.getSomething(5), 5, "SimpleDoubleGeneric$2(Object, Number) getSomething");
+    QUnit.deepEqual(c20.getSomethingMore(25), 25, "SimpleDoubleGeneric$2(Object, Number) getSomethingMore");
+    QUnit.deepEqual(c20.instanceT, "I'm object", "SimpleDoubleGeneric$2(Object, Number) instanceT");
+    QUnit.deepEqual(c20.instanceK, 35, "SimpleDoubleGeneric$2(Object, Number) instanceK");
+    console.log(c20.instanceT);
+    console.log(c20.instanceK);
+
+    var c21 = new (Generics.SimpleDoubleGeneric$2(Object, Number))();
+    QUnit.deepEqual(c21.getSomething(7), 7, "SimpleDoubleGeneric$2(Object, Number) parameterless constructor getSomething");
+    QUnit.deepEqual(c21.getSomethingMore(35), 35, "SimpleDoubleGeneric$2(Object, Number) parameterless constructor getSomethingMore");
+    QUnit.deepEqual(c21.instanceT, null, "SimpleDoubleGeneric$2(Object, Number) instanceT");
+    QUnit.deepEqual(c21.instanceK, null, "SimpleDoubleGeneric$2(Object, Number) instanceK");
+
+    var c30 = new (Generics.GenericINamedEntity$1(Generics.NamedEntity))(namedEntity);
+    QUnit.deepEqual(c30.getSomething(namedEntity).getName$1(), name, "GenericINamedEntity$1(Generics.NamedEntity) getSomething");
+    QUnit.deepEqual(c30.instance, namedEntity, "GenericINamedEntity$1(Generics.NamedEntity) instance");
+
+    var c40 = new (Generics.GenericNamedEntity$1(Generics.NamedEntity))(namedEntity);
+    QUnit.deepEqual(c40.getSomething(namedEntity).getName$1(), name, "GenericNamedEntity$1(Generics.NamedEntity) getSomething");
+    QUnit.deepEqual(c40.instance, namedEntity, "GenericNamedEntity$1(Generics.NamedEntity) instance");
+
+    var c50 = new (Generics.GenericClass$1(Generics.NamedEntity))(namedEntity);
+    QUnit.deepEqual(c50.getSomething(namedEntity).getName$1(), name, "GenericClass$1(Generics.NamedEntity) getSomething");
+    QUnit.deepEqual(c50.instance, namedEntity, "GenericClass$1(Generics.NamedEntity) instance");
+    var c51 = new (Generics.GenericClass$1(String))("Trest");
+    QUnit.deepEqual(c51.getSomething("Just string"), "Just string", "GenericClass$1(String) getSomething");
+    QUnit.deepEqual(c51.instance, "Trest", "GenericClass$1(String) instance");
+
+    var c60 = new (Generics.GenericStruct$1(Generics.NamedEntity))(namedEntity);
+    QUnit.deepEqual(c60.getSomething(namedEntity).getName$1(), name, "GenericStruct$1(Generics.NamedEntity) getSomething");
+    QUnit.deepEqual(c60.instance, namedEntity, "GenericStruct$1(Generics.NamedEntity) instance");
+    var c61 = new (Generics.GenericStruct$1(String))("Trest");
+    QUnit.deepEqual(c61.getSomething("Just string"), "Just string", "GenericStruct$1(String) getSomething");
+    QUnit.deepEqual(c61.instance, "Trest", "GenericStruct$1(String) instance");
+
+    var c70 = new (Generics.GenericNew$1(String))("New trest");
+    QUnit.deepEqual(c70.getSomething("Just string"), "Just string", "GenericNew$1(String) getSomething");
+    QUnit.deepEqual(c70.instance, "New trest", "GenericNew$1(String) instance");
+    var c71 = new (Generics.GenericNew$1(Object))("New trest");
+    QUnit.deepEqual(c71.getSomething("Just string"), "Just string", "GenericNew$1(Object) getSomething");
+    QUnit.deepEqual(c71.instance, "New trest", "GenericNew$1(Object) instance");
+
+    var c80 = new (Generics.GenericNewAndClass$1(String))("New trest80");
+    QUnit.deepEqual(c80.getSomething("Just string80"), "Just string80", "GenericNewAndClass$1(String) getSomething");
+    QUnit.deepEqual(c80.instance, "New trest80", "GenericNewAndClass$1(String) instance");
+    var c81 = new (Generics.GenericNewAndClass$1(Object))("New trest81");
+    QUnit.deepEqual(c81.getSomething("Just string81"), "Just string81", "GenericNewAndClass$1(Object) getSomething");
+    QUnit.deepEqual(c81.instance, "New trest81", "GenericNewAndClass$1(Object) instance");
 });
