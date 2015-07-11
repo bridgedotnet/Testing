@@ -17,7 +17,7 @@
             assert.equal(ClientTestLibrary.TestMethodParametersClass.methodDefault(5), 5, "Default parameter - 5");
             assert.equal(ClientTestLibrary.TestMethodParametersClass.methodDefault(10), 10, "Default parameter - 10");
 
-            assert.equal(ClientTestLibrary.TestMethodParametersClass.methodParams([[1, 2, 3]]), 6, "params int[]");
+            assert.equal(ClientTestLibrary.TestMethodParametersClass.methodParams([1, 2, 3]), 6, "params int[]");
         }
     }
 });
