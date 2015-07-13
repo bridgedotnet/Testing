@@ -10,16 +10,16 @@ namespace Functions
             return i;
         }
 
-        // TODO #293 not compiling
-        //public void Join(params int[] numbers)
-        //{
+        public string Join(params int[] numbers)
+        {
+            string s = string.Empty;
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                s = s + numbers[i];
+            }
 
-        //}
-
-        //public void CheckJoinCall(params int[] numbers)
-        //{
-        //    Join(1, 2, 3);
-        //}
+            return s;
+        }
     }
 
     public class Delegates

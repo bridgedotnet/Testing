@@ -6,8 +6,6 @@ QUnit.module("TypeScript - Functions");
 QUnit.test("Parameters", function (assert) {
     var func = new Functions.Parameters();
 
-    assert.expect(0);
-
     // TODO Bridge/#292
     // QUnit.deepEqual(func.getSomething(), 5, "Default parameter #292");
     //function buildName(firstName: string, lastName = "Smith") {
@@ -16,6 +14,9 @@ QUnit.test("Parameters", function (assert) {
     //    return firstName + " " + lastName;
     //}
     //var result1 = buildName("Bob");
+
+    // #293
+    QUnit.deepEqual(func.join([1, 2, 3]), "123", "params argument becomes Array #293");
 });
 
 QUnit.test("Function types", function (assert) {
@@ -23,15 +24,15 @@ QUnit.test("Function types", function (assert) {
 
     var ds: string;
     var di: number;
-    d.methodVoidDelegate = () => di = 7;
-    d.methodStringDelegate = (s: string) => ds = s;
-    d.methodStringDelegateIntResult = (s: string) => s.length;
 
+    d.methodVoidDelegate = () => di = 7;
     d.methodVoidDelegate();
     QUnit.deepEqual(di, 7, "methodVoidDelegate");
 
+    d.methodStringDelegate = (s: string) => ds = s;
     d.methodStringDelegate("Privet");
     QUnit.deepEqual(ds, "Privet", "methodStringDelegate");
 
+    d.methodStringDelegateIntResult = (s: string) => s.length;
     QUnit.deepEqual(d.methodStringDelegateIntResult("Privet"), 6, "methodStringDelegateIntResult");
 });

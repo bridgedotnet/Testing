@@ -77,34 +77,30 @@ function TestInstance3(assert: QUnitAssert, instance: Interfaces.Class3) {
 function TestInstance4(assert: QUnitAssert, instance: Interfaces.Class4) {
     var interface4: Interfaces.Interface4 = instance;
 
-    var b: boolean = false;
-    var s: string;
+    var boolValue = false;
+    var boolRef = { v: boolValue };
 
-    instance.method6(b);
-    //In C# b would be true
-    assert.deepEqual(b, false, "Method6() out bool parameter - In C# b would be true");
+    instance.method6(boolRef);
+    assert.deepEqual(boolRef.v, true, "Method6() out bool parameter");
 
-    instance.method7(1, b);
-    //In C# b would be true
-    assert.deepEqual(b, false, "Method7() int, out bool parameter - In C# b would be true");
+    boolRef.v = false;
+    instance.method7(1, boolRef);
+    assert.deepEqual(boolRef.v, true, "Method7() int, out bool parameter");
 
-    s = "ABC_";
-    instance.method8(s);
-    //In C# s would be true 'ABC_Method8'
-    assert.deepEqual(s, "ABC_", "Method8() ref string parameter - In C# s would be true 'ABC_Method8'");
+    var stringValue = "ABC_";
+    var stringRef = { v: stringValue };
+    instance.method8(stringRef);
+    assert.deepEqual(stringRef.v, "ABC_Method8", "Method8() ref string parameter");
 
-    s = "ABC_";
-    instance.method9(1, s);
-    //In C# s would be true 'ABC_1'
-    assert.deepEqual(s, "ABC_", "Method9() int, ref string parameter - In C# s would be true 'ABC_1'");
+    stringRef.v  = "ABC_";
+    instance.method9(1, stringRef);
+    assert.deepEqual(stringRef.v, "ABC_1", "Method9() int, ref string parameter");
 
-    s = "ABC_";
-    b = false;
-    instance.method10(2, b, s);
-    //In C# b would be true
-    //In C# s would be true 'ABC_2'
-    assert.deepEqual(b, false, "Method10() int, ref bool, out bool parameter - In C# b would be true");
-    assert.deepEqual(s, "ABC_", "Method10() int, ref bool, ref string parameter - In C# s would be true 'ABC_2'");
+    stringRef.v = "ABC_";
+    boolRef.v = false;
+    instance.method10(2, boolRef, stringRef);
+    assert.deepEqual(boolRef.v, true, "Method10() int, ref bool, out bool parameter");
+    assert.deepEqual(stringRef.v, "ABC_2", "Method10() int, ref bool, ref string parameter");
 }
 
 function TestInstance6(assert: QUnitAssert, instance: Interfaces.Class6) {

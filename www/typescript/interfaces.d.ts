@@ -38,11 +38,11 @@ declare module Interfaces {
     var Interface6: Function;
 
     export interface Class4 extends Interfaces.Interface4 {
-        method6(b: boolean): void;
-        method7(i: number, b: boolean): void;
-        method8(s: string): void;
-        method9(i: number, s: string): void;
-        method10(i: number, b: boolean, s: string): void;
+        method6(b: {v: boolean}): void;
+        method7(i: number, b: {v: boolean}): void;
+        method8(s: {v: string}): void;
+        method9(i: number, s: {v: string}): void;
+        method10(i: number, b: {v: boolean}, s: {v: string}): void;
     }
     export interface Class4Func extends Function {
         prototype: Class4;
@@ -51,11 +51,11 @@ declare module Interfaces {
     var Class4: Class4Func;
 
     export interface Interface4 {
-        method6(b: boolean): void;
-        method7(i: number, b: boolean): void;
-        method8(s: string): void;
-        method9(i: number, s: string): void;
-        method10(i: number, b: boolean, s: string): void;
+        method6(b: {v: boolean}): void;
+        method7(i: number, b: {v: boolean}): void;
+        method8(s: {v: string}): void;
+        method9(i: number, s: {v: string}): void;
+        method10(i: number, b: {v: boolean}, s: {v: string}): void;
     }
     var Interface4: Function;
 

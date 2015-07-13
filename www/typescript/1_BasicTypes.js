@@ -70,10 +70,8 @@ QUnit.test("Reserved words", function (assert) {
     assert.deepEqual(k.$yield, "yield", "yield");
     assert.deepEqual(k.any, "any", "any");
     assert.deepEqual(k.$boolean, "boolean", "boolean");
-
-    // TODO #299
-    //assert.deepEqual(k.$constructor, "constructor", "$constructor");
-    assert.deepEqual(k.constructor$1, "new constructor", "constructor$1");
+    assert.deepEqual(k.$constructor$, "constructor", "$constructor$ #299");
+    assert.deepEqual(k.constructor$$1, "new constructor", "constructor$$1");
     assert.deepEqual(k.declare, "declare", "declare");
     assert.deepEqual(k.get, "get", "get");
     assert.deepEqual(k.module, "module", "module");

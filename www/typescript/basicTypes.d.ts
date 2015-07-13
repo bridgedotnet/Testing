@@ -77,8 +77,8 @@ declare module BasicTypes {
         $yield: string;
         any: string;
         $boolean: string;
-        $constructor: string;
-        constructor$1: string;
+        $constructor$: string;
+        constructor$$1: string;
         declare: string;
         get: string;
         module: string;

@@ -34,6 +34,7 @@ namespace Interfaces
 
     public interface Interface4
     {
+        // #291
         void Method6(out bool b);
         void Method7(int i, out bool b);
         void Method8(ref string s);
