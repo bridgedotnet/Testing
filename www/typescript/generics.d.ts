@@ -28,8 +28,12 @@ declare module Generics {
     }
     export function SimpleDoubleGeneric$2<T,K>(T: {prototype: T}, K: {prototype: K}): {
         prototype: SimpleDoubleGeneric$2<T,K>;
-        new (): SimpleDoubleGeneric$2<T,K>;
-        new (instanceT: T, instanceK: K): SimpleDoubleGeneric$2<T,K>;
+        $constructor: {
+            new (): SimpleDoubleGeneric$2<T,K>
+        };
+        constructor$1: {
+            new (instanceT: T, instanceK: K): SimpleDoubleGeneric$2<T,K>
+        };
     }
 
     export interface NewClass {
