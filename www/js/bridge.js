@@ -1,7 +1,7 @@
 /*
- * @version   : 1.6.0 - Bridge.NET
+ * @version   : 1.7.0 - Bridge.NET
  * @author    : Object.NET, Inc. http://bridge.net/
- * @date      : 2015-06-23
+ * @date      : 2015-07-14
  * @copyright : Copyright (c) 2008-2015, Object.NET, Inc. (http://object.net/). All rights reserved.
  * @license   : See license.txt and https://github.com/bridgedotnet/Bridge.NET/blob/master/LICENSE.
  */
@@ -5017,7 +5017,7 @@ Bridge.define('Bridge.Task', {
             return task;
         },
 
-        fromPromise: function (promise, handler) {
+        fromPromise: function (promise, handler, errorHandler) {
             var task = new Bridge.Task();
 
             if (!promise.then) {
@@ -5027,7 +5027,7 @@ Bridge.define('Bridge.Task', {
             promise.then(function () {
                 task.setResult(handler ? handler.apply(null, arguments) : arguments);
             }, function () {
-                task.setError(new Error(Array.prototype.slice.call(arguments, 0)));
+                task.setError(errorHandler ? errorHandler.apply(null, arguments) : new Error(Array.prototype.slice.call(arguments, 0)));
             });
 
             return task;
