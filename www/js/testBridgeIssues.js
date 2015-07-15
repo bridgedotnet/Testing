@@ -74,6 +74,21 @@ Bridge.define('ClientTestLibrary.Bridge277', {
     }
 });
 
+Bridge.define('ClientTestLibrary.Bridge294', {
+    name: null,
+    constructor: function (name) {
+        this.name = name;
+    },
+    getName: function () {
+        return this.name;
+    },
+    getNameThroughGeneric: function (T) {
+        return Bridge.fn.bind(this, function () {
+            return this.name;
+        });
+    }
+});
+
 Bridge.define('ClientTestLibrary.Bridge305', {
     inherits: [Bridge.IEnumerable$1(String)],
     config: {
@@ -174,6 +189,15 @@ Bridge.define('ClientTestLibrary.TestBridgeIssues', {
             assert.expect(1);
 
             assert.equal(ClientTestLibrary.Bridge277.$int, 0, "Enum member with reserved name initialized");
+        },
+        n294: function (assert) {
+            assert.expect(2);
+
+            var c = new ClientTestLibrary.Bridge294("Vlad");
+
+            assert.equal(c.getName(), "Vlad", "Class method works");
+            assert.equal(c.getNameThroughGeneric(Bridge.Int)(), "Vlad", "Generic class method works");
+
         },
         n304: function (assert) {
             assert.expect(2);

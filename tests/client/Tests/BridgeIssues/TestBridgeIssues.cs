@@ -74,6 +74,26 @@ namespace ClientTestLibrary
     }
 
     [FileName("testBridgeIssues.js")]
+    class Bridge294
+    {
+        private readonly string Name;
+        public Bridge294(string name)
+        {
+            this.Name = name;
+        }
+
+        public string GetName()
+        {
+            return this.Name;
+        }
+
+        public string GetNameThroughGeneric<T>()
+        {
+            return this.Name;
+        }
+    }
+
+    [FileName("testBridgeIssues.js")]
     enum Bridge277 { Int }
 
     //[#304]
@@ -191,6 +211,18 @@ namespace ClientTestLibrary
             assert.Expect(1);
 
             assert.Equal(Bridge277.Int, 0, "Enum member with reserved name initialized");
+        }
+
+        // Bridge[#294]
+        public static void N294(Assert assert)
+        {
+            assert.Expect(2);
+
+            var c = new Bridge294("Vlad");
+
+            assert.Equal(c.GetName(), "Vlad", "Class method works");
+            assert.Equal(c.GetNameThroughGeneric<int>(), "Vlad", "Generic class method works");
+
         }
 
         // Bridge[#304]
