@@ -1,4 +1,6 @@
-﻿Bridge.define('Interfaces.Interface1');
+﻿/* global Bridge */
+
+Bridge.define('Interfaces.Interface1');
 
 Bridge.define('Interfaces.Interface2', {
     inherits: [Interfaces.Interface1]

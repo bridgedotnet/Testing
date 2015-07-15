@@ -1,4 +1,6 @@
-﻿Bridge.define('Generics.GenericClass$1', function (T) { return {
+﻿/* global Bridge */
+
+Bridge.define('Generics.GenericClass$1', function (T) { return {
     instance: null,
     constructor: function (instance) {
         this.instance = instance;

@@ -1,4 +1,6 @@
-﻿Bridge.define('Classes.Animal', {
+﻿/* global Bridge */
+
+Bridge.define('Classes.Animal', {
     name: null,
     constructor: function () {
         this.name = "Animal";

@@ -1,4 +1,6 @@
-﻿Bridge.define('ClientTestLibrary.TestInheritance', {
+﻿/* global Bridge */
+
+Bridge.define('ClientTestLibrary.TestInheritance', {
     statics: {
         testA: function (assert) {
             assert.expect(4);

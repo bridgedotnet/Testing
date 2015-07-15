@@ -1,4 +1,6 @@
-﻿Bridge.define('Misc.A.Class1', {
+﻿/* global Bridge */
+
+Bridge.define('Misc.A.Class1', {
     getInt: function (i) {
         return i;
     }

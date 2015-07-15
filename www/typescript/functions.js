@@ -1,4 +1,6 @@
-﻿Bridge.define('Functions.DelegateClass', {
+﻿/* global Bridge */
+
+Bridge.define('Functions.DelegateClass', {
     methodVoidDelegate: null,
     methodStringDelegate: null,
     methodStringDelegateIntResult: null

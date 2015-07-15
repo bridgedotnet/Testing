@@ -1,4 +1,6 @@
-﻿Bridge.define('ClientTestLibrary.TestAbstractClass', {
+﻿/* global Bridge */
+
+Bridge.define('ClientTestLibrary.TestAbstractClass', {
     statics: {
         testB: function (assert) {
             assert.expect(3);

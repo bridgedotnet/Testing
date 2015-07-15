@@ -1,4 +1,6 @@
-﻿Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
+﻿/* global Bridge */
+
+Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
     statics: {
         config: {
             properties: {

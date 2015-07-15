@@ -1,4 +1,6 @@
-﻿Bridge.define('BasicTypes.BasicTypes', {
+﻿/* global Bridge */
+
+Bridge.define('BasicTypes.BasicTypes', {
     boolValue: true,
     stringValue: "Some string value",
     anyValueString: "AnyValueString",

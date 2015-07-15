@@ -1,4 +1,6 @@
-﻿Bridge.define('ClientTestLibrary.TestMethodParametersClass', {
+﻿/* global Bridge */
+
+Bridge.define('ClientTestLibrary.TestMethodParametersClass', {
     statics: {
         methodDefault: function (i) {
             return i;

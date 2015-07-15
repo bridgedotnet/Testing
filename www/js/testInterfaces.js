@@ -1,4 +1,6 @@
-﻿Bridge.define('ClientTestLibrary.TestInterfaces', {
+﻿/* global Bridge */
+
+Bridge.define('ClientTestLibrary.TestInterfaces', {
     statics: {
         testInterfaceMethodAndProperty: function (assert) {
             assert.expect(6);
