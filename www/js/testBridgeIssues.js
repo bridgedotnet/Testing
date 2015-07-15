@@ -135,7 +135,7 @@ Bridge.define('ClientTestLibrary.Bridge306B', {
     inherits: [ClientTestLibrary.Bridge306Component$1(ClientTestLibrary.Bridge306B.Props)],
     statics: {
         $new: function (props) {
-            return ClientTestLibrary.Bridge306Component$1(ClientTestLibrary.Bridge306B.Props).$new(ClientTestLibrary.Bridge306B, ClientTestLibrary.Bridge306B.Props)(props);
+            return ClientTestLibrary.Bridge306Component$1(ClientTestLibrary.Bridge306B.Props).$new(ClientTestLibrary.Bridge306B)(props);
         }
     }
 });
@@ -144,7 +144,7 @@ Bridge.define('ClientTestLibrary.Bridge306A', {
     inherits: [ClientTestLibrary.Bridge306Component$1(ClientTestLibrary.Bridge306A.Props)],
     statics: {
         $new: function (props) {
-            return ClientTestLibrary.Bridge306Component$1(TProps).$new(ClientTestLibrary.Bridge306A, ClientTestLibrary.Bridge306A.Props)(props);
+            return ClientTestLibrary.Bridge306Component$1(ClientTestLibrary.Bridge306A.Props).$new(ClientTestLibrary.Bridge306A)(props);
         }
     }
 });
