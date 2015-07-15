@@ -74,6 +74,29 @@ namespace ClientTestLibrary
     [FileName("testBridgeIssues.js")]
     enum Bridge277 { Int }
 
+    //[#304]
+    [FileName("testBridgeIssues.js")]
+    public class Bridge304 : IBridge304
+    {
+        public string X { get; set; }
+
+        public void F(string x)
+        {
+            this.X = x;
+        }
+
+        public void F()
+        {
+            this.X = "void F()";
+        }
+
+    }
+    [FileName("testBridgeIssues.js")]
+    public interface IBridge304
+    {
+        void F(string x);
+    }
+
     // Tests Bridge GitHub issues
     class TestBridgeIssues
     {
@@ -152,6 +175,21 @@ namespace ClientTestLibrary
             assert.Expect(1);
 
             assert.Equal(Bridge277.Int, 0, "Enum member with reserved name initialized");
+        }
+
+        // Bridge[#304]
+        public static void N304(Assert assert)
+        {
+            assert.Expect(2);
+
+            var c = new Bridge304();
+            IBridge304 i = c;
+
+            i.F("1");
+            assert.Equal(c.X, "1", "Interface method works");
+
+            c.F();
+            assert.Equal(c.X, "void F()", "Class method works");
         }
     }
 }

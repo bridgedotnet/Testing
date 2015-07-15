@@ -1,4 +1,6 @@
-﻿Bridge.define('ClientTestLibrary.Bridge169', {
+﻿/* global Bridge */
+
+Bridge.define('ClientTestLibrary.Bridge169', {
     statics: {
         number: 0,
         m1: function () {
@@ -72,6 +74,23 @@ Bridge.define('ClientTestLibrary.Bridge277', {
     }
 });
 
+Bridge.define('ClientTestLibrary.IBridge304');
+
+Bridge.define('ClientTestLibrary.Bridge304', {
+    inherits: [ClientTestLibrary.IBridge304],
+    config: {
+        properties: {
+            X: null
+        }
+    },
+    f: function (x) {
+        this.setX(x);
+    },
+    f$1: function () {
+        this.setX("void F()");
+    }
+});
+
 Bridge.define('ClientTestLibrary.TestBridgeIssues', {
     statics: {
         n169: function (assert) {
@@ -137,6 +156,18 @@ Bridge.define('ClientTestLibrary.TestBridgeIssues', {
             assert.expect(1);
 
             assert.equal(ClientTestLibrary.Bridge277.$int, 0, "Enum member with reserved name initialized");
+        },
+        n304: function (assert) {
+            assert.expect(2);
+
+            var c = new ClientTestLibrary.Bridge304();
+            var i = c;
+
+            i.f("1");
+            assert.equal(c.getX(), "1", "Interface method works");
+
+            c.f$1();
+            assert.equal(c.getX(), "void F()", "Class method works");
         }
     }
 });

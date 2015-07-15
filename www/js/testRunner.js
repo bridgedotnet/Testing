@@ -1,4 +1,6 @@
-﻿Bridge.define('ClientTestLibrary.RunTests', {
+﻿/* global Bridge */
+
+Bridge.define('ClientTestLibrary.RunTests', {
     statics: {
         config: {
             init: function () {
@@ -54,6 +56,7 @@
             QUnit.test("#272", ClientTestLibrary.TestBridgeIssues.n272);
             QUnit.test("#273", ClientTestLibrary.TestBridgeIssues.n273);
             QUnit.test("#277", ClientTestLibrary.TestBridgeIssues.n277);
+            QUnit.test("#304", ClientTestLibrary.TestBridgeIssues.n304);
 
             QUnit.module("LINQ");
             QUnit.test("Aggregate operators", ClientTestLibrary.Linq.TestLinqAggregateOperators.test);
