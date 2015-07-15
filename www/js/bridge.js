@@ -382,7 +382,11 @@
 	        return to;
 	    },
 
-	    getEnumerator: function (obj) {
+	    getEnumerator: function (obj, suffix) {
+	        if (suffix && obj && obj["getEnumerator" + suffix]) {
+	            return obj["getEnumerator" + suffix].call(obj);
+	        }
+
 	        if (obj && obj.getEnumerator) {
 	            return obj.getEnumerator();
 	        }

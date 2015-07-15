@@ -74,6 +74,24 @@ Bridge.define('ClientTestLibrary.Bridge277', {
     }
 });
 
+Bridge.define('ClientTestLibrary.Bridge305', {
+    inherits: [Bridge.IEnumerable$1(String)],
+    config: {
+        properties: {
+            Items: null
+        }
+    },
+    constructor: function (items) {
+        this.setItems(new Bridge.List$1(String)(items));
+    },
+    getEnumerator: function () {
+        return this.getEnumerator$1();
+    },
+    getEnumerator$1: function () {
+        return this.getItems().getEnumerator();
+    }
+});
+
 Bridge.define('ClientTestLibrary.IBridge304');
 
 Bridge.define('ClientTestLibrary.Bridge304', {
@@ -168,6 +186,21 @@ Bridge.define('ClientTestLibrary.TestBridgeIssues', {
 
             c.f$1();
             assert.equal(c.getX(), "void F()", "Class method works");
+        },
+        n305: function (assert) {
+            var $t;
+            assert.expect(1);
+
+            var c = new ClientTestLibrary.Bridge305(["1", "2", "3"]);
+
+            var result = "";
+            $t = Bridge.getEnumerator(c);
+            while ($t.moveNext()) {
+                var item = $t.getCurrent();
+                result = result + item;
+            }
+
+            assert.equal(result, "123", "IEnumerator works");
         }
     }
 });

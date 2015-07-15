@@ -1,6 +1,8 @@
 ﻿using Bridge;
 using Bridge.QUnit;
+
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace ClientTestLibrary
@@ -97,6 +99,20 @@ namespace ClientTestLibrary
         void F(string x);
     }
 
+    [FileName("testBridgeIssues.js")]
+    public class Bridge305 : IEnumerable<string>
+    {
+        public List<string> Items { get; private set; }
+
+        public Bridge305(string[] items)
+        {
+            Items = new List<string>(items);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
+        public IEnumerator<string> GetEnumerator() { return Items.GetEnumerator(); }
+    }
+
     // Tests Bridge GitHub issues
     class TestBridgeIssues
     {
@@ -190,6 +206,22 @@ namespace ClientTestLibrary
 
             c.F();
             assert.Equal(c.X, "void F()", "Class method works");
+        }
+
+        // Bridge[#305]
+        public static void N305(Assert assert)
+        {
+            assert.Expect(1);
+
+            var c = new Bridge305(new[] { "1", "2", "3" });
+
+            var result = string.Empty;
+            foreach (var item in c)
+            {
+                result = result + item;
+            }
+
+            assert.Equal(result, "123", "IEnumerator works");
         }
     }
 }
