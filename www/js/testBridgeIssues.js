@@ -107,6 +107,48 @@ Bridge.define('ClientTestLibrary.Bridge305', {
     }
 });
 
+Bridge.define('ClientTestLibrary.Bridge306A.Props', {
+    name: null,
+    toString: function () {
+        return this.name;
+    }
+});
+
+Bridge.define('ClientTestLibrary.Bridge306B.Props', {
+    name: null,
+    toString: function () {
+        return this.name;
+    }
+});
+
+Bridge.define('ClientTestLibrary.Bridge306Component$1', function (TProps) { return {
+    statics: {
+        $new: function (TComponent) {
+            return Bridge.fn.bind(this, function (props) {
+                return Bridge.getTypeName(props) + ":" + props;
+            });
+        }
+    }
+}; });
+
+Bridge.define('ClientTestLibrary.Bridge306B', {
+    inherits: [ClientTestLibrary.Bridge306Component$1(ClientTestLibrary.Bridge306B.Props)],
+    statics: {
+        $new: function (props) {
+            return ClientTestLibrary.Bridge306Component$1(ClientTestLibrary.Bridge306B.Props).$new(ClientTestLibrary.Bridge306B, ClientTestLibrary.Bridge306B.Props)(props);
+        }
+    }
+});
+
+Bridge.define('ClientTestLibrary.Bridge306A', {
+    inherits: [ClientTestLibrary.Bridge306Component$1(ClientTestLibrary.Bridge306A.Props)],
+    statics: {
+        $new: function (props) {
+            return ClientTestLibrary.Bridge306Component$1(TProps).$new(ClientTestLibrary.Bridge306A, ClientTestLibrary.Bridge306A.Props)(props);
+        }
+    }
+});
+
 Bridge.define('ClientTestLibrary.IBridge304');
 
 Bridge.define('ClientTestLibrary.Bridge304', {
@@ -225,6 +267,19 @@ Bridge.define('ClientTestLibrary.TestBridgeIssues', {
             }
 
             assert.equal(result, "123", "IEnumerator works");
+        }        ,
+        n306: function (assert) {
+            assert.expect(2);
+
+            var b = ClientTestLibrary.Bridge306B.$new(Bridge.merge(new ClientTestLibrary.Bridge306B.Props(), {
+                name: "B"
+            } ));
+            assert.equal(b, "ClientTestLibrary.Bridge306B.Props:B", "Bridge306B.New() works");
+
+            var a = ClientTestLibrary.Bridge306A.$new(Bridge.merge(new ClientTestLibrary.Bridge306A.Props(), {
+                name: "A"
+            } ));
+            assert.equal(a, "ClientTestLibrary.Bridge306A.Props:A", "Bridge306A.New() works");
         }
     }
 });

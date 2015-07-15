@@ -133,6 +133,53 @@ namespace ClientTestLibrary
         public IEnumerator<string> GetEnumerator() { return Items.GetEnumerator(); }
     }
 
+    [FileName("testBridgeIssues.js")]
+    public class Bridge306A : Bridge306Component<Bridge306A.Props>
+    {
+        public static string New(Props props)
+        {
+            return New<Bridge306A>(props);
+        }
+
+        public class Props
+        {
+            public string Name;
+
+            public override string ToString()
+            {
+                return Name;
+            }
+        }
+    }
+
+    [FileName("testBridgeIssues.js")]
+    public class Bridge306B : Bridge306Component<Bridge306B.Props>
+    {
+        public static string New(Props props)
+        {
+            return Bridge306Component<Bridge306B.Props>.New<Bridge306B>(props);
+        }
+
+        public class Props
+        {
+            public string Name;
+
+            public override string ToString()
+            {
+                return Name;
+            }
+        }
+    }
+
+    [FileName("testBridgeIssues.js")]
+    public abstract class Bridge306Component<TProps>
+    {
+        public static string New<TComponent>(TProps props) where TComponent : Bridge306Component<TProps>
+        {
+            return props.GetClassName() + ":" + props;
+        }
+    }
+
     // Tests Bridge GitHub issues
     class TestBridgeIssues
     {
@@ -254,6 +301,18 @@ namespace ClientTestLibrary
             }
 
             assert.Equal(result, "123", "IEnumerator works");
+        }
+
+        // Bridge[#306]
+        public static void N306(Assert assert)
+        {
+            assert.Expect(2);
+
+            var b = Bridge306B.New(new Bridge306B.Props() { Name = "B" });
+            assert.Equal(b, "ClientTestLibrary.Bridge306B.Props:B", "Bridge306B.New() works");
+
+            var a = Bridge306A.New(new Bridge306A.Props() { Name = "A" });
+            assert.Equal(a, "ClientTestLibrary.Bridge306A.Props:A", "Bridge306A.New() works");
         }
     }
 }
