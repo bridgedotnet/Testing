@@ -15,7 +15,7 @@ namespace ClientTestLibrary
             //In PhantomJS some correct tests failed. We will skip them in this environment.
             var isPhantomJs = Utilities.BrowserHelper.IsPhantomJs();
 
-            var expectedCount = isPhantomJs ? 24 : 48;
+            var expectedCount = isPhantomJs ? 28 : 48;
             assert.Expect(expectedCount);
 
             // TEST ToLower, ToLowerCase, ToLocaleLowerCase

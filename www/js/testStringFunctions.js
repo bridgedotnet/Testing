@@ -7,7 +7,7 @@ Bridge.define('ClientTestLibrary.TestStringFunctions', {
             //In PhantomJS some correct tests failed. We will skip them in this environment.
             var isPhantomJs = ClientTestLibrary.Utilities.BrowserHelper.isPhantomJs();
 
-            var expectedCount = isPhantomJs ? 24 : 48;
+            var expectedCount = isPhantomJs ? 28 : 48;
             assert.expect(expectedCount);
 
             // TEST ToLower, ToLowerCase, ToLocaleLowerCase
