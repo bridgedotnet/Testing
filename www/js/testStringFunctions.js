@@ -7,16 +7,28 @@ Bridge.define('ClientTestLibrary.TestStringFunctions', {
             //In PhantomJS some correct tests failed. We will skip them in this environment.
             var isPhantomJs = ClientTestLibrary.Utilities.BrowserHelper.isPhantomJs();
 
-            var expectedCount = isPhantomJs ? 24 : 44;
+            var expectedCount = isPhantomJs ? 24 : 48;
             assert.expect(expectedCount);
 
-            // TEST ToLowerCase
+            // TEST ToLower, ToLowerCase, ToLocaleLowerCase
             var s = "HELLO".toLowerCase();
+            assert.deepEqual(s, "hello", "'HELLO'.ToLower()");
+
+            s = "HELLO".toLowerCase();
             assert.deepEqual(s, "hello", "'HELLO'.ToLowerCase()");
 
-            // TEST ToUpperCase
+            s = "HELLO".toLocaleLowerCase();
+            assert.deepEqual(s, "hello", "'HELLO'.ToLocaleLowerCase()");
+
+            // TEST ToUpper, ToUpperCase, ToLocaleUpperCase
+            s = "hello".toUpperCase();
+            assert.deepEqual(s, "HELLO", "'hello'.ToUpper()");
+
             s = "hello".toUpperCase();
             assert.deepEqual(s, "HELLO", "'hello'.ToUpperCase()");
+
+            s = "HELLO".toLocaleUpperCase();
+            assert.deepEqual(s, "HELLO", "'hello'.ToLocaleUpperCase()");
 
             s = "Hello Bridge.NET";
             // TEST String(string) constructor

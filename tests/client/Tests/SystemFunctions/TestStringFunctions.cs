@@ -1,4 +1,5 @@
 ﻿using Bridge;
+using Bridge.Html5;
 using Bridge.QUnit;
 using System;
 using System.Text;
@@ -14,16 +15,28 @@ namespace ClientTestLibrary
             //In PhantomJS some correct tests failed. We will skip them in this environment.
             var isPhantomJs = Utilities.BrowserHelper.IsPhantomJs();
 
-            var expectedCount = isPhantomJs ? 24 : 44;
+            var expectedCount = isPhantomJs ? 24 : 48;
             assert.Expect(expectedCount);
 
-            // TEST ToLowerCase
+            // TEST ToLower, ToLowerCase, ToLocaleLowerCase
             var s = "HELLO".ToLower();
+            assert.DeepEqual(s, "hello", "'HELLO'.ToLower()");
+
+            s = "HELLO".ToLowerCase();
             assert.DeepEqual(s, "hello", "'HELLO'.ToLowerCase()");
 
-            // TEST ToUpperCase
+            s = "HELLO".ToLocaleLowerCase();
+            assert.DeepEqual(s, "hello", "'HELLO'.ToLocaleLowerCase()");
+
+            // TEST ToUpper, ToUpperCase, ToLocaleUpperCase
             s = "hello".ToUpper();
+            assert.DeepEqual(s, "HELLO", "'hello'.ToUpper()");
+
+            s = "hello".ToUpperCase();
             assert.DeepEqual(s, "HELLO", "'hello'.ToUpperCase()");
+
+            s = "HELLO".ToLocaleUpperCase();
+            assert.DeepEqual(s, "HELLO", "'hello'.ToLocaleUpperCase()");
 
             s = "Hello Bridge.NET";
             // TEST String(string) constructor
