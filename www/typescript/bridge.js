@@ -383,6 +383,10 @@
 	    },
 
 	    getEnumerator: function (obj, suffix) {
+	        if (typeof obj === "string") {
+	            obj = Bridge.String.toCharArray(obj);
+	        }
+
 	        if (suffix && obj && obj["getEnumerator" + suffix]) {
 	            return obj["getEnumerator" + suffix].call(obj);
 	        }
@@ -497,6 +501,10 @@
             else if (Bridge.isNull(a) && Bridge.isNull(b)) {
                 return true;
             }
+            else if (Bridge.isNull(a) !== Bridge.isNull(b)) {
+                return false;
+            }
+
 
             if (typeof a == "object" && typeof b == "object") {
                 return (Bridge.getHashCode(a) === Bridge.getHashCode(b)) && Bridge.objectEquals(a, b);
@@ -635,6 +643,10 @@
             var s = String.fromCharCode(c);
 
             return s !== s.toLowerCase() && s === s.toUpperCase();
+        },
+
+        coalesce: function (a, b) {
+            return Bridge.hasValue(a) ? a : b;
         },
 
         fn: {
@@ -924,6 +936,12 @@
 	                return null;
 	            }
 	        }
+
+	        if (arguments[0] == null)
+	            return null;
+
+	        if (arguments[0].apply == undefined)
+	            return arguments[0];
 
 	        return arguments[0].apply(null, Array.prototype.slice.call(arguments, 1));
         }
@@ -1312,6 +1330,14 @@
                 throw new Bridge.ArgumentOutOfRangeException("length", "must be non-negative");
             }
 
+            if (!Bridge.hasValue(startIndex)) {
+                startIndex = 0;
+            }
+
+            if (!Bridge.hasValue(length)) {
+                length = str.length;
+            }
+
             var arr = [];
 
             for (var i = startIndex; i < startIndex + length; i++) {
@@ -1319,6 +1345,13 @@
             }
 
             return arr;
+        },
+
+        replaceAll: function (str, a, b) {
+            a = a.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+            var reg = new RegExp(a, "g");
+
+            return str.replace(reg, b);
         }
     };
 
@@ -4038,6 +4071,38 @@ Bridge.define('Bridge.Text.StringBuilder', {
         }
     }
 });
+// @source Text/Regex.js
+
+(function () {
+    specials = [
+            // order matters for these
+                "-"
+            , "["
+            , "]"
+            // order doesn't matter for any of these
+            , "/"
+            , "{"
+            , "}"
+            , "("
+            , ")"
+            , "*"
+            , "+"
+            , "?"
+            , "."
+            , "\\"
+            , "^"
+            , "$"
+            , "|"
+    ],
+
+    regex = RegExp('[' + specials.join('\\') + ']', 'g');
+
+    var regexpEscape = function (s) {
+        return s.replace(regex, "\\$&");
+    };
+
+    Bridge.regexpEscape = regexpEscape;
+})();
 // @source Browser.js
 
 (function () {
@@ -5289,7 +5354,7 @@ Bridge.define('Bridge.TaskStatus', {
             checksum = 0;
 
             for (i = (2 - (value.length % 2)) ; i <= value.length; i += 2) {
-                checksum += parseInt(ccnum.charAt(i - 1));
+                checksum += parseInt(value.charAt(i - 1));
             }
 
             // Analyze odd digits in even length strings or even digits in odd length strings.

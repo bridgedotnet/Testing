@@ -37,6 +37,7 @@ Bridge.define('ClientTestLibrary.Class84', {
         try {
         }
         catch ($e) {
+            $e = Bridge.Exception.create($e);
         }
     }
 });

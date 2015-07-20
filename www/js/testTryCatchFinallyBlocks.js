@@ -86,6 +86,7 @@ Bridge.define('ClientTestLibrary.TestTryCatchFinallyBlocks', {
                 data.setCount(data.getCount()+1);
             }
             catch ($e) {
+                $e = Bridge.Exception.create($e);
             }
             finally {
                 data.setCount(data.getCount()+1);
@@ -98,6 +99,7 @@ Bridge.define('ClientTestLibrary.TestTryCatchFinallyBlocks', {
                 data.setCount(data.getCount() - 1);
             }
             catch ($e) {
+                $e = Bridge.Exception.create($e);
                 data.setCount(data.getCount() + 2);
             }
             finally {
@@ -111,6 +113,7 @@ Bridge.define('ClientTestLibrary.TestTryCatchFinallyBlocks', {
                 data.setCount(data.getCount() - 1);
             }
             catch ($e) {
+                $e = Bridge.Exception.create($e);
                 data.setCount(data.getCount() + 2);
             }
             finally {
@@ -200,6 +203,7 @@ Bridge.define('ClientTestLibrary.TestTryCatchFinallyBlocks', {
                 ClientTestLibrary.TestTryCatchFinallyBlocks.setIsCTry(false);
             }
             catch ($e) {
+                $e = Bridge.Exception.create($e);
                 ClientTestLibrary.TestTryCatchFinallyBlocks.setIsCCatch(true);
                 throw $e;
             }
@@ -218,6 +222,7 @@ Bridge.define('ClientTestLibrary.TestTryCatchFinallyBlocks', {
                 ClientTestLibrary.TestTryCatchFinallyBlocks.setIsDTry(false);
             }
             catch (ex) {
+                ex = Bridge.Exception.create(ex);
                 ClientTestLibrary.TestTryCatchFinallyBlocks.setIsDCatch(true);
                 throw ex;
             }

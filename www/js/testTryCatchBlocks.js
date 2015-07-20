@@ -62,6 +62,7 @@ Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
                 return s;
             }
             catch ($e) {
+                $e = Bridge.Exception.create($e);
                 return "";
             }
         },
@@ -70,6 +71,7 @@ Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
                 throw new Bridge.Exception();
             }
             catch ($e) {
+                $e = Bridge.Exception.create($e);
             }
         },
         tryCatchWithCaughtTypedException: function () {
@@ -77,6 +79,7 @@ Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
                 throw new Bridge.Exception();
             }
             catch ($e) {
+                $e = Bridge.Exception.create($e);
             }
         },
         tryCatchWithCaughtArgumentException: function () {
@@ -149,6 +152,7 @@ Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
                 ClientTestLibrary.TestTryCatchBlocks.setIsCTry(false);
             }
             catch ($e) {
+                $e = Bridge.Exception.create($e);
                 ClientTestLibrary.TestTryCatchBlocks.setIsCCatch(true);
                 throw $e;
             }
@@ -165,6 +169,7 @@ Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
                 ClientTestLibrary.TestTryCatchBlocks.setIsDTry(false);
             }
             catch (ex) {
+                ex = Bridge.Exception.create(ex);
                 ClientTestLibrary.TestTryCatchBlocks.setIsDCatch(true);
                 throw ex;
             }
