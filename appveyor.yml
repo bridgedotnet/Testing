@@ -31,7 +31,7 @@ skip_tags: true
 #---------------------------------#
 
 # Operating system (build VM template)
-os: Windows Server 2012
+os: Visual Studio 2015 RC
 
 # scripts that are called at very beginning, before repo cloning
 init:
@@ -48,7 +48,7 @@ shallow_clone: false                 # default is "false"
 
 # environment variables
 environment:
-  VisualStudioVersion: 12
+  VisualStudioVersion: 14
   # this is how to set encrypted variable. Go to "Encrypt data" page in account menu to encrypt data.
   #my_secure_var1:
     #secure: FW3tJ3fMncxvs58/ifSP7w==
