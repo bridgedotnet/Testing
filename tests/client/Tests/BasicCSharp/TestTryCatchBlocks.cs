@@ -1,6 +1,8 @@
 ﻿using Bridge.QUnit;
 using System;
 
+#pragma warning disable 162	// CS0162: Unreachable code detected. Disable because we want to assert that code does not reach unreachable parts
+
 namespace ClientTestLibrary
 {
     // Tests try and catch blocks
