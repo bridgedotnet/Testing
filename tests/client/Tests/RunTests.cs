@@ -49,6 +49,7 @@ namespace ClientTestLibrary
             QUnit.Test("Try/Catch simpe", TestTryCatchBlocks.SimpleTryCatch);
             QUnit.Test("Try/Catch caught exceptions", TestTryCatchBlocks.CaughtExceptions);
             QUnit.Test("Try/Catch thrown exceptions", TestTryCatchBlocks.ThrownExceptions);
+            QUnit.Test("#320", TestTryCatchBlocks.Bridge320);
             QUnit.Test("Try/Catch/Finally simple", TestTryCatchFinallyBlocks.SimpleTryCatchFinally);
             QUnit.Test("Try/Catch/Finally caught exceptions", TestTryCatchFinallyBlocks.CaughtExceptions);
             QUnit.Test("Try/Catch/Finally thrown exceptions", TestTryCatchFinallyBlocks.ThrownExceptions);

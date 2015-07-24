@@ -57,6 +57,21 @@ Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
             assert.ok(ClientTestLibrary.TestTryCatchBlocks.getIsDTry(), "D. exception caught and re-thrown  - try section called");
             assert.ok(ClientTestLibrary.TestTryCatchBlocks.getIsDCatch(), "D. exception caught and re-thrown  - catch section called");
         },
+        bridge320: function (assert) {
+            assert.expect(1);
+
+            var exceptionMessage = "";
+
+            try {
+                "someString".SomeNotExistingMethod();
+            }
+            catch (ex) {
+                ex = Bridge.Exception.create(ex);
+                exceptionMessage = ex.getMessage();
+            }
+
+            assert.equal(exceptionMessage, "\"someString\".SomeNotExistingMethod is not a function", "ex.Message works on built-in JavaScript type");
+        },
         tryCatch: function (s) {
             try {
                 return s;

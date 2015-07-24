@@ -1,4 +1,5 @@
-﻿using Bridge.QUnit;
+﻿using Bridge;
+using Bridge.QUnit;
 using System;
 
 #pragma warning disable 162	// CS0162: Unreachable code detected. Disable because we want to assert that code does not reach unreachable parts
@@ -56,6 +57,24 @@ namespace ClientTestLibrary
             assert.Throws(TryCatchWithRethrowEx, new Func<object, bool>((error) => { return error.ToString() == "catch me"; }), "D. Rethrow with parameter");
             assert.Ok(IsDTry, "D. exception caught and re-thrown  - try section called");
             assert.Ok(IsDCatch, "D. exception caught and re-thrown  - catch section called");
+        }
+
+        public static void Bridge320(Assert assert)
+        {
+            assert.Expect(1);
+
+            string exceptionMessage = string.Empty;
+
+            try
+            {
+                Script.Write("\"someString\".SomeNotExistingMethod();");
+            }
+            catch (Exception ex)
+            {
+                exceptionMessage = ex.Message;
+            }
+
+            assert.Equal(exceptionMessage, "\"someString\".SomeNotExistingMethod is not a function", "ex.Message works on built-in JavaScript type");
         }
 
         #endregion Tests
