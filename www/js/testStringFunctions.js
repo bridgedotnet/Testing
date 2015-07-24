@@ -132,6 +132,28 @@ Bridge.define('ClientTestLibrary.TestStringFunctions', {
             var cmpValue = 0;
             cmpValue = Bridge.String.compare(testI[x], testI[y], comparison);
             assert.deepEqual(cmpValue, expected[expectedIndex], "String.Compare('" + testI[x] + "', '" + testI[y] + "'," + comparison + ")");
+        },
+        enumerable: function (assert) {
+            var $t;
+            assert.expect(5);
+
+            var a;
+            var i = 0;
+            var result = new Array(5);
+            $t = Bridge.getEnumerator("danny");
+            while ($t.moveNext()) {
+                var c = $t.getCurrent();
+                a = c;
+                result[i] = a;
+
+                i++;
+            }
+
+            assert.equal(result[0], 100);
+            assert.equal(result[1], 97);
+            assert.equal(result[2], 110);
+            assert.equal(result[3], 110);
+            assert.equal(result[4], 121);
         }
     }
 });

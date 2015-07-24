@@ -149,5 +149,27 @@ namespace ClientTestLibrary
             cmpValue = String.Compare(testI[x], testI[y], comparison);
             assert.DeepEqual(cmpValue, expected[expectedIndex], "String.Compare('" + testI[x] + "', '" + testI[y] + "'," + comparison + ")");
         }
+
+        public static void Enumerable(Assert assert)
+        {
+            assert.Expect(5);
+
+            char a;
+            int i = 0;
+            var result = new char[5];
+            foreach (var c in "danny")
+            {
+                a = c;
+                result[i] = a;
+
+                i++;
+            }
+
+            assert.Equal(result[0], 'd');
+            assert.Equal(result[1], 'a');
+            assert.Equal(result[2], 'n');
+            assert.Equal(result[3], 'n');
+            assert.Equal(result[4], 'y');
+        }
     }
 }
