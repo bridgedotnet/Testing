@@ -65,6 +65,7 @@ Bridge.define('ClientTestLibrary.RunTests', {
 
             QUnit.module("LINQ");
             QUnit.test("Aggregate operators", ClientTestLibrary.Linq.TestLinqAggregateOperators.test);
+            QUnit.test("Aggregate operators", ClientTestLibrary.Linq.TestLinqAggregateOperators.bridge315);
             QUnit.test("Conversion operators", ClientTestLibrary.Linq.TestLinqConversionOperators.test);
             QUnit.test("Element operators", ClientTestLibrary.Linq.TestLinqElementOperators.test);
             QUnit.test("Generation operators", ClientTestLibrary.Linq.TestLinqGenerationOperators.test);

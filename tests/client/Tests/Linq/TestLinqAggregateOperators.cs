@@ -1,5 +1,8 @@
-﻿using Bridge.QUnit;
+﻿using Bridge;
+using Bridge.QUnit;
+using Bridge.Html5;
 using ClientTestLibrary.Utilities;
+
 using System.Linq;
 
 namespace ClientTestLibrary.Linq
@@ -193,5 +196,16 @@ namespace ClientTestLibrary.Linq
 
             assert.DeepEqual(endBalance, 20, "Aggregate() balance");
         }
+
+        public static void Bridge315(Assert assert)
+        {
+            assert.Expect(1);
+
+            var q = "a,b,c,a".ToUpperCase().Split(",").Aggregate("", (workingSentence, next) => next + " " + workingSentence);
+
+            assert.Equal(q, "A C B A ", "Enumerable.Aggregate");
+
+        }
+
     }
 }

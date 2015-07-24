@@ -190,6 +190,16 @@ Bridge.define('ClientTestLibrary.Linq.TestLinqAggregateOperators', {
             });
 
             assert.deepEqual(endBalance, 20, "Aggregate() balance");
+        },
+        bridge315: function (assert) {
+            assert.expect(1);
+
+            var q = Bridge.Linq.Enumerable.from("a,b,c,a".toUpperCase().split(",")).aggregate("", function (workingSentence, next) {
+                return next + " " + workingSentence;
+            });
+
+            assert.equal(q, "A C B A ", "Enumerable.Aggregate");
+
         }
     }
 });
