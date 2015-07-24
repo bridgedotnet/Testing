@@ -74,7 +74,11 @@ namespace ClientTestLibrary
                 exceptionMessage = ex.Message;
             }
 
-            assert.Equal(exceptionMessage, "\"someString\".SomeNotExistingMethod is not a function", "ex.Message works on built-in JavaScript type");
+            var expectedMessage = Utilities.BrowserHelper.IsPhantomJs()
+                ? "undefined is not a constructor (evaluating '\"someString\".SomeNotExistingMethod()')"
+                : "\"someString\".SomeNotExistingMethod is not a function";
+
+            assert.Equal(exceptionMessage, expectedMessage, "ex.Message works on built-in JavaScript type");
         }
 
         #endregion Tests
