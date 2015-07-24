@@ -42,6 +42,7 @@ namespace ClientTestLibrary
 
             QUnit.Module("System functions");
             QUnit.Test("DateTime", TestDateFunctions.DateTimes);
+            QUnit.Test("DateTime", TestDateFunctions.Bridge329);
             QUnit.Test("String", TestStringFunctions.Strings);
             QUnit.Test("String Enumerable", TestStringFunctions.Enumerable);
             QUnit.Test("StringBuilder", TestStringBuilderFunctions.StringBuilders);
