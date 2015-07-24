@@ -77,8 +77,6 @@ QUnit.test("Create generic instances", function (assert) {
     QUnit.deepEqual(c20.getSomethingMore(25), 25, "SimpleDoubleGeneric$2(Object, Number) getSomethingMore");
     QUnit.deepEqual(c20.instanceT, "I'm object", "SimpleDoubleGeneric$2(Object, Number) instanceT");
     QUnit.deepEqual(c20.instanceK, 35, "SimpleDoubleGeneric$2(Object, Number) instanceK");
-    console.log(c20.instanceT);
-    console.log(c20.instanceK);
 
     var c21 = new (Generics.SimpleDoubleGeneric$2(Object, Number).$constructor)();
     QUnit.deepEqual(c21.getSomething(7), 7, "SimpleDoubleGeneric$2(Object, Number) parameterless constructor getSomething");
