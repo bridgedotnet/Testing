@@ -70,9 +70,11 @@ Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
                 exceptionMessage = ex.getMessage();
             }
 
-            var expectedMessage = ClientTestLibrary.Utilities.BrowserHelper.isPhantomJs() ? "undefined is not a constructor (evaluating '\"someString\".SomeNotExistingMethod()')" : "\"someString\".SomeNotExistingMethod is not a function";
+            //var expectedMessage = Utilities.BrowserHelper.IsPhantomJs()
+            //    ? "undefined is not a constructor (evaluating '\"someString\".SomeNotExistingMethod()')"
+            //    : "\"someString\".SomeNotExistingMethod is not a function";
 
-            assert.equal(exceptionMessage, expectedMessage, "ex.Message works on built-in JavaScript type");
+            assert.ok(Bridge.String.contains(exceptionMessage,"SomeNotExistingMethod"), "ex.Message works on built-in JavaScript type");
         },
         tryCatch: function (s) {
             try {
