@@ -1,31 +1,266 @@
 ﻿/* global Bridge */
 
+/**
+ * @class ClientTestLibrary.Data
+ */
 Bridge.define('ClientTestLibrary.Data', {
     config: {
         properties: {
+            /**
+             * @instance
+             * @public
+             * @this ClientTestLibrary.Data
+             * @memberof ClientTestLibrary.Data
+             * @function getCount
+             * @return  {number}        
+             */
+            /**
+             * @instance
+             * @public
+             * @this ClientTestLibrary.Data
+             * @memberof ClientTestLibrary.Data
+             * @function setCount
+             * @param   {number}    value    
+             * @return  {void}               
+             */
             Count: 0
         }
     }
 });
 
+/**
+ * @class ClientTestLibrary.TestTryCatchFinallyBlocks
+ */
 Bridge.define('ClientTestLibrary.TestTryCatchFinallyBlocks', {
     statics: {
         config: {
             properties: {
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function getIsATry
+                 * @return  {boolean}        
+                 */
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function setIsATry
+                 * @param   {boolean}    value    
+                 * @return  {void}                
+                 */
                 IsATry: false,
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function getIsACatch
+                 * @return  {boolean}        
+                 */
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function setIsACatch
+                 * @param   {boolean}    value    
+                 * @return  {void}                
+                 */
                 IsACatch: false,
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function getIsAFinally
+                 * @return  {boolean}        
+                 */
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function setIsAFinally
+                 * @param   {boolean}    value    
+                 * @return  {void}                
+                 */
                 IsAFinally: false,
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function getIsBTry
+                 * @return  {boolean}        
+                 */
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function setIsBTry
+                 * @param   {boolean}    value    
+                 * @return  {void}                
+                 */
                 IsBTry: false,
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function getIsBCatch
+                 * @return  {boolean}        
+                 */
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function setIsBCatch
+                 * @param   {boolean}    value    
+                 * @return  {void}                
+                 */
                 IsBCatch: false,
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function getIsBFinally
+                 * @return  {boolean}        
+                 */
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function setIsBFinally
+                 * @param   {boolean}    value    
+                 * @return  {void}                
+                 */
                 IsBFinally: false,
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function getIsCTry
+                 * @return  {boolean}        
+                 */
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function setIsCTry
+                 * @param   {boolean}    value    
+                 * @return  {void}                
+                 */
                 IsCTry: false,
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function getIsCCatch
+                 * @return  {boolean}        
+                 */
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function setIsCCatch
+                 * @param   {boolean}    value    
+                 * @return  {void}                
+                 */
                 IsCCatch: false,
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function getIsCFinally
+                 * @return  {boolean}        
+                 */
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function setIsCFinally
+                 * @param   {boolean}    value    
+                 * @return  {void}                
+                 */
                 IsCFinally: false,
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function getIsDTry
+                 * @return  {boolean}        
+                 */
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function setIsDTry
+                 * @param   {boolean}    value    
+                 * @return  {void}                
+                 */
                 IsDTry: false,
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function getIsDCatch
+                 * @return  {boolean}        
+                 */
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function setIsDCatch
+                 * @param   {boolean}    value    
+                 * @return  {void}                
+                 */
                 IsDCatch: false,
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function getIsDFinally
+                 * @return  {boolean}        
+                 */
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+                 * @function setIsDFinally
+                 * @param   {boolean}    value    
+                 * @return  {void}                
+                 */
                 IsDFinally: false
             }
         },
+        /**
+         * @static
+         * @public
+         * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+         * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         simpleTryCatchFinally: function (assert) {
             assert.expect(1);
 
@@ -34,6 +269,14 @@ Bridge.define('ClientTestLibrary.TestTryCatchFinallyBlocks', {
 
             assert.equal(data.getCount(), 2, "TryCatchFinally() executes");
         },
+        /**
+         * @static
+         * @public
+         * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+         * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         caughtExceptions: function (assert) {
             assert.expect(4);
 
@@ -53,6 +296,14 @@ Bridge.define('ClientTestLibrary.TestTryCatchFinallyBlocks', {
             assert.equal(exceptionMessage, "catch me", "Typed exception catch with exception message");
             assert.equal(data.getCount(), 7, "Typed exception catch with exception message, Finally works");
         },
+        /**
+         * @static
+         * @public
+         * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+         * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         thrownExceptions: function (assert) {
             assert.expect(16);
 
@@ -81,6 +332,14 @@ Bridge.define('ClientTestLibrary.TestTryCatchFinallyBlocks', {
             assert.ok(ClientTestLibrary.TestTryCatchFinallyBlocks.getIsDCatch(), "D. exception caught and re-thrown  - catch section called");
             assert.ok(ClientTestLibrary.TestTryCatchFinallyBlocks.getIsDFinally(), "D. exception caught and re-thrown  - finally section called");
         },
+        /**
+         * @static
+         * @private
+         * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+         * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+         * @param   {ClientTestLibrary.Data}    data    
+         * @return  {void}                              
+         */
         tryCatchFinally: function (data) {
             try {
                 data.setCount(data.getCount()+1);
@@ -92,6 +351,14 @@ Bridge.define('ClientTestLibrary.TestTryCatchFinallyBlocks', {
                 data.setCount(data.getCount()+1);
             }
         },
+        /**
+         * @static
+         * @private
+         * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+         * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+         * @param   {ClientTestLibrary.Data}    data    
+         * @return  {void}                              
+         */
         tryCatchFinallyWithCaughtException: function (data) {
             try {
                 data.setCount(data.getCount() + 1);
@@ -106,6 +373,14 @@ Bridge.define('ClientTestLibrary.TestTryCatchFinallyBlocks', {
                 data.setCount(data.getCount() + 4);
             }
         },
+        /**
+         * @static
+         * @private
+         * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+         * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+         * @param   {ClientTestLibrary.Data}    data    
+         * @return  {void}                              
+         */
         tryCatchFinallyWithCaughtTypedException: function (data) {
             try {
                 data.setCount(data.getCount() + 1);
@@ -120,6 +395,14 @@ Bridge.define('ClientTestLibrary.TestTryCatchFinallyBlocks', {
                 data.setCount(data.getCount() + 4);
             }
         },
+        /**
+         * @static
+         * @private
+         * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+         * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+         * @param   {ClientTestLibrary.Data}    data    
+         * @return  {string}                            
+         */
         tryCatchFinallyWithCaughtArgumentException: function (data) {
             try {
                 data.setCount(data.getCount() + 1);
@@ -143,6 +426,13 @@ Bridge.define('ClientTestLibrary.TestTryCatchFinallyBlocks', {
                 data.setCount(data.getCount() + 4);
             }
         },
+        /**
+         * @static
+         * @private
+         * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+         * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+         * @return  {void}        
+         */
         tryCatchFinallyWithNotCaughtTypedException: function () {
             ClientTestLibrary.TestTryCatchFinallyBlocks.setIsATry(false);
             ClientTestLibrary.TestTryCatchFinallyBlocks.setIsACatch(false);
@@ -166,6 +456,13 @@ Bridge.define('ClientTestLibrary.TestTryCatchFinallyBlocks', {
                 ClientTestLibrary.TestTryCatchFinallyBlocks.setIsAFinally(true);
             }
         },
+        /**
+         * @static
+         * @private
+         * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+         * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+         * @return  {void}        
+         */
         tryCatchWithNotCaughtTypedExceptionAndArgument: function () {
             ClientTestLibrary.TestTryCatchFinallyBlocks.setIsBTry(false);
             ClientTestLibrary.TestTryCatchFinallyBlocks.setIsBCatch(false);
@@ -192,6 +489,13 @@ Bridge.define('ClientTestLibrary.TestTryCatchFinallyBlocks', {
                 ClientTestLibrary.TestTryCatchFinallyBlocks.setIsBFinally(true);
             }
         },
+        /**
+         * @static
+         * @private
+         * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+         * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+         * @return  {void}        
+         */
         tryCatchWithRethrow: function () {
             ClientTestLibrary.TestTryCatchFinallyBlocks.setIsCTry(false);
             ClientTestLibrary.TestTryCatchFinallyBlocks.setIsCCatch(false);
@@ -211,6 +515,13 @@ Bridge.define('ClientTestLibrary.TestTryCatchFinallyBlocks', {
                 ClientTestLibrary.TestTryCatchFinallyBlocks.setIsCFinally(true);
             }
         },
+        /**
+         * @static
+         * @private
+         * @this ClientTestLibrary.TestTryCatchFinallyBlocks
+         * @memberof ClientTestLibrary.TestTryCatchFinallyBlocks
+         * @return  {void}        
+         */
         tryCatchWithRethrowEx: function () {
             ClientTestLibrary.TestTryCatchFinallyBlocks.setIsDTry(false);
             ClientTestLibrary.TestTryCatchFinallyBlocks.setIsDCatch(false);

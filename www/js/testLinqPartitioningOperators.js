@@ -1,7 +1,18 @@
 ﻿/* global Bridge */
 
+/**
+ * @class ClientTestLibrary.Linq.TestLinqPartitioningOperators
+ */
 Bridge.define('ClientTestLibrary.Linq.TestLinqPartitioningOperators', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @this ClientTestLibrary.Linq.TestLinqPartitioningOperators
+         * @memberof ClientTestLibrary.Linq.TestLinqPartitioningOperators
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         test: function (assert) {
             assert.expect(8);
 

@@ -1,7 +1,18 @@
 ﻿/* global Bridge */
 
+/**
+ * @class ClientTestLibrary.TestStringFunctions
+ */
 Bridge.define('ClientTestLibrary.TestStringFunctions', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @this ClientTestLibrary.TestStringFunctions
+         * @memberof ClientTestLibrary.TestStringFunctions
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         strings: function (assert) {
             var $t;
             //In PhantomJS some correct tests failed. We will skip them in this environment.
@@ -128,11 +139,33 @@ Bridge.define('ClientTestLibrary.TestStringFunctions', {
             s = [[1, null, 2, null, 3]].toString().split(',').join('');
             assert.deepEqual(s, "123", "string.Concat()");
         }        ,
+        /**
+         * @static
+         * @protected
+         * @this ClientTestLibrary.TestStringFunctions
+         * @memberof ClientTestLibrary.TestStringFunctions
+         * @param   {number}                     x                
+         * @param   {number}                     y                
+         * @param   {System.StringComparison}    comparison       
+         * @param   {Array.<string>}             testI            
+         * @param   {Array.<number>}             expected         
+         * @param   {number}                     expectedIndex    
+         * @param   {Bridge.QUnit.Assert}        assert           
+         * @return  {void}                                        
+         */
         test: function (x, y, comparison, testI, expected, expectedIndex, assert) {
             var cmpValue = 0;
             cmpValue = Bridge.String.compare(testI[x], testI[y], comparison);
             assert.deepEqual(cmpValue, expected[expectedIndex], "String.Compare('" + testI[x] + "', '" + testI[y] + "'," + comparison + ")");
         },
+        /**
+         * @static
+         * @public
+         * @this ClientTestLibrary.TestStringFunctions
+         * @memberof ClientTestLibrary.TestStringFunctions
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         enumerable: function (assert) {
             var $t;
             assert.expect(5);

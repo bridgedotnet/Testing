@@ -1,5 +1,8 @@
 ﻿/* global Bridge */
 
+/**
+ * @class ClientTestLibrary.RunTests
+ */
 Bridge.define('ClientTestLibrary.RunTests', {
     statics: {
         config: {
@@ -7,6 +10,13 @@ Bridge.define('ClientTestLibrary.RunTests', {
                 Bridge.ready(this.main);
             }
         },
+        /**
+         * @static
+         * @public
+         * @this ClientTestLibrary.RunTests
+         * @memberof ClientTestLibrary.RunTests
+         * @return  {void}        
+         */
         main: function () {
             QUnit.module("Inheritance, abstract, virtual and overloading");
             QUnit.test("Overloading static methods", ClientTestLibrary.TestOverloadStaticMethods.testStatic);

@@ -1,7 +1,18 @@
 ﻿/* global Bridge */
 
+/**
+ * @class ClientTestLibrary.Linq.TestLinqAggregateOperators
+ */
 Bridge.define('ClientTestLibrary.Linq.TestLinqAggregateOperators', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @this ClientTestLibrary.Linq.TestLinqAggregateOperators
+         * @memberof ClientTestLibrary.Linq.TestLinqAggregateOperators
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         test: function (assert) {
             assert.expect(20);
 
@@ -191,6 +202,14 @@ Bridge.define('ClientTestLibrary.Linq.TestLinqAggregateOperators', {
 
             assert.deepEqual(endBalance, 20, "Aggregate() balance");
         },
+        /**
+         * @static
+         * @public
+         * @this ClientTestLibrary.Linq.TestLinqAggregateOperators
+         * @memberof ClientTestLibrary.Linq.TestLinqAggregateOperators
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         bridge315: function (assert) {
             assert.expect(1);
 

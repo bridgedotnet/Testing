@@ -2,78 +2,302 @@
 
 /* global Bridge */
 
+/**
+ * @memberof System
+ * @callback System.Func
+ * @param   {Object}     arg    
+ * @return  {boolean}           
+ */
+
+/** @namespace System */
+
+/**
+ * @memberof System
+ * @callback System.Action
+ * @return  {void}        
+ */
+
+/** @namespace Bridge.Test.QUnit */
+
+/**
+ * @class Bridge.Test.Assert
+ */
 Bridge.define('Bridge.Test.Assert', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.Assert
+         * @type Bridge.QUnit.Assert
+         */
         assert: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.Assert
+         * @memberof Bridge.Test.Assert
+         * @param   {Object}    actual      
+         * @param   {Object}    expected    
+         * @return  {void}                  
+         */
         areEqual: function (actual, expected) {
             Bridge.Test.Assert.assert.deepEqual(actual, expected);
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.Assert
+         * @memberof Bridge.Test.Assert
+         * @param   {Object}    actual         
+         * @param   {Object}    expected       
+         * @param   {string}    description    
+         * @return  {void}                     
+         */
         areEqual$1: function (actual, expected, description) {
             Bridge.Test.Assert.assert.deepEqual(actual, expected, description);
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.Assert
+         * @memberof Bridge.Test.Assert
+         * @param   {Object}    actual      
+         * @param   {Object}    expected    
+         * @return  {void}                  
+         */
         areStrictEqual: function (actual, expected) {
             Bridge.Test.Assert.assert.strictEqual(actual, expected);
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.Assert
+         * @memberof Bridge.Test.Assert
+         * @param   {Object}    actual         
+         * @param   {Object}    expected       
+         * @param   {string}    description    
+         * @return  {void}                     
+         */
         areStrictEqual$1: function (actual, expected, description) {
             Bridge.Test.Assert.assert.strictEqual(actual, expected, description);
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.Assert
+         * @memberof Bridge.Test.Assert
+         * @param   {Object}    actual      
+         * @param   {Object}    expected    
+         * @return  {void}                  
+         */
         areNotEqual: function (actual, expected) {
             Bridge.Test.Assert.assert.notDeepEqual(actual, expected);
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.Assert
+         * @memberof Bridge.Test.Assert
+         * @param   {Object}    actual         
+         * @param   {Object}    expected       
+         * @param   {string}    description    
+         * @return  {void}                     
+         */
         areNotEqual$1: function (actual, expected, description) {
             Bridge.Test.Assert.assert.notDeepEqual(actual, expected, description);
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.Assert
+         * @memberof Bridge.Test.Assert
+         * @param   {boolean}    condition    
+         * @return  {void}                    
+         */
         $true: function (condition) {
             Bridge.Test.Assert.assert.ok(condition);
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.Assert
+         * @memberof Bridge.Test.Assert
+         * @param   {boolean}    condition    
+         * @param   {string}     message      
+         * @return  {void}                    
+         */
         true$1: function (condition, message) {
             Bridge.Test.Assert.assert.ok(condition, message);
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.Assert
+         * @memberof Bridge.Test.Assert
+         * @param   {boolean}    condition    
+         * @return  {void}                    
+         */
         $false: function (condition) {
             Bridge.Test.Assert.assert.notOk(condition);
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.Assert
+         * @memberof Bridge.Test.Assert
+         * @param   {boolean}    condition    
+         * @param   {string}     message      
+         * @return  {void}                    
+         */
         false$1: function (condition, message) {
             Bridge.Test.Assert.assert.notOk(condition, message);
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.Assert
+         * @memberof Bridge.Test.Assert
+         * @return  {void}        
+         */
         fail: function () {
             Bridge.Test.Assert.assert.ok(false);
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.Assert
+         * @memberof Bridge.Test.Assert
+         * @param   {string}    message    
+         * @return  {void}                 
+         */
         fail$1: function (message) {
             Bridge.Test.Assert.assert.notOk(true, message);
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.Assert
+         * @memberof Bridge.Test.Assert
+         * @param   {System.Action}    block    
+         * @return  {void}                      
+         */
         $throws: function (block) {
             Bridge.Test.Assert.assert.throws(block, "");
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.Assert
+         * @memberof Bridge.Test.Assert
+         * @param   {System.Action}    block      
+         * @param   {string}           message    
+         * @return  {void}                        
+         */
         throws$5: function (block, message) {
             Bridge.Test.Assert.assert.throws(block, message);
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.Assert
+         * @memberof Bridge.Test.Assert
+         * @param   {System.Action}    block       
+         * @param   {Object}           expected    
+         * @return  {void}                         
+         */
         throws$3: function (block, expected) {
             Bridge.Test.Assert.assert.throws(block, expected);
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.Assert
+         * @memberof Bridge.Test.Assert
+         * @param   {System.Action}    block       
+         * @param   {Object}           expected    
+         * @param   {string}           message     
+         * @return  {void}                         
+         */
         throws$4: function (block, expected, message) {
             Bridge.Test.Assert.assert.throws(block, expected, message);
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.Assert
+         * @memberof Bridge.Test.Assert
+         * @param   {System.Action}    block       
+         * @param   {System.Func}      expected    
+         * @return  {void}                         
+         */
         throws$1: function (block, expected) {
             Bridge.Test.Assert.assert.throws(block, expected);
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.Assert
+         * @memberof Bridge.Test.Assert
+         * @param   {System.Action}    block       
+         * @param   {System.Func}      expected    
+         * @param   {string}           message     
+         * @return  {void}                         
+         */
         throws$2: function (block, expected, message) {
             Bridge.Test.Assert.assert.throws(block, expected, message);
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.Assert
+         * @memberof Bridge.Test.Assert
+         * @param   {Object}    anObject    
+         * @return  {void}                  
+         */
         $null: function (anObject) {
             Bridge.Test.Assert.assert.ok(anObject === null);
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.Assert
+         * @memberof Bridge.Test.Assert
+         * @param   {Object}    anObject    
+         * @param   {string}    message     
+         * @return  {void}                  
+         */
         null$1: function (anObject, message) {
             Bridge.Test.Assert.assert.ok(anObject === null, message);
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.Assert
+         * @memberof Bridge.Test.Assert
+         * @param   {Object}    anObject    
+         * @return  {void}                  
+         */
         notNull: function (anObject) {
             Bridge.Test.Assert.assert.notOk(anObject === null);
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.Assert
+         * @memberof Bridge.Test.Assert
+         * @param   {Object}    anObject    
+         * @param   {string}    message     
+         * @return  {void}                  
+         */
         notNull$1: function (anObject, message) {
             Bridge.Test.Assert.assert.notOk(anObject === null, message);
         }
     }
 });
 
+/**
+ * @class Bridge.Test.QUnit.RunQUnitTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
     statics: {
         config: {
@@ -81,6 +305,13 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
                 Bridge.ready(this.run);
             }
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests
+         * @return  {void}        
+         */
         run: function () {
             QUnit.module("Collections");
             QUnit.test("Array - type properties are correct #309", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.typePropertiesAreCorrect);
@@ -810,168 +1041,517 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @type Bridge.ClientTest.ArrayTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.ArrayTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.ArrayTests}    value    
+         * @return  {void}                                     
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.instance = new Bridge.ClientTest.ArrayTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.ArrayTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.ArrayTests}    value    
+         * @return  {void}                                     
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {boolean}                         isStatic    
+         * @param   {Bridge.QUnit.Assert}             assert      
+         * @return  {Bridge.ClientTest.ArrayTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         lengthWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.lengthWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         rankIsOne: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.rankIsOne();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getLengthWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.getLengthWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getLowerBound: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.getLowerBound();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getUpperBoundWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.getUpperBoundWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         gettingValueByIndexWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.gettingValueByIndexWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getValueWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.getValueWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         settingValueByIndexWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.settingValueByIndexWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         setValueWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.setValueWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         foreachWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.foreachWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         concatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.concatWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         containsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.containsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         containsUsesEqualsMethod: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.containsUsesEqualsMethod();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         allWithArrayItemFilterCallbackWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.allWithArrayItemFilterCallbackWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         sliceWithoutEndWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.sliceWithoutEndWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         foreachWithArrayItemCallbackWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.foreachWithArrayItemCallbackWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         foreachWithArrayCallbackWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.foreachWithArrayCallbackWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         indexOfWithoutStartIndexWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.indexOfWithoutStartIndexWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         indexOfWithoutStartIndexUsesEqualsMethod: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.indexOfWithoutStartIndexUsesEqualsMethod();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         indexOfWithStartIndexWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.indexOfWithStartIndexWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         joinWithoutDelimiterWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.joinWithoutDelimiterWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         reverseWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.reverseWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         anyWithArrayItemFilterCallbackWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.anyWithArrayItemFilterCallbackWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         sortWithDefaultCompareWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.sortWithDefaultCompareWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         foreachWhenCastToIListWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.foreachWhenCastToIListWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iCollectionCountWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.iCollectionCountWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iCollectionAddWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.iCollectionAddWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iCollectionClearWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.iCollectionClearWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iCollectionContainsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.iCollectionContainsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iCollectionContainsUsesEqualsMethod: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.iCollectionContainsUsesEqualsMethod();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iCollectionRemoveWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.iCollectionRemoveWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iListIndexingWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.iListIndexingWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iListIndexOfWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.iListIndexOfWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iListIndexOfUsesEqualsMethod: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.iListIndexOfUsesEqualsMethod();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iListInsertWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.iListInsertWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iListRemoveAtWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests.beforeTest(false, assert);
             t.iListRemoveAtWorks();
@@ -979,28 +1559,97 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestArrayTests', {
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests
+         * @type Bridge.ClientTest.Collections.Generic.ComparerTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Collections.Generic.ComparerTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Collections.Generic.ComparerTests}    value    
+         * @return  {void}                                                            
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests.instance = new Bridge.ClientTest.Collections.Generic.ComparerTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Collections.Generic.ComparerTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Collections.Generic.ComparerTests}    value    
+         * @return  {void}                                                            
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests
+         * @param   {boolean}                                                isStatic    
+         * @param   {Bridge.QUnit.Assert}                                    assert      
+         * @return  {Bridge.ClientTest.Collections.Generic.ComparerTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         createWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests.beforeTest(false, assert);
             t.createWorks();
@@ -1008,102 +1657,315 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGeneri
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @type Bridge.ClientTest.Collections.Generic.GenericDictionaryTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Collections.Generic.GenericDictionaryTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Collections.Generic.GenericDictionaryTests}    value    
+         * @return  {void}                                                                     
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.instance = new Bridge.ClientTest.Collections.Generic.GenericDictionaryTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Collections.Generic.GenericDictionaryTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Collections.Generic.GenericDictionaryTests}    value    
+         * @return  {void}                                                                     
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @param   {boolean}                                                         isStatic    
+         * @param   {Bridge.QUnit.Assert}                                             assert      
+         * @return  {Bridge.ClientTest.Collections.Generic.GenericDictionaryTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.beforeTest(false, assert);
             t.defaultConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         capacityConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.beforeTest(false, assert);
             t.capacityConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         capacityAndEqualityComparerWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.beforeTest(false, assert);
             t.capacityAndEqualityComparerWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         equalityComparerOnlyConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.beforeTest(false, assert);
             t.equalityComparerOnlyConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         countWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.beforeTest(false, assert);
             t.countWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         keysWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.beforeTest(false, assert);
             t.keysWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         valuesWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.beforeTest(false, assert);
             t.valuesWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         indexerGetterWorksForExistingItems: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.beforeTest(false, assert);
             t.indexerGetterWorksForExistingItems();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         indexerSetterWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.beforeTest(false, assert);
             t.indexerSetterWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         indexerGetterThrowsForNonExistingItems: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.beforeTest(false, assert);
             assert.expect(0);
             t.indexerGetterThrowsForNonExistingItems();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         addWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.beforeTest(false, assert);
             t.addWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         addThrowsIfItemAlreadyExists: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.beforeTest(false, assert);
             assert.expect(0);
             t.addThrowsIfItemAlreadyExists();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         clearWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.beforeTest(false, assert);
             t.clearWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         containsKeyWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.beforeTest(false, assert);
             t.containsKeyWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         enumeratingWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.beforeTest(false, assert);
             t.enumeratingWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         removeWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.beforeTest(false, assert);
             t.removeWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         tryGetValueWithIntKeysWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.beforeTest(false, assert);
             t.tryGetValueWithIntKeysWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         tryGetValueWithObjectKeysWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.beforeTest(false, assert);
             t.tryGetValueWithObjectKeysWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         canUseCustomComparer: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.beforeTest(false, assert);
             t.canUseCustomComparer();
@@ -1111,64 +1973,205 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGeneri
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @type Bridge.ClientTest.Collections.Generic.ICollectionTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Collections.Generic.ICollectionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Collections.Generic.ICollectionTests}    value    
+         * @return  {void}                                                               
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.instance = new Bridge.ClientTest.Collections.Generic.ICollectionTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Collections.Generic.ICollectionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Collections.Generic.ICollectionTests}    value    
+         * @return  {void}                                                               
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @param   {boolean}                                                   isStatic    
+         * @param   {Bridge.QUnit.Assert}                                       assert      
+         * @return  {Bridge.ClientTest.Collections.Generic.ICollectionTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         customClassThatShouldImplementICollectionDoesSo: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.beforeTest(false, assert);
             t.customClassThatShouldImplementICollectionDoesSo();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         classImplementingICollectionCountWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.beforeTest(false, assert);
             t.classImplementingICollectionCountWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         classImplementingICollectionCastToICollectionCountWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.beforeTest(false, assert);
             t.classImplementingICollectionCastToICollectionCountWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         classImplementingICollectionAddWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.beforeTest(false, assert);
             t.classImplementingICollectionAddWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         classImplementingICollectionCastToICollectionAddWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.beforeTest(false, assert);
             t.classImplementingICollectionCastToICollectionAddWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         classImplementingICollectionClearWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.beforeTest(false, assert);
             t.classImplementingICollectionClearWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         classImplementingICollectionCastToICollectionClearWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.beforeTest(false, assert);
             t.classImplementingICollectionCastToICollectionClearWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         classImplementingICollectionContainsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.beforeTest(false, assert);
             t.classImplementingICollectionContainsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         classImplementingICollectionCastToICollectionContainsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.beforeTest(false, assert);
             t.classImplementingICollectionCastToICollectionContainsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         classImplementingICollectionRemoveWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.beforeTest(false, assert);
             t.classImplementingICollectionRemoveWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         classImplementingICollectionCastToICollectionRemoveWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.beforeTest(false, assert);
             t.classImplementingICollectionCastToICollectionRemoveWorks();
@@ -1176,44 +2179,145 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGeneri
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+         * @type Bridge.ClientTest.Collections.Generic.IDictionaryTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Collections.Generic.IDictionaryTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Collections.Generic.IDictionaryTests}    value    
+         * @return  {void}                                                               
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.instance = new Bridge.ClientTest.Collections.Generic.IDictionaryTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Collections.Generic.IDictionaryTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Collections.Generic.IDictionaryTests}    value    
+         * @return  {void}                                                               
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+         * @param   {boolean}                                                   isStatic    
+         * @param   {Bridge.QUnit.Assert}                                       assert      
+         * @return  {Bridge.ClientTest.Collections.Generic.IDictionaryTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         classImplementsInterfaces: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.beforeTest(false, assert);
             t.classImplementsInterfaces();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         countWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.beforeTest(false, assert);
             t.countWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         addWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.beforeTest(false, assert);
             t.addWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         clearWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.beforeTest(false, assert);
             t.clearWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         removeWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.beforeTest(false, assert);
             t.removeWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         setItemWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.beforeTest(false, assert);
             t.setItemWorks();
@@ -1221,40 +2325,133 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGeneri
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests
+         * @type Bridge.ClientTest.Collections.Generic.IEnumerableTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Collections.Generic.IEnumerableTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Collections.Generic.IEnumerableTests}    value    
+         * @return  {void}                                                               
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests.instance = new Bridge.ClientTest.Collections.Generic.IEnumerableTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Collections.Generic.IEnumerableTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Collections.Generic.IEnumerableTests}    value    
+         * @return  {void}                                                               
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests
+         * @param   {boolean}                                                   isStatic    
+         * @param   {Bridge.QUnit.Assert}                                       assert      
+         * @return  {Bridge.ClientTest.Collections.Generic.IEnumerableTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         customClassThatShouldImplementIEnumerableDoesSo: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests.beforeTest(false, assert);
             t.customClassThatShouldImplementIEnumerableDoesSo();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         arrayGetEnumeratorMethodWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests.beforeTest(false, assert);
             t.arrayGetEnumeratorMethodWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         arrayCastToIEnumerableCanBeEnumerated: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests.beforeTest(false, assert);
             t.arrayCastToIEnumerableCanBeEnumerated();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         classImplementingIEnumerableCanBeEnumerated: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests.beforeTest(false, assert);
             t.classImplementingIEnumerableCanBeEnumerated();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         classImplementingIEnumerableCastToIEnumerableCanBeEnumerated: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests.beforeTest(false, assert);
             t.classImplementingIEnumerableCastToIEnumerableCanBeEnumerated();
@@ -1262,56 +2459,181 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGeneri
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @type Bridge.ClientTest.Collections.Generic.IListTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Collections.Generic.IListTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Collections.Generic.IListTests}    value    
+         * @return  {void}                                                         
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.instance = new Bridge.ClientTest.Collections.Generic.IListTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Collections.Generic.IListTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Collections.Generic.IListTests}    value    
+         * @return  {void}                                                         
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @param   {boolean}                                             isStatic    
+         * @param   {Bridge.QUnit.Assert}                                 assert      
+         * @return  {Bridge.ClientTest.Collections.Generic.IListTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         customClassThatShouldImplementIListDoesSo: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.beforeTest(false, assert);
             t.customClassThatShouldImplementIListDoesSo();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         classImplementingIListGetItemWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.beforeTest(false, assert);
             t.classImplementingIListGetItemWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         classImplementingIListSetItemWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.beforeTest(false, assert);
             t.classImplementingIListSetItemWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         classImplementingIListIndexOfWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.beforeTest(false, assert);
             t.classImplementingIListIndexOfWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         classImplementingIListCastToIListIndexOfWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.beforeTest(false, assert);
             t.classImplementingIListCastToIListIndexOfWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         classImplementingIListInsertWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.beforeTest(false, assert);
             t.classImplementingIListInsertWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         classImplementingIListCastToIListInsertWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.beforeTest(false, assert);
             t.classImplementingIListCastToIListInsertWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         classImplementingIListRemoveAtWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.beforeTest(false, assert);
             t.classImplementingIListRemoveAtWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         classImplementingIListCastToIListRemoveAtWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.beforeTest(false, assert);
             t.classImplementingIListCastToIListRemoveAtWorks();
@@ -1319,60 +2641,193 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGeneri
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @type Bridge.ClientTest.Collections.Generic.IteratorBlockTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Collections.Generic.IteratorBlockTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Collections.Generic.IteratorBlockTests}    value    
+         * @return  {void}                                                                 
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests.instance = new Bridge.ClientTest.Collections.Generic.IteratorBlockTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Collections.Generic.IteratorBlockTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Collections.Generic.IteratorBlockTests}    value    
+         * @return  {void}                                                                 
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @param   {boolean}                                                     isStatic    
+         * @param   {Bridge.QUnit.Assert}                                         assert      
+         * @return  {Bridge.ClientTest.Collections.Generic.IteratorBlockTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typeReturnedByIteratorBlockReturningIEnumeratorImplementsThatInterfaceAndIDisposable: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests.beforeTest(false, assert);
             t.typeReturnedByIteratorBlockReturningIEnumeratorImplementsThatInterfaceAndIDisposable();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         enumeratingIEnumeratorIteratorToEndWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests.beforeTest(false, assert);
             t.enumeratingIEnumeratorIteratorToEndWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         prematureDisposalOfIEnumeratorIteratorExecutesFinallyBlocks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests.beforeTest(false, assert);
             t.prematureDisposalOfIEnumeratorIteratorExecutesFinallyBlocks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         exceptionInIEnumeratorIteratorBodyExecutesFinallyBlocks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests.beforeTest(false, assert);
             t.exceptionInIEnumeratorIteratorBodyExecutesFinallyBlocks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typeReturnedByIteratorBlockReturningIEnumerableImplementsThatInterface: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests.beforeTest(false, assert);
             t.typeReturnedByIteratorBlockReturningIEnumerableImplementsThatInterface();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         enumeratingIEnumerableIteratorToEndWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests.beforeTest(false, assert);
             t.enumeratingIEnumerableIteratorToEndWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         prematureDisposalOfIEnumerableIteratorExecutesFinallyBlocks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests.beforeTest(false, assert);
             t.prematureDisposalOfIEnumerableIteratorExecutesFinallyBlocks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         exceptionInIEnumerableIteratorBodyExecutesFinallyBlocks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests.beforeTest(false, assert);
             t.exceptionInIEnumerableIteratorBodyExecutesFinallyBlocks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         enumeratingAnIteratorBlockReturningIEnumerableMultipleTimesUsesTheInitialValuesForParameters: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests.beforeTest(false, assert);
             t.enumeratingAnIteratorBlockReturningIEnumerableMultipleTimesUsesTheInitialValuesForParameters();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         differentGetEnumeratorCallsOnIteratorBlockReturningIEnumerableGetOwnCopiesOfLocals: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests.beforeTest(false, assert);
             t.differentGetEnumeratorCallsOnIteratorBlockReturningIEnumerableGetOwnCopiesOfLocals();
@@ -1380,184 +2835,565 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGeneri
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @type Bridge.ClientTest.Collections.Generic.ListTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Collections.Generic.ListTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Collections.Generic.ListTests}    value    
+         * @return  {void}                                                        
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.instance = new Bridge.ClientTest.Collections.Generic.ListTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Collections.Generic.ListTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Collections.Generic.ListTests}    value    
+         * @return  {void}                                                        
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {boolean}                                            isStatic    
+         * @param   {Bridge.QUnit.Assert}                                assert      
+         * @return  {Bridge.ClientTest.Collections.Generic.ListTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.defaultConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructingFromArrayWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.constructingFromArrayWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructingFromListWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.constructingFromListWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructingFromIEnumerableWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.constructingFromIEnumerableWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         countWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.countWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         indexingWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.indexingWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         foreachWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.foreachWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getEnumeratorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.getEnumeratorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         addWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.addWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         addRangeWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.addRangeWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         clearWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.clearWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         containsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.containsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         sliceWithoutEndWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.sliceWithoutEndWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         sliceWithEndWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.sliceWithEndWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         foreachWithListItemCallbackWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.foreachWithListItemCallbackWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         foreachWithListCallbackWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.foreachWithListCallbackWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         indexOfWithoutStartIndexWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.indexOfWithoutStartIndexWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         insertWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.insertWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         joinWithoutDelimiterWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.joinWithoutDelimiterWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         joinWithDelimiterWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.joinWithDelimiterWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         removeWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.removeWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         removeCanRemoveNullItem: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.removeCanRemoveNullItem();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         removeAtWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.removeAtWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         removeRangeWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.removeRangeWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         reverseWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.reverseWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         sortWithDefaultCompareWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.sortWithDefaultCompareWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         sortWithCompareCallbackWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.sortWithCompareCallbackWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         sortWithIComparerWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.sortWithIComparerWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         foreachWhenCastToIEnumerableWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.foreachWhenCastToIEnumerableWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iEnumerableGetEnumeratorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.iEnumerableGetEnumeratorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iCollectionCountWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.iCollectionCountWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iCollectionAddWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.iCollectionAddWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iCollectionClearWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.iCollectionClearWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iCollectionContainsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.iCollectionContainsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iCollectionRemoveCanRemoveNullItem: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.iCollectionRemoveCanRemoveNullItem();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iListIndexingWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.iListIndexingWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iListIndexOfWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.iListIndexOfWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iListInsertWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.iListInsertWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iListRemoveAtWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.iListRemoveAtWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toArrayWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.toArrayWorks();
@@ -1565,32 +3401,109 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGeneri
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests
+         * @type Bridge.ClientTest.CultureInfoTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.CultureInfoTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.CultureInfoTests}    value    
+         * @return  {void}                                           
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests.instance = new Bridge.ClientTest.CultureInfoTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.CultureInfoTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.CultureInfoTests}    value    
+         * @return  {void}                                           
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests
+         * @param   {boolean}                               isStatic    
+         * @param   {Bridge.QUnit.Assert}                   assert      
+         * @return  {Bridge.ClientTest.CultureInfoTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getFormatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests.beforeTest(false, assert);
             t.getFormatWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         invariantWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests.beforeTest(false, assert);
             t.invariantWorks();
@@ -1598,32 +3511,109 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCultureInfoTests'
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests
+         * @type Bridge.ClientTest.DateTimeFormatInfoTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.DateTimeFormatInfoTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.DateTimeFormatInfoTests}    value    
+         * @return  {void}                                                  
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests.instance = new Bridge.ClientTest.DateTimeFormatInfoTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.DateTimeFormatInfoTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.DateTimeFormatInfoTests}    value    
+         * @return  {void}                                                  
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests
+         * @param   {boolean}                                      isStatic    
+         * @param   {Bridge.QUnit.Assert}                          assert      
+         * @return  {Bridge.ClientTest.DateTimeFormatInfoTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getFormatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests.beforeTest(false, assert);
             t.getFormatWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         invariantWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests.beforeTest(false, assert);
             t.invariantWorks();
@@ -1631,24 +3621,85 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInf
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestEnvironmentTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestEnvironmentTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestEnvironmentTests
+         * @type Bridge.ClientTest.EnvironmentTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestEnvironmentTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestEnvironmentTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.EnvironmentTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestEnvironmentTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestEnvironmentTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.EnvironmentTests}    value    
+         * @return  {void}                                           
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestEnvironmentTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestEnvironmentTests.instance = new Bridge.ClientTest.EnvironmentTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestEnvironmentTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestEnvironmentTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestEnvironmentTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.EnvironmentTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestEnvironmentTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestEnvironmentTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.EnvironmentTests}    value    
+         * @return  {void}                                           
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestEnvironmentTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestEnvironmentTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestEnvironmentTests
+         * @param   {boolean}                               isStatic    
+         * @param   {Bridge.QUnit.Assert}                   assert      
+         * @return  {Bridge.ClientTest.EnvironmentTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestEnvironmentTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestEnvironmentTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestEnvironmentTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestEnvironmentTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         newLineIsAStringContainingOnlyTheNewLineChar: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestEnvironmentTests.beforeTest(false, assert);
             t.newLineIsAStringContainingOnlyTheNewLineChar();
@@ -1656,44 +3707,145 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestEnvironmentTests'
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+         * @type Bridge.ClientTest.Exceptions.ArgumentExceptionTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.ArgumentExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.ArgumentExceptionTests}    value    
+         * @return  {void}                                                            
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests.instance = new Bridge.ClientTest.Exceptions.ArgumentExceptionTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.ArgumentExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.ArgumentExceptionTests}    value    
+         * @return  {void}                                                            
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+         * @param   {boolean}                                                isStatic    
+         * @param   {Bridge.QUnit.Assert}                                    assert      
+         * @return  {Bridge.ClientTest.Exceptions.ArgumentExceptionTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests.beforeTest(false, assert);
             t.defaultConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageAndInnerExceptionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageAndInnerExceptionWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageAndParamNameWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageAndParamNameWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageAndParamNameAndInnerExceptionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageAndParamNameAndInnerExceptionWorks();
@@ -1701,40 +3853,133 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumen
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests
+         * @type Bridge.ClientTest.Exceptions.ArgumentNullExceptionTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.ArgumentNullExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.ArgumentNullExceptionTests}    value    
+         * @return  {void}                                                                
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests.instance = new Bridge.ClientTest.Exceptions.ArgumentNullExceptionTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.ArgumentNullExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.ArgumentNullExceptionTests}    value    
+         * @return  {void}                                                                
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests
+         * @param   {boolean}                                                    isStatic    
+         * @param   {Bridge.QUnit.Assert}                                        assert      
+         * @return  {Bridge.ClientTest.Exceptions.ArgumentNullExceptionTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests.beforeTest(false, assert);
             t.defaultConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithParamNameWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests.beforeTest(false, assert);
             t.constructorWithParamNameWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithParamNameAndMessageWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests.beforeTest(false, assert);
             t.constructorWithParamNameAndMessageWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageAndInnerExceptionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentNullExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageAndInnerExceptionWorks();
@@ -1742,44 +3987,145 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumen
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+         * @type Bridge.ClientTest.Exceptions.ArgumentOutOfRangeExceptionTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.ArgumentOutOfRangeExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.ArgumentOutOfRangeExceptionTests}    value    
+         * @return  {void}                                                                      
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests.instance = new Bridge.ClientTest.Exceptions.ArgumentOutOfRangeExceptionTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.ArgumentOutOfRangeExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.ArgumentOutOfRangeExceptionTests}    value    
+         * @return  {void}                                                                      
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+         * @param   {boolean}                                                          isStatic    
+         * @param   {Bridge.QUnit.Assert}                                              assert      
+         * @return  {Bridge.ClientTest.Exceptions.ArgumentOutOfRangeExceptionTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests.beforeTest(false, assert);
             t.defaultConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithParamNameWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests.beforeTest(false, assert);
             t.constructorWithParamNameWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithParamNameAndMessageWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests.beforeTest(false, assert);
             t.constructorWithParamNameAndMessageWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageAndInnerExceptionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageAndInnerExceptionWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithParamNameAndActualValueAndMessageWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests.beforeTest(false, assert);
             t.constructorWithParamNameAndActualValueAndMessageWorks();
@@ -1787,36 +4133,121 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumen
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests
+         * @type Bridge.ClientTest.Exceptions.ArithmeticExceptionTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.ArithmeticExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.ArithmeticExceptionTests}    value    
+         * @return  {void}                                                              
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests.instance = new Bridge.ClientTest.Exceptions.ArithmeticExceptionTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.ArithmeticExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.ArithmeticExceptionTests}    value    
+         * @return  {void}                                                              
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests
+         * @param   {boolean}                                                  isStatic    
+         * @param   {Bridge.QUnit.Assert}                                      assert      
+         * @return  {Bridge.ClientTest.Exceptions.ArithmeticExceptionTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests.beforeTest(false, assert);
             t.defaultConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageAndInnerExceptionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageAndInnerExceptionWorks();
@@ -1824,36 +4255,121 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithme
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests
+         * @type Bridge.ClientTest.Exceptions.DivideByZeroExceptionTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.DivideByZeroExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.DivideByZeroExceptionTests}    value    
+         * @return  {void}                                                                
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests.instance = new Bridge.ClientTest.Exceptions.DivideByZeroExceptionTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.DivideByZeroExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.DivideByZeroExceptionTests}    value    
+         * @return  {void}                                                                
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests
+         * @param   {boolean}                                                    isStatic    
+         * @param   {Bridge.QUnit.Assert}                                        assert      
+         * @return  {Bridge.ClientTest.Exceptions.DivideByZeroExceptionTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests.beforeTest(false, assert);
             t.defaultConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageAndInnerExceptionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideByZeroExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageAndInnerExceptionWorks();
@@ -1861,44 +4377,145 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsDivideB
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+         * @type Bridge.ClientTest.Exceptions.ExceptionTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.ExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.ExceptionTests}    value    
+         * @return  {void}                                                    
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests.instance = new Bridge.ClientTest.Exceptions.ExceptionTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.ExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.ExceptionTests}    value    
+         * @return  {void}                                                    
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+         * @param   {boolean}                                        isStatic    
+         * @param   {Bridge.QUnit.Assert}                            assert      
+         * @return  {Bridge.ClientTest.Exceptions.ExceptionTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests.beforeTest(false, assert);
             t.defaultConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageAndInnerExceptionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageAndInnerExceptionWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         messagePropertyCanBeOverridden: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests.beforeTest(false, assert);
             t.messagePropertyCanBeOverridden();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         innerExceptionPropertyCanBeOverridden: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExceptionTests.beforeTest(false, assert);
             t.innerExceptionPropertyCanBeOverridden();
@@ -1906,36 +4523,121 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsExcepti
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests
+         * @type Bridge.ClientTest.Exceptions.FormatExceptionTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.FormatExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.FormatExceptionTests}    value    
+         * @return  {void}                                                          
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests.instance = new Bridge.ClientTest.Exceptions.FormatExceptionTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.FormatExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.FormatExceptionTests}    value    
+         * @return  {void}                                                          
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests
+         * @param   {boolean}                                              isStatic    
+         * @param   {Bridge.QUnit.Assert}                                  assert      
+         * @return  {Bridge.ClientTest.Exceptions.FormatExceptionTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests.beforeTest(false, assert);
             t.defaultConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageAndInnerExceptionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageAndInnerExceptionWorks();
@@ -1943,36 +4645,121 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsFormatE
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests
+         * @type Bridge.ClientTest.Exceptions.InvalidCastExceptionTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.InvalidCastExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.InvalidCastExceptionTests}    value    
+         * @return  {void}                                                               
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests.instance = new Bridge.ClientTest.Exceptions.InvalidCastExceptionTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.InvalidCastExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.InvalidCastExceptionTests}    value    
+         * @return  {void}                                                               
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests
+         * @param   {boolean}                                                   isStatic    
+         * @param   {Bridge.QUnit.Assert}                                       assert      
+         * @return  {Bridge.ClientTest.Exceptions.InvalidCastExceptionTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests.beforeTest(false, assert);
             t.defaultConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageAndInnerExceptionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidCastExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageAndInnerExceptionWorks();
@@ -1980,36 +4767,121 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalid
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests
+         * @type Bridge.ClientTest.Exceptions.InvalidOperationExceptionTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.InvalidOperationExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.InvalidOperationExceptionTests}    value    
+         * @return  {void}                                                                    
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests.instance = new Bridge.ClientTest.Exceptions.InvalidOperationExceptionTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.InvalidOperationExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.InvalidOperationExceptionTests}    value    
+         * @return  {void}                                                                    
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests
+         * @param   {boolean}                                                        isStatic    
+         * @param   {Bridge.QUnit.Assert}                                            assert      
+         * @return  {Bridge.ClientTest.Exceptions.InvalidOperationExceptionTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests.beforeTest(false, assert);
             t.defaultConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageAndInnerExceptionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalidOperationExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageAndInnerExceptionWorks();
@@ -2017,36 +4889,121 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsInvalid
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests
+         * @type Bridge.ClientTest.Exceptions.KeyNotFoundExceptionTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.KeyNotFoundExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.KeyNotFoundExceptionTests}    value    
+         * @return  {void}                                                               
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests.instance = new Bridge.ClientTest.Exceptions.KeyNotFoundExceptionTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.KeyNotFoundExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.KeyNotFoundExceptionTests}    value    
+         * @return  {void}                                                               
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests
+         * @param   {boolean}                                                   isStatic    
+         * @param   {Bridge.QUnit.Assert}                                       assert      
+         * @return  {Bridge.ClientTest.Exceptions.KeyNotFoundExceptionTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests.beforeTest(false, assert);
             t.defaultConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageAndInnerExceptionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotFoundExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageAndInnerExceptionWorks();
@@ -2054,36 +5011,121 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsKeyNotF
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests
+         * @type Bridge.ClientTest.Exceptions.NotImplementedExceptionTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.NotImplementedExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.NotImplementedExceptionTests}    value    
+         * @return  {void}                                                                  
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests.instance = new Bridge.ClientTest.Exceptions.NotImplementedExceptionTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.NotImplementedExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.NotImplementedExceptionTests}    value    
+         * @return  {void}                                                                  
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests
+         * @param   {boolean}                                                      isStatic    
+         * @param   {Bridge.QUnit.Assert}                                          assert      
+         * @return  {Bridge.ClientTest.Exceptions.NotImplementedExceptionTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests.beforeTest(false, assert);
             t.defaultConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageAndInnerExceptionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImplementedExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageAndInnerExceptionWorks();
@@ -2091,36 +5133,121 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotImpl
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests
+         * @type Bridge.ClientTest.Exceptions.NotSupportedExceptionTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.NotSupportedExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.NotSupportedExceptionTests}    value    
+         * @return  {void}                                                                
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests.instance = new Bridge.ClientTest.Exceptions.NotSupportedExceptionTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.NotSupportedExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.NotSupportedExceptionTests}    value    
+         * @return  {void}                                                                
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests
+         * @param   {boolean}                                                    isStatic    
+         * @param   {Bridge.QUnit.Assert}                                        assert      
+         * @return  {Bridge.ClientTest.Exceptions.NotSupportedExceptionTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests.beforeTest(false, assert);
             t.defaultConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageAndInnerExceptionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupportedExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageAndInnerExceptionWorks();
@@ -2128,36 +5255,121 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNotSupp
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests
+         * @type Bridge.ClientTest.Exceptions.NullReferenceExceptionTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.NullReferenceExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.NullReferenceExceptionTests}    value    
+         * @return  {void}                                                                 
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests.instance = new Bridge.ClientTest.Exceptions.NullReferenceExceptionTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.NullReferenceExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.NullReferenceExceptionTests}    value    
+         * @return  {void}                                                                 
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests
+         * @param   {boolean}                                                     isStatic    
+         * @param   {Bridge.QUnit.Assert}                                         assert      
+         * @return  {Bridge.ClientTest.Exceptions.NullReferenceExceptionTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests.beforeTest(false, assert);
             t.defaultConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageAndInnerExceptionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageAndInnerExceptionWorks();
@@ -2165,36 +5377,121 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullRef
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests
+         * @type Bridge.ClientTest.Exceptions.OverflowExceptionTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.OverflowExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.OverflowExceptionTests}    value    
+         * @return  {void}                                                            
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests.instance = new Bridge.ClientTest.Exceptions.OverflowExceptionTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Exceptions.OverflowExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Exceptions.OverflowExceptionTests}    value    
+         * @return  {void}                                                            
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests
+         * @param   {boolean}                                                isStatic    
+         * @param   {Bridge.QUnit.Assert}                                    assert      
+         * @return  {Bridge.ClientTest.Exceptions.OverflowExceptionTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests.beforeTest(false, assert);
             t.defaultConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithMessageAndInnerExceptionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageAndInnerExceptionWorks();
@@ -2202,32 +5499,109 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflo
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests
+         * @type Bridge.ClientTest.ExceptionTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.ExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.ExceptionTests}    value    
+         * @return  {void}                                         
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests.instance = new Bridge.ClientTest.ExceptionTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.ExceptionTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.ExceptionTests}    value    
+         * @return  {void}                                         
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests
+         * @param   {boolean}                             isStatic    
+         * @param   {Bridge.QUnit.Assert}                 assert      
+         * @return  {Bridge.ClientTest.ExceptionTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         throwingAndCatchingExceptionsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests.beforeTest(false, assert);
             t.throwingAndCatchingExceptionsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         exceptionOfWrongTypeIsNotCaught: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests.beforeTest(false, assert);
             t.exceptionOfWrongTypeIsNotCaught();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         canCatchExceptionAsBaseType: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests.beforeTest(false, assert);
             t.canCatchExceptionAsBaseType();
@@ -2235,200 +5609,613 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests', 
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @type Bridge.ClientTest.MathTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.MathTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.MathTests}    value    
+         * @return  {void}                                    
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.instance = new Bridge.ClientTest.MathTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.MathTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.MathTests}    value    
+         * @return  {void}                                    
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {boolean}                        isStatic    
+         * @param   {Bridge.QUnit.Assert}            assert      
+         * @return  {Bridge.ClientTest.MathTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constantsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.constantsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         absOfDoubleWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.absOfDoubleWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         absOfIntWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.absOfIntWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         absOfLongWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.absOfLongWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         absOfSbyteWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.absOfSbyteWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         absOfShortWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.absOfShortWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         absOfFloatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.absOfFloatWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         absOfDecimalWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.absOfDecimalWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         acosWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.acosWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         asinWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.asinWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         atanWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.atanWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         atan2Works: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.atan2Works();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         cosWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.cosWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         expWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.expWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         floorOfDoubleWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.floorOfDoubleWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         floorOfDecimalWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.floorOfDecimalWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         logWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.logWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         maxOfByteWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.maxOfByteWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         maxOfDecimalWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.maxOfDecimalWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         maxOfDoubleWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.maxOfDoubleWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         maxOfShortWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.maxOfShortWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         maxOfIntWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.maxOfIntWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         maxOfLongWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.maxOfLongWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         maxOfSByteWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.maxOfSByteWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         maxOfFloatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.maxOfFloatWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         maxOfUShortWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.maxOfUShortWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         maxOfUIntWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.maxOfUIntWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         maxOfULongWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.maxOfULongWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         minOfByteWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.minOfByteWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         minOfDecimalWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.minOfDecimalWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         minOfDoubleWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.minOfDoubleWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         minOfShortWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.minOfShortWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         minOfIntWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.minOfIntWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         minOfLongWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.minOfLongWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         minOfSByteWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.minOfSByteWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         minOfFloatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.minOfFloatWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         minOfUShortWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.minOfUShortWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         minOfUIntWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.minOfUIntWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         minOfULongWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.minOfULongWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         powWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.powWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         randomWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.randomWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         roundOfDoubleWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.roundOfDoubleWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         sinWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.sinWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         sqrtWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.sqrtWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         tanWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.tanWorks();
@@ -2436,152 +6223,469 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests', {
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @type Bridge.ClientTest.NullableTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.NullableTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.NullableTests}    value    
+         * @return  {void}                                        
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.instance = new Bridge.ClientTest.NullableTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.NullableTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.NullableTests}    value    
+         * @return  {void}                                        
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {boolean}                            isStatic    
+         * @param   {Bridge.QUnit.Assert}                assert      
+         * @return  {Bridge.ClientTest.NullableTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         convertingToNullableWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.convertingToNullableWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         hasValueWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.hasValueWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         boxingWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.boxingWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         unboxingWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.unboxingWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         valueWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.valueWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         unboxingValueOfWrongTypeThrowsAnException: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.unboxingValueOfWrongTypeThrowsAnException();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getValueOrDefaultWithArgWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.getValueOrDefaultWithArgWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedEqualityWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedEqualityWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedInequalityWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedInequalityWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedLessThanWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedLessThanWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedGreaterThanWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedGreaterThanWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedLessThanOrEqualWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedLessThanOrEqualWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedGreaterThanOrEqualWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedGreaterThanOrEqualWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedSubtractionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedSubtractionWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedAdditionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedAdditionWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedModWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedModWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedFloatingPointDivisionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedFloatingPointDivisionWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedIntegerDivisionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedIntegerDivisionWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedMultiplicationWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedMultiplicationWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedBitwiseAndWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedBitwiseAndWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedBitwiseOrWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedBitwiseOrWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedBitwiseXorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedBitwiseXorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedLeftShiftWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedLeftShiftWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedSignedRightShiftWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedSignedRightShiftWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedUnsignedRightShiftWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedUnsignedRightShiftWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedBooleanAndWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedBooleanAndWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedBooleanOrWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedBooleanOrWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedBooleanNotWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedBooleanNotWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedNegationWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedNegationWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedUnaryPlusWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedUnaryPlusWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         liftedOnesComplementWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.liftedOnesComplementWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         coalesceWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.beforeTest(false, assert);
             t.coalesceWorks();
@@ -2589,32 +6693,109 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests', {
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests
+         * @type Bridge.ClientTest.NumberFormatInfoTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.NumberFormatInfoTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.NumberFormatInfoTests}    value    
+         * @return  {void}                                                
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests.instance = new Bridge.ClientTest.NumberFormatInfoTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.NumberFormatInfoTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.NumberFormatInfoTests}    value    
+         * @return  {void}                                                
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests
+         * @param   {boolean}                                    isStatic    
+         * @param   {Bridge.QUnit.Assert}                        assert      
+         * @return  {Bridge.ClientTest.NumberFormatInfoTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getFormatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests.beforeTest(false, assert);
             t.getFormatWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         invariantWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests.beforeTest(false, assert);
             t.invariantWorks();
@@ -2622,44 +6803,145 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoT
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+         * @type Bridge.ClientTest.PropertyAccessorTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.PropertyAccessorTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.PropertyAccessorTests}    value    
+         * @return  {void}                                                
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests.instance = new Bridge.ClientTest.PropertyAccessorTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.PropertyAccessorTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.PropertyAccessorTests}    value    
+         * @return  {void}                                                
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+         * @param   {boolean}                                    isStatic    
+         * @param   {Bridge.QUnit.Assert}                        assert      
+         * @return  {Bridge.ClientTest.PropertyAccessorTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         accessorsCanBeInvokedInstance: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests.beforeTest(false, assert);
             t.accessorsCanBeInvokedInstance();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         accessorsCanBeInvokedStatic: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests.beforeTest(false, assert);
             t.accessorsCanBeInvokedStatic();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         accessorsCanBeInvokedGeneric: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests.beforeTest(false, assert);
             t.accessorsCanBeInvokedGeneric();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         accessorsCanBeInvokedGenericStatic: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests.beforeTest(false, assert);
             t.accessorsCanBeInvokedGenericStatic();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         baseAccessorsCanBeInvoked: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests.beforeTest(false, assert);
             t.baseAccessorsCanBeInvoked();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         baseAccessorsCanBeInvokedGeneric: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorTests.beforeTest(false, assert);
             t.baseAccessorsCanBeInvokedGeneric();
@@ -2667,76 +6949,241 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorT
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @type Bridge.ClientTest.SimpleTypes.ByteTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.ByteTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.ByteTests}    value    
+         * @return  {void}                                                
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.instance = new Bridge.ClientTest.SimpleTypes.ByteTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.ByteTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.ByteTests}    value    
+         * @return  {void}                                                
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @param   {boolean}                                    isStatic    
+         * @param   {Bridge.QUnit.Assert}                        assert      
+         * @return  {Bridge.ClientTest.SimpleTypes.ByteTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         castsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.beforeTest(false, assert);
             t.castsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultValueIs0: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.beforeTest(false, assert);
             t.defaultValueIs0();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constantsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.beforeTest(false, assert);
             t.constantsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         formatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.beforeTest(false, assert);
             t.formatWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iFormattableToStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.beforeTest(false, assert);
             t.iFormattableToStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         tryParseWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.beforeTest(false, assert);
             t.tryParseWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringWithoutRadixWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.beforeTest(false, assert);
             t.toStringWithoutRadixWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringWithRadixWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.beforeTest(false, assert);
             t.toStringWithRadixWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getHashCodeWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.beforeTest(false, assert);
             t.getHashCodeWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         equalsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.beforeTest(false, assert);
             t.equalsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iEquatableEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.beforeTest(false, assert);
             t.iEquatableEqualsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         compareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.beforeTest(false, assert);
             t.compareToWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iComparableCompareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.beforeTest(false, assert);
             t.iComparableCompareToWorks();
@@ -2744,104 +7191,325 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTe
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @type Bridge.ClientTest.SimpleTypes.CharTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.CharTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.CharTests}    value    
+         * @return  {void}                                                
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.instance = new Bridge.ClientTest.SimpleTypes.CharTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.CharTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.CharTests}    value    
+         * @return  {void}                                                
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @param   {boolean}                                    isStatic    
+         * @param   {Bridge.QUnit.Assert}                        assert      
+         * @return  {Bridge.ClientTest.SimpleTypes.CharTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreInt32: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
             t.typePropertiesAreInt32();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         castsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
             t.castsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultValueWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
             t.defaultValueWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constantsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
             t.constantsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         charComparisonWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
             t.charComparisonWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         parseWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
             t.parseWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         formatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
             t.formatWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iFormattableToStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
             t.iFormattableToStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
             t.toStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getHashCodeWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
             t.getHashCodeWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         equalsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
             t.equalsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iEquatableEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
             t.iEquatableEqualsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         compareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
             t.compareToWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         isLowerWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
             t.isLowerWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         isUpperWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
             t.isUpperWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toLowerWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
             t.toLowerWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toUpperWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
             t.toUpperWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         isDigitWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
             t.isDigitWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         isWhiteSpaceWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
             t.isWhiteSpaceWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         isDigitWithStringAndIndexWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
             t.isDigitWithStringAndIndexWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         isWhiteSpaceWithStringAndIndexWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
             t.isWhiteSpaceWithStringAndIndexWorks();
@@ -2849,140 +7517,433 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTe
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @type Bridge.ClientTest.SimpleTypes.DecimalTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.DecimalTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.DecimalTests}    value    
+         * @return  {void}                                                   
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.instance = new Bridge.ClientTest.SimpleTypes.DecimalTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.DecimalTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.DecimalTests}    value    
+         * @return  {void}                                                   
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {boolean}                                       isStatic    
+         * @param   {Bridge.QUnit.Assert}                           assert      
+         * @return  {Bridge.ClientTest.SimpleTypes.DecimalTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultValueIs0: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.defaultValueIs0();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constantsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.constantsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         convertingConstructorsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.convertingConstructorsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         formatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.formatWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iFormattableToStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.iFormattableToStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringWithoutRadixWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.toStringWithoutRadixWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringWithRadixWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.toStringWithRadixWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toExponentialWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.toExponentialWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toExponentialWithFractionalDigitsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.toExponentialWithFractionalDigitsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toFixed: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.toFixed();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toFixedWithFractionalDigitsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.toFixedWithFractionalDigitsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toPrecisionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.toPrecisionWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toPrecisionWithPrecisionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.toPrecisionWithPrecisionWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         conversionsToDecimalWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.conversionsToDecimalWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         conversionsFromDecimalWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.conversionsFromDecimalWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         operatorsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.operatorsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         addWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.addWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         ceilingWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.ceilingWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         divideWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.divideWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         floorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.floorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         remainderWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.remainderWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         multiplyWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.multiplyWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         negateWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.negateWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         roundWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.roundWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         subtractWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.subtractWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getHashCodeWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.getHashCodeWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         equalsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.equalsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iEquatableEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.iEquatableEqualsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         compareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.compareToWorks();
@@ -2990,104 +7951,325 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecima
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @type Bridge.ClientTest.SimpleTypes.DoubleTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.DoubleTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.DoubleTests}    value    
+         * @return  {void}                                                  
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.instance = new Bridge.ClientTest.SimpleTypes.DoubleTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.DoubleTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.DoubleTests}    value    
+         * @return  {void}                                                  
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @param   {boolean}                                      isStatic    
+         * @param   {Bridge.QUnit.Assert}                          assert      
+         * @return  {Bridge.ClientTest.SimpleTypes.DoubleTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultValueIs0: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
             t.defaultValueIs0();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constantsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
             t.constantsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         formatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
             t.formatWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iFormattableToStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
             t.iFormattableToStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
             t.toStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toExponentialWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
             t.toExponentialWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toExponentialWithFractionalDigitsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
             t.toExponentialWithFractionalDigitsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toFixed: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
             t.toFixed();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toFixedWithFractionalDigitsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
             t.toFixedWithFractionalDigitsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toPrecisionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
             t.toPrecisionWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toPrecisionWithPrecisionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
             t.toPrecisionWithPrecisionWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         isPositiveInfinityWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
             t.isPositiveInfinityWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         isNegativeInfinityWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
             t.isNegativeInfinityWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         isInfinityWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
             t.isInfinityWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         isFiniteWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
             t.isFiniteWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         isNaNWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
             t.isNaNWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getHashCodeWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
             t.getHashCodeWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         equalsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
             t.equalsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iEquatableEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
             t.iEquatableEqualsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         compareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
             t.compareToWorks();
@@ -3095,32 +8277,109 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDouble
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests
+         * @type Bridge.ClientTest.SimpleTypes.EnumTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.EnumTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.EnumTests}    value    
+         * @return  {void}                                                
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests.instance = new Bridge.ClientTest.SimpleTypes.EnumTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.EnumTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.EnumTests}    value    
+         * @return  {void}                                                
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests
+         * @param   {boolean}                                    isStatic    
+         * @param   {Bridge.QUnit.Assert}                        assert      
+         * @return  {Bridge.ClientTest.SimpleTypes.EnumTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         firstValueOfEnumIsZero: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests.beforeTest(false, assert);
             t.firstValueOfEnumIsZero();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getHashCodeWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests.beforeTest(false, assert);
             t.getHashCodeWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         equalsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests.beforeTest(false, assert);
             t.equalsWorks();
@@ -3128,80 +8387,253 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTe
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @type Bridge.ClientTest.SimpleTypes.Int16Tests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.Int16Tests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.Int16Tests}    value    
+         * @return  {void}                                                 
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.instance = new Bridge.ClientTest.SimpleTypes.Int16Tests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.Int16Tests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.Int16Tests}    value    
+         * @return  {void}                                                 
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @param   {boolean}                                     isStatic    
+         * @param   {Bridge.QUnit.Assert}                         assert      
+         * @return  {Bridge.ClientTest.SimpleTypes.Int16Tests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         castsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.beforeTest(false, assert);
             t.castsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultValueIs0: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.beforeTest(false, assert);
             t.defaultValueIs0();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constantsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.beforeTest(false, assert);
             t.constantsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         formatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.beforeTest(false, assert);
             t.formatWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iFormattableToStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.beforeTest(false, assert);
             t.iFormattableToStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         tryParseWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.beforeTest(false, assert);
             t.tryParseWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         parseWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.beforeTest(false, assert);
             t.parseWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringWithoutRadixWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.beforeTest(false, assert);
             t.toStringWithoutRadixWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringWithRadixWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.beforeTest(false, assert);
             t.toStringWithRadixWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getHashCodeWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.beforeTest(false, assert);
             t.getHashCodeWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         equalsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.beforeTest(false, assert);
             t.equalsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iEquatableEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.beforeTest(false, assert);
             t.iEquatableEqualsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         compareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.beforeTest(false, assert);
             t.compareToWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iComparableCompareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.beforeTest(false, assert);
             t.iComparableCompareToWorks();
@@ -3209,108 +8641,337 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16T
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @type Bridge.ClientTest.SimpleTypes.Int32Tests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.Int32Tests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.Int32Tests}    value    
+         * @return  {void}                                                 
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.instance = new Bridge.ClientTest.SimpleTypes.Int32Tests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.Int32Tests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.Int32Tests}    value    
+         * @return  {void}                                                 
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @param   {boolean}                                     isStatic    
+         * @param   {Bridge.QUnit.Assert}                         assert      
+         * @return  {Bridge.ClientTest.SimpleTypes.Int32Tests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         castsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
             t.castsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typeIsWorksForInt32: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
             t.typeIsWorksForInt32();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typeAsWorksForInt32: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
             t.typeAsWorksForInt32();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         unboxingWorksForInt32: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
             t.unboxingWorksForInt32();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultValueIs0: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
             t.defaultValueIs0();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constantsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
             t.constantsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         formatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
             t.formatWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iFormattableToStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
             t.iFormattableToStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         tryParseWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
             t.tryParseWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         parseWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
             t.parseWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringWithoutRadixWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
             t.toStringWithoutRadixWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringWithRadixWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
             t.toStringWithRadixWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getHashCodeWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
             t.getHashCodeWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         equalsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
             t.equalsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iEquatableEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
             t.iEquatableEqualsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         compareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
             t.compareToWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iComparableCompareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
             t.iComparableCompareToWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         integerDivisionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
             t.integerDivisionWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         integerModuloWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
             t.integerModuloWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         integerDivisionByZeroThrowsDivideByZeroException: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
             t.integerDivisionByZeroThrowsDivideByZeroException();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         doublesAreTruncatedWhenConvertedToIntegers: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
             t.doublesAreTruncatedWhenConvertedToIntegers();
@@ -3318,84 +8979,265 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32T
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @type Bridge.ClientTest.SimpleTypes.Int64Tests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.Int64Tests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.Int64Tests}    value    
+         * @return  {void}                                                 
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.instance = new Bridge.ClientTest.SimpleTypes.Int64Tests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.Int64Tests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.Int64Tests}    value    
+         * @return  {void}                                                 
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @param   {boolean}                                     isStatic    
+         * @param   {Bridge.QUnit.Assert}                         assert      
+         * @return  {Bridge.ClientTest.SimpleTypes.Int64Tests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         castsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.beforeTest(false, assert);
             t.castsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultValueIs0: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.beforeTest(false, assert);
             t.defaultValueIs0();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         formatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.beforeTest(false, assert);
             t.formatWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iFormattableToStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.beforeTest(false, assert);
             t.iFormattableToStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         tryParseWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.beforeTest(false, assert);
             t.tryParseWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         parseWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.beforeTest(false, assert);
             t.parseWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         castingOfLargeDoublesToInt64Works: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.beforeTest(false, assert);
             t.castingOfLargeDoublesToInt64Works();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         divisionOfLargeInt64Works: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.beforeTest(false, assert);
             t.divisionOfLargeInt64Works();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringWithoutRadixWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.beforeTest(false, assert);
             t.toStringWithoutRadixWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringWithRadixWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.beforeTest(false, assert);
             t.toStringWithRadixWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getHashCodeWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.beforeTest(false, assert);
             t.getHashCodeWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         equalsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.beforeTest(false, assert);
             t.equalsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iEquatableEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.beforeTest(false, assert);
             t.iEquatableEqualsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         compareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.beforeTest(false, assert);
             t.compareToWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iComparableCompareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.beforeTest(false, assert);
             t.iComparableCompareToWorks();
@@ -3403,252 +9245,769 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64T
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @type Bridge.ClientTest.SimpleTypes.JsDateTimeTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.JsDateTimeTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.JsDateTimeTests}    value    
+         * @return  {void}                                                      
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.instance = new Bridge.ClientTest.SimpleTypes.JsDateTimeTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.JsDateTimeTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.JsDateTimeTests}    value    
+         * @return  {void}                                                      
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {boolean}                                          isStatic    
+         * @param   {Bridge.QUnit.Assert}                              assert      
+         * @return  {Bridge.ClientTest.SimpleTypes.JsDateTimeTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultConstructorReturnsTodaysDate: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.defaultConstructorReturnsTodaysDate();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         creatingInstanceReturnsTodaysDate: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.creatingInstanceReturnsTodaysDate();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         millisecondSinceEpochConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.millisecondSinceEpochConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         stringConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.stringConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         yMDConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.yMDConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         yMDHConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.yMDHConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         yMDHNConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.yMDHNConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         yMDHNSConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.yMDHNSConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         yMDHNSUConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.yMDHNSUConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         nowWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.nowWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         uTCNowWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.uTCNowWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toUniversalWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.toUniversalWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toLocalWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.toLocalWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         todayWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.todayWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         formatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.formatWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         localeFormatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.localeFormatWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getFullYearWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.getFullYearWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getMonthWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.getMonthWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getDateWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.getDateWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getHoursWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.getHoursWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getMinutesWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.getMinutesWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getSecondsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.getSecondsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getMillisecondsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.getMillisecondsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getDayWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.getDayWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getTimeWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.getTimeWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         valueOfWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.valueOfWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getTimezoneOffsetWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.getTimezoneOffsetWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getUTCFullYearWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.getUTCFullYearWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getUtcMonthWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.getUtcMonthWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getUTCDateWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.getUTCDateWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getUTCHoursWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.getUTCHoursWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getUTCMinutesWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.getUTCMinutesWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getUTCSecondsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.getUTCSecondsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getUTCMillisecondsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.getUTCMillisecondsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getUTCDayWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.getUTCDayWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         parseWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.parseWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         parseExactWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.parseExactWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         parseExactWithCultureWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.parseExactWithCultureWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         parseExactUTCWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.parseExactUTCWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         parseExactUTCWithCultureWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.parseExactUTCWithCultureWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toDateStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.toDateStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toTimeStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.toTimeStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toUTCStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.toUTCStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toLocaleDateStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.toLocaleDateStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toLocaleTimeStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.toLocaleTimeStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         subtractingDatesWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.subtractingDatesWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         subtractMethodReturningTimeSpanWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.subtractMethodReturningTimeSpanWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         dateEqualityWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.dateEqualityWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         dateInequalityWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.dateInequalityWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         dateLessThanWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.dateLessThanWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         dateLessEqualWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.dateLessEqualWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         dateGreaterThanWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.dateGreaterThanWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         dateGreaterEqualWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.dateGreaterEqualWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getHashCodeWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.getHashCodeWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         equalsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.equalsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iEquatableEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.iEquatableEqualsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         compareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.compareToWorks();
@@ -3656,44 +10015,145 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDate
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+         * @type Bridge.ClientTest.SimpleTypes.ObjectTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.ObjectTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.ObjectTests}    value    
+         * @return  {void}                                                  
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.instance = new Bridge.ClientTest.SimpleTypes.ObjectTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.ObjectTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.ObjectTests}    value    
+         * @return  {void}                                                  
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+         * @param   {boolean}                                      isStatic    
+         * @param   {Bridge.QUnit.Assert}                          assert      
+         * @return  {Bridge.ClientTest.SimpleTypes.ObjectTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         canGetHashCodeForObject: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.beforeTest(false, assert);
             t.canGetHashCodeForObject();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         repeatedCallsToGetHashCodeReturnsSameValue: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.beforeTest(false, assert);
             t.repeatedCallsToGetHashCodeReturnsSameValue();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         objectIsEqualToItself: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.beforeTest(false, assert);
             t.objectIsEqualToItself();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         staticEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.beforeTest(false, assert);
             t.staticEqualsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         referenceEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.beforeTest(false, assert);
             t.referenceEqualsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringOverride: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.beforeTest(false, assert);
             t.toStringOverride();
@@ -3701,80 +10161,253 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObject
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @type Bridge.ClientTest.SimpleTypes.SByteTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.SByteTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.SByteTests}    value    
+         * @return  {void}                                                 
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.instance = new Bridge.ClientTest.SimpleTypes.SByteTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.SByteTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.SByteTests}    value    
+         * @return  {void}                                                 
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @param   {boolean}                                     isStatic    
+         * @param   {Bridge.QUnit.Assert}                         assert      
+         * @return  {Bridge.ClientTest.SimpleTypes.SByteTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         castsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.beforeTest(false, assert);
             t.castsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultValueIs0: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.beforeTest(false, assert);
             t.defaultValueIs0();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constantsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.beforeTest(false, assert);
             t.constantsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         formatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.beforeTest(false, assert);
             t.formatWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iFormattableToStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.beforeTest(false, assert);
             t.iFormattableToStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         tryParseWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.beforeTest(false, assert);
             t.tryParseWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         parseWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.beforeTest(false, assert);
             t.parseWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringWithoutRadixWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.beforeTest(false, assert);
             t.toStringWithoutRadixWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringWithRadixWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.beforeTest(false, assert);
             t.toStringWithRadixWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getHashCodeWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.beforeTest(false, assert);
             t.getHashCodeWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         equalsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.beforeTest(false, assert);
             t.equalsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iEquatableEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.beforeTest(false, assert);
             t.iEquatableEqualsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         compareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.beforeTest(false, assert);
             t.compareToWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iComparableCompareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.beforeTest(false, assert);
             t.iComparableCompareToWorks();
@@ -3782,100 +10415,313 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteT
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @type Bridge.ClientTest.SimpleTypes.SingleTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.SingleTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.SingleTests}    value    
+         * @return  {void}                                                  
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.instance = new Bridge.ClientTest.SimpleTypes.SingleTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.SingleTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.SingleTests}    value    
+         * @return  {void}                                                  
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @param   {boolean}                                      isStatic    
+         * @param   {Bridge.QUnit.Assert}                          assert      
+         * @return  {Bridge.ClientTest.SimpleTypes.SingleTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultValueIs0: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.beforeTest(false, assert);
             t.defaultValueIs0();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constantsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.beforeTest(false, assert);
             t.constantsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         formatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.beforeTest(false, assert);
             t.formatWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iFormattableToStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.beforeTest(false, assert);
             t.iFormattableToStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.beforeTest(false, assert);
             t.toStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toExponentialWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.beforeTest(false, assert);
             t.toExponentialWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toExponentialWithFractionalDigitsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.beforeTest(false, assert);
             t.toExponentialWithFractionalDigitsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toFixed: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.beforeTest(false, assert);
             t.toFixed();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toFixedWithFractionalDigitsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.beforeTest(false, assert);
             t.toFixedWithFractionalDigitsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toPrecisionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.beforeTest(false, assert);
             t.toPrecisionWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toPrecisionWithPrecisionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.beforeTest(false, assert);
             t.toPrecisionWithPrecisionWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         isPositiveInfinityWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.beforeTest(false, assert);
             t.isPositiveInfinityWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         isNegativeInfinityWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.beforeTest(false, assert);
             t.isNegativeInfinityWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         isInfinityWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.beforeTest(false, assert);
             t.isInfinityWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         isFiniteWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.beforeTest(false, assert);
             t.isFiniteWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         isNaNWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.beforeTest(false, assert);
             t.isNaNWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getHashCodeWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.beforeTest(false, assert);
             t.getHashCodeWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         equalsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.beforeTest(false, assert);
             t.equalsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         compareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.beforeTest(false, assert);
             t.compareToWorks();
@@ -3883,268 +10729,817 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingle
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @type Bridge.ClientTest.SimpleTypes.StringTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.StringTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.StringTests}    value    
+         * @return  {void}                                                  
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.instance = new Bridge.ClientTest.SimpleTypes.StringTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.StringTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.StringTests}    value    
+         * @return  {void}                                                  
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {boolean}                                      isStatic    
+         * @param   {Bridge.QUnit.Assert}                          assert      
+         * @return  {Bridge.ClientTest.SimpleTypes.StringTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.defaultConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         copyConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.copyConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         charAndCountConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.charAndCountConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         charArrayConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.charArrayConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         emptyFieldWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.emptyFieldWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         lengthPropertyWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.lengthPropertyWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         charAtWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.charAtWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         charCodeAtWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.charCodeAtWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         compareWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.compareWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         compareWithIgnoreCaseArgWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.compareWithIgnoreCaseArgWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         concatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.concatWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         concatWithObjectsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.concatWithObjectsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         endsWithCharWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.endsWithCharWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         endsWithStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.endsWithStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         staticEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.staticEqualsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         formatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.formatWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         formatWorksWithIFormattable: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.formatWorksWithIFormattable();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         formatCanUseEscapedBraces: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.formatCanUseEscapedBraces();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         fromCharCodeWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.fromCharCodeWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         indexOfCharWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.indexOfCharWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         indexOfStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.indexOfStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         indexOfCharWithStartIndexWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.indexOfCharWithStartIndexWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         indexOfCharWithStartIndexAndCountWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.indexOfCharWithStartIndexAndCountWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         indexOfStringWithStartIndexWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.indexOfStringWithStartIndexWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         indexOfStringWithStartIndexAndCountWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.indexOfStringWithStartIndexAndCountWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         indexOfAnyWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.indexOfAnyWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         indexOfAnyWithStartIndexWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.indexOfAnyWithStartIndexWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         indexOfAnyWithStartIndexAndCountWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.indexOfAnyWithStartIndexAndCountWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         isNullOrEmptyWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.isNullOrEmptyWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         lastIndexOfCharWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.lastIndexOfCharWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         lastIndexOfStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.lastIndexOfStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         lastIndexOfCharWithStartIndexWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.lastIndexOfCharWithStartIndexWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         lastIndexOfStringWithStartIndexWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.lastIndexOfStringWithStartIndexWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         localeCompareWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.localeCompareWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         matchWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.matchWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         replaceWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.replaceWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         replaceCharWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.replaceCharWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         replaceRegexWithReplaceTextWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.replaceRegexWithReplaceTextWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         replaceRegexWithReplaceCallbackWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.replaceRegexWithReplaceCallbackWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         searchWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.searchWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         splitWithStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.splitWithStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         splitWithRegexWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.splitWithRegexWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         startsWithStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.startsWithStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         substrWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.substrWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         substrWithLengthWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.substrWithLengthWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         substringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.substringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         substringWithLengthWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.substringWithLengthWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toLowerCaseWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.toLowerCaseWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toUpperCaseWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.toUpperCaseWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toLowerWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.toLowerWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toUpperWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.toUpperWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         trimWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.trimWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         stringEqualityWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.stringEqualityWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         stringInequalityWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.stringInequalityWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         stringIndexingWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.stringIndexingWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getHashCodeWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.getHashCodeWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         instanceEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.instanceEqualsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iEquatableEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.iEquatableEqualsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         compareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.compareToWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         containsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.containsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toCharArrayWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.toCharArrayWorks();
@@ -4152,108 +11547,337 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesString
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @type Bridge.ClientTest.SimpleTypes.TimeSpanTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.TimeSpanTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.TimeSpanTests}    value    
+         * @return  {void}                                                    
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.instance = new Bridge.ClientTest.SimpleTypes.TimeSpanTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.TimeSpanTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.TimeSpanTests}    value    
+         * @return  {void}                                                    
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @param   {boolean}                                        isStatic    
+         * @param   {Bridge.QUnit.Assert}                            assert      
+         * @return  {Bridge.ClientTest.SimpleTypes.TimeSpanTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.beforeTest(false, assert);
             t.defaultConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultValueWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.beforeTest(false, assert);
             t.defaultValueWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         zeroWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.beforeTest(false, assert);
             t.zeroWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         creatingInstanceReturnsTimeSpanWithZeroValue: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.beforeTest(false, assert);
             t.creatingInstanceReturnsTimeSpanWithZeroValue();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         parameterConstructorsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.beforeTest(false, assert);
             t.parameterConstructorsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         factoryMethodsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.beforeTest(false, assert);
             t.factoryMethodsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         propertiesWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.beforeTest(false, assert);
             t.propertiesWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         compareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.beforeTest(false, assert);
             t.compareToWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         compareWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.beforeTest(false, assert);
             t.compareWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         staticEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.beforeTest(false, assert);
             t.staticEqualsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         equalsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.beforeTest(false, assert);
             t.equalsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.beforeTest(false, assert);
             t.toStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         addWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.beforeTest(false, assert);
             t.addWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         subtractWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.beforeTest(false, assert);
             t.subtractWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         durationWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.beforeTest(false, assert);
             t.durationWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         negateWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.beforeTest(false, assert);
             t.negateWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         comparisonOperatorsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.beforeTest(false, assert);
             t.comparisonOperatorsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         additionOperatorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.beforeTest(false, assert);
             t.additionOperatorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         subtractionOperatorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.beforeTest(false, assert);
             t.subtractionOperatorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         unaryPlusWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.beforeTest(false, assert);
             t.unaryPlusWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         unaryMinusWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.beforeTest(false, assert);
             t.unaryMinusWorks();
@@ -4261,52 +11885,169 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSp
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @type Bridge.ClientTest.SimpleTypes.TupleTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.TupleTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.TupleTests}    value    
+         * @return  {void}                                                 
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests.instance = new Bridge.ClientTest.SimpleTypes.TupleTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.TupleTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.TupleTests}    value    
+         * @return  {void}                                                 
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @param   {boolean}                                     isStatic    
+         * @param   {Bridge.QUnit.Assert}                         assert      
+         * @return  {Bridge.ClientTest.SimpleTypes.TupleTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         tuple1Works: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests.beforeTest(false, assert);
             t.tuple1Works();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         tuple2Works: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests.beforeTest(false, assert);
             t.tuple2Works();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         tuple3Works: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests.beforeTest(false, assert);
             t.tuple3Works();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         tuple4Works: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests.beforeTest(false, assert);
             t.tuple4Works();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         tuple5Works: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests.beforeTest(false, assert);
             t.tuple5Works();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         tuple6Works: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests.beforeTest(false, assert);
             t.tuple6Works();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         tuple7Works: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests.beforeTest(false, assert);
             t.tuple7Works();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         tuple8Works: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleTests.beforeTest(false, assert);
             t.tuple8Works();
@@ -4314,80 +12055,253 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTupleT
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @type Bridge.ClientTest.SimpleTypes.UInt16Tests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.UInt16Tests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.UInt16Tests}    value    
+         * @return  {void}                                                  
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.instance = new Bridge.ClientTest.SimpleTypes.UInt16Tests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.UInt16Tests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.UInt16Tests}    value    
+         * @return  {void}                                                  
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @param   {boolean}                                      isStatic    
+         * @param   {Bridge.QUnit.Assert}                          assert      
+         * @return  {Bridge.ClientTest.SimpleTypes.UInt16Tests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         castsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.beforeTest(false, assert);
             t.castsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultValueIs0: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.beforeTest(false, assert);
             t.defaultValueIs0();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constantsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.beforeTest(false, assert);
             t.constantsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         formatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.beforeTest(false, assert);
             t.formatWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iFormattableToStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.beforeTest(false, assert);
             t.iFormattableToStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         tryParseWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.beforeTest(false, assert);
             t.tryParseWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         parseWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.beforeTest(false, assert);
             t.parseWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringWithoutRadixWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.beforeTest(false, assert);
             t.toStringWithoutRadixWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringWithRadixWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.beforeTest(false, assert);
             t.toStringWithRadixWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getHashCodeWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.beforeTest(false, assert);
             t.getHashCodeWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         equalsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.beforeTest(false, assert);
             t.equalsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iEquatableEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.beforeTest(false, assert);
             t.iEquatableEqualsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         compareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.beforeTest(false, assert);
             t.compareToWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iComparableCompareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.beforeTest(false, assert);
             t.iComparableCompareToWorks();
@@ -4395,80 +12309,253 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @type Bridge.ClientTest.SimpleTypes.UInt32Tests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.UInt32Tests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.UInt32Tests}    value    
+         * @return  {void}                                                  
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.instance = new Bridge.ClientTest.SimpleTypes.UInt32Tests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.UInt32Tests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.UInt32Tests}    value    
+         * @return  {void}                                                  
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @param   {boolean}                                      isStatic    
+         * @param   {Bridge.QUnit.Assert}                          assert      
+         * @return  {Bridge.ClientTest.SimpleTypes.UInt32Tests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         castsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.beforeTest(false, assert);
             t.castsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultValueIs0: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.beforeTest(false, assert);
             t.defaultValueIs0();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constantsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.beforeTest(false, assert);
             t.constantsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         formatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.beforeTest(false, assert);
             t.formatWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iFormattableToStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.beforeTest(false, assert);
             t.iFormattableToStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         tryParseWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.beforeTest(false, assert);
             t.tryParseWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         parseWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.beforeTest(false, assert);
             t.parseWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringWithoutRadixWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.beforeTest(false, assert);
             t.toStringWithoutRadixWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringWithRadixWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.beforeTest(false, assert);
             t.toStringWithRadixWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getHashCodeWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.beforeTest(false, assert);
             t.getHashCodeWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         equalsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.beforeTest(false, assert);
             t.equalsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iEquatableEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.beforeTest(false, assert);
             t.iEquatableEqualsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         compareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.beforeTest(false, assert);
             t.compareToWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iComparableCompareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.beforeTest(false, assert);
             t.iComparableCompareToWorks();
@@ -4476,88 +12563,277 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @type Bridge.ClientTest.SimpleTypes.UInt64Tests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.UInt64Tests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.UInt64Tests}    value    
+         * @return  {void}                                                  
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.instance = new Bridge.ClientTest.SimpleTypes.UInt64Tests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.SimpleTypes.UInt64Tests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.SimpleTypes.UInt64Tests}    value    
+         * @return  {void}                                                  
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @param   {boolean}                                      isStatic    
+         * @param   {Bridge.QUnit.Assert}                          assert      
+         * @return  {Bridge.ClientTest.SimpleTypes.UInt64Tests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         castsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.beforeTest(false, assert);
             t.castsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultValueIs0: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.beforeTest(false, assert);
             t.defaultValueIs0();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constantsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.beforeTest(false, assert);
             t.constantsWork();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         formatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.beforeTest(false, assert);
             t.formatWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iFormattableToStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.beforeTest(false, assert);
             t.iFormattableToStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         castingOfLargeValuesToUInt64Works: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.beforeTest(false, assert);
             t.castingOfLargeValuesToUInt64Works();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         divisionOfLargeUInt64Works: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.beforeTest(false, assert);
             t.divisionOfLargeUInt64Works();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         tryParseWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.beforeTest(false, assert);
             t.tryParseWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         parseWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.beforeTest(false, assert);
             t.parseWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringWithoutRadixWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.beforeTest(false, assert);
             t.toStringWithoutRadixWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringWithRadixWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.beforeTest(false, assert);
             t.toStringWithRadixWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         getHashCodeWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.beforeTest(false, assert);
             t.getHashCodeWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         equalsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.beforeTest(false, assert);
             t.equalsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iEquatableEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.beforeTest(false, assert);
             t.iEquatableEqualsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         compareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.beforeTest(false, assert);
             t.compareToWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         iComparableCompareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.beforeTest(false, assert);
             t.iComparableCompareToWorks();
@@ -4565,68 +12841,217 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @type Bridge.ClientTest.Text.RegularExpressions.RegexTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Text.RegularExpressions.RegexTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Text.RegularExpressions.RegexTests}    value    
+         * @return  {void}                                                             
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests.instance = new Bridge.ClientTest.Text.RegularExpressions.RegexTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Text.RegularExpressions.RegexTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Text.RegularExpressions.RegexTests}    value    
+         * @return  {void}                                                             
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @param   {boolean}                                                 isStatic    
+         * @param   {Bridge.QUnit.Assert}                                     assert      
+         * @return  {Bridge.ClientTest.Text.RegularExpressions.RegexTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         stringOnlyConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests.beforeTest(false, assert);
             t.stringOnlyConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithFlagsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests.beforeTest(false, assert);
             t.constructorWithFlagsWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         globalFlagWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests.beforeTest(false, assert);
             t.globalFlagWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         ignoreCaseFlagWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests.beforeTest(false, assert);
             t.ignoreCaseFlagWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         multilineFlagWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests.beforeTest(false, assert);
             t.multilineFlagWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         patternPropertyWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests.beforeTest(false, assert);
             t.patternPropertyWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         sourcePropertyWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests.beforeTest(false, assert);
             t.sourcePropertyWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         execWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests.beforeTest(false, assert);
             t.execWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         lastIndexWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests.beforeTest(false, assert);
             t.lastIndexWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         testWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests.beforeTest(false, assert);
             t.testWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         escapeWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests.beforeTest(true, assert);
             Bridge.ClientTest.Text.RegularExpressions.RegexTests.escapeWorks();
@@ -4634,88 +13059,277 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpres
     }
 });
 
+/**
+ * @private
+ * @class Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+ */
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @type Bridge.ClientTest.Text.StringBuilderTests
+         */
         instance: null,
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Text.StringBuilderTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Text.StringBuilderTests}    value    
+         * @return  {void}                                                  
+         */
         getInstance: function () {
             if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.instance === null) {
                 Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.instance = new Bridge.ClientTest.Text.StringBuilderTests();
             }
             return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.instance;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @function getInstance
+         * @return  {Bridge.ClientTest.Text.StringBuilderTests}        
+         */
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @function setInstance
+         * @param   {Bridge.ClientTest.Text.StringBuilderTests}    value    
+         * @return  {void}                                                  
+         */
         setInstance: function (value) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.instance = value;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @param   {boolean}                                      isStatic    
+         * @param   {Bridge.QUnit.Assert}                          assert      
+         * @return  {Bridge.ClientTest.Text.StringBuilderTests}                
+         */
         beforeTest: function (isStatic, assert) {
             Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.setInstance(null);
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.getInstance();
             return r;
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         typePropertiesAreCorrect: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         defaultConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.beforeTest(false, assert);
             t.defaultConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         constructorWithCapacityWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.beforeTest(false, assert);
             t.constructorWithCapacityWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         initialTextConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.beforeTest(false, assert);
             t.initialTextConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         initialTextConstructorWithCapacityWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.beforeTest(false, assert);
             t.initialTextConstructorWithCapacityWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         substringConstructorWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.beforeTest(false, assert);
             t.substringConstructorWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         appendBoolWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.beforeTest(false, assert);
             t.appendBoolWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         appendCharWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.beforeTest(false, assert);
             t.appendCharWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         appendIntWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.beforeTest(false, assert);
             t.appendIntWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         appendDoubleWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.beforeTest(false, assert);
             t.appendDoubleWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         appendObjectWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.beforeTest(false, assert);
             t.appendObjectWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         appendStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.beforeTest(false, assert);
             t.appendStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         appendLineWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.beforeTest(false, assert);
             t.appendLineWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         appendLineStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.beforeTest(false, assert);
             t.appendLineStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         clearWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.beforeTest(false, assert);
             t.clearWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         toStringWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.beforeTest(false, assert);
             t.toStringWorks();
         },
+        /**
+         * @static
+         * @public
+         * @this Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @memberof Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         lengthPropertyWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.beforeTest(false, assert);
             t.lengthPropertyWorks();

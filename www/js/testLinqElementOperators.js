@@ -1,7 +1,18 @@
 ﻿/* global Bridge */
 
+/**
+ * @class ClientTestLibrary.Linq.TestLinqElementOperators
+ */
 Bridge.define('ClientTestLibrary.Linq.TestLinqElementOperators', {
     statics: {
+        /**
+         * @static
+         * @public
+         * @this ClientTestLibrary.Linq.TestLinqElementOperators
+         * @memberof ClientTestLibrary.Linq.TestLinqElementOperators
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         test: function (assert) {
             assert.expect(26);
 
@@ -92,6 +103,13 @@ Bridge.define('ClientTestLibrary.Linq.TestLinqElementOperators', {
             })).elementAtOrDefault(100, Bridge.getDefaultValue(Bridge.Int));
             assert.deepEqual(elementAt100OrDefault, 0, "ElementAtOrDefault() should return 0");
         },
+        /**
+         * @static
+         * @private
+         * @this ClientTestLibrary.Linq.TestLinqElementOperators
+         * @memberof ClientTestLibrary.Linq.TestLinqElementOperators
+         * @return  {void}        
+         */
         throwExceptionOnFirst1: function () {
             var numbers = [3, 4];
 
@@ -99,11 +117,25 @@ Bridge.define('ClientTestLibrary.Linq.TestLinqElementOperators', {
                 return x === 5;
             });
         },
+        /**
+         * @static
+         * @private
+         * @this ClientTestLibrary.Linq.TestLinqElementOperators
+         * @memberof ClientTestLibrary.Linq.TestLinqElementOperators
+         * @return  {void}        
+         */
         throwExceptionOnFirst2: function () {
             var numbers = [];
 
             Bridge.Linq.Enumerable.from(numbers).first();
         },
+        /**
+         * @static
+         * @private
+         * @this ClientTestLibrary.Linq.TestLinqElementOperators
+         * @memberof ClientTestLibrary.Linq.TestLinqElementOperators
+         * @return  {void}        
+         */
         throwExceptionOnLast1: function () {
             var numbers = [3, 4];
 
@@ -111,16 +143,37 @@ Bridge.define('ClientTestLibrary.Linq.TestLinqElementOperators', {
                 return x === 5;
             });
         },
+        /**
+         * @static
+         * @private
+         * @this ClientTestLibrary.Linq.TestLinqElementOperators
+         * @memberof ClientTestLibrary.Linq.TestLinqElementOperators
+         * @return  {void}        
+         */
         throwExceptionOnLast2: function () {
             var numbers = [];
 
             Bridge.Linq.Enumerable.from(numbers).last();
         },
+        /**
+         * @static
+         * @private
+         * @this ClientTestLibrary.Linq.TestLinqElementOperators
+         * @memberof ClientTestLibrary.Linq.TestLinqElementOperators
+         * @return  {void}        
+         */
         throwExceptionOnElementAt1: function () {
             var numbers = [3, 4];
 
             Bridge.Linq.Enumerable.from(numbers).elementAt(3);
         },
+        /**
+         * @static
+         * @private
+         * @this ClientTestLibrary.Linq.TestLinqElementOperators
+         * @memberof ClientTestLibrary.Linq.TestLinqElementOperators
+         * @return  {void}        
+         */
         throwExceptionOnElementAt2: function () {
             var numbers = [];
 

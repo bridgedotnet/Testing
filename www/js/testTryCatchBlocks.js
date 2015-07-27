@@ -1,19 +1,166 @@
 ﻿/* global Bridge */
 
+/**
+ * @class ClientTestLibrary.TestTryCatchBlocks
+ */
 Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
     statics: {
         config: {
             properties: {
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchBlocks
+                 * @function getIsATry
+                 * @return  {boolean}        
+                 */
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchBlocks
+                 * @function setIsATry
+                 * @param   {boolean}    value    
+                 * @return  {void}                
+                 */
                 IsATry: false,
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchBlocks
+                 * @function getIsACatch
+                 * @return  {boolean}        
+                 */
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchBlocks
+                 * @function setIsACatch
+                 * @param   {boolean}    value    
+                 * @return  {void}                
+                 */
                 IsACatch: false,
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchBlocks
+                 * @function getIsBTry
+                 * @return  {boolean}        
+                 */
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchBlocks
+                 * @function setIsBTry
+                 * @param   {boolean}    value    
+                 * @return  {void}                
+                 */
                 IsBTry: false,
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchBlocks
+                 * @function getIsBCatch
+                 * @return  {boolean}        
+                 */
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchBlocks
+                 * @function setIsBCatch
+                 * @param   {boolean}    value    
+                 * @return  {void}                
+                 */
                 IsBCatch: false,
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchBlocks
+                 * @function getIsCTry
+                 * @return  {boolean}        
+                 */
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchBlocks
+                 * @function setIsCTry
+                 * @param   {boolean}    value    
+                 * @return  {void}                
+                 */
                 IsCTry: false,
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchBlocks
+                 * @function getIsCCatch
+                 * @return  {boolean}        
+                 */
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchBlocks
+                 * @function setIsCCatch
+                 * @param   {boolean}    value    
+                 * @return  {void}                
+                 */
                 IsCCatch: false,
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchBlocks
+                 * @function getIsDTry
+                 * @return  {boolean}        
+                 */
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchBlocks
+                 * @function setIsDTry
+                 * @param   {boolean}    value    
+                 * @return  {void}                
+                 */
                 IsDTry: false,
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchBlocks
+                 * @function getIsDCatch
+                 * @return  {boolean}        
+                 */
+                /**
+                 * @static
+                 * @public
+                 * @this ClientTestLibrary.TestTryCatchBlocks
+                 * @memberof ClientTestLibrary.TestTryCatchBlocks
+                 * @function setIsDCatch
+                 * @param   {boolean}    value    
+                 * @return  {void}                
+                 */
                 IsDCatch: false
             }
         },
+        /**
+         * @static
+         * @public
+         * @this ClientTestLibrary.TestTryCatchBlocks
+         * @memberof ClientTestLibrary.TestTryCatchBlocks
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         simpleTryCatch: function (assert) {
             assert.expect(1);
 
@@ -21,6 +168,14 @@ Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
 
             assert.equal(result, "Good", "TryCatch() executes");
         },
+        /**
+         * @static
+         * @public
+         * @this ClientTestLibrary.TestTryCatchBlocks
+         * @memberof ClientTestLibrary.TestTryCatchBlocks
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         caughtExceptions: function (assert) {
             assert.expect(3);
 
@@ -33,6 +188,14 @@ Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
             var exceptionMessage = ClientTestLibrary.TestTryCatchBlocks.tryCatchWithCaughtArgumentException();
             assert.deepEqual(exceptionMessage, "catch me", "Typed exception catch with exception message");
         },
+        /**
+         * @static
+         * @public
+         * @this ClientTestLibrary.TestTryCatchBlocks
+         * @memberof ClientTestLibrary.TestTryCatchBlocks
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         thrownExceptions: function (assert) {
             assert.expect(12);
 
@@ -57,6 +220,14 @@ Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
             assert.ok(ClientTestLibrary.TestTryCatchBlocks.getIsDTry(), "D. exception caught and re-thrown  - try section called");
             assert.ok(ClientTestLibrary.TestTryCatchBlocks.getIsDCatch(), "D. exception caught and re-thrown  - catch section called");
         },
+        /**
+         * @static
+         * @public
+         * @this ClientTestLibrary.TestTryCatchBlocks
+         * @memberof ClientTestLibrary.TestTryCatchBlocks
+         * @param   {Bridge.QUnit.Assert}    assert    
+         * @return  {void}                             
+         */
         bridge320: function (assert) {
             assert.expect(1);
 
@@ -76,6 +247,14 @@ Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
 
             assert.ok(Bridge.String.contains(exceptionMessage,"SomeNotExistingMethod"), "ex.Message works on built-in JavaScript type");
         },
+        /**
+         * @static
+         * @private
+         * @this ClientTestLibrary.TestTryCatchBlocks
+         * @memberof ClientTestLibrary.TestTryCatchBlocks
+         * @param   {string}    s    
+         * @return  {string}         
+         */
         tryCatch: function (s) {
             try {
                 return s;
@@ -85,6 +264,13 @@ Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
                 return "";
             }
         },
+        /**
+         * @static
+         * @private
+         * @this ClientTestLibrary.TestTryCatchBlocks
+         * @memberof ClientTestLibrary.TestTryCatchBlocks
+         * @return  {void}        
+         */
         tryCatchWithCaughtException: function () {
             try {
                 throw new Bridge.Exception();
@@ -93,6 +279,13 @@ Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
                 $e = Bridge.Exception.create($e);
             }
         },
+        /**
+         * @static
+         * @private
+         * @this ClientTestLibrary.TestTryCatchBlocks
+         * @memberof ClientTestLibrary.TestTryCatchBlocks
+         * @return  {void}        
+         */
         tryCatchWithCaughtTypedException: function () {
             try {
                 throw new Bridge.Exception();
@@ -101,6 +294,13 @@ Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
                 $e = Bridge.Exception.create($e);
             }
         },
+        /**
+         * @static
+         * @private
+         * @this ClientTestLibrary.TestTryCatchBlocks
+         * @memberof ClientTestLibrary.TestTryCatchBlocks
+         * @return  {string}        
+         */
         tryCatchWithCaughtArgumentException: function () {
             try {
                 throw new Bridge.ArgumentException("catch me");
@@ -117,6 +317,13 @@ Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
                 }
             }
         },
+        /**
+         * @static
+         * @private
+         * @this ClientTestLibrary.TestTryCatchBlocks
+         * @memberof ClientTestLibrary.TestTryCatchBlocks
+         * @return  {void}        
+         */
         tryCatchWithNotCaughtTypedException: function () {
             ClientTestLibrary.TestTryCatchBlocks.setIsATry(false);
             ClientTestLibrary.TestTryCatchBlocks.setIsACatch(false);
@@ -137,6 +344,13 @@ Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
 
             ClientTestLibrary.TestTryCatchBlocks.setIsATry(false);
         },
+        /**
+         * @static
+         * @private
+         * @this ClientTestLibrary.TestTryCatchBlocks
+         * @memberof ClientTestLibrary.TestTryCatchBlocks
+         * @return  {void}        
+         */
         tryCatchWithNotCaughtTypedExceptionAndArgument: function () {
             ClientTestLibrary.TestTryCatchBlocks.setIsBTry(false);
             ClientTestLibrary.TestTryCatchBlocks.setIsBCatch(false);
@@ -161,6 +375,13 @@ Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
 
             ClientTestLibrary.TestTryCatchBlocks.setIsBTry(false);
         },
+        /**
+         * @static
+         * @private
+         * @this ClientTestLibrary.TestTryCatchBlocks
+         * @memberof ClientTestLibrary.TestTryCatchBlocks
+         * @return  {void}        
+         */
         tryCatchWithRethrow: function () {
             ClientTestLibrary.TestTryCatchBlocks.setIsCTry(false);
             ClientTestLibrary.TestTryCatchBlocks.setIsCCatch(false);
@@ -178,6 +399,13 @@ Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
 
             ClientTestLibrary.TestTryCatchBlocks.setIsCTry(false);
         },
+        /**
+         * @static
+         * @private
+         * @this ClientTestLibrary.TestTryCatchBlocks
+         * @memberof ClientTestLibrary.TestTryCatchBlocks
+         * @return  {void}        
+         */
         tryCatchWithRethrowEx: function () {
             ClientTestLibrary.TestTryCatchBlocks.setIsDTry(false);
             ClientTestLibrary.TestTryCatchBlocks.setIsDCatch(false);
