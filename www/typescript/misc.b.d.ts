@@ -1,13 +1,6 @@
 ﻿/// <reference path="./bridge.d.ts" />/// <reference path="./misc.a.d.ts" />
 
 declare module Misc.B {
-    /** @namespace Misc.B */
-    
-    /**
-     * @public
-     * @class Misc.B.Class2
-     * @augments Misc.A.Class1
-     */
     export interface Class2 extends Misc.A.Class1 {
     }
     export interface Class2Func extends Function {

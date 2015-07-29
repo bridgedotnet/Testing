@@ -1,18 +1,7 @@
 ﻿/* global Bridge */
 
-/**
- * @class ClientTestLibrary.TestOverloadStaticMethods
- */
 Bridge.define('ClientTestLibrary.TestOverloadStaticMethods', {
     statics: {
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestOverloadStaticMethods
-         * @memberof ClientTestLibrary.TestOverloadStaticMethods
-         * @param   {Bridge.QUnit.Assert}    assert    
-         * @return  {void}                             
-         */
         testStatic: function (assert) {
             assert.expect(16);
 
@@ -40,170 +29,47 @@ Bridge.define('ClientTestLibrary.TestOverloadStaticMethods', {
     }
 });
 
-/**
- * @private
- * @class ClientTestLibrary.TestOverloadStaticMethods.Static
- */
 Bridge.define('ClientTestLibrary.TestOverloadStaticMethods.Static', {
     statics: {
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @memberof ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @param   {number}    x    
-         * @return  {string}         
-         */
         foo$2: function (x) {
             return "Foo(int x)";
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @memberof ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @param   {string}    s    
-         * @return  {string}         
-         */
         foo$5: function (s) {
             return "Foo(string s)";
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @memberof ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @param   {number}    d    
-         * @return  {string}         
-         */
         foo: function (d) {
             return "Foo(double d)";
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @memberof ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @param   {number}    x    
-         * @param   {number}    y    
-         * @return  {string}         
-         */
         foo$4: function (x, y) {
             return "Foo(int x, int y)";
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @memberof ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @param   {number}    x    
-         * @param   {number}    y    
-         * @return  {string}         
-         */
         foo$3: function (x, y) {
             return "Foo(int x, double y)";
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @memberof ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @param   {number}    x    
-         * @param   {number}    y    
-         * @return  {string}         
-         */
         foo$1: function (x, y) {
             return "Foo(double x, int y)";
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @memberof ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @param   {number}    x    
-         * @return  {number}         
-         */
         fooReturnType: function (x) {
             return 67;
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @memberof ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @param   {number}    d    
-         * @return  {string}         
-         */
         fooReturnType$1: function (d) {
             return "string FooReturnType(double d)";
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @memberof ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @param   {number}    x    
-         * @param   {number}    y    
-         * @return  {string}         
-         */
         fooOptionalParameters$1: function (x, y) {
             return "FooOptionalParameters(int x, int y = 5)";
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @memberof ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @param   {number}    x    
-         * @return  {string}         
-         */
         fooOptionalParameters: function (x) {
             return "FooOptionalParameters(int x)";
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @memberof ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @param   {number}    x    
-         * @param   {number}    y    
-         * @param   {number}    z    
-         * @return  {string}         
-         */
         fooMultipleOptionalParameters$1: function (x, y, z) {
             return "FooMultipleOptionalParameters(int x, int y = 5, int z = 10)";
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @memberof ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @param   {number}    x    
-         * @param   {number}    y    
-         * @return  {string}         
-         */
         fooMultipleOptionalParameters: function (x, y) {
             return "FooMultipleOptionalParameters(int x, int y = 5)";
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @memberof ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @param   {number}    x    
-         * @return  {string}         
-         */
         fooNamedArgument$1: function (x) {
             return "FooNamedArgument(int x)";
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @memberof ClientTestLibrary.TestOverloadStaticMethods.Static
-         * @param   {number}    d    
-         * @return  {string}         
-         */
         fooNamedArgument: function (d) {
             return "FooNamedArgument(double d)";
         }

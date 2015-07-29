@@ -1,18 +1,7 @@
 ﻿/* global Bridge */
 
-/**
- * @class ClientTestLibrary.Linq.TestLinqProjectionOperators
- */
 Bridge.define('ClientTestLibrary.Linq.TestLinqProjectionOperators', {
     statics: {
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.Linq.TestLinqProjectionOperators
-         * @memberof ClientTestLibrary.Linq.TestLinqProjectionOperators
-         * @param   {Bridge.QUnit.Assert}    assert    
-         * @return  {void}                             
-         */
         test: function (assert) {
             assert.expect(8);
 

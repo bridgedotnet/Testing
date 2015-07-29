@@ -1,97 +1,27 @@
 ﻿/* global Bridge */
 
-/**
- * @public
- * @class ClientTestLibrary.Point
- */
 Bridge.define('ClientTestLibrary.Point', {
     statics: {
         constructor: function () {
             ClientTestLibrary.Point.staticInt = 500;
             ClientTestLibrary.Point.staticString = "Initialized";
         },
-        /**
-         * @static
-         * @public
-         * @memberof ClientTestLibrary.Point
-         * @type number
-         */
         statitIntNotInitialized: 0,
-        /**
-         * @static
-         * @public
-         * @memberof ClientTestLibrary.Point
-         * @type string
-         */
         statitStringNotInitialized: null,
-        /**
-         * @static
-         * @public
-         * @memberof ClientTestLibrary.Point
-         * @type number
-         */
         staticInt: 0,
-        /**
-         * @static
-         * @public
-         * @memberof ClientTestLibrary.Point
-         * @type string
-         */
         staticString: null,
-        /**
-         * @static
-         * @public
-         * @memberof ClientTestLibrary.Point
-         * @constant
-         * @default "W"
-         * @type number
-         */
         CONST_CHAR: 87,
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.Point
-         * @memberof ClientTestLibrary.Point
-         * @return  {number}        
-         */
         test3: function () {
             return ClientTestLibrary.Point.statitIntNotInitialized + ClientTestLibrary.Point.staticInt;
         }
     },
-    /**
-     * @instance
-     * @public
-     * @memberof ClientTestLibrary.Point
-     * @type number
-     */
     x: 0,
-    /**
-     * @instance
-     * @public
-     * @memberof ClientTestLibrary.Point
-     * @type number
-     */
     y: 0,
     constructor: function () {
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.Point
-     * @memberof ClientTestLibrary.Point
-     * @return  {number}        
-     */
     test1: function () {
         return ClientTestLibrary.Point.staticInt + this.x;
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.Point
-     * @memberof ClientTestLibrary.Point
-     * @param   {ClientTestLibrary.Point}    p    
-     * @return  {ClientTestLibrary.Point}         
-     */
     test2: function (p) {
         return Bridge.merge(new ClientTestLibrary.Point(), {
             x: this.x + p.x, 
@@ -118,10 +48,6 @@ Bridge.define('ClientTestLibrary.Point', {
     }
 });
 
-/**
- * @public
- * @class ClientTestLibrary.Rectangle
- */
 Bridge.define('ClientTestLibrary.Rectangle', {
     config: {
         init: function () {
@@ -129,15 +55,6 @@ Bridge.define('ClientTestLibrary.Rectangle', {
             this.t = new ClientTestLibrary.Point();
         }
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.Rectangle
-     * @memberof ClientTestLibrary.Rectangle
-     * @param   {number}    x    
-     * @param   {number}    y    
-     * @return  {void}           
-     */
     constructor$1: function (x, y) {
         //[#69]
         (new ClientTestLibrary.Rectangle("constructor")).$clone(this);
@@ -145,17 +62,6 @@ Bridge.define('ClientTestLibrary.Rectangle', {
         this.l.x = x;
         this.l.y = y;
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.Rectangle
-     * @memberof ClientTestLibrary.Rectangle
-     * @param   {number}    x1    
-     * @param   {number}    y1    
-     * @param   {number}    x2    
-     * @param   {number}    y2    
-     * @return  {void}            
-     */
     constructor$2: function (x1, y1, x2, y2) {
         this.l.x = x1;
         this.l.y = y1;
@@ -184,19 +90,8 @@ Bridge.define('ClientTestLibrary.Rectangle', {
     }
 });
 
-/**
- * @class ClientTestLibrary.TestValueTypes
- */
 Bridge.define('ClientTestLibrary.TestValueTypes', {
     statics: {
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestValueTypes
-         * @memberof ClientTestLibrary.TestValueTypes
-         * @param   {Bridge.QUnit.Assert}    assert    
-         * @return  {void}                             
-         */
         testInstanceConstructorsAndMethods: function (assert) {
             assert.expect(18);
 
@@ -245,14 +140,6 @@ Bridge.define('ClientTestLibrary.TestValueTypes', {
             assert.deepEqual(c.x, 305, "c.x 305");
             assert.deepEqual(c.y, 407, "c.y 407");
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestValueTypes
-         * @memberof ClientTestLibrary.TestValueTypes
-         * @param   {Bridge.QUnit.Assert}    assert    
-         * @return  {void}                             
-         */
         testStaticConstructorsAndMethods: function (assert) {
             assert.expect(7);
 

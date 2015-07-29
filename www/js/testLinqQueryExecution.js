@@ -1,18 +1,7 @@
 ﻿/* global Bridge */
 
-/**
- * @class ClientTestLibrary.Linq.TestLinqQueryExecution
- */
 Bridge.define('ClientTestLibrary.Linq.TestLinqQueryExecution', {
     statics: {
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.Linq.TestLinqQueryExecution
-         * @memberof ClientTestLibrary.Linq.TestLinqQueryExecution
-         * @param   {Bridge.QUnit.Assert}    assert    
-         * @return  {void}                             
-         */
         test: function (assert) {
             assert.expect(6);
 

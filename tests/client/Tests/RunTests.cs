@@ -40,12 +40,14 @@ namespace ClientTestLibrary
             QUnit.Module("Method parameters");
             QUnit.Test("Default and params", TestMethodParametersClass.Test);
 
-            QUnit.Module("System functions");
-            QUnit.Test("DateTime", TestDateFunctions.DateTimes);
-            QUnit.Test("DateTime", TestDateFunctions.Bridge329);
-            QUnit.Test("String", TestStringFunctions.Strings);
+            QUnit.Module("String");
+            QUnit.Test("Common", TestStringFunctions.Strings);
             QUnit.Test("String Enumerable", TestStringFunctions.Enumerable);
             QUnit.Test("StringBuilder", TestStringBuilderFunctions.StringBuilders);
+
+            QUnit.Module("Date and time");
+            QUnit.Test("Common", TestDateFunctions.DateTimes);
+            QUnit.Test("#329", TestDateFunctions.Bridge329);
 
             QUnit.Module("Try/Catch");
             QUnit.Test("Try/Catch simpe", TestTryCatchBlocks.SimpleTryCatch);
@@ -56,7 +58,7 @@ namespace ClientTestLibrary
             QUnit.Test("Try/Catch/Finally caught exceptions", TestTryCatchFinallyBlocks.CaughtExceptions);
             QUnit.Test("Try/Catch/Finally thrown exceptions", TestTryCatchFinallyBlocks.ThrownExceptions);
 
-            QUnit.Module("Bridge GitHub issues");
+            QUnit.Module("Issues");
             QUnit.Test("#169", TestBridgeIssues.N169);
             QUnit.Test("#240", TestBridgeIssues.N240);
             QUnit.Test("#266", TestBridgeIssues.N266);

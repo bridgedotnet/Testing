@@ -1,31 +1,8 @@
 ﻿/* global Bridge */
 
-/**
- * @public
- * @class ClientTestLibrary.Class68
- */
 Bridge.define('ClientTestLibrary.Class68', {
-    /**
-     * @instance
-     * @public
-     * @memberof ClientTestLibrary.Class68
-     * @type number
-     */
     x: 0,
-    /**
-     * @instance
-     * @public
-     * @memberof ClientTestLibrary.Class68
-     * @type number
-     */
     y: 1,
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.Class68
-     * @memberof ClientTestLibrary.Class68
-     * @return  {void}        
-     */
     test: function () {
         //Multiple local vars correctly
         var x = 1, y = 2;
@@ -34,71 +11,18 @@ Bridge.define('ClientTestLibrary.Class68', {
     }
 });
 
-/**
- * @class ClientTestLibrary.ClassA
- */
 Bridge.define('ClientTestLibrary.ClassA', {
     statics: {
         constructor: function () {
             ClientTestLibrary.ClassA.staticString = "Defined string";
             ClientTestLibrary.ClassA.staticInt = -340;
         },
-        /**
-         * @static
-         * @public
-         * @memberof ClientTestLibrary.ClassA
-         * @type number
-         */
         statitIntNotInitialized: 0,
-        /**
-         * @static
-         * @public
-         * @memberof ClientTestLibrary.ClassA
-         * @type string
-         */
         statitStringNotInitialized: null,
-        /**
-         * @static
-         * @public
-         * @memberof ClientTestLibrary.ClassA
-         * @type number
-         */
         staticInt: 0,
-        /**
-         * @static
-         * @public
-         * @memberof ClientTestLibrary.ClassA
-         * @type string
-         */
         staticString: null,
-        /**
-         * @static
-         * @public
-         * @memberof ClientTestLibrary.ClassA
-         * @constant
-         * @default "Q"
-         * @type number
-         */
         CONST_CHAR: 81,
-        /**
-         * @static
-         * @public
-         * @memberof ClientTestLibrary.ClassA
-         * @constant
-         * @default 3.123456789324324324
-         * @type number
-         */
         CONST_DECIMAL: 3.123456789324324324,
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.ClassA
-         * @memberof ClientTestLibrary.ClassA
-         * @param   {number}                      i    
-         * @param   {string}                      s    
-         * @param   {number}                      d    
-         * @return  {ClientTestLibrary.ClassA}         
-         */
         staticMethod1: function (i, s, d) {
             ClientTestLibrary.ClassA.statitIntNotInitialized = i;
             ClientTestLibrary.ClassA.statitStringNotInitialized = s;
@@ -107,14 +31,6 @@ Bridge.define('ClientTestLibrary.ClassA', {
                 setDoubleA: d
             } );
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.ClassA
-         * @memberof ClientTestLibrary.ClassA
-         * @param   {Array.<Object>}              p    
-         * @return  {ClientTestLibrary.ClassA}         
-         */
         staticMethod2: function (p) {
             var i = Bridge.cast(p[0], Bridge.Int) + 1000;
             var s = Bridge.cast(p[1], String);
@@ -122,139 +38,25 @@ Bridge.define('ClientTestLibrary.ClassA', {
 
             return ClientTestLibrary.ClassA.staticMethod1(i, s, d);
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.ClassA
-         * @memberof ClientTestLibrary.ClassA
-         * @param   {Object}           o    
-         * @param   {System.Int32&}    i    
-         * @return  {boolean}               
-         */
         tryParse: function (o, i) {
             i.v = 3;
 
             return true;
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.ClassA
-         * @memberof ClientTestLibrary.ClassA
-         * @return  {number}        
-         */
         getDefaultInt: function () {
             return Bridge.getDefaultValue(Bridge.Int);
         }
     },
-    /**
-     * @instance
-     * @private
-     * @memberof ClientTestLibrary.ClassA
-     * @type ClientTestLibrary.ClassA.Aux1
-     */
     data: null,
     config: {
         properties: {
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.ClassA
-             * @memberof ClientTestLibrary.ClassA
-             * @function getNumberA
-             * @return  {number}        
-             */
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.ClassA
-             * @memberof ClientTestLibrary.ClassA
-             * @function setNumberA
-             * @param   {number}    value    
-             * @return  {void}               
-             */
             NumberA: 0,
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.ClassA
-             * @memberof ClientTestLibrary.ClassA
-             * @function getStringA
-             * @return  {string}        
-             */
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.ClassA
-             * @memberof ClientTestLibrary.ClassA
-             * @function setStringA
-             * @param   {string}    value    
-             * @return  {void}               
-             */
             StringA: null,
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.ClassA
-             * @memberof ClientTestLibrary.ClassA
-             * @function getBoolA
-             * @return  {boolean}        
-             */
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.ClassA
-             * @memberof ClientTestLibrary.ClassA
-             * @function setBoolA
-             * @param   {boolean}    value    
-             * @return  {void}                
-             */
             BoolA: false,
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.ClassA
-             * @memberof ClientTestLibrary.ClassA
-             * @function getDoubleA
-             * @return  {number}        
-             */
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.ClassA
-             * @memberof ClientTestLibrary.ClassA
-             * @function setDoubleA
-             * @param   {number}    value    
-             * @return  {void}               
-             */
             DoubleA: 0,
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.ClassA
-             * @memberof ClientTestLibrary.ClassA
-             * @function getDecimalA
-             * @return  {number}        
-             */
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.ClassA
-             * @memberof ClientTestLibrary.ClassA
-             * @function setDecimalA
-             * @param   {number}    value    
-             * @return  {void}               
-             */
             DecimalA: 0
         }
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.ClassA
-     * @memberof ClientTestLibrary.ClassA
-     * @return  {void}        
-     */
     constructor: function () {
         this.setNumberA(10);
         this.setStringA("Str");
@@ -265,14 +67,6 @@ Bridge.define('ClientTestLibrary.ClassA', {
             setNumber: 700
         } ));
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.ClassA
-     * @memberof ClientTestLibrary.ClassA
-     * @param   {ClientTestLibrary.ClassA.Aux1}    d    
-     * @return  {void}                                  
-     */
     constructor$1: function (d) {
         this.$constructor();
 
@@ -281,14 +75,6 @@ Bridge.define('ClientTestLibrary.ClassA', {
 
         this.setData(d);
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.ClassA
-     * @memberof ClientTestLibrary.ClassA
-     * @param   {Array.<Object>}    p    
-     * @return  {void}                   
-     */
     constructor$2: function (p) {
         this.$constructor();
 
@@ -320,53 +106,12 @@ Bridge.define('ClientTestLibrary.ClassA', {
             this.setData(Bridge.cast(p[5], ClientTestLibrary.ClassA.Aux1));
         }
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.ClassA
-     * @memberof ClientTestLibrary.ClassA
-     * @function getData
-     * @return  {ClientTestLibrary.ClassA.Aux1}        
-     */
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.ClassA
-     * @memberof ClientTestLibrary.ClassA
-     * @function setData
-     * @param   {ClientTestLibrary.ClassA.Aux1}    value    
-     * @return  {void}                                      
-     */
     getData: function () {
         return this.data;
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.ClassA
-     * @memberof ClientTestLibrary.ClassA
-     * @function getData
-     * @return  {ClientTestLibrary.ClassA.Aux1}        
-     */
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.ClassA
-     * @memberof ClientTestLibrary.ClassA
-     * @function setData
-     * @param   {ClientTestLibrary.ClassA.Aux1}    value    
-     * @return  {void}                                      
-     */
     setData: function (value) {
         this.data = value;
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.ClassA
-     * @memberof ClientTestLibrary.ClassA
-     * @return  {ClientTestLibrary.ClassA.Aux1}        
-     */
     method1: function () {
         var a1 = Bridge.merge(new ClientTestLibrary.ClassA.Aux1(), {
             setNumber: 1
@@ -377,24 +122,9 @@ Bridge.define('ClientTestLibrary.ClassA', {
             setRelated: a1
         } );
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.ClassA
-     * @memberof ClientTestLibrary.ClassA
-     * @param   {ClientTestLibrary.ClassA.Aux1}    a    
-     * @return  {void}                                  
-     */
     method2: function (a) {
         a.setRelated(a);
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.ClassA
-     * @memberof ClientTestLibrary.ClassA
-     * @return  {string}        
-     */
     method3: function () {
         if (this.getData() !== null) {
             return this.getData().toString();
@@ -402,115 +132,32 @@ Bridge.define('ClientTestLibrary.ClassA', {
 
         return "no data";
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.ClassA
-     * @memberof ClientTestLibrary.ClassA
-     * @param   {number}    i      
-     * @param   {number}    add    
-     * @return  {number}           
-     */
     method4: function (i, add) {
         i = i + add;
         return i;
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.ClassA
-     * @memberof ClientTestLibrary.ClassA
-     * @param   {number}    i    
-     * @return  {number}         
-     */
     method5: function (i) {
         return i;
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.ClassA
-     * @memberof ClientTestLibrary.ClassA
-     * @param   {number}    i    
-     * @param   {number}    k    
-     * @return  {number}         
-     */
     method5$1: function (i, k) {
         return i + k;
     }
 });
 
-/**
- * @public
- * @class ClientTestLibrary.ClassA.Aux1
- */
 Bridge.define('ClientTestLibrary.ClassA.Aux1', {
     config: {
         properties: {
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.ClassA.Aux1
-             * @memberof ClientTestLibrary.ClassA.Aux1
-             * @function getNumber
-             * @return  {number}        
-             */
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.ClassA.Aux1
-             * @memberof ClientTestLibrary.ClassA.Aux1
-             * @function setNumber
-             * @param   {number}    value    
-             * @return  {void}               
-             */
             Number: 0,
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.ClassA.Aux1
-             * @memberof ClientTestLibrary.ClassA.Aux1
-             * @function getRelated
-             * @return  {ClientTestLibrary.ClassA.Aux1}        
-             */
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.ClassA.Aux1
-             * @memberof ClientTestLibrary.ClassA.Aux1
-             * @function setRelated
-             * @param   {ClientTestLibrary.ClassA.Aux1}    value    
-             * @return  {void}                                      
-             */
             Related: null
         }
     },
-    /**
-     * @instance
-     * @public
-     * @override
-     * @this ClientTestLibrary.ClassA.Aux1
-     * @memberof ClientTestLibrary.ClassA.Aux1
-     * @return  {string}        
-     */
     toString: function () {
         return Bridge.String.format("{0} Has related {1}", this.getNumber(), this.getRelated() !== null ? this.getRelated().getNumber().toString() : "No");
     }
 });
 
-/**
- * @class ClientTestLibrary.TestReferenceTypes
- */
 Bridge.define('ClientTestLibrary.TestReferenceTypes', {
     statics: {
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestReferenceTypes
-         * @memberof ClientTestLibrary.TestReferenceTypes
-         * @param   {Bridge.QUnit.Assert}    assert    
-         * @return  {void}                             
-         */
         testInstanceConstructorsAndMethods: function (assert) {
             assert.expect(26);
 
@@ -574,14 +221,6 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
             assert.deepEqual(c68.x, 0, "c68.x 0");
             assert.deepEqual(c68.y, 1, "c68.y 1");
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestReferenceTypes
-         * @memberof ClientTestLibrary.TestReferenceTypes
-         * @param   {Bridge.QUnit.Assert}    assert    
-         * @return  {void}                             
-         */
         testStaticConstructorsAndMethods: function (assert) {
             assert.expect(13);
 
@@ -612,14 +251,6 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
 
             assert.throws(ClientTestLibrary.TestSet1FailureHelper.staticMethod2Failure, "Unable to cast type String to type Bridge.Int", "Cast exception should occur");
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestReferenceTypes
-         * @memberof ClientTestLibrary.TestReferenceTypes
-         * @param   {Bridge.QUnit.Assert}    assert    
-         * @return  {void}                             
-         */
         testMethodParameters: function (assert) {
             assert.expect(16);
 
@@ -674,39 +305,14 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
     }
 });
 
-/**
- * @public
- * @class ClientTestLibrary.TestSet1FailureHelper
- */
 Bridge.define('ClientTestLibrary.TestSet1FailureHelper', {
     statics: {
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestSet1FailureHelper
-         * @memberof ClientTestLibrary.TestSet1FailureHelper
-         * @return  {void}        
-         */
         testConstructor1Failure: function () {
             new ClientTestLibrary.ClassA("constructor$1", Bridge.cast(null, ClientTestLibrary.ClassA.Aux1));
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestSet1FailureHelper
-         * @memberof ClientTestLibrary.TestSet1FailureHelper
-         * @return  {void}        
-         */
         testConstructor2Failure: function () {
             var t = new ClientTestLibrary.ClassA("constructor$2", [new Array(2)]);
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestSet1FailureHelper
-         * @memberof ClientTestLibrary.TestSet1FailureHelper
-         * @return  {void}        
-         */
         staticMethod2Failure: function () {
             ClientTestLibrary.ClassA.staticMethod2(["1", "some string", "345.345435"]);
         }

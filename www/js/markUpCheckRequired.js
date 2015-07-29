@@ -1,44 +1,12 @@
 ﻿/* global Bridge */
 
-/**
- * @public
- * @class ClientTestLibrary.CI1
- */
 Bridge.define('ClientTestLibrary.CI1');
 
-/**
- * @public
- * @class ClientTestLibrary.CI2
- */
 Bridge.define('ClientTestLibrary.CI2');
 
-/**
- * @public
- * @class ClientTestLibrary.Point69
- */
 Bridge.define('ClientTestLibrary.Point69', {
-    /**
-     * @instance
-     * @public
-     * @memberof ClientTestLibrary.Point69
-     * @type number
-     */
     x: 0,
-    /**
-     * @instance
-     * @public
-     * @memberof ClientTestLibrary.Point69
-     * @type number
-     */
     y: 0,
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.Point69
-     * @memberof ClientTestLibrary.Point69
-     * @param   {number}    y1    
-     * @return  {void}            
-     */
     constructor$1: function (y1) {
         (new ClientTestLibrary.Point69("constructor")).$clone(this);
         this.y = y1;

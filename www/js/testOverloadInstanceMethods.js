@@ -1,18 +1,7 @@
 ﻿/* global Bridge */
 
-/**
- * @class ClientTestLibrary.TestOverloadInstanceMethods
- */
 Bridge.define('ClientTestLibrary.TestOverloadInstanceMethods', {
     statics: {
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestOverloadInstanceMethods
-         * @memberof ClientTestLibrary.TestOverloadInstanceMethods
-         * @param   {Bridge.QUnit.Assert}    assert    
-         * @return  {void}                             
-         */
         testInstance: function (assert) {
             assert.expect(17);
 
@@ -43,169 +32,46 @@ Bridge.define('ClientTestLibrary.TestOverloadInstanceMethods', {
     }
 });
 
-/**
- * @private
- * @class ClientTestLibrary.TestOverloadInstanceMethods.Instance
- */
 Bridge.define('ClientTestLibrary.TestOverloadInstanceMethods.Instance', {
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @memberof ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @param   {number}    x    
-     * @return  {string}         
-     */
     foo$2: function (x) {
         return "Foo(int x)";
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @memberof ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @param   {string}    s    
-     * @return  {string}         
-     */
     foo$5: function (s) {
         return "Foo(string s)";
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @memberof ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @param   {number}    d    
-     * @return  {string}         
-     */
     foo: function (d) {
         return "Foo(double d)";
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @memberof ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @param   {number}    x    
-     * @param   {number}    y    
-     * @return  {string}         
-     */
     foo$4: function (x, y) {
         return "Foo(int x, int y)";
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @memberof ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @param   {number}    x    
-     * @param   {number}    y    
-     * @return  {string}         
-     */
     foo$3: function (x, y) {
         return "Foo(int x, double y)";
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @memberof ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @param   {number}    x    
-     * @param   {number}    y    
-     * @return  {string}         
-     */
     foo$1: function (x, y) {
         return "Foo(double x, int y)";
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @memberof ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @param   {number}    x    
-     * @return  {number}         
-     */
     fooReturnType: function (x) {
         return 67;
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @memberof ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @param   {number}    d    
-     * @return  {string}         
-     */
     fooReturnType$1: function (d) {
         return "string FooReturnType(double d)";
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @memberof ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @param   {number}    x    
-     * @param   {number}    y    
-     * @return  {string}         
-     */
     fooOptionalParameters$1: function (x, y) {
         return "FooOptionalParameters(int x, int y = 5)";
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @memberof ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @param   {number}    x    
-     * @return  {string}         
-     */
     fooOptionalParameters: function (x) {
         return "FooOptionalParameters(int x)";
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @memberof ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @param   {number}    x    
-     * @param   {number}    y    
-     * @param   {number}    z    
-     * @return  {string}         
-     */
     fooMultipleOptionalParameters$1: function (x, y, z) {
         return "FooMultipleOptionalParameters(int x, int y = 5, int z = 10)";
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @memberof ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @param   {number}    x    
-     * @param   {number}    y    
-     * @return  {string}         
-     */
     fooMultipleOptionalParameters: function (x, y) {
         return "FooMultipleOptionalParameters(int x, int y = 5)";
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @memberof ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @param   {number}    x    
-     * @return  {string}         
-     */
     fooNamedArgument$1: function (x) {
         return "FooNamedArgument(int x)";
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @memberof ClientTestLibrary.TestOverloadInstanceMethods.Instance
-     * @param   {number}    d    
-     * @return  {string}         
-     */
     fooNamedArgument: function (d) {
         return "FooNamedArgument(double d)";
     }

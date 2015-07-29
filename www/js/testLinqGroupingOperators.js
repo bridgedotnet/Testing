@@ -1,47 +1,13 @@
 ﻿/* global Bridge */
 
-/** @namespace ClientTestLibrary.Linq */
-
-/**
- * @public
- * @class ClientTestLibrary.Linq.AnagramEqualityComparer
- * @augments Bridge.EqualityComparer$1
- */
 Bridge.define('ClientTestLibrary.Linq.AnagramEqualityComparer', {
     inherits: [Bridge.EqualityComparer$1(String)],
-    /**
-     * @instance
-     * @public
-     * @override
-     * @this ClientTestLibrary.Linq.AnagramEqualityComparer
-     * @memberof ClientTestLibrary.Linq.AnagramEqualityComparer
-     * @param   {string}     x    
-     * @param   {string}     y    
-     * @return  {boolean}         
-     */
     equals: function (x, y) {
         return this.getCanonicalString(x) === this.getCanonicalString(y);
     },
-    /**
-     * @instance
-     * @public
-     * @override
-     * @this ClientTestLibrary.Linq.AnagramEqualityComparer
-     * @memberof ClientTestLibrary.Linq.AnagramEqualityComparer
-     * @param   {string}    obj    
-     * @return  {number}           
-     */
     getHashCode: function (obj) {
         return Bridge.getHashCode(this.getCanonicalString(obj));
     },
-    /**
-     * @instance
-     * @private
-     * @this ClientTestLibrary.Linq.AnagramEqualityComparer
-     * @memberof ClientTestLibrary.Linq.AnagramEqualityComparer
-     * @param   {string}    word    
-     * @return  {string}            
-     */
     getCanonicalString: function (word) {
         if (word === null) {
             return null;
@@ -54,19 +20,8 @@ Bridge.define('ClientTestLibrary.Linq.AnagramEqualityComparer', {
     }
 });
 
-/**
- * @class ClientTestLibrary.Linq.TestLinqGroupingOperators
- */
 Bridge.define('ClientTestLibrary.Linq.TestLinqGroupingOperators', {
     statics: {
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.Linq.TestLinqGroupingOperators
-         * @memberof ClientTestLibrary.Linq.TestLinqGroupingOperators
-         * @param   {Bridge.QUnit.Assert}    assert    
-         * @return  {void}                             
-         */
         test: function (assert) {
             assert.expect(3);
 
@@ -108,14 +63,6 @@ Bridge.define('ClientTestLibrary.Linq.TestLinqGroupingOperators', {
 
             assert.deepEqual(personGroups, personGroupsExpected, "Person group by Group field");
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.Linq.TestLinqGroupingOperators
-         * @memberof ClientTestLibrary.Linq.TestLinqGroupingOperators
-         * @param   {Bridge.QUnit.Assert}    assert    
-         * @return  {void}                             
-         */
         testComplexGrouping: function (assert) {
             assert.expect(1);
 
@@ -142,14 +89,6 @@ Bridge.define('ClientTestLibrary.Linq.TestLinqGroupingOperators', {
             var complexGroupingExpected = ClientTestLibrary.Linq.TestLinqGroupingOperators.getComplexGroupingExpectedResult();
             assert.deepEqual(complexGrouping, complexGroupingExpected, "Complex grouping for numbers and words");
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.Linq.TestLinqGroupingOperators
-         * @memberof ClientTestLibrary.Linq.TestLinqGroupingOperators
-         * @param   {Bridge.QUnit.Assert}    assert    
-         * @return  {void}                             
-         */
         testAnagrams: function (assert) {
             assert.expect(2);
 
@@ -178,13 +117,6 @@ Bridge.define('ClientTestLibrary.Linq.TestLinqGroupingOperators', {
 
             assert.deepEqual(anagramsGroups1, anagramsGroupsExpected1, "Anagram grouping with equality compare and upper case");
         },
-        /**
-         * @static
-         * @private
-         * @this ClientTestLibrary.Linq.TestLinqGroupingOperators
-         * @memberof ClientTestLibrary.Linq.TestLinqGroupingOperators
-         * @return  {Object}        
-         */
         getComplexGroupingExpectedResult: function () {
             var complexGroupingExpected = [{ number: 2, words: [{ letter: 50, letterGroups: [{ letter: "2.two", letters: ["2.two"] }, { letter: "22.twentytwo", letters: ["22.twentytwo"] }] }] }, { number: 10, words: [] }, { number: 3, words: [{ letter: 51, letterGroups: [{ letter: "3.three", letters: ["3.three"] }, { letter: "30.thirty", letters: ["30.thirty"] }] }] }, { number: 5, words: [] }, { number: 30, words: [] }, { number: 1, words: [{ letter: 49, letterGroups: [{ letter: "1.one", letters: ["1.one"] }, { letter: "11.eleven", letters: ["11.eleven"] }] }] }, { number: -15, words: [] }];
 

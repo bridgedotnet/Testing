@@ -1,8 +1,5 @@
 ﻿/* global Bridge */
 
-/**
- * @class ClientTestLibrary.RunTests
- */
 Bridge.define('ClientTestLibrary.RunTests', {
     statics: {
         config: {
@@ -10,13 +7,6 @@ Bridge.define('ClientTestLibrary.RunTests', {
                 Bridge.ready(this.main);
             }
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.RunTests
-         * @memberof ClientTestLibrary.RunTests
-         * @return  {void}        
-         */
         main: function () {
             QUnit.module("Inheritance, abstract, virtual and overloading");
             QUnit.test("Overloading static methods", ClientTestLibrary.TestOverloadStaticMethods.testStatic);
@@ -46,12 +36,14 @@ Bridge.define('ClientTestLibrary.RunTests', {
             QUnit.module("Method parameters");
             QUnit.test("Default and params", ClientTestLibrary.TestMethodParametersClass.test);
 
-            QUnit.module("System functions");
-            QUnit.test("DateTime", ClientTestLibrary.TestDateFunctions.dateTimes);
-            QUnit.test("DateTime", ClientTestLibrary.TestDateFunctions.bridge329);
-            QUnit.test("String", ClientTestLibrary.TestStringFunctions.strings);
+            QUnit.module("String");
+            QUnit.test("Common", ClientTestLibrary.TestStringFunctions.strings);
             QUnit.test("String Enumerable", ClientTestLibrary.TestStringFunctions.enumerable);
             QUnit.test("StringBuilder", ClientTestLibrary.TestStringBuilderFunctions.stringBuilders);
+
+            QUnit.module("Date and time");
+            QUnit.test("Common", ClientTestLibrary.TestDateFunctions.dateTimes);
+            QUnit.test("#329", ClientTestLibrary.TestDateFunctions.bridge329);
 
             QUnit.module("Try/Catch");
             QUnit.test("Try/Catch simpe", ClientTestLibrary.TestTryCatchBlocks.simpleTryCatch);
@@ -62,7 +54,7 @@ Bridge.define('ClientTestLibrary.RunTests', {
             QUnit.test("Try/Catch/Finally caught exceptions", ClientTestLibrary.TestTryCatchFinallyBlocks.caughtExceptions);
             QUnit.test("Try/Catch/Finally thrown exceptions", ClientTestLibrary.TestTryCatchFinallyBlocks.thrownExceptions);
 
-            QUnit.module("Bridge GitHub issues");
+            QUnit.module("Issues");
             QUnit.test("#169", ClientTestLibrary.TestBridgeIssues.n169);
             QUnit.test("#240", ClientTestLibrary.TestBridgeIssues.n240);
             QUnit.test("#266", ClientTestLibrary.TestBridgeIssues.n266);

@@ -1171,6 +1171,8 @@
                 return false;
             }
 
+            prefix = Bridge.String.escape(prefix);
+
             return str.match("^" + prefix) !== null;
         },
 
@@ -1182,6 +1184,8 @@
             if (suffix.length > str.length) {
                 return false;
             }
+
+            suffix = Bridge.String.escape(suffix);
 
             return str.match(suffix + "$") !== null;
         },
@@ -1359,8 +1363,12 @@
             return arr;
         },
 
+        escape: function(str) {
+            return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+        },
+
         replaceAll: function (str, a, b) {
-            a = a.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+            a = Bridge.String.escape(a);
             var reg = new RegExp(a, "g");
 
             return str.replace(reg, b);
@@ -1384,7 +1392,7 @@
             if (this.$multipleCtors && arguments.length > 0 && typeof value == 'string') {
                 value = value === "constructor" ? "$constructor" : value;
 
-                if ((value === "$constructor" || Bridge.String.startsWith(value, "constructor\\$")) && Bridge.isFunction(this[value])) {
+                if ((value === "$constructor" || Bridge.String.startsWith(value, "constructor$")) && Bridge.isFunction(this[value])) {
                     this[value].apply(this, Array.prototype.slice.call(arguments, 1));
 
                     return;
@@ -1410,7 +1418,9 @@
         },
 
         initConfig: function (extend, base, cfg, statics, scope) {
-            scope.$initMembers = function () {
+            var initFn,
+                isFn = Bridge.isFunction(cfg),
+                fn = function () {
                 var name,
                     config;
 
@@ -1446,7 +1456,21 @@
                 }
 
                 if (config.init) {
-                    config.init.apply(this, arguments);
+                    initFn = config.init;
+                }
+            };
+
+            if (!isFn) {
+                fn.apply(scope);
+            }
+
+            scope.$initMembers = function () {
+                if (isFn) {
+                    fn.apply(this);
+                }
+
+                if (initFn) {
+                    initFn.apply(this, arguments);
                 }
             };
         },
@@ -1604,7 +1628,7 @@
                 isCtor = name === "constructor";
                 ctorName = isCtor ? "$constructor" : name;
 
-                if (Bridge.isFunction(v) && (isCtor || Bridge.String.startsWith(name, "constructor\\$"))) {
+                if (Bridge.isFunction(v) && (isCtor || Bridge.String.startsWith(name, "constructor$"))) {
                     ctorCounter++;
                     isCtor = true;
                 }
@@ -2288,15 +2312,15 @@ Bridge.define("Bridge.CultureInfo", {
     inherits: [Bridge.IFormatProvider, Bridge.ICloneable],
 
     statics: {
-        constructor: function () {
-            this.cultures = { };
+        constructor: function() {
+            this.cultures = this.cultures || {};
             this.invariantCulture = Bridge.merge(new Bridge.CultureInfo("en-US"), {
                 englishName: "English (United States)",
                 nativeName: "English (United States)",
                 numberFormat: Bridge.NumberFormatInfo.invariantInfo,
                 dateTimeFormat: Bridge.DateTimeFormatInfo.invariantInfo
             });
-            this.setCurrentCulture(this.invariantCulture);
+            this.setCurrentCulture(Bridge.CultureInfo.invariantCulture);
         },
 
         getCurrentCulture: function () {
@@ -2332,7 +2356,20 @@ Bridge.define("Bridge.CultureInfo", {
 
     constructor: function (name) {
         this.name = name;
-        Bridge.CultureInfo.cultures[name] = this;
+        if (!Bridge.CultureInfo.cultures) {
+            Bridge.CultureInfo.cultures = {};
+        }
+
+        if (Bridge.CultureInfo.cultures[name]) {
+            Bridge.copy(this, Bridge.CultureInfo.cultures[name], [
+                "englishName",
+                "nativeName",
+                "numberFormat",
+                "dateTimeFormat"
+            ]);
+        } else {
+            Bridge.CultureInfo.cultures[name] = this;
+        }
     },
 
     getFormat:  function (type) {
@@ -2355,7 +2392,6 @@ Bridge.define("Bridge.CultureInfo", {
         ]);
     }
 });
-
 // @source Integer.js
 
 Bridge.define('Bridge.Int', {
@@ -3125,15 +3161,15 @@ Bridge.Class.addExtend(Bridge.Int, [Bridge.IComparable$1(Bridge.Int), Bridge.IEq
 			    });
         },
 
-        parse: function (value, provider, silent) {
+        parse: function (value, provider, utc, silent) {
             var dt = Date.parse(value);
             if (!isNaN(dt)) {
                 return new Date(dt);
             }
-            return this.parseExact(value, null, provider, silent);
+            return this.parseExact(value, null, provider, utc, silent);
         },
 
-        parseExact: function (str, format, provider, silent) {
+        parseExact: function (str, format, provider, utc, silent) {
             if (!format) {
                 format = ["G", "g", "F", "f", "D", "d", "R", "r", "s", "U", "u", "O", "o", "Y", "y", "M", "m", "T", "t"];
             }
@@ -3143,7 +3179,7 @@ Bridge.Class.addExtend(Bridge.Int, [Bridge.IComparable$1(Bridge.Int), Bridge.IEq
                     d;
 
                 for (i = 0; i < format.length; i++) {
-                    d = Bridge.Date.parseExact(str, format[i], provider, true);
+                    d = Bridge.Date.parseExact(str, format[i], provider, utc, true);
 
                     if (d != null) {
                         return d;
@@ -3577,7 +3613,7 @@ Bridge.Class.addExtend(Bridge.Int, [Bridge.IComparable$1(Bridge.Int), Bridge.IEq
                 hh -= 12;
             }
 
-            if (zzh == 0 && zzm == 0) {
+            if (zzh == 0 && zzm == 0 && !utc) {
                 return new Date(year, month - 1, date, hh, mm, ss, ff);
             }
 
@@ -3603,8 +3639,8 @@ Bridge.Class.addExtend(Bridge.Int, [Bridge.IComparable$1(Bridge.Int), Bridge.IEq
             return null;
         },
 
-        tryParse: function (value, provider, result) {
-            result.v = this.parse(value, provider, true);
+        tryParse: function (value, provider, result, utc) {
+            result.v = this.parse(value, provider, utc, true);
 
             if (result.v == null) {
                 result.v = new Date(-864e13);
@@ -3615,8 +3651,8 @@ Bridge.Class.addExtend(Bridge.Int, [Bridge.IComparable$1(Bridge.Int), Bridge.IEq
             return true;
         },
 
-        tryParseExact: function (value, format, provider, result) {
-            result.v = this.parseExact(value, format, provider, true);
+        tryParseExact: function (value, format, provider, result, utc) {
+            result.v = this.parseExact(value, format, provider, utc, true);
 
             if (result.v == null) {
                 result.v = new Date(-864e13);
@@ -4748,7 +4784,7 @@ Bridge.Class.generic('Bridge.List$1', function (T) {
         },
 
         indexOf: function (item, startIndex) {
-            var i;
+            var i, el;
 
             if (!Bridge.isDefined(startIndex)) {
                 startIndex = 0;
@@ -4759,7 +4795,8 @@ Bridge.Class.generic('Bridge.List$1', function (T) {
             }
 
             for (i = startIndex; i < this.items.length; i++) {
-                if (item === this.items[i]) {
+                el = this.items[i];
+                if (el === item || Bridge.EqualityComparer$1.$default.equals(el, item)) {
                     return i;
                 }
             }
@@ -5437,17 +5474,18 @@ Bridge.define('Bridge.PropertyChangedEventArgs', {
             return typeof r !== "undefined" ? r : this.$v;
         },
 
-        get: function (arr, indices) {
-            var r = arr[Bridge.Array.toIndex(arr, indices)];
+        get: function (arr) {
+            var r = arr[Bridge.Array.toIndex(arr, Array.prototype.slice.call(arguments, 1))];
 
             return typeof r !== "undefined" ? r : arr.$v;
         },
 
         $set: function (indices, value) {
-            this[Bridge.Array.toIndex(this, indices)] = value;
+            this[Bridge.Array.toIndex(this, Array.prototype.slice.call(indices, 0))] = value;
         },
 
-        set: function (arr, indices, value) {
+        set: function (arr, value) {
+            var indices = Array.prototype.slice.call(arguments, 2);
             arr[Bridge.Array.toIndex(arr, indices)] = value;
         },
 
@@ -5579,11 +5617,17 @@ Bridge.define('Bridge.PropertyChangedEventArgs', {
         },
 
         indexOf: function(arr, item) {
-            var i, ln;
-            for (i = 0, ln = arr.length; i < ln; i++) {
-                if (arr[i] === item) {
-                    return i;
+            if (Bridge.isArray(arr)) {
+                var i, ln, el;
+                for (i = 0, ln = arr.length; i < ln; i++) {
+                    el = arr[i];
+                    if (el === item || Bridge.EqualityComparer$1.$default.equals(el, item)) {
+                        return i;
+                    }
                 }
+            }
+            else if (Bridge.isFunction(arr.indexOf)) {
+                return arr.indexOf(item);
             }
 
             return -1;
@@ -5631,8 +5675,37 @@ Bridge.define('Bridge.PropertyChangedEventArgs', {
             else if (Bridge.isFunction(obj.removeAt)) {
                 obj.removeAt(index);
             }
-        }
-    };
+        },
+
+        getItem: function (obj, idx) {
+            if (Bridge.isArray(obj)) {
+                return obj[idx];
+            }
+            else if (Bridge.isFunction(obj.get)) {
+                return obj.get(idx);
+            }
+            else if (Bridge.isFunction(obj.getItem)) {
+                return obj.getItem(idx);
+            }
+            else if (Bridge.isFunction(obj.get_Item)) {
+                return obj.get_Item(idx);
+            }
+        },
+
+        setItem: function (obj, idx, value) {
+            if (Bridge.isArray(obj)) {
+                obj[idx] = value;
+            }
+            else if (Bridge.isFunction(obj.set)) {
+                obj.set(idx, value);
+            }
+            else if (Bridge.isFunction(obj.setItem)) {
+                obj.setItem(idx, value);
+            }
+            else if (Bridge.isFunction(obj.set_Item)) {
+                obj.set_Item(idx, value);
+            }
+        }};
 
     Bridge.Array = array;
 })();

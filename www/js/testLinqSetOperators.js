@@ -1,18 +1,7 @@
 ﻿/* global Bridge */
 
-/**
- * @class ClientTestLibrary.Linq.TestLinqSetOperators
- */
 Bridge.define('ClientTestLibrary.Linq.TestLinqSetOperators', {
     statics: {
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.Linq.TestLinqSetOperators
-         * @memberof ClientTestLibrary.Linq.TestLinqSetOperators
-         * @param   {Bridge.QUnit.Assert}    assert    
-         * @return  {void}                             
-         */
         test: function (assert) {
             // TEST
             var a = [1, 2];

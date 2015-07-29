@@ -1,18 +1,7 @@
 ﻿/* global Bridge */
 
-/**
- * @class ClientTestLibrary.TestVirtualMethods
- */
 Bridge.define('ClientTestLibrary.TestVirtualMethods', {
     statics: {
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestVirtualMethods
-         * @memberof ClientTestLibrary.TestVirtualMethods
-         * @param   {Bridge.QUnit.Assert}    assert    
-         * @return  {void}                             
-         */
         testB: function (assert) {
             assert.expect(7);
 
@@ -36,48 +25,17 @@ Bridge.define('ClientTestLibrary.TestVirtualMethods', {
     }
 });
 
-/**
- * @private
- * @class ClientTestLibrary.TestVirtualMethods.A
- */
 Bridge.define('ClientTestLibrary.TestVirtualMethods.A', {
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.TestVirtualMethods.A
-     * @memberof ClientTestLibrary.TestVirtualMethods.A
-     * @return  {string}        
-     */
     test: function () {
         return "A";
     }
 });
 
-/**
- * @private
- * @class ClientTestLibrary.TestVirtualMethods.B
- * @augments ClientTestLibrary.TestVirtualMethods.A
- */
 Bridge.define('ClientTestLibrary.TestVirtualMethods.B', {
     inherits: [ClientTestLibrary.TestVirtualMethods.A],
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.TestVirtualMethods.B
-     * @memberof ClientTestLibrary.TestVirtualMethods.B
-     * @return  {string}        
-     */
     testA: function () {
         return ClientTestLibrary.TestVirtualMethods.A.prototype.test.call(this);
     },
-    /**
-     * @instance
-     * @public
-     * @override
-     * @this ClientTestLibrary.TestVirtualMethods.B
-     * @memberof ClientTestLibrary.TestVirtualMethods.B
-     * @return  {string}        
-     */
     test: function () {
         return "B";
     }

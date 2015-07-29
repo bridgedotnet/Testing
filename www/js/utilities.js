@@ -1,30 +1,10 @@
 ﻿/* global Bridge */
 
-/** @namespace ClientTestLibrary.Utilities */
-
-/**
- * @public
- * @class ClientTestLibrary.Utilities.BrowserHelper
- */
 Bridge.define('ClientTestLibrary.Utilities.BrowserHelper', {
     statics: {
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.Utilities.BrowserHelper
-         * @memberof ClientTestLibrary.Utilities.BrowserHelper
-         * @return  {boolean}        
-         */
         isPhantomJs: function () {
             return Bridge.String.contains(navigator.userAgent,"PhantomJS");
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.Utilities.BrowserHelper
-         * @memberof ClientTestLibrary.Utilities.BrowserHelper
-         * @return  {string}        
-         */
         getBrowserInfo: function () {
             var userAgent = navigator.userAgent;
             var appVersion = navigator.appVersion;
@@ -37,19 +17,8 @@ Bridge.define('ClientTestLibrary.Utilities.BrowserHelper', {
     }
 });
 
-/**
- * @public
- * @class ClientTestLibrary.Utilities.Group
- */
 Bridge.define('ClientTestLibrary.Utilities.Group', {
     statics: {
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.Utilities.Group
-         * @memberof ClientTestLibrary.Utilities.Group
-         * @return  {Bridge.List$1}        
-         */
         getGroups: function () {
             var groups = new Bridge.List$1(ClientTestLibrary.Utilities.Group)();
             groups.add(Bridge.merge(new ClientTestLibrary.Utilities.Group(), {
@@ -74,59 +43,14 @@ Bridge.define('ClientTestLibrary.Utilities.Group', {
     },
     config: {
         properties: {
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.Utilities.Group
-             * @memberof ClientTestLibrary.Utilities.Group
-             * @function getName
-             * @return  {string}        
-             */
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.Utilities.Group
-             * @memberof ClientTestLibrary.Utilities.Group
-             * @function setName
-             * @param   {string}    value    
-             * @return  {void}               
-             */
             Name: null,
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.Utilities.Group
-             * @memberof ClientTestLibrary.Utilities.Group
-             * @function getLimit
-             * @return  {number}        
-             */
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.Utilities.Group
-             * @memberof ClientTestLibrary.Utilities.Group
-             * @function setLimit
-             * @param   {number}    value    
-             * @return  {void}               
-             */
             Limit: 0
         }
     }
 });
 
-/**
- * @public
- * @class ClientTestLibrary.Utilities.Person
- */
 Bridge.define('ClientTestLibrary.Utilities.Person', {
     statics: {
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.Utilities.Person
-         * @memberof ClientTestLibrary.Utilities.Person
-         * @return  {Bridge.List$1}        
-         */
         getPersons: function () {
             var persons = new Bridge.List$1(ClientTestLibrary.Utilities.Person)();
 
@@ -192,114 +116,17 @@ Bridge.define('ClientTestLibrary.Utilities.Person', {
     },
     config: {
         properties: {
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.Utilities.Person
-             * @memberof ClientTestLibrary.Utilities.Person
-             * @function getID
-             * @return  {number}        
-             */
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.Utilities.Person
-             * @memberof ClientTestLibrary.Utilities.Person
-             * @function setID
-             * @param   {number}    value    
-             * @return  {void}               
-             */
             ID: 0,
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.Utilities.Person
-             * @memberof ClientTestLibrary.Utilities.Person
-             * @function getName
-             * @return  {string}        
-             */
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.Utilities.Person
-             * @memberof ClientTestLibrary.Utilities.Person
-             * @function setName
-             * @param   {string}    value    
-             * @return  {void}               
-             */
             Name: null,
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.Utilities.Person
-             * @memberof ClientTestLibrary.Utilities.Person
-             * @function getCity
-             * @return  {string}        
-             */
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.Utilities.Person
-             * @memberof ClientTestLibrary.Utilities.Person
-             * @function setCity
-             * @param   {string}    value    
-             * @return  {void}               
-             */
             City: null,
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.Utilities.Person
-             * @memberof ClientTestLibrary.Utilities.Person
-             * @function getCount
-             * @return  {number}        
-             */
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.Utilities.Person
-             * @memberof ClientTestLibrary.Utilities.Person
-             * @function setCount
-             * @param   {number}    value    
-             * @return  {void}               
-             */
             Count: 0,
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.Utilities.Person
-             * @memberof ClientTestLibrary.Utilities.Person
-             * @function getGroup
-             * @return  {string}        
-             */
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.Utilities.Person
-             * @memberof ClientTestLibrary.Utilities.Person
-             * @function setGroup
-             * @param   {string}    value    
-             * @return  {void}               
-             */
             Group: null
         }
     }
 });
 
-/**
- * @public
- * @class ClientTestLibrary.Utilities.TypeHelper
- */
 Bridge.define('ClientTestLibrary.Utilities.TypeHelper', {
     statics: {
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.Utilities.TypeHelper
-         * @memberof ClientTestLibrary.Utilities.TypeHelper
-         * @param   {Object}    o    
-         * @return  {string}         
-         */
         getTypeName: function (o) {
             return Bridge.getTypeName(o);
             //return Script.Get<string>("o.__proto__.$$name");

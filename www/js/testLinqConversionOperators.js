@@ -1,18 +1,7 @@
 ﻿/* global Bridge */
 
-/**
- * @class ClientTestLibrary.Linq.TestLinqConversionOperators
- */
 Bridge.define('ClientTestLibrary.Linq.TestLinqConversionOperators', {
     statics: {
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.Linq.TestLinqConversionOperators
-         * @memberof ClientTestLibrary.Linq.TestLinqConversionOperators
-         * @param   {Bridge.QUnit.Assert}    assert    
-         * @return  {void}                             
-         */
         test: function (assert) {
             assert.expect(13);
 
@@ -129,35 +118,11 @@ Bridge.define('ClientTestLibrary.Linq.TestLinqConversionOperators', {
     }
 });
 
-/**
- * @public
- * @class ClientTestLibrary.Linq.TestLinqConversionOperatorsIEqualityComparer
- * @augments Bridge.EqualityComparer$1
- */
 Bridge.define('ClientTestLibrary.Linq.TestLinqConversionOperatorsIEqualityComparer', {
     inherits: [Bridge.EqualityComparer$1(String)],
-    /**
-     * @instance
-     * @public
-     * @override
-     * @this ClientTestLibrary.Linq.TestLinqConversionOperatorsIEqualityComparer
-     * @memberof ClientTestLibrary.Linq.TestLinqConversionOperatorsIEqualityComparer
-     * @param   {string}     x    
-     * @param   {string}     y    
-     * @return  {boolean}         
-     */
     equals: function (x, y) {
         return Bridge.equals(x, y);
     },
-    /**
-     * @instance
-     * @public
-     * @override
-     * @this ClientTestLibrary.Linq.TestLinqConversionOperatorsIEqualityComparer
-     * @memberof ClientTestLibrary.Linq.TestLinqConversionOperatorsIEqualityComparer
-     * @param   {string}    obj    
-     * @return  {number}           
-     */
     getHashCode: function (obj) {
         if (obj === null) {
             return 0;

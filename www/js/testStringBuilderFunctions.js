@@ -1,18 +1,7 @@
 ﻿/* global Bridge */
 
-/**
- * @class ClientTestLibrary.TestStringBuilderFunctions
- */
 Bridge.define('ClientTestLibrary.TestStringBuilderFunctions', {
     statics: {
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestStringBuilderFunctions
-         * @memberof ClientTestLibrary.TestStringBuilderFunctions
-         * @param   {Bridge.QUnit.Assert}    assert    
-         * @return  {void}                             
-         */
         stringBuilders: function (assert) {
             assert.expect(21);
 

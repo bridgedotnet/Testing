@@ -1,18 +1,7 @@
 ﻿/* global Bridge */
 
-/**
- * @class ClientTestLibrary.TestDateFunctions
- */
 Bridge.define('ClientTestLibrary.TestDateFunctions', {
     statics: {
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestDateFunctions
-         * @memberof ClientTestLibrary.TestDateFunctions
-         * @param   {Bridge.QUnit.Assert}    assert    
-         * @return  {void}                             
-         */
         dateTimes: function (assert) {
             assert.expect(2);
 
@@ -32,14 +21,6 @@ Bridge.define('ClientTestLibrary.TestDateFunctions', {
     format = "yyyy-MM-dd hh:mm:ss";
     assert.deepEqual(Bridge.Date.format(bridgeDate, format), Bridge.Date.format(jsDate, format), "[#83] js");
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestDateFunctions
-         * @memberof ClientTestLibrary.TestDateFunctions
-         * @param   {Bridge.QUnit.Assert}    assert    
-         * @return  {void}                             
-         */
         bridge329: function (assert) {
             assert.expect(5);
 

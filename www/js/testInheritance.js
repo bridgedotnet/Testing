@@ -1,18 +1,7 @@
 ﻿/* global Bridge */
 
-/**
- * @class ClientTestLibrary.TestInheritance
- */
 Bridge.define('ClientTestLibrary.TestInheritance', {
     statics: {
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestInheritance
-         * @memberof ClientTestLibrary.TestInheritance
-         * @param   {Bridge.QUnit.Assert}    assert    
-         * @return  {void}                             
-         */
         testA: function (assert) {
             assert.expect(4);
 
@@ -23,14 +12,6 @@ Bridge.define('ClientTestLibrary.TestInheritance', {
             assert.equal(a.handleNumber(100), 100, "a.HandleNumber(100) = 100");
             assert.equal(a.handleString("Hundred"), "Hundred", "a.HandleString('Hundred') = 'Hundred'");
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestInheritance
-         * @memberof ClientTestLibrary.TestInheritance
-         * @param   {Bridge.QUnit.Assert}    assert    
-         * @return  {void}                             
-         */
         testB: function (assert) {
             assert.expect(5);
 
@@ -42,14 +23,6 @@ Bridge.define('ClientTestLibrary.TestInheritance', {
             assert.equal(b.handleNumber$1(1), 100, "b.HandleNumber(1) = 100");
             assert.equal(b.handleString("Hundred"), "Hundred", "b.HandleString('Hundred') = 'Hundred'");
         },
-        /**
-         * @static
-         * @public
-         * @this ClientTestLibrary.TestInheritance
-         * @memberof ClientTestLibrary.TestInheritance
-         * @param   {Bridge.QUnit.Assert}    assert    
-         * @return  {void}                             
-         */
         testAB: function (assert) {
             assert.expect(4);
 
@@ -63,119 +36,35 @@ Bridge.define('ClientTestLibrary.TestInheritance', {
     }
 });
 
-/**
- * @private
- * @class ClientTestLibrary.TestInheritance.A
- */
 Bridge.define('ClientTestLibrary.TestInheritance.A', {
     config: {
         properties: {
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.TestInheritance.A
-             * @memberof ClientTestLibrary.TestInheritance.A
-             * @function getX
-             * @return  {number}        
-             */
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.TestInheritance.A
-             * @memberof ClientTestLibrary.TestInheritance.A
-             * @function setX
-             * @param   {number}    value    
-             * @return  {void}               
-             */
             X: 0
         }
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.TestInheritance.A
-     * @memberof ClientTestLibrary.TestInheritance.A
-     * @param   {number}    x    
-     * @return  {void}           
-     */
     constructor: function (x) {
         this.setX(x);
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.TestInheritance.A
-     * @memberof ClientTestLibrary.TestInheritance.A
-     * @param   {number}    i    
-     * @return  {number}         
-     */
     handleNumber: function (i) {
         return i;
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.TestInheritance.A
-     * @memberof ClientTestLibrary.TestInheritance.A
-     * @param   {string}    s    
-     * @return  {string}         
-     */
     handleString: function (s) {
         return s;
     }
 });
 
-/**
- * @private
- * @class ClientTestLibrary.TestInheritance.B
- * @augments ClientTestLibrary.TestInheritance.A
- */
 Bridge.define('ClientTestLibrary.TestInheritance.B', {
     inherits: [ClientTestLibrary.TestInheritance.A],
     config: {
         properties: {
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.TestInheritance.B
-             * @memberof ClientTestLibrary.TestInheritance.B
-             * @function getY
-             * @return  {number}        
-             */
-            /**
-             * @instance
-             * @public
-             * @this ClientTestLibrary.TestInheritance.B
-             * @memberof ClientTestLibrary.TestInheritance.B
-             * @function setY
-             * @param   {number}    value    
-             * @return  {void}               
-             */
             Y: 0
         }
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.TestInheritance.B
-     * @memberof ClientTestLibrary.TestInheritance.B
-     * @param   {number}    x    
-     * @param   {number}    y    
-     * @return  {void}           
-     */
     constructor: function (x, y) {
         ClientTestLibrary.TestInheritance.A.prototype.$constructor.call(this, x);
 
         this.setY(y);
     },
-    /**
-     * @instance
-     * @public
-     * @this ClientTestLibrary.TestInheritance.B
-     * @memberof ClientTestLibrary.TestInheritance.B
-     * @param   {number}    i    
-     * @return  {number}         
-     */
     handleNumber$1: function (i) {
         return i * 100;
     }
