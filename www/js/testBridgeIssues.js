@@ -149,6 +149,32 @@ Bridge.define('ClientTestLibrary.Bridge306A', {
     }
 });
 
+Bridge.define('ClientTestLibrary.Bridge341A', {
+    config: {
+        properties: {
+            Str: null
+        }
+    }
+});
+
+Bridge.define('ClientTestLibrary.Bridge341B', {
+    inherits: function () { return [Bridge.IEquatable$1(ClientTestLibrary.Bridge341B)]; },
+    config: {
+        properties: {
+            Str: null
+        }
+    },
+    equals: function (other) {
+        if (other === null) {
+            return false;
+        }
+        return this.getStr() === other.getStr();
+    },
+    getHashCode: function () {
+        return Bridge.getHashCode(this.getStr());
+    }
+});
+
 Bridge.define('ClientTestLibrary.IBridge304');
 
 Bridge.define('ClientTestLibrary.Bridge304', {
@@ -341,6 +367,37 @@ Bridge.define('ClientTestLibrary.TestBridgeIssues', {
             assert.ok(s !== null, "EqualityComparer<string>.Default works");
             assert.ok(s.equals("a", "a"), "EqualityComparer<string>.Default.Equals(\"a\", \"a\") works");
             assert.notOk(s.equals("a", "b"), "EqualityComparer<string>.Default.Equals(\"a\", \"b\") works");
+        },
+        n341: function (assert) {
+            assert.expect(4);
+
+            var o11 = { };
+            var o12 = { };
+            var b1 = new Bridge.EqualityComparer$1(Object)().equals(o11, o12);
+            assert.notOk(b1, "EqualityComparer<object>.Default.Equals(o11, o12) works");
+
+            var o21 = { i: 7 };
+            var o22 = { i: 7 };
+            var b2 = new Bridge.EqualityComparer$1(Object)().equals(o21, o22);
+            assert.ok(b2, "EqualityComparer<object>.Default.Equals(o21, o22) works");
+
+            var o31 = Bridge.merge(new ClientTestLibrary.Bridge341A(), {
+                setStr: "String"
+            } );
+            var o32 = Bridge.merge(new ClientTestLibrary.Bridge341A(), {
+                setStr: "String"
+            } );
+            var b3 = new Bridge.EqualityComparer$1(Object)().equals(o31, o32);
+            assert.notOk(b3, "EqualityComparer<object>.Default.Equals(o31, o32) works");
+
+            var o41 = Bridge.merge(new ClientTestLibrary.Bridge341B(), {
+                setStr: "String"
+            } );
+            var o42 = Bridge.merge(new ClientTestLibrary.Bridge341B(), {
+                setStr: "String"
+            } );
+            var b4 = new Bridge.EqualityComparer$1(Object)().equals(o41, o42);
+            assert.ok(b4, "EqualityComparer<object>.Default.Equals(o41, o42) works");
         }
     }
 });

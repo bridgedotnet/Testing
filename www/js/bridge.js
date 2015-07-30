@@ -229,7 +229,9 @@
                     delete Bridge.$$hashCodeCache;
                 }
 
-                return result;
+                if (result != 0) {
+                    return result;
+                }
             }
 
             return value.$$hashCode || (value.$$hashCode = (Math.random() * 0x100000000) | 0);
@@ -4430,9 +4432,12 @@ Bridge.Class.generic('Bridge.EqualityComparer$1', function (T) {
             if (!Bridge.isDefined(x, true)) {
                 return !Bridge.isDefined(y, true);
             }
-            else {
-                return Bridge.isDefined(y, true) ? Bridge.equals(x, y) : false;
+            else if (Bridge.isDefined(y, true)) {
+                var isBridge = x && x.$$name;
+                return (!isBridge || Bridge.isFunction(x.equals)) ? Bridge.equals(x, y) : x === y;
             }
+
+            return false;
         },
 
         getHashCode: function (obj) {

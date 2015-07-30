@@ -180,6 +180,32 @@ namespace ClientTestLibrary
         }
     }
 
+    [FileName("testBridgeIssues.js")]
+    public class Bridge341A
+    {
+        public string Str { get; set; }
+    }
+
+    [FileName("testBridgeIssues.js")]
+    public class Bridge341B : IEquatable<Bridge341B>
+    {
+        public string Str { get; set; }
+
+        public bool Equals(Bridge341B other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            return this.Str == other.Str;
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Str.GetHashCode();
+        }
+    }
+
     // Tests Bridge GitHub issues
     class TestBridgeIssues
     {
@@ -394,5 +420,32 @@ namespace ClientTestLibrary
             assert.Ok(s.Equals("a", "a"), "EqualityComparer<string>.Default.Equals(\"a\", \"a\") works");
             assert.NotOk(s.Equals("a", "b"), "EqualityComparer<string>.Default.Equals(\"a\", \"b\") works");
         }
+
+        // Bridge[#341]
+        public static void N341(Assert assert)
+        {
+            assert.Expect(4);
+
+            var o11 = new object();
+            var o12 = new object();
+            var b1 = EqualityComparer<object>.Default.Equals(o11, o12);
+            assert.NotOk(b1, "EqualityComparer<object>.Default.Equals(o11, o12) works");
+
+            var o21 = new { i = 7 };
+            var o22 = new { i = 7 };
+            var b2 = EqualityComparer<object>.Default.Equals(o21, o22);
+            assert.Ok(b2, "EqualityComparer<object>.Default.Equals(o21, o22) works");
+
+            var o31 = new Bridge341A { Str = "String" };
+            var o32 = new Bridge341A { Str = "String" };
+            var b3 = EqualityComparer<object>.Default.Equals(o31, o32);
+            assert.NotOk(b3, "EqualityComparer<object>.Default.Equals(o31, o32) works");
+
+            var o41 = new Bridge341B { Str = "String" };
+            var o42 = new Bridge341B { Str = "String" };
+            var b4 = EqualityComparer<object>.Default.Equals(o41, o42);
+            assert.Ok(b4, "EqualityComparer<object>.Default.Equals(o41, o42) works");
+        }
+
     }
 }
