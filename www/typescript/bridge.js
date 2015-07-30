@@ -4813,8 +4813,8 @@ Bridge.Class.generic('Bridge.List$1', function (T) {
 
             var array = Bridge.toArray(items);
 
-            for (var i = 0; i < items.length; i++) {
-                this.insert(index++, items[i]);
+            for (var i = 0; i < array.length; i++) {
+                this.insert(index++, array[i]);
             }
         },
 
