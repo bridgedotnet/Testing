@@ -377,5 +377,22 @@ namespace ClientTestLibrary
             assert.Ok(c != null, "Comparer<int>.Default works");
             assert.Ok(c is IComparer<int>, "Comparer<T> declares it implemets IComparer<T>");
         }
+
+        // Bridge[#340]
+        public static void N340(Assert assert)
+        {
+            assert.Expect(6);
+
+            var c = EqualityComparer<int>.Default;
+
+            assert.Ok(c != null, "EqualityComparer<int>.Default works");
+            assert.Ok(c.Equals(10, 10), "EqualityComparer<int>.Default.Equals(10, 10) works");
+            assert.NotOk(c.Equals(10, 11), "EqualityComparer<int>.Default.Equals(10, 11) works");
+
+            var s = EqualityComparer<string>.Default;
+            assert.Ok(s != null, "EqualityComparer<string>.Default works");
+            assert.Ok(s.Equals("a", "a"), "EqualityComparer<string>.Default.Equals(\"a\", \"a\") works");
+            assert.NotOk(s.Equals("a", "b"), "EqualityComparer<string>.Default.Equals(\"a\", \"b\") works");
+        }
     }
 }

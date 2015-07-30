@@ -327,6 +327,20 @@ Bridge.define('ClientTestLibrary.TestBridgeIssues', {
 
             assert.ok(c !== null, "Comparer<int>.Default works");
             assert.ok(Bridge.is(c, Bridge.IComparer$1(Bridge.Int)), "Comparer<T> declares it implemets IComparer<T>");
+        },
+        n340: function (assert) {
+            assert.expect(6);
+
+            var c = new Bridge.EqualityComparer$1(Bridge.Int)();
+
+            assert.ok(c !== null, "EqualityComparer<int>.Default works");
+            assert.ok(c.equals(10, 10), "EqualityComparer<int>.Default.Equals(10, 10) works");
+            assert.notOk(c.equals(10, 11), "EqualityComparer<int>.Default.Equals(10, 11) works");
+
+            var s = new Bridge.EqualityComparer$1(String)();
+            assert.ok(s !== null, "EqualityComparer<string>.Default works");
+            assert.ok(s.equals("a", "a"), "EqualityComparer<string>.Default.Equals(\"a\", \"a\") works");
+            assert.notOk(s.equals("a", "b"), "EqualityComparer<string>.Default.Equals(\"a\", \"b\") works");
         }
     }
 });
