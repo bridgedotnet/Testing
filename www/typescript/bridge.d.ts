@@ -596,6 +596,7 @@
         addRange(items: IEnumerable$1<T>);
         clear(): void;
         indexOf(item: T, startIndex?: number): number;
+        insertRange(index: number, items: IEnumerable$1<T>): void;
         contains(item: T): boolean;
         getEnumerator(): IEnumerator$1<T>;
         getRange(index: number, count?: number): List$1<T>;
