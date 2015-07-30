@@ -353,5 +353,17 @@ namespace ClientTestLibrary
             assert.Ok(b, "Remove() existing element returns true");
             assert.DeepEqual(l.ToArray(), new[] { "1" }, "Remove() not existing changes the List");
         }
+
+        // Bridge[#338]
+        public static void N338(Assert assert)
+        {
+            assert.Expect(1);
+
+            var l = new List<string>(1000);
+
+            var b = l is IList<string>;
+
+            assert.Ok(b, "List<T> declares it implemets IList<T>");
+        }
     }
 }

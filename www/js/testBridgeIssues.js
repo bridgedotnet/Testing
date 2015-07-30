@@ -310,6 +310,15 @@ Bridge.define('ClientTestLibrary.TestBridgeIssues', {
             b = l.remove("2");
             assert.ok(b, "Remove() existing element returns true");
             assert.deepEqual(l.toArray(), ["1"], "Remove() not existing changes the List");
+        },
+        n338: function (assert) {
+            assert.expect(1);
+
+            var l = new Bridge.List$1(String)(1000);
+
+            var b = Bridge.is(l, Bridge.IList$1(String));
+
+            assert.ok(b, "List<T> declares it implemets IList<T>");
         }
     }
 });
