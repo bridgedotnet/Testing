@@ -286,6 +286,17 @@ Bridge.define('ClientTestLibrary.TestBridgeIssues', {
 
             var l = new Bridge.List$1(String)(["1", "2", "3", "1"]);
             assert.equal(l.indexOf("1", 2), 3, "IndexOf with startIndex used");
+        },
+        n336: function (assert) {
+            assert.expect(2);
+
+            var l = new Bridge.List$1(String)(["4"]);
+
+            l.insertRange(0, ["1", "2"]);
+            assert.deepEqual(l.toArray(), ["1", "2", "4"], "InsertRange works (1)");
+
+            l.insertRange(2, ["3"]);
+            assert.deepEqual(l.toArray(), ["1", "2", "3", "4"], "InsertRange works (2)");
         }
     }
 });

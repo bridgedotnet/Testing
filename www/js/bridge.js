@@ -4804,6 +4804,20 @@ Bridge.Class.generic('Bridge.List$1', function (T) {
             return -1;
         },
 
+        insertRange: function (index, items) {
+            this.checkReadOnly();
+
+            if (index != 0) {
+                this.checkIndex(index);
+            }
+
+            var array = Bridge.toArray(items);
+
+            for (var i = 0; i < items.length; i++) {
+                this.insert(index++, items[i]);
+            }
+        },
+
         contains: function (item) {
             return this.indexOf(item) > -1;
         },

@@ -323,5 +323,19 @@ namespace ClientTestLibrary
             var l = new List<string>(new[] { "1", "2", "3", "1" });
             assert.Equal(l.IndexOf("1", 2), 3, "IndexOf with startIndex used");
         }
+
+        // Bridge[#336]
+        public static void N336(Assert assert)
+        {
+            assert.Expect(2);
+
+            var l = new List<string>(new[] { "4" });
+
+            l.InsertRange(0, new[] { "1", "2" });
+            assert.DeepEqual(l.ToArray(), new[] { "1", "2", "4" }, "InsertRange works (1)");
+
+            l.InsertRange(2, new[] { "3" });
+            assert.DeepEqual(l.ToArray(), new[] { "1", "2", "3", "4" }, "InsertRange works (2)");
+        }
     }
 }
