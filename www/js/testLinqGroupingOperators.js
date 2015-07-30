@@ -16,7 +16,7 @@ Bridge.define('ClientTestLibrary.Linq.AnagramEqualityComparer', {
         var wordChars = Bridge.String.toCharArray(word, 0, word.length);
         wordChars.sort();
 
-        return String(wordChars);
+        return String.fromCharCode.apply(null, wordChars);
     }
 });
 
