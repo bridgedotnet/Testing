@@ -365,5 +365,17 @@ namespace ClientTestLibrary
 
             assert.Ok(b, "List<T> declares it implemets IList<T>");
         }
+
+
+        // Bridge[#339]
+        public static void N339(Assert assert)
+        {
+            assert.Expect(2);
+
+            var c = Comparer<int>.Default;
+
+            assert.Ok(c != null, "Comparer<int>.Default works");
+            assert.Ok(c is IComparer<int>, "Comparer<T> declares it implemets IComparer<T>");
+        }
     }
 }

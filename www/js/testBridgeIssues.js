@@ -319,6 +319,14 @@ Bridge.define('ClientTestLibrary.TestBridgeIssues', {
             var b = Bridge.is(l, Bridge.IList$1(String));
 
             assert.ok(b, "List<T> declares it implemets IList<T>");
+        },
+        n339: function (assert) {
+            assert.expect(2);
+
+            var c = new Bridge.Comparer$1(Bridge.Int)(Bridge.Comparer$1.$default.fn);
+
+            assert.ok(c !== null, "Comparer<int>.Default works");
+            assert.ok(Bridge.is(c, Bridge.IComparer$1(Bridge.Int)), "Comparer<T> declares it implemets IComparer<T>");
         }
     }
 });
