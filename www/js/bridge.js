@@ -4892,7 +4892,10 @@ Bridge.Class.generic('Bridge.List$1', function (T) {
 
         remove: function (item) {
             this.checkReadOnly();
+
             var index = this.indexOf(item);
+            if (index < 0)
+                return false;
 
             this.checkIndex(index);
             this.items.splice(index, 1);

@@ -337,5 +337,21 @@ namespace ClientTestLibrary
             l.InsertRange(2, new[] { "3" });
             assert.DeepEqual(l.ToArray(), new[] { "1", "2", "3", "4" }, "InsertRange works (2)");
         }
+
+        // Bridge[#337]
+        public static void N337(Assert assert)
+        {
+            assert.Expect(4);
+
+            var l = new List<string>(new[] { "1", "2" });
+
+            var b = l.Remove("7");
+            assert.NotOk(b, "Remove() not existing element returns false");
+            assert.DeepEqual(l.ToArray(), new[] { "1", "2" }, "Remove() not existing does not change the List");
+
+            b = l.Remove("2");
+            assert.Ok(b, "Remove() existing element returns true");
+            assert.DeepEqual(l.ToArray(), new[] { "1" }, "Remove() not existing changes the List");
+        }
     }
 }

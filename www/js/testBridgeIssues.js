@@ -297,6 +297,19 @@ Bridge.define('ClientTestLibrary.TestBridgeIssues', {
 
             l.insertRange(2, ["3"]);
             assert.deepEqual(l.toArray(), ["1", "2", "3", "4"], "InsertRange works (2)");
+        },
+        n337: function (assert) {
+            assert.expect(4);
+
+            var l = new Bridge.List$1(String)(["1", "2"]);
+
+            var b = l.remove("7");
+            assert.notOk(b, "Remove() not existing element returns false");
+            assert.deepEqual(l.toArray(), ["1", "2"], "Remove() not existing does not change the List");
+
+            b = l.remove("2");
+            assert.ok(b, "Remove() existing element returns true");
+            assert.deepEqual(l.toArray(), ["1"], "Remove() not existing changes the List");
         }
     }
 });
