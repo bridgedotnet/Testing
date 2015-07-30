@@ -22,6 +22,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="0_Misc.ts" />
+    <TypeScriptCompile Include="6_Issues.ts" />
     <TypeScriptCompile Include="5_Generics.ts" />
     <TypeScriptCompile Include="4_Functions.ts" />
     <TypeScriptCompile Include="3_Classes.ts" />
