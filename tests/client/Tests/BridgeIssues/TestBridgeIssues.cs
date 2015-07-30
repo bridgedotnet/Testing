@@ -314,5 +314,14 @@ namespace ClientTestLibrary
             var a = Bridge306A.New(new Bridge306A.Props() { Name = "A" });
             assert.Equal(a, "ClientTestLibrary.Bridge306A.Props:A", "Bridge306A.New() works");
         }
+
+        // Bridge[#335]
+        public static void N335(Assert assert)
+        {
+            assert.Expect(1);
+
+            var l = new List<string>(new[] { "1", "2", "3", "1" });
+            assert.Equal(l.IndexOf("1", 2), 3, "IndexOf with startIndex used");
+        }
     }
 }

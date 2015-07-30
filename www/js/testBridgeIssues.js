@@ -280,6 +280,12 @@ Bridge.define('ClientTestLibrary.TestBridgeIssues', {
                 name: "A"
             } ));
             assert.equal(a, "ClientTestLibrary.Bridge306A.Props:A", "Bridge306A.New() works");
+        },
+        n335: function (assert) {
+            assert.expect(1);
+
+            var l = new Bridge.List$1(String)(["1", "2", "3", "1"]);
+            assert.equal(l.indexOf("1", 2), 3, "IndexOf with startIndex used");
         }
     }
 });

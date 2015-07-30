@@ -4791,7 +4791,7 @@ Bridge.Class.generic('Bridge.List$1', function (T) {
             }
 
             if (startIndex != 0) {
-                this.checkIndex(index);
+                this.checkIndex(startIndex);
             }
 
             for (i = startIndex; i < this.items.length; i++) {
