@@ -44,6 +44,7 @@ Bridge.define('ClientTestLibrary.RunTests', {
             QUnit.module("Date and time");
             QUnit.test("Common", ClientTestLibrary.TestDateFunctions.dateTimes);
             QUnit.test("#329", ClientTestLibrary.TestDateFunctions.bridge329);
+            QUnit.test("#349", ClientTestLibrary.TestDateFunctions.bridge349);
 
             QUnit.module("Try/Catch");
             QUnit.test("Try/Catch simpe", ClientTestLibrary.TestTryCatchBlocks.simpleTryCatch);

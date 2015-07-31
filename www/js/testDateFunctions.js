@@ -34,6 +34,21 @@ Bridge.define('ClientTestLibrary.TestDateFunctions', {
             var d2 = Bridge.Date.parse("2001-01-01");
             assert.deepEqual(d2.toString(), d1.v.toString(), "TryParse And Parse give the same result");
 
+        },
+        bridge349: function (assert) {
+            assert.expect(5);
+
+            var date = { };
+            var culture = new Bridge.CultureInfo("ru-RU");
+
+            assert.ok(culture !== null, "Created CultureInfo(\"ru-RU\")");
+
+            var parsed = Bridge.Date.tryParse("22.08.2015", culture, date);
+            assert.ok(parsed, "Parsed \"22.08.2015\"");
+            assert.equal(date.v.getFullYear(), 2015, "TryParse works Year");
+            assert.equal(date.v.getMonth() + 1, 8, "TryParse works Month");
+            assert.equal(date.v.getDate(), 22, "TryParse works Day");
+
         }
     }
 });

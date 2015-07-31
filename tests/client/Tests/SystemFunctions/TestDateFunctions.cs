@@ -1,6 +1,8 @@
 ﻿using Bridge;
 using Bridge.QUnit;
+
 using System;
+using System.Globalization;
 using System.Text;
 
 namespace ClientTestLibrary
@@ -45,5 +47,23 @@ namespace ClientTestLibrary
             assert.DeepEqual(d2.ToString(), d1.ToString(), "TryParse And Parse give the same result");
 
         }
+
+        public static void Bridge349(Assert assert)
+        {
+            assert.Expect(5);
+
+            DateTime date;
+            var culture = new CultureInfo("ru-RU");
+
+            assert.Ok(culture != null, "Created CultureInfo(\"ru-RU\")");
+
+            var parsed = DateTime.TryParse("22.08.2015", culture, out date);
+            assert.Ok(parsed, "Parsed \"22.08.2015\"");
+            assert.Equal(date.Year, 2015, "TryParse works Year");
+            assert.Equal(date.Month, 8, "TryParse works Month");
+            assert.Equal(date.Day, 22, "TryParse works Day");
+
+        }
+
     }
 }

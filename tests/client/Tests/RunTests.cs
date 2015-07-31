@@ -48,6 +48,7 @@ namespace ClientTestLibrary
             QUnit.Module("Date and time");
             QUnit.Test("Common", TestDateFunctions.DateTimes);
             QUnit.Test("#329", TestDateFunctions.Bridge329);
+            QUnit.Test("#349", TestDateFunctions.Bridge349);
 
             QUnit.Module("Try/Catch");
             QUnit.Test("Try/Catch simpe", TestTryCatchBlocks.SimpleTryCatch);
