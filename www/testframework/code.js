@@ -2971,6 +2971,35 @@ Bridge.define('Bridge.ClientTest.MultidimArrayTests', {
         Bridge.Test.Assert.areEqual(arr.get([2, 0]), "e");
         Bridge.Test.Assert.areEqual(arr.get([2, 1]), "f");
     },
+    setUpArray: function (values) {
+        var arr = Bridge.Array.create(0, null, values.length, 2);
+
+        for (var i = 0; i < values.length; i++) {
+            var v = Bridge.as(values[i], Array);
+            Bridge.Array.set(arr, v[0], i, 0);
+            Bridge.Array.set(arr, v[1], i, 1);
+        }
+
+        return arr;
+    },
+    getValueWorks: function () {
+        var arr = this.setUpArray([[1, 2], [3, 4], [5, 6]]);
+        Bridge.Test.Assert.areEqual(Bridge.Array.get(arr, 0, 0), 1);
+        Bridge.Test.Assert.areEqual(Bridge.Array.get(arr, 0, 1), 2);
+        Bridge.Test.Assert.areEqual(Bridge.Array.get(arr, 1, 0), 3);
+        Bridge.Test.Assert.areEqual(Bridge.Array.get(arr, 1, 1), 4);
+        Bridge.Test.Assert.areEqual(Bridge.Array.get(arr, 2, 0), 5);
+        Bridge.Test.Assert.areEqual(Bridge.Array.get(arr, 2, 1), 6);
+    },
+    gettingValueByIndexWorks: function () {
+        var arr = this.setUpArray([[1, 2], [3, 4], [5, 6]]);
+        Bridge.Test.Assert.areEqual(arr.get([0, 0]), 1);
+        Bridge.Test.Assert.areEqual(arr.get([0, 1]), 2);
+        Bridge.Test.Assert.areEqual(arr.get([1, 0]), 3);
+        Bridge.Test.Assert.areEqual(arr.get([1, 1]), 4);
+        Bridge.Test.Assert.areEqual(arr.get([2, 0]), 5);
+        Bridge.Test.Assert.areEqual(arr.get([2, 1]), 6);
+    },
     rankWorks: function () {
         Bridge.Test.Assert.areEqual(Bridge.Array.getRank(Bridge.Array.create(0, null, 0, 0)), 2);
         Bridge.Test.Assert.areEqual(Bridge.Array.getRank(Bridge.Array.create(0, null, 0, 0, 0)), 3);

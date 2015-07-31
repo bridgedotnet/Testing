@@ -257,6 +257,8 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("MultidimArray - GetValueByIndexWorksForUninitializedElement", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.getValueByIndexWorksForUninitializedElement);
             QUnit.test("MultidimArray - SettingValueByIndexWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.settingValueByIndexWorks);
             QUnit.test("MultidimArray - SetValueWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.setValueWorks);
+            QUnit.test("MultidimArray - GetValueWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.getValueWorks);
+            QUnit.test("MultidimArray - GettingValueByIndexWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.gettingValueByIndexWorks);
             QUnit.test("MultidimArray - RankWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.rankWorks);
             QUnit.test("MultidimArray - GetValueWithIndexOutOfRangeThrowsAnException", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.getValueWithIndexOutOfRangeThrowsAnException);
             QUnit.test("MultidimArray - SetValueWithIndexOutOfRangeThrowsAnException", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.setValueWithIndexOutOfRangeThrowsAnException);
@@ -2775,6 +2777,14 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTest
         setValueWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.beforeTest(false, assert);
             t.setValueWorks();
+        },
+        getValueWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.beforeTest(false, assert);
+            t.getValueWorks();
+        },
+        gettingValueByIndexWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.beforeTest(false, assert);
+            t.gettingValueByIndexWorks();
         },
         rankWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.beforeTest(false, assert);
