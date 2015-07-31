@@ -244,7 +244,7 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
             assert.deepEqual(ClientTestLibrary.ClassA.statitStringNotInitialized, "ASD", "ClassA.StatitStringNotInitialized ASD");
             assert.deepEqual(a.getDoubleA(), Number.NaN, "DoubleA double.NaN");
 
-            a = ClientTestLibrary.ClassA.staticMethod2([Bridge.cast(678, Object), "QWE", 234]);
+            a = ClientTestLibrary.ClassA.staticMethod2([678, "QWE", 234]);
             assert.deepEqual(ClientTestLibrary.ClassA.statitIntNotInitialized, 1678, "StatitIntNotInitialized 1678");
             assert.deepEqual(ClientTestLibrary.ClassA.statitStringNotInitialized, "QWE", "ClassA.StatitStringNotInitialized QWE");
             assert.deepEqual(a.getDoubleA(), 234, "DoubleA 234");

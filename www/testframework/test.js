@@ -140,31 +140,48 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("GenericDictionary - TryGetValueWithIntKeysWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.tryGetValueWithIntKeysWorks);
             QUnit.test("GenericDictionary - TryGetValueWithObjectKeysWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.tryGetValueWithObjectKeysWorks);
             QUnit.test("GenericDictionary - CanUseCustomComparer", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericGenericDictionaryTests.canUseCustomComparer);
+            QUnit.test("ICollection - ArrayImplementsICollection", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.arrayImplementsICollection);
             QUnit.test("ICollection - CustomClassThatShouldImplementICollectionDoesSo", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.customClassThatShouldImplementICollectionDoesSo);
+            QUnit.test("ICollection - ArrayCastToICollectionCountWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.arrayCastToICollectionCountWorks);
             QUnit.test("ICollection - ClassImplementingICollectionCountWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.classImplementingICollectionCountWorks);
             QUnit.test("ICollection - ClassImplementingICollectionCastToICollectionCountWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.classImplementingICollectionCastToICollectionCountWorks);
             QUnit.test("ICollection - ClassImplementingICollectionAddWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.classImplementingICollectionAddWorks);
             QUnit.test("ICollection - ClassImplementingICollectionCastToICollectionAddWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.classImplementingICollectionCastToICollectionAddWorks);
             QUnit.test("ICollection - ClassImplementingICollectionClearWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.classImplementingICollectionClearWorks);
             QUnit.test("ICollection - ClassImplementingICollectionCastToICollectionClearWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.classImplementingICollectionCastToICollectionClearWorks);
+            QUnit.test("ICollection - ArrayCastToICollectionContainsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.arrayCastToICollectionContainsWorks);
             QUnit.test("ICollection - ClassImplementingICollectionContainsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.classImplementingICollectionContainsWorks);
             QUnit.test("ICollection - ClassImplementingICollectionCastToICollectionContainsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.classImplementingICollectionCastToICollectionContainsWorks);
             QUnit.test("ICollection - ClassImplementingICollectionRemoveWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.classImplementingICollectionRemoveWorks);
             QUnit.test("ICollection - ClassImplementingICollectionCastToICollectionRemoveWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.classImplementingICollectionCastToICollectionRemoveWorks);
+            QUnit.test("IDictionary - TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.typePropertiesAreCorrect);
             QUnit.test("IDictionary - ClassImplementsInterfaces", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.classImplementsInterfaces);
             QUnit.test("IDictionary - CountWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.countWorks);
+            QUnit.test("IDictionary - KeysWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.keysWorks);
+            QUnit.test("IDictionary - GetItemWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.getItemWorks);
+            QUnit.test("IDictionary - ValuesWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.valuesWorks);
+            QUnit.test("IDictionary - ContainsKeyWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.containsKeyWorks);
+            QUnit.test("IDictionary - TryGetValueWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.tryGetValueWorks);
             QUnit.test("IDictionary - AddWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.addWorks);
             QUnit.test("IDictionary - ClearWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.clearWorks);
             QUnit.test("IDictionary - RemoveWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.removeWorks);
             QUnit.test("IDictionary - SetItemWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.setItemWorks);
+            QUnit.test("IEnumerable - ArrayImplementsIEnumerable", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests.arrayImplementsIEnumerable);
             QUnit.test("IEnumerable - CustomClassThatShouldImplementIEnumerableDoesSo", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests.customClassThatShouldImplementIEnumerableDoesSo);
             QUnit.test("IEnumerable - ArrayGetEnumeratorMethodWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests.arrayGetEnumeratorMethodWorks);
             QUnit.test("IEnumerable - ArrayCastToIEnumerableCanBeEnumerated", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests.arrayCastToIEnumerableCanBeEnumerated);
             QUnit.test("IEnumerable - ClassImplementingIEnumerableCanBeEnumerated", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests.classImplementingIEnumerableCanBeEnumerated);
             QUnit.test("IEnumerable - ClassImplementingIEnumerableCastToIEnumerableCanBeEnumerated", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests.classImplementingIEnumerableCastToIEnumerableCanBeEnumerated);
+            QUnit.test("IList - TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.typePropertiesAreCorrect);
+            QUnit.test("IList - ArrayImplementsIList", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.arrayImplementsIList);
             QUnit.test("IList - CustomClassThatShouldImplementIListDoesSo", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.customClassThatShouldImplementIListDoesSo);
+            QUnit.test("IList - ArrayCastToIListGetItemWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.arrayCastToIListGetItemWorks);
             QUnit.test("IList - ClassImplementingIListGetItemWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.classImplementingIListGetItemWorks);
+            QUnit.test("IList - ClassImplementingIListCastToIListGetItemWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.classImplementingIListCastToIListGetItemWorks);
+            QUnit.test("IList - ArrayCastToIListSetItemWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.arrayCastToIListSetItemWorks);
             QUnit.test("IList - ClassImplementingIListSetItemWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.classImplementingIListSetItemWorks);
+            QUnit.test("IList - ClassImplementingIListCastToIListSetItemWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.classImplementingIListCastToIListSetItemWorks);
+            QUnit.test("IList - ArrayCastToIListIndexOfWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.arrayCastToIListIndexOfWorks);
             QUnit.test("IList - ClassImplementingIListIndexOfWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.classImplementingIListIndexOfWorks);
             QUnit.test("IList - ClassImplementingIListCastToIListIndexOfWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.classImplementingIListCastToIListIndexOfWorks);
             QUnit.test("IList - ClassImplementingIListInsertWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.classImplementingIListInsertWorks);
@@ -183,6 +200,7 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("IteratorBlock - DifferentGetEnumeratorCallsOnIteratorBlockReturningIEnumerableGetOwnCopiesOfLocals", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIteratorBlockTests.differentGetEnumeratorCallsOnIteratorBlockReturningIEnumerableGetOwnCopiesOfLocals);
             QUnit.test("List - TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.typePropertiesAreCorrect);
             QUnit.test("List - DefaultConstructorWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.defaultConstructorWorks);
+            QUnit.test("List - ConstructorWithCapacityWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.constructorWithCapacityWorks);
             QUnit.test("List - ConstructingFromArrayWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.constructingFromArrayWorks);
             QUnit.test("List - ConstructingFromListWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.constructingFromListWorks);
             QUnit.test("List - ConstructingFromIEnumerableWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.constructingFromIEnumerableWorks);
@@ -194,16 +212,23 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("List - AddRangeWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.addRangeWorks);
             QUnit.test("List - ClearWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.clearWorks);
             QUnit.test("List - ContainsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.containsWorks);
+            QUnit.test("List - ContainsUsesEqualsMethod", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.containsUsesEqualsMethod);
             QUnit.test("List - SliceWithoutEndWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.sliceWithoutEndWorks);
             QUnit.test("List - SliceWithEndWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.sliceWithEndWorks);
             QUnit.test("List - ForeachWithListItemCallbackWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.foreachWithListItemCallbackWorks);
             QUnit.test("List - ForeachWithListCallbackWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.foreachWithListCallbackWorks);
             QUnit.test("List - IndexOfWithoutStartIndexWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.indexOfWithoutStartIndexWorks);
+            QUnit.test("List - IndexOfWithoutStartIndexUsesEqualsMethod", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.indexOfWithoutStartIndexUsesEqualsMethod);
+            QUnit.test("List - IndexOfWithStartIndexWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.indexOfWithStartIndexWorks);
+            QUnit.test("List - IndexOfWithStartIndexUsesEqualsMethod", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.indexOfWithStartIndexUsesEqualsMethod);
             QUnit.test("List - InsertWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.insertWorks);
+            QUnit.test("List - InsertRangeWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.insertRangeWorks);
             QUnit.test("List - JoinWithoutDelimiterWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.joinWithoutDelimiterWorks);
             QUnit.test("List - JoinWithDelimiterWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.joinWithDelimiterWorks);
             QUnit.test("List - RemoveWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.removeWorks);
+            QUnit.test("List - RemoveReturnsFalseIfTheElementWasNotFound", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.removeReturnsFalseIfTheElementWasNotFound);
             QUnit.test("List - RemoveCanRemoveNullItem", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.removeCanRemoveNullItem);
+            QUnit.test("List - RemoveUsesEqualsMethod", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.removeUsesEqualsMethod);
             QUnit.test("List - RemoveAtWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.removeAtWorks);
             QUnit.test("List - RemoveRangeWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.removeRangeWorks);
             QUnit.test("List - ReverseWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.reverseWorks);
@@ -216,14 +241,30 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("List - ICollectionAddWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.iCollectionAddWorks);
             QUnit.test("List - ICollectionClearWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.iCollectionClearWorks);
             QUnit.test("List - ICollectionContainsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.iCollectionContainsWorks);
+            QUnit.test("List - ICollectionContainsUsesEqualsMethod", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.iCollectionContainsUsesEqualsMethod);
+            QUnit.test("List - ICollectionRemoveWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.iCollectionRemoveWorks);
             QUnit.test("List - ICollectionRemoveCanRemoveNullItem", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.iCollectionRemoveCanRemoveNullItem);
+            QUnit.test("List - ICollectionRemoveUsesEqualsMethod", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.iCollectionRemoveUsesEqualsMethod);
             QUnit.test("List - IListIndexingWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.iListIndexingWorks);
             QUnit.test("List - IListIndexOfWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.iListIndexOfWorks);
+            QUnit.test("List - IListIndexOfUsesEqualsMethod", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.iListIndexOfUsesEqualsMethod);
             QUnit.test("List - IListInsertWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.iListInsertWorks);
             QUnit.test("List - IListRemoveAtWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.iListRemoveAtWorks);
             QUnit.test("List - ToArrayWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.toArrayWorks);
+            QUnit.test("MultidimArray - TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.typePropertiesAreCorrect);
+            QUnit.test("MultidimArray - LengthWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.lengthWorks);
+            QUnit.test("MultidimArray - GetValueWorksForUninitializedElement", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.getValueWorksForUninitializedElement);
+            QUnit.test("MultidimArray - GetValueByIndexWorksForUninitializedElement", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.getValueByIndexWorksForUninitializedElement);
+            QUnit.test("MultidimArray - SettingValueByIndexWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.settingValueByIndexWorks);
+            QUnit.test("MultidimArray - SetValueWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.setValueWorks);
+            QUnit.test("MultidimArray - RankWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.rankWorks);
+            QUnit.test("MultidimArray - GetValueWithIndexOutOfRangeThrowsAnException", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.getValueWithIndexOutOfRangeThrowsAnException);
+            QUnit.test("MultidimArray - SetValueWithIndexOutOfRangeThrowsAnException", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.setValueWithIndexOutOfRangeThrowsAnException);
             QUnit.module("Comparer");
             QUnit.test("TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests.typePropertiesAreCorrect);
+            QUnit.test("DefaultComparerCanOrderNumbers", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests.defaultComparerCanOrderNumbers);
+            QUnit.test("DefaultComparerCanOrderNullValues", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests.defaultComparerCanOrderNullValues);
+            QUnit.test("DefaultComparerUsesCompareMethodIfClassImplementsIComparable", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests.defaultComparerUsesCompareMethodIfClassImplementsIComparable);
             QUnit.test("CreateWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests.createWorks);
             QUnit.module("Date and time");
             QUnit.test("TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestDateTimeFormatInfoTests.typePropertiesAreCorrect);
@@ -285,7 +326,7 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("DateGreaterEqualWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.dateGreaterEqualWorks);
             QUnit.test("GetHashCodeWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.getHashCodeWorks);
             QUnit.test("EqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.equalsWorks);
-            QUnit.test("IEquatableEqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.iEquatableEqualsWorks);
+            QUnit.test("DateTimeEqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.dateTimeEqualsWorks);
             QUnit.test("CompareToWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.compareToWorks);
             QUnit.test("TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.typePropertiesAreCorrect);
             QUnit.test("DefaultConstructorWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.defaultConstructorWorks);
@@ -310,9 +351,17 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("UnaryPlusWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.unaryPlusWorks);
             QUnit.test("UnaryMinusWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesTimeSpanTests.unaryMinusWorks);
             QUnit.module("Enum");
-            QUnit.test("FirstValueOfEnumIsZero", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests.firstValueOfEnumIsZero);
-            QUnit.test("GetHashCodeWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests.getHashCodeWorks);
-            QUnit.test("EqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests.equalsWorks);
+            QUnit.test("Enum - TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests.typePropertiesAreCorrect);
+            QUnit.test("Enum - FirstValueOfEnumIsZero", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests.firstValueOfEnumIsZero);
+            QUnit.test("Enum - GetHashCodeWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests.getHashCodeWorks);
+            QUnit.test("Enum - EqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests.equalsWorks);
+            QUnit.module("EqualityComparer");
+            QUnit.test("TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericEqualityComparerTests.typePropertiesAreCorrect);
+            QUnit.test("DefaultComparerCanGetHashCodeOfNumber", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericEqualityComparerTests.defaultComparerCanGetHashCodeOfNumber);
+            QUnit.test("DefaultComparerReturnsZeroAsHashCodeForNullAndUndefined", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericEqualityComparerTests.defaultComparerReturnsZeroAsHashCodeForNullAndUndefined);
+            QUnit.test("DefaultComparerCanDetermineEquality", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericEqualityComparerTests.defaultComparerCanDetermineEquality);
+            QUnit.test("DefaultComparerInvokesOverriddenGetHashCode", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericEqualityComparerTests.defaultComparerInvokesOverriddenGetHashCode);
+            QUnit.test("DefaultComparerInvokesOverriddenEquals", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericEqualityComparerTests.defaultComparerInvokesOverriddenEquals);
             QUnit.module("Exceptions");
             QUnit.test("ArgumentException - TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests.typePropertiesAreCorrect);
             QUnit.test("ArgumentException - DefaultConstructorWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentExceptionTests.defaultConstructorWorks);
@@ -331,6 +380,7 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("ArgumentOutOfRangeException - ConstructorWithParamNameAndMessageWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests.constructorWithParamNameAndMessageWorks);
             QUnit.test("ArgumentOutOfRangeException - ConstructorWithMessageAndInnerExceptionWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests.constructorWithMessageAndInnerExceptionWorks);
             QUnit.test("ArgumentOutOfRangeException - ConstructorWithParamNameAndActualValueAndMessageWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests.constructorWithParamNameAndActualValueAndMessageWorks);
+            QUnit.test("ArgumentOutOfRangeException - RangeErrorIsConvertedToArgumentOutOfRangeException", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests.rangeErrorIsConvertedToArgumentOutOfRangeException);
             QUnit.test("ArithmeticException - TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests.typePropertiesAreCorrect);
             QUnit.test("ArithmeticException - DefaultConstructorWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests.defaultConstructorWorks);
             QUnit.test("ArithmeticException - ConstructorWithMessageWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArithmeticExceptionTests.constructorWithMessageWorks);
@@ -373,6 +423,7 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("NullReferenceException - DefaultConstructorWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests.defaultConstructorWorks);
             QUnit.test("NullReferenceException - ConstructorWithMessageWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests.constructorWithMessageWorks);
             QUnit.test("NullReferenceException - ConstructorWithMessageAndInnerExceptionWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests.constructorWithMessageAndInnerExceptionWorks);
+            QUnit.test("NullReferenceException - AccessingAFieldOnANullObjectCausesANullReferenceException", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests.accessingAFieldOnANullObjectCausesANullReferenceException);
             QUnit.test("OverflowException - TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests.typePropertiesAreCorrect);
             QUnit.test("OverflowException - DefaultConstructorWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests.defaultConstructorWorks);
             QUnit.test("OverflowException - ConstructorWithMessageWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsOverflowExceptionTests.constructorWithMessageWorks);
@@ -381,84 +432,84 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("ExceptionOfWrongTypeIsNotCaught", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests.exceptionOfWrongTypeIsNotCaught);
             QUnit.test("CanCatchExceptionAsBaseType", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests.canCatchExceptionAsBaseType);
             QUnit.module("Math");
-            QUnit.test("ConstantsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.constantsWork);
-            QUnit.test("AbsOfDoubleWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.absOfDoubleWorks);
-            QUnit.test("AbsOfIntWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.absOfIntWorks);
-            QUnit.test("AbsOfLongWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.absOfLongWorks);
-            QUnit.test("AbsOfSbyteWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.absOfSbyteWorks);
-            QUnit.test("AbsOfShortWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.absOfShortWorks);
-            QUnit.test("AbsOfFloatWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.absOfFloatWorks);
-            QUnit.test("AbsOfDecimalWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.absOfDecimalWorks);
-            QUnit.test("AcosWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.acosWorks);
-            QUnit.test("AsinWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.asinWorks);
-            QUnit.test("AtanWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.atanWorks);
-            QUnit.test("Atan2Works", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.atan2Works);
-            QUnit.test("CosWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.cosWorks);
-            QUnit.test("ExpWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.expWorks);
-            QUnit.test("FloorOfDoubleWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.floorOfDoubleWorks);
-            QUnit.test("FloorOfDecimalWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.floorOfDecimalWorks);
-            QUnit.test("LogWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.logWorks);
-            QUnit.test("MaxOfByteWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.maxOfByteWorks);
-            QUnit.test("MaxOfDecimalWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.maxOfDecimalWorks);
-            QUnit.test("MaxOfDoubleWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.maxOfDoubleWorks);
-            QUnit.test("MaxOfShortWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.maxOfShortWorks);
-            QUnit.test("MaxOfIntWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.maxOfIntWorks);
-            QUnit.test("MaxOfLongWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.maxOfLongWorks);
-            QUnit.test("MaxOfSByteWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.maxOfSByteWorks);
-            QUnit.test("MaxOfFloatWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.maxOfFloatWorks);
-            QUnit.test("MaxOfUShortWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.maxOfUShortWorks);
-            QUnit.test("MaxOfUIntWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.maxOfUIntWorks);
-            QUnit.test("MaxOfULongWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.maxOfULongWorks);
-            QUnit.test("MinOfByteWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.minOfByteWorks);
-            QUnit.test("MinOfDecimalWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.minOfDecimalWorks);
-            QUnit.test("MinOfDoubleWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.minOfDoubleWorks);
-            QUnit.test("MinOfShortWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.minOfShortWorks);
-            QUnit.test("MinOfIntWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.minOfIntWorks);
-            QUnit.test("MinOfLongWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.minOfLongWorks);
-            QUnit.test("MinOfSByteWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.minOfSByteWorks);
-            QUnit.test("MinOfFloatWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.minOfFloatWorks);
-            QUnit.test("MinOfUShortWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.minOfUShortWorks);
-            QUnit.test("MinOfUIntWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.minOfUIntWorks);
-            QUnit.test("MinOfULongWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.minOfULongWorks);
-            QUnit.test("PowWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.powWorks);
-            QUnit.test("RandomWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.randomWorks);
-            QUnit.test("RoundOfDoubleWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.roundOfDoubleWorks);
-            QUnit.test("SinWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.sinWorks);
-            QUnit.test("SqrtWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.sqrtWorks);
-            QUnit.test("TanWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.tanWorks);
+            QUnit.test("Math - ConstantsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.constantsWork);
+            QUnit.test("Math - AbsOfDoubleWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.absOfDoubleWorks);
+            QUnit.test("Math - AbsOfIntWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.absOfIntWorks);
+            QUnit.test("Math - AbsOfLongWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.absOfLongWorks);
+            QUnit.test("Math - AbsOfSbyteWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.absOfSbyteWorks);
+            QUnit.test("Math - AbsOfShortWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.absOfShortWorks);
+            QUnit.test("Math - AbsOfFloatWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.absOfFloatWorks);
+            QUnit.test("Math - AbsOfDecimalWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.absOfDecimalWorks);
+            QUnit.test("Math - AcosWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.acosWorks);
+            QUnit.test("Math - AsinWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.asinWorks);
+            QUnit.test("Math - AtanWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.atanWorks);
+            QUnit.test("Math - Atan2Works", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.atan2Works);
+            QUnit.test("Math - CosWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.cosWorks);
+            QUnit.test("Math - ExpWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.expWorks);
+            QUnit.test("Math - FloorOfDoubleWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.floorOfDoubleWorks);
+            QUnit.test("Math - FloorOfDecimalWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.floorOfDecimalWorks);
+            QUnit.test("Math - LogWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.logWorks);
+            QUnit.test("Math - MaxOfByteWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.maxOfByteWorks);
+            QUnit.test("Math - MaxOfDecimalWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.maxOfDecimalWorks);
+            QUnit.test("Math - MaxOfDoubleWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.maxOfDoubleWorks);
+            QUnit.test("Math - MaxOfShortWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.maxOfShortWorks);
+            QUnit.test("Math - MaxOfIntWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.maxOfIntWorks);
+            QUnit.test("Math - MaxOfLongWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.maxOfLongWorks);
+            QUnit.test("Math - MaxOfSByteWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.maxOfSByteWorks);
+            QUnit.test("Math - MaxOfFloatWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.maxOfFloatWorks);
+            QUnit.test("Math - MaxOfUShortWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.maxOfUShortWorks);
+            QUnit.test("Math - MaxOfUIntWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.maxOfUIntWorks);
+            QUnit.test("Math - MaxOfULongWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.maxOfULongWorks);
+            QUnit.test("Math - MinOfByteWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.minOfByteWorks);
+            QUnit.test("Math - MinOfDecimalWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.minOfDecimalWorks);
+            QUnit.test("Math - MinOfDoubleWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.minOfDoubleWorks);
+            QUnit.test("Math - MinOfShortWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.minOfShortWorks);
+            QUnit.test("Math - MinOfIntWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.minOfIntWorks);
+            QUnit.test("Math - MinOfLongWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.minOfLongWorks);
+            QUnit.test("Math - MinOfSByteWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.minOfSByteWorks);
+            QUnit.test("Math - MinOfFloatWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.minOfFloatWorks);
+            QUnit.test("Math - MinOfUShortWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.minOfUShortWorks);
+            QUnit.test("Math - MinOfUIntWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.minOfUIntWorks);
+            QUnit.test("Math - MinOfULongWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.minOfULongWorks);
+            QUnit.test("Math - PowWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.powWorks);
+            QUnit.test("Math - RandomWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.randomWorks);
+            QUnit.test("Math - RoundOfDoubleWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.roundOfDoubleWorks);
+            QUnit.test("Math - SinWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.sinWorks);
+            QUnit.test("Math - SqrtWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.sqrtWorks);
+            QUnit.test("Math - TanWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.tanWorks);
             QUnit.module("Nullable");
-            QUnit.test("TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.typePropertiesAreCorrect);
-            QUnit.test("ConvertingToNullableWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.convertingToNullableWorks);
-            QUnit.test("HasValueWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.hasValueWorks);
-            QUnit.test("BoxingWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.boxingWorks);
-            QUnit.test("UnboxingWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.unboxingWorks);
-            QUnit.test("ValueWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.valueWorks);
-            QUnit.test("UnboxingValueOfWrongTypeThrowsAnException", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.unboxingValueOfWrongTypeThrowsAnException);
-            QUnit.test("GetValueOrDefaultWithArgWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.getValueOrDefaultWithArgWorks);
-            QUnit.test("LiftedEqualityWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedEqualityWorks);
-            QUnit.test("LiftedInequalityWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedInequalityWorks);
-            QUnit.test("LiftedLessThanWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedLessThanWorks);
-            QUnit.test("LiftedGreaterThanWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedGreaterThanWorks);
-            QUnit.test("LiftedLessThanOrEqualWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedLessThanOrEqualWorks);
-            QUnit.test("LiftedGreaterThanOrEqualWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedGreaterThanOrEqualWorks);
-            QUnit.test("LiftedSubtractionWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedSubtractionWorks);
-            QUnit.test("LiftedAdditionWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedAdditionWorks);
-            QUnit.test("LiftedModWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedModWorks);
-            QUnit.test("LiftedFloatingPointDivisionWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedFloatingPointDivisionWorks);
-            QUnit.test("LiftedIntegerDivisionWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedIntegerDivisionWorks);
-            QUnit.test("LiftedMultiplicationWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedMultiplicationWorks);
-            QUnit.test("LiftedBitwiseAndWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedBitwiseAndWorks);
-            QUnit.test("LiftedBitwiseOrWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedBitwiseOrWorks);
-            QUnit.test("LiftedBitwiseXorWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedBitwiseXorWorks);
-            QUnit.test("LiftedLeftShiftWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedLeftShiftWorks);
-            QUnit.test("LiftedSignedRightShiftWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedSignedRightShiftWorks);
-            QUnit.test("LiftedUnsignedRightShiftWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedUnsignedRightShiftWorks);
+            QUnit.test("Nullable - TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.typePropertiesAreCorrect);
+            QUnit.test("Nullable - ConvertingToNullableWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.convertingToNullableWorks);
+            QUnit.test("Nullable - HasValueWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.hasValueWorks);
+            QUnit.test("Nullable - BoxingWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.boxingWorks);
+            QUnit.test("Nullable - UnboxingWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.unboxingWorks);
+            QUnit.test("Nullable - ValueWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.valueWorks);
+            QUnit.test("Nullable - UnboxingValueOfWrongTypeThrowsAnException", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.unboxingValueOfWrongTypeThrowsAnException);
+            QUnit.test("Nullable - GetValueOrDefaultWithArgWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.getValueOrDefaultWithArgWorks);
+            QUnit.test("Nullable - LiftedEqualityWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedEqualityWorks);
+            QUnit.test("Nullable - LiftedInequalityWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedInequalityWorks);
+            QUnit.test("Nullable - LiftedLessThanWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedLessThanWorks);
+            QUnit.test("Nullable - LiftedGreaterThanWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedGreaterThanWorks);
+            QUnit.test("Nullable - LiftedLessThanOrEqualWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedLessThanOrEqualWorks);
+            QUnit.test("Nullable - LiftedGreaterThanOrEqualWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedGreaterThanOrEqualWorks);
+            QUnit.test("Nullable - LiftedSubtractionWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedSubtractionWorks);
+            QUnit.test("Nullable - LiftedAdditionWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedAdditionWorks);
+            QUnit.test("Nullable - LiftedModWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedModWorks);
+            QUnit.test("Nullable - LiftedFloatingPointDivisionWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedFloatingPointDivisionWorks);
+            QUnit.test("Nullable - LiftedIntegerDivisionWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedIntegerDivisionWorks);
+            QUnit.test("Nullable - LiftedMultiplicationWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedMultiplicationWorks);
+            QUnit.test("Nullable - LiftedBitwiseAndWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedBitwiseAndWorks);
+            QUnit.test("Nullable - LiftedBitwiseOrWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedBitwiseOrWorks);
+            QUnit.test("Nullable - LiftedBitwiseXorWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedBitwiseXorWorks);
+            QUnit.test("Nullable - LiftedLeftShiftWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedLeftShiftWorks);
+            QUnit.test("Nullable - LiftedSignedRightShiftWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedSignedRightShiftWorks);
+            QUnit.test("Nullable - LiftedUnsignedRightShiftWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedUnsignedRightShiftWorks);
             QUnit.test("LiftedBooleanAndWorks #314", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedBooleanAndWorks);
             QUnit.test("LiftedBooleanOrWorks #314", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedBooleanOrWorks);
-            QUnit.test("LiftedBooleanNotWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedBooleanNotWorks);
-            QUnit.test("LiftedNegationWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedNegationWorks);
-            QUnit.test("LiftedUnaryPlusWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedUnaryPlusWorks);
-            QUnit.test("LiftedOnesComplementWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedOnesComplementWorks);
+            QUnit.test("Nullable - LiftedBooleanNotWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedBooleanNotWorks);
+            QUnit.test("Nullable - LiftedNegationWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedNegationWorks);
+            QUnit.test("Nullable - LiftedUnaryPlusWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedUnaryPlusWorks);
+            QUnit.test("Nullable - LiftedOnesComplementWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.liftedOnesComplementWorks);
             QUnit.test("CoalesceWorks #314", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNullableTests.coalesceWorks);
             QUnit.module("NumberFormatInfo");
             QUnit.test("TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestNumberFormatInfoTests.typePropertiesAreCorrect);
@@ -485,13 +536,22 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("TestWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests.testWorks);
             QUnit.test("EscapeWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextRegularExpressionsRegexTests.escapeWorks);
             QUnit.module("Simple types");
+            QUnit.test("Boolean - TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesBooleanTests.typePropertiesAreCorrect);
+            QUnit.test("Boolean - DefaultValueIsFalse", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesBooleanTests.defaultValueIsFalse);
+            QUnit.test("Boolean - CreatingInstanceReturnsFalse", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesBooleanTests.creatingInstanceReturnsFalse);
+            QUnit.test("Boolean - DefaultConstructorReturnsFalse", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesBooleanTests.defaultConstructorReturnsFalse);
+            QUnit.test("Boolean - GetHashCodeWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesBooleanTests.getHashCodeWorks);
+            QUnit.test("Boolean - ObjectEqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesBooleanTests.objectEqualsWorks);
+            QUnit.test("Boolean - BoolEqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesBooleanTests.boolEqualsWorks);
             QUnit.test("Byte - TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.typePropertiesAreCorrect);
             QUnit.test("Byte - CastsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.castsWork);
             QUnit.test("Byte - DefaultValueIs0", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.defaultValueIs0);
+            QUnit.test("Byte - DefaultConstructorReturnsZero", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.defaultConstructorReturnsZero);
             QUnit.test("Byte - ConstantsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.constantsWork);
             QUnit.test("Byte - FormatWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.formatWorks);
             QUnit.test("Byte - IFormattableToStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.iFormattableToStringWorks);
             QUnit.test("Byte - TryParseWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.tryParseWorks);
+            QUnit.test("Byte - ParseWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.parseWorks);
             QUnit.test("Byte - ToStringWithoutRadixWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.toStringWithoutRadixWorks);
             QUnit.test("Byte - ToStringWithRadixWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.toStringWithRadixWorks);
             QUnit.test("Byte - GetHashCodeWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.getHashCodeWorks);
@@ -502,6 +562,7 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("Char - TypePropertiesAreInt32", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.typePropertiesAreInt32);
             QUnit.test("Char - CastsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.castsWork);
             QUnit.test("Char - DefaultValueWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.defaultValueWorks);
+            QUnit.test("Char - DefaultConstructorReturnsZero", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.defaultConstructorReturnsZero);
             QUnit.test("Char - ConstantsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.constantsWork);
             QUnit.test("Char - CharComparisonWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.charComparisonWorks);
             QUnit.test("Char - ParseWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.parseWorks);
@@ -523,6 +584,7 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("Decimal - TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.typePropertiesAreCorrect);
             QUnit.test("Decimal - DefaultValueIs0", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.defaultValueIs0);
             QUnit.test("Decimal - ConstantsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.constantsWork);
+            QUnit.test("Decimal - DefaultConstructorReturnsZero", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.defaultConstructorReturnsZero);
             QUnit.test("Decimal - ConvertingConstructorsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.convertingConstructorsWork);
             QUnit.test("Decimal - FormatWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.formatWorks);
             QUnit.test("Decimal - IFormattableToStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.iFormattableToStringWorks);
@@ -547,12 +609,13 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("Decimal - RoundWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.roundWorks);
             QUnit.test("Decimal - SubtractWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.subtractWorks);
             QUnit.test("Decimal - GetHashCodeWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.getHashCodeWorks);
-            QUnit.test("Decimal - EqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.equalsWorks);
-            QUnit.test("Decimal - IEquatableEqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.iEquatableEqualsWorks);
+            QUnit.test("Decimal - ObjectEqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.objectEqualsWorks);
+            QUnit.test("Decimal - DecimalEqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.decimalEqualsWorks);
             QUnit.test("Decimal - CompareToWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.compareToWorks);
             QUnit.test("Double - TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.typePropertiesAreCorrect);
             QUnit.test("Double - DefaultValueIs0", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.defaultValueIs0);
             QUnit.test("Double - ConstantsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.constantsWork);
+            QUnit.test("Double - DefaultConstructorReturnsZero", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.defaultConstructorReturnsZero);
             QUnit.test("Double - FormatWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.formatWorks);
             QUnit.test("Double - IFormattableToStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.iFormattableToStringWorks);
             QUnit.test("Double - ToStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.toStringWorks);
@@ -568,12 +631,13 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("Double - IsFiniteWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.isFiniteWorks);
             QUnit.test("Double - IsNaNWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.isNaNWorks);
             QUnit.test("Double - GetHashCodeWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.getHashCodeWorks);
-            QUnit.test("Double - EqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.equalsWorks);
-            QUnit.test("Double - IEquatableEqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.iEquatableEqualsWorks);
+            QUnit.test("Double - ObjectEqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.objectEqualsWorks);
+            QUnit.test("Double - DoubleEqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.doubleEqualsWorks);
             QUnit.test("Double - CompareToWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.compareToWorks);
             QUnit.test("Int16 - TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.typePropertiesAreCorrect);
             QUnit.test("Int16 - CastsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.castsWork);
             QUnit.test("Int16 - DefaultValueIs0", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.defaultValueIs0);
+            QUnit.test("Int16 - DefaultConstructorReturnsZero", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.defaultConstructorReturnsZero);
             QUnit.test("Int16 - ConstantsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.constantsWork);
             QUnit.test("Int16 - FormatWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.formatWorks);
             QUnit.test("Int16 - IFormattableToStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.iFormattableToStringWorks);
@@ -592,6 +656,7 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("Int32 - TypeAsWorksForInt32", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.typeAsWorksForInt32);
             QUnit.test("Int32 - UnboxingWorksForInt32", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.unboxingWorksForInt32);
             QUnit.test("Int32 - DefaultValueIs0", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.defaultValueIs0);
+            QUnit.test("Int32 - DefaultConstructorReturnsZero", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.defaultConstructorReturnsZero);
             QUnit.test("Int32 - ConstantsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.constantsWork);
             QUnit.test("Int32 - FormatWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.formatWorks);
             QUnit.test("Int32 - IFormattableToStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.iFormattableToStringWorks);
@@ -611,6 +676,7 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("Int64 - TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.typePropertiesAreCorrect);
             QUnit.test("Int64 - CastsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.castsWork);
             QUnit.test("Int64 - DefaultValueIs0", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.defaultValueIs0);
+            QUnit.test("Int64 - DefaultConstructorReturnsZero", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.defaultConstructorReturnsZero);
             QUnit.test("Int64 - FormatWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.formatWorks);
             QUnit.test("Int64 - IFormattableToStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.iFormattableToStringWorks);
             QUnit.test("Int64 - TryParseWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.tryParseWorks);
@@ -624,15 +690,18 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("Int64 - IEquatableEqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.iEquatableEqualsWorks);
             QUnit.test("Int64 - CompareToWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.compareToWorks);
             QUnit.test("Int64 - IComparableCompareToWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.iComparableCompareToWorks);
+            QUnit.test("Object - TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.typePropertiesAreCorrect);
             QUnit.test("Object - CanGetHashCodeForObject", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.canGetHashCodeForObject);
             QUnit.test("Object - RepeatedCallsToGetHashCodeReturnsSameValue", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.repeatedCallsToGetHashCodeReturnsSameValue);
             QUnit.test("Object - ObjectIsEqualToItself", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.objectIsEqualToItself);
+            QUnit.test("Object - ObjectIsNotEqualToOtherObject", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.objectIsNotEqualToOtherObject);
             QUnit.test("Object - StaticEqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.staticEqualsWorks);
             QUnit.test("Object - ReferenceEqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.referenceEqualsWorks);
             QUnit.test("Object - ToStringOverride", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.toStringOverride);
             QUnit.test("SByte - TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.typePropertiesAreCorrect);
             QUnit.test("SByte - CastsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.castsWork);
             QUnit.test("SByte - DefaultValueIs0", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.defaultValueIs0);
+            QUnit.test("SByte - DefaultConstructorReturnsZero", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.defaultConstructorReturnsZero);
             QUnit.test("SByte - ConstantsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.constantsWork);
             QUnit.test("SByte - FormatWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.formatWorks);
             QUnit.test("SByte - IFormattableToStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.iFormattableToStringWorks);
@@ -648,6 +717,7 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("Float - TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.typePropertiesAreCorrect);
             QUnit.test("Float - DefaultValueIs0", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.defaultValueIs0);
             QUnit.test("Float - ConstantsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.constantsWork);
+            QUnit.test("Float - DefaultConstructorReturnsZero", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.defaultConstructorReturnsZero);
             QUnit.test("Float - FormatWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.formatWorks);
             QUnit.test("Float - IFormattableToStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.iFormattableToStringWorks);
             QUnit.test("Float - ToStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.toStringWorks);
@@ -676,6 +746,7 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("UInt16 - TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.typePropertiesAreCorrect);
             QUnit.test("UInt16 - CastsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.castsWork);
             QUnit.test("UInt16 - DefaultValueIs0", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.defaultValueIs0);
+            QUnit.test("UInt16 - DefaultConstructorReturnsZero", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.defaultConstructorReturnsZero);
             QUnit.test("UInt16 - ConstantsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.constantsWork);
             QUnit.test("UInt16 - FormatWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.formatWorks);
             QUnit.test("UInt16 - IFormattableToStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.iFormattableToStringWorks);
@@ -691,6 +762,7 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("UInt32 - TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.typePropertiesAreCorrect);
             QUnit.test("UInt32 - CastsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.castsWork);
             QUnit.test("UInt32 - DefaultValueIs0", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.defaultValueIs0);
+            QUnit.test("UInt32 - DefaultConstructorReturnsZero", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.defaultConstructorReturnsZero);
             QUnit.test("UInt32 - ConstantsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.constantsWork);
             QUnit.test("UInt32 - FormatWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.formatWorks);
             QUnit.test("UInt32 - IFormattableToStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.iFormattableToStringWorks);
@@ -706,6 +778,7 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("UInt64 - TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.typePropertiesAreCorrect);
             QUnit.test("UInt64 - CastsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.castsWork);
             QUnit.test("UInt64 - DefaultValueIs0", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.defaultValueIs0);
+            QUnit.test("UInt64 - DefaultConstructorReturnsZero", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.defaultConstructorReturnsZero);
             QUnit.test("UInt64 - ConstantsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.constantsWork);
             QUnit.test("UInt64 - FormatWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.formatWorks);
             QUnit.test("UInt64 - IFormattableToStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.iFormattableToStringWorks);
@@ -721,68 +794,68 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("UInt64 - CompareToWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.compareToWorks);
             QUnit.test("UInt64 - IComparableCompareToWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.iComparableCompareToWorks);
             QUnit.module("String");
-            QUnit.test("TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.typePropertiesAreCorrect);
-            QUnit.test("DefaultConstructorWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.defaultConstructorWorks);
-            QUnit.test("CopyConstructorWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.copyConstructorWorks);
-            QUnit.test("CharAndCountConstructorWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.charAndCountConstructorWorks);
-            QUnit.test("CharArrayConstructorWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.charArrayConstructorWorks);
-            QUnit.test("EmptyFieldWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.emptyFieldWorks);
-            QUnit.test("LengthPropertyWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.lengthPropertyWorks);
-            QUnit.test("CharAtWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.charAtWorks);
-            QUnit.test("CharCodeAtWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.charCodeAtWorks);
-            QUnit.test("CompareWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.compareWorks);
-            QUnit.test("CompareWithIgnoreCaseArgWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.compareWithIgnoreCaseArgWorks);
-            QUnit.test("ConcatWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.concatWorks);
-            QUnit.test("ConcatWithObjectsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.concatWithObjectsWorks);
-            QUnit.test("EndsWithCharWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.endsWithCharWorks);
-            QUnit.test("EndsWithStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.endsWithStringWorks);
-            QUnit.test("StaticEqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.staticEqualsWorks);
-            QUnit.test("FormatWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.formatWorks);
-            QUnit.test("FormatWorksWithIFormattable", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.formatWorksWithIFormattable);
-            QUnit.test("FormatCanUseEscapedBraces", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.formatCanUseEscapedBraces);
-            QUnit.test("FromCharCodeWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.fromCharCodeWorks);
-            QUnit.test("IndexOfCharWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.indexOfCharWorks);
-            QUnit.test("IndexOfStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.indexOfStringWorks);
-            QUnit.test("IndexOfCharWithStartIndexWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.indexOfCharWithStartIndexWorks);
-            QUnit.test("IndexOfCharWithStartIndexAndCountWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.indexOfCharWithStartIndexAndCountWorks);
-            QUnit.test("IndexOfStringWithStartIndexWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.indexOfStringWithStartIndexWorks);
-            QUnit.test("IndexOfStringWithStartIndexAndCountWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.indexOfStringWithStartIndexAndCountWorks);
-            QUnit.test("IndexOfAnyWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.indexOfAnyWorks);
-            QUnit.test("IndexOfAnyWithStartIndexWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.indexOfAnyWithStartIndexWorks);
-            QUnit.test("IndexOfAnyWithStartIndexAndCountWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.indexOfAnyWithStartIndexAndCountWorks);
-            QUnit.test("IsNullOrEmptyWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.isNullOrEmptyWorks);
-            QUnit.test("LastIndexOfCharWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.lastIndexOfCharWorks);
-            QUnit.test("LastIndexOfStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.lastIndexOfStringWorks);
-            QUnit.test("LastIndexOfCharWithStartIndexWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.lastIndexOfCharWithStartIndexWorks);
-            QUnit.test("LastIndexOfStringWithStartIndexWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.lastIndexOfStringWithStartIndexWorks);
-            QUnit.test("LocaleCompareWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.localeCompareWorks);
-            QUnit.test("MatchWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.matchWorks);
-            QUnit.test("ReplaceWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.replaceWorks);
-            QUnit.test("ReplaceCharWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.replaceCharWorks);
-            QUnit.test("ReplaceRegexWithReplaceTextWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.replaceRegexWithReplaceTextWorks);
-            QUnit.test("ReplaceRegexWithReplaceCallbackWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.replaceRegexWithReplaceCallbackWorks);
-            QUnit.test("SearchWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.searchWorks);
-            QUnit.test("SplitWithStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.splitWithStringWorks);
-            QUnit.test("SplitWithRegexWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.splitWithRegexWorks);
-            QUnit.test("StartsWithStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.startsWithStringWorks);
-            QUnit.test("SubstrWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.substrWorks);
-            QUnit.test("SubstrWithLengthWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.substrWithLengthWorks);
-            QUnit.test("SubstringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.substringWorks);
-            QUnit.test("SubstringWithLengthWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.substringWithLengthWorks);
-            QUnit.test("ToLowerCaseWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.toLowerCaseWorks);
-            QUnit.test("ToUpperCaseWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.toUpperCaseWorks);
-            QUnit.test("ToLowerWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.toLowerWorks);
-            QUnit.test("ToUpperWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.toUpperWorks);
-            QUnit.test("TrimWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.trimWorks);
-            QUnit.test("StringEqualityWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.stringEqualityWorks);
-            QUnit.test("StringInequalityWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.stringInequalityWorks);
-            QUnit.test("StringIndexingWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.stringIndexingWorks);
-            QUnit.test("GetHashCodeWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.getHashCodeWorks);
-            QUnit.test("InstanceEqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.instanceEqualsWorks);
-            QUnit.test("IEquatableEqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.iEquatableEqualsWorks);
-            QUnit.test("CompareToWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.compareToWorks);
-            QUnit.test("ContainsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.containsWorks);
-            QUnit.test("ToCharArrayWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.toCharArrayWorks);
+            QUnit.test("String - TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.typePropertiesAreCorrect);
+            QUnit.test("String - DefaultConstructorWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.defaultConstructorWorks);
+            QUnit.test("String - CopyConstructorWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.copyConstructorWorks);
+            QUnit.test("String - CharAndCountConstructorWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.charAndCountConstructorWorks);
+            QUnit.test("String - CharArrayConstructorWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.charArrayConstructorWorks);
+            QUnit.test("String - EmptyFieldWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.emptyFieldWorks);
+            QUnit.test("String - LengthPropertyWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.lengthPropertyWorks);
+            QUnit.test("String - CharAtWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.charAtWorks);
+            QUnit.test("String - CharCodeAtWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.charCodeAtWorks);
+            QUnit.test("String - CompareWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.compareWorks);
+            QUnit.test("String - CompareWithIgnoreCaseArgWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.compareWithIgnoreCaseArgWorks);
+            QUnit.test("String - ConcatWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.concatWorks);
+            QUnit.test("String - ConcatWithObjectsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.concatWithObjectsWorks);
+            QUnit.test("String - EndsWithCharWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.endsWithCharWorks);
+            QUnit.test("String - EndsWithStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.endsWithStringWorks);
+            QUnit.test("String - StaticEqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.staticEqualsWorks);
+            QUnit.test("String - FormatWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.formatWorks);
+            QUnit.test("String - FormatWorksWithIFormattable", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.formatWorksWithIFormattable);
+            QUnit.test("String - FormatCanUseEscapedBraces", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.formatCanUseEscapedBraces);
+            QUnit.test("String - FromCharCodeWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.fromCharCodeWorks);
+            QUnit.test("String - IndexOfCharWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.indexOfCharWorks);
+            QUnit.test("String - IndexOfStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.indexOfStringWorks);
+            QUnit.test("String - IndexOfCharWithStartIndexWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.indexOfCharWithStartIndexWorks);
+            QUnit.test("String - IndexOfCharWithStartIndexAndCountWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.indexOfCharWithStartIndexAndCountWorks);
+            QUnit.test("String - IndexOfStringWithStartIndexWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.indexOfStringWithStartIndexWorks);
+            QUnit.test("String - IndexOfStringWithStartIndexAndCountWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.indexOfStringWithStartIndexAndCountWorks);
+            QUnit.test("String - IndexOfAnyWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.indexOfAnyWorks);
+            QUnit.test("String - IndexOfAnyWithStartIndexWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.indexOfAnyWithStartIndexWorks);
+            QUnit.test("String - IndexOfAnyWithStartIndexAndCountWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.indexOfAnyWithStartIndexAndCountWorks);
+            QUnit.test("String - IsNullOrEmptyWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.isNullOrEmptyWorks);
+            QUnit.test("String - LastIndexOfCharWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.lastIndexOfCharWorks);
+            QUnit.test("String - LastIndexOfStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.lastIndexOfStringWorks);
+            QUnit.test("String - LastIndexOfCharWithStartIndexWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.lastIndexOfCharWithStartIndexWorks);
+            QUnit.test("String - LastIndexOfStringWithStartIndexWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.lastIndexOfStringWithStartIndexWorks);
+            QUnit.test("String - LocaleCompareWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.localeCompareWorks);
+            QUnit.test("String - MatchWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.matchWorks);
+            QUnit.test("String - ReplaceWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.replaceWorks);
+            QUnit.test("String - ReplaceCharWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.replaceCharWorks);
+            QUnit.test("String - ReplaceRegexWithReplaceTextWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.replaceRegexWithReplaceTextWorks);
+            QUnit.test("String - ReplaceRegexWithReplaceCallbackWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.replaceRegexWithReplaceCallbackWorks);
+            QUnit.test("String - SearchWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.searchWorks);
+            QUnit.test("String - SplitWithStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.splitWithStringWorks);
+            QUnit.test("String - SplitWithRegexWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.splitWithRegexWorks);
+            QUnit.test("String - StartsWithStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.startsWithStringWorks);
+            QUnit.test("String - SubstrWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.substrWorks);
+            QUnit.test("String - SubstrWithLengthWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.substrWithLengthWorks);
+            QUnit.test("String - SubstringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.substringWorks);
+            QUnit.test("String - SubstringWithLengthWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.substringWithLengthWorks);
+            QUnit.test("String - ToLowerCaseWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.toLowerCaseWorks);
+            QUnit.test("String - ToUpperCaseWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.toUpperCaseWorks);
+            QUnit.test("String - ToLowerWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.toLowerWorks);
+            QUnit.test("String - ToUpperWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.toUpperWorks);
+            QUnit.test("String - TrimWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.trimWorks);
+            QUnit.test("String - StringEqualityWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.stringEqualityWorks);
+            QUnit.test("String - StringInequalityWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.stringInequalityWorks);
+            QUnit.test("String - StringIndexingWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.stringIndexingWorks);
+            QUnit.test("String - GetHashCodeWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.getHashCodeWorks);
+            QUnit.test("String - InstanceEqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.instanceEqualsWorks);
+            QUnit.test("String - StringEqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.stringEqualsWorks);
+            QUnit.test("String - CompareToWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.compareToWorks);
+            QUnit.test("String - ContainsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.containsWorks);
+            QUnit.test("String - ToCharArrayWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.toCharArrayWorks);
             QUnit.test("TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.typePropertiesAreCorrect);
             QUnit.test("DefaultConstructorWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.defaultConstructorWorks);
             QUnit.test("ConstructorWithCapacityWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestTextStringBuilderTests.constructorWithCapacityWorks);
@@ -1001,9 +1074,66 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGeneri
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests.beforeTest(false, assert);
             t.typePropertiesAreCorrect();
         },
+        defaultComparerCanOrderNumbers: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests.beforeTest(false, assert);
+            t.defaultComparerCanOrderNumbers();
+        },
+        defaultComparerCanOrderNullValues: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests.beforeTest(false, assert);
+            t.defaultComparerCanOrderNullValues();
+        },
+        defaultComparerUsesCompareMethodIfClassImplementsIComparable: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests.beforeTest(false, assert);
+            t.defaultComparerUsesCompareMethodIfClassImplementsIComparable();
+        },
         createWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericComparerTests.beforeTest(false, assert);
             t.createWorks();
+        }
+    }
+});
+
+Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericEqualityComparerTests', {
+    statics: {
+        instance: null,
+        getInstance: function () {
+            if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericEqualityComparerTests.instance === null) {
+                Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericEqualityComparerTests.instance = new Bridge.ClientTest.Collections.Generic.EqualityComparerTests();
+            }
+            return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericEqualityComparerTests.instance;
+        },
+        setInstance: function (value) {
+            Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericEqualityComparerTests.instance = value;
+        },
+        beforeTest: function (isStatic, assert) {
+            Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericEqualityComparerTests.setInstance(null);
+            Bridge.Test.Assert.assert = assert;
+            var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericEqualityComparerTests.getInstance();
+            return r;
+        },
+        typePropertiesAreCorrect: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericEqualityComparerTests.beforeTest(false, assert);
+            t.typePropertiesAreCorrect();
+        },
+        defaultComparerCanGetHashCodeOfNumber: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericEqualityComparerTests.beforeTest(false, assert);
+            t.defaultComparerCanGetHashCodeOfNumber();
+        },
+        defaultComparerReturnsZeroAsHashCodeForNullAndUndefined: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericEqualityComparerTests.beforeTest(false, assert);
+            t.defaultComparerReturnsZeroAsHashCodeForNullAndUndefined();
+        },
+        defaultComparerCanDetermineEquality: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericEqualityComparerTests.beforeTest(false, assert);
+            t.defaultComparerCanDetermineEquality();
+        },
+        defaultComparerInvokesOverriddenGetHashCode: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericEqualityComparerTests.beforeTest(false, assert);
+            t.defaultComparerInvokesOverriddenGetHashCode();
+        },
+        defaultComparerInvokesOverriddenEquals: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericEqualityComparerTests.beforeTest(false, assert);
+            t.defaultComparerInvokesOverriddenEquals();
         }
     }
 });
@@ -1129,9 +1259,17 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGeneri
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.getInstance();
             return r;
         },
+        arrayImplementsICollection: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.beforeTest(false, assert);
+            t.arrayImplementsICollection();
+        },
         customClassThatShouldImplementICollectionDoesSo: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.beforeTest(false, assert);
             t.customClassThatShouldImplementICollectionDoesSo();
+        },
+        arrayCastToICollectionCountWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.beforeTest(false, assert);
+            t.arrayCastToICollectionCountWorks();
         },
         classImplementingICollectionCountWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.beforeTest(false, assert);
@@ -1156,6 +1294,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGeneri
         classImplementingICollectionCastToICollectionClearWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.beforeTest(false, assert);
             t.classImplementingICollectionCastToICollectionClearWorks();
+        },
+        arrayCastToICollectionContainsWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.beforeTest(false, assert);
+            t.arrayCastToICollectionContainsWorks();
         },
         classImplementingICollectionContainsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericICollectionTests.beforeTest(false, assert);
@@ -1194,6 +1336,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGeneri
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.getInstance();
             return r;
         },
+        typePropertiesAreCorrect: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.beforeTest(false, assert);
+            t.typePropertiesAreCorrect();
+        },
         classImplementsInterfaces: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.beforeTest(false, assert);
             t.classImplementsInterfaces();
@@ -1201,6 +1347,26 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGeneri
         countWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.beforeTest(false, assert);
             t.countWorks();
+        },
+        keysWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.beforeTest(false, assert);
+            t.keysWorks();
+        },
+        getItemWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.beforeTest(false, assert);
+            t.getItemWorks();
+        },
+        valuesWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.beforeTest(false, assert);
+            t.valuesWorks();
+        },
+        containsKeyWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.beforeTest(false, assert);
+            t.containsKeyWorks();
+        },
+        tryGetValueWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.beforeTest(false, assert);
+            t.tryGetValueWorks();
         },
         addWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIDictionaryTests.beforeTest(false, assert);
@@ -1238,6 +1404,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGeneri
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests.getInstance();
             return r;
+        },
+        arrayImplementsIEnumerable: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests.beforeTest(false, assert);
+            t.arrayImplementsIEnumerable();
         },
         customClassThatShouldImplementIEnumerableDoesSo: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIEnumerableTests.beforeTest(false, assert);
@@ -1280,17 +1450,45 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGeneri
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.getInstance();
             return r;
         },
+        typePropertiesAreCorrect: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.beforeTest(false, assert);
+            t.typePropertiesAreCorrect();
+        },
+        arrayImplementsIList: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.beforeTest(false, assert);
+            t.arrayImplementsIList();
+        },
         customClassThatShouldImplementIListDoesSo: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.beforeTest(false, assert);
             t.customClassThatShouldImplementIListDoesSo();
+        },
+        arrayCastToIListGetItemWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.beforeTest(false, assert);
+            t.arrayCastToIListGetItemWorks();
         },
         classImplementingIListGetItemWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.beforeTest(false, assert);
             t.classImplementingIListGetItemWorks();
         },
+        classImplementingIListCastToIListGetItemWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.beforeTest(false, assert);
+            t.classImplementingIListCastToIListGetItemWorks();
+        },
+        arrayCastToIListSetItemWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.beforeTest(false, assert);
+            t.arrayCastToIListSetItemWorks();
+        },
         classImplementingIListSetItemWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.beforeTest(false, assert);
             t.classImplementingIListSetItemWorks();
+        },
+        classImplementingIListCastToIListSetItemWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.beforeTest(false, assert);
+            t.classImplementingIListCastToIListSetItemWorks();
+        },
+        arrayCastToIListIndexOfWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.beforeTest(false, assert);
+            t.arrayCastToIListIndexOfWorks();
         },
         classImplementingIListIndexOfWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericIListTests.beforeTest(false, assert);
@@ -1406,6 +1604,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGeneri
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.defaultConstructorWorks();
         },
+        constructorWithCapacityWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
+            t.constructorWithCapacityWorks();
+        },
         constructingFromArrayWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.constructingFromArrayWorks();
@@ -1450,6 +1652,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGeneri
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.containsWorks();
         },
+        containsUsesEqualsMethod: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
+            t.containsUsesEqualsMethod();
+        },
         sliceWithoutEndWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.sliceWithoutEndWorks();
@@ -1470,9 +1676,25 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGeneri
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.indexOfWithoutStartIndexWorks();
         },
+        indexOfWithoutStartIndexUsesEqualsMethod: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
+            t.indexOfWithoutStartIndexUsesEqualsMethod();
+        },
+        indexOfWithStartIndexWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
+            t.indexOfWithStartIndexWorks();
+        },
+        indexOfWithStartIndexUsesEqualsMethod: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
+            t.indexOfWithStartIndexUsesEqualsMethod();
+        },
         insertWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.insertWorks();
+        },
+        insertRangeWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
+            t.insertRangeWorks();
         },
         joinWithoutDelimiterWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
@@ -1486,9 +1708,17 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGeneri
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.removeWorks();
         },
+        removeReturnsFalseIfTheElementWasNotFound: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
+            t.removeReturnsFalseIfTheElementWasNotFound();
+        },
         removeCanRemoveNullItem: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.removeCanRemoveNullItem();
+        },
+        removeUsesEqualsMethod: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
+            t.removeUsesEqualsMethod();
         },
         removeAtWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
@@ -1538,9 +1768,21 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGeneri
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.iCollectionContainsWorks();
         },
+        iCollectionContainsUsesEqualsMethod: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
+            t.iCollectionContainsUsesEqualsMethod();
+        },
+        iCollectionRemoveWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
+            t.iCollectionRemoveWorks();
+        },
         iCollectionRemoveCanRemoveNullItem: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.iCollectionRemoveCanRemoveNullItem();
+        },
+        iCollectionRemoveUsesEqualsMethod: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
+            t.iCollectionRemoveUsesEqualsMethod();
         },
         iListIndexingWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
@@ -1549,6 +1791,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGeneri
         iListIndexOfWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
             t.iListIndexOfWorks();
+        },
+        iListIndexOfUsesEqualsMethod: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
+            t.iListIndexOfUsesEqualsMethod();
         },
         iListInsertWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestCollectionsGenericListTests.beforeTest(false, assert);
@@ -1783,6 +2029,11 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumen
         constructorWithParamNameAndActualValueAndMessageWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests.beforeTest(false, assert);
             t.constructorWithParamNameAndActualValueAndMessageWorks();
+        },
+        rangeErrorIsConvertedToArgumentOutOfRangeException: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsArgumentOutOfRangeExceptionTests.beforeTest(false, assert);
+            assert.expect(1);
+            t.rangeErrorIsConvertedToArgumentOutOfRangeException();
         }
     }
 });
@@ -2161,6 +2412,11 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullRef
         constructorWithMessageAndInnerExceptionWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests.beforeTest(false, assert);
             t.constructorWithMessageAndInnerExceptionWorks();
+        },
+        accessingAFieldOnANullObjectCausesANullReferenceException: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionsNullReferenceExceptionTests.beforeTest(false, assert);
+            assert.expect(1);
+            t.accessingAFieldOnANullObjectCausesANullReferenceException();
         }
     }
 });
@@ -2231,6 +2487,48 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests', 
         canCatchExceptionAsBaseType: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestExceptionTests.beforeTest(false, assert);
             t.canCatchExceptionAsBaseType();
+        }
+    }
+});
+
+Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestIComparableTests', {
+    statics: {
+        instance: null,
+        getInstance: function () {
+            if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestIComparableTests.instance === null) {
+                Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestIComparableTests.instance = new Bridge.ClientTest.IComparableTests();
+            }
+            return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestIComparableTests.instance;
+        },
+        setInstance: function (value) {
+            Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestIComparableTests.instance = value;
+        },
+        beforeTest: function (isStatic, assert) {
+            Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestIComparableTests.setInstance(null);
+            Bridge.Test.Assert.assert = assert;
+            var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestIComparableTests.getInstance();
+            return r;
+        }
+    }
+});
+
+Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestIEquatableTests', {
+    statics: {
+        instance: null,
+        getInstance: function () {
+            if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestIEquatableTests.instance === null) {
+                Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestIEquatableTests.instance = new Bridge.ClientTest.IEquatableTests();
+            }
+            return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestIEquatableTests.instance;
+        },
+        setInstance: function (value) {
+            Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestIEquatableTests.instance = value;
+        },
+        beforeTest: function (isStatic, assert) {
+            Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestIEquatableTests.setInstance(null);
+            Bridge.Test.Assert.assert = assert;
+            var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestIEquatableTests.getInstance();
+            return r;
         }
     }
 });
@@ -2432,6 +2730,63 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests', {
         tanWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMathTests.beforeTest(false, assert);
             t.tanWorks();
+        }
+    }
+});
+
+Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests', {
+    statics: {
+        instance: null,
+        getInstance: function () {
+            if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.instance === null) {
+                Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.instance = new Bridge.ClientTest.MultidimArrayTests();
+            }
+            return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.instance;
+        },
+        setInstance: function (value) {
+            Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.instance = value;
+        },
+        beforeTest: function (isStatic, assert) {
+            Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.setInstance(null);
+            Bridge.Test.Assert.assert = assert;
+            var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.getInstance();
+            return r;
+        },
+        typePropertiesAreCorrect: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.beforeTest(false, assert);
+            t.typePropertiesAreCorrect();
+        },
+        lengthWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.beforeTest(false, assert);
+            t.lengthWorks();
+        },
+        getValueWorksForUninitializedElement: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.beforeTest(false, assert);
+            t.getValueWorksForUninitializedElement();
+        },
+        getValueByIndexWorksForUninitializedElement: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.beforeTest(false, assert);
+            t.getValueByIndexWorksForUninitializedElement();
+        },
+        settingValueByIndexWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.beforeTest(false, assert);
+            t.settingValueByIndexWorks();
+        },
+        setValueWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.beforeTest(false, assert);
+            t.setValueWorks();
+        },
+        rankWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.beforeTest(false, assert);
+            t.rankWorks();
+        },
+        getValueWithIndexOutOfRangeThrowsAnException: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.beforeTest(false, assert);
+            t.getValueWithIndexOutOfRangeThrowsAnException();
+        },
+        setValueWithIndexOutOfRangeThrowsAnException: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestMultidimArrayTests.beforeTest(false, assert);
+            t.setValueWithIndexOutOfRangeThrowsAnException();
         }
     }
 });
@@ -2667,6 +3022,55 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestPropertyAccessorT
     }
 });
 
+Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesBooleanTests', {
+    statics: {
+        instance: null,
+        getInstance: function () {
+            if (Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesBooleanTests.instance === null) {
+                Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesBooleanTests.instance = new Bridge.ClientTest.SimpleTypes.BooleanTests();
+            }
+            return Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesBooleanTests.instance;
+        },
+        setInstance: function (value) {
+            Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesBooleanTests.instance = value;
+        },
+        beforeTest: function (isStatic, assert) {
+            Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesBooleanTests.setInstance(null);
+            Bridge.Test.Assert.assert = assert;
+            var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesBooleanTests.getInstance();
+            return r;
+        },
+        typePropertiesAreCorrect: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesBooleanTests.beforeTest(false, assert);
+            t.typePropertiesAreCorrect();
+        },
+        defaultValueIsFalse: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesBooleanTests.beforeTest(false, assert);
+            t.defaultValueIsFalse();
+        },
+        creatingInstanceReturnsFalse: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesBooleanTests.beforeTest(false, assert);
+            t.creatingInstanceReturnsFalse();
+        },
+        defaultConstructorReturnsFalse: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesBooleanTests.beforeTest(false, assert);
+            t.defaultConstructorReturnsFalse();
+        },
+        getHashCodeWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesBooleanTests.beforeTest(false, assert);
+            t.getHashCodeWorks();
+        },
+        objectEqualsWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesBooleanTests.beforeTest(false, assert);
+            t.objectEqualsWorks();
+        },
+        boolEqualsWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesBooleanTests.beforeTest(false, assert);
+            t.boolEqualsWorks();
+        }
+    }
+});
+
 Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests', {
     statics: {
         instance: null,
@@ -2697,6 +3101,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTe
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.beforeTest(false, assert);
             t.defaultValueIs0();
         },
+        defaultConstructorReturnsZero: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.beforeTest(false, assert);
+            t.defaultConstructorReturnsZero();
+        },
         constantsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.beforeTest(false, assert);
             t.constantsWork();
@@ -2712,6 +3120,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTe
         tryParseWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.beforeTest(false, assert);
             t.tryParseWorks();
+        },
+        parseWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.beforeTest(false, assert);
+            t.parseWorks();
         },
         toStringWithoutRadixWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesByteTests.beforeTest(false, assert);
@@ -2773,6 +3185,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTe
         defaultValueWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
             t.defaultValueWorks();
+        },
+        defaultConstructorReturnsZero: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
+            t.defaultConstructorReturnsZero();
         },
         constantsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesCharTests.beforeTest(false, assert);
@@ -2879,6 +3295,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecima
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.constantsWork();
         },
+        defaultConstructorReturnsZero: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
+            t.defaultConstructorReturnsZero();
+        },
         convertingConstructorsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.convertingConstructorsWork();
@@ -2975,13 +3395,13 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecima
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.getHashCodeWorks();
         },
-        equalsWorks: function (assert) {
+        objectEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
-            t.equalsWorks();
+            t.objectEqualsWorks();
         },
-        iEquatableEqualsWorks: function (assert) {
+        decimalEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
-            t.iEquatableEqualsWorks();
+            t.decimalEqualsWorks();
         },
         compareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
@@ -3019,6 +3439,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDouble
         constantsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
             t.constantsWork();
+        },
+        defaultConstructorReturnsZero: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
+            t.defaultConstructorReturnsZero();
         },
         formatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
@@ -3080,13 +3504,13 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDouble
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
             t.getHashCodeWorks();
         },
-        equalsWorks: function (assert) {
+        objectEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
-            t.equalsWorks();
+            t.objectEqualsWorks();
         },
-        iEquatableEqualsWorks: function (assert) {
+        doubleEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
-            t.iEquatableEqualsWorks();
+            t.doubleEqualsWorks();
         },
         compareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.beforeTest(false, assert);
@@ -3112,6 +3536,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTe
             Bridge.Test.Assert.assert = assert;
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests.getInstance();
             return r;
+        },
+        typePropertiesAreCorrect: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests.beforeTest(false, assert);
+            t.typePropertiesAreCorrect();
         },
         firstValueOfEnumIsZero: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesEnumTests.beforeTest(false, assert);
@@ -3157,6 +3585,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16T
         defaultValueIs0: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.beforeTest(false, assert);
             t.defaultValueIs0();
+        },
+        defaultConstructorReturnsZero: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.beforeTest(false, assert);
+            t.defaultConstructorReturnsZero();
         },
         constantsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt16Tests.beforeTest(false, assert);
@@ -3250,6 +3682,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32T
         defaultValueIs0: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
             t.defaultValueIs0();
+        },
+        defaultConstructorReturnsZero: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
+            t.defaultConstructorReturnsZero();
         },
         constantsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt32Tests.beforeTest(false, assert);
@@ -3347,6 +3783,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64T
         defaultValueIs0: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.beforeTest(false, assert);
             t.defaultValueIs0();
+        },
+        defaultConstructorReturnsZero: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.beforeTest(false, assert);
+            t.defaultConstructorReturnsZero();
         },
         formatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesInt64Tests.beforeTest(false, assert);
@@ -3645,9 +4085,9 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDate
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
             t.equalsWorks();
         },
-        iEquatableEqualsWorks: function (assert) {
+        dateTimeEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
-            t.iEquatableEqualsWorks();
+            t.dateTimeEqualsWorks();
         },
         compareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesJsDateTimeTests.beforeTest(false, assert);
@@ -3674,6 +4114,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObject
             var r = isStatic ? null : Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.getInstance();
             return r;
         },
+        typePropertiesAreCorrect: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.beforeTest(false, assert);
+            t.typePropertiesAreCorrect();
+        },
         canGetHashCodeForObject: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.beforeTest(false, assert);
             t.canGetHashCodeForObject();
@@ -3685,6 +4129,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObject
         objectIsEqualToItself: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.beforeTest(false, assert);
             t.objectIsEqualToItself();
+        },
+        objectIsNotEqualToOtherObject: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.beforeTest(false, assert);
+            t.objectIsNotEqualToOtherObject();
         },
         staticEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesObjectTests.beforeTest(false, assert);
@@ -3730,6 +4178,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteT
         defaultValueIs0: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.beforeTest(false, assert);
             t.defaultValueIs0();
+        },
+        defaultConstructorReturnsZero: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.beforeTest(false, assert);
+            t.defaultConstructorReturnsZero();
         },
         constantsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSByteTests.beforeTest(false, assert);
@@ -3811,6 +4263,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingle
         constantsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.beforeTest(false, assert);
             t.constantsWork();
+        },
+        defaultConstructorReturnsZero: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.beforeTest(false, assert);
+            t.defaultConstructorReturnsZero();
         },
         formatWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesSingleTests.beforeTest(false, assert);
@@ -4133,9 +4589,9 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesString
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
             t.instanceEqualsWorks();
         },
-        iEquatableEqualsWorks: function (assert) {
+        stringEqualsWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
-            t.iEquatableEqualsWorks();
+            t.stringEqualsWorks();
         },
         compareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesStringTests.beforeTest(false, assert);
@@ -4344,6 +4800,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.beforeTest(false, assert);
             t.defaultValueIs0();
         },
+        defaultConstructorReturnsZero: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.beforeTest(false, assert);
+            t.defaultConstructorReturnsZero();
+        },
         constantsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt16Tests.beforeTest(false, assert);
             t.constantsWork();
@@ -4425,6 +4885,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.beforeTest(false, assert);
             t.defaultValueIs0();
         },
+        defaultConstructorReturnsZero: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.beforeTest(false, assert);
+            t.defaultConstructorReturnsZero();
+        },
         constantsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt32Tests.beforeTest(false, assert);
             t.constantsWork();
@@ -4505,6 +4969,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64
         defaultValueIs0: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.beforeTest(false, assert);
             t.defaultValueIs0();
+        },
+        defaultConstructorReturnsZero: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.beforeTest(false, assert);
+            t.defaultConstructorReturnsZero();
         },
         constantsWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesUInt64Tests.beforeTest(false, assert);

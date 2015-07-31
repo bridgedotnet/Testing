@@ -167,7 +167,7 @@
             }
 
             if (Bridge.isBoolean(value)) {
-                return obj ? 1 : 0;
+                return value ? 1 : 0;
             }
 
             if (Bridge.isDate(value)) {
@@ -189,6 +189,10 @@
                 }
 
                 return hash;
+            }
+
+            if (value.$$hashCode) {
+                return value.$$hashCode;
             }
 
             if (typeof value == "object") {
@@ -229,7 +233,9 @@
                     delete Bridge.$$hashCodeCache;
                 }
 
-                return result;
+                if (result != 0) {
+                    return result;
+                }
             }
 
             return value.$$hashCode || (value.$$hashCode = (Math.random() * 0x100000000) | 0);
@@ -967,6 +973,16 @@
 
 (function () {
     var char = {
+        charCodeAt: function (str, index) {
+            if (str == null)
+                throw new Bridge.ArgumentNullException();
+
+            if (str.length != 1)
+                throw new Bridge.FormatException("String must be exactly one character long");
+
+            return str.charCodeAt(index);
+        },
+
         isWhiteSpace: function (value) {
             return /\s/.test(value);
         },
@@ -4430,9 +4446,12 @@ Bridge.Class.generic('Bridge.EqualityComparer$1', function (T) {
             if (!Bridge.isDefined(x, true)) {
                 return !Bridge.isDefined(y, true);
             }
-            else {
-                return Bridge.isDefined(y, true) ? Bridge.equals(x, y) : false;
+            else if (Bridge.isDefined(y, true)) {
+                var isBridge = x && x.$$name;
+                return (!isBridge || Bridge.isFunction(x.equals)) ? Bridge.equals(x, y) : x === y;
             }
+
+            return false;
         },
 
         getHashCode: function (obj) {
@@ -4572,6 +4591,10 @@ Bridge.Class.generic('Bridge.Dictionary$2', function (TKey, TValue) {
             return entry.value;
         },
 
+        getItem: function (key) {
+            return get(key);
+        },
+
         set: function (key, value, add) {
             var entry = this.findEntry(key),
                 hash;
@@ -4596,6 +4619,10 @@ Bridge.Class.generic('Bridge.Dictionary$2', function (TKey, TValue) {
             }
 
             this.count++;
+        },
+
+        setItem: function (key, value, add) {
+            set(key, value, add);
         },
 
         add: function (key, value) {
@@ -4726,7 +4753,7 @@ Bridge.Class.generic('Bridge.List$1', function (T) {
     var $$name = Bridge.Class.genericName('Bridge.List$1', T);
 
     return Bridge.Class.cache[$$name] || (Bridge.Class.cache[$$name] = Bridge.define($$name, {
-        inherits: [Bridge.ICollection$1(T), Bridge.ICollection],
+        inherits: [Bridge.ICollection$1(T), Bridge.ICollection, Bridge.IList$1(T)],
         constructor: function (obj) {
             if (Object.prototype.toString.call(obj) === '[object Array]') {
                 this.items = obj;
@@ -4791,7 +4818,7 @@ Bridge.Class.generic('Bridge.List$1', function (T) {
             }
 
             if (startIndex != 0) {
-                this.checkIndex(index);
+                this.checkIndex(startIndex);
             }
 
             for (i = startIndex; i < this.items.length; i++) {
@@ -4802,6 +4829,20 @@ Bridge.Class.generic('Bridge.List$1', function (T) {
             }
 
             return -1;
+        },
+
+        insertRange: function (index, items) {
+            this.checkReadOnly();
+
+            if (index != 0) {
+                this.checkIndex(index);
+            }
+
+            var array = Bridge.toArray(items);
+
+            for (var i = 0; i < array.length; i++) {
+                this.insert(index++, array[i]);
+            }
         },
 
         contains: function (item) {
@@ -4878,7 +4919,10 @@ Bridge.Class.generic('Bridge.List$1', function (T) {
 
         remove: function (item) {
             this.checkReadOnly();
+
             var index = this.indexOf(item);
+            if (index < 0)
+                return false;
 
             this.checkIndex(index);
             this.items.splice(index, 1);

@@ -167,7 +167,7 @@
             }
 
             if (Bridge.isBoolean(value)) {
-                return obj ? 1 : 0;
+                return value ? 1 : 0;
             }
 
             if (Bridge.isDate(value)) {
@@ -973,6 +973,16 @@
 
 (function () {
     var char = {
+        charCodeAt: function (str, index) {
+            if (str == null)
+                throw new Bridge.ArgumentNullException();
+
+            if (str.length != 1)
+                throw new Bridge.FormatException("String must be exactly one character long");
+
+            return str.charCodeAt(index);
+        },
+
         isWhiteSpace: function (value) {
             return /\s/.test(value);
         },
@@ -4581,6 +4591,10 @@ Bridge.Class.generic('Bridge.Dictionary$2', function (TKey, TValue) {
             return entry.value;
         },
 
+        getItem: function (key) {
+            return get(key);
+        },
+
         set: function (key, value, add) {
             var entry = this.findEntry(key),
                 hash;
@@ -4605,6 +4619,10 @@ Bridge.Class.generic('Bridge.Dictionary$2', function (TKey, TValue) {
             }
 
             this.count++;
+        },
+
+        setItem: function (key, value, add) {
+            set(key, value, add);
         },
 
         add: function (key, value) {
