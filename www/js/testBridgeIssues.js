@@ -175,6 +175,54 @@ Bridge.define('ClientTestLibrary.Bridge341B', {
     }
 });
 
+Bridge.define('ClientTestLibrary.Bridge342', {
+    inherits: [Bridge.IDictionary$2(Bridge.Int,String)],
+    _backingDictionary: null,
+    constructor: function () {
+        this.constructor$1(new Bridge.Dictionary$2(Bridge.Int,String)());
+
+    },
+    constructor$1: function (initialValues) {
+        this._backingDictionary = initialValues;
+    },
+    getItem: function (key) {
+        return this._backingDictionary.get(key);
+    },
+    setItem: function (key, value) {
+        this._backingDictionary.set(key, value);
+    },
+    getKeys: function () {
+        return this._backingDictionary.getKeys();
+    },
+    getValues: function () {
+        return this._backingDictionary.getValues();
+    },
+    getCount: function () {
+        return this._backingDictionary.getCount();
+    },
+    getEnumerator: function () {
+        return this.getEnumerator$1();
+    },
+    getEnumerator$1: function () {
+        return this._backingDictionary.getEnumerator();
+    },
+    add: function (key, value) {
+        this._backingDictionary.add(key, value);
+    },
+    remove: function (key) {
+        return this._backingDictionary.remove(key);
+    },
+    containsKey: function (key) {
+        return this._backingDictionary.containsKey(key);
+    },
+    tryGetValue: function (key, value) {
+        return this._backingDictionary.tryGetValue(key, value);
+    },
+    clear: function () {
+        this._backingDictionary.clear();
+    }
+});
+
 Bridge.define('ClientTestLibrary.IBridge304');
 
 Bridge.define('ClientTestLibrary.Bridge304', {
@@ -398,6 +446,22 @@ Bridge.define('ClientTestLibrary.TestBridgeIssues', {
             } );
             var b4 = new Bridge.EqualityComparer$1(Object)().equals(o41, o42);
             assert.ok(b4, "EqualityComparer<object>.Default.Equals(o41, o42) works");
+        },
+        n342: function (assert) {
+            assert.expect(2);
+
+            var dictionary = new ClientTestLibrary.Bridge342("constructor$1", Bridge.merge(new Bridge.Dictionary$2(Bridge.Int,String)(), [
+                [3, "b"], 
+                [6, "z"], 
+                [9, "x"]
+            ] ));
+
+            var interfacedDictionary = Bridge.cast(dictionary, Bridge.IDictionary$2(Bridge.Int,String));
+
+            assert.equal(interfacedDictionary.getItem(6), "z", "IDictionary getter works");
+            assert.throws(function () {
+                var r = interfacedDictionary.getItem(1);
+            }, "IDictionary getter throws exception when incorrect key used");
         }
     }
 });

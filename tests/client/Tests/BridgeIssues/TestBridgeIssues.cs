@@ -206,6 +206,74 @@ namespace ClientTestLibrary
         }
     }
 
+    [FileName("testBridgeIssues.js")]
+    public class Bridge342 : IDictionary<int, string>
+    {
+        private readonly Dictionary<int, string> _backingDictionary;
+
+        public Bridge342(): this(new Dictionary<int, string>())
+        {
+        }
+
+        public Bridge342(Dictionary<int, string> initialValues)
+        {
+            _backingDictionary = initialValues;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public IEnumerator<KeyValuePair<int, string>> GetEnumerator()
+        {
+            return _backingDictionary.GetEnumerator();
+        }
+
+        public string this[int key]
+        {
+            get { return _backingDictionary[key]; }
+            set { _backingDictionary[key] = value; }
+        }
+
+        public new ICollection<int> Keys
+        {
+            get { return _backingDictionary.Keys; }
+        }
+
+        public ICollection<string> Values
+        {
+            get { return _backingDictionary.Values; }
+        }
+
+        public int Count { get { return _backingDictionary.Count; } }
+
+        public void Add(int key, string value)
+        {
+            _backingDictionary.Add(key, value);
+        }
+
+        public bool Remove(int key)
+        {
+            return _backingDictionary.Remove(key);
+        }
+
+        public bool ContainsKey(int key)
+        {
+            return _backingDictionary.ContainsKey(key);
+        }
+
+        public bool TryGetValue(int key, out string value)
+        {
+            return _backingDictionary.TryGetValue(key, out value);
+        }
+
+        public void Clear()
+        {
+            _backingDictionary.Clear();
+        }
+    }
+
     // Tests Bridge GitHub issues
     class TestBridgeIssues
     {
@@ -447,5 +515,17 @@ namespace ClientTestLibrary
             assert.Ok(b4, "EqualityComparer<object>.Default.Equals(o41, o42) works");
         }
 
+        // Bridge[#342]
+        public static void N342(Assert assert)
+        {
+            assert.Expect(2);
+
+            var dictionary = new Bridge342(new Dictionary<int, string> { { 3, "b" }, { 6, "z" }, { 9, "x" } });
+
+            var interfacedDictionary = (IDictionary<int, string>)dictionary;
+
+            assert.Equal(interfacedDictionary[6], "z", "IDictionary getter works");
+            assert.Throws(() => { var r = interfacedDictionary[1]; }, "IDictionary getter throws exception when incorrect key used");
+        }
     }
 }
