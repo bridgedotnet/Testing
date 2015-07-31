@@ -76,6 +76,30 @@ Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
 
             assert.ok(Bridge.String.contains(exceptionMessage,"SomeNotExistingMethod"), "ex.Message works on built-in JavaScript type");
         },
+        bridge343: function (assert) {
+            assert.expect(1);
+
+            var exceptionMessage = "";
+
+            var i = 0;
+
+            try {
+                var r = Bridge.Int.div(10, i);
+            }
+            catch ($e) {
+                $e = Bridge.Exception.create($e);
+                var ex;
+                if (Bridge.is($e, Bridge.ArgumentException)) {
+
+                }
+                else {
+                    ex = $e;
+                    exceptionMessage = ex.getMessage();
+                }
+            }
+
+            assert.ok(!Bridge.String.isNullOrEmpty(exceptionMessage), "Double catch block with general Exception works");
+        },
         tryCatch: function (s) {
             try {
                 return s;

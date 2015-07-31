@@ -81,6 +81,30 @@ namespace ClientTestLibrary
             assert.Ok(exceptionMessage.Contains("SomeNotExistingMethod"), "ex.Message works on built-in JavaScript type");
         }
 
+        public static void Bridge343(Assert assert)
+        {
+            assert.Expect(1);
+
+            string exceptionMessage = string.Empty;
+
+            var i = 0;
+
+            try
+            {
+                var r = 10 / i;
+            }
+            catch(ArgumentException)
+            {
+
+            }
+            catch (Exception ex)
+            {
+                exceptionMessage = ex.Message;
+            }
+
+            assert.Ok(!string.IsNullOrEmpty(exceptionMessage), "Double catch block with general Exception works");
+        }
+
         #endregion Tests
 
         private static string TryCatch(string s)
