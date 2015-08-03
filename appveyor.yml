@@ -44,7 +44,7 @@ clone_folder: c:\projects\Testing
 shallow_clone: false                 # default is "false"
 
 # set clone depth
-clone_depth: 1                      # clone entire repository history if not defined
+clone_depth: 20                      # clone entire repository history if not defined
 
 # environment variables
 environment:
@@ -56,9 +56,9 @@ environment:
 
 # scripts that run after cloning repository
 install:
-  - cmd: git.exe clone -q --progress -v --depth 1 --branch=master "https://github.com/bridgedotnet/Builder" "c:\projects\Builder"
-  - cmd: git.exe clone -q --progress -v --depth 1 --branch=master "https://github.com/bridgedotnet/Frameworks" "c:\projects\Frameworks"
-  - cmd: git.exe clone -q --progress -v --depth 1 --branch=master "https://github.com/bridgedotnet/Bridge" "c:\projects\Bridge"
+  - cmd: git.exe clone -q --progress -v --depth 20 --branch=master "https://github.com/bridgedotnet/Builder" "c:\projects\Builder"
+  - cmd: git.exe clone -q --progress -v --depth 20 --branch=master "https://github.com/bridgedotnet/Frameworks" "c:\projects\Frameworks"
+  - cmd: git.exe clone -q --progress -v --depth 20 --branch=master "https://github.com/bridgedotnet/Bridge" "c:\projects\Bridge"
 
 #---------------------------------#
 #       build configuration       #
