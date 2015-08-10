@@ -27,9 +27,9 @@ Bridge.define('ClientTestLibrary.TestDateFunctions', {
             var d1 = { };
             var b1 = Bridge.Date.tryParse("2001-01-01", null, d1, true);
             assert.ok(b1, "TryParse parsed '2001 - 01 - 01'");
-            assert.equal(d1.v.getFullYear(), 2001, "TryParse works Year");
-            assert.equal(d1.v.getMonth() + 1, 1, "TryParse works Month");
-            assert.equal(d1.v.getDate(), 1, "TryParse works Day");
+            assert.equal(d1.v.getUTCFullYear(), 2001, "TryParse works Year");
+            assert.equal(d1.v.getUTCMonth() + 1, 1, "TryParse works Month");
+            assert.equal(d1.v.getUTCDay(), 1, "TryParse works Day");
 
             var d2 = Bridge.Date.parse("2001-01-01");
             assert.deepEqual(d2.toString(), d1.v.toString(), "TryParse And Parse give the same result");
