@@ -25,7 +25,7 @@ Bridge.define('ClientTestLibrary.TestDateFunctions', {
             assert.expect(5);
 
             var d1 = { };
-            var b1 = Bridge.Date.tryParse("2001-01-01", null, d1);
+            var b1 = Bridge.Date.tryParse("2001-01-01", null, d1, true);
             assert.ok(b1, "TryParse parsed '2001 - 01 - 01'");
             assert.equal(d1.v.getFullYear(), 2001, "TryParse works Year");
             assert.equal(d1.v.getMonth() + 1, 1, "TryParse works Month");

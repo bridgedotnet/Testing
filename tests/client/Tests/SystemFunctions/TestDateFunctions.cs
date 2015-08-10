@@ -37,7 +37,7 @@ namespace ClientTestLibrary
             assert.Expect(5);
 
             DateTime d1;
-            var b1 = DateTime.TryParse("2001-01-01", out d1);
+            var b1 = DateTime.TryParse("2001-01-01", out d1, true);
             assert.Ok(b1, "TryParse parsed '2001 - 01 - 01'");
             assert.Equal(d1.Year , 2001, "TryParse works Year");
             assert.Equal(d1.Month, 1, "TryParse works Month");
