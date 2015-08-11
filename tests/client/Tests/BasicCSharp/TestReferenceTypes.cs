@@ -212,7 +212,7 @@ namespace ClientTestLibrary
             assert.DeepEqual(a.StringA, "Str", "StringA Str");
             assert.DeepEqual(a.BoolA, true, "BoolA true");
             assert.Ok(a.DoubleA == Double.PositiveInfinity, "DoubleA Double.PositiveInfinity");
-            assert.DeepEqual(a.DecimalA, -1, "DecimalA Decimal.MinusOne");
+            assert.DeepEqual(a.DecimalA == -1, true, "DecimalA Decimal.MinusOne");
             assert.Ok(a.Data != null, "Data not null");
             assert.DeepEqual(a.Data.Number, 700, "Data.Number 700");
 
@@ -230,7 +230,7 @@ namespace ClientTestLibrary
             assert.DeepEqual(a.StringA, "151", "StringA 151");
             assert.DeepEqual(a.BoolA, true, "BoolA true");
             assert.DeepEqual(a.DoubleA, 1.53, "DoubleA Double.PositiveInfinity");
-            assert.DeepEqual(a.DecimalA, 1.54, "DecimalA 154");
+            assert.DeepEqual(a.DecimalA == 1.54m, true, "DecimalA 154");
             assert.Ok(a.Data != null, "Data not null");
             assert.DeepEqual(a.Data.Number, 155, "Data.Number 155");
 
@@ -273,7 +273,7 @@ namespace ClientTestLibrary
             assert.DeepEqual(ClassA.StatitIntNotInitialized, 0, "#74 StatitInt not initialized");
             assert.DeepEqual(ClassA.StatitStringNotInitialized, null, "#74 StatitString not initialized");
             assert.DeepEqual(ClassA.CONST_CHAR, 81, "#74 CONST_CHAR Q");
-            assert.DeepEqual(ClassA.CONST_DECIMAL, 3.123456789324324324, "#74 CONST_DECIMAL 3.123456789324324324m");
+            assert.DeepEqual(ClassA.CONST_DECIMAL == 3.123456789324324324m, true, "#74 CONST_DECIMAL 3.123456789324324324m");
 
             // TEST
             //Check static constructor
