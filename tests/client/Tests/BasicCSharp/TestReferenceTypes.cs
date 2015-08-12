@@ -212,7 +212,7 @@ namespace ClientTestLibrary
             assert.DeepEqual(a.StringA, "Str", "StringA Str");
             assert.DeepEqual(a.BoolA, true, "BoolA true");
             assert.Ok(a.DoubleA == Double.PositiveInfinity, "DoubleA Double.PositiveInfinity");
-            assert.DeepEqual(a.DecimalA == -1, true, "DecimalA Decimal.MinusOne");
+            assert.DeepEqual(a.DecimalA, -1m, "DecimalA Decimal.MinusOne");
             assert.Ok(a.Data != null, "Data not null");
             assert.DeepEqual(a.Data.Number, 700, "Data.Number 700");
 
@@ -230,7 +230,7 @@ namespace ClientTestLibrary
             assert.DeepEqual(a.StringA, "151", "StringA 151");
             assert.DeepEqual(a.BoolA, true, "BoolA true");
             assert.DeepEqual(a.DoubleA, 1.53, "DoubleA Double.PositiveInfinity");
-            assert.DeepEqual(a.DecimalA == 1.54m, true, "DecimalA 154");
+            assert.DeepEqual(a.DecimalA, 1.54m, "DecimalA 154");
             assert.Ok(a.Data != null, "Data not null");
             assert.DeepEqual(a.Data.Number, 155, "Data.Number 155");
 
