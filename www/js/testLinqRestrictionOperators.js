@@ -34,14 +34,14 @@ Bridge.define('ClientTestLibrary.Linq.TestLinqRestrictionOperators', {
                 return p.getCount() < 501;
             })).toArray();
 
-            assert.deepEqual(filteredPersonByCounts, [persons.get(0), persons.get(1), persons.get(3), persons.get(4)], "Where elements in Person array have Count below 501. Returns Person instances");
+            assert.deepEqual(filteredPersonByCounts, [persons.getItem(0), persons.getItem(1), persons.getItem(3), persons.getItem(4)], "Where elements in Person array have Count below 501. Returns Person instances");
 
             // TEST
             var filteredPersonByCountAndIndex = Bridge.Linq.Enumerable.from(persons).where(function (p, index) {
                 return p.getCount() < index * 100;
             }).toArray();
 
-            assert.deepEqual(filteredPersonByCountAndIndex, [persons.get(4)], "Where elements in Person array have Count meet condition (p.Count < index * 100). Returns Person instances");
+            assert.deepEqual(filteredPersonByCountAndIndex, [persons.getItem(4)], "Where elements in Person array have Count meet condition (p.Count < index * 100). Returns Person instances");
         }
     }
 });

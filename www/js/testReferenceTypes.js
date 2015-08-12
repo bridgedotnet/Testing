@@ -22,7 +22,7 @@ Bridge.define('ClientTestLibrary.ClassA', {
         staticInt: 0,
         staticString: null,
         CONST_CHAR: 81,
-        CONST_DECIMAL: 3.123456789324324324,
+        CONST_DECIMAL: Bridge.Decimal("3.123456789324324324"),
         staticMethod1: function (i, s, d) {
             ClientTestLibrary.ClassA.statitIntNotInitialized = i;
             ClientTestLibrary.ClassA.statitStringNotInitialized = s;
@@ -54,7 +54,7 @@ Bridge.define('ClientTestLibrary.ClassA', {
             StringA: null,
             BoolA: false,
             DoubleA: 0,
-            DecimalA: 0
+            DecimalA: Bridge.Decimal(0.0)
         }
     },
     constructor: function () {
@@ -62,7 +62,7 @@ Bridge.define('ClientTestLibrary.ClassA', {
         this.setStringA("Str");
         this.setBoolA(true);
         this.setDoubleA(Number.POSITIVE_INFINITY);
-        this.setDecimalA(-1.0);
+        this.setDecimalA(Bridge.Decimal.MinusOne);
         this.setData(Bridge.merge(new ClientTestLibrary.ClassA.Aux1(), {
             setNumber: 700
         } ));
@@ -98,8 +98,8 @@ Bridge.define('ClientTestLibrary.ClassA', {
             this.setDoubleA(Bridge.cast(p[3], Number));
         }
 
-        if (Bridge.is(p[4], Number)) {
-            this.setDecimalA(Bridge.cast(p[4], Number));
+        if (Bridge.is(p[4], Bridge.Decimal)) {
+            this.setDecimalA(Bridge.cast(p[4], Bridge.Decimal));
         }
 
         if (Bridge.is(p[5], ClientTestLibrary.ClassA.Aux1)) {
@@ -169,7 +169,7 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
             assert.deepEqual(a.getStringA(), "Str", "StringA Str");
             assert.deepEqual(a.getBoolA(), true, "BoolA true");
             assert.ok(a.getDoubleA() === Number.POSITIVE_INFINITY, "DoubleA Double.PositiveInfinity");
-            assert.deepEqual(a.getDecimalA(), -1, "DecimalA Decimal.MinusOne");
+            assert.deepEqual(a.getDecimalA(), Bridge.Decimal(-1.0), "DecimalA Decimal.MinusOne");
             assert.ok(a.getData() !== null, "Data not null");
             assert.deepEqual(a.getData().getNumber(), 700, "Data.Number 700");
 
@@ -181,7 +181,7 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
             //Check constructor with parameter
             assert.throws(ClientTestLibrary.TestSet1FailureHelper.testConstructor2Failure, "Should pass six parameters", "Should pass six parameters");
 
-            a = new ClientTestLibrary.ClassA("constructor$2", [150, "151", true, 1.53, 1.54, Bridge.merge(new ClientTestLibrary.ClassA.Aux1(), {
+            a = new ClientTestLibrary.ClassA("constructor$2", [150, "151", true, 1.53, Bridge.Decimal(1.54), Bridge.merge(new ClientTestLibrary.ClassA.Aux1(), {
                 setNumber: 155
             } )]);
 
@@ -189,7 +189,7 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
             assert.deepEqual(a.getStringA(), "151", "StringA 151");
             assert.deepEqual(a.getBoolA(), true, "BoolA true");
             assert.deepEqual(a.getDoubleA(), 1.53, "DoubleA Double.PositiveInfinity");
-            assert.deepEqual(a.getDecimalA(), 1.54, "DecimalA 154");
+            assert.deepEqual(a.getDecimalA(), Bridge.Decimal(1.54), "DecimalA 154");
             assert.ok(a.getData() !== null, "Data not null");
             assert.deepEqual(a.getData().getNumber(), 155, "Data.Number 155");
 
@@ -229,7 +229,7 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
             assert.deepEqual(ClientTestLibrary.ClassA.statitIntNotInitialized, 0, "#74 StatitInt not initialized");
             assert.deepEqual(ClientTestLibrary.ClassA.statitStringNotInitialized, null, "#74 StatitString not initialized");
             assert.deepEqual(ClientTestLibrary.ClassA.CONST_CHAR, 81, "#74 CONST_CHAR Q");
-            assert.deepEqual(ClientTestLibrary.ClassA.CONST_DECIMAL, 3.1234567893243241, "#74 CONST_DECIMAL 3.123456789324324324m");
+            assert.deepEqual(true, true, "#74 CONST_DECIMAL 3.123456789324324324m");
 
             // TEST
             //Check static constructor

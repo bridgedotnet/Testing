@@ -1,6 +1,18 @@
 ﻿/// <reference path="./bridge.d.ts" />
 
 declare module Classes {
+    export interface MovePoint {
+        getPoint(): Classes.Point;
+        setPoint(value: Classes.Point): void;
+        move(dx: number, dy: number): void;
+    }
+    export interface MovePointFunc extends Function {
+        prototype: MovePoint;
+        new (): MovePoint;
+        move(p: Classes.Point, dx: number, dy: number): Classes.Point;
+    }
+    var MovePoint: MovePointFunc;
+
     export interface Point {
         x: number;
         y: number;
@@ -19,27 +31,6 @@ declare module Classes {
     }
     var Point: PointFunc;
 
-    export interface MovePoint {
-        getPoint(): Classes.Point;
-        setPoint(value: Classes.Point): void;
-        move(dx: number, dy: number): void;
-    }
-    export interface MovePointFunc extends Function {
-        prototype: MovePoint;
-        new (): MovePoint;
-        move(p: Classes.Point, dx: number, dy: number): Classes.Point;
-    }
-    var MovePoint: MovePointFunc;
-
-    export interface Dog extends Classes.Animal {
-        move$1(): number;
-    }
-    export interface DogFunc extends Function {
-        prototype: Dog;
-        new (name: string): Dog;
-    }
-    var Dog: DogFunc;
-
     export interface StaticClass {
     }
     export interface StaticClassFunc extends Function {
@@ -49,14 +40,14 @@ declare module Classes {
     }
     var StaticClass: StaticClassFunc;
 
-    export interface Snake extends Classes.Animal {
-        move(): number;
+    export interface Dog extends Classes.Animal {
+        move$1(): number;
     }
-    export interface SnakeFunc extends Function {
-        prototype: Snake;
-        new (name: string): Snake;
+    export interface DogFunc extends Function {
+        prototype: Dog;
+        new (name: string): Dog;
     }
-    var Snake: SnakeFunc;
+    var Dog: DogFunc;
 
     export interface Animal {
         getName(): string;
@@ -72,6 +63,15 @@ declare module Classes {
         };
     }
     var Animal: AnimalFunc;
+
+    export interface Snake extends Classes.Animal {
+        move(): number;
+    }
+    export interface SnakeFunc extends Function {
+        prototype: Snake;
+        new (name: string): Snake;
+    }
+    var Snake: SnakeFunc;
 
     export interface Employee extends Classes.Animal {
     }
