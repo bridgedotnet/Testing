@@ -604,6 +604,7 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("Decimal - FormatWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.formatWorks);
             QUnit.test("Decimal - IFormattableToStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.iFormattableToStringWorks);
             QUnit.test("Decimal - ToStringWithoutRadixWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.toStringWithoutRadixWorks);
+            QUnit.test("Decimal - AddWithStringWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.addWithStringWorks);
             QUnit.test("Decimal - ConversionsToDecimalWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.conversionsToDecimalWork);
             QUnit.test("Decimal - ConversionsFromDecimalWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.conversionsFromDecimalWork);
             QUnit.test("Decimal - OperatorsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.operatorsWork);
@@ -615,11 +616,14 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests', {
             QUnit.test("Decimal - MultiplyWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.multiplyWorks);
             QUnit.test("Decimal - NegateWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.negateWorks);
             QUnit.test("Decimal - RoundWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.roundWorks);
+            QUnit.test("Decimal - RoundWithModeWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.roundWithModeWorks);
             QUnit.test("Decimal - SubtractWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.subtractWorks);
             QUnit.test("Decimal - GetHashCodeWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.getHashCodeWorks);
             QUnit.test("Decimal - ObjectEqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.objectEqualsWorks);
             QUnit.test("Decimal - DecimalEqualsWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.decimalEqualsWorks);
             QUnit.test("Decimal - CompareToWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.compareToWorks);
+            QUnit.test("Decimal - FullCoalesceWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.fullCoalesceWorks);
+            QUnit.test("Decimal - ShortCoalesceWorks", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.shortCoalesceWorks);
             QUnit.test("Double - TypePropertiesAreCorrect", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.typePropertiesAreCorrect);
             QUnit.test("Double - DefaultValueIs0", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.defaultValueIs0);
             QUnit.test("Double - ConstantsWork", Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDoubleTests.constantsWork);
@@ -3400,6 +3404,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecima
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.toStringWithoutRadixWorks();
         },
+        addWithStringWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
+            t.addWithStringWorks();
+        },
         conversionsToDecimalWork: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.conversionsToDecimalWork();
@@ -3444,6 +3452,10 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecima
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.roundWorks();
         },
+        roundWithModeWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
+            t.roundWithModeWorks();
+        },
         subtractWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.subtractWorks();
@@ -3463,6 +3475,14 @@ Bridge.define('Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecima
         compareToWorks: function (assert) {
             var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
             t.compareToWorks();
+        },
+        fullCoalesceWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
+            t.fullCoalesceWorks();
+        },
+        shortCoalesceWorks: function (assert) {
+            var t = Bridge.Test.QUnit.RunQUnitTests.BridgeClientTestSimpleTypesDecimalTests.beforeTest(false, assert);
+            t.shortCoalesceWorks();
         }
     }
 });

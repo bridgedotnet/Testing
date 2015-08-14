@@ -4193,9 +4193,9 @@ Bridge.define('Bridge.ClientTest.SimpleTypes.CharTests', {
 });
 
 Bridge.define('Bridge.ClientTest.SimpleTypes.DecimalTests', {
-    assertIsDecimalAndEqualTo: function (v, d) {
-        Bridge.Test.Assert.areStrictEqual(Bridge.is(v, Bridge.Decimal), true);
-        Bridge.Test.Assert.areStrictEqual(v.toString(), d.toString());
+    assertIsDecimalAndEqualTo: function (v, d, message) {
+        Bridge.Test.Assert.areStrictEqual$1(Bridge.is(v, Bridge.Decimal), true, message);
+        Bridge.Test.Assert.areStrictEqual$1(v.toString(), d.toString(), message);
     },
     typePropertiesAreCorrect: function () {
         Bridge.Test.Assert.$true(Bridge.is(Bridge.Decimal.lift(0.5), Bridge.Decimal));
@@ -4210,26 +4210,26 @@ Bridge.define('Bridge.ClientTest.SimpleTypes.DecimalTests', {
         });
     },
     defaultValueIs0: function () {
-        this.assertIsDecimalAndEqualTo(this.getDefaultValue(Bridge.Decimal)(), 0);
+        this.assertIsDecimalAndEqualTo(this.getDefaultValue(Bridge.Decimal)(), 0, null);
     },
     creatingInstanceReturnsZero: function () {
-        this.assertIsDecimalAndEqualTo(new Bridge.Decimal(), 0);
+        this.assertIsDecimalAndEqualTo(new Bridge.Decimal(), 0, null);
     },
     constantsWork: function () {
-        this.assertIsDecimalAndEqualTo(Bridge.Decimal.One, 1);
-        this.assertIsDecimalAndEqualTo(Bridge.Decimal.Zero, 0);
-        this.assertIsDecimalAndEqualTo(Bridge.Decimal.MinusOne, -1);
+        this.assertIsDecimalAndEqualTo(Bridge.Decimal.One, 1, null);
+        this.assertIsDecimalAndEqualTo(Bridge.Decimal.Zero, 0, null);
+        this.assertIsDecimalAndEqualTo(Bridge.Decimal.MinusOne, -1, null);
     },
     defaultConstructorReturnsZero: function () {
-        this.assertIsDecimalAndEqualTo(Bridge.Decimal(), 0);
+        this.assertIsDecimalAndEqualTo(Bridge.Decimal(), 0, null);
     },
     convertingConstructorsWork: function () {
-        this.assertIsDecimalAndEqualTo(Bridge.Decimal(0.5), 0.5);
-        this.assertIsDecimalAndEqualTo(Bridge.Decimal(Bridge.cast(1.5, Number)), 1.5);
-        this.assertIsDecimalAndEqualTo(Bridge.Decimal(2), 2);
-        this.assertIsDecimalAndEqualTo(Bridge.Decimal(Bridge.cast(3, Bridge.Int)), 3);
-        this.assertIsDecimalAndEqualTo(Bridge.Decimal(Bridge.cast(4, Bridge.Int)), 4);
-        this.assertIsDecimalAndEqualTo(Bridge.Decimal(Bridge.cast(5, Bridge.Int)), 5);
+        this.assertIsDecimalAndEqualTo(Bridge.Decimal(0.5), 0.5, null);
+        this.assertIsDecimalAndEqualTo(Bridge.Decimal(Bridge.cast(1.5, Number)), 1.5, null);
+        this.assertIsDecimalAndEqualTo(Bridge.Decimal(2), 2, null);
+        this.assertIsDecimalAndEqualTo(Bridge.Decimal(Bridge.cast(3, Bridge.Int)), 3, null);
+        this.assertIsDecimalAndEqualTo(Bridge.Decimal(Bridge.cast(4, Bridge.Int)), 4, null);
+        this.assertIsDecimalAndEqualTo(Bridge.Decimal(Bridge.cast(5, Bridge.Int)), 5, null);
     },
     formatWorks: function () {
         Bridge.Test.Assert.areEqual(Bridge.Int.format(Bridge.Decimal(291.0).toFloat(), "x"), "123");
@@ -4239,6 +4239,17 @@ Bridge.define('Bridge.ClientTest.SimpleTypes.DecimalTests', {
     },
     toStringWithoutRadixWorks: function () {
         Bridge.Test.Assert.areEqual(Bridge.Decimal(123.0).toString(), "123");
+    },
+    addWithStringWorks: function () {
+        var d1 = Bridge.Decimal(1.0);
+        var s1 = d1 + "#";
+
+        Bridge.Test.Assert.areEqual$1(s1, "1#", "decimal?");
+
+        var d2 = Bridge.Decimal(2.0);
+        var s2 = d2 + "!";
+
+        Bridge.Test.Assert.areEqual$1(s2, "2!", "decimal");
     },
     conversionsToDecimalWork: function () {
         var x = 0;
@@ -4271,17 +4282,17 @@ Bridge.define('Bridge.ClientTest.SimpleTypes.DecimalTests', {
     operatorsWork: function () {
         var $t;
         var x = Bridge.Decimal(3);
-        this.assertIsDecimalAndEqualTo(x.clone(), 3);
-        this.assertIsDecimalAndEqualTo(x.neg(), -3);
-        this.assertIsDecimalAndEqualTo(x.add(Bridge.Decimal(4.0)), 7);
-        this.assertIsDecimalAndEqualTo(x.sub(Bridge.Decimal(2.0)), 1);
-        this.assertIsDecimalAndEqualTo(($t = x, x = x.add(1), $t), 3);
-        this.assertIsDecimalAndEqualTo((x = x.add(1)), 5);
-        this.assertIsDecimalAndEqualTo(($t = x, x = x.sub(1), $t), 5);
-        this.assertIsDecimalAndEqualTo((x = x.sub(1)), 3);
-        this.assertIsDecimalAndEqualTo(x.mul(Bridge.Decimal(3.0)), 9);
-        this.assertIsDecimalAndEqualTo(x.div(Bridge.Decimal(2.0)), 1.5);
-        this.assertIsDecimalAndEqualTo(Bridge.Decimal(14.0).mod(x), 2);
+        this.assertIsDecimalAndEqualTo(x.clone(), 3, null);
+        this.assertIsDecimalAndEqualTo(x.neg(), -3, null);
+        this.assertIsDecimalAndEqualTo(x.add(Bridge.Decimal(4.0)), 7, null);
+        this.assertIsDecimalAndEqualTo(x.sub(Bridge.Decimal(2.0)), 1, null);
+        this.assertIsDecimalAndEqualTo(($t = x, x = x.add(1), $t), 3, null);
+        this.assertIsDecimalAndEqualTo((x = x.add(1)), 5, null);
+        this.assertIsDecimalAndEqualTo(($t = x, x = x.sub(1), $t), 5, null);
+        this.assertIsDecimalAndEqualTo((x = x.sub(1)), 3, null);
+        this.assertIsDecimalAndEqualTo(x.mul(Bridge.Decimal(3.0)), 9, null);
+        this.assertIsDecimalAndEqualTo(x.div(Bridge.Decimal(2.0)), 1.5, null);
+        this.assertIsDecimalAndEqualTo(Bridge.Decimal(14.0).mod(x), 2, null);
         Bridge.Test.Assert.$true(x.equalsT(Bridge.Decimal(3.0)));
         Bridge.Test.Assert.$false(x.equalsT(Bridge.Decimal(4.0)));
         Bridge.Test.Assert.$false(x.ne(Bridge.Decimal(3.0)));
@@ -4299,28 +4310,34 @@ Bridge.define('Bridge.ClientTest.SimpleTypes.DecimalTests', {
         Bridge.Test.Assert.areEqual(Bridge.Decimal(3.0).add(Bridge.Decimal(4.0)), Bridge.Decimal(7.0));
     },
     ceilingWorks: function () {
-        this.assertIsDecimalAndEqualTo(Bridge.Decimal(3.4).ceil(), 4);
+        this.assertIsDecimalAndEqualTo(Bridge.Decimal(3.4).ceil(), 4, null);
     },
     divideWorks: function () {
-        this.assertIsDecimalAndEqualTo(Bridge.Decimal(3.0).div(Bridge.Decimal(4.0)), 0.75);
+        this.assertIsDecimalAndEqualTo(Bridge.Decimal(3.0).div(Bridge.Decimal(4.0)), 0.75, null);
     },
     floorWorks: function () {
-        this.assertIsDecimalAndEqualTo(Bridge.Decimal(3.2).floor(), 3);
+        this.assertIsDecimalAndEqualTo(Bridge.Decimal(3.2).floor(), 3, null);
     },
     remainderWorks: function () {
-        this.assertIsDecimalAndEqualTo(Bridge.Decimal(14.0).mod(Bridge.Decimal(3.0)), 2);
+        this.assertIsDecimalAndEqualTo(Bridge.Decimal(14.0).mod(Bridge.Decimal(3.0)), 2, null);
     },
     multiplyWorks: function () {
-        this.assertIsDecimalAndEqualTo(Bridge.Decimal(3.0).mul(Bridge.Decimal(2.0)), 6);
+        this.assertIsDecimalAndEqualTo(Bridge.Decimal(3.0).mul(Bridge.Decimal(2.0)), 6, null);
     },
     negateWorks: function () {
-        this.assertIsDecimalAndEqualTo(Bridge.Decimal(0).sub(Bridge.Decimal(3.0)), -3);
+        this.assertIsDecimalAndEqualTo(Bridge.Decimal(0).sub(Bridge.Decimal(3.0)), -3, null);
     },
     roundWorks: function () {
-        this.assertIsDecimalAndEqualTo(Bridge.Decimal.round(Bridge.Decimal(3.2), 1), 3);
+        this.assertIsDecimalAndEqualTo(Bridge.Decimal.round(Bridge.Decimal(3.2), 1), 3, null);
+    },
+    roundWithModeWorks: function () {
+        this.assertIsDecimalAndEqualTo(Bridge.Decimal.round(Bridge.Decimal(3.2), 0), 4, "AwayFromZero");
+        this.assertIsDecimalAndEqualTo(Bridge.Decimal.round(Bridge.Decimal(5.2), 3), 5, "Ceil");
+        this.assertIsDecimalAndEqualTo(Bridge.Decimal.round(Bridge.Decimal(6.2), 2), 7, "Floor");
+        this.assertIsDecimalAndEqualTo(Bridge.Decimal.round(Bridge.Decimal(8.2), 1), 8, "ToEven");
     },
     subtractWorks: function () {
-        this.assertIsDecimalAndEqualTo(Bridge.Decimal(7.0).sub(Bridge.Decimal(3.0)), 4);
+        this.assertIsDecimalAndEqualTo(Bridge.Decimal(7.0).sub(Bridge.Decimal(3.0)), 4, null);
     },
     getHashCodeWorks: function () {
         Bridge.Test.Assert.areEqual(Bridge.getHashCode((Bridge.Decimal.lift(0))), Bridge.getHashCode((Bridge.Decimal.lift(0))));
@@ -4333,12 +4350,14 @@ Bridge.define('Bridge.ClientTest.SimpleTypes.DecimalTests', {
         Bridge.Test.Assert.$false(Bridge.equals((Bridge.Decimal.lift(1)), Bridge.Decimal.lift(0)));
         Bridge.Test.Assert.$false(Bridge.equals((Bridge.Decimal.lift(0)), Bridge.Decimal.lift(0.5)));
         Bridge.Test.Assert.$true(Bridge.equals((Bridge.Decimal.lift(1)), Bridge.Decimal.lift(1)));
+        Bridge.Test.Assert.$false(Bridge.equals((Bridge.Decimal.lift(0)), Bridge.Decimal.MaxValue));
     },
     decimalEqualsWorks: function () {
         Bridge.Test.Assert.$true((Bridge.Decimal.lift(0)).equals(Bridge.Decimal.lift(0)));
         Bridge.Test.Assert.$false((Bridge.Decimal.lift(1)).equals(Bridge.Decimal.lift(0)));
         Bridge.Test.Assert.$false((Bridge.Decimal.lift(0)).equals(Bridge.Decimal.lift(0.5)));
         Bridge.Test.Assert.$true((Bridge.Decimal.lift(1)).equals(Bridge.Decimal.lift(1)));
+        Bridge.Test.Assert.$false((Bridge.Decimal.lift(0)).equals(Bridge.Decimal.MaxValue));
     },
     compareToWorks: function () {
         Bridge.Test.Assert.$true((Bridge.Decimal.lift(0)).compareTo(Bridge.Decimal.lift(0)) === 0);
@@ -4351,6 +4370,23 @@ Bridge.define('Bridge.ClientTest.SimpleTypes.DecimalTests', {
         Bridge.Test.Assert.$true(Bridge.compare((Bridge.cast((Bridge.Decimal.lift(1)), Bridge.IComparable$1(Bridge.Decimal))), Bridge.Decimal.lift(0)) > 0);
         Bridge.Test.Assert.$true(Bridge.compare((Bridge.cast((Bridge.Decimal.lift(0)), Bridge.IComparable$1(Bridge.Decimal))), Bridge.Decimal.lift(0.5)) < 0);
         Bridge.Test.Assert.$true(Bridge.compare((Bridge.cast((Bridge.Decimal.lift(1)), Bridge.IComparable$1(Bridge.Decimal))), Bridge.Decimal.lift(1)) === 0);
+    },
+    fullCoalesceWorks: function () {
+        var a = Bridge.Decimal(1.0);
+        var b = a.equalsT(Bridge.Decimal(1.0)) ? Bridge.Decimal(2.0) : Bridge.Decimal(3.0);
+
+        this.assertIsDecimalAndEqualTo(b, 2, null);
+    },
+    shortCoalesceWorks: function () {
+        var c = Bridge.Decimal(1.0);
+        var d = Bridge.coalesce(c, Bridge.Decimal(2.0));
+
+        this.assertIsDecimalAndEqualTo(d, 1, null);
+
+        var e = Bridge.Decimal(3);
+        var f = Bridge.coalesce(e, Bridge.Decimal(0));
+
+        this.assertIsDecimalAndEqualTo(f, 3, null);
     }
 });
 
