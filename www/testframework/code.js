@@ -13,25 +13,25 @@ Bridge.define('Bridge.ClientTest.ArrayTests', {
         Bridge.Test.Assert.true$1(Bridge.is(arr, Bridge.IList$1(Bridge.Int)), "is IList<int> should be true");
     },
     lengthWorks: function () {
-        Bridge.Test.Assert.areEqual(new Array(0).length, 0);
+        Bridge.Test.Assert.areEqual(Bridge.Array.init(0, 0).length, 0);
         Bridge.Test.Assert.areEqual(["x"].length, 1);
         Bridge.Test.Assert.areEqual(["x", "y"].length, 2);
     },
     rankIsOne: function () {
-        Bridge.Test.Assert.areEqual(Bridge.Array.getRank(new Array(0)), 1);
+        Bridge.Test.Assert.areEqual(Bridge.Array.getRank(Bridge.Array.init(0, 0)), 1);
     },
     getLengthWorks: function () {
-        Bridge.Test.Assert.areEqual(Bridge.Array.getLength(new Array(0), 0), 0);
+        Bridge.Test.Assert.areEqual(Bridge.Array.getLength(Bridge.Array.init(0, 0), 0), 0);
         Bridge.Test.Assert.areEqual(Bridge.Array.getLength(["x"], 0), 1);
         Bridge.Test.Assert.areEqual(Bridge.Array.getLength(["x", "y"], 0), 2);
     },
     getLowerBound: function () {
-        Bridge.Test.Assert.areEqual(Bridge.Array.getLower(new Array(0), 0), 0);
+        Bridge.Test.Assert.areEqual(Bridge.Array.getLower(Bridge.Array.init(0, 0), 0), 0);
         Bridge.Test.Assert.areEqual(Bridge.Array.getLower(["x"], 0), 0);
         Bridge.Test.Assert.areEqual(Bridge.Array.getLower(["x", "y"], 0), 0);
     },
     getUpperBoundWorks: function () {
-        Bridge.Test.Assert.areEqual((Bridge.Array.getLength(new Array(0), 0) - 1), -1);
+        Bridge.Test.Assert.areEqual((Bridge.Array.getLength(Bridge.Array.init(0, 0), 0) - 1), -1);
         Bridge.Test.Assert.areEqual((Bridge.Array.getLength(["x"], 0) - 1), 0);
         Bridge.Test.Assert.areEqual((Bridge.Array.getLength(["x", "y"], 0) - 1), 1);
     },
@@ -44,14 +44,14 @@ Bridge.define('Bridge.ClientTest.ArrayTests', {
         Bridge.Test.Assert.areEqual(Bridge.Array.get(["x", "y"], 1), "y");
     },
     settingValueByIndexWorks: function () {
-        var arr = new Array(2);
+        var arr = Bridge.Array.init(2, null);
         arr[0] = "x";
         arr[1] = "y";
         Bridge.Test.Assert.areEqual(arr[0], "x");
         Bridge.Test.Assert.areEqual(arr[1], "y");
     },
     setValueWorks: function () {
-        var arr = new Array(2);
+        var arr = Bridge.Array.init(2, null);
         Bridge.Array.set(arr, "x", 0);
         Bridge.Array.set(arr, "y", 1);
         Bridge.Test.Assert.areEqual(arr[0], "x");
@@ -172,7 +172,7 @@ Bridge.define('Bridge.ClientTest.ArrayTests', {
     iCollectionClearWorks: function () {
         var l = ["x", "y", "z"];
         Bridge.Array.clear(l);
-        Bridge.Test.Assert.areEqual(l, new Array(0));
+        Bridge.Test.Assert.areEqual(l, Bridge.Array.init(0, null));
     },
     iCollectionContainsWorks: function () {
         var l = ["x", "y", "z"];
@@ -592,10 +592,10 @@ Bridge.define('Bridge.ClientTest.Collections.Generic.GenericDictionaryTests.Test
 
 Bridge.define('Bridge.ClientTest.Collections.Generic.ICollectionTests', {
     arrayImplementsICollection: function () {
-        Bridge.Test.Assert.$true(Bridge.is(new Array(1), Bridge.ICollection$1(Bridge.Int)));
+        Bridge.Test.Assert.$true(Bridge.is(Bridge.Array.init(1, 0), Bridge.ICollection$1(Bridge.Int)));
     },
     customClassThatShouldImplementICollectionDoesSo: function () {
-        Bridge.Test.Assert.$true(Bridge.is(new Bridge.ClientTest.Collections.Generic.ICollectionTests.MyCollection(new Array(0)), Bridge.ICollection$1(String)));
+        Bridge.Test.Assert.$true(Bridge.is(new Bridge.ClientTest.Collections.Generic.ICollectionTests.MyCollection(Bridge.Array.init(0, null)), Bridge.ICollection$1(String)));
     },
     arrayCastToICollectionCountWorks: function () {
         Bridge.Test.Assert.areEqual(Bridge.Array.getCount((Bridge.cast(["x", "y", "z"], Bridge.ICollection$1(String)))), 3);
@@ -955,7 +955,7 @@ Bridge.define('Bridge.ClientTest.Collections.Generic.IDictionaryTests.MyDictiona
 
 Bridge.define('Bridge.ClientTest.Collections.Generic.IEnumerableTests', {
     arrayImplementsIEnumerable: function () {
-        Bridge.Test.Assert.$true(Bridge.is(new Array(1), Bridge.IEnumerable$1(Bridge.Int)));
+        Bridge.Test.Assert.$true(Bridge.is(Bridge.Array.init(1, 0), Bridge.IEnumerable$1(Bridge.Int)));
     },
     customClassThatShouldImplementIEnumerableDoesSo: function () {
         Bridge.Test.Assert.$true(Bridge.is(new Bridge.ClientTest.Collections.Generic.IEnumerableTests.MyEnumerable(), Bridge.IEnumerable$1(String)));
@@ -1029,10 +1029,10 @@ Bridge.define('Bridge.ClientTest.Collections.Generic.IListTests', {
         Bridge.Test.Assert.true$1(Bridge.is(iList, Bridge.ICollection$1(Object)), "Interfaces should contain ICollection");
     },
     arrayImplementsIList: function () {
-        Bridge.Test.Assert.$true(Bridge.is(new Array(1), Bridge.IList$1(Bridge.Int)));
+        Bridge.Test.Assert.$true(Bridge.is(Bridge.Array.init(1, 0), Bridge.IList$1(Bridge.Int)));
     },
     customClassThatShouldImplementIListDoesSo: function () {
-        Bridge.Test.Assert.$true(Bridge.is(new Bridge.ClientTest.Collections.Generic.IListTests.MyList(new Array(0)), Bridge.IList$1(String)));
+        Bridge.Test.Assert.$true(Bridge.is(new Bridge.ClientTest.Collections.Generic.IListTests.MyList(Bridge.Array.init(0, null)), Bridge.IList$1(String)));
     },
     arrayCastToIListGetItemWorks: function () {
         var l = ["x", "y", "z"];
@@ -1777,7 +1777,7 @@ Bridge.define('Bridge.ClientTest.Collections.Generic.ListTests', {
             ["z"]
         ] );
         Bridge.Array.clear(l);
-        Bridge.Test.Assert.areEqual((Bridge.cast(l, Bridge.List$1(String))).toArray(), new Array(0));
+        Bridge.Test.Assert.areEqual((Bridge.cast(l, Bridge.List$1(String))).toArray(), Bridge.Array.init(0, null));
     },
     iCollectionContainsWorks: function () {
         var l = Bridge.merge(new Bridge.List$1(String)(), [
@@ -2204,7 +2204,7 @@ Bridge.define('Bridge.ClientTest.DecimalMathTests', {
 Bridge.define('Bridge.ClientTest.DecimalMathTests.Logger', {
     statics: {
         convertParameters: function (parameters) {
-            var result = new Array(parameters.length + 1);
+            var result = Bridge.Array.init(parameters.length + 1, null);
 
             for (var i = 0; i < parameters.length; i++) {
                 if (i === 0) {
@@ -2443,7 +2443,7 @@ Bridge.define('Bridge.ClientTest.Exceptions.ArgumentOutOfRangeExceptionTests', {
     rangeErrorIsConvertedToArgumentOutOfRangeException: function () {
         var size = -1;
         try {
-            var arr = new Array(size);
+            var arr = Bridge.Array.init(size, 0);
             Bridge.Test.Assert.fail$1("Should throw");
         }
         catch ($e) {

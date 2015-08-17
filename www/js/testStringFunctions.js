@@ -86,7 +86,7 @@ Bridge.define('ClientTestLibrary.TestStringFunctions', {
             }
 
             if (!isPhantomJs) {
-                var threeIs = new Array(3);
+                var threeIs = Bridge.Array.init(3, null);
                 threeIs[0] = "i";
                 threeIs[1] = "ı";
                 threeIs[2] = "I";
@@ -139,7 +139,9 @@ Bridge.define('ClientTestLibrary.TestStringFunctions', {
 
             var a;
             var i = 0;
-            var result = new Array(5);
+            var result = Bridge.Array.init(5, function (){
+                return new Bridge.Int();
+            });
             $t = Bridge.getEnumerator("danny");
             while ($t.moveNext()) {
                 var c = $t.getCurrent();

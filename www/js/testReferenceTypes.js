@@ -311,7 +311,7 @@ Bridge.define('ClientTestLibrary.TestSet1FailureHelper', {
             new ClientTestLibrary.ClassA("constructor$1", Bridge.cast(null, ClientTestLibrary.ClassA.Aux1));
         },
         testConstructor2Failure: function () {
-            var t = new ClientTestLibrary.ClassA("constructor$2", [new Array(2)]);
+            var t = new ClientTestLibrary.ClassA("constructor$2", [Bridge.Array.init(2, null)]);
         },
         staticMethod2Failure: function () {
             ClientTestLibrary.ClassA.staticMethod2(["1", "some string", "345.345435"]);

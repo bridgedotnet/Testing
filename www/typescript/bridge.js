@@ -4823,6 +4823,14 @@ Bridge.Class.generic('Bridge.IComparer$1', function (T) {
     return Bridge.Class.cache[$$name] || (Bridge.Class.cache[$$name] = Bridge.define($$name, {
     }));
 });
+
+Bridge.Class.generic('Bridge.ISet$1', function (T) {
+    var $$name = Bridge.Class.genericName('Bridge.ISet$1', T);
+
+    return Bridge.Class.cache[$$name] || (Bridge.Class.cache[$$name] = Bridge.define($$name, {
+        inherits: [Bridge.ICollection$1(T)]
+    }));
+});
 // @source /Collections/CustomEnumerator.js
 
 Bridge.define("Bridge.CustomEnumerator", {
@@ -6062,6 +6070,17 @@ Bridge.define('Bridge.PropertyChangedEventArgs', {
 
                     arr[i] = v;
                 }
+            }
+
+            return arr;
+        },
+
+        init: function(size, value) {
+            var arr = new Array(size),
+                isFn = Bridge.isFunction(value);
+
+            for (var i = 0; i < size; i++) {
+                arr[i] = isFn ? value() : value;
             }
 
             return arr;
