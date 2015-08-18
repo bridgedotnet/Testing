@@ -6752,8 +6752,8 @@ Bridge.define('Bridge.ClientTest.SimpleTypes.UInt64Tests', {
         Bridge.Test.Assert.$true(Bridge.is(l, Bridge.IFormattable));
     },
     castsWork: function () {
-        var i1 = -1, i2 = 0, i3 = 234, i4 = 9223372036854775000;
-        var ni1 = -1, ni2 = 0, ni3 = 234, ni4 = 9223372036854775000, ni6 = null;
+        var i2 = 0, i3 = 234, i4 = 9223372036854775000;
+        var ni2 = 0, ni3 = 234, ni4 = 9223372036854775000, ni6 = null;
 
         // TODO unchecked
         {
