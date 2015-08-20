@@ -1,7 +1,4 @@
-﻿/// <reference path="..\..\www\qunit\qunit.d.ts" />
-/// <reference path="..\..\www\typescript\bridge.d.ts" />
-/// <reference path="..\..\www\typescript\classes.d.ts" />
-QUnit.module("TypeScript - Classes");
+﻿QUnit.module("TypeScript - Classes");
 QUnit.test("Inheritance", function (assert) {
     var animal = new Classes.Animal.$constructor();
     QUnit.deepEqual(animal.getName(), "Animal", "Animal name parameterless constructor");
@@ -9,44 +6,37 @@ QUnit.test("Inheritance", function (assert) {
     animal = new Classes.Animal.constructor$1("A");
     QUnit.deepEqual(animal.getName(), "A", "Animal name");
 
-    // TODO #292 Should not require optional parameters
     QUnit.deepEqual(animal.move(), 1, "Animal move");
 
     var snake = new Classes.Snake("S");
     QUnit.deepEqual(snake.getName(), "S", "Snake name");
 
-    // TODO #292 Should not require optional parameters
     QUnit.deepEqual(snake.move(), 5, "Snake move");
 
     animal = snake;
     QUnit.deepEqual(animal.getName(), "S", "Snake as Animal name");
 
-    // TODO #292 Should not require optional parameters
     QUnit.deepEqual(animal.move(), 5, "Snake as Animal move");
 
     var dog = new Classes.Dog("D");
     QUnit.deepEqual(dog.getName(), "D", "Dogname");
 
-    // TODO #292 Should not require optional parameters
     QUnit.deepEqual(dog.move(), 1, "Dog move");
     QUnit.deepEqual(dog.move$1(), 20, "Dog another move");
 
     animal = dog;
     QUnit.deepEqual(animal.getName(), "D", "Dog as Animal name");
 
-    // TODO #292 Should not require optional parameters
     QUnit.deepEqual(animal.move(), 1, "Dog as Animal move");
 
     var employee = new Classes.Employee("E", 1);
     QUnit.deepEqual(employee.getName(), "E", "Employee name");
 
-    // TODO #292 Should not require optional parameters
     QUnit.deepEqual(employee.move(), 1, "Employee move");
 
     animal = employee;
     QUnit.deepEqual(animal.getName(), "E", "Employee as Animal name");
 
-    // TODO #292 Should not require optional parameters
     QUnit.deepEqual(animal.move(), 1, "Employee as Animal move");
 });
 
