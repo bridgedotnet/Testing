@@ -204,7 +204,6 @@ notifications:
       - vladimir@object.net
       - daniil@object.net
       - fabricio@object.net
-      - dimitris@object.net
       - leonid@object.net
     on_build_status_changed: true
     on_build_success: false
