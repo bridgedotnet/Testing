@@ -92,8 +92,9 @@ namespace ClientTestLibrary
     //    }
     //}
 
+    //[#391]
     [FileName("notCompiling.js")]
-    class ForumBug466
+    class Class391
     {
         public static void Main()
         {
