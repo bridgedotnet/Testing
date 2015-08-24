@@ -274,6 +274,16 @@ namespace ClientTestLibrary
         }
     }
 
+    [FileName("testBridgeIssues.js")]
+    [ObjectLiteral]
+    public class Bridge377
+    {
+        public string field1;
+        public string field2;
+        public int field3;
+        public int field4;
+    }
+
     // Tests Bridge GitHub issues
     class TestBridgeIssues
     {
@@ -526,6 +536,27 @@ namespace ClientTestLibrary
 
             assert.Equal(interfacedDictionary[6], "z", "IDictionary getter works");
             assert.Throws(() => { var r = interfacedDictionary[1]; }, "IDictionary getter throws exception when incorrect key used");
+        }
+
+        // Bridge[#377]
+        public static void N377(Assert assert)
+        {
+            assert.Expect(6);
+
+            var objectLiteralInstance = new Bridge377
+            {
+                field1 = "field1 value",
+                field3 = 7
+            };
+
+            assert.Equal(objectLiteralInstance.HasOwnProperty("field1"), true, "ObjectLiteral's field with an explicit value is emitted");
+            assert.Equal(objectLiteralInstance.field1, "field1 value", "ObjectLiteral's field with an explicit value is emitted correctly");
+
+            assert.Equal(objectLiteralInstance.HasOwnProperty("field3"), true, "ObjectLiteral's field with an explicit value is emitted");
+            assert.Equal(objectLiteralInstance.field3, 7, "ObjectLiteral's field with an explicit value is emitted correctly");
+
+            assert.Equal(objectLiteralInstance.HasOwnProperty("field2"), false, "ObjectLiteral's field without an explicit value is not emitted");
+            assert.Equal(objectLiteralInstance.HasOwnProperty("field4"), false, "ObjectLiteral's field without an explicit value is not emitted");
         }
     }
 }

@@ -462,6 +462,20 @@ Bridge.define('ClientTestLibrary.TestBridgeIssues', {
             assert.throws(function () {
                 var r = interfacedDictionary.getItem(1);
             }, "IDictionary getter throws exception when incorrect key used");
+        },
+        n377: function (assert) {
+            assert.expect(6);
+
+            var objectLiteralInstance = { field1: "field1 value", field3: 7 };
+
+            assert.equal(objectLiteralInstance.hasOwnProperty("field1"), true, "ObjectLiteral's field with an explicit value is emitted");
+            assert.equal(objectLiteralInstance.field1, "field1 value", "ObjectLiteral's field with an explicit value is emitted correctly");
+
+            assert.equal(objectLiteralInstance.hasOwnProperty("field3"), true, "ObjectLiteral's field with an explicit value is emitted");
+            assert.equal(objectLiteralInstance.field3, 7, "ObjectLiteral's field with an explicit value is emitted correctly");
+
+            assert.equal(objectLiteralInstance.hasOwnProperty("field2"), false, "ObjectLiteral's field without an explicit value is not emitted");
+            assert.equal(objectLiteralInstance.hasOwnProperty("field4"), false, "ObjectLiteral's field without an explicit value is not emitted");
         }
     }
 });
