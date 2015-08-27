@@ -121,7 +121,7 @@ Bridge.define('ClientTestLibrary.Linq.TestLinqConversionOperators', {
 Bridge.define('ClientTestLibrary.Linq.TestLinqConversionOperatorsIEqualityComparer', {
     inherits: [Bridge.EqualityComparer$1(String)],
     equals: function (x, y) {
-        return Bridge.equals(x, y);
+        return Bridge.String.equals(x, y);
     },
     getHashCode: function (obj) {
         if (obj === null) {

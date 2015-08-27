@@ -14,7 +14,7 @@ Bridge.define('ClientTestLibrary.Class391', {
                 $t1 = Bridge.getEnumerator(TestArray2);
                 while ($t1.moveNext()) {
                     var y = $t1.getCurrent();
-                    doSomething = Bridge.equals(x, y);
+                    doSomething = Bridge.String.equals(x, y);
                 }
             }
 
@@ -24,7 +24,7 @@ Bridge.define('ClientTestLibrary.Class391', {
                 $t3 = Bridge.getEnumerator(TestArray2);
                 while ($t3.moveNext()) {
                     var y1 = $t3.getCurrent();
-                    doSomething = Bridge.equals(x1, y1);
+                    doSomething = Bridge.String.equals(x1, y1);
                 }
             }
         }

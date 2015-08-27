@@ -5871,12 +5871,12 @@ Bridge.define('Bridge.ClientTest.SimpleTypes.StringTests', {
         Bridge.Test.Assert.$false(Bridge.String.endsWith("abcd", "e"));
     },
     staticEqualsWorks: function () {
-        Bridge.Test.Assert.$true(Bridge.equals("abcd", "abcd"));
-        Bridge.Test.Assert.$false(Bridge.equals("abcd", "abce"));
-        Bridge.Test.Assert.$false(Bridge.equals("abcd", "ABCD"));
-        Bridge.Test.Assert.$true(Bridge.equals("abcd", "abcd"));
-        Bridge.Test.Assert.$false(Bridge.equals("abcd", "abce"));
-        Bridge.Test.Assert.$false(Bridge.equals("abcd", "ABCD"));
+        Bridge.Test.Assert.$true(Bridge.String.equals("abcd", "abcd"));
+        Bridge.Test.Assert.$false(Bridge.String.equals("abcd", "abce"));
+        Bridge.Test.Assert.$false(Bridge.String.equals("abcd", "ABCD"));
+        Bridge.Test.Assert.$true(Bridge.String.equals("abcd", "abcd"));
+        Bridge.Test.Assert.$false(Bridge.String.equals("abcd", "abce"));
+        Bridge.Test.Assert.$false(Bridge.String.equals("abcd", "ABCD"));
     },
     formatWorks: function () {
         Bridge.Test.Assert.areEqual(Bridge.String.format("x", null), "x");
@@ -6088,12 +6088,12 @@ Bridge.define('Bridge.ClientTest.SimpleTypes.StringTests', {
         Bridge.Test.Assert.$false(Bridge.equals("a", r));
     },
     stringEqualsWorks: function () {
-        Bridge.Test.Assert.$true(Bridge.equals("a", "a"));
-        Bridge.Test.Assert.$false(Bridge.equals("b", "a"));
-        Bridge.Test.Assert.$false(Bridge.equals("a", "b"));
-        Bridge.Test.Assert.$true(Bridge.equals("b", "b"));
-        Bridge.Test.Assert.$false(Bridge.equals("a", "A"));
-        Bridge.Test.Assert.$false(Bridge.equals("a", "ab"));
+        Bridge.Test.Assert.$true(Bridge.String.equals("a", "a"));
+        Bridge.Test.Assert.$false(Bridge.String.equals("b", "a"));
+        Bridge.Test.Assert.$false(Bridge.String.equals("a", "b"));
+        Bridge.Test.Assert.$true(Bridge.String.equals("b", "b"));
+        Bridge.Test.Assert.$false(Bridge.String.equals("a", "A"));
+        Bridge.Test.Assert.$false(Bridge.String.equals("a", "ab"));
     },
     compareToWorks: function () {
         Bridge.Test.Assert.$true(Bridge.String.compare("abcd", "abcd") === 0);
