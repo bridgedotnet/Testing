@@ -211,7 +211,8 @@ namespace ClientTestLibrary
     {
         private readonly Dictionary<int, string> _backingDictionary;
 
-        public Bridge342(): this(new Dictionary<int, string>())
+        public Bridge342()
+            : this(new Dictionary<int, string>())
         {
         }
 
@@ -282,6 +283,13 @@ namespace ClientTestLibrary
         public string field2;
         public int field3;
         public int field4;
+    }
+
+    [FileName("testBridgeIssues.js")]
+    public class Bridge395
+    {
+        public string Id { get; set; }
+        public int data { get; set; }
     }
 
     // Tests Bridge GitHub issues
@@ -557,6 +565,32 @@ namespace ClientTestLibrary
 
             assert.Equal(objectLiteralInstance.HasOwnProperty("field2"), false, "ObjectLiteral's field without an explicit value is not emitted");
             assert.Equal(objectLiteralInstance.HasOwnProperty("field4"), false, "ObjectLiteral's field without an explicit value is not emitted");
+        }
+
+        // Bridge[#395]
+        public static void N395(Assert assert)
+        {
+            assert.Expect(3);
+
+            var _dictOfTests = new Dictionary<string, Bridge395>();
+
+            var tests = new Bridge395[]
+            {
+                new Bridge395(){Id = "a"},
+                new Bridge395(){Id = "b"}
+            };
+
+            foreach (var item in tests)
+            {
+                if (!_dictOfTests.ContainsKey(item.Id))
+                {
+                    _dictOfTests[item.Id] = item;
+                }
+            }
+
+            assert.Equal(_dictOfTests.Count, 2, "All items added");
+            assert.Equal(_dictOfTests["a"].Id, "a", "First element is a");
+            assert.Equal(_dictOfTests["b"].Id, "b", "Second element is b");
         }
     }
 }

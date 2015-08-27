@@ -223,6 +223,15 @@ Bridge.define('ClientTestLibrary.Bridge342', {
     }
 });
 
+Bridge.define('ClientTestLibrary.Bridge395', {
+    config: {
+        properties: {
+            Id: null,
+            data: 0
+        }
+    }
+});
+
 Bridge.define('ClientTestLibrary.IBridge304');
 
 Bridge.define('ClientTestLibrary.Bridge304', {
@@ -476,6 +485,30 @@ Bridge.define('ClientTestLibrary.TestBridgeIssues', {
 
             assert.equal(objectLiteralInstance.hasOwnProperty("field2"), false, "ObjectLiteral's field without an explicit value is not emitted");
             assert.equal(objectLiteralInstance.hasOwnProperty("field4"), false, "ObjectLiteral's field without an explicit value is not emitted");
+        },
+        n395: function (assert) {
+            var $t;
+            assert.expect(3);
+
+            var _dictOfTests = new Bridge.Dictionary$2(String,ClientTestLibrary.Bridge395)();
+
+            var tests = [Bridge.merge(new ClientTestLibrary.Bridge395(), {
+                setId: "a"
+            } ), Bridge.merge(new ClientTestLibrary.Bridge395(), {
+                setId: "b"
+            } )];
+
+            $t = Bridge.getEnumerator(tests);
+            while ($t.moveNext()) {
+                var item = $t.getCurrent();
+                if (!_dictOfTests.containsKey(item.getId())) {
+                    _dictOfTests.set(item.getId(), item);
+                }
+            }
+
+            assert.equal(_dictOfTests.getCount(), 2, "All items added");
+            assert.equal(_dictOfTests.get("a").getId(), "a", "First element is a");
+            assert.equal(_dictOfTests.get("b").getId(), "b", "Second element is b");
         }
     }
 });
