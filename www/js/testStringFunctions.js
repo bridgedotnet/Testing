@@ -156,6 +156,24 @@ Bridge.define('ClientTestLibrary.TestStringFunctions', {
             assert.equal(result[2], 110);
             assert.equal(result[3], 110);
             assert.equal(result[4], 121);
+        }        ,
+        issueBridge393: function (assert) {
+            assert.expect(2);
+
+            var a = "testa";
+            var b = "testa";
+
+            var result = Bridge.String.equals(a, b, 3);
+
+            assert.ok(result, "testa testa StringComparison.InvariantCultureIgnoreCase");
+
+            var a1 = "testa";
+            var b1 = "testb";
+
+            var result1 = Bridge.String.equals(a1, b1, 3);
+
+            assert.notOk(result1, "testa testb StringComparison.InvariantCultureIgnoreCase");
+
         }
     }
 });

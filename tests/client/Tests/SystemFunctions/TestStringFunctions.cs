@@ -171,5 +171,25 @@ namespace ClientTestLibrary
             assert.Equal(result[3], 'n');
             assert.Equal(result[4], 'y');
         }
+
+        public static void IssueBridge393(Assert assert)
+        {
+            assert.Expect(2);
+
+            string a = "testa";
+            string b = "testa";
+
+            bool result = a.Equals(b, StringComparison.InvariantCultureIgnoreCase);
+
+            assert.Ok(result, "testa testa StringComparison.InvariantCultureIgnoreCase");
+
+            string a1 = "testa";
+            string b1 = "testb";
+
+            bool result1 = a1.Equals(b1, StringComparison.InvariantCultureIgnoreCase);
+
+            assert.NotOk(result1, "testa testb StringComparison.InvariantCultureIgnoreCase");
+
+        }
     }
 }

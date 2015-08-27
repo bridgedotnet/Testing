@@ -39,6 +39,7 @@ Bridge.define('ClientTestLibrary.RunTests', {
             QUnit.module("String");
             QUnit.test("Common", ClientTestLibrary.TestStringFunctions.strings);
             QUnit.test("String Enumerable", ClientTestLibrary.TestStringFunctions.enumerable);
+            QUnit.test("String #393", ClientTestLibrary.TestStringFunctions.issueBridge393);
             QUnit.test("StringBuilder", ClientTestLibrary.TestStringBuilderFunctions.stringBuilders);
 
             QUnit.module("Date and time");
