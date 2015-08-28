@@ -286,6 +286,21 @@ namespace ClientTestLibrary
     }
 
     [FileName("testBridgeIssues.js")]
+    public class Person383
+    {
+        public string Name { get; set; }
+    }
+
+    [FileName("testBridgeIssues.js")]
+    public static class Bridge383
+    {
+        public static string DoSomething(this Person383 person)
+        {
+            return person.Name;
+        }
+    }
+
+    [FileName("testBridgeIssues.js")]
     public class Bridge395
     {
         public string Id { get; set; }
@@ -565,6 +580,22 @@ namespace ClientTestLibrary
 
             assert.Equal(objectLiteralInstance.HasOwnProperty("field2"), false, "ObjectLiteral's field without an explicit value is not emitted");
             assert.Equal(objectLiteralInstance.HasOwnProperty("field4"), false, "ObjectLiteral's field without an explicit value is not emitted");
+        }
+
+        // Bridge[#383]
+        public static void N383(Assert assert)
+        {
+            assert.Expect(2);
+
+            var person1 = new Person383() { Name = "Johnny" };
+            var msg1 = person1.DoSomething();
+
+            assert.Equal(msg1, "Johnny", "Instance extention Johnny");
+
+            var person2 = new Person383() { Name = "Madison" };
+            var msg2 = Bridge383.DoSomething(person2);
+
+            assert.Equal(msg2, "Madison", "Static extention Madison");
         }
 
         // Bridge[#395]

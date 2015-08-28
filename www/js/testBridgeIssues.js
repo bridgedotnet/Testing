@@ -223,6 +223,14 @@ Bridge.define('ClientTestLibrary.Bridge342', {
     }
 });
 
+Bridge.define('ClientTestLibrary.Bridge383', {
+    statics: {
+        doSomething: function (person) {
+            return person.getName();
+        }
+    }
+});
+
 Bridge.define('ClientTestLibrary.Bridge395', {
     config: {
         properties: {
@@ -246,6 +254,14 @@ Bridge.define('ClientTestLibrary.Bridge304', {
     },
     f$1: function () {
         this.setX("void F()");
+    }
+});
+
+Bridge.define('ClientTestLibrary.Person383', {
+    config: {
+        properties: {
+            Name: null
+        }
     }
 });
 
@@ -485,6 +501,23 @@ Bridge.define('ClientTestLibrary.TestBridgeIssues', {
 
             assert.equal(objectLiteralInstance.hasOwnProperty("field2"), false, "ObjectLiteral's field without an explicit value is not emitted");
             assert.equal(objectLiteralInstance.hasOwnProperty("field4"), false, "ObjectLiteral's field without an explicit value is not emitted");
+        },
+        n383: function (assert) {
+            assert.expect(2);
+
+            var person1 = Bridge.merge(new ClientTestLibrary.Person383(), {
+                setName: "Johnny"
+            } );
+            var msg1 = ClientTestLibrary.Bridge383.doSomething(person1);
+
+            assert.equal(msg1, "Johnny", "Instance extention Johnny");
+
+            var person2 = Bridge.merge(new ClientTestLibrary.Person383(), {
+                setName: "Madison"
+            } );
+            var msg2 = ClientTestLibrary.Bridge383.doSomething(person2);
+
+            assert.equal(msg2, "Madison", "Static extention Madison");
         },
         n395: function (assert) {
             var $t;
