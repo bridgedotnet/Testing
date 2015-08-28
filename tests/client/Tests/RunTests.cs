@@ -64,6 +64,7 @@ namespace ClientTestLibrary
             QUnit.Module("Issues");
             QUnit.Test("#169", TestBridgeIssues.N169);
             QUnit.Test("#240", TestBridgeIssues.N240);
+            QUnit.Test("#264", TestBridgeIssues.N264);
             QUnit.Test("#266", TestBridgeIssues.N266);
             QUnit.Test("#272", TestBridgeIssues.N272);
             QUnit.Test("#273", TestBridgeIssues.N273);
