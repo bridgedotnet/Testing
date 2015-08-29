@@ -1,4 +1,5 @@
 ﻿using Bridge;
+using Bridge.Html5;
 using Bridge.QUnit;
 
 using System;
@@ -335,6 +336,18 @@ namespace ClientTestLibrary
             assert.Ok(b != null, "Instance of B created");
             assert.Equal(b.GetString(), "B", "b.GetString() = 'B'");
             assert.Equal(b.Data, 1, "b.Data = 1");
+        }
+
+        // Bridge[#264]
+        public static void N264(Assert assert)
+        {
+            assert.Expect(1);
+
+            // TEST
+            string oldHash = Global.Location.Hash;
+            Global.Location.Hash = "#new-hash";
+            assert.Equal(Global.Location.Hash, "#new-hash", "Setting Location.Hash works");
+            Global.Location.Hash = oldHash; // to clean up the url
         }
 
         // Bridge[#266]

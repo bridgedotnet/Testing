@@ -287,6 +287,15 @@ Bridge.define('ClientTestLibrary.TestBridgeIssues', {
             assert.equal(b.getString(), "B", "b.GetString() = 'B'");
             assert.equal(b.getData(), 1, "b.Data = 1");
         },
+        n264: function (assert) {
+            assert.expect(1);
+
+            // TEST
+            var oldHash = Bridge.global.location.hash;
+            Bridge.global.location.hash = "#new-hash";
+            assert.equal(Bridge.global.location.hash, "#new-hash", "Setting Location.Hash works");
+            Bridge.global.location.hash = oldHash; // to clean up the url
+        },
         n266: function (assert) {
             assert.expect(1);
 
