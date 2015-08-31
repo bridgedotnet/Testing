@@ -1,6 +1,6 @@
-﻿/// <reference path="..\..\www\qunit\qunit.d.ts" />
-/// <reference path="..\..\www\typescript\bridge.d.ts" />
-/// <reference path="..\..\www\typescript\classes.d.ts" />
+﻿/// <reference path="..\..\..\..\Testing\www\qunit\qunit.d.ts" />
+/// <reference path="..\..\..\..\Testing\www\typescript\bridge.d.ts" />
+/// <reference path="..\..\..\..\Testing\www\typescript\classes.d.ts" />
 QUnit.module("TypeScript - Classes");
 QUnit.test("Inheritance", function (assert) {
     var animal = new Classes.Animal.$constructor();

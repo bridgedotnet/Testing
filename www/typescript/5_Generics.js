@@ -1,6 +1,6 @@
-﻿/// <reference path="..\..\www\qunit\qunit.d.ts" />
-/// <reference path="..\..\www\typescript\bridge.d.ts" />
-/// <reference path="..\..\www\typescript\generics.d.ts" />
+﻿/// <reference path="..\..\..\..\Testing\www\qunit\qunit.d.ts" />
+/// <reference path="..\..\..\..\Testing\www\typescript\bridge.d.ts" />
+/// <reference path="..\..\..\..\Testing\www\typescript\generics.d.ts" />
 QUnit.module("TypeScript - Generics");
 QUnit.test("Check predefined generic instances", function (assert) {
     var g1 = Generics.implementation.simpleGenericInt;

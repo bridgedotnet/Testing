@@ -1,7 +1,7 @@
-﻿/// <reference path="..\..\www\qunit\qunit.d.ts" />
-/// <reference path="..\..\www\typescript\bridge.d.ts" />
-/// <reference path="..\..\www\typescript\misc.a.d.ts" />
-/// <reference path="..\..\www\typescript\misc.b.d.ts" />
+﻿/// <reference path="..\..\..\..\Testing\www\qunit\qunit.d.ts" />
+/// <reference path="..\..\..\..\Testing\www\typescript\bridge.d.ts" />
+/// <reference path="..\..\..\..\Testing\www\typescript\misc.a.d.ts" />
+/// <reference path="..\..\..\..\Testing\www\typescript\misc.b.d.ts" />
 QUnit.module("TypeScript - Issues");
 QUnit.test("#290", function (assert) {
     var c1 = new Misc.A.Class1();
