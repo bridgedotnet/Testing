@@ -33,11 +33,11 @@ module.exports = function(grunt) {
                 options: {
                     urls: ["http://127.0.0.1:9999/www/index.html"],
                     tunnelTimeout: 5,
-                    build: process.env.TRAVIS_JOB_ID,
+                    build: process.env.TRAVIS_BUILD_NUMBER,
                     concurrency: 3,
                     browsers: browsers,
                     testname: "Bridge client tests",
-                    tags: ["master"]
+                    tags: ["master", process.TRAVIS_BRANCH, process.TRAVIS_BUILD_NUMBER, process.TRAVIS_COMMIT_RANGE ]
                 }
             }
         },
