@@ -1,19 +1,23 @@
 module.exports = function(grunt) {
-    var browsers = [{
-        browserName: "firefox",
-        version: "19",
-        platform: "XP"
-    }, {
+    var browsers = [
+	// {
+        // browserName: "firefox",
+        // version: "19",
+        // platform: "XP"
+    // },
+	{
         browserName: "googlechrome",
         platform: "XP"
     }, {
         browserName: "googlechrome",
         platform: "linux"
-    }, {
-        browserName: "internet explorer",
-        platform: "WIN8",
-        version: "10"
-    }];
+    }
+	// , {
+        // browserName: "internet explorer",
+        // platform: "WIN8",
+        // version: "10"
+    // }
+	];
 
     grunt.initConfig({
         connect: {
@@ -32,7 +36,7 @@ module.exports = function(grunt) {
                     build: process.env.TRAVIS_JOB_ID,
                     concurrency: 3,
                     browsers: browsers,
-                    testname: "qunit tests",
+                    testname: "Bridge client tests",
                     tags: ["master"]
                 }
             }
