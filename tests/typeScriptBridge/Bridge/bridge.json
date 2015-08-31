@@ -1,6 +1,0 @@
-{
-    //output: "Bridge\\output",
-    "output": "..\\..\\www\\typescript\\",
-    "outputBy": "Namespace",
-    "generateTypeScript": "true"
-}
