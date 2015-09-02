@@ -12,11 +12,11 @@ module.exports = function(grunt) {
         browserName: "googlechrome",
         platform: "linux"
     }
-	// , {
-        // browserName: "internet explorer",
-        // platform: "WIN8",
-        // version: "10"
-    // }
+	, {
+        browserName: "internet explorer",
+        platform: "WIN8",
+        version: "10"
+    }
 	];
 
     grunt.initConfig({
