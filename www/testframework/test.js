@@ -1,6 +1,10 @@
 ﻿/* global Bridge */
 
+"use strict";
+
 /* global Bridge */
+
+"use strict";
 
 Bridge.define('Bridge.Test.Assert', {
     statics: {

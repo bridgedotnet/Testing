@@ -1,5 +1,7 @@
 ﻿/* global Bridge */
 
+"use strict";
+
 Bridge.define('ClientTestLibrary.Linq.AnagramEqualityComparer', {
     inherits: [Bridge.EqualityComparer$1(String)],
     equals: function (x, y) {

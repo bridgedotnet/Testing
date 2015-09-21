@@ -1,5 +1,7 @@
 ﻿/* global Bridge */
 
+"use strict";
+
 Bridge.define('ClientTestLibrary.TestOverloadStaticMethods', {
     statics: {
         testStatic: function (assert) {
@@ -56,15 +58,19 @@ Bridge.define('ClientTestLibrary.TestOverloadStaticMethods.Static', {
             return "string FooReturnType(double d)";
         },
         fooOptionalParameters$1: function (x, y) {
+            if (y === void 0) { y = 5; }
             return "FooOptionalParameters(int x, int y = 5)";
         },
         fooOptionalParameters: function (x) {
             return "FooOptionalParameters(int x)";
         },
         fooMultipleOptionalParameters$1: function (x, y, z) {
+            if (y === void 0) { y = 5; }
+            if (z === void 0) { z = 10; }
             return "FooMultipleOptionalParameters(int x, int y = 5, int z = 10)";
         },
         fooMultipleOptionalParameters: function (x, y) {
+            if (y === void 0) { y = 5; }
             return "FooMultipleOptionalParameters(int x, int y = 5)";
         },
         fooNamedArgument$1: function (x) {

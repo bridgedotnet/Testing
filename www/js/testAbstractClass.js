@@ -1,5 +1,7 @@
 ﻿/* global Bridge */
 
+"use strict";
+
 Bridge.define('ClientTestLibrary.TestAbstractClass', {
     statics: {
         testB: function (assert) {

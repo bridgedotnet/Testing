@@ -1,6 +1,6 @@
-﻿/// <reference path="..\..\..\..\Testing\www\qunit\qunit.d.ts" />
-/// <reference path="..\..\..\..\Testing\www\typescript\bridge.d.ts" />
-/// <reference path="..\..\..\..\Testing\www\typescript\functions.d.ts" />
+﻿/// <reference path="..\..\www\qunit\qunit.d.ts" />
+/// <reference path="..\..\www\typescriptjs\bridge.d.ts" />
+/// <reference path="..\..\www\typescriptjs\functions.d.ts" />
 QUnit.module("TypeScript - Functions");
 QUnit.test("Parameters", function (assert) {
     var func = new Functions.Parameters();

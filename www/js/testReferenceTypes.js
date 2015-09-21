@@ -1,5 +1,7 @@
 ﻿/* global Bridge */
 
+"use strict";
+
 Bridge.define('ClientTestLibrary.Class68', {
     x: 0,
     y: 1,
@@ -137,9 +139,12 @@ Bridge.define('ClientTestLibrary.ClassA', {
         return i;
     },
     method5: function (i) {
+        if (i === void 0) { i = -5; }
         return i;
     },
     method5$1: function (i, k) {
+        if (i === void 0) { i = -50; }
+        if (k === void 0) { k = -60; }
         return i + k;
     }
 });

@@ -1,6 +1,6 @@
-﻿/// <reference path="..\..\..\..\Testing\www\qunit\qunit.d.ts" />
-/// <reference path="..\..\..\..\Testing\www\typescript\bridge.d.ts" />
-/// <reference path="..\..\..\..\Testing\www\typescript\basicTypes.d.ts" />
+﻿/// <reference path="..\..\www\qunit\qunit.d.ts" />
+/// <reference path="..\..\www\typescriptjs\bridge.d.ts" />
+/// <reference path="..\..\www\typescriptjs\basicTypes.d.ts" />
 QUnit.module("TypeScript - Basic Types");
 QUnit.test("Fields of basic types", function (assert) {
     var instance = new BasicTypes.BasicTypes();
@@ -17,6 +17,31 @@ QUnit.test("Fields of basic types", function (assert) {
     assert.deepEqual(instance.anyValueInteger, 1, "anyValueInteger");
     assert.deepEqual(instance.dynamicValueInteger, 7, "dynamicValueInteger");
     assert.deepEqual(instance.voidFunction(), instance.undefinedValue, "Void and undefined values");
+});
+
+QUnit.test("Issue #430", function (assert) {
+    var instance = new BasicTypes.BasicTypes();
+
+    assert.deepEqual(instance.twoDimensionalArray[0][0], 1, "Getting twoDimensionalArray[0][0] = 1");
+    assert.deepEqual(instance.twoDimensionalArray[0][1], 2, "Getting twoDimensionalArray[0][1] = 2");
+    assert.deepEqual(instance.twoDimensionalArray[0][2], 3, "Getting twoDimensionalArray[0][2] = 3");
+    assert.deepEqual(instance.twoDimensionalArray[1][0], 5, "Getting twoDimensionalArray[1][0] = 5");
+    assert.deepEqual(instance.twoDimensionalArray[1][1], 8, "Getting twoDimensionalArray[1][1] = 8");
+
+    instance.twoDimensionalArray[0][0] = 10;
+    assert.deepEqual(instance.twoDimensionalArray[0][0], 10, "Setting twoDimensionalArray[0][0] = 10");
+
+    instance.twoDimensionalArray[0][1] = 20;
+    assert.deepEqual(instance.twoDimensionalArray[0][1], 20, "Setting twoDimensionalArray[0][1] = 20");
+
+    instance.twoDimensionalArray[0][2] = 30;
+    assert.deepEqual(instance.twoDimensionalArray[0][2], 30, "Setting twoDimensionalArray[0][2] = 30");
+
+    instance.twoDimensionalArray[1][0] = 50;
+    assert.deepEqual(instance.twoDimensionalArray[1][0], 50, "Setting twoDimensionalArray[1][0] = 50");
+
+    instance.twoDimensionalArray[1][1] = 80;
+    assert.deepEqual(instance.twoDimensionalArray[1][1], 80, "Setting twoDimensionalArray[1][1] = 80");
 });
 
 QUnit.test("Reserved words", function (assert) {

@@ -1,5 +1,7 @@
 ﻿/* global Bridge */
 
+"use strict";
+
 Bridge.define('ClientTestLibrary.Linq.TestLinqGenerationOperators', {
     statics: {
         test: function (assert) {
