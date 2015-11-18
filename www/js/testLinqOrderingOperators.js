@@ -28,7 +28,7 @@ Bridge.define('ClientTestLibrary.Linq.TestLinqOrderingOperators', {
             })).toArray();
             assert.deepEqual(sortedPersonsByName, ["Billy", "Dora", "Frank", "Ian", "John", "Mary", "Nemo", "Zeppa"], "Order by person names");
 
-            //TODO test with System.StringComparison
+            // TODO test with System.StringComparison
 
             // TEST
             var doubles = [1.0, -0.7, 2.1, 0.9, 1.4, 2.9];
@@ -62,7 +62,7 @@ Bridge.define('ClientTestLibrary.Linq.TestLinqOrderingOperators', {
             assert.deepEqual(sortedWordsByLengthAndLettersLambda, ["", "z", "a", "ac", "ab", "bac", "ab2", "ab12"], "Order by word length then by letters as lambda");
 
             // TEST
-            //var numbers = new[] { 2, 4, 6, 1, 5, 7, 9, 0, 8, 3};
+            // var numbers = new[] { 2, 4, 6, 1, 5, 7, 9, 0, 8, 3};
             var numbers = [2, 4, 6, 1, 5];
             var numbersReversed = Bridge.Linq.Enumerable.from(numbers).reverse().toArray();
             assert.deepEqual(numbersReversed, [5, 1, 6, 4, 2], "Reverse() numbers");
@@ -70,3 +70,6 @@ Bridge.define('ClientTestLibrary.Linq.TestLinqOrderingOperators', {
     }
 });
 
+
+
+Bridge.init();

@@ -201,8 +201,10 @@ Bridge.define('ClientTestLibrary.Linq.TestLinqAggregateOperators', {
             });
 
             assert.equal(q, "A C B A ", "Enumerable.Aggregate");
-
         }
     }
 });
 
+
+
+Bridge.init();

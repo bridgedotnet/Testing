@@ -6,14 +6,14 @@ Bridge.define('ClientTestLibrary.TestStringFunctions', {
     statics: {
         strings: function (assert) {
             var $t;
-            //In PhantomJS some correct tests failed. We will skip them in this environment.
+            // In PhantomJS some correct tests failed. We will skip them in this environment.
             var isPhantomJs = ClientTestLibrary.Utilities.BrowserHelper.isPhantomJs();
 
             var expectedCount = isPhantomJs ? 28 : 48;
             assert.expect(expectedCount);
 
             // TEST ToLower, ToLowerCase, ToLocaleLowerCase
-            var s = "HELLO".toLowerCase();
+            var s = ("HELLO").toLowerCase();
             assert.deepEqual(s, "hello", "'HELLO'.ToLower()");
 
             s = "HELLO".toLowerCase();
@@ -23,7 +23,7 @@ Bridge.define('ClientTestLibrary.TestStringFunctions', {
             assert.deepEqual(s, "hello", "'HELLO'.ToLocaleLowerCase()");
 
             // TEST ToUpper, ToUpperCase, ToLocaleUpperCase
-            s = "hello".toUpperCase();
+            s = ("hello").toUpperCase();
             assert.deepEqual(s, "HELLO", "'hello'.ToUpper()");
 
             s = "hello".toUpperCase();
@@ -124,10 +124,10 @@ Bridge.define('ClientTestLibrary.TestStringFunctions', {
             s = [null, true, 3, false].join('');
             assert.deepEqual(s, "true3false", "string.Concat()");
 
-            s = [["1", "2", "3", "4", "5"]].toString().split(',').join('');
+            s = ["1", "2", "3", "4", "5"].toString().split(',').join('');
             assert.deepEqual(s, "12345", "string.Concat()");
 
-            s = [[1, null, 2, null, 3]].toString().split(',').join('');
+            s = [1, null, 2, null, 3].toString().split(',').join('');
             assert.deepEqual(s, "123", "string.Concat()");
         }        ,
         test: function (x, y, comparison, testI, expected, expectedIndex, assert) {
@@ -175,8 +175,10 @@ Bridge.define('ClientTestLibrary.TestStringFunctions', {
             var result1 = Bridge.String.equals(a1, b1, 3);
 
             assert.notOk(result1, "testa testb StringComparison.InvariantCultureIgnoreCase");
-
         }
     }
 });
 
+
+
+Bridge.init();

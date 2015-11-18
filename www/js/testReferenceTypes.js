@@ -6,7 +6,7 @@ Bridge.define('ClientTestLibrary.Class68', {
     x: 0,
     y: 1,
     test: function () {
-        //Multiple local vars correctly
+        // Multiple local vars correctly
         var x = 1, y = 2;
 
         var z = x + y;
@@ -70,7 +70,7 @@ Bridge.define('ClientTestLibrary.ClassA', {
         } ));
     },
     constructor$1: function (d) {
-        this.$constructor();
+        ClientTestLibrary.ClassA.prototype.$constructor.call(this);
 
         if (d === null)
             throw new Bridge.Exception("Related should not be null");
@@ -78,7 +78,7 @@ Bridge.define('ClientTestLibrary.ClassA', {
         this.setData(d);
     },
     constructor$2: function (p) {
-        this.$constructor();
+        ClientTestLibrary.ClassA.prototype.$constructor.call(this);
 
         if (p === null || p.length < 6) {
             throw new Bridge.Exception("Should pass six parameters");
@@ -120,7 +120,7 @@ Bridge.define('ClientTestLibrary.ClassA', {
         } );
 
         return Bridge.merge(new ClientTestLibrary.ClassA.Aux1(), {
-            setNumber: 2, 
+            setNumber: 2,
             setRelated: a1
         } );
     },
@@ -161,12 +161,26 @@ Bridge.define('ClientTestLibrary.ClassA.Aux1', {
     }
 });
 
+Bridge.define('ClientTestLibrary.TestSet1FailureHelper', {
+    statics: {
+        testConstructor1Failure: function () {
+            new ClientTestLibrary.ClassA("constructor$1", Bridge.cast(null, ClientTestLibrary.ClassA.Aux1));
+        },
+        testConstructor2Failure: function () {
+            var t = new ClientTestLibrary.ClassA("constructor$2", [Bridge.Array.init(2, null)]);
+        },
+        staticMethod2Failure: function () {
+            ClientTestLibrary.ClassA.staticMethod2(["1", "some string", "345.345435"]);
+        }
+    }
+});
+
 Bridge.define('ClientTestLibrary.TestReferenceTypes', {
     statics: {
         testInstanceConstructorsAndMethods: function (assert) {
             assert.expect(26);
 
-            //Check parameterless constructor
+            // Check parameterless constructor
             var a = new ClientTestLibrary.ClassA("constructor");
 
             // TEST
@@ -179,11 +193,11 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
             assert.deepEqual(a.getData().getNumber(), 700, "Data.Number 700");
 
             // TEST
-            //Check constructor with parameter
+            // Check constructor with parameter
             assert.throws(ClientTestLibrary.TestSet1FailureHelper.testConstructor1Failure, "Related should not be null", "Related should not be null");
 
             // TEST
-            //Check constructor with parameter
+            // Check constructor with parameter
             assert.throws(ClientTestLibrary.TestSet1FailureHelper.testConstructor2Failure, "Should pass six parameters", "Should pass six parameters");
 
             a = new ClientTestLibrary.ClassA("constructor$2", [150, "151", true, 1.53, Bridge.Decimal(1.54), Bridge.merge(new ClientTestLibrary.ClassA.Aux1(), {
@@ -199,7 +213,7 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
             assert.deepEqual(a.getData().getNumber(), 155, "Data.Number 155");
 
             // TEST
-            //Check instance methods
+            // Check instance methods
             var b = a.method1();
 
             assert.ok(b !== null, "b not null");
@@ -213,14 +227,14 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
             assert.deepEqual(a.method3(), "no data", "Method3 no data");
 
             // TEST
-            //Check [#68]
+            // Check [#68]
             var c68 = new ClientTestLibrary.Class68();
 
             assert.deepEqual(c68.x, 0, "c68.x 0");
             assert.deepEqual(c68.y, 1, "c68.y 1");
 
             // TEST
-            //Check local vars do not get overridden by fields
+            // Check local vars do not get overridden by fields
             c68.test();
 
             assert.deepEqual(c68.x, 0, "c68.x 0");
@@ -230,19 +244,19 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
             assert.expect(13);
 
             // TEST
-            //Check static fields initialization
+            // Check static fields initialization
             assert.deepEqual(ClientTestLibrary.ClassA.statitIntNotInitialized, 0, "#74 StatitInt not initialized");
             assert.deepEqual(ClientTestLibrary.ClassA.statitStringNotInitialized, null, "#74 StatitString not initialized");
             assert.deepEqual(ClientTestLibrary.ClassA.CONST_CHAR, 81, "#74 CONST_CHAR Q");
             assert.deepEqual(true, true, "#74 CONST_DECIMAL 3.123456789324324324m");
 
             // TEST
-            //Check static constructor
+            // Check static constructor
             assert.deepEqual(ClientTestLibrary.ClassA.staticInt, -340, "StatitInt initialized");
             assert.deepEqual(ClientTestLibrary.ClassA.staticString, "Defined string", "StatitString initialized");
 
             // TEST
-            //Check static methods
+            // Check static methods
             var a = ClientTestLibrary.ClassA.staticMethod1(678, "ASD", Number.NaN);
 
             assert.deepEqual(ClientTestLibrary.ClassA.statitIntNotInitialized, 678, "StatitIntNotInitialized 678");
@@ -259,7 +273,7 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
         testMethodParameters: function (assert) {
             assert.expect(16);
 
-            //Check default parameters
+            // Check default parameters
             var ra = new ClientTestLibrary.ClassA("constructor");
             var r = ra.method5(5);
 
@@ -271,7 +285,7 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
             r = ra.method5$1(-50, 6);
             assert.deepEqual(r, -44, "r -44");
 
-            //Check referencing did not change data
+            // Check referencing did not change data
             var a = new ClientTestLibrary.ClassA("constructor");
             var b = a.method1();
             var c = b.getRelated();
@@ -286,7 +300,7 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
             assert.deepEqual(c.getNumber(), 1, "c Number 1");
             assert.ok(c.getRelated() === null, "c.Related null");
 
-            //Check value local parameter
+            // Check value local parameter
             var input = 1;
             var result = a.method4(input, 4);
 
@@ -294,13 +308,13 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
             assert.deepEqual(result, 5, "result 5");
 
             // TEST
-            //[#86]
+            // [#86]
             var di = ClientTestLibrary.ClassA.getDefaultInt();
             assert.deepEqual(di, 0, "di 0");
 
             // TEST
-            //Check  "out parameter"
-            //[#85]
+            // Check  "out parameter"
+            // [#85]
             var i = { };
             var tryResult = ClientTestLibrary.ClassA.tryParse("", i);
 
@@ -310,17 +324,6 @@ Bridge.define('ClientTestLibrary.TestReferenceTypes', {
     }
 });
 
-Bridge.define('ClientTestLibrary.TestSet1FailureHelper', {
-    statics: {
-        testConstructor1Failure: function () {
-            new ClientTestLibrary.ClassA("constructor$1", Bridge.cast(null, ClientTestLibrary.ClassA.Aux1));
-        },
-        testConstructor2Failure: function () {
-            var t = new ClientTestLibrary.ClassA("constructor$2", [Bridge.Array.init(2, null)]);
-        },
-        staticMethod2Failure: function () {
-            ClientTestLibrary.ClassA.staticMethod2(["1", "some string", "345.345435"]);
-        }
-    }
-});
 
+
+Bridge.init();

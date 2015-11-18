@@ -26,7 +26,7 @@ Bridge.define('ClientTestLibrary.Point', {
     },
     test2: function (p) {
         return Bridge.merge(new ClientTestLibrary.Point(), {
-            x: this.x + p.x, 
+            x: this.x + p.x,
             y: this.y + p.y
         } );
     },
@@ -58,7 +58,7 @@ Bridge.define('ClientTestLibrary.Rectangle', {
         }
     },
     constructor$1: function (x, y) {
-        //[#69]
+        // [#69]
         (new ClientTestLibrary.Rectangle("constructor")).$clone(this);
 
         this.l.x = x;
@@ -97,7 +97,7 @@ Bridge.define('ClientTestLibrary.TestValueTypes', {
         testInstanceConstructorsAndMethods: function (assert) {
             assert.expect(18);
 
-            //Check parameterless constructor
+            // Check parameterless constructor
             var a = new ClientTestLibrary.Point();
 
             assert.deepEqual(a.x, 0, "x 0");
@@ -134,7 +134,7 @@ Bridge.define('ClientTestLibrary.TestValueTypes', {
             a.y = 400;
 
             var b = Bridge.merge(new ClientTestLibrary.Point(), {
-                x: 5, 
+                x: 5,
                 y: 7
             } );
             var c = b.test2(a.$clone());
@@ -160,3 +160,6 @@ Bridge.define('ClientTestLibrary.TestValueTypes', {
     }
 });
 
+
+
+Bridge.init();

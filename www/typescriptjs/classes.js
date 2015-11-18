@@ -52,22 +52,6 @@ Bridge.define('Classes.Dog', {
     }
 });
 
-Bridge.define('Classes.MovePoint', {
-    statics: {
-        move: function (p, dx, dy) {
-            return Classes.StaticClass.move(p.$clone(), dx, dy);
-        }
-    },
-    config: {
-        init: function () {
-            Bridge.property(this, "Point", new Classes.Point());
-        }
-    },
-    move: function (dx, dy) {
-        this.setPoint(Classes.MovePoint.move(this.getPoint().$clone(), dx, dy));
-    }
-});
-
 Bridge.define('Classes.Point', {
     x: 0,
     y: 0,
@@ -105,3 +89,20 @@ Bridge.define('Classes.StaticClass', {
     }
 });
 
+Bridge.define('Classes.MovePoint', {
+    statics: {
+        move: function (p, dx, dy) {
+            return Classes.StaticClass.move(p.$clone(), dx, dy);
+        }
+    },
+    config: {
+        init: function () {
+            Bridge.property(this, "Point", new Classes.Point());
+        }
+    },
+    move: function (dx, dy) {
+        this.setPoint(Classes.MovePoint.move(this.getPoint().$clone(), dx, dy));
+    }
+});
+
+Bridge.init();

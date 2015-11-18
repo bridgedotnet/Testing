@@ -38,17 +38,17 @@ Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
         thrownExceptions: function (assert) {
             assert.expect(12);
 
-            //#230
+            // #230
             assert.throws(ClientTestLibrary.TestTryCatchBlocks.tryCatchWithNotCaughtTypedException, "catch me", "A.Typed exception is not Caught");
             assert.ok(ClientTestLibrary.TestTryCatchBlocks.getIsATry(), "A. exception not caught - try section called");
             assert.ok(!ClientTestLibrary.TestTryCatchBlocks.getIsACatch(), "A. exception not caught - catch section not called");
 
-            //#229
+            // #229
             assert.throws(ClientTestLibrary.TestTryCatchBlocks.tryCatchWithNotCaughtTypedExceptionAndArgument, "catch me", "[#229] B. Typed exception is not Caught; and argument");
             assert.ok(ClientTestLibrary.TestTryCatchBlocks.getIsBTry(), "[#229] B. exception not caught - try section called");
             assert.ok(!ClientTestLibrary.TestTryCatchBlocks.getIsBCatch(), "B. exception not caught - catch section not called");
 
-            //#231
+            // #231
             assert.throws(ClientTestLibrary.TestTryCatchBlocks.tryCatchWithRethrow, "catch me", "[#231] C. Rethrow");
             assert.ok(ClientTestLibrary.TestTryCatchBlocks.getIsCTry(), "C. exception caught and re-thrown - try section called");
             assert.ok(ClientTestLibrary.TestTryCatchBlocks.getIsCCatch(), "C. exception caught and re-thrown - catch section called");
@@ -72,7 +72,7 @@ Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
                 exceptionMessage = ex.getMessage();
             }
 
-            //var expectedMessage = Utilities.BrowserHelper.IsPhantomJs()
+            // var expectedMessage = Utilities.BrowserHelper.IsPhantomJs()
             //    ? "undefined is not a constructor (evaluating '\"someString\".SomeNotExistingMethod()')"
             //    : "\"someString\".SomeNotExistingMethod is not a function";
 
@@ -92,7 +92,6 @@ Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
                 $e = Bridge.Exception.create($e);
                 var ex;
                 if (Bridge.is($e, Bridge.ArgumentException)) {
-
                 }
                 else {
                     ex = $e;
@@ -224,3 +223,6 @@ Bridge.define('ClientTestLibrary.TestTryCatchBlocks', {
     }
 });
 
+
+
+Bridge.init();
