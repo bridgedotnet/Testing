@@ -11,6 +11,10 @@ module.exports = function(grunt) {
     }
     , {
         browserName: "googlechrome",
+        platform: "Windows 10"
+    }
+    , {
+        browserName: "googlechrome",
         platform: "linux"
     } 
     //, {
