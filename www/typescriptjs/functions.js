@@ -1,32 +1,35 @@
 ﻿/* global Bridge */
 
-"use strict";
+(function (globals) {
+    "use strict";
 
-Bridge.define('Functions.DelegateClass', {
-    methodVoidDelegate: null,
-    methodStringDelegate: null,
-    methodStringDelegateIntResult: null
-});
-
-Bridge.define('Functions.DelegateInterface');
-
-Bridge.define('Functions.Delegates');
-
-Bridge.define('Functions.Parameters', {
-    getSomething: function (i) {
-        if (i === void 0) { i = 5; }
-        return i;
-    },
-    join: function (numbers) {
-        var s = "";
-        for (var i = 0; i < numbers.length; i++) {
-            s = s + numbers[i];
+    Bridge.define('Functions.DelegateClass', {
+        methodVoidDelegate: null,
+        methodStringDelegate: null,
+        methodStringDelegateIntResult: null
+    });
+    
+    Bridge.define('Functions.Delegates');
+    
+    Bridge.define('Functions.Parameters', {
+        getSomething: function (i) {
+            if (i === void 0) { i = 5; }
+            return i;
+        },
+        join: function (numbers) {
+            if (numbers === void 0) { numbers = []; }
+            var s = "";
+            for (var i = 0; i < numbers.length; i++) {
+                s = s + numbers[i];
+            }
+    
+            return s;
         }
-
-        return s;
-    }
-});
-
-
-
-Bridge.init();
+    });
+    
+    Bridge.define('Functions.DelegateInterface');
+    
+    
+    
+    Bridge.init();
+})(this);
