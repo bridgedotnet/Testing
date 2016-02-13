@@ -1,10 +1,10 @@
 module.exports = function(grunt) {
     var browsers = [
-	// {
-        // browserName: "firefox",
-        // version: "19",
-        // platform: "XP"
-    // }
+    {
+        browserName: "firefox",
+        version: "43",
+        platform: "WIN8"
+    }
     , {
         browserName: "googlechrome",
         platform: "XP"
@@ -18,21 +18,21 @@ module.exports = function(grunt) {
         // platform: 'Mac 10.10',
         // version: '9.2'
     // }
-    ,{
-        browserName: "microsoftedge",
-        platform: "Windows 10"
-    }
+    // ,{
+        // browserName: "microsoftedge",
+        // platform: "Windows 10"
+    // }
     // , {
         // browserName: "android",
         // platform: "android",
         // version: "5.0"
     // }
-	// , {
+    // , {
         // browserName: "internet explorer",
         // platform: "WIN8",
         // version: "10"
     // }
-	];
+    ];
 
     grunt.initConfig({
         connect: {
