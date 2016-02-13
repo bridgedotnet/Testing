@@ -11,16 +11,19 @@ module.exports = function(grunt) {
     }, {
         browserName: "googlechrome",
         platform: "linux"
-    }, {
-        browserName: "iphone",
-        platform: 'Mac 10.10',
-        version: '9.2'
-    }, {
-        browserName: "internet explorer",
+    }, 
+    // {
+        // browserName: "iphone",
+        // platform: 'Mac 10.10',
+        // version: '9.2'
+    // },
+    {
+        browserName: "edge",
         platform: "Windows 10",
         version: "20"
     }, {
         browserName: "android",
+        platform: "android"
         version: "5.0"
     }
 	// , {
