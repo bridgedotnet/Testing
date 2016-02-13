@@ -4,28 +4,29 @@ module.exports = function(grunt) {
         // browserName: "firefox",
         // version: "19",
         // platform: "XP"
-    // },
-	{
+    // }
+    , {
         browserName: "googlechrome",
         platform: "XP"
-    }, {
+    }
+    , {
         browserName: "googlechrome",
         platform: "linux"
-    }, 
-    // {
+    } 
+    //, {
         // browserName: "iphone",
         // platform: 'Mac 10.10',
         // version: '9.2'
-    // },
-    {
-        browserName: "edge",
-        platform: "Windows 10",
-        version: "20"
-    }, {
-        browserName: "android",
-        platform: "android",
-        version: "5.0"
+    // }
+    ,{
+        browserName: "microsoftedge",
+        platform: "Windows 10"
     }
+    // , {
+        // browserName: "android",
+        // platform: "android",
+        // version: "5.0"
+    // }
 	// , {
         // browserName: "internet explorer",
         // platform: "WIN8",
