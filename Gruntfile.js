@@ -23,7 +23,7 @@ module.exports = function(grunt) {
         version: "20"
     }, {
         browserName: "android",
-        platform: "android"
+        platform: "android",
         version: "5.0"
     }
 	// , {
