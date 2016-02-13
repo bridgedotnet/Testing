@@ -11,12 +11,23 @@ module.exports = function(grunt) {
     }, {
         browserName: "googlechrome",
         platform: "linux"
-    }
-	, {
+    }, {
+        browserName: "iphone",
+        platform: 'Mac 10.10',
+        version: '9.2'
+    }, {
         browserName: "internet explorer",
-        platform: "WIN8",
-        version: "10"
+        platform: "Windows 10",
+        version: "20"
+    }, {
+        browserName: "android",
+        version: "5.0"
     }
+	// , {
+        // browserName: "internet explorer",
+        // platform: "WIN8",
+        // version: "10"
+    // }
 	];
 
     grunt.initConfig({

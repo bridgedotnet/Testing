@@ -7305,15 +7305,15 @@ Bridge.Class.generic('Bridge.ReadOnlyCollection$1', function (T) {
             return this.status === Bridge.TaskStatus.faulted;
         },
 
-        _getResult: function (await) {
+        _getResult: function (awaiting) {
             switch (this.status) {
                 case Bridge.TaskStatus.ranToCompletion:
                     return this.result;
                 case Bridge.TaskStatus.canceled:
                     var ex = new Bridge.TaskCanceledException(null, this);
-                    throw await ? ex : new Bridge.AggregateException(null, [ex]);
+                    throw awaiting ? ex : new Bridge.AggregateException(null, [ex]);
                 case Bridge.TaskStatus.faulted:
-                    throw await ? (this.exception.innerExceptions.getCount() > 0 ? this.exception.innerExceptions.get(0) : null) : this.exception;
+                    throw awaiting ? (this.exception.innerExceptions.getCount() > 0 ? this.exception.innerExceptions.get(0) : null) : this.exception;
                 default:
                     throw new Bridge.InvalidOperationException("Task is not yet completed.");
             }
