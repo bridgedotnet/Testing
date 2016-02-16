@@ -8607,7 +8607,7 @@ Bridge.Class.generic('Bridge.ReadOnlyCollection$1', function (T) {
                     res *= fromBase;
                     res += codeValues[code];
 
-                    if (res > Number.MAX_SAFE_INTEGER) {
+                    if (res > scope.internal.typeRanges.Int64_MaxValue_Safe) {
                         throw new Bridge.OverflowException("Value was either too large or too small. Long values are not supported.");
                     }
 
@@ -8869,11 +8869,11 @@ Bridge.Class.generic('Bridge.ReadOnlyCollection$1', function (T) {
             UInt32_MinValue: 0,
             UInt32_MaxValue: 4294967295,
 
-            Int64_MinValue_Safe: Number.MIN_SAFE_INTEGER,
-            Int64_MaxValue_Safe: Number.MAX_SAFE_INTEGER,
+            Int64_MinValue_Safe: -9007199254740991,
+            Int64_MaxValue_Safe: 9007199254740991,
 
             UInt64_MinValue_Safe: 0,
-            UInt64_MaxValue_Safe: Number.MAX_SAFE_INTEGER,
+            UInt64_MaxValue_Safe: 9007199254740991,
 
             Single_MinValue: -3.40282347e+38,
             Single_MaxValue: 3.40282347e+38,

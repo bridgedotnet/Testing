@@ -22176,17 +22176,19 @@
                 Bridge.get(Bridge.Test.Assert).areEqual(expectedValues[i], result);
             }
     
+            //#348
+            //string minDateExpected;
+            //if (Utilities.BrowserHelper.IsFirefox())
+            //{
+            //    minDateExpected = "Mon Jan 01 0001";
+            //}
+            //else
+            //{
+            //    minDateExpected = "Mon Jan 01 1";
+            //}
     
-            var minDateExpected;
-            if (Bridge.get(Bridge.ClientTest.Utilities.BrowserHelper).isFirefox()) {
-                minDateExpected = "Mon Jan 01 0001";
-            }
-            else  {
-                minDateExpected = "Mon Jan 01 1";
-            }
-    
-            var minDate = Bridge.Convert.toDateTime(null, null);
-            Bridge.get(Bridge.Test.Assert).areEqual(minDateExpected, minDate.toDateString());
+            //var minDate = Convert.ToDateTime(null);
+            //Assert.AreEqual(minDateExpected, minDate.ToDateString());
         },
         fromDateTime: function () {
             var expectedValues = [new Date(1999, 12 - 1, 31, 23, 59, 59), new Date(100, 1 - 1, 1, 0, 0, 0), new Date(1492, 2 - 1, 29, 0, 0, 0), new Date(1, 1 - 1, 1, 0, 0, 0)];
@@ -22741,18 +22743,16 @@
             var expectedValues = [100, -100, 0];
             this.verifyViaObj(Bridge.Decimal, Bridge.Convert.toInt64, testValues, expectedValues);
     
-            // IE Tests
-            //decimal[] overflowValues = { decimal.MaxValue, decimal.MinValue };
-            //VerifyThrowsViaObj<OverflowException, decimal>(Convert.ToInt64, overflowValues);
+            var overflowValues = [Bridge.Decimal.MaxValue, Bridge.Decimal.MinValue];
+            this.verifyThrowsViaObj(Bridge.OverflowException, Bridge.Decimal, Bridge.Convert.toInt64, overflowValues);
         },
         fromDouble: function () {
             var testValues = [100.0, -100.0, 0];
             var expectedValues = [100, -100, 0];
             this.verifyViaObj(Number, Bridge.Convert.toInt64, testValues, expectedValues);
     
-            // IE Tests
-            //double[] overflowValues = { double.MaxValue, -double.MaxValue };
-            //VerifyThrowsViaObj<OverflowException, double>(Convert.ToInt64, overflowValues);
+            var overflowValues = [Number.MAX_VALUE, -Number.MAX_VALUE];
+            this.verifyThrowsViaObj(Bridge.OverflowException, Number, Bridge.Convert.toInt64, overflowValues);
         },
         fromInt16: function () {
             var testValues = [100, -100, 0];
@@ -22787,9 +22787,8 @@
             var expectedValues = [100, -100, 0];
             this.verifyViaObj(Number, Bridge.Convert.toInt64, testValues, expectedValues);
     
-            // IE Tests
-            //float[] overflowValues = { float.MaxValue, float.MinValue };
-            //VerifyThrowsViaObj<OverflowException, float>(Convert.ToInt64, overflowValues);
+            var overflowValues = [3.40282347E+38, -3.40282347E+38];
+            this.verifyThrowsViaObj(Bridge.OverflowException, Number, Bridge.Convert.toInt64, overflowValues);
         },
         fromString: function () {
             var longMinValue = -9007199254740991; // Number.MIN_SAFE_INTEGER
@@ -22799,12 +22798,11 @@
             var expectedValues = [100, -100, 0, longMinValue, longMaxValue, 0];
             this.verifyFromString(Bridge.Convert.toInt64, Bridge.Convert.toInt64, testValues, expectedValues);
     
-            // IE Tests
-            //string[] overflowValues = { "1" + longMaxValue.ToString(), longMinValue.ToString() + "1" };
-            //VerifyFromStringThrows<OverflowException>(Convert.ToInt64, Convert.ToInt64, overflowValues);
+            var overflowValues = ["1" + longMaxValue.toString(), longMinValue.toString() + "1"];
+            this.verifyFromStringThrows(Bridge.OverflowException, Bridge.Convert.toInt64, Bridge.Convert.toInt64, overflowValues);
     
-            //string[] formatExceptionValues = { "abba" };
-            //VerifyFromStringThrows<FormatException>(Convert.ToInt64, Convert.ToInt64, formatExceptionValues);
+            var formatExceptionValues = ["abba"];
+            this.verifyFromStringThrows(Bridge.FormatException, Bridge.Convert.toInt64, Bridge.Convert.toInt64, formatExceptionValues);
         },
         fromStringWithBase: function () {
             // As there is a limitation on the range of Long values in JS. We'll test the method against Number.MIN/MAX_SAFE_INTEGER values
@@ -22816,18 +22814,17 @@
             var expectedValues = [0, 0, 0, 0, maxSafeValue, maxSafeValue, maxSafeValue, maxSafeValue, minSafeValue];
             this.verifyFromStringWithBase(Bridge.get(Bridge.ClientTest.ConvertTests.ConvertToInt64Tests.Wrappers).convertFromStrWithBase, testValues, testBases, expectedValues);
     
-            // IE Tests
-            //string[] overflowValues = { "FFE0000000000001", "1777400000000000000001", "1111111111100000000000000000000000000000000000000000000000000001", "9223372036854775808", "-9223372036854775809", "11111111111111111111111111111111111111111111111111111111111111111", "1FFFFffffFFFFffff", "7777777777777777777777777" };
-            //int[] overflowBases = { 16, 8, 2, 10, 10, 2, 16, 8 };
-            //VerifyFromStringWithBaseThrows<OverflowException>(Wrappers.ConvertFromStrWithBase, overflowValues, overflowBases);
+            var overflowValues = ["FFE0000000000001", "1777400000000000000001", "1111111111100000000000000000000000000000000000000000000000000001", "9223372036854775808", "-9223372036854775809", "11111111111111111111111111111111111111111111111111111111111111111", "1FFFFffffFFFFffff", "7777777777777777777777777"];
+            var overflowBases = [16, 8, 2, 10, 10, 2, 16, 8];
+            this.verifyFromStringWithBaseThrows(Bridge.OverflowException, Bridge.get(Bridge.ClientTest.ConvertTests.ConvertToInt64Tests.Wrappers).convertFromStrWithBase, overflowValues, overflowBases);
     
-            //string[] formatExceptionValues = { "12", "ffffffffffffffffffff" };
-            //int[] formatExceptionBases = { 2, 8 };
-            //VerifyFromStringWithBaseThrows<FormatException>(Wrappers.ConvertFromStrWithBase, formatExceptionValues, formatExceptionBases);
+            var formatExceptionValues = ["12", "ffffffffffffffffffff"];
+            var formatExceptionBases = [2, 8];
+            this.verifyFromStringWithBaseThrows(Bridge.FormatException, Bridge.get(Bridge.ClientTest.ConvertTests.ConvertToInt64Tests.Wrappers).convertFromStrWithBase, formatExceptionValues, formatExceptionBases);
     
-            //string[] argumentExceptionValues = { "10", "11", "abba", "-ab" };
-            //int[] argumentExceptionBases = { -1, 3, 0, 16 };
-            //VerifyFromStringWithBaseThrows<ArgumentException>(Wrappers.ConvertFromStrWithBase, argumentExceptionValues, argumentExceptionBases);
+            var argumentExceptionValues = ["10", "11", "abba", "-ab"];
+            var argumentExceptionBases = [-1, 3, 0, 16];
+            this.verifyFromStringWithBaseThrows(Bridge.ArgumentException, Bridge.get(Bridge.ClientTest.ConvertTests.ConvertToInt64Tests.Wrappers).convertFromStrWithBase, argumentExceptionValues, argumentExceptionBases);
         },
         fromUInt16: function () {
             var testValues = [100, 0];
@@ -22844,9 +22841,8 @@
             var expectedValues = [100, 0];
             this.verifyViaObj(Bridge.Int, Bridge.Convert.toInt64, testValues, expectedValues);
     
-            // IE Tests
-            //ulong[] overflowValues = { 9007199254740992 }; // Number.MAX_SAFE_INTEGER + 1
-            //VerifyThrowsViaObj<OverflowException, ulong>(Convert.ToInt64, overflowValues);
+            var overflowValues = [9007199254740992]; // Number.MAX_SAFE_INTEGER + 1
+            this.verifyThrowsViaObj(Bridge.OverflowException, Bridge.Int, Bridge.Convert.toInt64, overflowValues);
         }
     });
     
@@ -23380,18 +23376,16 @@
             var expectedValues = [1000, 0];
             this.verifyViaObj(Bridge.Decimal, Bridge.Convert.toUInt64, testValues, expectedValues);
     
-            // IE Tests
-            //decimal[] overflowValues = { decimal.MinValue, decimal.MaxValue };
-            //VerifyThrowsViaObj<OverflowException, decimal>(Convert.ToUInt64, overflowValues);
+            var overflowValues = [Bridge.Decimal.MinValue, Bridge.Decimal.MaxValue];
+            this.verifyThrowsViaObj(Bridge.OverflowException, Bridge.Decimal, Bridge.Convert.toUInt64, overflowValues);
         },
         fromDouble: function () {
             var testValues = [1000.0, 0.0];
             var expectedValues = [Bridge.cast(1000, Bridge.Int), Bridge.cast(0, Bridge.Int)];
             this.verifyViaObj(Number, Bridge.Convert.toUInt64, testValues, expectedValues);
     
-            // IE Tests
-            //double[] overflowValues = { double.MaxValue, -100.0 };
-            //VerifyThrowsViaObj<OverflowException, double>(Convert.ToUInt64, overflowValues);
+            var overflowValues = [Number.MAX_VALUE, -100.0];
+            this.verifyThrowsViaObj(Bridge.OverflowException, Number, Bridge.Convert.toUInt64, overflowValues);
         },
         fromInt16: function () {
             var testValues = [1000, 0, 32767];
@@ -23438,9 +23432,8 @@
             var expectedValues = [1000, 0];
             this.verifyViaObj(Number, Bridge.Convert.toUInt64, testValues, expectedValues);
     
-            // IE Tests
-            //float[] overflowValues = { float.MaxValue, -100.0f };
-            //VerifyThrowsViaObj<OverflowException, float>(Convert.ToUInt64, overflowValues);
+            var overflowValues = [3.40282347E+38, -100.0];
+            this.verifyThrowsViaObj(Bridge.OverflowException, Number, Bridge.Convert.toUInt64, overflowValues);
         },
         fromString: function () {
             var ushortMaxValue = 65535;
@@ -23450,17 +23443,16 @@
             var expectedValues = [1000, 0, 65535, 4294967295, 0];
             this.verifyFromString(Bridge.Convert.toUInt64, Bridge.Convert.toUInt64, testValues, expectedValues);
     
-            // IE Tests
-            //var longMaxValue = 9007199254740991;    // Number.MAX_SAFE_INTEGER
-            //string[] testValuesLong = { longMaxValue.ToString(), "9007199254740990" };
-            //ulong[] expectedValuesLong = {(ulong)longMaxValue, (ulong)longMaxValue - 1 };
-            //VerifyFromString(Convert.ToUInt64, Convert.ToUInt64, testValues, expectedValues);
+            var longMaxValue = 9007199254740991; // Number.MAX_SAFE_INTEGER
+            var testValuesLong = [longMaxValue.toString(), "9007199254740990"];
+            var expectedValuesLong = [Bridge.cast(longMaxValue, Bridge.Int), Bridge.cast(longMaxValue, Bridge.Int) - 1];
+            this.verifyFromString(Bridge.Convert.toUInt64, Bridge.Convert.toUInt64, testValuesLong, expectedValuesLong);
     
-            //string[] overflowValues = { "-1", decimal.MaxValue.ToFixed(0, MidpointRounding.AwayFromZero) };
-            //VerifyFromStringThrows<OverflowException>(Convert.ToUInt64, Convert.ToUInt64, overflowValues);
+            var overflowValues = ["-1", Bridge.Decimal.MaxValue.toFixed(0, 4)];
+            this.verifyFromStringThrows(Bridge.OverflowException, Bridge.Convert.toUInt64, Bridge.Convert.toUInt64, overflowValues);
     
-            //string[] formatExceptionValues = { "abba" };
-            //VerifyFromStringThrows<FormatException>(Convert.ToUInt64, Convert.ToUInt64, formatExceptionValues);
+            var formatExceptionValues = ["abba"];
+            this.verifyFromStringThrows(Bridge.FormatException, Bridge.Convert.toUInt64, Bridge.Convert.toUInt64, formatExceptionValues);
         },
         fromStringWithBase: function () {
             // As there is a limitation on the range of Long values in JS. We'll test the method agains Number.MIN/MAX_SAFE_INTEGER values
@@ -23475,10 +23467,9 @@
             var overflowBases = [10, 10];
             this.verifyFromStringWithBaseThrows(Bridge.OverflowException, Bridge.get(Bridge.ClientTest.ConvertTests.ConvertToUInt64Tests.Wrappers).convertFromStrWithBase, overflowValues, overflowBases);
     
-            // IE Tests
-            //string[] overflowValuesBig = { "FFE0000000000001", "1777400000000000000001", "1111111111100000000000000000000000000000000000000000000000000001", "9223372036854775808", "11111111111111111111111111111111111111111111111111111111111111111", "1FFFFffffFFFFffff", "7777777777777777777777777" };
-            //int[] overflowBasesBig = { 16, 8, 2, 10, 2, 16, 8 };
-            //VerifyFromStringWithBaseThrows<OverflowException>(Wrappers.ConvertFromStrWithBase, overflowValuesBig, overflowBasesBig);
+            var overflowValuesBig = ["FFE0000000000001", "1777400000000000000001", "1111111111100000000000000000000000000000000000000000000000000001", "9223372036854775808", "11111111111111111111111111111111111111111111111111111111111111111", "1FFFFffffFFFFffff", "7777777777777777777777777"];
+            var overflowBasesBig = [16, 8, 2, 10, 2, 16, 8];
+            this.verifyFromStringWithBaseThrows(Bridge.OverflowException, Bridge.get(Bridge.ClientTest.ConvertTests.ConvertToUInt64Tests.Wrappers).convertFromStrWithBase, overflowValuesBig, overflowBasesBig);
     
             var formatExceptionValues = ["12", "ffffffffffffffffffff"];
             var formatExceptionBases = [2, 8];
