@@ -11207,8 +11207,8 @@ Bridge.Class.generic('Bridge.ReadOnlyCollection$1', function (T) {
             this.setLog(document.getElementById("log"));
     
             this.getCanvas().onclick = Bridge.fn.bind(this, this.clickHandler);
-            this.getCanvas().onTouchStart = Bridge.fn.bind(this, this.touchStartHandler);
-            this.getCanvas().onTouchEnd = Bridge.fn.bind(this, this.touchEndHandler);
+            this.getCanvas().ontouchstart = Bridge.fn.bind(this, this.touchStartHandler);
+            this.getCanvas().ontouchend = Bridge.fn.bind(this, this.touchEndHandler);
             //el.addEventListener("touchend", handleEnd, false);
             //el.addEventListener("touchcancel", handleCancel, false);
             //el.addEventListener("touchmove", handleMove, false);
