@@ -11180,7 +11180,7 @@ Bridge.Class.generic('Bridge.ReadOnlyCollection$1', function (T) {
 (function (globals) {
     "use strict";
 
-    Bridge.define('ClassLibrary4.Class1', {
+    Bridge.define('ClassLibrary4.TouchSample', {
         statics: {
             config: {
                 init: function () {
@@ -11188,30 +11188,49 @@ Bridge.Class.generic('Bridge.ReadOnlyCollection$1', function (T) {
                 }
             },
             start: function () {
-                new ClassLibrary4.Class1().initialize();
+                new ClassLibrary4.TouchSample().initialize();
             }
         },
+        canvas: null,
+        context2D: null,
         config: {
             properties: {
-                Canvas: null,
-                Log: null
+                Log: null,
+                OngoingTouches: null
             }
+        },
+        getCanvas: function () {
+            return this.canvas;
+        },
+        setCanvas: function (value) {
+            this.canvas = value;
+    
+            if (!Bridge.hasValue(this.canvas)) {
+                this.context2D = null;
+            }
+            else  {
+                this.context2D = this.canvas.getContext("2d");
+            }
+        },
+        getContext2D: function () {
+            return this.context2D;
         },
         logMessage: function (message, newLine) {
             if (newLine === void 0) { newLine = true; }
             this.getLog().innerHTML += message + (newLine ? "\n" : "");
         },
         initialize: function () {
+            this.setOngoingTouches(new Bridge.List$1(ClassLibrary4.TouchShadow)());
+    
             this.setCanvas(document.getElementById("canvas"));
     
             this.setLog(document.getElementById("log"));
     
-            this.getCanvas().onclick = Bridge.fn.bind(this, this.clickHandler);
-            this.getCanvas().ontouchstart = Bridge.fn.bind(this, this.touchStartHandler);
-            this.getCanvas().ontouchend = Bridge.fn.bind(this, this.touchEndHandler);
-            //el.addEventListener("touchend", handleEnd, false);
-            //el.addEventListener("touchcancel", handleCancel, false);
-            //el.addEventListener("touchmove", handleMove, false);
+            this.getCanvas().onclick = Bridge.fn.combine(this.getCanvas().onclick, Bridge.fn.bind(this, this.clickHandler));
+            this.getCanvas().ontouchstart = Bridge.fn.combine(this.getCanvas().ontouchstart, Bridge.fn.bind(this, this.touchStartHandler));
+            this.getCanvas().ontouchmove = Bridge.fn.combine(this.getCanvas().ontouchmove, Bridge.fn.bind(this, this.touchMoveHandler));
+            this.getCanvas().ontouchend = Bridge.fn.combine(this.getCanvas().ontouchend, Bridge.fn.bind(this, this.touchEndHandler));
+            this.getCanvas().ontouchcancel = Bridge.fn.combine(this.getCanvas().ontouchcancel, Bridge.fn.bind(this, this.touchCancelHandler));
     
     
             this.logMessage("Initialized.");
@@ -11219,11 +11238,144 @@ Bridge.Class.generic('Bridge.ReadOnlyCollection$1', function (T) {
         clickHandler: function (e) {
             this.logMessage("ClickHandler.");
         },
-        touchStartHandler: function (e) {
+        touchStartHandler: function (evt) {
             this.logMessage("TouchStart.");
+    
+            var ctx = this.getContext2D();
+            var touches = evt.touches;
+    
+            for (var i = 0; i < touches.length; i++) {
+                this.logMessage("touchstart:" + i + "...");
+    
+                var t = touches.item(i);
+    
+                this.getOngoingTouches().add(this.copyTouch(t));
+    
+                var color = this.colorForTouch(t);
+    
+                ctx.beginPath();
+                ctx.arc(t.pageX, t.pageY, 4, 0, 2 * Math.PI, false); // a circle at the start
+    
+                ctx.fillStyle = color;
+                ctx.fill();
+    
+                this.logMessage("touchstart:" + i + ".");
+            }
         },
-        touchEndHandler: function (e) {
-            this.logMessage("TouchEnd.");
+        touchMoveHandler: function (evt) {
+            evt.preventDefault();
+    
+            var ctx = this.getContext2D();
+    
+            var touches = evt.changedTouches;
+    
+            for (var i = 0; i < touches.length; i++) {
+                var t = touches.item(i);
+    
+                var color = this.colorForTouch(t);
+    
+                var idx = this.ongoingTouchIndexById(t.identifier);
+    
+                if (idx >= 0) {
+                    this.logMessage("continuing touch " + idx);
+    
+                    ctx.beginPath();
+    
+                    this.logMessage("ctx.moveTo(" + this.getOngoingTouches().getItem(idx).getPageX() + ", " + this.getOngoingTouches().getItem(idx).getPageY() + ");");
+                    ctx.moveTo(this.getOngoingTouches().getItem(idx).getPageX(), this.getOngoingTouches().getItem(idx).getPageY());
+    
+                    this.logMessage("ctx.lineTo(" + t.pageX + ", " + t.pageY + ");");
+                    ctx.lineTo(t.pageX, t.pageY);
+                    ctx.lineWidth = 4;
+                    ctx.strokeStyle = color;
+                    ctx.stroke();
+    
+                    this.getOngoingTouches().splice(idx, 1, [this.copyTouch(t)]); // swap in the new touch record
+    
+                    this.logMessage(".");
+                }
+                else  {
+                    this.logMessage("can't figure out which touch to continue");
+                }
+            }
+        },
+        touchEndHandler: function (evt) {
+            evt.preventDefault();
+            this.logMessage("touchend");
+    
+            var ctx = this.getContext2D();
+            var touches = evt.changedTouches;
+    
+            for (var i = 0; i < touches.length; i++) {
+                var t = touches.item(i);
+    
+                var color = this.colorForTouch(t);
+                var idx = this.ongoingTouchIndexById(t.identifier);
+    
+                if (idx >= 0) {
+                    ctx.lineWidth = 4;
+                    ctx.fillStyle = color;
+                    ctx.beginPath();
+                    ctx.moveTo(this.getOngoingTouches().getItem(idx).getPageX(), this.getOngoingTouches().getItem(idx).getPageY());
+                    ctx.lineTo(t.pageX, t.pageY);
+                    ctx.fillRect(t.pageX - 4, t.pageY - 4, 8, 8); // and a square at the end
+    
+                    this.getOngoingTouches().splice(idx, 1); // remove it; we're done
+                }
+                else  {
+                    this.logMessage("can't figure out which touch to end");
+                }
+            }
+        },
+        touchCancelHandler: function (evt) {
+            evt.preventDefault();
+    
+            this.logMessage("touchcancel.");
+            var touches = evt.changedTouches;
+    
+            for (var i = 0; i < touches.length; i++) {
+                this.getOngoingTouches().splice(i, 1); // remove it; we're done
+            }
+        },
+        copyTouch: function (source) {
+            return Bridge.merge(new ClassLibrary4.TouchShadow(), {
+                setIdentifier: source.identifier,
+                setPageX: source.pageX,
+                setPageY: source.pageY
+            } );
+        },
+        colorForTouch: function (touch) {
+            var r = touch.identifier % 16;
+            var g = Math.floor(Bridge.cast((Bridge.Int.div(touch.identifier, 3)), Number)) % 16;
+            var b = Math.floor(Bridge.cast((Bridge.Int.div(touch.identifier, 7)), Number)) % 16;
+    
+            var rx = Bridge.Int.format(r, "X"); // make it a hex digit
+            var gx = Bridge.Int.format(g, "X"); // make it a hex digit
+            var bx = Bridge.Int.format(b, "X"); // make it a hex digit
+            var color = "#" + rx + gx + bx;
+    
+            this.logMessage("color for touch with identifier " + touch.identifier + " = " + color);
+    
+            return color;
+        },
+        ongoingTouchIndexById: function (id) {
+            for (var i = 0; i < this.getOngoingTouches().getCount(); i++) {
+                if (this.getOngoingTouches().getItem(i).getIdentifier() === id) {
+                    return i;
+                }
+            }
+    
+            return -1; // not found
+        }
+    });
+    
+    Bridge.define('ClassLibrary4.TouchShadow', {
+        config: {
+            properties: {
+                Identifier: 0,
+                PageX: 0,
+                PageY: 0
+            }
         }
     });
     
