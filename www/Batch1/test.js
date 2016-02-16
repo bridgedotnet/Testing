@@ -1875,6 +1875,16 @@
         }
     });
     
+    Bridge.define('Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_BridgeIssues_Bridge975', {
+        inherits: [Bridge.Test.QUnit.TestFixture$1(Bridge.ClientTest.BridgeIssues.Bridge975)],
+        statics: {
+            testCastToLongWorksForBigNumberInIE: function (assert) {
+                var t = Bridge.get(Bridge.Test.QUnit.TestFixture$1(Bridge.ClientTest.BridgeIssues.Bridge975))._BeforeTest(true, assert, 1);
+                Bridge.get(Bridge.ClientTest.BridgeIssues.Bridge975).testCastToLongWorksForBigNumberInIE();
+            }
+        }
+    });
+    
     Bridge.define('Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_BridgeIssues_TestBridgeIssues', {
         inherits: [Bridge.Test.QUnit.TestFixture$1(Bridge.ClientTest.BridgeIssues.TestBridgeIssues)],
         statics: {
@@ -8634,6 +8644,7 @@
                 QUnit.test("#933 - TestBooleanInIfStatement", Bridge.get(Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_BridgeIssues_Bridge933).testBooleanInIfStatement);
                 QUnit.test("#968 - TestDecimalDoesNotParseIncorrectValue", Bridge.get(Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_BridgeIssues_Bridge968).testDecimalDoesNotParseIncorrectValue);
                 QUnit.test("#968 - TestDecimalParsesCorrectValues", Bridge.get(Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_BridgeIssues_Bridge968).testDecimalParsesCorrectValues);
+                QUnit.test("#975 - TestCastToLongWorksForBigNumberInIE", Bridge.get(Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_BridgeIssues_Bridge975).testCastToLongWorksForBigNumberInIE);
                 QUnit.test("#522 - TestUseCase1", Bridge.get(Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_BridgeIssues_Bridge522).testUseCase1);
                 QUnit.test("#522 - TestUseCase2", Bridge.get(Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_BridgeIssues_Bridge522).testUseCase2);
                 QUnit.test("#537 - TestUseCase", Bridge.get(Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_BridgeIssues_Bridge537).testUseCase);

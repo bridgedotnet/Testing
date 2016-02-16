@@ -3139,7 +3139,7 @@
         inherits: [Bridge.IComparable, Bridge.IFormattable],
         statics: {
             instanceOf: function (instance) {
-                return typeof(instance) === "number" && isFinite(instance) && Math.round(instance, 0) === instance;
+                return typeof(instance) === "number" && isFinite(instance) && Math.floor(instance, 0) === instance;
             },
 
             getDefaultValue: function () {
@@ -8497,7 +8497,7 @@ Bridge.Class.generic('Bridge.ReadOnlyCollection$1', function (T) {
                         return String.fromCharCode(value);
                     }
 
-                    if (Number.isNaN(value)) {
+                    if (isNaN(value)) {
                         return "NaN";
                     }
 
@@ -9292,7 +9292,7 @@ Bridge.Class.generic('Bridge.ReadOnlyCollection$1', function (T) {
             return decodedBytes;
         },
 
-        fromBase64_Decode(input, inputIndex, inputLength, dest, destIndex, destLength) {
+        fromBase64_Decode: function (input, inputIndex, inputLength, dest, destIndex, destLength) {
             var startDestIndex = destIndex;
 
             // You may find this method weird to look at. Its written for performance, not aesthetics.
