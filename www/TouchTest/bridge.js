@@ -11239,8 +11239,6 @@ Bridge.Class.generic('Bridge.ReadOnlyCollection$1', function (T) {
             this.logMessage("ClickHandler.");
         },
         touchStartHandler: function (evt) {
-            this.logMessage("TouchStart.");
-    
             var ctx = this.getContext2D();
             var touches = evt.touches;
     
@@ -11272,25 +11270,28 @@ Bridge.Class.generic('Bridge.ReadOnlyCollection$1', function (T) {
             for (var i = 0; i < touches.length; i++) {
                 var t = touches.item(i);
     
-                var color = this.colorForTouch(t);
-    
                 var idx = this.ongoingTouchIndexById(t.identifier);
     
                 if (idx >= 0) {
                     this.logMessage("continuing touch " + idx);
     
+                    var color = this.colorForTouch(t);
+    
                     ctx.beginPath();
     
-                    this.logMessage("ctx.moveTo(" + this.getOngoingTouches().getItem(idx).getPageX() + ", " + this.getOngoingTouches().getItem(idx).getPageY() + ");");
-                    ctx.moveTo(this.getOngoingTouches().getItem(idx).getPageX(), this.getOngoingTouches().getItem(idx).getPageY());
+                    var ogt = this.getOngoingTouches().getItem(idx);
+    
+                    this.logMessage("ctx.moveTo(" + ogt.getPageX() + ", " + ogt.getPageY() + ");");
+                    ctx.moveTo(ogt.getPageX(), ogt.getPageY());
     
                     this.logMessage("ctx.lineTo(" + t.pageX + ", " + t.pageY + ");");
                     ctx.lineTo(t.pageX, t.pageY);
                     ctx.lineWidth = 4;
+    
                     ctx.strokeStyle = color;
                     ctx.stroke();
     
-                    this.getOngoingTouches().splice(idx, 1, [this.copyTouch(t)]); // swap in the new touch record
+                    this.getOngoingTouches().setItem(idx, this.copyTouch(t)); // swap in the new touch record
     
                     this.logMessage(".");
                 }
@@ -11309,18 +11310,22 @@ Bridge.Class.generic('Bridge.ReadOnlyCollection$1', function (T) {
             for (var i = 0; i < touches.length; i++) {
                 var t = touches.item(i);
     
-                var color = this.colorForTouch(t);
                 var idx = this.ongoingTouchIndexById(t.identifier);
     
                 if (idx >= 0) {
+                    var color = this.colorForTouch(t);
+    
                     ctx.lineWidth = 4;
                     ctx.fillStyle = color;
                     ctx.beginPath();
-                    ctx.moveTo(this.getOngoingTouches().getItem(idx).getPageX(), this.getOngoingTouches().getItem(idx).getPageY());
+    
+                    var ogt = this.getOngoingTouches().getItem(idx);
+    
+                    ctx.moveTo(ogt.getPageX(), ogt.getPageY());
                     ctx.lineTo(t.pageX, t.pageY);
                     ctx.fillRect(t.pageX - 4, t.pageY - 4, 8, 8); // and a square at the end
     
-                    this.getOngoingTouches().splice(idx, 1); // remove it; we're done
+                    this.getOngoingTouches().removeAt(idx); // remove it; we're done
                 }
                 else  {
                     this.logMessage("can't figure out which touch to end");
@@ -11334,7 +11339,7 @@ Bridge.Class.generic('Bridge.ReadOnlyCollection$1', function (T) {
             var touches = evt.changedTouches;
     
             for (var i = 0; i < touches.length; i++) {
-                this.getOngoingTouches().splice(i, 1); // remove it; we're done
+                this.getOngoingTouches().removeAt(1); // remove it; we're done
             }
         },
         copyTouch: function (source) {
