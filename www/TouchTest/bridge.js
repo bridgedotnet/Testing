@@ -11249,7 +11249,7 @@ Bridge.Class.generic('Bridge.ReadOnlyCollection$1', function (T) {
     
                 this.getOngoingTouches().add(this.copyTouch(t));
     
-                var color = this.colorForTouch(t);
+                var color = this.colorForTouch(t, t.identifier + " start idx " + (this.getOngoingTouches().getCount() - 1) + " ");
     
                 ctx.beginPath();
                 ctx.arc(t.pageX, t.pageY, 4, 0, 2 * Math.PI, false); // a circle at the start
@@ -11275,7 +11275,7 @@ Bridge.Class.generic('Bridge.ReadOnlyCollection$1', function (T) {
                 if (idx >= 0) {
                     this.logMessage("continuing touch " + idx);
     
-                    var color = this.colorForTouch(t);
+                    var color = this.colorForTouch(t, t.identifier + " move idx " + idx + " ");
     
                     ctx.beginPath();
     
@@ -11313,7 +11313,7 @@ Bridge.Class.generic('Bridge.ReadOnlyCollection$1', function (T) {
                 var idx = this.ongoingTouchIndexById(t.identifier);
     
                 if (idx >= 0) {
-                    var color = this.colorForTouch(t);
+                    var color = this.colorForTouch(t, t.identifier + " end idx " + idx + " ");
     
                     ctx.lineWidth = 4;
                     ctx.fillStyle = color;
@@ -11349,7 +11349,7 @@ Bridge.Class.generic('Bridge.ReadOnlyCollection$1', function (T) {
                 setPageY: source.pageY
             } );
         },
-        colorForTouch: function (touch) {
+        colorForTouch: function (touch, who) {
             var r = touch.identifier % 16;
             var g = Math.floor(Bridge.cast((Bridge.Int.div(touch.identifier, 3)), Number)) % 16;
             var b = Math.floor(Bridge.cast((Bridge.Int.div(touch.identifier, 7)), Number)) % 16;
@@ -11359,7 +11359,7 @@ Bridge.Class.generic('Bridge.ReadOnlyCollection$1', function (T) {
             var bx = Bridge.Int.format(b, "X"); // make it a hex digit
             var color = "#" + rx + gx + bx;
     
-            this.logMessage("color for touch with identifier " + touch.identifier + " = " + color);
+            this.logMessage(who + " color for touch with identifier " + touch.identifier + " = " + color);
     
             return color;
         },
