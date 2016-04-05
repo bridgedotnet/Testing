@@ -4,18 +4,23 @@
     Bridge.define('BasicTypes.BasicTypes', {
         boolValue: true,
         integerValue: -1000,
-        floatValue: Bridge.cast(2.3, Number),
+        floatValue: 2.3,
         stringValue: "Some string value",
+        integerArray: null,
+        stringArray: null,
+        colorArray: null,
+        twoDimensionalArray: null,
+        colorValue: 1,
         anyValueString: "AnyValueString",
         anyValueInteger: 1,
         dynamicValueInteger: 7,
+        undefinedValue: null,
         config: {
             init: function () {
                 this.integerArray = [1, 2, 3];
                 this.stringArray = ["1", "2", "3"];
                 this.colorArray = [BasicTypes.Color.blue, BasicTypes.Color.green, BasicTypes.Color.red];
                 this.twoDimensionalArray = [[1, 2, 3], [5, 8]];
-                this.colorValue = BasicTypes.Color.green;
                 this.undefinedValue = undefined;
             }
         },

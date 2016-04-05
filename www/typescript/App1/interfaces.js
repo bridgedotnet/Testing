@@ -96,7 +96,5 @@
         }
     });
     
-    
-    
     Bridge.init();
 })(this);

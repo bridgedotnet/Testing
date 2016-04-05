@@ -17,6 +17,25 @@
         }
     });
     
+    Bridge.define('Classes.MovePoint', {
+        statics: {
+            move: function (p, dx, dy) {
+                return Classes.StaticClass.move(p.$clone(), dx, dy);
+            }
+        },
+        config: {
+            properties: {
+                Point: null
+            },
+            init: function () {
+                this.Point = new Classes.Point();
+            }
+        },
+        move: function (dx, dy) {
+            this.setPoint(Classes.MovePoint.move(this.getPoint().$clone(), dx, dy).$clone());
+        }
+    });
+    
     Bridge.define('Classes.Point', {
         statics: {
             getDefaultValue: function () { return new Classes.Point(); }
@@ -46,6 +65,14 @@
             s.x = this.x;
             s.y = this.y;
             return s;
+        }
+    });
+    
+    Bridge.define('Classes.StaticClass', {
+        statics: {
+            move: function (p, dx, dy) {
+                return new Classes.Point("constructor$1", ((p.x + dx) | 0), ((p.y + dy) | 0));
+            }
         }
     });
     
@@ -80,30 +107,6 @@
         },
         move: function () {
             return 5;
-        }
-    });
-    
-    Bridge.define('Classes.StaticClass', {
-        statics: {
-            move: function (p, dx, dy) {
-                return new Classes.Point("constructor$1", p.x + dx, p.y + dy);
-            }
-        }
-    });
-    
-    Bridge.define('Classes.MovePoint', {
-        statics: {
-            move: function (p, dx, dy) {
-                return Bridge.get(Classes.StaticClass).move(p.$clone(), dx, dy);
-            }
-        },
-        config: {
-            init: function () {
-                Bridge.property(this, "Point", new Classes.Point());
-            }
-        },
-        move: function (dx, dy) {
-            this.setPoint(Bridge.get(Classes.MovePoint).move(this.getPoint().$clone(), dx, dy).$clone());
         }
     });
     
