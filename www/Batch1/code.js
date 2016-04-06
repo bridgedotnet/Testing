@@ -28141,6 +28141,389 @@ SomeExternalNamespace.SomeNonBridgeClass.prototype.foo = function(){return 1;};
         }
     });
     
+    Bridge.define('Bridge.ClientTest.Threading.TimerTests', {
+        statics: {
+            config: {
+                properties: {
+                    StaticCounter: 0,
+                    StaticData: null
+                }
+            },
+            staticHandleTimer: function (state) {
+                Bridge.ClientTest.Threading.TimerTests.setStaticCounter((Bridge.ClientTest.Threading.TimerTests.getStaticCounter() + 1) | 0);
+                Bridge.ClientTest.Threading.TimerTests.setStaticData(state);
+            },
+            testStaticCallbackWithDispose: function () {
+                var $step = 0,
+                    $task1, 
+                    $task2, 
+                    $jumpFromFinally, 
+                    done, 
+                    timer, 
+                    count, 
+                    $asyncBody = Bridge.fn.bind(this, function () {
+                        for (;;) {
+                            $step = Bridge.Array.min([0,1,2], $step);
+                            switch ($step) {
+                                case 0: {
+                                    done = Bridge.Test.Assert.async();
+                                    
+                                    Bridge.ClientTest.Threading.TimerTests.setStaticCounter(0);
+                                    Bridge.ClientTest.Threading.TimerTests.setStaticData(null);
+                                    
+                                    timer = new Bridge.Threading.Timer("constructor$1", Bridge.ClientTest.Threading.TimerTests.staticHandleTimer, "SomeState", 1, 1);
+                                    
+                                    $task2 = Bridge.Task.delay(200);
+                                    $step = 1;
+                                    $task2.continueWith($asyncBody, true);
+                                    return;
+                                }
+                                case 1: {
+                                    $task2.getAwaitedResult();
+                                    
+                                    count = Bridge.ClientTest.Threading.TimerTests.getStaticCounter();
+                                    timer.dispose();
+                                    
+                                    Bridge.Test.Assert.throws$7(Bridge.InvalidOperationException, function () {
+                                        timer.change(1, 1);
+                                    }, "No change after Dispose allowed");
+                                    Bridge.Test.Assert.true$1(count > 0, "Ticks: " + count);
+                                    Bridge.Test.Assert.areEqual$1("SomeState", Bridge.ClientTest.Threading.TimerTests.getStaticData(), "State works");
+                                    
+                                    $task1 = Bridge.Task.delay(200);
+                                    $step = 2;
+                                    $task1.continueWith($asyncBody, true);
+                                    return;
+                                }
+                                case 2: {
+                                    $task1.getAwaitedResult();
+                                    
+                                    Bridge.Test.Assert.areEqual$1(count, Bridge.ClientTest.Threading.TimerTests.getStaticCounter(), "Timer disposed - no more ticks");
+                                    
+                                    done();
+                                    return;
+                                }
+                                default: {
+                                    return;
+                                }
+                            }
+                        }
+                    }, arguments);
+    
+                $asyncBody();
+            },
+            testInstanceCallbackWithDispose: function () {
+                var $step = 0,
+                    $task1, 
+                    $task2, 
+                    $jumpFromFinally, 
+                    done, 
+                    ts, 
+                    timer, 
+                    count, 
+                    $asyncBody = Bridge.fn.bind(this, function () {
+                        for (;;) {
+                            $step = Bridge.Array.min([0,1,2], $step);
+                            switch ($step) {
+                                case 0: {
+                                    done = Bridge.Test.Assert.async();
+                                    
+                                    ts = new Bridge.ClientTest.Threading.TimerTests.TimerState();
+                                    timer = new Bridge.Threading.Timer("constructor$1", Bridge.fn.bind(ts, ts.handleTimer), "SomeState", 1, 1);
+                                    
+                                    $task2 = Bridge.Task.delay(200);
+                                    $step = 1;
+                                    $task2.continueWith($asyncBody, true);
+                                    return;
+                                }
+                                case 1: {
+                                    $task2.getAwaitedResult();
+                                    
+                                    count = ts.getCounter();
+                                    timer.dispose();
+                                    
+                                    Bridge.Test.Assert.throws$7(Bridge.InvalidOperationException, function () {
+                                        timer.change(1, 1);
+                                    }, "No change after Dispose allowed");
+                                    Bridge.Test.Assert.true$1(count > 0, "Ticks: " + count);
+                                    Bridge.Test.Assert.areEqual$1("SomeState", ts.getData(), "State works");
+                                    
+                                    $task1 = Bridge.Task.delay(200);
+                                    $step = 2;
+                                    $task1.continueWith($asyncBody, true);
+                                    return;
+                                }
+                                case 2: {
+                                    $task1.getAwaitedResult();
+                                    
+                                    Bridge.Test.Assert.areEqual$1(count, ts.getCounter(), "Timer disposed - no more ticks");
+                                    
+                                    done();
+                                    return;
+                                }
+                                default: {
+                                    return;
+                                }
+                            }
+                        }
+                    }, arguments);
+    
+                $asyncBody();
+            }
+        },
+        testTimerThrows: function () {
+            var ts = new Bridge.ClientTest.Threading.TimerTests.TimerState();
+            var tc = Bridge.fn.bind(ts, ts.handleTimer);
+    
+            var okSpan = Bridge.TimeSpan.fromMilliseconds(1);
+            var smallSpan = Bridge.TimeSpan.fromMilliseconds(-2);
+            var bigSpan = Bridge.TimeSpan.fromMilliseconds(Bridge.Long([0,1]));
+    
+            var small = -2;
+            var big = Bridge.Long([0,1]);
+    
+            Bridge.Test.Assert.throws$7(Bridge.ArgumentNullException, $_.Bridge.ClientTest.Threading.TimerTests.f1, "Null callback");
+    
+            Bridge.Test.Assert.throws$7(Bridge.ArgumentOutOfRangeException, function () {
+                new Bridge.Threading.Timer("constructor$1", tc, null, small, 1);
+            }, "Small due int");
+            Bridge.Test.Assert.throws$7(Bridge.ArgumentOutOfRangeException, function () {
+                new Bridge.Threading.Timer("constructor$1", tc, null, 1, small);
+            }, "Small period int ");
+    
+            Bridge.Test.Assert.throws$7(Bridge.ArgumentOutOfRangeException, function () {
+                new Bridge.Threading.Timer("constructor$2", tc, null, Bridge.Long(Bridge.Long(small)), Bridge.Long(1));
+            }, "Small due long");
+            Bridge.Test.Assert.throws$7(Bridge.ArgumentOutOfRangeException, function () {
+                new Bridge.Threading.Timer("constructor$2", tc, null, Bridge.Long(1), Bridge.Long(Bridge.Long(small)));
+            }, "Small period long");
+            Bridge.Test.Assert.throws$7(Bridge.ArgumentOutOfRangeException, function () {
+                new Bridge.Threading.Timer("constructor$2", tc, null, big, Bridge.Long(1));
+            }, "Big due long");
+            Bridge.Test.Assert.throws$7(Bridge.ArgumentOutOfRangeException, function () {
+                new Bridge.Threading.Timer("constructor$2", tc, null, Bridge.Long(1), big);
+            }, "Big period long");
+    
+            Bridge.Test.Assert.throws$7(Bridge.ArgumentOutOfRangeException, function () {
+                new Bridge.Threading.Timer("constructor$3", tc, null, smallSpan, okSpan);
+            }, "Small due TimeSpan");
+            Bridge.Test.Assert.throws$7(Bridge.ArgumentOutOfRangeException, function () {
+                new Bridge.Threading.Timer("constructor$3", tc, null, okSpan, smallSpan);
+            }, "Small period TimeSpan");
+            Bridge.Test.Assert.throws$7(Bridge.ArgumentOutOfRangeException, function () {
+                new Bridge.Threading.Timer("constructor$3", tc, null, bigSpan, okSpan);
+            }, "Big due TimeSpan");
+            Bridge.Test.Assert.throws$7(Bridge.ArgumentOutOfRangeException, function () {
+                new Bridge.Threading.Timer("constructor$3", tc, null, okSpan, bigSpan);
+            }, "Big period TimeSpan");
+        },
+        testStaticCallbackWithChange: function () {
+            var $step = 0,
+                $task1, 
+                $task2, 
+                $jumpFromFinally, 
+                done, 
+                copy, 
+                timer, 
+                count, 
+                $asyncBody = Bridge.fn.bind(this, function () {
+                    for (;;) {
+                        $step = Bridge.Array.min([0,1,2], $step);
+                        switch ($step) {
+                            case 0: {
+                                done = Bridge.Test.Assert.async();
+                                
+                                Bridge.ClientTest.Threading.TimerTests.setStaticCounter(0);
+                                Bridge.ClientTest.Threading.TimerTests.setStaticData(null);
+                                
+                                copy = null;
+                                
+                                timer = new Bridge.Threading.Timer("constructor$1", Bridge.ClientTest.Threading.TimerTests.staticHandleTimer, "SomeState", 1, 1);
+                                
+                                copy = timer;
+                                
+                                $task2 = Bridge.Task.delay(200);
+                                $step = 1;
+                                $task2.continueWith($asyncBody, true);
+                                return;
+                            }
+                            case 1: {
+                                $task2.getAwaitedResult();
+                                
+                                count = Bridge.ClientTest.Threading.TimerTests.getStaticCounter();
+                                timer.change(-1, 0);
+                                
+                                Bridge.Test.Assert.true$1(count > 0, "Ticks: " + count);
+                                Bridge.Test.Assert.areEqual$1("SomeState", Bridge.ClientTest.Threading.TimerTests.getStaticData(), "State works");
+                                
+                                $task1 = Bridge.Task.delay(200);
+                                $step = 2;
+                                $task1.continueWith($asyncBody, true);
+                                return;
+                            }
+                            case 2: {
+                                $task1.getAwaitedResult();
+                                
+                                Bridge.Test.Assert.areEqual$1(count, Bridge.ClientTest.Threading.TimerTests.getStaticCounter(), "Timer disposed");
+                                
+                                timer.dispose();
+                                
+                                Bridge.Test.Assert.throws$7(Bridge.InvalidOperationException, function () {
+                                    copy.change(1, 1);
+                                }, "No change after Dispose allowed");
+                                
+                                done();
+                                return;
+                            }
+                            default: {
+                                return;
+                            }
+                        }
+                    }
+                }, arguments);
+    
+            $asyncBody();
+        },
+        testInstanceCallbackWithChange: function () {
+            var $step = 0,
+                $task1, 
+                $task2, 
+                $jumpFromFinally, 
+                done, 
+                ts, 
+                copy, 
+                timer, 
+                count, 
+                $asyncBody = Bridge.fn.bind(this, function () {
+                    for (;;) {
+                        $step = Bridge.Array.min([0,1,2], $step);
+                        switch ($step) {
+                            case 0: {
+                                done = Bridge.Test.Assert.async();
+                                
+                                ts = new Bridge.ClientTest.Threading.TimerTests.TimerState();
+                                
+                                copy = null;
+                                
+                                timer = new Bridge.Threading.Timer("constructor$1", Bridge.fn.bind(ts, ts.handleTimer), "SomeState", 1, 1);
+                                
+                                copy = timer;
+                                
+                                $task2 = Bridge.Task.delay(200);
+                                $step = 1;
+                                $task2.continueWith($asyncBody, true);
+                                return;
+                            }
+                            case 1: {
+                                $task2.getAwaitedResult();
+                                
+                                count = ts.getCounter();
+                                timer.change(-1, 0);
+                                
+                                Bridge.Test.Assert.true$1(count > 0, "Ticks: " + count);
+                                Bridge.Test.Assert.areEqual$1("SomeState", ts.getData(), "State works");
+                                
+                                $task1 = Bridge.Task.delay(200);
+                                $step = 2;
+                                $task1.continueWith($asyncBody, true);
+                                return;
+                            }
+                            case 2: {
+                                $task1.getAwaitedResult();
+                                
+                                timer.dispose();
+                                
+                                Bridge.Test.Assert.areEqual$1(count, ts.getCounter(), "Timer disposed");
+                                
+                                
+                                Bridge.Test.Assert.throws$7(Bridge.InvalidOperationException, function () {
+                                    copy.change(1, 1);
+                                }, "No change after Dispose allowed");
+                                
+                                done();
+                                return;
+                            }
+                            default: {
+                                return;
+                            }
+                        }
+                    }
+                }, arguments);
+    
+            $asyncBody();
+        },
+        testInfiniteTimer: function () {
+            var $step = 0,
+                $task1, 
+                $task2, 
+                $jumpFromFinally, 
+                done, 
+                ts, 
+                timer, 
+                $asyncBody = Bridge.fn.bind(this, function () {
+                    for (;;) {
+                        $step = Bridge.Array.min([0,1,2], $step);
+                        switch ($step) {
+                            case 0: {
+                                done = Bridge.Test.Assert.async();
+                                
+                                ts = new Bridge.ClientTest.Threading.TimerTests.TimerState();
+                                
+                                timer = new Bridge.Threading.Timer("constructor$1", Bridge.fn.bind(ts, ts.handleTimer), null, -1, 1);
+                                $task2 = Bridge.Task.delay(200);
+                                $step = 1;
+                                $task2.continueWith($asyncBody, true);
+                                return;
+                            }
+                            case 1: {
+                                $task2.getAwaitedResult();
+                                Bridge.Test.Assert.areEqual$1(ts.getCounter(), 0, "new -1, 1");
+                                
+                                timer.change(-1, -1);
+                                $task1 = Bridge.Task.delay(200);
+                                $step = 2;
+                                $task1.continueWith($asyncBody, true);
+                                return;
+                            }
+                            case 2: {
+                                $task1.getAwaitedResult();
+                                Bridge.Test.Assert.areEqual$1(ts.getCounter(), 0, "Change -1, -1");
+                                
+                                done();
+                                return;
+                            }
+                            default: {
+                                return;
+                            }
+                        }
+                    }
+                }, arguments);
+    
+            $asyncBody();
+        }
+    });
+    
+    Bridge.ns("Bridge.ClientTest.Threading.TimerTests", $_)
+    
+    Bridge.apply($_.Bridge.ClientTest.Threading.TimerTests, {
+        f1: function () {
+            new Bridge.Threading.Timer("constructor$1", null, null, 1, 1);
+        }
+    });
+    
+    Bridge.define('Bridge.ClientTest.Threading.TimerTests.TimerState', {
+        config: {
+            properties: {
+                Counter: 0,
+                Data: null
+            }
+        },
+        handleTimer: function (state) {
+            this.setCounter((this.getCounter() + 1) | 0);
+            this.setData(state);
+        }
+    });
+    
     Bridge.define('Bridge.ClientTest.Utilities.BrowserHelper', {
         statics: {
             isPhantomJs: function () {
@@ -31102,6 +31485,203 @@ SomeExternalNamespace.SomeNonBridgeClass.prototype.foo = function(){return 1;};
                     }
                 }).call(this);
             }
+        },
+        matchNamedGroupTest: function () {
+            var pattern = "(?<test>A)(B)";
+            var text = "AB";
+            var rgx = new Bridge.Text.RegularExpressions.Regex("constructor", pattern);
+            var m = rgx.match(text);
+    
+            this.validateMatch(m, 0, 2, "AB", 3, true);
+    
+            this.validateGroup(m, 0, 0, 2, true, "AB", 1);
+            this.validateCapture(m, 0, 0, 0, 2, "AB");
+    
+            this.validateGroup(m, 1, 1, 1, true, "B", 1);
+            this.validateCapture(m, 1, 0, 1, 1, "B");
+    
+            this.validateGroup(m, 2, 0, 1, true, "A", 1);
+            this.validateCapture(m, 2, 0, 0, 1, "A");
+    
+            this.groupsAreEqual(m.getGroups().get(2), m.getGroups().getByName("test"), "Named Group is correct");
+        },
+        matchInnerNamedGroupTest1: function () {
+            var pattern = "((?<test>A)(B))";
+            var text = "AB";
+            var rgx = new Bridge.Text.RegularExpressions.Regex("constructor", pattern);
+            var m = rgx.match(text);
+    
+            this.validateMatch(m, 0, 2, "AB", 4, true);
+    
+            this.validateGroup(m, 0, 0, 2, true, "AB", 1);
+            this.validateCapture(m, 0, 0, 0, 2, "AB");
+    
+            this.validateGroup(m, 1, 0, 2, true, "AB", 1);
+            this.validateCapture(m, 1, 0, 0, 2, "AB");
+    
+            this.validateGroup(m, 2, 1, 1, true, "B", 1);
+            this.validateCapture(m, 2, 0, 1, 1, "B");
+    
+            this.validateGroup(m, 3, 0, 1, true, "A", 1);
+            this.validateCapture(m, 3, 0, 0, 1, "A");
+    
+            this.groupsAreEqual(m.getGroups().get(3), m.getGroups().getByName("test"), "Named Group is correct");
+        },
+        matchInnerNamedGroupTest2: function () {
+            var pattern = "(?<outer>(C)(?<inner1>(?<inner2>A)+)(B))";
+            var text = "CAAAB";
+            var rgx = new Bridge.Text.RegularExpressions.Regex("constructor", pattern);
+            var m = rgx.match(text);
+    
+            this.validateMatch(m, 0, 5, "CAAAB", 6, true);
+    
+            this.validateGroup(m, 0, 0, 5, true, "CAAAB", 1);
+            this.validateCapture(m, 0, 0, 0, 5, "CAAAB");
+    
+            this.validateGroup(m, 1, 0, 1, true, "C", 1);
+            this.validateCapture(m, 1, 0, 0, 1, "C");
+    
+            this.validateGroup(m, 2, 4, 1, true, "B", 1);
+            this.validateCapture(m, 2, 0, 4, 1, "B");
+    
+            this.validateGroup(m, 3, 0, 5, true, "CAAAB", 1);
+            this.validateCapture(m, 3, 0, 0, 5, "CAAAB");
+    
+            this.validateGroup(m, 4, 1, 3, true, "AAA", 1);
+            this.validateCapture(m, 4, 0, 1, 3, "AAA");
+    
+            this.validateGroup(m, 5, 3, 1, true, "A", 3);
+            this.validateCapture(m, 5, 0, 1, 1, "A");
+            this.validateCapture(m, 5, 1, 2, 1, "A");
+            this.validateCapture(m, 5, 2, 3, 1, "A");
+    
+            this.groupsAreEqual(m.getGroups().get(4), m.getGroups().getByName("inner1"), "Named Group is correct");
+        },
+        groupOrderingTest: function () {
+            var $t;
+            var pattern = "(C)(?<group1>A)+(B)";
+            var text = "CAAAB";
+            var rgx = new Bridge.Text.RegularExpressions.Regex("constructor", pattern);
+            var m = rgx.match(text);
+    
+            this.validateMatch(m, 0, 5, "CAAAB", 4, true);
+    
+            var expected = new Bridge.List$1(String)();
+    
+            this.validateGroup(m, 0, 0, 5, true, "CAAAB", 1);
+            this.validateCapture(m, 0, 0, 0, 5, "CAAAB");
+            expected.add("CAAAB");
+    
+            this.validateGroup(m, 1, 0, 1, true, "C", 1);
+            this.validateCapture(m, 1, 0, 0, 1, "C");
+            expected.add("C");
+    
+            this.validateGroup(m, 2, 4, 1, true, "B", 1);
+            this.validateCapture(m, 2, 0, 4, 1, "B");
+            expected.add("B");
+    
+            this.validateGroup(m, 3, 3, 1, true, "A", 3);
+            this.validateCapture(m, 3, 0, 1, 1, "A");
+            this.validateCapture(m, 3, 1, 2, 1, "A");
+            this.validateCapture(m, 3, 2, 3, 1, "A");
+            expected.add("A");
+    
+            var i = 0;
+            $t = Bridge.getEnumerator(m.getGroups());
+            while ($t.moveNext()) {
+                var group = $t.getCurrent();
+                Bridge.Test.Assert.areEqual$1(expected.getItem(i), group.getValue(), "Group[" + i + "].Value is correct");
+                i = (i + 1) | 0;
+            }
+        },
+        repeatingGroupTest: function () {
+            var pattern = "((A(\\d)*A)x(B(\\d)*B)+)";
+            var text = "A123AxBBB";
+            var rgx = new Bridge.Text.RegularExpressions.Regex("constructor", pattern);
+            var m = rgx.match(text);
+    
+            this.validateMatch(m, 0, 8, "A123AxBB", 6, true);
+    
+            this.validateGroup(m, 0, 0, 8, true, "A123AxBB", 1);
+            this.validateCapture(m, 0, 0, 0, 8, "A123AxBB");
+    
+            this.validateGroup(m, 1, 0, 8, true, "A123AxBB", 1);
+            this.validateCapture(m, 1, 0, 0, 8, "A123AxBB");
+    
+            this.validateGroup(m, 2, 0, 5, true, "A123A", 1);
+            this.validateCapture(m, 2, 0, 0, 5, "A123A");
+    
+            this.validateGroup(m, 3, 3, 1, true, "3", 3);
+            this.validateCapture(m, 3, 0, 1, 1, "1");
+            this.validateCapture(m, 3, 1, 2, 1, "2");
+            this.validateCapture(m, 3, 2, 3, 1, "3");
+    
+            this.validateGroup(m, 4, 6, 2, true, "BB", 1);
+            this.validateCapture(m, 4, 0, 6, 2, "BB");
+    
+            this.validateGroup(m, 5, 0, 0, false, "", 0);
+        },
+        zeroResultTest: function () {
+            // Case 1:
+            var pattern = "()";
+            var text = "ABC";
+            var rgx = new Bridge.Text.RegularExpressions.Regex("constructor", pattern);
+            var m = rgx.match(text);
+    
+            this.validateMatch(m, 0, 0, "", 2, true);
+    
+            this.validateGroup(m, 0, 0, 0, true, "", 1);
+            this.validateCapture(m, 0, 0, 0, 0, "");
+    
+            this.validateGroup(m, 1, 0, 0, true, "", 1);
+            this.validateCapture(m, 1, 0, 0, 0, "");
+    
+    
+            // Case 2:
+            pattern = "(B?)";
+            text = "ABC";
+            rgx = new Bridge.Text.RegularExpressions.Regex("constructor", pattern);
+            m = rgx.match(text);
+    
+            this.validateMatch(m, 0, 0, "", 2, true);
+    
+            this.validateGroup(m, 0, 0, 0, true, "", 1);
+            this.validateCapture(m, 0, 0, 0, 0, "");
+    
+            this.validateGroup(m, 1, 0, 0, true, "", 1);
+            this.validateCapture(m, 1, 0, 0, 0, "");
+    
+    
+            // Case 3:
+            pattern = "(B)?";
+            text = "ABC";
+            rgx = new Bridge.Text.RegularExpressions.Regex("constructor", pattern);
+            m = rgx.match(text);
+    
+            this.validateMatch(m, 0, 0, "", 2, true);
+    
+            this.validateGroup(m, 0, 0, 0, true, "", 1);
+            this.validateCapture(m, 0, 0, 0, 0, "");
+    
+            this.validateGroup(m, 1, 0, 0, false, "", 0);
+        },
+        nonCapturingGroupsTest: function () {
+            var pattern = "(?:Q(?<noncapInner>A)Z)(B)(?:C)";
+            var text = "QAZBC";
+            var rgx = new Bridge.Text.RegularExpressions.Regex("constructor", pattern);
+            var m = rgx.match(text);
+    
+            this.validateMatch(m, 0, 5, "QAZBC", 3, true);
+    
+            this.validateGroup(m, 0, 0, 5, true, "QAZBC", 1);
+            this.validateCapture(m, 0, 0, 0, 5, "QAZBC");
+    
+            this.validateGroup(m, 1, 3, 1, true, "B", 1);
+            this.validateCapture(m, 1, 0, 3, 1, "B");
+    
+            this.validateGroup(m, 2, 1, 1, true, "A", 1);
+            this.validateCapture(m, 2, 0, 1, 1, "A");
+    
         }
     });
     

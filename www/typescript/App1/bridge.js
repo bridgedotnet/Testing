@@ -1,7 +1,7 @@
 ﻿/*
  * @version   : 1.12.0 - Bridge.NET
  * @author    : Object.NET, Inc. http://bridge.net/
- * @date      : 2016-03-??
+ * @date      : 2016-04-05
  * @copyright : Copyright (c) 2008-2016, Object.NET, Inc. (http://object.net/). All rights reserved.
  * @license   : See license.txt and https://github.com/bridgedotnet/Bridge.NET/blob/master/LICENSE.
  */
@@ -899,7 +899,7 @@
 
         sleep: function (ms, timeout) {
             if (Bridge.hasValue(timeout)) {
-                var ms = timeout.getTotalMilliseconds();
+                ms = timeout.getTotalMilliseconds();
             }
             
             if (isNaN(ms) || ms < -1 || ms > 2147483647) {
@@ -14020,6 +14020,8 @@ Bridge.define('Bridge.ReadOnlyCollection$1', function (T) {
     Bridge.Linq.Enumerable = Enumerable;
 })(Bridge.global);
 
+// @source random.js
+
 (function (globals) {
     "use strict";
 
@@ -14039,12 +14041,12 @@ Bridge.define('Bridge.ReadOnlyCollection$1', function (T) {
         },
         constructor: function () {
             Bridge.Random.prototype.constructor$1.call(this, Bridge.Long.clip32(Bridge.Long((new Date()).getTime()).mul(10000)));
-
+    
         },
         constructor$1: function (Seed) {
             var ii;
             var mj, mk;
-
+    
             //Initialize our Seed array.
             //This algorithm comes from Numerical Recipes in C (2nd Ed.)
             var subtraction = (Seed === -2147483648) ? 2147483647 : Math.abs(Seed);
@@ -14081,30 +14083,30 @@ Bridge.define('Bridge.ReadOnlyCollection$1', function (T) {
             var retVal;
             var locINext = this.inext;
             var locINextp = this.inextp;
-
+    
             if (((locINext = (locINext + 1) | 0)) >= 56) {
                 locINext = 1;
             }
-
+    
             if (((locINextp = (locINextp + 1) | 0)) >= 56) {
                 locINextp = 1;
             }
-
+    
             retVal = (this.seedArray[locINext] - this.seedArray[locINextp]) | 0;
-
+    
             if (retVal === Bridge.Random.MBIG) {
                 retVal = (retVal - 1) | 0;
             }
-
+    
             if (retVal < 0) {
                 retVal = (retVal + Bridge.Random.MBIG) | 0;
             }
-
+    
             this.seedArray[locINext] = retVal;
-
+    
             this.inext = locINext;
             this.inextp = locINextp;
-
+    
             return retVal;
         },
         next: function () {
@@ -14114,27 +14116,27 @@ Bridge.define('Bridge.ReadOnlyCollection$1', function (T) {
             if (minValue > maxValue) {
                 throw new Bridge.ArgumentOutOfRangeException("minValue", "'minValue' cannot be greater than maxValue.");
             }
-
+    
             var range = Bridge.Long(Bridge.Long(maxValue)).sub(Bridge.Long(minValue));
             if (range.lte(Bridge.Long(2147483647))) {
-                return ((((((this.sample() * Bridge.Long.toNumber(range))) | 0) + minValue) | 0));
+                return (((Bridge.Int.clip32(this.sample() * Bridge.Long.toNumber(range)) + minValue) | 0));
             }
-            else {
-                return Bridge.Long.clip32(Bridge.Int.clip64((this.getSampleForLargeRange() * Bridge.Long.toNumber(range))).add(Bridge.Long(minValue)));
+            else  {
+                return Bridge.Long.clip32(Bridge.Int.clip64(this.getSampleForLargeRange() * Bridge.Long.toNumber(range)).add(Bridge.Long(minValue)));
             }
         },
         next$1: function (maxValue) {
             if (maxValue < 0) {
                 throw new Bridge.ArgumentOutOfRangeException("maxValue", "'maxValue' must be greater than zero.");
             }
-            return (((this.sample() * maxValue)) | 0);
+            return Bridge.Int.clip32(this.sample() * maxValue);
         },
         getSampleForLargeRange: function () {
             // The distribution of double value returned by Sample 
             // is not distributed well enough for a large range.
             // If we use Sample for a range [Int32.MinValue..Int32.MaxValue)
             // We will end up getting even numbers only.
-
+    
             var result = this.internalSample();
             // Note we can't use addition here. The distribution will be bad if we do that.
             var negative = (this.internalSample() % 2 === 0) ? true : false; // decide the sign based on second sample
@@ -14158,7 +14160,7 @@ Bridge.define('Bridge.ReadOnlyCollection$1', function (T) {
             }
         }
     });
-
+    
     Bridge.init();
 })(this);
 
@@ -14362,13 +14364,16 @@ Bridge.define("Bridge.Text.RegularExpressions.Regex", {
         var i;
         var groupInfo;
 
+        // Add group without names first (their names are indexes)
         for (i = 0; i < groupInfos.length; i++) {
             groupInfo = groupInfos[i];
-            if (!groupInfo.hasName) {
+            if (!groupInfo.hasName && !groupInfo.constructs.isNonCapturing) {
                 this._capslist.push(groupInfo.name);
-                this._capnames[groupInfo.name] = this._capslist.length-1;
+                this._capnames[groupInfo.name] = this._capslist.length - 1;
             }
         }
+
+        // Then add named groups:
         for (i = 0; i < groupInfos.length; i++) {
             groupInfo = groupInfos[i];
             if (groupInfo.hasName) {
@@ -14376,8 +14381,6 @@ Bridge.define("Bridge.Text.RegularExpressions.Regex", {
                 this._capnames[groupInfo.name] = this._capslist.length - 1;
             }
         }
-
-        //TODO: ValidateMatchTimeout(matchTimeout);
     },
 
     getMatchTimeout: function () {
@@ -15495,7 +15498,14 @@ Bridge.define("Bridge.Text.RegularExpressions.RegexRunner", {
             var jsGroup = jsMatch.groups[i];
             for (var j = 0; j < jsGroup.captures.length; j++) {
                 var jsCapture = jsGroup.captures[j];
-                match._addMatch(i, jsCapture.capIndex, jsCapture.capLength);
+
+                // Paste group index/length according to group ordering:
+                var grOrder = 0;
+                if (jsGroup.descriptor != null) {
+                    grOrder = this._runregex.groupNumberFromName(jsGroup.descriptor.name);
+                }
+
+                match._addMatch(grOrder, jsCapture.capIndex, jsCapture.capLength);
             }
         }
 
@@ -16738,7 +16748,7 @@ Bridge.define("Bridge.Text.RegularExpressions.RegexNetEngine", {
                     //TODO: check balancing case: name1-name2
                     groups[j].name = groups[j].constructs.name1;
                     groups[j].hasName = true;
-                } else {
+                } else if (!groups[j].constructs.isNonCapturing) {
                     groups[j].hasName = false;
                     groups[j].name = groupId.toString();
                     ++groupId;
@@ -17076,7 +17086,6 @@ Bridge.define("Bridge.Text.RegularExpressions.RegexNetEngine", {
                 var groupDesc = groupDescs[i - 1];
                 if (groupDesc.constructs.isNonCapturing) {
                     nonCapturingCount++;
-                    continue;
                 }
 
                 var group = {
@@ -17108,7 +17117,7 @@ Bridge.define("Bridge.Text.RegularExpressions.RegexNetEngine", {
                         // Match the group in every single parent capture:
                         for (var j = 0; j < parentGroup.captures.length; j++) {
                             this._checkTimeout();
-                            
+
                             var parentCapture = parentGroup.captures[j];
                             this._matchGroup(parentCapture.ctx, group, parentCapture.capIndex);
 
@@ -17127,7 +17136,9 @@ Bridge.define("Bridge.Text.RegularExpressions.RegexNetEngine", {
                     group.value = lastCapture.value;
                 }
 
-                match.groups.push(group);
+                if (!groupDesc.constructs.isNonCapturing) {
+                    match.groups.push(group);
+                }
             }
 
             // Remove internal fields:
@@ -17159,7 +17170,7 @@ Bridge.define("Bridge.Text.RegularExpressions.RegexNetEngine", {
 
         // Use RegExp to determine length and location of the captured Group
         var groupRes = this._matchSubExpr(ctx.text, ctx.textOffset, ctx.pattern, ctx.patternStart, ctx.patternEnd, groupStart, groupEndFull);
-        if (groupRes != null) {
+        if (groupRes != null && groupRes.captureGroup != null) {
             ctx.textOffset = groupRes.capIndex + groupRes.capLength;
 
             group.value = groupRes.captureGroup;
@@ -17169,14 +17180,15 @@ Bridge.define("Bridge.Text.RegularExpressions.RegexNetEngine", {
             group.success = true;
 
             // Save the current group conext for its children:
+            var groupStartStep = groupDesc.constructs.isNonCapturing ? 3 : 1;
             if (groupDesc.innerGroups.length > 0) {
                 group.ctx = {
                     text: group.valueFull, //TODO: FULL OR NOT?
                     textOffset: 0,
 
                     pattern: ctx.pattern,
-                    patternStart: groupStart + 1,   // start index of the group content without the opening bracket
-                    patternEnd: groupEnd - 1        // end index of the group content without the closing bracket
+                    patternStart: groupStart + groupStartStep,  // start index of the group content without the opening bracket
+                    patternEnd: groupEnd - 1                    // end index of the group content without the closing bracket
                 };
             }
         }
@@ -17187,8 +17199,7 @@ Bridge.define("Bridge.Text.RegularExpressions.RegexNetEngine", {
     _matchCaptures: function (group) {
         var groupDesc = group.descriptor;
 
-        //TODO: is it enough for Non-capturing groups?
-        if (groupDesc.quantifier == null || groupDesc.quantifier.length === 0 || group.valueFull == null || group.valueFull.length === 0) {
+        if (groupDesc.quantifier == null || groupDesc.quantifier.length === 0 || groupDesc.quantifier === "?" || group.valueFull == null || group.valueFull.length === 0) {
             // For non-repeating groups - only 1 capture exists (the same as the group).
             group.captures.push({
                 capIndex: group.capIndex,
@@ -17220,8 +17231,8 @@ Bridge.define("Bridge.Text.RegularExpressions.RegexNetEngine", {
         if (group.ctx != null) {
             for (var j = 0; j < group.captures.length; j++) {
                 group.captures[j].ctx = {
-                    text: group.ctx.text,
-                    textOffset: group.ctx.textOffset,
+                    text: group.captures[j].value,
+                    textOffset: 0,
                     pattern: group.ctx.pattern,
                     patternStart: group.ctx.patternStart,
                     patternEnd: group.ctx.patternEnd
@@ -17284,12 +17295,23 @@ Bridge.define("Bridge.Text.RegularExpressions.RegexNetEngine", {
         for (var i = 0; i < this._groupDescriptors.length; i++) {
             var gr = this._groupDescriptors[i];
             if (gr.hasName) {
+                // Remove name from the group:
                 var name = gr.constructs.name1;
                 var nameConstrLen = 3 + name.length;
                 gr.expr = this._removeSubstring(gr.expr, 1, nameConstrLen);
                 gr.exprFull = gr.expr + gr.quantifier;
                 gr.exprLength -= nameConstrLen;
 
+                // Update parent groups (remove name from their templates as well)
+                var parent = gr.parentGroup;
+                while (parent != null) {
+                    parent.exprLength -= nameConstrLen;
+                    parent.expr = this._removeSubstring(parent.expr, gr.exprIndex + 1 - parent.exprIndex, nameConstrLen);
+                    parent.exprFull = parent.expr + parent.quantifier;
+                    parent = parent.parentGroup;
+                }
+
+                // Update all consequent groups (shift their indexes according to the length of the removed group name)
                 updatedPattern = this._removeSubstring(updatedPattern, gr.exprIndex + 1, nameConstrLen);
                 for (var j = i + 1; j < this._groupDescriptors.length; j++) {
                     var nextGr = this._groupDescriptors[j];
@@ -17316,6 +17338,134 @@ Bridge.define("Bridge.Text.RegularExpressions.RegexNetEngine", {
         }
     }
 });
+// @source timer.js
+
+(function (globals) {
+    "use strict";
+
+    Bridge.define('Bridge.Threading.Timer', {
+        inherits: [Bridge.IDisposable],
+        statics: {
+            MAX_SUPPORTED_TIMEOUT: 4294967294,
+            EXC_LESS: "Number must be either non-negative and less than or equal to Int32.MaxValue or -1.",
+            EXC_MORE: "Time-out interval must be less than 2^32-2.",
+            EXC_DISPOSED: "The timer has been already disposed."
+        },
+        dueTime: Bridge.Long(0),
+        period: Bridge.Long(0),
+        timerCallback: null,
+        state: null,
+        id: null,
+        disposed: false,
+        constructor$1: function (callback, state, dueTime, period) {
+            this.timerSetup(callback, state, Bridge.Long(dueTime), Bridge.Long(period));
+        },
+        constructor$3: function (callback, state, dueTime, period) {
+            var dueTm = Bridge.Int.clip64(dueTime.getTotalMilliseconds());
+            var periodTm = Bridge.Int.clip64(period.getTotalMilliseconds());
+
+            this.timerSetup(callback, state, dueTm, periodTm);
+        },
+        constructor$4: function (callback, state, dueTime, period) {
+            this.timerSetup(callback, state, Bridge.Long(dueTime), Bridge.Long(period));
+        },
+        constructor$2: function (callback, state, dueTime, period) {
+            this.timerSetup(callback, state, dueTime, period);
+        },
+        constructor: function (callback) {
+            var dueTime = -1; // we want timer to be registered, but not activated.  Requires caller to call
+            var period = -1; // Change after a timer instance is created.  This is to avoid the potential
+            // for a timer to be fired before the returned value is assigned to the variable,
+            // potentially causing the callback to reference a bogus value (if passing the timer to the callback). 
+
+            this.timerSetup(callback, this, Bridge.Long(dueTime), Bridge.Long(period));
+        },
+        timerSetup: function (callback, state, dueTime, period) {
+            if (this.disposed) {
+                throw new Bridge.InvalidOperationException(Bridge.Threading.Timer.EXC_DISPOSED);
+            }
+
+            if (!Bridge.hasValue(callback)) {
+                throw new Bridge.ArgumentNullException("TimerCallback");
+            }
+
+            if (dueTime.lt(Bridge.Long(-1))) {
+                throw new Bridge.ArgumentOutOfRangeException("dueTime", Bridge.Threading.Timer.EXC_LESS);
+            }
+            if (period.lt(Bridge.Long(-1))) {
+                throw new Bridge.ArgumentOutOfRangeException("period", Bridge.Threading.Timer.EXC_LESS);
+            }
+            if (dueTime.gt(Bridge.Long(Bridge.Threading.Timer.MAX_SUPPORTED_TIMEOUT))) {
+                throw new Bridge.ArgumentOutOfRangeException("dueTime", Bridge.Threading.Timer.EXC_MORE);
+            }
+            if (period.gt(Bridge.Long(Bridge.Threading.Timer.MAX_SUPPORTED_TIMEOUT))) {
+                throw new Bridge.ArgumentOutOfRangeException("period", Bridge.Threading.Timer.EXC_MORE);
+            }
+
+            this.dueTime = dueTime;
+            this.period = period;
+
+            this.state = state;
+            this.timerCallback = callback;
+
+            return this.runTimer(this.dueTime);
+        },
+        handleCallback: function () {
+            if (this.disposed) {
+                return;
+            }
+
+            if (Bridge.hasValue(this.timerCallback)) {
+                this.timerCallback(this.state);
+            }
+
+            this.runTimer(this.period, false);
+        },
+        runTimer: function (period, checkDispose) {
+            if (checkDispose === void 0) { checkDispose = true; }
+            if (checkDispose && this.disposed) {
+                throw new Bridge.InvalidOperationException(Bridge.Threading.Timer.EXC_DISPOSED);
+            }
+
+            if (period.ne(Bridge.Long(-1)) && !this.disposed) {
+                var p = period.toNumber();
+                this.id = Bridge.global.setTimeout(Bridge.fn.bind(this, this.handleCallback), p);
+                return true;
+            }
+
+            return false;
+        },
+        change: function (dueTime, period) {
+            return this.changeTimer(Bridge.Long(dueTime), Bridge.Long(period));
+        },
+        change$2: function (dueTime, period) {
+            return this.changeTimer(Bridge.Int.clip64(dueTime.getTotalMilliseconds()), Bridge.Int.clip64(period.getTotalMilliseconds()));
+        },
+        change$3: function (dueTime, period) {
+            return this.changeTimer(Bridge.Long(dueTime), Bridge.Long(period));
+        },
+        change$1: function (dueTime, period) {
+            return this.changeTimer(dueTime, period);
+        },
+        changeTimer: function (dueTime, period) {
+            this.clearTimeout();
+            return this.timerSetup(this.timerCallback, this.state, dueTime, period);
+        },
+        clearTimeout: function () {
+            if (Bridge.Nullable.hasValue(this.id)) {
+                window.clearTimeout(Bridge.Nullable.getValue(this.id));
+                this.id = null;
+            }
+        },
+        dispose: function () {
+            this.clearTimeout();
+            this.disposed = true;
+        }
+    });
+
+    Bridge.init();
+})(this);
+
     // @source End.js
 
     // module export
