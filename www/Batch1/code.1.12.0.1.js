@@ -3274,8 +3274,9 @@ SomeExternalNamespace.SomeNonBridgeClass.prototype.foo = function(){return 1;};
     
     Bridge.define('Bridge.ClientTest.BridgeIssues.Bridge1012', {
         statics: {
-            testSleepIntMinus1: function () {
-                var delay = -1;
+            DELTA: 3,
+            testSleepZero: function () {
+                var delay = 0;
                 var maxDelay = 100;
     
                 var stopwatch = new Bridge.Stopwatch();
@@ -3285,8 +3286,8 @@ SomeExternalNamespace.SomeNonBridgeClass.prototype.foo = function(){return 1;};
     
                 stopwatch.stop();
     
-                Bridge.Test.Assert.true$1(stopwatch.milliseconds().gte(Bridge.Long(delay)), ">= " + delay);
-                Bridge.Test.Assert.true$1(stopwatch.milliseconds().lt(Bridge.Long(maxDelay)), "< " + maxDelay);
+                Bridge.Test.Assert.true$1(stopwatch.milliseconds().gte(Bridge.Long(delay - Bridge.ClientTest.BridgeIssues.Bridge1012.DELTA)), ">= " + delay + ", elapsed " + stopwatch.milliseconds());
+                Bridge.Test.Assert.true$1(stopwatch.milliseconds().lt(Bridge.Long(maxDelay)), "< " + maxDelay + ", elapsed " + stopwatch.milliseconds());
             },
             testSleepInt: function () {
                 var delay = 100;
@@ -3299,8 +3300,8 @@ SomeExternalNamespace.SomeNonBridgeClass.prototype.foo = function(){return 1;};
     
                 stopwatch.stop();
     
-                Bridge.Test.Assert.true$1(stopwatch.milliseconds().gte(Bridge.Long(delay)), ">= " + delay);
-                Bridge.Test.Assert.true$1(stopwatch.milliseconds().lt(Bridge.Long(maxDelay)), "< " + maxDelay);
+                Bridge.Test.Assert.true$1(stopwatch.milliseconds().gte(Bridge.Long(delay - Bridge.ClientTest.BridgeIssues.Bridge1012.DELTA)), ">= " + delay + ", elapsed " + stopwatch.milliseconds());
+                Bridge.Test.Assert.true$1(stopwatch.milliseconds().lt(Bridge.Long(maxDelay)), "< " + maxDelay + ", elapsed " + stopwatch.milliseconds());
             },
             testSleepTimeSpan: function () {
                 var delay = 100;
@@ -3313,8 +3314,8 @@ SomeExternalNamespace.SomeNonBridgeClass.prototype.foo = function(){return 1;};
     
                 stopwatch.stop();
     
-                Bridge.Test.Assert.true$1(stopwatch.milliseconds().gte(Bridge.Long(delay)), ">= " + delay);
-                Bridge.Test.Assert.true$1(stopwatch.milliseconds().lt(Bridge.Long(maxDelay)), "< " + maxDelay);
+                Bridge.Test.Assert.true$1(stopwatch.milliseconds().gte(Bridge.Long(delay - Bridge.ClientTest.BridgeIssues.Bridge1012.DELTA)), ">= " + delay + ", elapsed " + stopwatch.milliseconds());
+                Bridge.Test.Assert.true$1(stopwatch.milliseconds().lt(Bridge.Long(maxDelay)), "< " + maxDelay + ", elapsed " + stopwatch.milliseconds());
             },
             testSleepThrows: function () {
                 Bridge.Test.Assert.throws$7(Bridge.ArgumentOutOfRangeException, $_.Bridge.ClientTest.BridgeIssues.Bridge1012.f1, "-2");

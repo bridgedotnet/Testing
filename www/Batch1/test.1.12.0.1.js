@@ -1017,7 +1017,7 @@
                 QUnit.test("#1000 - TestStaticViaChild", Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_BridgeIssues_Bridge1000.testStaticViaChild);
                 QUnit.test("#1001 - TestDefaultValues", Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_BridgeIssues_Bridge1001.testDefaultValues);
                 QUnit.test("#1003 - TestGenericLambdasToLifting", Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_BridgeIssues_Bridge1003.testGenericLambdasToLifting);
-                QUnit.test("#1012 - TestSleepIntMinus1", Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_BridgeIssues_Bridge1012.testSleepIntMinus1);
+                QUnit.test("#1012 - TestSleepZero", Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_BridgeIssues_Bridge1012.testSleepZero);
                 QUnit.test("#1012 - TestSleepInt", Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_BridgeIssues_Bridge1012.testSleepInt);
                 QUnit.test("#1012 - TestSleepTimeSpan", Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_BridgeIssues_Bridge1012.testSleepTimeSpan);
                 QUnit.test("#1012 - TestSleepThrows", Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_BridgeIssues_Bridge1012.testSleepThrows);
@@ -2591,9 +2591,9 @@
     Bridge.define('Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_BridgeIssues_Bridge1012', {
         inherits: [Bridge.Test.QUnit.TestFixture$1(Bridge.ClientTest.BridgeIssues.Bridge1012)],
         statics: {
-            testSleepIntMinus1: function (assert) {
+            testSleepZero: function (assert) {
                 var t = Bridge.Test.QUnit.TestFixture$1(Bridge.ClientTest.BridgeIssues.Bridge1012).beforeTest(false, assert, Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_BridgeIssues_Bridge1012, 2);
-                Bridge.ClientTest.BridgeIssues.Bridge1012.testSleepIntMinus1();
+                Bridge.ClientTest.BridgeIssues.Bridge1012.testSleepZero();
             },
             testSleepInt: function (assert) {
                 var t = Bridge.Test.QUnit.TestFixture$1(Bridge.ClientTest.BridgeIssues.Bridge1012).beforeTest(false, assert, Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_BridgeIssues_Bridge1012, 2);
