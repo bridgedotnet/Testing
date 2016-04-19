@@ -16912,10 +16912,10 @@ SomeExternalNamespace.SomeNonBridgeClass.prototype.foo = function(){return 1;};
             }
             watch.stop();
             Bridge.Test.Assert.true$1(hasIncreased, "Times should increase inside the loop");
-            Bridge.Test.Assert.true$1(watch.milliseconds().gt(Bridge.Long(150)), "ElapsedMilliseconds");
+            Bridge.Test.Assert.true$1(watch.milliseconds().gt(Bridge.Long(150)), "ElapsedMilliseconds > 150 Actual: " + watch.milliseconds());
             Bridge.Test.Assert.true$1(Bridge.TimeSpan.eq(watch.timeSpan(), new Bridge.TimeSpan(0, 0, 0, 0, Bridge.Long.clip32(watch.milliseconds()))), "Elapsed");
             var value = watch.ticks() / Bridge.Long.toNumber(Bridge.Stopwatch.frequency);
-            Bridge.Test.Assert.true$1(value > 0.15 && value < 0.25, "Ticks");
+            Bridge.Test.Assert.true$1(value > 0.15 && value < 0.25, Bridge.String.format("value > 0.15 && value < 0.25 Actual: {0}, Ticks: {1}", value, watch.ticks()));
         },
         getTimestampWorks: function () {
             var t1 = Bridge.Stopwatch.getTimestamp();
@@ -22760,7 +22760,8 @@ SomeExternalNamespace.SomeNonBridgeClass.prototype.foo = function(){return 1;};
             Bridge.Test.Assert.$true(dt.getFullYear() > 2011);
         },
         creatingInstanceReturnsDateZero: function () {
-            Bridge.Test.Assert.$true(Bridge.createInstance(Date).getFullYear() === 1970);
+            var fullYear = Bridge.createInstance(Date).getFullYear();
+            Bridge.Test.Assert.areEqual(1970, fullYear);
         },
         millisecondSinceEpochConstructorWorks: function () {
             var dt = new Date(Bridge.Long([250327040,10]).toNumber());
