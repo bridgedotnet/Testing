@@ -14,7 +14,7 @@ QUnit.test("#290", function (assert) {
 QUnit.test("#281", function (assert) {
     var t = new Misc.A.EnumTest();
 
-    assert.deepEqual(t.doSomething(Misc.A.EnumTest.EnumA.m2), Misc.A.EnumTest.EnumA.m2, "Use enum declared inside a class");
+    assert.deepEqual(t.doSomething(Misc.A.EnumTest.EnumA.M2), Misc.A.EnumTest.EnumA.M2, "Use enum declared inside a class");
 });
 
 QUnit.test("#336", function (assert) {

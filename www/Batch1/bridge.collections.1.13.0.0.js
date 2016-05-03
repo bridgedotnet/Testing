@@ -1198,7 +1198,7 @@
     
     Bridge.define('Bridge.Collections.HashSet$1.ElementCount', function (T) { return {
         statics: {
-            getDefaultValue: function () { return new Bridge.Collections.HashSet$1.ElementCount(); }
+            getDefaultValue: function () { return new Bridge.Collections.HashSet$1.ElementCount(T)(); }
         },
         uniqueCount: 0,
         unfoundCount: 0,
@@ -1211,13 +1211,13 @@
             return hash;
         },
         equals: function (o) {
-            if (!Bridge.is(o,Bridge.Collections.HashSet$1.ElementCount)) {
+            if (!Bridge.is(o,Bridge.Collections.HashSet$1.ElementCount(T))) {
                 return false;
             }
             return Bridge.equals(this.uniqueCount, o.uniqueCount) && Bridge.equals(this.unfoundCount, o.unfoundCount);
         },
         $clone: function (to) {
-            var s = to || new Bridge.Collections.HashSet$1.ElementCount();
+            var s = to || new Bridge.Collections.HashSet$1.ElementCount(T)();
             s.uniqueCount = this.uniqueCount;
             s.unfoundCount = this.unfoundCount;
             return s;
@@ -1227,7 +1227,7 @@
     Bridge.define('Bridge.Collections.HashSet$1.Enumerator', function (T) { return {
         inherits: [Bridge.IEnumerator$1(T)],
         statics: {
-            getDefaultValue: function () { return new Bridge.Collections.HashSet$1.Enumerator(); }
+            getDefaultValue: function () { return new Bridge.Collections.HashSet$1.Enumerator(T)(); }
         },
         _set: null,
         _index: 0,
@@ -1284,13 +1284,13 @@
             return hash;
         },
         equals: function (o) {
-            if (!Bridge.is(o,Bridge.Collections.HashSet$1.Enumerator)) {
+            if (!Bridge.is(o,Bridge.Collections.HashSet$1.Enumerator(T))) {
                 return false;
             }
             return Bridge.equals(this._set, o._set) && Bridge.equals(this._index, o._index) && Bridge.equals(this._version, o._version) && Bridge.equals(this._current, o._current);
         },
         $clone: function (to) {
-            var s = to || new Bridge.Collections.HashSet$1.Enumerator();
+            var s = to || new Bridge.Collections.HashSet$1.Enumerator(T)();
             s._set = this._set;
             s._index = this._index;
             s._version = this._version;
@@ -1301,7 +1301,7 @@
     
     Bridge.define('Bridge.Collections.HashSet$1.Slot', function (T) { return {
         statics: {
-            getDefaultValue: function () { return new Bridge.Collections.HashSet$1.Slot(); }
+            getDefaultValue: function () { return new Bridge.Collections.HashSet$1.Slot(T)(); }
         },
         hashCode: 0,
         value: null,
@@ -1316,13 +1316,13 @@
             return hash;
         },
         equals: function (o) {
-            if (!Bridge.is(o,Bridge.Collections.HashSet$1.Slot)) {
+            if (!Bridge.is(o,Bridge.Collections.HashSet$1.Slot(T))) {
                 return false;
             }
             return Bridge.equals(this.hashCode, o.hashCode) && Bridge.equals(this.value, o.value) && Bridge.equals(this.next, o.next);
         },
         $clone: function (to) {
-            var s = to || new Bridge.Collections.HashSet$1.Slot();
+            var s = to || new Bridge.Collections.HashSet$1.Slot(T)();
             s.hashCode = this.hashCode;
             s.value = this.value;
             s.next = this.next;
@@ -1529,7 +1529,7 @@
     Bridge.define('Bridge.Collections.Queue$1.Enumerator', function (T) { return {
         inherits: [Bridge.IEnumerator$1(T),Bridge.IEnumerator],
         statics: {
-            getDefaultValue: function () { return new Bridge.Collections.Queue$1.Enumerator(); }
+            getDefaultValue: function () { return new Bridge.Collections.Queue$1.Enumerator(T)(); }
         },
         _q: null,
         _index: 0,
@@ -1597,13 +1597,13 @@
             return hash;
         },
         equals: function (o) {
-            if (!Bridge.is(o,Bridge.Collections.Queue$1.Enumerator)) {
+            if (!Bridge.is(o,Bridge.Collections.Queue$1.Enumerator(T))) {
                 return false;
             }
             return Bridge.equals(this._q, o._q) && Bridge.equals(this._index, o._index) && Bridge.equals(this._version, o._version) && Bridge.equals(this._currentElement, o._currentElement);
         },
         $clone: function (to) {
-            var s = to || new Bridge.Collections.Queue$1.Enumerator();
+            var s = to || new Bridge.Collections.Queue$1.Enumerator(T)();
             s._q = this._q;
             s._index = this._index;
             s._version = this._version;
@@ -1729,7 +1729,7 @@
             return new Bridge.Collections.Stack$1.Enumerator(T)("constructor$1", this);
         },
         trimExcess: function () {
-            var threshold = Bridge.Int.clip32((this._array.length) * 0.9);
+            var threshold = Bridge.Int.clip32(this._array.length * 0.9);
             if (this._size < threshold) {
                 var localArray = { v : this._array };
                 Bridge.Array.resize(localArray, this._size, null);
@@ -1775,7 +1775,7 @@
     Bridge.define('Bridge.Collections.Stack$1.Enumerator', function (T) { return {
         inherits: [Bridge.IEnumerator$1(T),Bridge.IEnumerator],
         statics: {
-            getDefaultValue: function () { return new Bridge.Collections.Stack$1.Enumerator(); }
+            getDefaultValue: function () { return new Bridge.Collections.Stack$1.Enumerator(T)(); }
         },
         _stack: null,
         _index: 0,
@@ -1852,13 +1852,13 @@
             return hash;
         },
         equals: function (o) {
-            if (!Bridge.is(o,Bridge.Collections.Stack$1.Enumerator)) {
+            if (!Bridge.is(o,Bridge.Collections.Stack$1.Enumerator(T))) {
                 return false;
             }
             return Bridge.equals(this._stack, o._stack) && Bridge.equals(this._index, o._index) && Bridge.equals(this._version, o._version) && Bridge.equals(this._currentElement, o._currentElement);
         },
         $clone: function (to) {
-            var s = to || new Bridge.Collections.Stack$1.Enumerator();
+            var s = to || new Bridge.Collections.Stack$1.Enumerator(T)();
             s._stack = this._stack;
             s._index = this._index;
             s._version = this._version;

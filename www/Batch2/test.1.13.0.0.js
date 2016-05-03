@@ -42,13 +42,13 @@
             areNotStrictEqual$1: function (expected, actual, description) {
                 Bridge.Test.Assert.assert.notStrictEqual(actual, expected, description);
             },
-            $true: function (condition) {
+            true: function (condition) {
                 Bridge.Test.Assert.assert.ok(condition);
             },
             true$1: function (condition, message) {
                 Bridge.Test.Assert.assert.ok(condition, message);
             },
-            $false: function (condition) {
+            false: function (condition) {
                 Bridge.Test.Assert.assert.notOk(condition);
             },
             false$1: function (condition, message) {
@@ -60,7 +60,7 @@
             fail$1: function (message) {
                 Bridge.Test.Assert.assert.notOk(true, message);
             },
-            $throws: function (block) {
+            throws: function (block) {
                 Bridge.Test.Assert.assert.throws(block, "");
             },
             throws$5: function (block, message) {
@@ -100,7 +100,7 @@
             throws$2: function (block, expected, message) {
                 Bridge.Test.Assert.assert.throws(block, expected, message);
             },
-            $null: function (anObject) {
+            null: function (anObject) {
                 Bridge.Test.Assert.assert.ok(anObject == null);
             },
             null$1: function (anObject, message) {

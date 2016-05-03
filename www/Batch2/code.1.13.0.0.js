@@ -179,8 +179,8 @@
         },
         cloneWorks: function () {
             var arr = ["x", "y"];
-            var arr2 = (Bridge.Array.clone(arr));
-            Bridge.Test.Assert.$false(arr === arr2);
+            var arr2 = Bridge.Array.clone(arr);
+            Bridge.Test.Assert.false(arr === arr2);
             Bridge.Test.Assert.areDeepEqual(arr2, arr);
         },
         concatWorks: function () {
@@ -191,17 +191,17 @@
         },
         containsWorks: function () {
             var arr = ["x", "y"];
-            Bridge.Test.Assert.$true(Bridge.Linq.Enumerable.from(arr).contains("x"));
-            Bridge.Test.Assert.$false(Bridge.Linq.Enumerable.from(arr).contains("z"));
+            Bridge.Test.Assert.true(Bridge.Linq.Enumerable.from(arr).contains("x"));
+            Bridge.Test.Assert.false(Bridge.Linq.Enumerable.from(arr).contains("z"));
         },
         containsUsesEqualsMethod: function () {
             var arr = [new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(1), new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(2), new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(3)];
-            Bridge.Test.Assert.$true(Bridge.Linq.Enumerable.from(arr).contains(new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(2)));
-            Bridge.Test.Assert.$false(Bridge.Linq.Enumerable.from(arr).contains(new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(4)));
+            Bridge.Test.Assert.true(Bridge.Linq.Enumerable.from(arr).contains(new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(2)));
+            Bridge.Test.Assert.false(Bridge.Linq.Enumerable.from(arr).contains(new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(4)));
         },
         allWithArrayItemFilterCallbackWorks: function () {
-            Bridge.Test.Assert.$true(Bridge.Linq.Enumerable.from([1, 2, 3]).all($_.Bridge.ClientTest.Batch2.BridgeIssues.N772.f1));
-            Bridge.Test.Assert.$false(Bridge.Linq.Enumerable.from([1, 2, 3]).all($_.Bridge.ClientTest.Batch2.BridgeIssues.N772.f2));
+            Bridge.Test.Assert.true(Bridge.Linq.Enumerable.from([1, 2, 3]).all($_.Bridge.ClientTest.Batch2.BridgeIssues.N772.f1));
+            Bridge.Test.Assert.false(Bridge.Linq.Enumerable.from([1, 2, 3]).all($_.Bridge.ClientTest.Batch2.BridgeIssues.N772.f2));
         },
         sliceWithoutEndWorks: function () {
             Bridge.Test.Assert.areDeepEqual(["c", "d"], ["a", "b", "c", "d"].slice(2));
@@ -243,20 +243,20 @@
             Bridge.Test.Assert.areDeepEqual([2, 3, 1, 4, 3, 1], arr);
         },
         anyWithArrayItemFilterCallbackWorks: function () {
-            Bridge.Test.Assert.$true(Bridge.Linq.Enumerable.from([1, 2, 3, 4]).any($_.Bridge.ClientTest.Batch2.BridgeIssues.N772.f3));
-            Bridge.Test.Assert.$false(Bridge.Linq.Enumerable.from([1, 2, 3, 4]).any($_.Bridge.ClientTest.Batch2.BridgeIssues.N772.f4));
+            Bridge.Test.Assert.true(Bridge.Linq.Enumerable.from([1, 2, 3, 4]).any($_.Bridge.ClientTest.Batch2.BridgeIssues.N772.f3));
+            Bridge.Test.Assert.false(Bridge.Linq.Enumerable.from([1, 2, 3, 4]).any($_.Bridge.ClientTest.Batch2.BridgeIssues.N772.f4));
         },
         binarySearch1Works: function () {
             var arr = [1, 2, 3, 3, 4, 5];
     
             Bridge.Test.Assert.areEqual(2, Bridge.Array.binarySearch(arr, 0, arr.length, 3));
-            Bridge.Test.Assert.$true(Bridge.Array.binarySearch(arr, 0, arr.length, 6) < 0);
+            Bridge.Test.Assert.true(Bridge.Array.binarySearch(arr, 0, arr.length, 6) < 0);
         },
         binarySearch2Works: function () {
             var arr = [1, 2, 3, 3, 4, 5];
     
             Bridge.Test.Assert.areEqual(3, Bridge.Array.binarySearch(arr, 3, 2, 3));
-            Bridge.Test.Assert.$true(Bridge.Array.binarySearch(arr, 2, 2, 4) < 0);
+            Bridge.Test.Assert.true(Bridge.Array.binarySearch(arr, 2, 2, 4) < 0);
         },
         binarySearch3Works: function () {
             var arr = [1, 2, 3, 3, 4, 5];
@@ -268,19 +268,19 @@
             var arr = [1, 2, 3, 3, 4, 5];
     
             Bridge.Test.Assert.areEqual(3, Bridge.Array.binarySearch(arr, 3, 2, 3, new Bridge.ClientTest.Batch2.BridgeIssues.N772.TestReverseComparer()));
-            Bridge.Test.Assert.$true(Bridge.Array.binarySearch(arr, 3, 2, 4, new Bridge.ClientTest.Batch2.BridgeIssues.N772.TestReverseComparer()) < 0);
+            Bridge.Test.Assert.true(Bridge.Array.binarySearch(arr, 3, 2, 4, new Bridge.ClientTest.Batch2.BridgeIssues.N772.TestReverseComparer()) < 0);
         },
         binarySearchExceptionsWorks: function () {
             var arr1 = null;
             var arr2 = [1, 2, 3, 3, 4, 5];
     
-            Bridge.Test.Assert.$throws(function () {
+            Bridge.Test.Assert.throws(function () {
                 Bridge.Array.binarySearch(arr1, 0, arr1.length, 1);
             });
-            Bridge.Test.Assert.$throws(function () {
+            Bridge.Test.Assert.throws(function () {
                 Bridge.Array.binarySearch(arr2, -1, 1, 1);
             });
-            Bridge.Test.Assert.$throws(function () {
+            Bridge.Test.Assert.throws(function () {
                 Bridge.Array.binarySearch(arr2, 1, 6, 1);
             });
         },
@@ -312,7 +312,7 @@
         sortExceptionsWorks: function () {
             var arr1 = null;
     
-            Bridge.Test.Assert.$throws(function () {
+            Bridge.Test.Assert.throws(function () {
                 Bridge.Array.sort(arr1);
             });
         },
@@ -346,18 +346,18 @@
         },
         iCollectionContainsWorks: function () {
             var l = ["x", "y", "z"];
-            Bridge.Test.Assert.$true(Bridge.Array.contains(l, "y"));
-            Bridge.Test.Assert.$false(Bridge.Array.contains(l, "a"));
+            Bridge.Test.Assert.true(Bridge.Array.contains(l, "y"));
+            Bridge.Test.Assert.false(Bridge.Array.contains(l, "a"));
         },
         iCollectionContainsUsesEqualsMethod: function () {
             var l = [new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(1), new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(2), new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(3)];
-            Bridge.Test.Assert.$true(Bridge.Array.contains(l, new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(2)));
-            Bridge.Test.Assert.$false(Bridge.Array.contains(l, new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(4)));
+            Bridge.Test.Assert.true(Bridge.Array.contains(l, new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(2)));
+            Bridge.Test.Assert.false(Bridge.Array.contains(l, new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(4)));
         },
         iCollectionRemoveWorks: function () {
             var l = ["x", "y", "z"];
-            Bridge.Test.Assert.$true(Bridge.Array.remove(l, "y"));
-            Bridge.Test.Assert.$false(Bridge.Array.remove(l, "a"));
+            Bridge.Test.Assert.true(Bridge.Array.remove(l, "y"));
+            Bridge.Test.Assert.false(Bridge.Array.remove(l, "a"));
             Bridge.Test.Assert.areDeepEqual(["x", "z"], l);
         },
         iListIndexingWorks: function () {
@@ -418,7 +418,7 @@
             this.i = i;
         },
         equals: function (o) {
-            return Bridge.is(o, Bridge.ClientTest.Batch2.BridgeIssues.N772.C) && this.i === (Bridge.cast(o, Bridge.ClientTest.Batch2.BridgeIssues.N772.C)).i;
+            return Bridge.is(o, Bridge.ClientTest.Batch2.BridgeIssues.N772.C) && this.i === Bridge.cast(o, Bridge.ClientTest.Batch2.BridgeIssues.N772.C).i;
         },
         getHashCode: function () {
             return this.i;

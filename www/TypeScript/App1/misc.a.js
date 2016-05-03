@@ -15,8 +15,8 @@
     
     Bridge.define('Misc.A.EnumTest.EnumA', {
         statics: {
-            m1: 0,
-            m2: 1
+            M1: 0,
+            M2: 1
         },
         $enum: true
     });
