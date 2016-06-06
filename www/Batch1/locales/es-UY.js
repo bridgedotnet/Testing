@@ -1,8 +1,8 @@
-﻿Bridge.merge(new Bridge.CultureInfo("es-UY", true), {
+﻿Bridge.merge(new System.Globalization.CultureInfo("es-UY", true), {
     englishName: "Spanish (Uruguay)",
     nativeName: "español (Uruguay)",
 
-    numberFormat: Bridge.merge(new Bridge.NumberFormatInfo(), {
+    numberFormat: Bridge.merge(new System.Globalization.NumberFormatInfo(), {
         naNSymbol: "NeuN",
         negativeSign: "-",
         positiveSign: "+",
@@ -29,7 +29,7 @@
         numberNegativePattern: 1
     }),
 
-    dateTimeFormat: Bridge.merge(new Bridge.DateTimeFormatInfo(), {
+    dateTimeFormat: Bridge.merge(new System.Globalization.DateTimeFormatInfo(), {
         abbreviatedDayNames: ["dom","lun","mar","mié","jue","vie","sáb"],
         abbreviatedMonthGenitiveNames: ["ene","feb","mar","abr","may","jun","jul","ago","set","oct","nov","dic",""],
         abbreviatedMonthNames: ["ene","feb","mar","abr","may","jun","jul","ago","set","oct","nov","dic",""],

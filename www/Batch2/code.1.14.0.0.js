@@ -1,10 +1,19 @@
 ﻿(function (globals) {
     "use strict";
 
+    Bridge.define('Bridge.ClientTest.Batch2.BridgeIssues.Bridge1385', {
+        statics: {
+            testIsTypedArrayForByte: function () {
+                var value = new Uint8Array(3);
+                Bridge.Test.Assert.true(Bridge.is(value, Array));
+            }
+        }
+    });
+    
     Bridge.define('Bridge.ClientTest.Batch2.BridgeIssues.N1122', {
         statics: {
             testClippingInJavaScriptOverflowMode: function () {
-                var x = Bridge.Double.max;
+                var x = System.Double.max;
     
                 var y1 = Math.floor(x / 0.2);
                 Bridge.Test.Assert.areEqual$1(Number.POSITIVE_INFINITY, y1, "int");
@@ -42,8 +51,8 @@
                 var temp = { };
                 var temp1 = temp;
                 var temp2 = { };
-                var l = Bridge.Long(5);
-                var ol = Bridge.Long(5);
+                var l = System.Int64(5);
+                var ol = System.Int64(5);
                 var oi = 5;
                 var varNull = null;
                 var varUndefined = temp["this-prop-undefined"];
@@ -54,7 +63,7 @@
                 Bridge.Test.Assert.true$1(undefined === varUndefined, "Script.Undefined == varUndefined");
                 Bridge.Test.Assert.true$1(temp === temp1, "temp == temp1");
                 Bridge.Test.Assert.false$1(temp === temp2, "temp == temp2");
-                Bridge.Test.Assert.true$1(l.equals(Bridge.Long(5)), "l == 5");
+                Bridge.Test.Assert.true$1(l.equals(System.Int64(5)), "l == 5");
                 Bridge.Test.Assert.false$1(ol === oi, "ol == oi");
     
                 Bridge.Test.Assert.false$1(varUndefined === varNull, "varUndefined == varNull");
@@ -63,7 +72,7 @@
                 Bridge.Test.Assert.true$1(varUndefined === undefined, "varUndefined == Script.Undefined");
                 Bridge.Test.Assert.true$1(temp1 === temp, "temp1 == temp");
                 Bridge.Test.Assert.false$1(temp2 === temp, "temp2 == temp");
-                Bridge.Test.Assert.true$1(Bridge.Long(5).equals(l), "5 == l");
+                Bridge.Test.Assert.true$1(System.Int64(5).equals(l), "5 == l");
                 Bridge.Test.Assert.false$1(oi === ol, "oi == ol");
             }
         }
@@ -83,8 +92,8 @@
                 var doubleArray = new Float64Array(8);
     
                 //These arrays do not depend on "useTypedArray" bridge.json option
-                var stringArray = Bridge.Array.init(9, null);
-                var decimalArray = Bridge.Array.init(10, Bridge.Decimal(0.0));
+                var stringArray = System.Array.init(9, null);
+                var decimalArray = System.Array.init(10, System.Decimal(0.0));
     
                 byteArray[0] = 1;
                 sbyteArray[0] = 2;
@@ -96,7 +105,7 @@
                 doubleArray[0] = 8;
     
                 stringArray[0] = "9";
-                decimalArray[0] = Bridge.Decimal(10.0);
+                decimalArray[0] = System.Decimal(10.0);
     
                 Bridge.Test.Assert.areEqual$1(1, byteArray[0], "get byteArray[0]");
                 Bridge.Test.Assert.areEqual$1(2, sbyteArray[0], "get sbyteArray[0]");
@@ -108,19 +117,19 @@
                 Bridge.Test.Assert.areEqual$1(8, doubleArray[0], "get doubleArray[0]");
     
                 Bridge.Test.Assert.areEqual$1("9", stringArray[0], "get stringArray[0]");
-                Bridge.Test.Assert.areEqual$1(Bridge.Decimal(10.0), decimalArray[0], "get decimalArray[0]");
+                Bridge.Test.Assert.areEqual$1(System.Decimal(10.0), decimalArray[0], "get decimalArray[0]");
             }
         },
         typePropertiesAreCorrect: function () {
             var arr = [1, 2, 3];
             Bridge.Test.Assert.true$1(Bridge.is(arr, Array), "is Array should be true");
             Bridge.Test.Assert.true$1(Bridge.is(arr, Array), "is int[] should be true");
-            Bridge.Test.Assert.true$1(Bridge.is(arr, Bridge.ICollection), "is ICollection should be true");
-            Bridge.Test.Assert.true$1(Bridge.is(arr, Bridge.IEnumerable), "is IEnumerable should be true");
-            Bridge.Test.Assert.true$1(Bridge.is(arr, Bridge.ICloneable), "is ICloneable should be true");
-            Bridge.Test.Assert.true$1(Bridge.is(arr, Bridge.ICollection$1(Bridge.Int32)), "is ICollection<int> should be true");
-            Bridge.Test.Assert.true$1(Bridge.is(arr, Bridge.IEnumerable$1(Bridge.Int32)), "is IEnumerable<int> should be true");
-            Bridge.Test.Assert.true$1(Bridge.is(arr, Bridge.IList$1(Bridge.Int32)), "is IList<int> should be true");
+            Bridge.Test.Assert.true$1(Bridge.is(arr, System.Collections.ICollection), "is ICollection should be true");
+            Bridge.Test.Assert.true$1(Bridge.is(arr, System.Collections.IEnumerable), "is IEnumerable should be true");
+            Bridge.Test.Assert.true$1(Bridge.is(arr, System.ICloneable), "is ICloneable should be true");
+            Bridge.Test.Assert.true$1(Bridge.is(arr, System.Collections.Generic.ICollection$1(System.Int32)), "is ICollection<int> should be true");
+            Bridge.Test.Assert.true$1(Bridge.is(arr, System.Collections.Generic.IEnumerable$1(System.Int32)), "is IEnumerable<int> should be true");
+            Bridge.Test.Assert.true$1(Bridge.is(arr, System.Collections.Generic.IList$1(System.Int32)), "is IList<int> should be true");
         },
         lengthWorks: function () {
             Bridge.Test.Assert.areEqual(0, new Int32Array(0).length);
@@ -128,42 +137,42 @@
             Bridge.Test.Assert.areEqual(2, ["x", "y"].length);
         },
         rankIsOne: function () {
-            Bridge.Test.Assert.areEqual(1, Bridge.Array.getRank(new Int32Array(0)));
+            Bridge.Test.Assert.areEqual(1, System.Array.getRank(new Int32Array(0)));
         },
         getLengthWorks: function () {
-            Bridge.Test.Assert.areEqual(0, Bridge.Array.getLength(new Int32Array(0), 0));
-            Bridge.Test.Assert.areEqual(1, Bridge.Array.getLength(["x"], 0));
-            Bridge.Test.Assert.areEqual(2, Bridge.Array.getLength(["x", "y"], 0));
+            Bridge.Test.Assert.areEqual(0, System.Array.getLength(new Int32Array(0), 0));
+            Bridge.Test.Assert.areEqual(1, System.Array.getLength(["x"], 0));
+            Bridge.Test.Assert.areEqual(2, System.Array.getLength(["x", "y"], 0));
         },
         getLowerBound: function () {
-            Bridge.Test.Assert.areEqual(0, Bridge.Array.getLower(new Int32Array(0), 0));
-            Bridge.Test.Assert.areEqual(0, Bridge.Array.getLower(["x"], 0));
-            Bridge.Test.Assert.areEqual(0, Bridge.Array.getLower(["x", "y"], 0));
+            Bridge.Test.Assert.areEqual(0, System.Array.getLower(new Int32Array(0), 0));
+            Bridge.Test.Assert.areEqual(0, System.Array.getLower(["x"], 0));
+            Bridge.Test.Assert.areEqual(0, System.Array.getLower(["x", "y"], 0));
         },
         getUpperBoundWorks: function () {
-            Bridge.Test.Assert.areEqual(-1, (Bridge.Array.getLength(new Int32Array(0), 0) - 1));
-            Bridge.Test.Assert.areEqual(0, (Bridge.Array.getLength(["x"], 0) - 1));
-            Bridge.Test.Assert.areEqual(1, (Bridge.Array.getLength(["x", "y"], 0) - 1));
+            Bridge.Test.Assert.areEqual(-1, (System.Array.getLength(new Int32Array(0), 0) - 1));
+            Bridge.Test.Assert.areEqual(0, (System.Array.getLength(["x"], 0) - 1));
+            Bridge.Test.Assert.areEqual(1, (System.Array.getLength(["x", "y"], 0) - 1));
         },
         gettingValueByIndexWorks: function () {
             Bridge.Test.Assert.areEqual("x", ["x", "y"][0]);
             Bridge.Test.Assert.areEqual("y", ["x", "y"][1]);
         },
         getValueWorks: function () {
-            Bridge.Test.Assert.areEqual("x", Bridge.Array.get(["x", "y"], 0));
-            Bridge.Test.Assert.areEqual("y", Bridge.Array.get(["x", "y"], 1));
+            Bridge.Test.Assert.areEqual("x", System.Array.get(["x", "y"], 0));
+            Bridge.Test.Assert.areEqual("y", System.Array.get(["x", "y"], 1));
         },
         settingValueByIndexWorks: function () {
-            var arr = Bridge.Array.init(2, null);
+            var arr = System.Array.init(2, null);
             arr[0] = "x";
             arr[1] = "y";
             Bridge.Test.Assert.areEqual("x", arr[0]);
             Bridge.Test.Assert.areEqual("y", arr[1]);
         },
         setValueWorks: function () {
-            var arr = Bridge.Array.init(2, null);
-            Bridge.Array.set(arr, "x", 0);
-            Bridge.Array.set(arr, "y", 1);
+            var arr = System.Array.init(2, null);
+            System.Array.set(arr, "x", 0);
+            System.Array.set(arr, "y", 1);
             Bridge.Test.Assert.areEqual("x", arr[0]);
             Bridge.Test.Assert.areEqual("y", arr[1]);
         },
@@ -179,7 +188,7 @@
         },
         cloneWorks: function () {
             var arr = ["x", "y"];
-            var arr2 = Bridge.Array.clone(arr);
+            var arr2 = System.Array.clone(arr);
             Bridge.Test.Assert.false(arr === arr2);
             Bridge.Test.Assert.areDeepEqual(arr2, arr);
         },
@@ -191,17 +200,17 @@
         },
         containsWorks: function () {
             var arr = ["x", "y"];
-            Bridge.Test.Assert.true(Bridge.Linq.Enumerable.from(arr).contains("x"));
-            Bridge.Test.Assert.false(Bridge.Linq.Enumerable.from(arr).contains("z"));
+            Bridge.Test.Assert.true(System.Linq.Enumerable.from(arr).contains("x"));
+            Bridge.Test.Assert.false(System.Linq.Enumerable.from(arr).contains("z"));
         },
         containsUsesEqualsMethod: function () {
             var arr = [new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(1), new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(2), new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(3)];
-            Bridge.Test.Assert.true(Bridge.Linq.Enumerable.from(arr).contains(new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(2)));
-            Bridge.Test.Assert.false(Bridge.Linq.Enumerable.from(arr).contains(new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(4)));
+            Bridge.Test.Assert.true(System.Linq.Enumerable.from(arr).contains(new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(2)));
+            Bridge.Test.Assert.false(System.Linq.Enumerable.from(arr).contains(new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(4)));
         },
         allWithArrayItemFilterCallbackWorks: function () {
-            Bridge.Test.Assert.true(Bridge.Linq.Enumerable.from([1, 2, 3]).all($_.Bridge.ClientTest.Batch2.BridgeIssues.N772.f1));
-            Bridge.Test.Assert.false(Bridge.Linq.Enumerable.from([1, 2, 3]).all($_.Bridge.ClientTest.Batch2.BridgeIssues.N772.f2));
+            Bridge.Test.Assert.true(System.Linq.Enumerable.from([1, 2, 3]).all($_.Bridge.ClientTest.Batch2.BridgeIssues.N772.f1));
+            Bridge.Test.Assert.false(System.Linq.Enumerable.from([1, 2, 3]).all($_.Bridge.ClientTest.Batch2.BridgeIssues.N772.f2));
         },
         sliceWithoutEndWorks: function () {
             Bridge.Test.Assert.areDeepEqual(["c", "d"], ["a", "b", "c", "d"].slice(2));
@@ -243,45 +252,45 @@
             Bridge.Test.Assert.areDeepEqual([2, 3, 1, 4, 3, 1], arr);
         },
         anyWithArrayItemFilterCallbackWorks: function () {
-            Bridge.Test.Assert.true(Bridge.Linq.Enumerable.from([1, 2, 3, 4]).any($_.Bridge.ClientTest.Batch2.BridgeIssues.N772.f3));
-            Bridge.Test.Assert.false(Bridge.Linq.Enumerable.from([1, 2, 3, 4]).any($_.Bridge.ClientTest.Batch2.BridgeIssues.N772.f4));
+            Bridge.Test.Assert.true(System.Linq.Enumerable.from([1, 2, 3, 4]).any($_.Bridge.ClientTest.Batch2.BridgeIssues.N772.f3));
+            Bridge.Test.Assert.false(System.Linq.Enumerable.from([1, 2, 3, 4]).any($_.Bridge.ClientTest.Batch2.BridgeIssues.N772.f4));
         },
         binarySearch1Works: function () {
             var arr = [1, 2, 3, 3, 4, 5];
     
-            Bridge.Test.Assert.areEqual(2, Bridge.Array.binarySearch(arr, 0, arr.length, 3));
-            Bridge.Test.Assert.true(Bridge.Array.binarySearch(arr, 0, arr.length, 6) < 0);
+            Bridge.Test.Assert.areEqual(2, System.Array.binarySearch(arr, 0, arr.length, 3));
+            Bridge.Test.Assert.true(System.Array.binarySearch(arr, 0, arr.length, 6) < 0);
         },
         binarySearch2Works: function () {
             var arr = [1, 2, 3, 3, 4, 5];
     
-            Bridge.Test.Assert.areEqual(3, Bridge.Array.binarySearch(arr, 3, 2, 3));
-            Bridge.Test.Assert.true(Bridge.Array.binarySearch(arr, 2, 2, 4) < 0);
+            Bridge.Test.Assert.areEqual(3, System.Array.binarySearch(arr, 3, 2, 3));
+            Bridge.Test.Assert.true(System.Array.binarySearch(arr, 2, 2, 4) < 0);
         },
         binarySearch3Works: function () {
             var arr = [1, 2, 3, 3, 4, 5];
     
-            Bridge.Test.Assert.areEqual(2, Bridge.Array.binarySearch(arr, 0, arr.length, 3, new Bridge.ClientTest.Batch2.BridgeIssues.N772.TestReverseComparer()));
-            Bridge.Test.Assert.areEqual(-1, Bridge.Array.binarySearch(arr, 0, arr.length, 6, new Bridge.ClientTest.Batch2.BridgeIssues.N772.TestReverseComparer()));
+            Bridge.Test.Assert.areEqual(2, System.Array.binarySearch(arr, 0, arr.length, 3, new Bridge.ClientTest.Batch2.BridgeIssues.N772.TestReverseComparer()));
+            Bridge.Test.Assert.areEqual(-1, System.Array.binarySearch(arr, 0, arr.length, 6, new Bridge.ClientTest.Batch2.BridgeIssues.N772.TestReverseComparer()));
         },
         binarySearch4Works: function () {
             var arr = [1, 2, 3, 3, 4, 5];
     
-            Bridge.Test.Assert.areEqual(3, Bridge.Array.binarySearch(arr, 3, 2, 3, new Bridge.ClientTest.Batch2.BridgeIssues.N772.TestReverseComparer()));
-            Bridge.Test.Assert.true(Bridge.Array.binarySearch(arr, 3, 2, 4, new Bridge.ClientTest.Batch2.BridgeIssues.N772.TestReverseComparer()) < 0);
+            Bridge.Test.Assert.areEqual(3, System.Array.binarySearch(arr, 3, 2, 3, new Bridge.ClientTest.Batch2.BridgeIssues.N772.TestReverseComparer()));
+            Bridge.Test.Assert.true(System.Array.binarySearch(arr, 3, 2, 4, new Bridge.ClientTest.Batch2.BridgeIssues.N772.TestReverseComparer()) < 0);
         },
         binarySearchExceptionsWorks: function () {
             var arr1 = null;
             var arr2 = [1, 2, 3, 3, 4, 5];
     
             Bridge.Test.Assert.throws(function () {
-                Bridge.Array.binarySearch(arr1, 0, arr1.length, 1);
+                System.Array.binarySearch(arr1, 0, arr1.length, 1);
             });
             Bridge.Test.Assert.throws(function () {
-                Bridge.Array.binarySearch(arr2, -1, 1, 1);
+                System.Array.binarySearch(arr2, -1, 1, 1);
             });
             Bridge.Test.Assert.throws(function () {
-                Bridge.Array.binarySearch(arr2, 1, 6, 1);
+                System.Array.binarySearch(arr2, 1, 6, 1);
             });
         },
         sortWithDefaultCompareWorks: function () {
@@ -291,29 +300,29 @@
         },
         sort1Works: function () {
             var arr = [1, 6, 6, 4, 2];
-            Bridge.Array.sort(arr);
+            System.Array.sort(arr);
             Bridge.Test.Assert.areDeepEqual([1, 2, 4, 6, 6], arr);
         },
         sort2Works: function () {
             var arr = [1, 6, 6, 4, 2];
-            Bridge.Array.sort(arr, 2, 3);
+            System.Array.sort(arr, 2, 3);
             Bridge.Test.Assert.areDeepEqual([1, 6, 2, 4, 6], arr);
         },
         sort3Works: function () {
             var arr = [1, 2, 6, 3, 6, 7];
-            Bridge.Array.sort(arr, 2, 3, new Bridge.ClientTest.Batch2.BridgeIssues.N772.TestReverseComparer());
+            System.Array.sort(arr, 2, 3, new Bridge.ClientTest.Batch2.BridgeIssues.N772.TestReverseComparer());
             Bridge.Test.Assert.areDeepEqual([1, 2, 6, 6, 3, 7], arr);
         },
         sort4Works: function () {
             var arr = [1, 6, 6, 4, 2];
-            Bridge.Array.sort(arr, new Bridge.ClientTest.Batch2.BridgeIssues.N772.TestReverseComparer());
+            System.Array.sort(arr, new Bridge.ClientTest.Batch2.BridgeIssues.N772.TestReverseComparer());
             Bridge.Test.Assert.areDeepEqual([6, 6, 4, 2, 1], arr);
         },
         sortExceptionsWorks: function () {
             var arr1 = null;
     
             Bridge.Test.Assert.throws(function () {
-                Bridge.Array.sort(arr1);
+                System.Array.sort(arr1);
             });
         },
         foreachWhenCastToIListWorks: function () {
@@ -329,47 +338,47 @@
         },
         iCollectionCountWorks: function () {
             var l = ["x", "y", "z"];
-            Bridge.Test.Assert.areEqual(3, Bridge.Array.getCount(l));
+            Bridge.Test.Assert.areEqual(3, System.Array.getCount(l));
         },
         iCollectionAddWorks: function () {
             var l = ["x", "y", "z"];
-            Bridge.Array.add(l, "a");
+            System.Array.add(l, "a");
             Bridge.Test.Assert.areDeepEqual(["x", "y", "z", "a"], l);
         },
         iCollectionClearWorks: function () {
             var l = ["x", "y", "z"];
-            Bridge.Array.clear(l, String);
-            Bridge.Test.Assert.areDeepEqual(Bridge.Array.init(3, null), l);
-            Bridge.Test.Assert.areDeepEqual(null, Bridge.Array.getItem(l, 0));
-            Bridge.Test.Assert.areDeepEqual(null, Bridge.Array.getItem(l, 1));
-            Bridge.Test.Assert.areDeepEqual(null, Bridge.Array.getItem(l, 2));
+            System.Array.clear(l, String);
+            Bridge.Test.Assert.areDeepEqual(System.Array.init(3, null), l);
+            Bridge.Test.Assert.areDeepEqual(null, System.Array.getItem(l, 0));
+            Bridge.Test.Assert.areDeepEqual(null, System.Array.getItem(l, 1));
+            Bridge.Test.Assert.areDeepEqual(null, System.Array.getItem(l, 2));
         },
         iCollectionContainsWorks: function () {
             var l = ["x", "y", "z"];
-            Bridge.Test.Assert.true(Bridge.Array.contains(l, "y"));
-            Bridge.Test.Assert.false(Bridge.Array.contains(l, "a"));
+            Bridge.Test.Assert.true(System.Array.contains(l, "y"));
+            Bridge.Test.Assert.false(System.Array.contains(l, "a"));
         },
         iCollectionContainsUsesEqualsMethod: function () {
             var l = [new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(1), new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(2), new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(3)];
-            Bridge.Test.Assert.true(Bridge.Array.contains(l, new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(2)));
-            Bridge.Test.Assert.false(Bridge.Array.contains(l, new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(4)));
+            Bridge.Test.Assert.true(System.Array.contains(l, new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(2)));
+            Bridge.Test.Assert.false(System.Array.contains(l, new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(4)));
         },
         iCollectionRemoveWorks: function () {
             var l = ["x", "y", "z"];
-            Bridge.Test.Assert.true(Bridge.Array.remove(l, "y"));
-            Bridge.Test.Assert.false(Bridge.Array.remove(l, "a"));
+            Bridge.Test.Assert.true(System.Array.remove(l, "y"));
+            Bridge.Test.Assert.false(System.Array.remove(l, "a"));
             Bridge.Test.Assert.areDeepEqual(["x", "z"], l);
         },
         iListIndexingWorks: function () {
             var l = ["x", "y", "z"];
-            Bridge.Test.Assert.areEqual("y", Bridge.Array.getItem(l, 1));
-            Bridge.Array.setItem(l, 1, "a");
+            Bridge.Test.Assert.areEqual("y", System.Array.getItem(l, 1));
+            System.Array.setItem(l, 1, "a");
             Bridge.Test.Assert.areDeepEqual(["x", "a", "z"], l);
         },
         iListIndexOfWorks: function () {
             var l = ["x", "y", "z"];
-            Bridge.Test.Assert.areEqual(1, Bridge.Array.indexOf(l, "y"));
-            Bridge.Test.Assert.areEqual(-1, Bridge.Array.indexOf(l, "a"));
+            Bridge.Test.Assert.areEqual(1, System.Array.indexOf(l, "y"));
+            Bridge.Test.Assert.areEqual(-1, System.Array.indexOf(l, "a"));
         },
         iListIndexOfUsesEqualsMethod: function () {
             var arr = [new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(1), new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(2), new Bridge.ClientTest.Batch2.BridgeIssues.N772.C(3)];
@@ -378,17 +387,17 @@
         },
         iListInsertWorks: function () {
             var l = ["x", "y", "z"];
-            Bridge.Array.insert(l, 1, "a");
+            System.Array.insert(l, 1, "a");
             Bridge.Test.Assert.areDeepEqual(["x", "a", "y", "z"], l);
         },
         iListRemoveAtWorks: function () {
             var l = ["x", "y", "z"];
-            Bridge.Array.removeAt(l, 1);
+            System.Array.removeAt(l, 1);
             Bridge.Test.Assert.areDeepEqual(["x", "z"], l);
         },
         issueSpecific: function () {
             var l = ["x", "y", "z"];
-            Bridge.Array.removeAt(l, 1);
+            System.Array.removeAt(l, 1);
             Bridge.Test.Assert.areDeepEqual(["x", "z"], l);
         }
     });
@@ -426,7 +435,7 @@
     });
     
     Bridge.define('Bridge.ClientTest.Batch2.BridgeIssues.N772.TestReverseComparer', {
-        inherits: [Bridge.IComparer$1(Bridge.Int32)],
+        inherits: [System.Collections.Generic.IComparer$1(System.Int32)],
         compare: function (x, y) {
             return x === y ? 0 : (x > y ? -1 : 1);
         }
@@ -454,30 +463,30 @@
                 var max3 = max;
                 var max4 = max;
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.Int.check(max + 1, Bridge.Int32);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = Bridge.Int.check(max + 1, System.Int32);
                 }, "Through identifier +");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.identity(max2, (max2 = Bridge.Int.check(max2 + 1, Bridge.Int32)));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = Bridge.identity(max2, (max2 = Bridge.Int.check(max2 + 1, System.Int32)));
                 }, "Through identifier post++");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = ((max3 = Bridge.Int.check(max3 + 1, Bridge.Int32)));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = ((max3 = Bridge.Int.check(max3 + 1, System.Int32)));
                 }, "Through identifier ++pre");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.Int.check(2 * max, Bridge.Int32);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = Bridge.Int.check(2 * max, System.Int32);
                 }, "Through identifier *");
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(max + 1, Bridge.Int32));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(max + 1, System.Int32));
                 }, "Through parameter +");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.identity(max3, (max3 = Bridge.Int.check(max3 + 1, Bridge.Int32))));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.identity(max3, (max3 = Bridge.Int.check(max3 + 1, System.Int32))));
                 }, "Through parameter post++");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(((max4 = Bridge.Int.check(max4 + 1, Bridge.Int32))));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(((max4 = Bridge.Int.check(max4 + 1, System.Int32))));
                 }, "Through parameter ++pre");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(2 * max, Bridge.Int32));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(2 * max, System.Int32));
                 }, "Through parameter *");
     
                 var min = -2147483648;
@@ -487,30 +496,30 @@
                 var min3 = min;
                 var min4 = min;
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.Int.check(min - 1, Bridge.Int32);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = Bridge.Int.check(min - 1, System.Int32);
                 }, "Through identifier -");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.identity(min1, (min1 = Bridge.Int.check(min1 - 1, Bridge.Int32)));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = Bridge.identity(min1, (min1 = Bridge.Int.check(min1 - 1, System.Int32)));
                 }, "Through identifier post--");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = ((min2 = Bridge.Int.check(min2 - 1, Bridge.Int32)));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = ((min2 = Bridge.Int.check(min2 - 1, System.Int32)));
                 }, "Through identifier pre--");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.Int.check(-min, Bridge.Int32);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = Bridge.Int.check(-min, System.Int32);
                 }, "Through identifier unary -");
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(min - 1, Bridge.Int32));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(min - 1, System.Int32));
                 }, "Through parameter -");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.identity(min3, (min3 = Bridge.Int.check(min3 - 1, Bridge.Int32))));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.identity(min3, (min3 = Bridge.Int.check(min3 - 1, System.Int32))));
                 }, "Through parameter post--");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(((min4 = Bridge.Int.check(min4 - 1, Bridge.Int32))));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(((min4 = Bridge.Int.check(min4 - 1, System.Int32))));
                 }, "Through parameter --pre");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(-min, Bridge.Int32));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(-min, System.Int32));
                 }, "Through parameter unary -");
             },
             testUInt32: function () {
@@ -521,30 +530,30 @@
                 var max3 = max;
                 var max4 = max;
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.Int.check(max + 1, Bridge.UInt32);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = Bridge.Int.check(max + 1, System.UInt32);
                 }, "Through identifier +");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.identity(max1, (max1 = Bridge.Int.check(max1 + 1, Bridge.UInt32)));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = Bridge.identity(max1, (max1 = Bridge.Int.check(max1 + 1, System.UInt32)));
                 }, "Through identifier post++");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = ((max2 = Bridge.Int.check(max2 + 1, Bridge.UInt32)));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = ((max2 = Bridge.Int.check(max2 + 1, System.UInt32)));
                 }, "Through identifier ++pre");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.Int.check(2 * max, Bridge.UInt32);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = Bridge.Int.check(2 * max, System.UInt32);
                 }, "Through identifier *");
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(max + 1, Bridge.UInt32));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(max + 1, System.UInt32));
                 }, "Through parameter +");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.identity(max3, (max3 = Bridge.Int.check(max3 + 1, Bridge.UInt32))));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.identity(max3, (max3 = Bridge.Int.check(max3 + 1, System.UInt32))));
                 }, "Through parameter post++");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(((max4 = Bridge.Int.check(max4 + 1, Bridge.UInt32))));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(((max4 = Bridge.Int.check(max4 + 1, System.UInt32))));
                 }, "Through parameter ++pre");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(2 * max, Bridge.UInt32));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(2 * max, System.UInt32));
                 }, "Through parameter *");
     
                 var min = 0;
@@ -554,159 +563,159 @@
                 var min3 = min;
                 var min4 = min;
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.Int.check(min - 1, Bridge.UInt32);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = Bridge.Int.check(min - 1, System.UInt32);
                 }, "Through identifier -");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.identity(min1, (min1 = Bridge.Int.check(min1 - 1, Bridge.UInt32)));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = Bridge.identity(min1, (min1 = Bridge.Int.check(min1 - 1, System.UInt32)));
                 }, "Through identifier post--");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = ((min2 = Bridge.Int.check(min2 - 1, Bridge.UInt32)));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = ((min2 = Bridge.Int.check(min2 - 1, System.UInt32)));
                 }, "Through identifier pre--");
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(min - 1, Bridge.UInt32));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(min - 1, System.UInt32));
                 }, "Through parameter -");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.identity(min3, (min3 = Bridge.Int.check(min3 - 1, Bridge.UInt32))));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.identity(min3, (min3 = Bridge.Int.check(min3 - 1, System.UInt32))));
                 }, "Through parameter post--");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(((min4 = Bridge.Int.check(min4 - 1, Bridge.UInt32))));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(((min4 = Bridge.Int.check(min4 - 1, System.UInt32))));
                 }, "Through parameter --pre");
             },
             testLong: function () {
-                var max = Bridge.Long.MaxValue;
+                var max = System.Int64.MaxValue;
     
                 var max1 = max;
                 var max2 = max;
                 var max3 = max;
                 var max4 = max;
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = max.add(Bridge.Long(1), 1);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = max.add(System.Int64(1), 1);
                 }, "Through identifier +");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var $t;
                     var r = ($t = max1, max1 = max1.inc(1), $t);
                 }, "Through identifier post++");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var r = (max2 = max2.inc(1));
                 }, "Through identifier ++pre");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.Long(2).mul(max, 1);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = System.Int64(2).mul(max, 1);
                 }, "Through identifier *");
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(max.add(Bridge.Long(1), 1));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(max.add(System.Int64(1), 1));
                 }, "Through parameter +");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var $t;
                     Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(($t = max3, max3 = max3.inc(1), $t));
                 }, "Through parameter post++");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass((max4 = max4.inc(1)));
                 }, "Through parameter ++pre");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Long(2).mul(max, 1));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(System.Int64(2).mul(max, 1));
                 }, "Through parameter *");
     
-                var min = Bridge.Long.MinValue;
+                var min = System.Int64.MinValue;
     
                 var min1 = min;
                 var min2 = min;
                 var min3 = min;
                 var min4 = min;
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = min.sub(Bridge.Long(1), 1);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = min.sub(System.Int64(1), 1);
                 }, "Through identifier -");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var $t;
                     var r = ($t = min1, min1 = min1.dec(1), $t);
                 }, "Through identifier post--");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var r = (min2 = min2.dec(1));
                 }, "Through identifier pre--");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var r = min.neg(1);
                 }, "Through identifier unary -");
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.sub(Bridge.Long(1), 1));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.sub(System.Int64(1), 1));
                 }, "Through parameter -");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var $t;
                     Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(($t = min3, min3 = min3.dec(1), $t));
                 }, "Through parameter post--");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass((min4 = min4.dec(1)));
                 }, "Through parameter --pre");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.neg(1));
                 }, "Through parameter unary -");
             },
             testULong: function () {
-                var max = Bridge.ULong.MaxValue;
+                var max = System.UInt64.MaxValue;
     
                 var max1 = max;
                 var max2 = max;
                 var max3 = max;
                 var max4 = max;
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = max.add(Bridge.ULong(1), 1);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = max.add(System.UInt64(1), 1);
                 }, "Through identifier +");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var $t;
                     var r = ($t = max1, max1 = max1.inc(1), $t);
                 }, "Through identifier post++");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var r = (max2 = max2.inc(1));
                 }, "Through identifier ++pre");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.ULong(2).mul(max, 1);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = System.UInt64(2).mul(max, 1);
                 }, "Through identifier *");
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(max.add(Bridge.ULong(1), 1));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(max.add(System.UInt64(1), 1));
                 }, "Through parameter +");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var $t;
                     Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(($t = max3, max3 = max3.inc(1), $t));
                 }, "Through parameter post++");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass((max4 = max4.inc(1)));
                 }, "Through parameter ++pre");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.ULong(2).mul(max, 1));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(System.UInt64(2).mul(max, 1));
                 }, "Through parameter *");
     
-                var min = Bridge.ULong.MinValue;
+                var min = System.UInt64.MinValue;
     
                 var min1 = min;
                 var min2 = min;
                 var min3 = min;
                 var min4 = min;
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = min.sub(Bridge.ULong(1), 1);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = min.sub(System.UInt64(1), 1);
                 }, "Through identifier -");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var $t;
                     var r = ($t = min1, min1 = min1.dec(1), $t);
                 }, "Through identifier post--");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var r = (min2 = min2.dec(1));
                 }, "Through identifier pre--");
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.sub(Bridge.ULong(1), 1));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.sub(System.UInt64(1), 1));
                 }, "Through parameter -");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var $t;
                     Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(($t = min3, min3 = min3.dec(1), $t));
                 }, "Through parameter post--");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass((min4 = min4.dec(1)));
                 }, "Through parameter --pre");
             }
@@ -723,30 +732,30 @@
                 var max3 = max;
                 var max4 = max;
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.Int.check(max + 1, Bridge.Int32);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = Bridge.Int.check(max + 1, System.Int32);
                 }, "Through identifier +");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.identity(max2, (max2 = Bridge.Int.check(max2 + 1, Bridge.Int32)));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = Bridge.identity(max2, (max2 = Bridge.Int.check(max2 + 1, System.Int32)));
                 }, "Through identifier post++");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = ((max3 = Bridge.Int.check(max3 + 1, Bridge.Int32)));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = ((max3 = Bridge.Int.check(max3 + 1, System.Int32)));
                 }, "Through identifier ++pre");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.Int.check(2 * max, Bridge.Int32);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = Bridge.Int.check(2 * max, System.Int32);
                 }, "Through identifier *");
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(max + 1, Bridge.Int32));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(max + 1, System.Int32));
                 }, "Through parameter +");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.identity(max3, (max3 = Bridge.Int.check(max3 + 1, Bridge.Int32))));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.identity(max3, (max3 = Bridge.Int.check(max3 + 1, System.Int32))));
                 }, "Through parameter post++");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(((max4 = Bridge.Int.check(max4 + 1, Bridge.Int32))));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(((max4 = Bridge.Int.check(max4 + 1, System.Int32))));
                 }, "Through parameter ++pre");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(2 * max, Bridge.Int32));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(2 * max, System.Int32));
                 }, "Through parameter *");
     
                 var min = -2147483648;
@@ -756,30 +765,30 @@
                 var min3 = min;
                 var min4 = min;
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.Int.check(min - 1, Bridge.Int32);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = Bridge.Int.check(min - 1, System.Int32);
                 }, "Through identifier -");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.identity(min1, (min1 = Bridge.Int.check(min1 - 1, Bridge.Int32)));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = Bridge.identity(min1, (min1 = Bridge.Int.check(min1 - 1, System.Int32)));
                 }, "Through identifier post--");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = ((min2 = Bridge.Int.check(min2 - 1, Bridge.Int32)));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = ((min2 = Bridge.Int.check(min2 - 1, System.Int32)));
                 }, "Through identifier pre--");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.Int.check(-min, Bridge.Int32);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = Bridge.Int.check(-min, System.Int32);
                 }, "Through identifier unary -");
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(min - 1, Bridge.Int32));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(min - 1, System.Int32));
                 }, "Through parameter -");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.identity(min3, (min3 = Bridge.Int.check(min3 - 1, Bridge.Int32))));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.identity(min3, (min3 = Bridge.Int.check(min3 - 1, System.Int32))));
                 }, "Through parameter post--");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(((min4 = Bridge.Int.check(min4 - 1, Bridge.Int32))));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(((min4 = Bridge.Int.check(min4 - 1, System.Int32))));
                 }, "Through parameter --pre");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(-min, Bridge.Int32));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(-min, System.Int32));
                 }, "Through parameter unary -");
             },
             testUInt32: function () {
@@ -790,30 +799,30 @@
                 var max3 = max;
                 var max4 = max;
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.Int.check(max + 1, Bridge.UInt32);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = Bridge.Int.check(max + 1, System.UInt32);
                 }, "Through identifier +");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.identity(max1, (max1 = Bridge.Int.check(max1 + 1, Bridge.UInt32)));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = Bridge.identity(max1, (max1 = Bridge.Int.check(max1 + 1, System.UInt32)));
                 }, "Through identifier post++");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = ((max2 = Bridge.Int.check(max2 + 1, Bridge.UInt32)));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = ((max2 = Bridge.Int.check(max2 + 1, System.UInt32)));
                 }, "Through identifier ++pre");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.Int.check(2 * max, Bridge.UInt32);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = Bridge.Int.check(2 * max, System.UInt32);
                 }, "Through identifier *");
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(max + 1, Bridge.UInt32));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(max + 1, System.UInt32));
                 }, "Through parameter +");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.identity(max3, (max3 = Bridge.Int.check(max3 + 1, Bridge.UInt32))));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.identity(max3, (max3 = Bridge.Int.check(max3 + 1, System.UInt32))));
                 }, "Through parameter post++");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(((max4 = Bridge.Int.check(max4 + 1, Bridge.UInt32))));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(((max4 = Bridge.Int.check(max4 + 1, System.UInt32))));
                 }, "Through parameter ++pre");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(2 * max, Bridge.UInt32));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(2 * max, System.UInt32));
                 }, "Through parameter *");
     
                 var min = 0;
@@ -823,159 +832,159 @@
                 var min3 = min;
                 var min4 = min;
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.Int.check(min - 1, Bridge.UInt32);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = Bridge.Int.check(min - 1, System.UInt32);
                 }, "Through identifier -");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.identity(min1, (min1 = Bridge.Int.check(min1 - 1, Bridge.UInt32)));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = Bridge.identity(min1, (min1 = Bridge.Int.check(min1 - 1, System.UInt32)));
                 }, "Through identifier post--");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = ((min2 = Bridge.Int.check(min2 - 1, Bridge.UInt32)));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = ((min2 = Bridge.Int.check(min2 - 1, System.UInt32)));
                 }, "Through identifier pre--");
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(min - 1, Bridge.UInt32));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Int.check(min - 1, System.UInt32));
                 }, "Through parameter -");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.identity(min3, (min3 = Bridge.Int.check(min3 - 1, Bridge.UInt32))));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.identity(min3, (min3 = Bridge.Int.check(min3 - 1, System.UInt32))));
                 }, "Through parameter post--");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(((min4 = Bridge.Int.check(min4 - 1, Bridge.UInt32))));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(((min4 = Bridge.Int.check(min4 - 1, System.UInt32))));
                 }, "Through parameter --pre");
             },
             testLong: function () {
-                var max = Bridge.Long.MaxValue;
+                var max = System.Int64.MaxValue;
     
                 var max1 = max;
                 var max2 = max;
                 var max3 = max;
                 var max4 = max;
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = max.add(Bridge.Long(1), 1);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = max.add(System.Int64(1), 1);
                 }, "Through identifier +");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var $t;
                     var r = ($t = max1, max1 = max1.inc(1), $t);
                 }, "Through identifier post++");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var r = (max2 = max2.inc(1));
                 }, "Through identifier ++pre");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.Long(2).mul(max, 1);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = System.Int64(2).mul(max, 1);
                 }, "Through identifier *");
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(max.add(Bridge.Long(1), 1));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(max.add(System.Int64(1), 1));
                 }, "Through parameter +");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var $t;
                     Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(($t = max3, max3 = max3.inc(1), $t));
                 }, "Through parameter post++");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass((max4 = max4.inc(1)));
                 }, "Through parameter ++pre");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Long(2).mul(max, 1));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(System.Int64(2).mul(max, 1));
                 }, "Through parameter *");
     
-                var min = Bridge.Long.MinValue;
+                var min = System.Int64.MinValue;
     
                 var min1 = min;
                 var min2 = min;
                 var min3 = min;
                 var min4 = min;
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = min.sub(Bridge.Long(1), 1);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = min.sub(System.Int64(1), 1);
                 }, "Through identifier -");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var $t;
                     var r = ($t = min1, min1 = min1.dec(1), $t);
                 }, "Through identifier post--");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var r = (min2 = min2.dec(1));
                 }, "Through identifier pre--");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var r = min.neg(1);
                 }, "Through identifier unary -");
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.sub(Bridge.Long(1), 1));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.sub(System.Int64(1), 1));
                 }, "Through parameter -");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var $t;
                     Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(($t = min3, min3 = min3.dec(1), $t));
                 }, "Through parameter post--");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass((min4 = min4.dec(1)));
                 }, "Through parameter --pre");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.neg(1));
                 }, "Through parameter unary -");
             },
             testULong: function () {
-                var max = Bridge.ULong.MaxValue;
+                var max = System.UInt64.MaxValue;
     
                 var max1 = max;
                 var max2 = max;
                 var max3 = max;
                 var max4 = max;
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = max.add(Bridge.ULong(1), 1);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = max.add(System.UInt64(1), 1);
                 }, "Through identifier +");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var $t;
                     var r = ($t = max1, max1 = max1.inc(1), $t);
                 }, "Through identifier post++");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var r = (max2 = max2.inc(1));
                 }, "Through identifier ++pre");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = Bridge.ULong(2).mul(max, 1);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = System.UInt64(2).mul(max, 1);
                 }, "Through identifier *");
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(max.add(Bridge.ULong(1), 1));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(max.add(System.UInt64(1), 1));
                 }, "Through parameter +");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var $t;
                     Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(($t = max3, max3 = max3.inc(1), $t));
                 }, "Through parameter post++");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass((max4 = max4.inc(1)));
                 }, "Through parameter ++pre");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.ULong(2).mul(max, 1));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(System.UInt64(2).mul(max, 1));
                 }, "Through parameter *");
     
-                var min = Bridge.ULong.MinValue;
+                var min = System.UInt64.MinValue;
     
                 var min1 = min;
                 var min2 = min;
                 var min3 = min;
                 var min4 = min;
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    var r = min.sub(Bridge.ULong(1), 1);
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    var r = min.sub(System.UInt64(1), 1);
                 }, "Through identifier -");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var $t;
                     var r = ($t = min1, min1 = min1.dec(1), $t);
                 }, "Through identifier post--");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var r = (min2 = min2.dec(1));
                 }, "Through identifier pre--");
     
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
-                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.sub(Bridge.ULong(1), 1));
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
+                    Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.sub(System.UInt64(1), 1));
                 }, "Through parameter -");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     var $t;
                     Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(($t = min3, min3 = min3.dec(1), $t));
                 }, "Through parameter post--");
-                Bridge.Test.Assert.throws$7(Bridge.OverflowException, function () {
+                Bridge.Test.Assert.throws$7(System.OverflowException, function () {
                     Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass((min4 = min4.dec(1)));
                 }, "Through parameter --pre");
             }
@@ -1059,7 +1068,7 @@
                 var rMin1 = (min - 1) >>> 0;
                 var rMin2 = Bridge.identity(min1, (min1 = (min1 - 1) >>> 0));
                 var rMin3 = ((min2 = (min2 - 1) >>> 0));
-                var rMin4 = Bridge.Long(min).neg();
+                var rMin4 = System.Int64(min).neg();
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("4294967295", rMin1, "Through identifier -");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", rMin2, "Through identifier post--");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("4294967295", rMin3, "Through identifier --pre");
@@ -1068,39 +1077,39 @@
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("4294967295", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(((min - 1) >>> 0)), "Through parameter -");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.identity(min3, (min3 = (min3 - 1) >>> 0))), "Through parameter post--");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("4294967295", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(((min4 = (min4 - 1) >>> 0))), "Through parameter --pre");
-                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Long(min).neg()), "Through parameter unary -");
+                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(System.Int64(min).neg()), "Through parameter unary -");
             },
             testLong: function () {
                 var $t;
-                var max = Bridge.Long.MaxValue;
+                var max = System.Int64.MaxValue;
     
                 var max1 = max;
                 var max2 = max;
                 var max3 = max;
                 var max4 = max;
     
-                var rMax1 = max.add(Bridge.Long(1));
+                var rMax1 = max.add(System.Int64(1));
                 var rMax2 = ($t = max1, max1 = max1.inc(), $t);
                 var rMax3 = (max2 = max2.inc());
-                var rMax4 = Bridge.Long(2).mul(max);
+                var rMax4 = System.Int64(2).mul(max);
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", rMax1, "Through identifier +");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("9223372036854775807", rMax2, "Through identifier post++");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", rMax3, "Through identifier ++pre");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-2", rMax4, "Through identifier *");
     
-                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(max.add(Bridge.Long(1))), "Through parameter +");
+                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(max.add(System.Int64(1))), "Through parameter +");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("9223372036854775807", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(($t = max3, max3 = max3.inc(), $t)), "Through parameter post++");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass((max4 = max4.inc())), "Through parameter ++pre");
-                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-2", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Long(2).mul(max)), "Through parameter *");
+                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-2", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(System.Int64(2).mul(max)), "Through parameter *");
     
-                var min = Bridge.Long.MinValue;
+                var min = System.Int64.MinValue;
     
                 var min1 = min;
                 var min2 = min;
                 var min3 = min;
                 var min4 = min;
     
-                var rMin1 = min.sub(Bridge.Long(1));
+                var rMin1 = min.sub(System.Int64(1));
                 var rMin2 = ($t = min1, min1 = min1.dec(), $t);
                 var rMin3 = (min2 = min2.dec());
                 var rMin4 = min.neg();
@@ -1109,49 +1118,49 @@
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("9223372036854775807", rMin3, "Through identifier --pre");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", rMin4, "Through identifier unary -");
     
-                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("9223372036854775807", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.sub(Bridge.Long(1))), "Through parameter -");
+                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("9223372036854775807", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.sub(System.Int64(1))), "Through parameter -");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(($t = min3, min3 = min3.dec(), $t)), "Through parameter post--");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("9223372036854775807", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass((min4 = min4.dec())), "Through parameter --pre");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.neg()), "Through parameter unary -");
             },
             testULong: function () {
                 var $t;
-                var max = Bridge.ULong.MaxValue;
+                var max = System.UInt64.MaxValue;
     
                 var max1 = max;
                 var max2 = max;
                 var max3 = max;
                 var max4 = max;
     
-                var rMax1 = max.add(Bridge.ULong(1));
+                var rMax1 = max.add(System.UInt64(1));
                 var rMax2 = ($t = max1, max1 = max1.inc(), $t);
                 var rMax3 = (max2 = max2.inc());
-                var rMax4 = Bridge.ULong(2).mul(max);
+                var rMax4 = System.UInt64(2).mul(max);
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", rMax1, "Through identifier +");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551615", rMax2, "Through identifier post++");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", rMax3, "Through identifier ++pre");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551614", rMax4, "Through identifier *");
     
-                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(max.add(Bridge.ULong(1))), "Through parameter +");
+                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(max.add(System.UInt64(1))), "Through parameter +");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551615", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(($t = max3, max3 = max3.inc(), $t)), "Through parameter post++");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass((max4 = max4.inc())), "Through parameter ++pre");
-                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551614", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.ULong(2).mul(max)), "Through parameter *");
+                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551614", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(System.UInt64(2).mul(max)), "Through parameter *");
     
-                var min = Bridge.ULong.MinValue;
+                var min = System.UInt64.MinValue;
     
                 var min1 = min;
                 var min2 = min;
                 var min3 = min;
                 var min4 = min;
     
-                var rMin1 = min.sub(Bridge.ULong(1));
+                var rMin1 = min.sub(System.UInt64(1));
                 var rMin2 = ($t = min1, min1 = min1.dec(), $t);
                 var rMin3 = (min2 = min2.dec());
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551615", rMin1, "Through identifier -");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", rMin2, "Through identifier post--");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551615", rMin3, "Through identifier --pre");
     
-                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551615", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.sub(Bridge.ULong(1))), "Through parameter -");
+                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551615", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.sub(System.UInt64(1))), "Through parameter -");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(($t = min3, min3 = min3.dec(), $t)), "Through parameter post--");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551615", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass((min4 = min4.dec())), "Through parameter --pre");
             }
@@ -1235,7 +1244,7 @@
                 var rMin1 = (min - 1) >>> 0;
                 var rMin2 = Bridge.identity(min1, (min1 = (min1 - 1) >>> 0));
                 var rMin3 = ((min2 = (min2 - 1) >>> 0));
-                var rMin4 = Bridge.Long(min).neg();
+                var rMin4 = System.Int64(min).neg();
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("4294967295", rMin1, "Through identifier -");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", rMin2, "Through identifier post--");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("4294967295", rMin3, "Through identifier --pre");
@@ -1244,39 +1253,39 @@
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("4294967295", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(((min - 1) >>> 0)), "Through parameter -");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.identity(min3, (min3 = (min3 - 1) >>> 0))), "Through parameter post--");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("4294967295", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(((min4 = (min4 - 1) >>> 0))), "Through parameter --pre");
-                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Long(min).neg()), "Through parameter unary -");
+                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(System.Int64(min).neg()), "Through parameter unary -");
             },
             testLong: function () {
                 var $t;
-                var max = Bridge.Long.MaxValue;
+                var max = System.Int64.MaxValue;
     
                 var max1 = max;
                 var max2 = max;
                 var max3 = max;
                 var max4 = max;
     
-                var rMax1 = max.add(Bridge.Long(1));
+                var rMax1 = max.add(System.Int64(1));
                 var rMax2 = ($t = max1, max1 = max1.inc(), $t);
                 var rMax3 = (max2 = max2.inc());
-                var rMax4 = Bridge.Long(2).mul(max);
+                var rMax4 = System.Int64(2).mul(max);
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", rMax1, "Through identifier +");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("9223372036854775807", rMax2, "Through identifier post++");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", rMax3, "Through identifier ++pre");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-2", rMax4, "Through identifier *");
     
-                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(max.add(Bridge.Long(1))), "Through parameter +");
+                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(max.add(System.Int64(1))), "Through parameter +");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("9223372036854775807", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(($t = max3, max3 = max3.inc(), $t)), "Through parameter post++");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass((max4 = max4.inc())), "Through parameter ++pre");
-                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-2", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Long(2).mul(max)), "Through parameter *");
+                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-2", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(System.Int64(2).mul(max)), "Through parameter *");
     
-                var min = Bridge.Long.MinValue;
+                var min = System.Int64.MinValue;
     
                 var min1 = min;
                 var min2 = min;
                 var min3 = min;
                 var min4 = min;
     
-                var rMin1 = min.sub(Bridge.Long(1));
+                var rMin1 = min.sub(System.Int64(1));
                 var rMin2 = ($t = min1, min1 = min1.dec(), $t);
                 var rMin3 = (min2 = min2.dec());
                 var rMin4 = min.neg();
@@ -1285,49 +1294,49 @@
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("9223372036854775807", rMin3, "Through identifier --pre");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", rMin4, "Through identifier unary -");
     
-                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("9223372036854775807", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.sub(Bridge.Long(1))), "Through parameter -");
+                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("9223372036854775807", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.sub(System.Int64(1))), "Through parameter -");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(($t = min3, min3 = min3.dec(), $t)), "Through parameter post--");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("9223372036854775807", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass((min4 = min4.dec())), "Through parameter --pre");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.neg()), "Through parameter unary -");
             },
             testULong: function () {
                 var $t;
-                var max = Bridge.ULong.MaxValue;
+                var max = System.UInt64.MaxValue;
     
                 var max1 = max;
                 var max2 = max;
                 var max3 = max;
                 var max4 = max;
     
-                var rMax1 = max.add(Bridge.ULong(1));
+                var rMax1 = max.add(System.UInt64(1));
                 var rMax2 = ($t = max1, max1 = max1.inc(), $t);
                 var rMax3 = (max2 = max2.inc());
-                var rMax4 = Bridge.ULong(2).mul(max);
+                var rMax4 = System.UInt64(2).mul(max);
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", rMax1, "Through identifier +");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551615", rMax2, "Through identifier post++");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", rMax3, "Through identifier ++pre");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551614", rMax4, "Through identifier *");
     
-                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(max.add(Bridge.ULong(1))), "Through parameter +");
+                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(max.add(System.UInt64(1))), "Through parameter +");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551615", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(($t = max3, max3 = max3.inc(), $t)), "Through parameter post++");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass((max4 = max4.inc())), "Through parameter ++pre");
-                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551614", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.ULong(2).mul(max)), "Through parameter *");
+                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551614", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(System.UInt64(2).mul(max)), "Through parameter *");
     
-                var min = Bridge.ULong.MinValue;
+                var min = System.UInt64.MinValue;
     
                 var min1 = min;
                 var min2 = min;
                 var min3 = min;
                 var min4 = min;
     
-                var rMin1 = min.sub(Bridge.ULong(1));
+                var rMin1 = min.sub(System.UInt64(1));
                 var rMin2 = ($t = min1, min1 = min1.dec(), $t);
                 var rMin3 = (min2 = min2.dec());
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551615", rMin1, "Through identifier -");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", rMin2, "Through identifier post--");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551615", rMin3, "Through identifier --pre");
     
-                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551615", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.sub(Bridge.ULong(1))), "Through parameter -");
+                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551615", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.sub(System.UInt64(1))), "Through parameter -");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(($t = min3, min3 = min3.dec(), $t)), "Through parameter post--");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551615", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass((min4 = min4.dec())), "Through parameter --pre");
             }
@@ -1411,7 +1420,7 @@
                 var rMin1 = min - 1;
                 var rMin2 = Bridge.identity(min1, (min1 = min1 - 1));
                 var rMin3 = ((min2 = min2 - 1));
-                var rMin4 = Bridge.Long(min).neg();
+                var rMin4 = System.Int64(min).neg();
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-1", rMin1, "Through identifier -");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", rMin2, "Through identifier post--");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-1", rMin3, "Through identifier --pre");
@@ -1420,39 +1429,39 @@
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-1", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min - 1), "Through parameter -");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.identity(min3, (min3 = min3 - 1))), "Through parameter post--");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-1", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(((min4 = min4 - 1))), "Through parameter --pre");
-                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Long(min).neg()), "Through parameter unary -");
+                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(System.Int64(min).neg()), "Through parameter unary -");
             },
             testLong: function () {
                 var $t;
-                var max = Bridge.Long.MaxValue;
+                var max = System.Int64.MaxValue;
     
                 var max1 = max;
                 var max2 = max;
                 var max3 = max;
                 var max4 = max;
     
-                var rMax1 = max.add(Bridge.Long(1));
+                var rMax1 = max.add(System.Int64(1));
                 var rMax2 = ($t = max1, max1 = max1.inc(), $t);
                 var rMax3 = (max2 = max2.inc());
-                var rMax4 = Bridge.Long(2).mul(max);
+                var rMax4 = System.Int64(2).mul(max);
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", rMax1, "Through identifier +");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("9223372036854775807", rMax2, "Through identifier post++");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", rMax3, "Through identifier ++pre");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-2", rMax4, "Through identifier *");
     
-                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(max.add(Bridge.Long(1))), "Through parameter +");
+                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(max.add(System.Int64(1))), "Through parameter +");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("9223372036854775807", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(($t = max3, max3 = max3.inc(), $t)), "Through parameter post++");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass((max4 = max4.inc())), "Through parameter ++pre");
-                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-2", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.Long(2).mul(max)), "Through parameter *");
+                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-2", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(System.Int64(2).mul(max)), "Through parameter *");
     
-                var min = Bridge.Long.MinValue;
+                var min = System.Int64.MinValue;
     
                 var min1 = min;
                 var min2 = min;
                 var min3 = min;
                 var min4 = min;
     
-                var rMin1 = min.sub(Bridge.Long(1));
+                var rMin1 = min.sub(System.Int64(1));
                 var rMin2 = ($t = min1, min1 = min1.dec(), $t);
                 var rMin3 = (min2 = min2.dec());
                 var rMin4 = min.neg();
@@ -1461,49 +1470,49 @@
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("9223372036854775807", rMin3, "Through identifier --pre");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", rMin4, "Through identifier unary -");
     
-                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("9223372036854775807", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.sub(Bridge.Long(1))), "Through parameter -");
+                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("9223372036854775807", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.sub(System.Int64(1))), "Through parameter -");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(($t = min3, min3 = min3.dec(), $t)), "Through parameter post--");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("9223372036854775807", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass((min4 = min4.dec())), "Through parameter --pre");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("-9223372036854775808", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.neg()), "Through parameter unary -");
             },
             testULong: function () {
                 var $t;
-                var max = Bridge.ULong.MaxValue;
+                var max = System.UInt64.MaxValue;
     
                 var max1 = max;
                 var max2 = max;
                 var max3 = max;
                 var max4 = max;
     
-                var rMax1 = max.add(Bridge.ULong(1));
+                var rMax1 = max.add(System.UInt64(1));
                 var rMax2 = ($t = max1, max1 = max1.inc(), $t);
                 var rMax3 = (max2 = max2.inc());
-                var rMax4 = Bridge.ULong(2).mul(max);
+                var rMax4 = System.UInt64(2).mul(max);
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", rMax1, "Through identifier +");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551615", rMax2, "Through identifier post++");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", rMax3, "Through identifier ++pre");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551614", rMax4, "Through identifier *");
     
-                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(max.add(Bridge.ULong(1))), "Through parameter +");
+                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(max.add(System.UInt64(1))), "Through parameter +");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551615", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(($t = max3, max3 = max3.inc(), $t)), "Through parameter post++");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass((max4 = max4.inc())), "Through parameter ++pre");
-                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551614", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(Bridge.ULong(2).mul(max)), "Through parameter *");
+                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551614", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(System.UInt64(2).mul(max)), "Through parameter *");
     
-                var min = Bridge.ULong.MinValue;
+                var min = System.UInt64.MinValue;
     
                 var min1 = min;
                 var min2 = min;
                 var min3 = min;
                 var min4 = min;
     
-                var rMin1 = min.sub(Bridge.ULong(1));
+                var rMin1 = min.sub(System.UInt64(1));
                 var rMin2 = ($t = min1, min1 = min1.dec(), $t);
                 var rMin3 = (min2 = min2.dec());
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551615", rMin1, "Through identifier -");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", rMin2, "Through identifier post--");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551615", rMin3, "Through identifier --pre");
     
-                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551615", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.sub(Bridge.ULong(1))), "Through parameter -");
+                Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551615", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(min.sub(System.UInt64(1))), "Through parameter -");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("0", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass(($t = min3, min3 = min3.dec(), $t)), "Through parameter post--");
                 Bridge.ClientTest.Batch2.CheckedUncheckedTests.assertEqual("18446744073709551615", Bridge.ClientTest.Batch2.CheckedUncheckedTests.bypass((min4 = min4.dec())), "Through parameter --pre");
             }

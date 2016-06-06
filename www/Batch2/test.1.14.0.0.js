@@ -77,7 +77,7 @@
                     block();
                 }
                 catch (ex) {
-                    ex = Bridge.Exception.create(ex);
+                    ex = System.Exception.create(ex);
                     actual = Bridge.getTypeName(ex);
                 }
     
@@ -118,7 +118,7 @@
     Bridge.define('Bridge.Test.QUnit.TestFixture$1', function (T) { return {
         statics: {
             instanceFabric: null,
-            fixtureFabric: null,
+            fixtureFabric: Bridge.getDefaultValue(T),
             getFixtureFabric: function () {
                 if (Bridge.Test.QUnit.TestFixture$1(T).fixtureFabric == null) {
                     Bridge.Test.QUnit.TestFixture$1(T).fixtureFabric = new T();
@@ -140,8 +140,8 @@
                 if (expectedCount === void 0) { expectedCount = null; }
                 Bridge.Test.Assert.assert = assert;
     
-                if (Bridge.Nullable.hasValue(expectedCount)) {
-                    assert.expect(Bridge.Nullable.getValue(expectedCount));
+                if (System.Nullable.hasValue(expectedCount)) {
+                    assert.expect(System.Nullable.getValue(expectedCount));
                 }
     
                 var instance = Bridge.Test.QUnit.TestFixture$1(T).instanceFabric$1(type);
@@ -151,7 +151,7 @@
                     instance.setUp();
                 }
                 catch ($e1) {
-                    $e1 = Bridge.Exception.create($e1);
+                    $e1 = System.Exception.create($e1);
                     assert.ok(false, "The test failed SetUp");
     
                     throw $e1;
@@ -162,7 +162,7 @@
         },
         config: {
             properties: {
-                Fixture: null
+                Fixture: Bridge.getDefaultValue(T)
             }
         },
         setUp: function () {
@@ -201,6 +201,7 @@
                 QUnit.test("WithNoUncheckedKeyword - Batch2 TestLong", Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_Batch2_WithNoUncheckedKeywordTests.testLong);
                 QUnit.test("WithNoUncheckedKeyword - Batch2 TestULong", Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_Batch2_WithNoUncheckedKeywordTests.testULong);
                 QUnit.module("Issues");
+                QUnit.test("#1385 - Batch2 TestIsTypedArrayForByte", Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_Batch2_BridgeIssues_Bridge1385.testIsTypedArrayForByte);
                 QUnit.test("#1122 - Batch2 TestClippingInJavaScriptOverflowMode", Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_Batch2_BridgeIssues_N1122.testClippingInJavaScriptOverflowMode);
                 QUnit.test("#1122 - Batch2 TestIntegerDivisionInJavaScriptOverflowMode", Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_Batch2_BridgeIssues_N1122.testIntegerDivisionInJavaScriptOverflowMode);
                 QUnit.test("#1204 - Batch2 TestStrictNullChecksOptionForNulls", Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_Batch2_BridgeIssues_N1204.testStrictNullChecksOptionForNulls);
@@ -254,6 +255,17 @@
                 QUnit.test("#772 - Batch2 IListRemoveAtWorks", Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_Batch2_BridgeIssues_N772.iListRemoveAtWorks);
                 QUnit.test("#772 - Batch2 IssueSpecific", Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_Batch2_BridgeIssues_N772.issueSpecific);
                 QUnit.test("#772 - Batch2 TestUseCase", Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_Batch2_BridgeIssues_N772.testUseCase);
+            }
+        },
+        $entryPoint: true
+    });
+    
+    Bridge.define('Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_Batch2_BridgeIssues_Bridge1385', {
+        inherits: [Bridge.Test.QUnit.TestFixture$1(Bridge.ClientTest.Batch2.BridgeIssues.Bridge1385)],
+        statics: {
+            testIsTypedArrayForByte: function (assert) {
+                var t = Bridge.Test.QUnit.TestFixture$1(Bridge.ClientTest.Batch2.BridgeIssues.Bridge1385).beforeTest(false, assert, Bridge.Test.QUnit.TestRunner.Bridge_ClientTest_Batch2_BridgeIssues_Bridge1385);
+                Bridge.ClientTest.Batch2.BridgeIssues.Bridge1385.testIsTypedArrayForByte();
             }
         }
     });
