@@ -18,6 +18,49 @@
 
         identity: function (x) { return x; },
 
+        isPlainObject: function (obj) {
+            if (typeof obj == 'object' && obj !== null) {
+                if (typeof Object.getPrototypeOf == 'function') {
+                    var proto = Object.getPrototypeOf(obj);
+                    return proto === Object.prototype || proto === null;
+                }
+    
+                return Object.prototype.toString.call(obj) === '[object Object]';
+            }
+  
+            return false;
+        },
+
+        toPlain: function (o) {
+            if (!o || Bridge.isPlainObject(o) || typeof o != "object") {
+                return o;
+            }
+
+            if (typeof o.toJSON == 'function') {
+                return o.toJSON();
+            }
+
+            if (Bridge.isArray(o)) {
+                var arr = [];
+                for (var i = 0; i < o.length; i++) {
+                    arr.push(Bridge.toPlain(o[i]));
+                }
+                return arr;
+            }
+
+            var newo = {},
+                m;
+
+            for (var key in o) {
+                m = o[key];
+                if (!Bridge.isFunction(m)) {
+                    newo[key] = m;
+                }
+            }
+
+            return newo;
+        },
+
         ref: function (o, n) {
             if (Bridge.isArray(n)) {
                 n = System.Array.toIndex(o, n);
@@ -1624,7 +1667,29 @@
         },
 
         remove: function (s, index, count) {
-            if (!count || ((index + count) > this.length)) {
+            if (s == null) {
+                throw new System.NullReferenceException();
+            }
+
+            if (index < 0) {
+                throw new System.ArgumentOutOfRangeException("startIndex", "StartIndex cannot be less than zero");
+            }
+
+            if (count != null) {
+                if (count < 0) {
+                    throw new System.ArgumentOutOfRangeException("count", "Count cannot be less than zero");
+                }
+
+                if (count > s.length - index) {
+                    throw new System.ArgumentOutOfRangeException("count", "Index and count must refer to a location within the string");
+                }
+            } else {
+                if (index >= s.length) {
+                    throw new System.ArgumentOutOfRangeException("startIndex", "startIndex must be less than length of string");
+                }
+            }
+
+            if (count == null || ((index + count) > s.length)) {
                 return s.substr(0, index);
             }
 
@@ -2146,7 +2211,7 @@
                 base,
                 cacheName = prop.$cacheName,
                 prototype,
-                scope = prop.$scope || Bridge.global,
+                scope = prop.$scope || gscope || Bridge.global,
                 i,
                 v,
                 ctorCounter,
