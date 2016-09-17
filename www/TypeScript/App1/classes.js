@@ -1,12 +1,14 @@
-﻿(function (globals) {
+﻿Bridge.assembly("TypeScriptTest", function ($asm, globals) {
     "use strict";
 
-    Bridge.define('Classes.Animal', {
+    Bridge.define("Classes.Animal", {
         name: null,
-        constructor: function () {
+        ctor: function () {
+            this.$initialize();
             this.name = "Animal";
         },
-        constructor$1: function (name) {
+        $ctor1: function (name) {
+            this.$initialize();
             this.name = name;
         },
         getName: function () {
@@ -16,8 +18,8 @@
             return 1;
         }
     });
-    
-    Bridge.define('Classes.MovePoint', {
+
+    Bridge.define("Classes.MovePoint", {
         statics: {
             move: function (p, dx, dy) {
                 return Classes.StaticClass.move(p.$clone(), dx, dy);
@@ -35,23 +37,25 @@
             this.setPoint(Classes.MovePoint.move(this.getPoint().$clone(), dx, dy).$clone());
         }
     });
-    
-    Bridge.define('Classes.Point', {
+
+    Bridge.define("Classes.Point", {
+        $kind: "struct",
         statics: {
             getDefaultValue: function () { return new Classes.Point(); }
         },
         x: 0,
         y: 0,
-        constructor$1: function (x, y) {
+        $ctor1: function (x, y) {
+            this.$initialize();
             this.x = x;
             this.y = y;
         },
-        constructor: function () {
+        ctor: function () {
+            this.$initialize();
         },
-        $struct: true,
         getHashCode: function () {
             var hash = 17;
-            hash = hash * 23 + 1554797180;
+            hash = hash * 23 + 1852403652;
             hash = hash * 23 + (this.x == null ? 0 : Bridge.getHashCode(this.x));
             hash = hash * 23 + (this.y == null ? 0 : Bridge.getHashCode(this.y));
             return hash;
@@ -69,50 +73,46 @@
             return s;
         }
     });
-    
-    Bridge.define('Classes.StaticClass', {
+
+    Bridge.define("Classes.StaticClass", {
         statics: {
             move: function (p, dx, dy) {
-                return new Classes.Point("constructor$1", ((p.x + dx) | 0), ((p.y + dy) | 0));
+                return new Classes.Point.$ctor1(((p.x + dx) | 0), ((p.y + dy) | 0));
             }
         }
     });
-    
-    Bridge.define('Classes.Dog', {
+
+    Bridge.define("Classes.Dog", {
         inherits: [Classes.Animal],
-        constructor: function (name) {
-            Classes.Animal.prototype.constructor$1.call(this, name);
-    
+        ctor: function (name) {
+            this.$initialize();
+            Classes.Animal.$ctor1.call(this, name);
         },
         move$1: function () {
             return 20;
         }
     });
-    
-    Bridge.define('Classes.Employee', {
+
+    Bridge.define("Classes.Employee", {
         inherits: [Classes.Animal],
         name$1: null,
         id: 0,
-        constructor: function (name, id) {
-            Classes.Animal.prototype.constructor$1.call(this, name);
-    
+        ctor: function (name, id) {
+            this.$initialize();
+            Classes.Animal.$ctor1.call(this, name);
             this.name$1 = name;
             this.id = id;
         }
     });
-    
-    Bridge.define('Classes.Snake', {
+
+    Bridge.define("Classes.Snake", {
         inherits: [Classes.Animal],
-        constructor: function (name) {
-            Classes.Animal.prototype.constructor$1.call(this, name);
-    
+        ctor: function (name) {
+            this.$initialize();
+            Classes.Animal.$ctor1.call(this, name);
         },
         move: function () {
             return 5;
         }
     });
-    
-    
-    
-    Bridge.init();
-})(this);
+});

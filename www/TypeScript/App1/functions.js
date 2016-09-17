@@ -1,19 +1,19 @@
-﻿(function (globals) {
+﻿Bridge.assembly("TypeScriptTest", function ($asm, globals) {
     "use strict";
 
-    Bridge.define('Functions.DelegateClass', {
+    Bridge.define("Functions.DelegateClass", {
         methodVoidDelegate: null,
         methodStringDelegate: null,
         methodStringDelegateIntResult: null
     });
-    
-    Bridge.define('Functions.DelegateInterface', {
-        $interface: true
+
+    Bridge.define("Functions.DelegateInterface", {
+        $kind: "interface"
     });
-    
-    Bridge.define('Functions.Delegates');
-    
-    Bridge.define('Functions.Parameters', {
+
+    Bridge.define("Functions.Delegates");
+
+    Bridge.define("Functions.Parameters", {
         getSomething: function (i) {
             if (i === void 0) { i = 5; }
             return i;
@@ -22,14 +22,10 @@
             if (numbers === void 0) { numbers = []; }
             var s = "";
             for (var i = 0; i < numbers.length; i = (i + 1) | 0) {
-                s = s + numbers[i];
+                s = System.String.concat(s, numbers[i]);
             }
-    
+
             return s;
         }
     });
-    
-    
-    
-    Bridge.init();
-})(this);
+});

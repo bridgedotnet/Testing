@@ -3,7 +3,6 @@
 // Definitions by: Diullei Gomes <https://github.com/diullei>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
 
-
 interface DoneCallbackObject {
     /**
     * The number of failed assertions
@@ -48,8 +47,8 @@ interface LogCallbackObject {
     message: string;
 
     /**
-    * The associated stacktrace, either from an exception or pointing to the source 
-    * of the assertion. Depends on browser support for providing stacktraces, so can be 
+    * The associated stacktrace, either from an exception or pointing to the source
+    * of the assertion. Depends on browser support for providing stacktraces, so can be
     * undefined.
     */
     source: string;
@@ -165,7 +164,7 @@ interface QUnitAssert {
 
     /**
     * Instruct QUnit to wait for an asynchronous operation.
-    * 
+    *
     * When your test has any asynchronous exit points, call assert.async() to get a unique
     * resolution callback for each async operation. The callback returned from assert.async()
     * will throw an Error if is invoked more than once.
@@ -173,11 +172,11 @@ interface QUnitAssert {
     async(): () => void;
 
     /**
-    * A deep recursive comparison assertion, working on primitive types, arrays, objects, 
+    * A deep recursive comparison assertion, working on primitive types, arrays, objects,
     * regular expressions, dates and functions.
     *
-    * The deepEqual() assertion can be used just like equal() when comparing the value of 
-    * objects, such that { key: value } is equal to { key: value }. For non-scalar values, 
+    * The deepEqual() assertion can be used just like equal() when comparing the value of
+    * objects, such that { key: value } is equal to { key: value }. For non-scalar values,
     * identity will be disregarded by deepEqual.
     *
     * @param actual Object or Expression being tested
@@ -186,14 +185,14 @@ interface QUnitAssert {
     */
     deepEqual(actual: any, expected: any, message?: string): any;
 
-    /** 
+    /**
     * A non-strict comparison assertion, roughly equivalent to JUnit assertEquals.
     *
-    * The equal assertion uses the simple comparison operator (==) to compare the actual 
-    * and expected arguments. When they are equal, the assertion passes: any; otherwise, it fails. 
-    * When it fails, both actual and expected values are displayed in the test result, 
+    * The equal assertion uses the simple comparison operator (==) to compare the actual
+    * and expected arguments. When they are equal, the assertion passes: any; otherwise, it fails.
+    * When it fails, both actual and expected values are displayed in the test result,
     * in addition to a given message.
-    * 
+    *
     * @param actual Expression being tested
     * @param expected Known comparison value
     * @param message A short description of the assertion
@@ -203,8 +202,8 @@ interface QUnitAssert {
     /**
     * Specify how many assertions are expected to run within a test.
     *
-    * To ensure that an explicit number of assertions are run within any test, use 
-    * expect( number ) to register an expected count. If the number of assertions 
+    * To ensure that an explicit number of assertions are run within any test, use
+    * expect( number ) to register an expected count. If the number of assertions
     * run does not match the expected count, the test will fail.
     *
     * @param amount Number of assertions in this test.
@@ -212,13 +211,13 @@ interface QUnitAssert {
     expect(amount: number): any;
 
     /**
-    * An inverted deep recursive comparison assertion, working on primitive types, 
+    * An inverted deep recursive comparison assertion, working on primitive types,
     * arrays, objects, regular expressions, dates and functions.
     *
-    * The notDeepEqual() assertion can be used just like equal() when comparing the 
-    * value of objects, such that { key: value } is equal to { key: value }. For non-scalar 
+    * The notDeepEqual() assertion can be used just like equal() when comparing the
+    * value of objects, such that { key: value } is equal to { key: value }. For non-scalar
     * values, identity will be disregarded by notDeepEqual.
-    * 
+    *
     * @param actual Object or Expression being tested
     * @param expected Known comparison value
     * @param message A short description of the assertion
@@ -228,11 +227,11 @@ interface QUnitAssert {
     /**
     * A non-strict comparison assertion, checking for inequality.
     *
-    * The notEqual assertion uses the simple inverted comparison operator (!=) to compare 
-    * the actual and expected arguments. When they aren't equal, the assertion passes: any; 
-    * otherwise, it fails. When it fails, both actual and expected values are displayed 
+    * The notEqual assertion uses the simple inverted comparison operator (!=) to compare
+    * the actual and expected arguments. When they aren't equal, the assertion passes: any;
+    * otherwise, it fails. When it fails, both actual and expected values are displayed
     * in the test result, in addition to a given message.
-    * 
+    *
     * @param actual Expression being tested
     * @param expected Known comparison value
     * @param message A short description of the assertion
@@ -246,11 +245,11 @@ interface QUnitAssert {
     /**
     * A non-strict comparison assertion, checking for inequality.
     *
-    * The notStrictEqual assertion uses the strict inverted comparison operator (!==) 
-    * to compare the actual and expected arguments. When they aren't equal, the assertion 
-    * passes: any; otherwise, it fails. When it fails, both actual and expected values are 
+    * The notStrictEqual assertion uses the strict inverted comparison operator (!==)
+    * to compare the actual and expected arguments. When they aren't equal, the assertion
+    * passes: any; otherwise, it fails. When it fails, both actual and expected values are
     * displayed in the test result, in addition to a given message.
-    * 
+    *
     * @param actual Expression being tested
     * @param expected Known comparison value
     * @param message A short description of the assertion
@@ -258,13 +257,13 @@ interface QUnitAssert {
     notStrictEqual(actual: any, expected: any, message?: string): any;
 
     /**
-    * A boolean assertion, equivalent to CommonJS’s assert.ok() and JUnit’s assertTrue(). 
+    * A boolean assertion, equivalent to CommonJS’s assert.ok() and JUnit’s assertTrue().
     * Passes if the first argument is truthy.
     *
-    * The most basic assertion in QUnit, ok() requires just one argument. If the argument 
-    * evaluates to true, the assertion passes; otherwise, it fails. If a second message 
+    * The most basic assertion in QUnit, ok() requires just one argument. If the argument
+    * evaluates to true, the assertion passes; otherwise, it fails. If a second message
     * argument is provided, it will be displayed in place of the result.
-    * 
+    *
     * @param state Expression being tested
     * @param message A short description of the assertion
     */
@@ -273,9 +272,9 @@ interface QUnitAssert {
     /**
     * A strict type and value comparison assertion.
     *
-    * The strictEqual() assertion provides the most rigid comparison of type and value with 
+    * The strictEqual() assertion provides the most rigid comparison of type and value with
     * the strict equality operator (===)
-    * 
+    *
     * @param actual Expression being tested
     * @param expected Known comparison value
     * @param message A short description of the assertion
@@ -284,10 +283,10 @@ interface QUnitAssert {
 
     /**
     * Assertion to test if a callback throws an exception when run.
-    * 
-    * When testing code that is expected to throw an exception based on a specific set of 
+    *
+    * When testing code that is expected to throw an exception based on a specific set of
     * circumstances, use throws() to catch the error object for testing and comparison.
-    * 
+    *
     * @param block Function to execute
     * @param expected Error Object to compare
     * @param message A short description of the assertion
@@ -302,11 +301,11 @@ interface QUnitAssert {
 
     /**
     * Alias of throws.
-    * 
+    *
     * In very few environments, like Closure Compiler, throws is considered a reserved word
     * and will cause an error. For that case, an alias is bundled called raises. It has the
     * same signature and behaviour, just a different name.
-    * 
+    *
     * @param block Function to execute
     * @param expected Error Object to compare
     * @param message A short description of the assertion
@@ -315,11 +314,11 @@ interface QUnitAssert {
 
     /**
     * Alias of throws.
-    * 
+    *
     * In very few environments, like Closure Compiler, throws is considered a reserved word
     * and will cause an error. For that case, an alias is bundled called raises. It has the
     * same signature and behaviour, just a different name.
-    * 
+    *
     * @param block Function to execute
     * @param message A short description of the assertion
     */
@@ -333,7 +332,7 @@ interface QUnitStatic extends QUnitAssert {
     * Start running tests again after the testrunner was stopped. See stop().
     *
     * When your async test has multiple exit points, call start() for the corresponding number of stop() increments.
-    * 
+    *
     * @param decrement Optional argument to merge multiple start() calls into one. Use with multiple corrsponding stop() calls.
     */
     start(decrement?: number): any;
@@ -354,7 +353,7 @@ interface QUnitStatic extends QUnitAssert {
     /**
     * Register a callback to fire whenever the test suite begins.
     *
-    * QUnit.begin() is called once before running any tests. (a better would've been QUnit.start, 
+    * QUnit.begin() is called once before running any tests. (a better would've been QUnit.start,
     * but thats already in use elsewhere and can't be changed.)
     *
     * @param callback Callback to execute
@@ -371,7 +370,7 @@ interface QUnitStatic extends QUnitAssert {
     /**
     * Register a callback to fire whenever an assertion completes.
     *
-    * This is one of several callbacks QUnit provides. Its intended for integration scenarios like 
+    * This is one of several callbacks QUnit provides. Its intended for integration scenarios like
     * PhantomJS or Jenkins. The properties of the details argument are listed below as options.
     *
     * @param callback Callback to execute.
@@ -409,7 +408,7 @@ interface QUnitStatic extends QUnitAssert {
     /* CONFIGURATION */
 
     /**
-    * QUnit has a bunch of internal configuration defaults, some of which are 
+    * QUnit has a bunch of internal configuration defaults, some of which are
     * useful to override. Check the description for each option for details.
     */
     config: Config;
@@ -419,7 +418,7 @@ interface QUnitStatic extends QUnitAssert {
     /**
     * Add an asynchronous test to run. The test must include a call to start().
     *
-    * For testing asynchronous code, asyncTest will automatically stop the test runner 
+    * For testing asynchronous code, asyncTest will automatically stop the test runner
     * and wait for your code to call start() to continue.
     *
     * @param name Title of unit being tested
@@ -431,7 +430,7 @@ interface QUnitStatic extends QUnitAssert {
     /**
     * Add an asynchronous test to run. The test must include a call to start().
     *
-    * For testing asynchronous code, asyncTest will automatically stop the test runner 
+    * For testing asynchronous code, asyncTest will automatically stop the test runner
     * and wait for your code to call start() to continue.
     *
     * @param name Title of unit being tested
@@ -442,8 +441,8 @@ interface QUnitStatic extends QUnitAssert {
     /**
     * Specify how many assertions are expected to run within a test.
     *
-    * To ensure that an explicit number of assertions are run within any test, use 
-    * expect( number ) to register an expected count. If the number of assertions 
+    * To ensure that an explicit number of assertions are run within any test, use
+    * expect( number ) to register an expected count. If the number of assertions
     * run does not match the expected count, the test will fail.
     *
     * @param amount Number of assertions in this test.
@@ -454,8 +453,8 @@ interface QUnitStatic extends QUnitAssert {
     /**
     * Group related tests under a single label.
     *
-    * All tests that occur after a call to module() will be grouped into that module. 
-    * The test names will all be preceded by the module name in the test results. 
+    * All tests that occur after a call to module() will be grouped into that module.
+    * The test names will all be preceded by the module name in the test results.
     * You can then use that module name to select tests to run.
     *
     * @param name Label for this group of tests
@@ -467,10 +466,10 @@ interface QUnitStatic extends QUnitAssert {
     * Add a test to run.
     *
     * When testing the most common, synchronous code, use test().
-    * The assert argument to the callback contains all of QUnit's assertion methods. 
-    * If you are avoiding using any of QUnit's globals, you can use the assert 
+    * The assert argument to the callback contains all of QUnit's assertion methods.
+    * If you are avoiding using any of QUnit's globals, you can use the assert
     * argument instead.
-    * 
+    *
     * @param title Title of unit being tested
     * @param expected Number of assertions in this test
     * @param test Function to close over assertions
@@ -502,11 +501,11 @@ interface QUnitStatic extends QUnitAssert {
 /* ASSERT */
 
 /**
-* A deep recursive comparison assertion, working on primitive types, arrays, objects, 
+* A deep recursive comparison assertion, working on primitive types, arrays, objects,
 * regular expressions, dates and functions.
 *
-* The deepEqual() assertion can be used just like equal() when comparing the value of 
-* objects, such that { key: value } is equal to { key: value }. For non-scalar values, 
+* The deepEqual() assertion can be used just like equal() when comparing the value of
+* objects, such that { key: value } is equal to { key: value }. For non-scalar values,
 * identity will be disregarded by deepEqual.
 *
 * @param actual Object or Expression being tested
@@ -515,14 +514,14 @@ interface QUnitStatic extends QUnitAssert {
 */
 declare function deepEqual(actual: any, expected: any, message?: string): any;
 
-/** 
+/**
 * A non-strict comparison assertion, roughly equivalent to JUnit assertEquals.
 *
-* The equal assertion uses the simple comparison operator (==) to compare the actual 
-* and expected arguments. When they are equal, the assertion passes: any; otherwise, it fails. 
-* When it fails, both actual and expected values are displayed in the test result, 
+* The equal assertion uses the simple comparison operator (==) to compare the actual
+* and expected arguments. When they are equal, the assertion passes: any; otherwise, it fails.
+* When it fails, both actual and expected values are displayed in the test result,
 * in addition to a given message.
-* 
+*
 * @param actual Expression being tested
 * @param expected Known comparison value
 * @param message A short description of the assertion
@@ -530,13 +529,13 @@ declare function deepEqual(actual: any, expected: any, message?: string): any;
 declare function equal(actual: any, expected: any, message?: string): any;
 
 /**
-* An inverted deep recursive comparison assertion, working on primitive types, 
+* An inverted deep recursive comparison assertion, working on primitive types,
 * arrays, objects, regular expressions, dates and functions.
 *
-* The notDeepEqual() assertion can be used just like equal() when comparing the 
-* value of objects, such that { key: value } is equal to { key: value }. For non-scalar 
+* The notDeepEqual() assertion can be used just like equal() when comparing the
+* value of objects, such that { key: value } is equal to { key: value }. For non-scalar
 * values, identity will be disregarded by notDeepEqual.
-* 
+*
 * @param actual Object or Expression being tested
 * @param expected Known comparison value
 * @param message A short description of the assertion
@@ -546,11 +545,11 @@ declare function notDeepEqual(actual: any, expected: any, message?: string): any
 /**
 * A non-strict comparison assertion, checking for inequality.
 *
-* The notEqual assertion uses the simple inverted comparison operator (!=) to compare 
-* the actual and expected arguments. When they aren't equal, the assertion passes; 
-* otherwise, it fails. When it fails, both actual and expected values are displayed 
+* The notEqual assertion uses the simple inverted comparison operator (!=) to compare
+* the actual and expected arguments. When they aren't equal, the assertion passes;
+* otherwise, it fails. When it fails, both actual and expected values are displayed
 * in the test result, in addition to a given message.
-* 
+*
 * @param actual Expression being tested
 * @param expected Known comparison value
 * @param message A short description of the assertion
@@ -560,11 +559,11 @@ declare function notEqual(actual: any, expected: any, message?: string): any;
 /**
 * A non-strict comparison assertion, checking for inequality.
 *
-* The notStrictEqual assertion uses the strict inverted comparison operator (!==) 
-* to compare the actual and expected arguments. When they aren't equal, the assertion 
-* passes; otherwise, it fails. When it fails, both actual and expected values are 
+* The notStrictEqual assertion uses the strict inverted comparison operator (!==)
+* to compare the actual and expected arguments. When they aren't equal, the assertion
+* passes; otherwise, it fails. When it fails, both actual and expected values are
 * displayed in the test result, in addition to a given message.
-* 
+*
 * @param actual Expression being tested
 * @param expected Known comparison value
 * @param message A short description of the assertion
@@ -572,13 +571,13 @@ declare function notEqual(actual: any, expected: any, message?: string): any;
 declare function notStrictEqual(actual: any, expected: any, message?: string): any;
 
 /**
-* A boolean assertion, equivalent to CommonJS’s assert.ok() and JUnit’s assertTrue(). 
+* A boolean assertion, equivalent to CommonJS’s assert.ok() and JUnit’s assertTrue().
 * Passes if the first argument is truthy.
 *
-* The most basic assertion in QUnit, ok() requires just one argument. If the argument 
-* evaluates to true, the assertion passes; otherwise, it fails. If a second message 
+* The most basic assertion in QUnit, ok() requires just one argument. If the argument
+* evaluates to true, the assertion passes; otherwise, it fails. If a second message
 * argument is provided, it will be displayed in place of the result.
-* 
+*
 * @param state Expression being tested
 * @param message A short description of the assertion
 */
@@ -587,9 +586,9 @@ declare function ok(state: any, message?: string): any;
 /**
 * A strict type and value comparison assertion.
 *
-* The strictEqual() assertion provides the most rigid comparison of type and value with 
+* The strictEqual() assertion provides the most rigid comparison of type and value with
 * the strict equality operator (===)
-* 
+*
 * @param actual Expression being tested
 * @param expected Known comparison value
 * @param message A short description of the assertion
@@ -598,10 +597,10 @@ declare function strictEqual(actual: any, expected: any, message?: string): any;
 
 /**
 * Assertion to test if a callback throws an exception when run.
-* 
-* When testing code that is expected to throw an exception based on a specific set of 
+*
+* When testing code that is expected to throw an exception based on a specific set of
 * circumstances, use throws() to catch the error object for testing and comparison.
-* 
+*
 * @param block Function to execute
 * @param expected Error Object to compare
 * @param message A short description of the assertion
@@ -620,7 +619,7 @@ declare function throws(block: () => any, message?: string): any;
 * Start running tests again after the testrunner was stopped. See stop().
 *
 * When your async test has multiple exit points, call start() for the corresponding number of stop() increments.
-* 
+*
 * @param decrement Optional argument to merge multiple start() calls into one. Use with multiple corrsponding stop() calls.
 */
 declare function start(decrement?: number): any;
@@ -641,7 +640,7 @@ declare function stop(increment?: number): any;
 /**
 * Register a callback to fire whenever the test suite begins.
 *
-* QUnit.begin() is called once before running any tests. (a better would've been QUnit.start, 
+* QUnit.begin() is called once before running any tests. (a better would've been QUnit.start,
 * but thats already in use elsewhere and can't be changed.)
 *
 * @param callback Callback to execute
@@ -658,7 +657,7 @@ declare function done(callback: (details: DoneCallbackObject) => any): any;
 /**
 * Register a callback to fire whenever an assertion completes.
 *
-* This is one of several callbacks QUnit provides. Its intended for integration scenarios like 
+* This is one of several callbacks QUnit provides. Its intended for integration scenarios like
 * PhantomJS or Jenkins. The properties of the details argument are listed below as options.
 *
 * @param callback Callback to execute.
@@ -698,7 +697,7 @@ declare function testStart(callback: (details: TestStartCallbackObject) => any):
 /**
 * Add an asynchronous test to run. The test must include a call to start().
 *
-* For testing asynchronous code, asyncTest will automatically stop the test runner 
+* For testing asynchronous code, asyncTest will automatically stop the test runner
 * and wait for your code to call start() to continue.
 *
 * @param name Title of unit being tested
@@ -710,7 +709,7 @@ declare function asyncTest(name: string, expected?: any, test?: (assert: QUnitAs
 /**
 * Add an asynchronous test to run. The test must include a call to start().
 *
-* For testing asynchronous code, asyncTest will automatically stop the test runner 
+* For testing asynchronous code, asyncTest will automatically stop the test runner
 * and wait for your code to call start() to continue.
 *
 * @param name Title of unit being tested
@@ -721,8 +720,8 @@ declare function asyncTest(name: string, test: (assert: QUnitAssert) => any): an
 /**
 * Specify how many assertions are expected to run within a test.
 *
-* To ensure that an explicit number of assertions are run within any test, use 
-* expect( number ) to register an expected count. If the number of assertions 
+* To ensure that an explicit number of assertions are run within any test, use
+* expect( number ) to register an expected count. If the number of assertions
 * run does not match the expected count, the test will fail.
 *
 * @param amount Number of assertions in this test.
@@ -737,10 +736,10 @@ declare function expect(amount: number): any;
 * Add a test to run.
 *
 * When testing the most common, synchronous code, use test().
-* The assert argument to the callback contains all of QUnit's assertion methods. 
-* If you are avoiding using any of QUnit's globals, you can use the assert 
+* The assert argument to the callback contains all of QUnit's assertion methods.
+* If you are avoiding using any of QUnit's globals, you can use the assert
 * argument instead.
-* 
+*
 * @param title Title of unit being tested
 * @param expected Number of assertions in this test
 * @param test Function to close over assertions
