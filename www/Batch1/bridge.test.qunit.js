@@ -1,5 +1,9 @@
-﻿Bridge.assembly("Bridge_ClientTest_Tests", function ($asm, globals) {
+﻿/**
+ * @compiler Bridge.NET 15.3.0
+ */
+Bridge.assembly("Bridge_ClientTest_Tests", function ($asm, globals) {
     
+
     Bridge.define("Bridge.Test.Assert", {
         statics: {
             assert: null,

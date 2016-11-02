@@ -1,5 +1,6 @@
 ﻿Bridge.assembly("Bridge_ClientTest_Batch2_Tests", function ($asm, globals) {
     
+
     Bridge.define("Bridge.Test.QUnit.Bridge_ClientTest_Batch2_Tests_Runner", {
         $main: function () {
             QUnit.module("Checked/Unckecked");

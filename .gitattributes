@@ -23,6 +23,7 @@
 *.sh text eol=lf
 *.sln text
 *.sql text eol=lf
+*.svg eol=lf
 *.d.ts text eol=lf
 *.target text
 *.txt text eol=lf
@@ -32,8 +33,12 @@
 *.bmp binary
 *.dat binary
 *.dll binary
+*.eot binary
 *.exe binary
 *.ico binary
 *.jar binary
 *.jpg binary
 *.png binary
+*.ttf binary
+*.woff binary
+*.woff2 binary

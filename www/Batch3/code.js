@@ -6,6 +6,13 @@ var SomeExternalNamespace = {
 SomeExternalNamespace.SomeNonBridgeClass.prototype.foo = function(){return 1;};
 
 
+/**
+ * Bridge Test library - test github issues up to #1999
+ * @version 15.3.0
+ * @author Object.NET, Inc.
+ * @copyright Copyright 2008-2016 Object.NET, Inc.
+ * @compiler Bridge.NET 15.3.0
+ */
 Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
     "use strict";
 
@@ -40,11 +47,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 1856153028;
-            hash = hash * 23 + (this.x == null ? 0 : Bridge.getHashCode(this.x));
-            hash = hash * 23 + (this.y == null ? 0 : Bridge.getHashCode(this.y));
-            return hash;
+            var h = Bridge.addHash([1856153028, this.x, this.y]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge069.Point69)) {
@@ -129,13 +133,13 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
     Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1003$1", function (T) { return {
         test1: function (list) {
             return System.Linq.Enumerable.from(list).select(function (item) {
-                return Bridge.cast(item, T);
-            }).toArray();
+                    return Bridge.cast(item, T);
+                }).toArray();
         },
         test2: function (T1, list) {
             return System.Linq.Enumerable.from(list).select(function (item) {
-                return Bridge.cast(item, T1);
-            }).toArray();
+                    return Bridge.cast(item, T1);
+                }).toArray();
         }
     }; });
 
@@ -153,8 +157,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
 
                 stopwatch.stop();
 
-                Bridge.Test.Assert.true$1(stopwatch.milliseconds().gte(System.Int64(delay - Bridge.ClientTest.Batch3.BridgeIssues.Bridge1012.DELTA)), System.String.concat(System.String.concat(System.String.concat(">= ", delay), ", elapsed "), stopwatch.milliseconds()));
-                Bridge.Test.Assert.true$1(stopwatch.milliseconds().lt(System.Int64(maxDelay)), System.String.concat(System.String.concat(System.String.concat("< ", maxDelay), ", elapsed "), stopwatch.milliseconds()));
+                Bridge.Test.Assert.true$1(stopwatch.milliseconds().gte(System.Int64(delay - Bridge.ClientTest.Batch3.BridgeIssues.Bridge1012.DELTA)), ">= " + delay + ", elapsed " + stopwatch.milliseconds());
+                Bridge.Test.Assert.true$1(stopwatch.milliseconds().lt(System.Int64(maxDelay)), "< " + maxDelay + ", elapsed " + stopwatch.milliseconds());
             },
             testSleepInt: function () {
                 var delay = 100;
@@ -167,8 +171,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
 
                 stopwatch.stop();
 
-                Bridge.Test.Assert.true$1(stopwatch.milliseconds().gte(System.Int64(delay - Bridge.ClientTest.Batch3.BridgeIssues.Bridge1012.DELTA)), System.String.concat(System.String.concat(System.String.concat(">= ", delay), ", elapsed "), stopwatch.milliseconds()));
-                Bridge.Test.Assert.true$1(stopwatch.milliseconds().lt(System.Int64(maxDelay)), System.String.concat(System.String.concat(System.String.concat("< ", maxDelay), ", elapsed "), stopwatch.milliseconds()));
+                Bridge.Test.Assert.true$1(stopwatch.milliseconds().gte(System.Int64(delay - Bridge.ClientTest.Batch3.BridgeIssues.Bridge1012.DELTA)), ">= " + delay + ", elapsed " + stopwatch.milliseconds());
+                Bridge.Test.Assert.true$1(stopwatch.milliseconds().lt(System.Int64(maxDelay)), "< " + maxDelay + ", elapsed " + stopwatch.milliseconds());
             },
             testSleepTimeSpan: function () {
                 var delay = 100;
@@ -181,8 +185,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
 
                 stopwatch.stop();
 
-                Bridge.Test.Assert.true$1(stopwatch.milliseconds().gte(System.Int64(delay - Bridge.ClientTest.Batch3.BridgeIssues.Bridge1012.DELTA)), System.String.concat(System.String.concat(System.String.concat(">= ", delay), ", elapsed "), stopwatch.milliseconds()));
-                Bridge.Test.Assert.true$1(stopwatch.milliseconds().lt(System.Int64(maxDelay)), System.String.concat(System.String.concat(System.String.concat("< ", maxDelay), ", elapsed "), stopwatch.milliseconds()));
+                Bridge.Test.Assert.true$1(stopwatch.milliseconds().gte(System.Int64(delay - Bridge.ClientTest.Batch3.BridgeIssues.Bridge1012.DELTA)), ">= " + delay + ", elapsed " + stopwatch.milliseconds());
+                Bridge.Test.Assert.true$1(stopwatch.milliseconds().lt(System.Int64(maxDelay)), "< " + maxDelay + ", elapsed " + stopwatch.milliseconds());
             },
             testSleepThrows: function () {
                 Bridge.Test.Assert.throws$7(System.ArgumentOutOfRangeException, $_.Bridge.ClientTest.Batch3.BridgeIssues.Bridge1012.f1, "-2");
@@ -441,25 +445,24 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             testI11: function () {
                 var i11 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.getI11();
 
-                Bridge.Test.Assert.areEqual(1, i11[Bridge.geti(i11, "Bridge$ClientTest$Batch3$BridgeIssues$Bridge1025$I11$get", "get")](""));
-                i11[Bridge.geti(i11, "Bridge$ClientTest$Batch3$BridgeIssues$Bridge1025$I11$set", "set")](i11[1], 1);
+                Bridge.Test.Assert.areEqual(1, i11.get(""));
+                i11.set(i11[1], 1);
                 i11[1] = "";
-                Bridge.Test.Assert.areEqual(2, i11[Bridge.geti(i11, "Bridge$ClientTest$Batch3$BridgeIssues$Bridge1025$I11$getProp1", "getProp1")]());
-                Bridge.Test.Assert.areEqual("test", i11[Bridge.geti(i11, "Bridge$ClientTest$Batch3$BridgeIssues$Bridge1025$I11$getProp2", "getProp2")]());
-                i11[Bridge.geti(i11, "Bridge$ClientTest$Batch3$BridgeIssues$Bridge1025$I11$setProp2", "setProp2")]("");
-                i11[Bridge.geti(i11, "Bridge$ClientTest$Batch3$BridgeIssues$Bridge1025$I11$foo", "foo")]();
-                i11[Bridge.geti(i11, "Bridge$ClientTest$Batch3$BridgeIssues$Bridge1025$I11$addEvent1", "addEvent1")]($_.Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.f5);
+                Bridge.Test.Assert.areEqual(2, i11.getProp1());
+                Bridge.Test.Assert.areEqual("test", i11.getProp2());
+                i11.setProp2("");
+                i11.foo();
+                i11.addEvent1($_.Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.f5);
             },
             testI11_1: function () {
-                var $t, $t1, $t2, $t3, $t4, $t5, $t6;
-                Bridge.Test.Assert.areEqual(1, ($t = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.getI11(), $t[Bridge.geti($t, "Bridge$ClientTest$Batch3$BridgeIssues$Bridge1025$I11$get", "get")])(""));
-                ($t1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.getI11(), $t1[Bridge.geti($t1, "Bridge$ClientTest$Batch3$BridgeIssues$Bridge1025$I11$set", "set")])(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.getI11()[1], 1);
+                Bridge.Test.Assert.areEqual(1, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.getI11().get(""));
+                Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.getI11().set(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.getI11()[1], 1);
                 Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.getI11()[1] = "";
-                Bridge.Test.Assert.areEqual(2, ($t2 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.getI11(), $t2[Bridge.geti($t2, "Bridge$ClientTest$Batch3$BridgeIssues$Bridge1025$I11$getProp1", "getProp1")])());
-                Bridge.Test.Assert.areEqual("test", ($t3 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.getI11(), $t3[Bridge.geti($t3, "Bridge$ClientTest$Batch3$BridgeIssues$Bridge1025$I11$getProp2", "getProp2")])());
-                ($t4 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.getI11(), $t4[Bridge.geti($t4, "Bridge$ClientTest$Batch3$BridgeIssues$Bridge1025$I11$setProp2", "setProp2")])("");
-                ($t5 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.getI11(), $t5[Bridge.geti($t5, "Bridge$ClientTest$Batch3$BridgeIssues$Bridge1025$I11$foo", "foo")])();
-                ($t6 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.getI11(), $t6[Bridge.geti($t6, "Bridge$ClientTest$Batch3$BridgeIssues$Bridge1025$I11$addEvent1", "addEvent1")])($_.Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.f5);
+                Bridge.Test.Assert.areEqual(2, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.getI11().getProp1());
+                Bridge.Test.Assert.areEqual("test", Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.getI11().getProp2());
+                Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.getI11().setProp2("");
+                Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.getI11().foo();
+                Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.getI11().addEvent1($_.Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.f5);
             }
         }
     });
@@ -955,7 +958,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                 foo.bar = "1";
                 Bridge.Test.Assert.areEqual("1", foo.bar);
                 Bridge.Test.Assert.areEqual("1", foo.bar);
-                Bridge.Test.Assert.areEqual("1", car[Bridge.geti(car, "Bridge$ClientTest$Batch3$BridgeIssues$Bridge1053$Car$bar", "bar")]);
+                Bridge.Test.Assert.areEqual("1", car.bar);
                 Bridge.Test.Assert.areEqual("1", car.bar);
             }
         }
@@ -1521,10 +1524,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return System.String.compare(this.value, other.value);
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 1835365449;
-            hash = hash * 23 + (this.value == null ? 0 : Bridge.getHashCode(this.value));
-            return hash;
+            var h = Bridge.addHash([1835365449, this.value]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1128.Foo.Item)) {
@@ -1576,10 +1577,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return System.String.compare(this.value, other.value);
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 1835365449;
-            hash = hash * 23 + (this.value == null ? 0 : Bridge.getHashCode(this.value));
-            return hash;
+            var h = Bridge.addHash([1835365449, this.value]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1128.Foo1.Item)) {
@@ -1770,18 +1769,18 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 switch ($step) {
                                     case 0: {
                                         done = Bridge.Test.Assert.async();
-                                        parent = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1170();
-                                        parent2 = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1170();
+                                            parent = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1170();
+                                            parent2 = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1170();
 
-                                        _bridgeTmp_1 = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1170.Class1.$ctor1(parent);
+                                            _bridgeTmp_1 = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1170.Class1.$ctor1(parent);
                                         $step = 1;
                                         continue;
                                     }
                                     case 1: {
                                         $task1 = System.Threading.Tasks.Task.delay(1);
-                                        $step = 2;
-                                        $task1.continueWith($asyncBody, true);
-                                        return;
+                                            $step = 2;
+                                            $task1.continueWith($asyncBody, true);
+                                            return;
                                     }
                                     case 2: {
                                         $task1.getAwaitedResult();
@@ -1792,63 +1791,63 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                     case 3: {
                                         if (Bridge.hasValue(_bridgeTmp_1)) _bridgeTmp_1.dispose();
 
-                                        if ($jumpFromFinally > -1) {
-                                            $step = $jumpFromFinally;
-                                            $jumpFromFinally = null;
-                                        } else if ($async_e) {
-                                            throw $async_e;
-                                            return;
-                                        } else if (Bridge.isDefined($returnValue)) {
-                                            $tcs.setResult($returnValue);
-                                            return;
-                                        }
+                                            if ($jumpFromFinally > -1) {
+                                                $step = $jumpFromFinally;
+                                                $jumpFromFinally = null;
+                                            } else if ($async_e) {
+                                                throw $async_e;
+                                                return;
+                                            } else if (Bridge.isDefined($returnValue)) {
+                                                $tcs.setResult($returnValue);
+                                                return;
+                                            }
                                         $step = 4;
                                         continue;
                                     }
                                     case 4: {
-                                    
-                                        Bridge.Test.Assert.true(parent.isDisposed);
+                                        
+                                            Bridge.Test.Assert.true(parent.isDisposed);
 
-                                        parent.isDisposed = false;
-                                        c1 = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1170.Class1.$ctor1(parent);
+                                            parent.isDisposed = false;
+                                            c1 = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1170.Class1.$ctor1(parent);
                                         $step = 5;
                                         continue;
                                     }
                                     case 5: {
                                         $task2 = System.Threading.Tasks.Task.delay(1);
-                                        $step = 6;
-                                        $task2.continueWith($asyncBody, true);
-                                        return;
+                                            $step = 6;
+                                            $task2.continueWith($asyncBody, true);
+                                            return;
                                     }
                                     case 6: {
                                         $task2.getAwaitedResult();
                                         Bridge.Test.Assert.false(c1.isDisposed);
-                                        Bridge.Test.Assert.false(parent.isDisposed);
+                                            Bridge.Test.Assert.false(parent.isDisposed);
                                         $step = 7;
                                         continue;
                                     }
                                     case 7: {
                                         if (Bridge.hasValue(c1)) c1.dispose();
 
-                                        if ($jumpFromFinally > -1) {
-                                            $step = $jumpFromFinally;
-                                            $jumpFromFinally = null;
-                                        } else if ($async_e) {
-                                            throw $async_e;
-                                            return;
-                                        } else if (Bridge.isDefined($returnValue)) {
-                                            $tcs.setResult($returnValue);
-                                            return;
-                                        }
+                                            if ($jumpFromFinally > -1) {
+                                                $step = $jumpFromFinally;
+                                                $jumpFromFinally = null;
+                                            } else if ($async_e) {
+                                                throw $async_e;
+                                                return;
+                                            } else if (Bridge.isDefined($returnValue)) {
+                                                $tcs.setResult($returnValue);
+                                                return;
+                                            }
                                         $step = 8;
                                         continue;
                                     }
                                     case 8: {
-                                    
-                                        Bridge.Test.Assert.true(parent.isDisposed);
+                                        
+                                            Bridge.Test.Assert.true(parent.isDisposed);
 
-                                        parent.isDisposed = false;
-                                        c11 = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1170.Class1.$ctor1(parent);
+                                            parent.isDisposed = false;
+                                            c11 = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1170.Class1.$ctor1(parent);
                                         $step = 9;
                                         continue;
                                     }
@@ -1859,30 +1858,30 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                     }
                                     case 10: {
                                         $task3 = System.Threading.Tasks.Task.delay(1);
-                                        $step = 11;
-                                        $task3.continueWith($asyncBody, true);
-                                        return;
+                                            $step = 11;
+                                            $task3.continueWith($asyncBody, true);
+                                            return;
                                     }
                                     case 11: {
                                         $task3.getAwaitedResult();
                                         Bridge.Test.Assert.false(c11.isDisposed);
-                                        Bridge.Test.Assert.false(c2.isDisposed);
+                                            Bridge.Test.Assert.false(c2.isDisposed);
                                         $step = 12;
                                         continue;
                                     }
                                     case 12: {
                                         if (Bridge.hasValue(c2)) c2.dispose();
 
-                                        if ($jumpFromFinally > -1) {
-                                            $step = 14;
-                                            continue;
-                                        } else if ($async_e) {
-                                            throw $async_e;
-                                            return;
-                                        } else if (Bridge.isDefined($returnValue)) {
-                                            $step = 14;
-                                            continue;
-                                        }
+                                            if ($jumpFromFinally > -1) {
+                                                $step = 14;
+                                                continue;
+                                            } else if ($async_e) {
+                                                throw $async_e;
+                                                return;
+                                            } else if (Bridge.isDefined($returnValue)) {
+                                                $step = 14;
+                                                continue;
+                                            }
                                         $step = 13;
                                         continue;
                                     }
@@ -1890,25 +1889,25 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                     case 14: {
                                         if (Bridge.hasValue(c1)) c1.dispose();
 
-                                        if ($jumpFromFinally > -1) {
-                                            $step = $jumpFromFinally;
-                                            $jumpFromFinally = null;
-                                        } else if ($async_e) {
-                                            throw $async_e;
-                                            return;
-                                        } else if (Bridge.isDefined($returnValue)) {
-                                            $tcs.setResult($returnValue);
-                                            return;
-                                        }
+                                            if ($jumpFromFinally > -1) {
+                                                $step = $jumpFromFinally;
+                                                $jumpFromFinally = null;
+                                            } else if ($async_e) {
+                                                throw $async_e;
+                                                return;
+                                            } else if (Bridge.isDefined($returnValue)) {
+                                                $tcs.setResult($returnValue);
+                                                return;
+                                            }
                                         $step = 15;
                                         continue;
                                     }
                                     case 15: {
-                                    
-                                        Bridge.Test.Assert.true(parent.isDisposed);
-                                        Bridge.Test.Assert.true(parent2.isDisposed);
+                                        
+                                            Bridge.Test.Assert.true(parent.isDisposed);
+                                            Bridge.Test.Assert.true(parent2.isDisposed);
 
-                                        done();
+                                            done();
                                         return;
                                     }
                                     default: {
@@ -1967,7 +1966,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 switch ($step) {
                                     case 0: {
                                         done = Bridge.Test.Assert.async();
-                                        parent = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1170();
+                                            parent = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1170();
                                         $step = 1;
                                         continue;
                                     }
@@ -1978,9 +1977,9 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                     }
                                     case 2: {
                                         $task1 = System.Threading.Tasks.Task.delay(1);
-                                        $step = 3;
-                                        $task1.continueWith($asyncBody, true);
-                                        return;
+                                            $step = 3;
+                                            $task1.continueWith($asyncBody, true);
+                                            return;
                                     }
                                     case 3: {
                                         $task1.getAwaitedResult();
@@ -1991,16 +1990,16 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                     case 4: {
                                         if (Bridge.hasValue(_bridgeTmp_2)) _bridgeTmp_2.dispose();
 
-                                        if ($jumpFromFinally > -1) {
-                                            $step = $jumpFromFinally;
-                                            $jumpFromFinally = null;
-                                        } else if ($async_e) {
-                                            throw $async_e;
-                                            return;
-                                        } else if (Bridge.isDefined($returnValue)) {
-                                            $tcs.setResult($returnValue);
-                                            return;
-                                        }
+                                            if ($jumpFromFinally > -1) {
+                                                $step = $jumpFromFinally;
+                                                $jumpFromFinally = null;
+                                            } else if ($async_e) {
+                                                throw $async_e;
+                                                return;
+                                            } else if (Bridge.isDefined($returnValue)) {
+                                                $tcs.setResult($returnValue);
+                                                return;
+                                            }
                                         $step = 5;
                                         continue;
                                     }
@@ -2010,15 +2009,15 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                     }
                                     case 6: {
                                         Bridge.Test.Assert.areEqual("Bridge1170 test", e.getMessage());
-                                        $async_e = null;
+                                            $async_e = null;
                                         $step = 7;
                                         continue;
                                     }
                                     case 7: {
-                                    
-                                        Bridge.Test.Assert.true(parent.isDisposed);
+                                        
+                                            Bridge.Test.Assert.true(parent.isDisposed);
 
-                                        done();
+                                            done();
                                         return;
                                     }
                                     default: {
@@ -2151,8 +2150,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             },
             getItemValues: function (TValue, items) {
                 return System.Linq.Enumerable.from(items).select(function (item) {
-                    return Bridge.ClientTest.Batch3.BridgeIssues.Bridge1176.Item$1(TValue).op_Implicit(item);
-                }).toArray();
+                        return Bridge.ClientTest.Batch3.BridgeIssues.Bridge1176.Item$1(TValue).op_Implicit(item);
+                    }).toArray();
             }
         }
     });
@@ -2217,11 +2216,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 1955977157;
-            hash = hash * 23 + (this.x == null ? 0 : Bridge.getHashCode(this.x));
-            hash = hash * 23 + (this.y == null ? 0 : Bridge.getHashCode(this.y));
-            return hash;
+            var h = Bridge.addHash([1955977157, this.x, this.y]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1180.Vector2)) {
@@ -2323,27 +2319,27 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                             switch ($step) {
                                 case 0: {
                                     done = Bridge.Test.Assert.async();
-                                    $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1189.fooLong();
-                                    $step = 1;
-                                    $task1.continueWith($asyncBody, true);
-                                    return;
+                                        $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1189.fooLong();
+                                        $step = 1;
+                                        $task1.continueWith($asyncBody, true);
+                                        return;
                                 }
                                 case 1: {
                                     $taskResult1 = $task1.getAwaitedResult();
                                     resultLong = $taskResult1;
-                                    Bridge.Test.Assert.true$1(System.Int64(-5).equals(resultLong), "Task<long>");
+                                        Bridge.Test.Assert.true$1(System.Int64(-5).equals(resultLong), "Task<long>");
 
-                                    $task2 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1189.fooDecimal();
-                                    $step = 2;
-                                    $task2.continueWith($asyncBody, true);
-                                    return;
+                                        $task2 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1189.fooDecimal();
+                                        $step = 2;
+                                        $task2.continueWith($asyncBody, true);
+                                        return;
                                 }
                                 case 2: {
                                     $taskResult2 = $task2.getAwaitedResult();
                                     resultDecimal = $taskResult2;
-                                    Bridge.Test.Assert.true$1(System.Decimal(-7).equalsT(resultDecimal), "Task<decimal>");
+                                        Bridge.Test.Assert.true$1(System.Decimal(-7).equalsT(resultDecimal), "Task<decimal>");
 
-                                    done();
+                                        done();
                                     return;
                                 }
                                 default: {
@@ -2369,14 +2365,14 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 switch ($step) {
                                     case 0: {
                                         $task1 = System.Threading.Tasks.Task.delay(1);
-                                        $step = 1;
-                                        $task1.continueWith($asyncBody);
-                                        return;
+                                            $step = 1;
+                                            $task1.continueWith($asyncBody);
+                                            return;
                                     }
                                     case 1: {
                                         $task1.getAwaitedResult();
                                         $tcs.setResult(System.Int64(-5));
-                                        return;
+                                            return;
                                     }
                                     default: {
                                         $tcs.setResult(null);
@@ -2407,14 +2403,14 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 switch ($step) {
                                     case 0: {
                                         $task1 = System.Threading.Tasks.Task.delay(1);
-                                        $step = 1;
-                                        $task1.continueWith($asyncBody);
-                                        return;
+                                            $step = 1;
+                                            $task1.continueWith($asyncBody);
+                                            return;
                                     }
                                     case 1: {
                                         $task1.getAwaitedResult();
                                         $tcs.setResult(System.Decimal(-7));
-                                        return;
+                                            return;
                                     }
                                     default: {
                                         $tcs.setResult(null);
@@ -2430,6 +2426,14 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
 
                 $asyncBody();
                 return $tcs.task;
+            }
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1193", {
+        statics: {
+            testAssemblyVersionMarker: function () {
+                Bridge.Test.Assert.areEqual("1.2.3.4", Bridge.ClientTestHelper.Internal.N1193.getClientTestHelperAssemblyVersion());
             }
         }
     });
@@ -2776,7 +2780,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                 if (diff > delta || diff < -delta) {
                     Bridge.Test.Assert.areEqual$1(e, a, message);
                 } else {
-                    var m = ($t = message, $t != null ? $t : System.String.concat(" ", (diff !== 0 ? System.String.concat(System.String.concat(System.String.concat(System.String.concat(System.String.concat("Diff: ", System.Double.format(diff, 'G')), "; Expected: "), e), "; Actual: "), a) : "")));
+                    var m = ($t = message, $t != null ? $t : System.String.concat(" ", (diff !== 0 ? System.String.concat("Diff: " + System.Double.format(diff, 'G') + "; Expected: ", e, "; Actual: ", a) : "")));
                     Bridge.Test.Assert.true$1(true, m);
                 }
             },
@@ -3057,7 +3061,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                 $t = Bridge.getEnumerator(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1256.reservedWords);
                 while ($t.moveNext()) {
                     var name = $t.getCurrent();
-                    Bridge.Test.Assert.notNull$1(o[name], System.String.concat(System.String.concat("Member ", name), " exists"));
+                    Bridge.Test.Assert.notNull$1(o[name], System.String.concat("Member ", name, " exists"));
                 }
             },
             let: function () {
@@ -3526,10 +3530,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 3168324882;
-            hash = hash * 23 + (this.Value == null ? 0 : Bridge.getHashCode(this.Value));
-            return hash;
+            var h = Bridge.addHash([3168324882, this.Value]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1296.MessageId)) {
@@ -3666,18 +3668,18 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 case 0: {
                                     done = Bridge.Test.Assert.async();
 
-                                    $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1305.testIntResult();
-                                    $step = 1;
-                                    $task1.continueWith($asyncBody, true);
-                                    return;
+                                        $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1305.testIntResult();
+                                        $step = 1;
+                                        $task1.continueWith($asyncBody, true);
+                                        return;
                                 }
                                 case 1: {
                                     $taskResult1 = $task1.getAwaitedResult();
                                     result = $taskResult1;
-                                    Bridge.Test.Assert.areEqual(10, result);
-                                    Bridge.Test.Assert.areEqual(10, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1305.currentInt);
+                                        Bridge.Test.Assert.areEqual(10, result);
+                                        Bridge.Test.Assert.areEqual(10, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1305.currentInt);
 
-                                    done();
+                                        done();
                                     return;
                                 }
                                 default: {
@@ -3703,20 +3705,20 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 case 0: {
                                     done = Bridge.Test.Assert.async();
 
-                                    $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1305.testClassResult();
-                                    $step = 1;
-                                    $task1.continueWith($asyncBody, true);
-                                    return;
+                                        $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1305.testClassResult();
+                                        $step = 1;
+                                        $task1.continueWith($asyncBody, true);
+                                        return;
                                 }
                                 case 1: {
                                     $taskResult1 = $task1.getAwaitedResult();
                                     result = $taskResult1;
-                                    Bridge.Test.Assert.notNull(result);
-                                    Bridge.Test.Assert.areEqual(11, result.getValue());
-                                    Bridge.Test.Assert.notNull(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1305.currentDataClass);
-                                    Bridge.Test.Assert.areEqual(11, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1305.currentDataClass.getValue());
+                                        Bridge.Test.Assert.notNull(result);
+                                        Bridge.Test.Assert.areEqual(11, result.getValue());
+                                        Bridge.Test.Assert.notNull(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1305.currentDataClass);
+                                        Bridge.Test.Assert.areEqual(11, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1305.currentDataClass.getValue());
 
-                                    done();
+                                        done();
                                     return;
                                 }
                                 default: {
@@ -3742,20 +3744,20 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 case 0: {
                                     done = Bridge.Test.Assert.async();
 
-                                    $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1305.testStructResult();
-                                    $step = 1;
-                                    $task1.continueWith($asyncBody, true);
-                                    return;
+                                        $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1305.testStructResult();
+                                        $step = 1;
+                                        $task1.continueWith($asyncBody, true);
+                                        return;
                                 }
                                 case 1: {
                                     $taskResult1 = $task1.getAwaitedResult();
                                     result = $taskResult1;
-                                    Bridge.Test.Assert.notNull(result);
-                                    Bridge.Test.Assert.areEqual(12, result.getValue());
-                                    Bridge.Test.Assert.notNull(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1305.currentDataStruct);
-                                    Bridge.Test.Assert.areEqual(12, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1305.currentDataStruct.getValue());
+                                        Bridge.Test.Assert.notNull(result);
+                                        Bridge.Test.Assert.areEqual(12, result.getValue());
+                                        Bridge.Test.Assert.notNull(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1305.currentDataStruct);
+                                        Bridge.Test.Assert.areEqual(12, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1305.currentDataStruct.getValue());
 
-                                    done();
+                                        done();
                                     return;
                                 }
                                 default: {
@@ -3783,14 +3785,14 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 switch ($step) {
                                     case 0: {
                                         $task1 = System.Threading.Tasks.Task.fromResult(10);
-                                        $step = 1;
-                                        $task1.continueWith($asyncBody);
-                                        return;
+                                            $step = 1;
+                                            $task1.continueWith($asyncBody);
+                                            return;
                                     }
                                     case 1: {
                                         $taskResult1 = $task1.getAwaitedResult();
                                         $tcs.setResult(($t = $taskResult1, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1305.currentInt = $t, $t));
-                                        return;
+                                            return;
                                     }
                                     default: {
                                         $tcs.setResult(null);
@@ -3823,16 +3825,16 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 switch ($step) {
                                     case 0: {
                                         $task1 = System.Threading.Tasks.Task.fromResult(Bridge.merge(new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1305.DataClass(), {
-                                            setValue: 11
-                                        } ));
-                                        $step = 1;
-                                        $task1.continueWith($asyncBody);
-                                        return;
+                                                setValue: 11
+                                            } ));
+                                            $step = 1;
+                                            $task1.continueWith($asyncBody);
+                                            return;
                                     }
                                     case 1: {
                                         $taskResult1 = $task1.getAwaitedResult();
                                         $tcs.setResult(($t = $taskResult1, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1305.currentDataClass = $t, $t));
-                                        return;
+                                            return;
                                     }
                                     default: {
                                         $tcs.setResult(null);
@@ -3865,16 +3867,16 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 switch ($step) {
                                     case 0: {
                                         $task1 = System.Threading.Tasks.Task.fromResult(Bridge.merge(new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1305.DataStruct(), {
-                                            setValue: 12
-                                        } ));
-                                        $step = 1;
-                                        $task1.continueWith($asyncBody);
-                                        return;
+                                                setValue: 12
+                                            } ));
+                                            $step = 1;
+                                            $task1.continueWith($asyncBody);
+                                            return;
                                     }
                                     case 1: {
                                         $taskResult1 = $task1.getAwaitedResult();
                                         $tcs.setResult(($t = $taskResult1, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1305.currentDataStruct = $t, $t));
-                                        return;
+                                            return;
                                     }
                                     default: {
                                         $tcs.setResult(null);
@@ -3953,7 +3955,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
         statics: {
             testUseCase: function () {
                 var v = 0;
-                var s = System.String.concat(v, "");
+                var s = v + "";
 
                 Bridge.Test.Assert.areEqual("0", s);
             },
@@ -4104,10 +4106,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 3587563249;
-            hash = hash * 23 + (this.Value == null ? 0 : Bridge.getHashCode(this.Value));
-            return hash;
+            var h = Bridge.addHash([3587563249, this.Value]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1328.Optional3$1(T))) {
@@ -4138,10 +4138,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 3737080868;
-            hash = hash * 23 + (this.name == null ? 0 : Bridge.getHashCode(this.name));
-            return hash;
+            var h = Bridge.addHash([3737080868, this.name]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1328.StructLink)) {
@@ -4176,10 +4174,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 3740357668;
-            hash = hash * 23 + (this.name == null ? 0 : Bridge.getHashCode(this.name));
-            return hash;
+            var h = Bridge.addHash([3740357668, this.name]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1328.StructLink2)) {
@@ -4220,12 +4216,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 3740423204;
-            hash = hash * 23 + (this.name == null ? 0 : Bridge.getHashCode(this.name));
-            hash = hash * 23 + (this.Url == null ? 0 : Bridge.getHashCode(this.Url));
-            hash = hash * 23 + (this.Text == null ? 0 : Bridge.getHashCode(this.Text));
-            return hash;
+            var h = Bridge.addHash([3740423204, this.name, this.Url, this.Text]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1328.StructLink3)) {
@@ -4556,11 +4548,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             });
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 1635017028;
-            hash = hash * 23 + (this.value2 == null ? 0 : Bridge.getHashCode(this.value2));
-            hash = hash * 23 + (this.Value1 == null ? 0 : Bridge.getHashCode(this.Value1));
-            return hash;
+            var h = Bridge.addHash([1635017028, this.value2, this.Value1]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1340.Data$1(T))) {
@@ -4591,11 +4580,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 1635017028;
-            hash = hash * 23 + (this.value2 == null ? 0 : Bridge.getHashCode(this.value2));
-            hash = hash * 23 + (this.Value1 == null ? 0 : Bridge.getHashCode(this.Value1));
-            return hash;
+            var h = Bridge.addHash([1635017028, this.value2, this.Value1]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1340.Data$2(T,K))) {
@@ -4670,27 +4656,27 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                 Bridge.Test.Assert.areEqual$1("2", o2.b, "o2.B == \"2\"");
 
                 var o3 = { a: 1, b: Bridge.merge(new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1341.SomeStructA(), {
-                    setValue1: 1
-                } ) };
+                        setValue1: 1
+                    } ) };
                 Bridge.Test.Assert.notNull$1(o3, "o3 not null");
                 Bridge.Test.Assert.areEqual$1(1, o3.a, "o3.A == 1");
                 Bridge.Test.Assert.notNull$1(o3.b.$clone(), "o3.B not null");
                 Bridge.Test.Assert.areEqual$1(1, o3.b.getValue1(), "o3.B.Value1 == 1");
 
                 var o4 = { a: 1, b: Bridge.merge(new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1341.SomeStructA(), {
-                    setValue1: 1
-                } ) };
+                        setValue1: 1
+                    } ) };
                 Bridge.Test.Assert.notNull$1(o4, "o4 not null");
                 Bridge.Test.Assert.areEqual$1(1, o4.a, "o4.A == 1");
                 Bridge.Test.Assert.notNull$1(o4.b.$clone(), "o4.B not null");
                 Bridge.Test.Assert.areEqual$1(1, o4.b.getValue1(), "o4.B.Value1 == 1");
 
                 var o5 = { a: 1, b: Bridge.merge(new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1341.SomeClassB(), {
-                    setValue1: 1,
-                    setValue2: Bridge.merge(new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1341.SomeStructA(), {
-                        setValue1: 1
-                    } )
-                } ) };
+                        setValue1: 1,
+                        setValue2: Bridge.merge(new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1341.SomeStructA(), {
+                            setValue1: 1
+                        } )
+                    } ) };
                 Bridge.Test.Assert.notNull$1(o5, "o5 not null");
                 Bridge.Test.Assert.areEqual$1(1, o5.a, "o5.A == 1");
                 Bridge.Test.Assert.notNull$1(o5.b, "o5.B not null");
@@ -4914,10 +4900,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return Bridge.equals(this.a, o.a);
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 6320272310;
-            hash = hash * 23 + (this.a == null ? 0 : Bridge.getHashCode(this.a));
-            return hash;
+            var h = Bridge.addHash([6320272310, this.a]);
+            return h;
         },
         toJSON: function () {
             return {
@@ -4945,11 +4929,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return Bridge.equals(this.a, o.a) && Bridge.equals(this.b, o.b);
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 6320337846;
-            hash = hash * 23 + (this.a == null ? 0 : Bridge.getHashCode(this.a));
-            hash = hash * 23 + (this.b == null ? 0 : Bridge.getHashCode(this.b));
-            return hash;
+            var h = Bridge.addHash([6320337846, this.a, this.b]);
+            return h;
         },
         toJSON: function () {
             return {
@@ -4978,11 +4959,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return Bridge.equals(this.a, o.a) && Bridge.equals(this.b, o.b);
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 6320403382;
-            hash = hash * 23 + (this.a == null ? 0 : Bridge.getHashCode(this.a));
-            hash = hash * 23 + (this.b == null ? 0 : Bridge.getHashCode(this.b));
-            return hash;
+            var h = Bridge.addHash([6320403382, this.a, this.b]);
+            return h;
         },
         toJSON: function () {
             return {
@@ -5011,11 +4989,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return Bridge.equals(this.a, o.a) && Bridge.equals(this.b, o.b);
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 6320468918;
-            hash = hash * 23 + (this.a == null ? 0 : Bridge.getHashCode(this.a));
-            hash = hash * 23 + (this.b == null ? 0 : Bridge.getHashCode(this.b));
-            return hash;
+            var h = Bridge.addHash([6320468918, this.a, this.b]);
+            return h;
         },
         toJSON: function () {
             return {
@@ -5040,10 +5015,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return Bridge.equals(this.value1, o.value1);
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 6320534454;
-            hash = hash * 23 + (this.value1 == null ? 0 : Bridge.getHashCode(this.value1));
-            return hash;
+            var h = Bridge.addHash([6320534454, this.value1]);
+            return h;
         },
         toJSON: function () {
             return {
@@ -5067,10 +5040,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return Bridge.equals(this.value2, o.value2);
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 6320599990;
-            hash = hash * 23 + (this.value2 == null ? 0 : Bridge.getHashCode(this.value2));
-            return hash;
+            var h = Bridge.addHash([6320599990, this.value2]);
+            return h;
         },
         toJSON: function () {
             return {
@@ -5094,10 +5065,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return Bridge.equals(this.b, o.b);
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 6320665526;
-            hash = hash * 23 + (this.b == null ? 0 : Bridge.getHashCode(this.b));
-            return hash;
+            var h = Bridge.addHash([6320665526, this.b]);
+            return h;
         },
         toJSON: function () {
             return {
@@ -5125,11 +5094,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return Bridge.equals(this.b, o.b) && Bridge.equals(this.c, o.c);
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 6320731062;
-            hash = hash * 23 + (this.b == null ? 0 : Bridge.getHashCode(this.b));
-            hash = hash * 23 + (this.c == null ? 0 : Bridge.getHashCode(this.c));
-            return hash;
+            var h = Bridge.addHash([6320731062, this.b, this.c]);
+            return h;
         },
         toJSON: function () {
             return {
@@ -5158,11 +5124,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return Bridge.equals(this.a, o.a) && Bridge.equals(this.b, o.b);
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 6320796598;
-            hash = hash * 23 + (this.a == null ? 0 : Bridge.getHashCode(this.a));
-            hash = hash * 23 + (this.b == null ? 0 : Bridge.getHashCode(this.b));
-            return hash;
+            var h = Bridge.addHash([6320796598, this.a, this.b]);
+            return h;
         },
         toJSON: function () {
             return {
@@ -5191,11 +5154,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return Bridge.equals(this.b, o.b) && Bridge.equals(this.c, o.c);
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 7125578678;
-            hash = hash * 23 + (this.b == null ? 0 : Bridge.getHashCode(this.b));
-            hash = hash * 23 + (this.c == null ? 0 : Bridge.getHashCode(this.c));
-            return hash;
+            var h = Bridge.addHash([7125578678, this.b, this.c]);
+            return h;
         },
         toJSON: function () {
             return {
@@ -5224,11 +5184,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return Bridge.equals(this.b, o.b) && Bridge.equals(this.a, o.a);
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 7142355894;
-            hash = hash * 23 + (this.b == null ? 0 : Bridge.getHashCode(this.b));
-            hash = hash * 23 + (this.a == null ? 0 : Bridge.getHashCode(this.a));
-            return hash;
+            var h = Bridge.addHash([7142355894, this.b, this.a]);
+            return h;
         },
         toJSON: function () {
             return {
@@ -5257,11 +5214,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return Bridge.equals(this.b, o.b) && Bridge.equals(this.c, o.c);
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 7159133110;
-            hash = hash * 23 + (this.b == null ? 0 : Bridge.getHashCode(this.b));
-            hash = hash * 23 + (this.c == null ? 0 : Bridge.getHashCode(this.c));
-            return hash;
+            var h = Bridge.addHash([7159133110, this.b, this.c]);
+            return h;
         },
         toJSON: function () {
             return {
@@ -5305,10 +5259,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 3676395529;
-            hash = hash * 23 + (this.Value1 == null ? 0 : Bridge.getHashCode(this.Value1));
-            return hash;
+            var h = Bridge.addHash([3676395529, this.Value1]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1341.SomeStructA)) {
@@ -5337,10 +5289,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 4498479113;
-            hash = hash * 23 + (this.Value1 == null ? 0 : Bridge.getHashCode(this.Value1));
-            return hash;
+            var h = Bridge.addHash([4498479113, this.Value1]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1341.SomeStructA1)) {
@@ -5369,10 +5319,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 4515256329;
-            hash = hash * 23 + (this.Value2 == null ? 0 : Bridge.getHashCode(this.Value2));
-            return hash;
+            var h = Bridge.addHash([4515256329, this.Value2]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1341.SomeStructA2)) {
@@ -5723,7 +5671,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                 var b = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1391ToRunInitializationOnReady.BarReady();
 
                 var r = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1391ToRunInitializationOnReady.getBuilder().toString();
-    Bridge.$N1391Result =             r;
+Bridge.$N1391Result =                 r;
             }
         },
         $entryPoint: true
@@ -5970,7 +5918,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             }
         },
         someMethod: function () {
-            return System.String.concat(System.String.concat(System.String.concat("I'm ", Bridge.Reflection.getTypeFullName(Bridge.getType(this))), " and my value is "), this.getValue());
+            return System.String.concat("I'm ", Bridge.Reflection.getTypeFullName(Bridge.getType(this)), " and my value is ", this.getValue());
         }
     });
 
@@ -6465,7 +6413,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             for (var i = 1; i < 10001; i = (i + 1) | 0) {
                 p = Bridge.global.performance.now();
                 if (!this.hasNoFraction(p)) {
-                    Bridge.Test.Assert.true$1(true, System.String.concat(System.String.concat("Did ", i), " attempt(s) to check performance.now() returns float"));
+                    Bridge.Test.Assert.true$1(true, "Did " + i + " attempt(s) to check performance.now() returns float");
                     return;
                 }
             }
@@ -6674,7 +6622,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             Bridge.Test.Assert.true$1(x.value.equalsT(System.Decimal(y)), "decimal");
 
             var g = new (Bridge.ClientTest.Batch3.BridgeIssues.Bridge1518.TestClass$1(System.Guid))();
-            Bridge.Test.Assert.true$1(g.value === System.Guid.empty, "Guid");
+            Bridge.Test.Assert.true$1(System.Guid.op_Equality(g.value, System.Guid.empty), "Guid");
 
             var l = new (Bridge.ClientTest.Batch3.BridgeIssues.Bridge1518.TestClass$1(System.Int64))();
             var z = 0;
@@ -6707,7 +6655,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             }
 
             var i = 0;
-            $t = Bridge.getEnumerator(dic.getValues());
+            $t = Bridge.getEnumerator(dic.getValues(), System.Int32);
             while ($t.moveNext()) {
                 var sameVal1 = $t.getCurrent();
                 Bridge.Test.Assert.areEqual$1(((i = (i + 1) | 0)), sameVal1, "Inside foreach scope");
@@ -6912,51 +6860,51 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                             case 0: {
                                 done = Bridge.Test.Assert.async();
 
-                                foo = null; /// Async method lacks 'await' operators and will run synchronously
+                                    foo = null; /// Async method lacks 'await' operators and will run synchronously
 
 
-                                bar = function () {
-                                    var $step = 0,
-                                        $jumpFromFinally, 
-                                        $tcs = new System.Threading.Tasks.TaskCompletionSource(), 
-                                        $returnValue, 
-                                        $async_e, 
-                                        $asyncBody = Bridge.fn.bind(this, function () {
-                                            try {
-                                                for (;;) {
-                                                    $step = System.Array.min([0], $step);
-                                                    switch ($step) {
-                                                        case 0: {
-                                                            $tcs.setResult((foo = 1));
-                                                            return;
-                                                        }
-                                                        default: {
-                                                            $tcs.setResult(null);
-                                                            return;
+                                    bar = function () {
+                                        var $step = 0,
+                                            $jumpFromFinally, 
+                                            $tcs = new System.Threading.Tasks.TaskCompletionSource(), 
+                                            $returnValue, 
+                                            $async_e, 
+                                            $asyncBody = Bridge.fn.bind(this, function () {
+                                                try {
+                                                    for (;;) {
+                                                        $step = System.Array.min([0], $step);
+                                                        switch ($step) {
+                                                            case 0: {
+                                                                $tcs.setResult((foo = 1));
+                                                                    return;
+                                                            }
+                                                            default: {
+                                                                $tcs.setResult(null);
+                                                                return;
+                                                            }
                                                         }
                                                     }
+                                                } catch($async_e1) {
+                                                    $async_e = System.Exception.create($async_e1);
+                                                    $tcs.setException($async_e);
                                                 }
-                                            } catch($async_e1) {
-                                                $async_e = System.Exception.create($async_e1);
-                                                $tcs.setException($async_e);
-                                            }
-                                        }, arguments);
+                                            }, arguments);
 
-                                    $asyncBody();
-                                    return $tcs.task;
-                                };
-                                $task1 = bar();
-                                $step = 1;
-                                $task1.continueWith($asyncBody, true);
-                                return;
+                                        $asyncBody();
+                                        return $tcs.task;
+                                    };
+                                    $task1 = bar();
+                                    $step = 1;
+                                    $task1.continueWith($asyncBody, true);
+                                    return;
                             }
                             case 1: {
                                 $taskResult1 = $task1.getAwaitedResult();
                                 baz = $taskResult1;
-                                Bridge.Test.Assert.areEqual(1, foo);
-                                Bridge.Test.Assert.areEqual(1, baz);
+                                    Bridge.Test.Assert.areEqual(1, foo);
+                                    Bridge.Test.Assert.areEqual(1, baz);
 
-                                done();
+                                    done();
                                 return;
                             }
                             default: {
@@ -6977,13 +6925,13 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                     test: null
                 },
                 properties: {
-                    test1$1: 0
+                    test1: 0
                 }
             },
             test$1: function () {
                 return "method";
             },
-            test1: function () {
+            test1$1: function () {
                 return 1;
             }
         },
@@ -6994,10 +6942,10 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             Bridge.Test.Assert.areEqual("event", Bridge.ClientTest.Batch3.BridgeIssues.Bridge1536.test());
         },
         testPropertyNameConflict: function () {
-            Bridge.ClientTest.Batch3.BridgeIssues.Bridge1536.settest1$1(2);
+            Bridge.ClientTest.Batch3.BridgeIssues.Bridge1536.settest1(2);
 
-            Bridge.Test.Assert.areEqual(1, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1536.test1());
-            Bridge.Test.Assert.areEqual(2, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1536.gettest1$1());
+            Bridge.Test.Assert.areEqual(1, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1536.test1$1());
+            Bridge.Test.Assert.areEqual(2, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1536.gettest1());
         }
     });
 
@@ -7075,17 +7023,17 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 switch ($step) {
                                     case 0: {
                                         $task1 = System.Threading.Tasks.Task.delay(1);
-                                        $step = 1;
-                                        $task1.continueWith($asyncBody);
-                                        return;
+                                            $step = 1;
+                                            $task1.continueWith($asyncBody);
+                                            return;
                                     }
                                     case 1: {
                                         $task1.getAwaitedResult();
                                         bar = { };
-                                        Bridge.ClientTest.Batch3.BridgeIssues.Bridge1641._Foo.tryGetValue(1, bar);
+                                            Bridge.ClientTest.Batch3.BridgeIssues.Bridge1641._Foo.tryGetValue(1, bar);
 
-                                        $tcs.setResult(bar.v);
-                                        return;
+                                            $tcs.setResult(bar.v);
+                                            return;
                                     }
                                     default: {
                                         $tcs.setResult(null);
@@ -7116,16 +7064,16 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                         switch ($step) {
                             case 0: {
                                 done = Bridge.Test.Assert.async();
-                                $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1641.test();
-                                $step = 1;
-                                $task1.continueWith($asyncBody, true);
-                                return;
+                                    $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1641.test();
+                                    $step = 1;
+                                    $task1.continueWith($asyncBody, true);
+                                    return;
                             }
                             case 1: {
                                 $taskResult1 = $task1.getAwaitedResult();
                                 result = $taskResult1;
-                                Bridge.Test.Assert.areEqual(0, result);
-                                done();
+                                    Bridge.Test.Assert.areEqual(0, result);
+                                    done();
                                 return;
                             }
                             default: {
@@ -7153,14 +7101,14 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             var values = [Bridge.getDefaultValue(U)];
 
             var v1 = System.Linq.Enumerable.from(values).select(function (value) {
-                return System.String.concat(System.String.concat(value, " "), Bridge.ClientTest.Batch3.BridgeIssues.Bridge1653_Extensions.getSomething(U, value));
-            });
+                    return System.String.concat(value, " ", Bridge.ClientTest.Batch3.BridgeIssues.Bridge1653_Extensions.getSomething(U, value));
+                });
             var v2 = System.Linq.Enumerable.from(values).select(function (value) {
-                return System.String.concat(System.String.concat(value, " "), Bridge.ClientTest.Batch3.BridgeIssues.Bridge1653_Extensions.getSomething(U, value));
-            });
+                    return System.String.concat(value, " ", Bridge.ClientTest.Batch3.BridgeIssues.Bridge1653_Extensions.getSomething(U, value));
+                });
             var v3 = System.Linq.Enumerable.from(values).select(function (value) {
-                return System.String.concat(System.String.concat(value, " "), Bridge.ClientTest.Batch3.BridgeIssues.Bridge1653_Extensions.getSomething1(U, value));
-            });
+                    return System.String.concat(value, " ", Bridge.ClientTest.Batch3.BridgeIssues.Bridge1653_Extensions.getSomething1(U, value));
+                });
             var v4 = System.Linq.Enumerable.from(values).select($_.Bridge.ClientTest.Batch3.BridgeIssues.Bridge1653.Table$2.f1);
         }
     }; });
@@ -7169,7 +7117,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
 
     Bridge.apply($_.Bridge.ClientTest.Batch3.BridgeIssues.Bridge1653.Table$2, {
         f1: function (value) {
-            return System.String.concat(System.String.concat(value, "_"), Bridge.ClientTest.Batch3.BridgeIssues.Bridge1653_Extensions.getSomething1(String, "v4"));
+            return System.String.concat(value, "_", Bridge.ClientTest.Batch3.BridgeIssues.Bridge1653_Extensions.getSomething1(String, "v4"));
         }
     });
 
@@ -7267,20 +7215,20 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             var t = Bridge.Reflection.getMembers(console, 8, 284, "WriteLine", [String]);
 
             Bridge.Test.Assert.notNull$1(t, "Not null");
-            Bridge.Test.Assert.true$1((t.accessibility === 2), "IsPublic");
-            Bridge.Test.Assert.false$1((t.accessibility === 1), "IsPrivate");
-            Bridge.Test.Assert.false$1((t.type === 1), "IsConstructor");
-            Bridge.Test.Assert.true$1((t.isStatic || false), "IsStatic");
-            Bridge.Test.Assert.areEqual$1("WriteLine", t.name, "Name");
-            Bridge.Test.Assert.notNull$1(t.returnType, "ReturnType not null");
-            Bridge.Test.Assert.areEqual$1("Object", Bridge.Reflection.getTypeName(t.returnType), "ReturnType");
+            Bridge.Test.Assert.true$1((t.a === 2), "IsPublic");
+            Bridge.Test.Assert.false$1((t.a === 1), "IsPrivate");
+            Bridge.Test.Assert.false$1((t.t === 1), "IsConstructor");
+            Bridge.Test.Assert.true$1((t.is || false), "IsStatic");
+            Bridge.Test.Assert.areEqual$1("WriteLine", t.n, "Name");
+            Bridge.Test.Assert.notNull$1(t.rt, "ReturnType not null");
+            Bridge.Test.Assert.areEqual$1("Object", Bridge.Reflection.getTypeName(t.rt), "ReturnType");
 
-            var parameters = (t.paramsInfo || []);
+            var parameters = (t.pi || []);
             Bridge.Test.Assert.notNull$1(parameters, "parameters not null");
             Bridge.Test.Assert.areEqual$1(1, parameters.length, "parameters length");
-            Bridge.Test.Assert.areEqual$1("value", parameters[0].name, "parameters[0] Name");
-            Bridge.Test.Assert.false$1((parameters[0].isOut || false), "parameters[0] IsOut");
-            Bridge.Test.Assert.false$1((parameters[0].isOptional || false), "parameters[0] IsOptional");
+            Bridge.Test.Assert.areEqual$1("value", parameters[0].n, "parameters[0] Name");
+            Bridge.Test.Assert.false$1((parameters[0].out || false), "parameters[0] IsOut");
+            Bridge.Test.Assert.false$1((parameters[0].o || false), "parameters[0] IsOptional");
 
             try {
                 Bridge.Reflection.midel(t, null).apply(null, ["Test #1698"]);
@@ -7721,10 +7669,10 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         add: function (i) {
-            Bridge.ClientTest.Batch3.BridgeIssues.Bridge1715.MyList.buffer = System.String.concat(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1715.MyList.buffer, (System.String.concat(System.String.concat("Add(", i), ");")));
+            Bridge.ClientTest.Batch3.BridgeIssues.Bridge1715.MyList.buffer = System.String.concat(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1715.MyList.buffer, ("Add(" + i + ");"));
         },
         add$1: function (i, j) {
-            Bridge.ClientTest.Batch3.BridgeIssues.Bridge1715.MyList.buffer = System.String.concat(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1715.MyList.buffer, (System.String.concat(System.String.concat(System.String.concat(System.String.concat("Add(", i), ", "), j), ");")));
+            Bridge.ClientTest.Batch3.BridgeIssues.Bridge1715.MyList.buffer = System.String.concat(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1715.MyList.buffer, ("Add(" + i + ", " + j + ");"));
         },
         getEnumerator: function () {
             throw new System.Exception();
@@ -7795,11 +7743,11 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             var a = 1;
 
             var delegateCache = function (_o23) {
-                _o23.add("test", function (source) {
-                    a = (a + 1) | 0;
-                });
-                return _o23;
-            }(new (System.Collections.Generic.Dictionary$2(String,Function))());
+                    _o23.add("test", function (source) {
+                        a = (a + 1) | 0;
+                    });
+                    return _o23;
+                }(new (System.Collections.Generic.Dictionary$2(String,Function))());
 
             var setter = { };
             var result = delegateCache.tryGetValue("test", setter);
@@ -7975,8 +7923,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
         testImplicitImplementation: function () {
             var c2 = new (Bridge.ClientTest.Batch3.BridgeIssues.Bridge1768.C2$1(System.Int32))();
             Bridge.Test.Assert.areEqual(0, c2.Bridge$ClientTest$Batch3$BridgeIssues$Bridge1768$I1$1$System$Int32$getItem(0));
-            Bridge.Test.Assert.areEqual(2, c2.Bridge$ClientTest$Batch3$BridgeIssues$Bridge1768$I1$1$System$Int32$add(0));
-            Bridge.Test.Assert.areEqual(1, c2.Bridge$ClientTest$Batch3$BridgeIssues$Bridge1768$I1$1$System$Int32$getCount());
+            Bridge.Test.Assert.areEqual(20, c2.Bridge$ClientTest$Batch3$BridgeIssues$Bridge1768$I1$1$System$Int32$add(0));
+            Bridge.Test.Assert.areEqual(10, c2.Bridge$ClientTest$Batch3$BridgeIssues$Bridge1768$I1$1$System$Int32$getCount());
         },
         testExplicitImplementation: function () {
             var c1 = new (Bridge.ClientTest.Batch3.BridgeIssues.Bridge1768.C1$1(System.Int32))();
@@ -7993,27 +7941,40 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             var list = new (Bridge.ClientTest.Batch3.BridgeIssues.Bridge1768.List1$1(System.Int32))();
             Bridge.Test.Assert.areEqual(0, System.Array.getItem(list, 0, System.Int32));
             Bridge.Test.Assert.true(System.Array.contains(list, 0, System.Int32));
-            Bridge.Test.Assert.areEqual(1, System.Array.getCount(list, System.Int32));
-            Bridge.Test.Assert.null(Bridge.getEnumerator(list, "$1", System.Int32));
-            Bridge.Test.Assert.areEqual(2, System.Array.indexOf(list, 0, 0, null, System.Int32));
+            Bridge.Test.Assert.areEqual(100, System.Array.getCount(list, System.Int32));
+            Bridge.Test.Assert.true(System.Array.getIsReadOnly(list, System.Int32));
+            Bridge.Test.Assert.null(Bridge.getEnumerator(list, System.Int32));
+            Bridge.Test.Assert.areEqual(200, System.Array.indexOf(list, 0, 0, null, System.Int32));
             Bridge.Test.Assert.true(System.Array.remove(list, 0, System.Int32));
+
+            var a = [1, 2];
+            System.Array.copyTo(list, a, 0, System.Int32);
+            Bridge.Test.Assert.areEqual(0, a[0]);
         },
         testListExplicitImplementation: function () {
             var list = new (Bridge.ClientTest.Batch3.BridgeIssues.Bridge1768.List2$1(System.Int32))();
             Bridge.Test.Assert.areEqual(0, list.getItem(0));
             Bridge.Test.Assert.true(list.contains(0));
-            Bridge.Test.Assert.areEqual(1, list.getCount());
+            Bridge.Test.Assert.areEqual(1000, list.getCount());
+            Bridge.Test.Assert.false(list.getIsReadOnly());
             Bridge.Test.Assert.null(list.getEnumerator());
-            Bridge.Test.Assert.areEqual(2, list.indexOf(0));
+            Bridge.Test.Assert.areEqual(2000, list.indexOf(0));
             Bridge.Test.Assert.true(list.remove(0));
+            var a = [1, 2];
+            list.copyTo(a, 0);
+            Bridge.Test.Assert.areEqual(0, a[1]);
 
             var list2 = new (Bridge.ClientTest.Batch3.BridgeIssues.Bridge1768.List2$1(System.Int32))();
             Bridge.Test.Assert.areEqual(0, System.Array.getItem(list2, 0, System.Int32));
             Bridge.Test.Assert.true(System.Array.contains(list2, 0, System.Int32));
-            Bridge.Test.Assert.areEqual(1, System.Array.getCount(list2, System.Int32));
-            Bridge.Test.Assert.null(Bridge.getEnumerator(list2, "$1", System.Int32));
-            Bridge.Test.Assert.areEqual(2, System.Array.indexOf(list2, 0, 0, null, System.Int32));
+            Bridge.Test.Assert.areEqual(1000, System.Array.getCount(list2, System.Int32));
+            Bridge.Test.Assert.false(list.getIsReadOnly());
+            Bridge.Test.Assert.null(Bridge.getEnumerator(list2, System.Int32));
+            Bridge.Test.Assert.areEqual(2000, System.Array.indexOf(list2, 0, 0, null, System.Int32));
             Bridge.Test.Assert.true(System.Array.remove(list2, 0, System.Int32));
+            var a2 = [1, 2];
+            System.Array.copyTo(list2, a, 0, System.Int32);
+            Bridge.Test.Assert.areEqual(2, a2[1]);
         }
     });
 
@@ -8028,9 +7989,11 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             "System$Collections$Generic$IList$1$T$getItem", "System$Collections$Generic$IList$1$" + Bridge.getTypeAlias(T) + "$getItem",
             "System$Collections$Generic$IList$1$T$setItem", "System$Collections$Generic$IList$1$" + Bridge.getTypeAlias(T) + "$setItem",
             "System$Collections$Generic$ICollection$1$T$getCount", "System$Collections$Generic$ICollection$1$" + Bridge.getTypeAlias(T) + "$getCount",
+            "getIsReadOnly", "System$Collections$Generic$ICollection$1$" + Bridge.getTypeAlias(T) + "$getIsReadOnly",
             "System$Collections$Generic$ICollection$1$T$add", "System$Collections$Generic$ICollection$1$" + Bridge.getTypeAlias(T) + "$add",
             "System$Collections$Generic$ICollection$1$T$clear", "System$Collections$Generic$ICollection$1$" + Bridge.getTypeAlias(T) + "$clear",
             "System$Collections$Generic$ICollection$1$T$contains", "System$Collections$Generic$ICollection$1$" + Bridge.getTypeAlias(T) + "$contains",
+            "System$Collections$Generic$ICollection$1$T$copyTo", "System$Collections$Generic$ICollection$1$" + Bridge.getTypeAlias(T) + "$copyTo",
             "System$Collections$Generic$IEnumerable$1$T$getEnumerator", "System$Collections$Generic$IEnumerable$1$" + Bridge.getTypeAlias(T) + "$getEnumerator",
             "System$Collections$Generic$IList$1$T$indexOf", "System$Collections$Generic$IList$1$" + Bridge.getTypeAlias(T) + "$indexOf",
             "System$Collections$Generic$IList$1$T$insert", "System$Collections$Generic$IList$1$" + Bridge.getTypeAlias(T) + "$insert",
@@ -8045,7 +8008,10 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
 
         },
         System$Collections$Generic$ICollection$1$T$getCount: function () {
-            return 1;
+            return 100;
+        },
+        getIsReadOnly: function () {
+            return true;
         },
         System$Collections$Generic$ICollection$1$T$add: function (item) {
         },
@@ -8054,6 +8020,9 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
         System$Collections$Generic$ICollection$1$T$contains: function (item) {
             return true;
         },
+        System$Collections$Generic$ICollection$1$T$copyTo: function (array, arrayIndex) {
+            array[0] = Bridge.getDefaultValue(T);
+        },
         System$Collections$IEnumerable$getEnumerator: function () {
             return null;
         },
@@ -8061,7 +8030,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return null;
         },
         System$Collections$Generic$IList$1$T$indexOf: function (item) {
-            return 2;
+            return 200;
         },
         System$Collections$Generic$IList$1$T$insert: function (index, item) {
         },
@@ -8079,9 +8048,11 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             "getItem", "System$Collections$Generic$IList$1$" + Bridge.getTypeAlias(T) + "$getItem",
             "setItem", "System$Collections$Generic$IList$1$" + Bridge.getTypeAlias(T) + "$setItem",
             "getCount", "System$Collections$Generic$ICollection$1$" + Bridge.getTypeAlias(T) + "$getCount",
+            "getIsReadOnly", "System$Collections$Generic$ICollection$1$" + Bridge.getTypeAlias(T) + "$getIsReadOnly",
             "add", "System$Collections$Generic$ICollection$1$" + Bridge.getTypeAlias(T) + "$add",
             "clear", "System$Collections$Generic$ICollection$1$" + Bridge.getTypeAlias(T) + "$clear",
             "contains", "System$Collections$Generic$ICollection$1$" + Bridge.getTypeAlias(T) + "$contains",
+            "copyTo", "System$Collections$Generic$ICollection$1$" + Bridge.getTypeAlias(T) + "$copyTo",
             "getEnumerator", "System$Collections$Generic$IEnumerable$1$" + Bridge.getTypeAlias(T) + "$getEnumerator",
             "indexOf", "System$Collections$Generic$IList$1$" + Bridge.getTypeAlias(T) + "$indexOf",
             "insert", "System$Collections$Generic$IList$1$" + Bridge.getTypeAlias(T) + "$insert",
@@ -8096,7 +8067,10 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
 
         },
         getCount: function () {
-            return 1;
+            return 1000;
+        },
+        getIsReadOnly: function () {
+            return false;
         },
         add: function (item) {
         },
@@ -8105,6 +8079,9 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
         contains: function (item) {
             return true;
         },
+        copyTo: function (array, arrayIndex) {
+            array[1] = Bridge.getDefaultValue(T);
+        },
         System$Collections$IEnumerable$getEnumerator: function () {
             return null;
         },
@@ -8112,7 +8089,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return null;
         },
         indexOf: function (item) {
-            return 2;
+            return 2000;
         },
         insert: function (index, item) {
         },
@@ -8769,10 +8746,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 1973676214;
-            hash = hash * 23 + (this.nested == null ? 0 : Bridge.getHashCode(this.nested));
-            return hash;
+            var h = Bridge.addHash([1973676214, this.nested]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1804.Struct1)) {
@@ -8802,11 +8777,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 1973741750;
-            hash = hash * 23 + (this.field == null ? 0 : Bridge.getHashCode(this.field));
-            hash = hash * 23 + (this.nested == null ? 0 : Bridge.getHashCode(this.nested));
-            return hash;
+            var h = Bridge.addHash([1973741750, this.field, this.nested]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1804.Struct2)) {
@@ -8832,10 +8804,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 1973807286;
-            hash = hash * 23 + (this.field == null ? 0 : Bridge.getHashCode(this.field));
-            return hash;
+            var h = Bridge.addHash([1973807286, this.field]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1804.Struct3)) {
@@ -8849,6 +8819,83 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return s;
         }
     });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1810", {
+        testInterfaceIndexersAndCopyToAndIsReadOnly: function () {
+            var l = new (Bridge.ClientTest.Batch3.BridgeIssues.Bridge1810.C$1(System.Int32))();
+            Bridge.Test.Assert.notNull$1(l, "IList created");
+
+            var c = Bridge.as(l, System.Collections.Generic.ICollection$1(System.Int32));
+            Bridge.Test.Assert.true$1(System.Array.getIsReadOnly(c, System.Int32), "IsReadOnly");
+
+            var a = [1, 2];
+            System.Array.copyTo(c, a, 0, System.Int32);
+            Bridge.Test.Assert.areEqual$1(0, a[0], "CopyTo()");
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1810.C$1", function (T) { return {
+        inherits: [System.Collections.Generic.IList$1(T)],
+        config: {
+            alias: [
+            "System$Collections$Generic$IList$1$T$getItem", "System$Collections$Generic$IList$1$" + Bridge.getTypeAlias(T) + "$getItem",
+            "System$Collections$Generic$IList$1$T$setItem", "System$Collections$Generic$IList$1$" + Bridge.getTypeAlias(T) + "$setItem",
+            "System$Collections$Generic$ICollection$1$T$getCount", "System$Collections$Generic$ICollection$1$" + Bridge.getTypeAlias(T) + "$getCount",
+            "System$Collections$Generic$ICollection$1$T$getIsReadOnly", "System$Collections$Generic$ICollection$1$" + Bridge.getTypeAlias(T) + "$getIsReadOnly",
+            "System$Collections$Generic$ICollection$1$T$add", "System$Collections$Generic$ICollection$1$" + Bridge.getTypeAlias(T) + "$add",
+            "System$Collections$Generic$ICollection$1$T$clear", "System$Collections$Generic$ICollection$1$" + Bridge.getTypeAlias(T) + "$clear",
+            "System$Collections$Generic$ICollection$1$T$contains", "System$Collections$Generic$ICollection$1$" + Bridge.getTypeAlias(T) + "$contains",
+            "System$Collections$Generic$ICollection$1$T$copyTo", "System$Collections$Generic$ICollection$1$" + Bridge.getTypeAlias(T) + "$copyTo",
+            "System$Collections$Generic$IEnumerable$1$T$getEnumerator", "System$Collections$Generic$IEnumerable$1$" + Bridge.getTypeAlias(T) + "$getEnumerator",
+            "System$Collections$Generic$IList$1$T$indexOf", "System$Collections$Generic$IList$1$" + Bridge.getTypeAlias(T) + "$indexOf",
+            "System$Collections$Generic$IList$1$T$insert", "System$Collections$Generic$IList$1$" + Bridge.getTypeAlias(T) + "$insert",
+            "System$Collections$Generic$ICollection$1$T$remove", "System$Collections$Generic$ICollection$1$" + Bridge.getTypeAlias(T) + "$remove",
+            "System$Collections$Generic$IList$1$T$removeAt", "System$Collections$Generic$IList$1$" + Bridge.getTypeAlias(T) + "$removeAt"
+            ]
+        },
+        System$Collections$Generic$IList$1$T$getItem: function (index) {
+            return Bridge.getDefaultValue(T);
+        },
+        System$Collections$Generic$IList$1$T$setItem: function (index, value) {
+
+        },
+        System$Collections$Generic$ICollection$1$T$getCount: function () {
+            throw new System.NotImplementedException();
+        },
+        System$Collections$Generic$ICollection$1$T$getIsReadOnly: function () {
+            return true;
+        },
+        System$Collections$Generic$ICollection$1$T$add: function (item) {
+            throw new System.NotImplementedException();
+        },
+        System$Collections$Generic$ICollection$1$T$clear: function () {
+            throw new System.NotImplementedException();
+        },
+        System$Collections$Generic$ICollection$1$T$contains: function (item) {
+            throw new System.NotImplementedException();
+        },
+        System$Collections$Generic$ICollection$1$T$copyTo: function (array, arrayIndex) {
+            array[0] = Bridge.getDefaultValue(T);
+        },
+        System$Collections$IEnumerable$getEnumerator: function () {
+            throw new System.NotImplementedException();
+        },
+        System$Collections$Generic$IEnumerable$1$T$getEnumerator: function () {
+            throw new System.NotImplementedException();
+        },
+        System$Collections$Generic$IList$1$T$indexOf: function (item) {
+            throw new System.NotImplementedException();
+        },
+        System$Collections$Generic$IList$1$T$insert: function (index, item) {
+            throw new System.NotImplementedException();
+        },
+        System$Collections$Generic$ICollection$1$T$remove: function (item) {
+            throw new System.NotImplementedException();
+        },
+        System$Collections$Generic$IList$1$T$removeAt: function (index) {
+            throw new System.NotImplementedException();
+        }
+    }; });
 
     Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1812", {
         testDoubleConversion: function () {
@@ -8930,7 +8977,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
         },
         testInterfaceMember2: function () {
             var foo = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1821.Foo();
-            var x = System.Nullable.lift1("$clone", foo.getA().Bridge$ClientTest$Batch3$BridgeIssues$Bridge1821$IBar$1$Bridge$ClientTest$Batch3$BridgeIssues$Bridge1821$Xxx$getValue());
+            var x = System.Nullable.lift1("$clone", foo.getA().Bridge$ClientTest$Batch3$BridgeIssues$Bridge1821$IBar$1$System$Nullable$1$Bridge$ClientTest$Batch3$BridgeIssues$Bridge1821$Xxx$getValue());
 
             Bridge.Test.Assert.notNull(System.Nullable.lift1("$clone", x));
             Bridge.Test.Assert.areEqual(5, System.Nullable.getValue(x).field);
@@ -8964,11 +9011,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 21588;
-            hash = hash * 23 + (this.a == null ? 0 : Bridge.getHashCode(this.a));
-            hash = hash * 23 + (this.b == null ? 0 : Bridge.getHashCode(this.b));
-            return hash;
+            var h = Bridge.addHash([21588, this.a, this.b]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1821.TT$1(T))) {
@@ -8985,7 +9029,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
 
     Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1821.Foo", {
         getA: function () {
-            return new (Bridge.ClientTest.Batch3.BridgeIssues.Bridge1821.Bar$1(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1821.Xxx))(new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1821.Xxx.$ctor1(5));
+            return new (Bridge.ClientTest.Batch3.BridgeIssues.Bridge1821.Bar$1(System.Nullable$1(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1821.Xxx)))(new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1821.Xxx.$ctor1(5));
         }
     });
 
@@ -9003,10 +9047,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 7895128;
-            hash = hash * 23 + (this.field == null ? 0 : Bridge.getHashCode(this.field));
-            return hash;
+            var h = Bridge.addHash([7895128, this.field]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1821.Xxx)) {
@@ -9108,10 +9150,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return Bridge.equals(this.test, o.test);
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 7175910326;
-            hash = hash * 23 + (this.test == null ? 0 : Bridge.getHashCode(this.test));
-            return hash;
+            var h = Bridge.addHash([7175910326, this.test]);
+            return h;
         },
         toJSON: function () {
             return {
@@ -9147,20 +9187,108 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
         type: null
     });
 
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1845", {
+        testCtorMemberName: function () {
+            var b1 = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1845.Base1(null);
+            Bridge.Test.Assert.notNull$1(b1, "b1");
+            Bridge.Test.Assert.areEqual$1(1, b1.ctor$1(), "b1.ctor()");
+            Bridge.Test.Assert.areEqual$1(2, b1.ctor$2(), "b1.Ctor()");
+
+            var b2 = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1845.Base2(null);
+            Bridge.Test.Assert.notNull$1(b2, "b2");
+            Bridge.Test.Assert.areEqual$1(1, b2.getctor(), "b2.ctor");
+            Bridge.Test.Assert.areEqual$1(2, b2.getCtor(), "b2.Ctor");
+
+            var $ctor = 3;
+            Bridge.Test.Assert.areEqual$1(3, $ctor, "var ctor");
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1845.Base1", {
+        ctor: function (target) {
+            this.$initialize();
+            this.ctor$1();
+            this.ctor$2();
+        },
+        ctor$1: function () {
+            return 1;
+        },
+        ctor$2: function () {
+            return 2;
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1845.Base2", {
+        ctor: function (target) {
+            this.$initialize();
+            var r1 = this.getctor();
+            var r2 = this.getCtor();
+        },
+        getctor: function () {
+            return 1;
+        },
+        getCtor: function () {
+            return 2;
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1846", {
+        testImplicitOperatorInForeachLoop: function () {
+            var $t;
+            var arr = ["a", "b"];
+            var i = 0;
+            $t = Bridge.getEnumerator(arr);
+            while ($t.moveNext()) {
+                var o = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1846.Obj.op_Implicit($t.getCurrent());
+                Bridge.Test.Assert.areEqual(arr[Bridge.identity(i, (i = (i + 1) | 0))], o.s);
+            }
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1846.Obj", {
+        statics: {
+            op_Implicit: function (str) {
+                return Bridge.merge(new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1846.Obj(), {
+                    s: str
+                } );
+            }
+        },
+        s: null
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1847", {
+        testActivatorCreateInstanceCallProtectedConstructor: function () {
+            var instance = Bridge.createInstance(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1847.CLS, [1]);
+            Bridge.Test.Assert.areEqual("ok", instance.status);
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1847.CLS", {
+        status: null,
+        ctor: function () {
+            this.$initialize();
+            this.status = "Not ok";
+        },
+        $ctor1: function (i) {
+            this.$initialize();
+            this.status = "ok";
+        }
+    });
+
     Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1848", {
         testExternalInterfaceProperty: function () {
             window.Bridge1848_ITest = {
-                	getNewId: function () { return 123; },
-                    name: "editor"
-                };
-                window.Bridge1848_ITest2 = {
-                	Bridge1848_ITest$getNewId: function () { return 123; },
-                    Bridge1848_ITest$name: "editor"
-                };
+            	getNewId: function () { return 123; },
+                name: "editor"
+            };
+            window.Bridge1848_ITest2 = {
+            	Bridge1848_ITest$getNewId: function () { return 123; },
+                Bridge1848_ITest$name: "editor"
+            };
 
             var initialiser = window.Bridge1848_ITest;
-            Bridge.Test.Assert.areEqual(123, initialiser[Bridge.geti(initialiser, "Bridge$ClientTest$Batch3$BridgeIssues$Bridge1848$ITest$getNewId", "getNewId")]());
-            Bridge.Test.Assert.areEqual("editor", initialiser[Bridge.geti(initialiser, "Bridge$ClientTest$Batch3$BridgeIssues$Bridge1848$ITest$name", "name")]);
+            Bridge.Test.Assert.areEqual(123, initialiser.getNewId());
+            Bridge.Test.Assert.areEqual("editor", initialiser.name);
 
             var initialiser2 = window.Bridge1848_ITest2;
             Bridge.Test.Assert.areEqual(123, initialiser2.Bridge1848_ITest$getNewId());
@@ -9173,7 +9301,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             var l = new (Bridge.ClientTest.Batch3.BridgeIssues.Bridge1850.LookupOptions$1(System.Int32))();
             var i = l;
             Bridge.Test.Assert.null(l.getEnumerator());
-            Bridge.Test.Assert.null(Bridge.getEnumerator(i, "$1", System.Collections.Generic.KeyValuePair$2(System.Int32,String)));
+            Bridge.Test.Assert.null(Bridge.getEnumerator(i, System.Collections.Generic.KeyValuePair$2(System.Int32,String)));
         }
     });
 
@@ -9191,6 +9319,1478 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return null;
         }
     }; });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852", {
+        statics: {
+            doSomething: function (T, matcher, cls, cls1, aux1, aux2) {
+                var a = new (Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852Test1$1.Aux1(String))();
+                var a1 = new (Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852Test1$1.Aux2$1(String,System.Int32))();
+                Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852Test1$1(String).test1Method();
+                Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852Test1$1(String).test1Method2(String);
+
+                var c6 = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852DispatcherMessageExtensions.Class1.Class2.Class3.Class4();
+                matcher.Bridge$ClientTest$Batch3$BridgeIssues$Bridge1852DispatcherMessageExtensions$IMatchDispatcherMessages$doSomething(T, null);
+                var c1 = new (Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852Test1$1.Aux1(System.Int32))();
+                var c2 = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852DispatcherMessageExtensions.Class1();
+                var c3 = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852DispatcherMessageExtensions.Class1.Class2();
+                var c4 = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852DispatcherMessageExtensions.Class1.Class2();
+                var c5 = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852DispatcherMessageExtensions.Class1.Class2();
+
+                return 1;
+            }
+        },
+        testCase: function () {
+            Bridge.Test.Assert.areEqual(1, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852.doSomething(System.Int32, new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852.MatchDispatcherMessages(), null, null, null, null));
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852DispatcherMessageExtensions.IMatchDispatcherMessages", {
+        $kind: "interface"
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852DispatcherMessageExtensions", {
+        statics: {
+            cls1: null,
+            cls2: null,
+            cls3: null,
+            cls4: null,
+            cls5: null,
+            cls6: null,
+            cls7: null,
+            cls8: null
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852DispatcherMessageExtensions.Class1");
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852DispatcherMessageExtensions.Class1.Class2");
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852DispatcherMessageExtensions.Class1.Class2.Class3");
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852DispatcherMessageExtensions.Class1.Class2.Class3.Class4");
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852Test1$1", function (T) { return {
+        statics: {
+            test1Method: function () {
+            },
+            test1Method2: function (T1) {
+            }
+        },
+        field: null
+    }; });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852Test1$1.Aux1", function (T) { return {
+
+    }; });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852Test1$1.Aux1.Aux2$1", function (T, T1) { return {
+
+    }; });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852Test1$1.Aux2$1", function (T, T1) { return {
+
+    }; });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852Test1$1.Aux2$1.Aux1", function (T, T1) { return {
+
+    }; });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1853", {
+        testContainsUseEquals: function () {
+            var t = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1853.Test();
+            var l = function (_o27) {
+                    _o27.add(t);
+                    return _o27;
+                }(new (System.Collections.Generic.List$1(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1853.Test))());
+            Bridge.Test.Assert.false(l.contains(t));
+
+            var o = {  };
+            var l1 = function (_o28) {
+                    _o28.add(o);
+                    return _o28;
+                }(new (System.Collections.Generic.List$1(Object))());
+            Bridge.Test.Assert.true(l1.contains(o));
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1853.Test", {
+        equals: function (a) {
+            return false;
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1854", {
+        testCase: function () {
+            var reader = Bridge.merge(new (Bridge.ClientTest.Batch3.BridgeIssues.Bridge1854.UseReader$1(String))(), {
+                setReader: new (Bridge.ClientTest.Batch3.BridgeIssues.Bridge1854.SomeReader$1(String))("test"),
+                setReader1: new (Bridge.ClientTest.Batch3.BridgeIssues.Bridge1854.SomeReader$1(String))("test1")
+            } );
+            var result = reader.read();
+            Bridge.Test.Assert.areEqual("test", result);
+
+            result = reader.read1();
+            Bridge.Test.Assert.areEqual("test1", result);
+        }
+    });
+
+    Bridge.definei("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1854.IRead$1", function (T) { return {
+        $kind: "interface"
+    }; });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1854.UseReader$1", function (T) { return {
+        config: {
+            properties: {
+                Reader: null,
+                Reader1: null
+            }
+        },
+        read: function () {
+            return this.getReader()["Bridge$ClientTest$Batch3$BridgeIssues$Bridge1854$IRead$1$" + Bridge.getTypeAlias(T) + "$read"]();
+        },
+        read1: function () {
+            return this.getReader1()["Object$" + Bridge.getTypeAlias(T) + "$read"]();
+        }
+    }; });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1856", {
+        testCase: function () {
+            var x = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1856.HtmlRenderElement();
+            x.getChildren().foo();
+            Bridge.Test.Assert.notNull(x.getChildren().getChanged());
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1856.Collection$1", function (T) { return {
+        changed: null,
+        getChanged: function () {
+            return this.changed || ((this.changed = new (Bridge.ClientTest.Batch3.BridgeIssues.Bridge1856.Signal$1(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1856.CollectionChangeArgs$1(T)))("Collection<T>.Changed")));
+        },
+        foo: function () {
+        }
+    }; });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1856.CollectionChangeArgs$1", function (T) { return {
+
+    }; });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1856.HtmlRenderElement", {
+        children: null,
+        getChildren: function () {
+            if (this.children == null) {
+                this.children = new (Bridge.ClientTest.Batch3.BridgeIssues.Bridge1856.Collection$1(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1856.HtmlRenderElement))();
+                this.children.getChanged().Bridge$ClientTest$Batch3$BridgeIssues$Bridge1856$IObservable$1$Bridge$ClientTest$Batch3$BridgeIssues$Bridge1856$CollectionChangeArgs$1$Bridge$ClientTest$Batch3$BridgeIssues$Bridge1856$HtmlRenderElement$observe(Bridge.fn.bind(this, this.onChildrenChanged));
+            }
+            return this.children;
+        },
+        onChildrenChanged: function (a) {
+
+        }
+    });
+
+    Bridge.definei("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1856.IObservable$1", function (T) { return {
+        $kind: "interface"
+    }; });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1863", {
+        statics: {
+            sb: null
+        },
+        testTrueFalseOperators: function () {
+            var $t, $t1;
+            Bridge.ClientTest.Batch3.BridgeIssues.Bridge1863.sb = new System.Text.StringBuilder();
+            var o1 = ($t = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1863.Obj("left"), Bridge.ClientTest.Batch3.BridgeIssues.Bridge1863.Obj.op_True($t) ? $t : Bridge.ClientTest.Batch3.BridgeIssues.Bridge1863.Obj.op_BitwiseOr($t, new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1863.Obj("right")));
+            Bridge.Test.Assert.areEqual("c:left;t:left;", Bridge.ClientTest.Batch3.BridgeIssues.Bridge1863.sb.toString());
+            Bridge.Test.Assert.areEqual("left", o1.getv());
+
+            Bridge.ClientTest.Batch3.BridgeIssues.Bridge1863.sb = new System.Text.StringBuilder();
+            o1 = ($t1 = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1863.Obj("left"), Bridge.ClientTest.Batch3.BridgeIssues.Bridge1863.Obj.op_False($t1) ? $t1 : Bridge.ClientTest.Batch3.BridgeIssues.Bridge1863.Obj.op_BitwiseAnd($t1, new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1863.Obj("right")));
+            Bridge.Test.Assert.areEqual("c:left;f:left;c:right;", Bridge.ClientTest.Batch3.BridgeIssues.Bridge1863.sb.toString());
+            Bridge.Test.Assert.areEqual("right", o1.getv());
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1863.Obj", {
+        statics: {
+            op_False: function (o) {
+                Bridge.ClientTest.Batch3.BridgeIssues.Bridge1863.sb.append(System.String.concat("f:", o.getv(), ";"));
+                return o == null;
+            },
+            op_True: function (o) {
+                Bridge.ClientTest.Batch3.BridgeIssues.Bridge1863.sb.append(System.String.concat("t:", o.getv(), ";"));
+                return o != null;
+            },
+            op_BitwiseOr: function (left, right) {
+                if (left == null) {
+                    return right;
+                }
+
+                if (right == null) {
+                    return left;
+                }
+
+                return left;
+            },
+            op_BitwiseAnd: function (left, right) {
+                if (left == null) {
+                    return null;
+                }
+
+                if (right == null) {
+                    return null;
+                }
+
+                return right;
+            }
+        },
+        _v: null,
+        ctor: function (v) {
+            this.$initialize();
+            this.setv(v);
+            Bridge.ClientTest.Batch3.BridgeIssues.Bridge1863.sb.append(System.String.concat("c:", v, ";"));
+        },
+        getv: function () {
+            return this._v;
+        },
+        setv: function (value) {
+            this._v = value;
+        },
+        toString: function () {
+            return this.getv();
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1869", {
+        statics: {
+            getFoo: function (name) {
+                return window.Bridge.ClientTest.Batch3.BridgeIssues.Bridge1869[name];
+            }
+        },
+        testGenericTypeDefinition: function () {
+            var foo1 = new (Bridge.ClientTest.Batch3.BridgeIssues.Bridge1869.Foo$1(Object))();
+
+            var n1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1869.getFoo("Foo$1$Object");
+            Bridge.Test.Assert.null$1(n1, "Foo$1$Object should not exist");
+
+            var n2 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1869.getFoo("Foo$1");
+            Bridge.Test.Assert.notNull$1(n2, "Foo$1 should exist");
+
+            var foo2 = new (Bridge.ClientTest.Batch3.BridgeIssues.Bridge1869.Foo$1(System.Int64))();
+
+            var n3 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1869.getFoo("Foo$1$System.Int64");
+            Bridge.Test.Assert.null$1(n1, "Foo$1$System.Int64 should not exist");
+
+            var n4 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1869.getFoo("Foo$1");
+            Bridge.Test.Assert.notNull$1(n2, "Foo$1 should exist");
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1869.Foo$1", function (T) { return {
+
+    }; });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1871", {
+        statics: {
+            /**
+             * @static
+             * @private
+             * @this Bridge.ClientTest.Batch3.BridgeIssues.Bridge1871
+             * @memberof Bridge.ClientTest.Batch3.BridgeIssues.Bridge1871
+             * @param   {string}    args
+             * @return  {void}
+             */
+            doSomething: function (args) {
+
+            }
+        },
+        testErrorCommentNotThrowCompilerException: function () {
+            Bridge.Test.Assert.true$1(true, "Should compile successfully");
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1872", {
+        testAsyncWithAnonymousDelegate: function () {
+            var $step = 0,
+                $task1, 
+                $jumpFromFinally, 
+                done, 
+                task, 
+                $asyncBody = Bridge.fn.bind(this, function () {
+                    for (;;) {
+                        $step = System.Array.min([0,1], $step);
+                        switch ($step) {
+                            case 0: {
+                                done = Bridge.Test.Assert.async();
+                                    task = new System.Threading.Tasks.Task(null);
+                                    window.setTimeout(function () {
+                                        var $step = 0,
+                                            $task1, 
+                                            $jumpFromFinally, 
+                                            $asyncBody = Bridge.fn.bind(this, function () {
+                                                for (;;) {
+                                                    $step = System.Array.min([0,1], $step);
+                                                    switch ($step) {
+                                                        case 0: {
+                                                            $task1 = System.Threading.Tasks.Task.delay(1);
+                                                                $step = 1;
+                                                                $task1.continueWith($asyncBody, true);
+                                                                return;
+                                                        }
+                                                        case 1: {
+                                                            $task1.getAwaitedResult();
+                                                            task.complete();
+                                                            return;
+                                                        }
+                                                        default: {
+                                                            return;
+                                                        }
+                                                    }
+                                                }
+                                            }, arguments);
+
+                                        $asyncBody();
+                                    });
+
+                                    $task1 = task;
+                                    $step = 1;
+                                    $task1.continueWith($asyncBody, true);
+                                    return;
+                            }
+                            case 1: {
+                                $task1.getAwaitedResult();
+                                
+                                    Bridge.Test.Assert.true(task.isCompleted());
+
+                                    done();
+                                return;
+                            }
+                            default: {
+                                return;
+                            }
+                        }
+                    }
+                }, arguments);
+
+            $asyncBody();
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1875", {
+        testDictionaryWithLongVariableAsKey: function () {
+            var a = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1875.ClassA();
+            a.setId(System.Int64(1));
+
+            var x = new (System.Collections.Generic.Dictionary$2(System.Int64,System.Int32))();
+            x.set(a.getId(), 2);
+            var y = { };
+            x.tryGetValue(a.getId(), y);
+            Bridge.Test.Assert.areEqual(2, y.v);
+            Bridge.Test.Assert.true(x.containsKey(a.getId()));
+
+            x.clear();
+            x.set(a.getId(), 2);
+            x.tryGetValue(a.getId(), y);
+            Bridge.Test.Assert.areEqual(2, y.v);
+            Bridge.Test.Assert.true(x.containsKey(a.getId()));
+            Bridge.Test.Assert.areEqual(2, x.get(a.getId()));
+            Bridge.Test.Assert.areEqual(2, x.get(a.getId()));
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1875.ClassA", {
+        config: {
+            properties: {
+                Id: System.Int64(0)
+            }
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1878", {
+        testSumDefaultValue: function () {
+            var x = new (System.Collections.Generic.List$1(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1878.classA))();
+            x.add(Bridge.merge(new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1878.classA(), {
+                setDecimalNumber: System.Decimal(1),
+                setLongNumber: System.Int64(2)
+            } ));
+            x.add(Bridge.merge(new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1878.classA(), {
+                setDecimalNumber: System.Decimal(5),
+                setLongNumber: System.Int64(6)
+            } ));
+
+            var c = System.Linq.Enumerable.from(x).sum($_.Bridge.ClientTest.Batch3.BridgeIssues.Bridge1878.f1, System.Int64.Zero);
+            Bridge.Test.Assert.areEqual(System.Int64(8), c);
+
+            var b = System.Linq.Enumerable.from(x).sum($_.Bridge.ClientTest.Batch3.BridgeIssues.Bridge1878.f2, System.Decimal.Zero);
+            Bridge.Test.Assert.areEqual(System.Decimal(6.0), b);
+
+            var e1 = Bridge.as(x, System.Collections.Generic.IEnumerable$1(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1878.classA));
+
+            var c1 = System.Linq.Enumerable.from(e1).sum($_.Bridge.ClientTest.Batch3.BridgeIssues.Bridge1878.f1, System.Int64.Zero);
+            Bridge.Test.Assert.areEqual(System.Int64(8), c1);
+
+            var b1 = System.Linq.Enumerable.from(e1).sum($_.Bridge.ClientTest.Batch3.BridgeIssues.Bridge1878.f2, System.Decimal.Zero);
+            Bridge.Test.Assert.areEqual(System.Decimal(6.0), b1);
+
+            var y = new (System.Collections.Generic.List$1(System.Decimal))();
+            y.add(System.Decimal(7));
+            y.add(System.Decimal(8));
+
+            var a = System.Linq.Enumerable.from(y).sum(System.Decimal.Zero);
+            Bridge.Test.Assert.areEqual(System.Decimal(15.0), a);
+
+            var y1 = Bridge.as(y, System.Collections.Generic.IEnumerable$1(System.Decimal));
+            var a1 = System.Linq.Enumerable.from(y1).sum(System.Decimal.Zero);
+            Bridge.Test.Assert.areEqual(System.Decimal(15.0), a1);
+        }
+    });
+
+    Bridge.ns("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1878", $_);
+
+    Bridge.apply($_.Bridge.ClientTest.Batch3.BridgeIssues.Bridge1878, {
+        f1: function (i) {
+            return i.getLongNumber();
+        },
+        f2: function (i) {
+            return i.getDecimalNumber();
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1878.classA", {
+        config: {
+            properties: {
+                DecimalNumber: System.Decimal(0.0),
+                LongNumber: System.Int64(0)
+            }
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1880", {
+        testDefaultValuesWithTemplates: function () {
+            Bridge.Test.Assert.areEqual(10, parseInt("10", 10));
+            Bridge.Test.Assert.areEqual(8, parseInt("10", 8));
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1880.BigInteger", {
+        $kind: "struct",
+        statics: {
+            getDefaultValue: function () { return new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1880.BigInteger(); }
+        },
+        $clone: function (to) { return this; }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1882", {
+        statics: {
+            getArray: function () {
+                return System.Array.init(1, null);
+            },
+            getArrayExternal: function () {
+                return System.Array.init(1, null);
+            },
+            getList: function () {
+                return new (System.Collections.Generic.List$1(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1882.MVCArray$1(System.Int32)))(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1882.getArray());
+            },
+            getListExternal: function () {
+                return new (System.Collections.Generic.List$1(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1882.MVCArray$1(System.Int64)))(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1882.getArrayExternal());
+            }
+        },
+        testGenericClassCastForArray: function () {
+            var $t, $t1, $t2, $t3;
+            $t = Bridge.getEnumerator(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1882.getArray());
+            while ($t.moveNext()) {
+                var i = $t.getCurrent();
+                Bridge.Test.Assert.true$1(true, "No cast for array of generic elements works");
+            }
+
+            $t1 = Bridge.getEnumerator(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1882.getArray());
+            while ($t1.moveNext()) {
+                var i1 = $t1.getCurrent();
+                Bridge.Test.Assert.true$1(true, "Cast for array of generic elements works");
+            }
+
+            $t2 = Bridge.getEnumerator(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1882.getArrayExternal());
+            while ($t2.moveNext()) {
+                var i2 = $t2.getCurrent();
+                Bridge.Test.Assert.true$1(true, "No cast for array of external generic elements works");
+            }
+
+            $t3 = Bridge.getEnumerator(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1882.getArrayExternal());
+            while ($t3.moveNext()) {
+                var i3 = $t3.getCurrent();
+                Bridge.Test.Assert.true$1(true, "Cast for array of external generic elements works");
+            }
+        },
+        testGenericClassCastForList: function () {
+            var $t, $t1, $t2, $t3;
+            $t = Bridge.getEnumerator(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1882.getList());
+            while ($t.moveNext()) {
+                var i = $t.getCurrent();
+                Bridge.Test.Assert.true$1(true, "No cast for List of generic elements works");
+            }
+
+            $t1 = Bridge.getEnumerator(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1882.getList());
+            while ($t1.moveNext()) {
+                var i1 = $t1.getCurrent();
+                Bridge.Test.Assert.true$1(true, "Cast for List of generic elements works");
+            }
+
+            $t2 = Bridge.getEnumerator(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1882.getListExternal());
+            while ($t2.moveNext()) {
+                var i2 = $t2.getCurrent();
+                Bridge.Test.Assert.true$1(true, "No cast for List of external generic elements works");
+            }
+
+            $t3 = Bridge.getEnumerator(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1882.getListExternal());
+            while ($t3.moveNext()) {
+                var i3 = $t3.getCurrent();
+                Bridge.Test.Assert.true$1(true, "Cast for List of external generic elements works");
+            }
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1882.MVCArray$1", function (T) { return {
+        ctor: function () {
+            this.$initialize();
+        }
+    }; });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1884", {
+        testCollectionInitilizers: function () {
+            var foo = $_.Bridge.ClientTest.Batch3.BridgeIssues.Bridge1884.f2(new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1884.Foo());
+
+            Bridge.Test.Assert.areEqual(3, foo.getIndexed().getCount());
+            Bridge.Test.Assert.areEqual(4, foo.getItems().getCount());
+
+            Bridge.Test.Assert.areEqual(1, foo.getIndexed1().getCount());
+            Bridge.Test.Assert.areEqual(1, foo.getItems1().getCount());
+
+            Bridge.Test.Assert.areEqual(3, foo.getIndexed1().get(1).getCount());
+            Bridge.Test.Assert.areEqual(3, foo.getItems1().getItem(0).getCount());
+        }
+    });
+
+    Bridge.ns("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1884", $_);
+
+    Bridge.apply($_.Bridge.ClientTest.Batch3.BridgeIssues.Bridge1884, {
+        f1: function (_o31) {
+            _o31.add("One");
+            _o31.add("Two");
+            _o31.add("Three");
+            return _o31;
+        },
+        f2: function (_o32) {
+            _o32.getItems().add("One");
+            _o32.getItems().add("Two");
+            _o32.getItems().add("Three");
+            _o32.getItems1().add($_.Bridge.ClientTest.Batch3.BridgeIssues.Bridge1884.f1(new (System.Collections.Generic.List$1(String))()));
+            _o32.getIndexed().set(1, "Lorem");
+            _o32.getIndexed().set(5, "Ipsum");
+            _o32.getIndexed1().get(1).add("One");
+            _o32.getIndexed1().get(1).add("Two");
+            _o32.getIndexed1().get(1).add("Three");
+            return _o32;
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1884.Foo", {
+        config: {
+            properties: {
+                Items: null,
+                Items1: null,
+                Indexed: null,
+                Indexed1: null
+            }
+        },
+        ctor: function () {
+            this.$initialize();
+            this.setItems(new (System.Collections.Generic.List$1(String))(["1"]));
+            this.setItems1(new (System.Collections.Generic.List$1(System.Collections.Generic.List$1(String)))());
+            this.setIndexed($_.Bridge.ClientTest.Batch3.BridgeIssues.Bridge1884.Foo.f1(new (System.Collections.Generic.Dictionary$2(System.Int32,String))()));
+            this.setIndexed1($_.Bridge.ClientTest.Batch3.BridgeIssues.Bridge1884.Foo.f2(new (System.Collections.Generic.Dictionary$2(System.Int32,System.Collections.Generic.List$1(String)))()));
+        }
+    });
+
+    Bridge.ns("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1884.Foo", $_);
+
+    Bridge.apply($_.Bridge.ClientTest.Batch3.BridgeIssues.Bridge1884.Foo, {
+        f1: function (_o29) {
+            _o29.set(100, "Dolrt");
+            return _o29;
+        },
+        f2: function (_o30) {
+            _o30.set(1, new (System.Collections.Generic.List$1(String))());
+            return _o30;
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1886", {
+        testCase: function () {
+            Bridge.Test.Assert.true(System.Decimal(23.24).equalsT(System.Convert.toDecimal("23.24")));
+            Bridge.Test.Assert.true(System.Decimal(23.0).equalsT(System.Convert.toDecimal("23.")));
+            Bridge.Test.Assert.true(System.Decimal(23.0).equalsT(System.Convert.toDecimal("23")));
+            Bridge.Test.Assert.true(System.Decimal(0.24).equalsT(System.Convert.toDecimal(".24")));
+            Bridge.Test.Assert.true(System.Decimal(2.0).equalsT(System.Convert.toDecimal("2")));
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1892", {
+        testCase: function () {
+            var $t;
+            var data = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1892.Obj();
+            data = ($t = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1892.Obj.op_False(data) ? data : Bridge.ClientTest.Batch3.BridgeIssues.Bridge1892.Obj.op_BitwiseAnd(data, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1892.Obj.op_Implicit(data.getlength() > 0)), Bridge.ClientTest.Batch3.BridgeIssues.Bridge1892.Obj.op_False($t) ? $t : Bridge.ClientTest.Batch3.BridgeIssues.Bridge1892.Obj.op_BitwiseAnd($t, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1892.Obj.op_Implicit((Bridge.ClientTest.Batch3.BridgeIssues.Bridge1892.Obj.op_Implicit$3(data.getItem(0).getItem("key")) === 1))));
+            Bridge.Test.Assert.notNull(data);
+            var o = data;
+            Bridge.Test.Assert.true(Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1892.Obj));
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1892.Obj", {
+        statics: {
+            op_False: function (o) {
+                return o == null;
+            },
+            op_True: function (o) {
+                return o != null;
+            },
+            op_Implicit: function (v) {
+                return Bridge.merge(new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1892.Obj(), {
+                    value: v
+                } );
+            },
+            op_Implicit$2: function (v) {
+                return v.value;
+            },
+            op_Implicit$3: function (v) {
+                return v.value;
+            },
+            op_Implicit$1: function (v) {
+                return Bridge.merge(new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1892.Obj(), {
+                    value: v
+                } );
+            },
+            op_BitwiseOr: function (left, right) {
+                if (left == null) {
+                    return right;
+                }
+
+                if (right == null) {
+                    return left;
+                }
+
+                return left;
+            },
+            op_BitwiseAnd: function (left, right) {
+                if (left == null) {
+                    return null;
+                }
+
+                if (right == null) {
+                    return null;
+                }
+
+                return right;
+            }
+        },
+        value: null,
+        config: {
+            properties: {
+                length: 0
+            }
+        },
+        ctor: function () {
+            this.$initialize();
+        },
+        getItem: function (key) {
+            return new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1892.Obj();
+        },
+        setItem: function (key, value) {
+        },
+        toString: function () {
+            return this.value.toString();
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1896", {
+        testHexStringToInt: function () {
+            var radix = 16;
+
+            var v1 = System.UInt32.parse("ffff", radix);
+            Bridge.Test.Assert.areEqual(65535, v1);
+
+            Bridge.Test.Assert.throws$6(System.FormatException, function () {
+                System.UInt32.parse("0xffff", radix);
+            });
+
+            var v2 = { };
+            var b2 = System.UInt32.tryParse("1700ffff", v2, radix);
+            Bridge.Test.Assert.true$1(b2, "b2");
+            Bridge.Test.Assert.areEqual(385941503, v2.v);
+
+            var v3 = { };
+            var b3 = System.UInt32.tryParse("0x1700fffА", v3, radix);
+            Bridge.Test.Assert.false$1(b3, "b3: " + v3.v);
+
+            var v4 = { };
+            var b4 = System.UInt32.tryParse("1700fffg", v4, radix);
+            Bridge.Test.Assert.false$1(b4, "b4: " + v4.v);
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1897", {
+        testNestedNotEscapedBracketsInRegex: function () {
+            var pattern = "([)])";
+            var text = ")";
+
+            var rx = new System.Text.RegularExpressions.Regex.ctor(pattern);
+            var m = rx.match(text);
+            Bridge.Test.Assert.true(m.getSuccess());
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1899", {
+        testPropertyAndMethodNameConflict: function () {
+            var item = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1899.Item();
+            Bridge.Test.Assert.areEqual(1, item.getValue());
+            Bridge.Test.Assert.areEqual(2, item.getValue$2());
+
+            var b = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1899.B.ctor();
+            Bridge.Test.Assert.areEqual(1, b.getResult());
+
+            b = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1899.B.$ctor1(5);
+            Bridge.Test.Assert.areEqual(15, b.getResult());
+
+            var c = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1899.C.ctor();
+            Bridge.Test.Assert.areEqual(1, c.getResult());
+
+            c = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1899.C.$ctor1(5);
+            Bridge.Test.Assert.areEqual(15, c.getResult());
+
+            var item2 = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1899.Item2.ctor();
+            Bridge.Test.Assert.areEqual(1, item2.getResult());
+
+            item2 = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1899.Item2.$ctor1(5);
+            Bridge.Test.Assert.areEqual(15, item2.getResult());
+
+            var item3 = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1899.Item3.ctor();
+            Bridge.Test.Assert.areEqual(1, item3.getResult(true));
+
+            item3 = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1899.Item3.$ctor1(5);
+            Bridge.Test.Assert.areEqual(15, item3.getResult(false));
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1899.A", {
+        getValue: function () {
+            return 0;
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1899.C", {
+        getValue: 0,
+        ctor: function () {
+            this.$initialize();
+            this.setValue$1(1);
+        },
+        $ctor1: function (i) {
+            this.$initialize();
+            this.setValue$2(i);
+        },
+        getValue$1: function () {
+            return this.getValue;
+        },
+        setValue$1: function (value) {
+            this.getValue = value;
+        },
+        setValue$2: function (value) {
+            this.getValue = (value + 10) | 0;
+        },
+        getResult: function () {
+            return this.getValue;
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1899.IItem", {
+        $kind: "interface"
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1899.Item2", {
+        value: 0,
+        ctor: function () {
+            this.$initialize();
+            this.setValue$1(1);
+        },
+        $ctor1: function (i) {
+            this.$initialize();
+            this.setValue$2(i);
+        },
+        getValue$1: function () {
+            return this.value;
+        },
+        setValue$1: function (value) {
+            this.value = value;
+        },
+        getValue: function () {
+            return this.getValue$1();
+        },
+        setValue$2: function (value) {
+            this.value = (value + 10) | 0;
+        },
+        getResult: function () {
+            return this.value;
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1899.Item3", {
+        value: 0,
+        config: {
+            properties: {
+                Value$1: 0
+            }
+        },
+        ctor: function () {
+            this.$initialize();
+            this.setValue$1(1);
+        },
+        $ctor1: function (i) {
+            this.$initialize();
+            this.setValue$2(i);
+        },
+        getValue: function () {
+            return this.getValue$1();
+        },
+        setValue$2: function (value) {
+            this.value = (value + 10) | 0;
+        },
+        getResult: function (prop) {
+            return prop ? this.getValue$1() : this.value;
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1900", {
+        statics: {
+            tryGetValue1: function (value) {
+                value.v = 1;
+                return true;
+            },
+            tryGetValue2: function (value, value2) {
+                value.v = 1;
+                value2.v = "";
+                return true;
+            },
+            getValue: function (T, value) {
+                value.v = Bridge.getDefaultValue(T);
+                return null;
+            },
+            testOutRef: function (value, s) {
+                value.v = 1;
+                return true;
+            }
+        },
+        testOutParamInMetadata: function () {
+            Bridge.Test.Assert.true(Bridge.referenceEquals((Bridge.Reflection.getMembers(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1900, 8, 284, "TryGetValue1").p || [])[0], System.Int32));
+            Bridge.Test.Assert.true(Bridge.referenceEquals((Bridge.Reflection.getMembers(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1900, 8, 284, "TryGetValue2").p || [])[1], String));
+            Bridge.Test.Assert.true(Bridge.referenceEquals((Bridge.Reflection.getMembers(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1900, 8, 284, "TestOutRef").p || [])[1], String));
+            Bridge.Test.Assert.true(Bridge.referenceEquals((Bridge.Reflection.getMembers(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1900, 8, 284, "GetValue").p || [])[0], Object));
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1904", {
+        testDateTimeConstructorConvertsValueToMs: function () {
+            var d1 = new Date();
+            var tickValue = System.Int64((d1).getTime()).mul(10000);
+            var d2 = new Date(tickValue.toNumber()/10000);
+
+            Bridge.Test.Assert.true$1(Bridge.equals(d1, d2), System.String.concat("d1 (", Bridge.Date.format(d1), ") == d2(", Bridge.Date.format(d2), ")"));
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1906", {
+        testIsOperatorInaccuracy: function () {
+            Bridge.Test.Assert.true(Bridge.is(true, Object));
+            Bridge.Test.Assert.true(Bridge.is("string", Object));
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1909", {
+        testActivatorEnumCreation: function () {
+            var et = Bridge.createInstance(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1909.EnumType);
+            Bridge.Test.Assert.areEqual(0, et);
+            Bridge.Test.Assert.true(Bridge.is(et, System.Int32));
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1909.EnumType", {
+        $kind: "enum",
+        statics: {
+            Item1: 0
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1910", {
+        testGenericTypeCasting: function () {
+            var item1 = new (Bridge.ClientTest.Batch3.BridgeIssues.Bridge1910.Item$1(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1910.ItemValue))(null);
+
+            Bridge.Test.Assert.true$1(item1.getValue1() == null, "item1.Value1");
+            Bridge.Test.Assert.true$1(item1.getValue2() == null, "item1.Value2");
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1910.Item$1", function (T) { return {
+        value: null,
+        ctor: function (value) {
+            this.$initialize();
+            this.value = value;
+        },
+        getValue1: function () {
+            return Bridge.cast(this.value, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1910.ItemValue);
+        },
+        getValue2: function () {
+            return Bridge.cast(this.value, T);
+        }
+    }; });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1910.ItemValue");
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1911", {
+        statics: {
+            getValue1: function (value) {
+                return value;
+            },
+            getValue2: function (value) {
+                return value;
+            }
+        },
+        testExtensionMethodOfBaseClass: function () {
+            var item = new (Bridge.ClientTest.Batch3.BridgeIssues.Bridge1911_DerivedItem$1(System.Int32))();
+            Bridge.Test.Assert.areEqual(1, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1911_BaseItemExtensions.getValue(System.Int32, item));
+            Bridge.Test.Assert.areEqual(3, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1911_BaseItemExtensions.getValue$1(System.Int32, item, 3));
+        },
+        testExtensionMethodOfBaseClassLinqCase: function () {
+            var values = [0, 1, 2];
+
+            var max1 = System.Linq.Enumerable.from(values).select(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1911.getValue1).max();
+            var max2 = System.Linq.Enumerable.from(System.Linq.Enumerable.from(values).select(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1911.getValue2)).max();
+
+            Bridge.Test.Assert.areEqual(2, max1);
+            Bridge.Test.Assert.areEqual(2, max2);
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1911_BaseItem$1", function (T) { return {
+
+    }; });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1911_BaseItemExtensions", {
+        statics: {
+            getValue: function (T, item) {
+                return 1;
+            },
+            getValue$1: function (T, item, i) {
+                return i;
+            }
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1912", {
+        testExtentionMethod: function () {
+            var Bridge1912_Item = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1912_Item();
+            var Bridge1912_Item2 = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1912_Item();
+
+            Bridge.Test.Assert.true(Bridge.is(Bridge.ClientTest.Batch3.BridgeIssues.ItemExtensions.setValue(Bridge1912_Item), Bridge.ClientTest.Batch3.BridgeIssues.Bridge1912_Item));
+            Bridge.Test.Assert.true(Bridge.is(Bridge.ClientTest.Batch3.BridgeIssues.ItemExtensions.setValue(Bridge1912_Item2), Bridge.ClientTest.Batch3.BridgeIssues.Bridge1912_Item));
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1912_Item");
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1913", {
+        testIsSubclassOfTemplate: function () {
+            var type = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1913;
+
+            var result1 = !(type.prototype instanceof type);
+            var result2 = !((type.prototype instanceof type));
+
+            Bridge.Test.Assert.true(result1 === result2);
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1914", {
+        testCase: function () {
+            var list = new (System.Collections.Generic.List$1(System.Int32))();
+            list.add(1);
+
+            var readOnlyList = new (System.Collections.ObjectModel.ReadOnlyCollection$1(System.Int32))(list);
+            list.add(2);
+
+            Bridge.Test.Assert.true(list.getCount() === readOnlyList.getCount());
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1915", {
+        testImplementingExternalInterface: function () {
+            var item = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1915.LocalItem();
+
+            Bridge.ClientTest.Batch3.BridgeIssues.Bridge1915.LocalTest.test(item);
+            Bridge.Test.Assert.areEqual(1, item.Bridge$ClientTestHelper$Internal$IItem$getValue());
+            Bridge.ClientTestHelper.Internal.ClassLibraryTest.test(item);
+            Bridge.Test.Assert.areEqual(2, item.Bridge$ClientTestHelper$Internal$IItem$getValue());
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1915.LocalItem", {
+        inherits: [Bridge.ClientTestHelper.Internal.IWriteableItem],
+        value: null,
+        config: {
+            alias: [
+            "getValue", "Bridge$ClientTestHelper$Internal$IItem$getValue",
+            "setValue", "Bridge$ClientTestHelper$Internal$IWriteableItem$setValue"
+            ]
+        },
+        getValue: function () {
+            return this.value;
+        },
+        setValue: function (value) {
+            this.value = value;
+            return true;
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1915.LocalTest", {
+        statics: {
+            test: function (item) {
+                item.Bridge$ClientTestHelper$Internal$IWriteableItem$setValue(1);
+            }
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1920", {
+        testGeneratedStringConcatenation: function () {
+            var s1 = "s1";
+            var s2 = "s2";
+            var s3 = "s3";
+            var s4 = "s4";
+
+            var s = System.String.concat(s1, s2, s3, s4);
+            Bridge.Test.Assert.areEqual("s1s2s3s4", s);
+
+            s = System.String.concat("a" + 1, null);
+            Bridge.Test.Assert.areEqual("a1", s);
+
+            s = System.String.concat(null, "a", 1);
+            Bridge.Test.Assert.areEqual("a1", s);
+
+            s = System.String.concat("a", null, 1);
+            Bridge.Test.Assert.areEqual("a1", s);
+
+            s = "a" + 1 + "b" + "c";
+            Bridge.Test.Assert.areEqual("a1bc", s);
+
+            s = null;
+            s = System.String.concat(String.fromCharCode(123), s, String.fromCharCode(125));
+            Bridge.Test.Assert.areEqual("{}", s);
+
+            s = System.String.concat("", s, "");
+            Bridge.Test.Assert.areEqual("{}", s);
+
+            s = System.String.concat(s1, "", s2);
+            Bridge.Test.Assert.areEqual("s1s2", s);
+
+            s = System.String.concat(s1, "", s2, "");
+            Bridge.Test.Assert.areEqual("s1s2", s);
+
+            s = System.String.concat(s1, "", s2, "", s3);
+            Bridge.Test.Assert.areEqual("s1s2s3", s);
+
+            s = "Test" + 2;
+            Bridge.Test.Assert.areEqual("Test2", s);
+
+            var i = 2;
+            s = "" + i + "";
+            Bridge.Test.Assert.areEqual("2", s);
+
+            s = "" + ((Bridge.Int.div(i, 2)) | 0);
+            Bridge.Test.Assert.areEqual("1", s);
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1933", {
+        testRounding: function () {
+            // decimal
+            var x = System.Decimal(0.25);
+            Bridge.Test.Assert.areEqual$1(".3", Bridge.Int.format(x, "##.#"), "decimal");
+            Bridge.Test.Assert.areEqual$1("0.3", Bridge.Int.format(x, "F1"), "decimal");
+
+            x = System.Decimal(-0.25);
+            Bridge.Test.Assert.areEqual$1("-.3", Bridge.Int.format(x, "##.#"), "decimal");
+            Bridge.Test.Assert.areEqual$1("-0.3", Bridge.Int.format(x, "F1"), "decimal");
+
+            x = System.Decimal(0.025);
+            Bridge.Test.Assert.areEqual$1("", Bridge.Int.format(x, "##.#"), "decimal");
+            Bridge.Test.Assert.areEqual$1("0.0", Bridge.Int.format(x, "F1"), "decimal");
+
+            x = System.Decimal(-0.025);
+            Bridge.Test.Assert.areEqual$1("", Bridge.Int.format(x, "##.#"), "decimal");
+            Bridge.Test.Assert.areEqual$1("0.0", Bridge.Int.format(x, "F1"), "decimal");
+
+
+            // double
+            var d = 0.25;
+            Bridge.Test.Assert.areEqual$1(".3", System.Double.format(d, "##.#"), "double");
+            Bridge.Test.Assert.areEqual$1("0.3", System.Double.format(d, "F1"), "double");
+
+            d = -0.25;
+            Bridge.Test.Assert.areEqual$1("-.3", System.Double.format(d, "##.#"), "double");
+            Bridge.Test.Assert.areEqual$1("-0.3", System.Double.format(d, "F1"), "double");
+
+            d = 0.025;
+            Bridge.Test.Assert.areEqual$1("", System.Double.format(d, "##.#"), "double");
+            Bridge.Test.Assert.areEqual$1("0.0", System.Double.format(d, "F1"), "double");
+
+            d = -0.025;
+            Bridge.Test.Assert.areEqual$1("", System.Double.format(d, "##.#"), "double");
+            Bridge.Test.Assert.areEqual$1("0.0", System.Double.format(d, "F1"), "double");
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1934", {
+        testEscapeSequencesInRegex: function () {
+            var patterns = ["\\\\", "\\@", "\\<", "\\>"];
+            var inputs = ["\\", "@", "<", ">"];
+            var expResults = [true, true, true, true];
+
+            for (var i = 0; i < patterns.length; i = (i + 1) | 0) {
+                var pattern = patterns[i];
+                var input = inputs[i];
+                var expected = expResults[i];
+
+                var rgx = new System.Text.RegularExpressions.Regex.ctor(pattern);
+                var actual = rgx.isMatch(input);
+
+                Bridge.Test.Assert.areEqual(expected, actual);
+            }
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1938", {
+        testIsArrayTemplate: function () {
+            var type = System.Int32;
+
+            var result1 = !(type === Array);
+            var result2 = !((type === Array));
+
+            Bridge.Test.Assert.true$1(result1, "Non array");
+            Bridge.Test.Assert.areEqual$1(result1, result2, "IsArray (for non array)");
+
+            var type2 = Bridge.getType((System.Array.init(0, 0)));
+
+            var result3 = !(type2 === Array);
+            var result4 = !((type2 === Array));
+
+            Bridge.Test.Assert.false$1(result3, "Array");
+            Bridge.Test.Assert.areEqual$1(result3, result4, "IsArray (for array)");
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1948", {
+        testCollectionLikeInitialization: function () {
+            var $t, $t1, $t2, $t3;
+            $t = Bridge.getEnumerator([new $_.$AnonymousType$14()]);
+            while ($t.moveNext()) {
+                $t1 = (function () {
+                    var item = $t.getCurrent();
+                    if (false) {
+                        return {jump:1};
+                    }
+
+                    var newJObj1 = function (_o33) {
+                            _o33.add("name", item);
+                            return _o33;
+                        }(new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1948.AddObj());
+
+                    $t2 = Bridge.getEnumerator(newJObj1);
+                    while ($t2.moveNext()) {
+                        var jObj = $t2.getCurrent();
+                    }
+                    Bridge.Test.Assert.areEqual(false, newJObj1.isGeneric);
+                    Bridge.Test.Assert.areEqual(1, newJObj1.dic.getCount());
+
+                    var newJObj2 = $_.Bridge.ClientTest.Batch3.BridgeIssues.Bridge1948.f1(new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1948.AddObj());
+                    $t3 = Bridge.getEnumerator(newJObj2, System.Collections.Generic.KeyValuePair$2(String,Object));
+                    while ($t3.moveNext()) {
+                        var jObj1 = $t3.getCurrent();
+                    }
+                    Bridge.Test.Assert.areEqual(true, Bridge.cast(newJObj2, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1948.AddObj).isGeneric);
+                    Bridge.Test.Assert.areEqual(1, Bridge.cast(newJObj2, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1948.AddObj).dic.getCount());
+                }).call(this) || {};
+                if($t1.jump == 1) continue;
+            }
+        }
+    });
+
+    Bridge.define("$AnonymousType$14", $_, {
+        $kind: "anonymous",
+        ctor: function () {
+        },
+        equals: function (o) {
+            if (!Bridge.is(o, $_.$AnonymousType$14)) {
+                return false;
+            }
+            return ;
+        },
+        getHashCode: function () {
+            var h = Bridge.addHash([7192687542]);
+            return h;
+        },
+        toJSON: function () {
+            return {
+
+            };
+        }
+    });
+
+    Bridge.ns("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1948", $_);
+
+    Bridge.apply($_.Bridge.ClientTest.Batch3.BridgeIssues.Bridge1948, {
+        f1: function (_o34) {
+            _o34.add("name", 1);
+            return _o34;
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1948.AddObj", {
+        inherits: [System.Collections.Generic.IEnumerable$1(System.Collections.Generic.KeyValuePair$2(String,Object))],
+        dic: null,
+        isGeneric: false,
+        config: {
+            alias: [
+            "getEnumerator", "System$Collections$IEnumerable$getEnumerator"
+            ]
+        },
+        ctor: function () {
+            this.$initialize();
+            this.dic = new (System.Collections.Generic.Dictionary$2(String,Object))();
+        },
+        add: function (key, value) {
+            this.dic.add(key, value);
+        },
+        System$Collections$Generic$IEnumerable$1$System$Collections$Generic$KeyValuePair$2$String$Object$getEnumerator: function () {
+            this.isGeneric = true;
+            return this.dic.getEnumerator();
+        },
+        getEnumerator: function () {
+            this.isGeneric = false;
+            return this.dic.getEnumerator();
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1951", {
+        statics: {
+            counter: 0
+        },
+        testBindFunctionNoMemoryLeaks: function () {
+            new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1951.LeakedObject();
+            Bridge.Test.Assert.areEqual$1(1, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1951.counter, "1");
+
+            new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1951.LeakedObject();
+            Bridge.Test.Assert.areEqual$1(1, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1951.counter, "2");
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1951.LeakedObject", {
+        ctor: function () {
+            this.$initialize();
+            // This is to generate Bridge.fn.bind(this, this.method);
+            var a = Bridge.fn.bind(this, this.method);
+
+            var m = this;
+            var count = m.$$bind.length;
+            //Bridge.fn.bind save "this" to the $$bind property of the function.
+            Bridge.ClientTest.Batch3.BridgeIssues.Bridge1951.counter = count;
+        },
+        method: function () {
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1955", {
+        statics: {
+            scriptFunc: function () {
+                return 10;
+            }
+        },
+        i: 0,
+        ctor: function () {
+            this.$initialize();
+        },
+        $ctor1: function (i) {
+            this.$initialize();
+            this.i = i;
+        },
+        testScriptAttributeForExternMethods: function () {
+            Bridge.Test.Assert.areEqual(10, Bridge.ClientTest.Batch3.BridgeIssues.Bridge1955.scriptFunc());
+            Bridge.Test.Assert.areEqual(5, new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1955.$ctor1(5).i);
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1964", {
+        statics: {
+            getCharCode: function (s, isLast) {
+                if (isLast === void 0) { isLast = true; }
+                if (s == null) {
+                    return "null";
+                }
+
+                if (s.length < 1) {
+                    return "empty";
+                }
+
+                var i = isLast ? ((s.length - 1) | 0) : 0;
+
+                return System.Char.format(s.charCodeAt(i), "X");
+            }
+        },
+        testStringIsNullOrWhiteSpaceCase: function () {
+            var p = [null, "", String.fromCharCode((9)), String.fromCharCode((10)), String.fromCharCode((11)), String.fromCharCode((12)), String.fromCharCode((13)), String.fromCharCode((32)), String.fromCharCode((133)), String.fromCharCode((160)), String.fromCharCode((5760)), String.fromCharCode((8192)), String.fromCharCode((8193)), String.fromCharCode((8194)), String.fromCharCode((8195)), String.fromCharCode((8196)), String.fromCharCode((8197)), String.fromCharCode((8198)), String.fromCharCode((8199)), String.fromCharCode((8200)), String.fromCharCode((8201)), String.fromCharCode((8202)), String.fromCharCode((8239)), String.fromCharCode((8287)), String.fromCharCode((12288))];
+
+            var s;
+            var c;
+
+            for (var i = 0; i < p.length; i = (i + 1) | 0) {
+                s = p[i];
+                c = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1964.getCharCode(s);
+                Bridge.Test.Assert.true$1(System.String.isNullOrWhiteSpace(s), System.String.concat("White-spaces table 1. Index:" + i + " Char code:", c));
+            }
+
+            for (var i1 = 0; i1 < p.length; i1 = (i1 + 1) | 0) {
+                s = System.String.concat(" ", p[i1]);
+                c = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1964.getCharCode(s);
+                Bridge.Test.Assert.true$1(System.String.isNullOrWhiteSpace(s), System.String.concat("White-spaces table 2. Index:" + i1 + " Char code:", c));
+            }
+
+            for (var i2 = 0; i2 < p.length; i2 = (i2 + 1) | 0) {
+                s = System.String.concat(p[i2], " ");
+                c = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1964.getCharCode(s, false);
+                Bridge.Test.Assert.true$1(System.String.isNullOrWhiteSpace(s), System.String.concat("White-spaces table 3. Index:" + i2 + " Char code:", c));
+            }
+
+            for (var i3 = 0; i3 < p.length; i3 = (i3 + 1) | 0) {
+                s = System.String.concat("a", p[i3]);
+                c = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1964.getCharCode(s);
+                Bridge.Test.Assert.false$1(System.String.isNullOrWhiteSpace(s), System.String.concat("Non white-spaces table 1. Index:" + i3 + " Char code:", c));
+            }
+
+            for (var i4 = 0; i4 < p.length; i4 = (i4 + 1) | 0) {
+                s = System.String.concat(p[i4], "b");
+                c = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1964.getCharCode(s, false);
+                Bridge.Test.Assert.false$1(System.String.isNullOrWhiteSpace(s), System.String.concat("Non white-spaces table 2. Index:" + i4 + " Char code:", c));
+            }
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1965", {
+        testIsClassForNumberTypes: function () {
+            Bridge.Test.Assert.false(Bridge.Reflection.isClass(System.Byte));
+            Bridge.Test.Assert.false(Bridge.Reflection.isClass(System.Int16));
+            Bridge.Test.Assert.false(Bridge.Reflection.isClass(System.UInt16));
+            Bridge.Test.Assert.false(Bridge.Reflection.isClass(System.Int32));
+            Bridge.Test.Assert.false(Bridge.Reflection.isClass(System.UInt32));
+            Bridge.Test.Assert.false(Bridge.Reflection.isClass(System.Single));
+            Bridge.Test.Assert.false(Bridge.Reflection.isClass(System.Double));
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1966", {
+        testDoubleInfinityGetHashCode: function () {
+            Bridge.Test.Assert.areEqual(Bridge.getHashCode(Number.POSITIVE_INFINITY), Bridge.getHashCode(Number.POSITIVE_INFINITY));
+            Bridge.Test.Assert.areEqual(Bridge.getHashCode(Number.NEGATIVE_INFINITY), Bridge.getHashCode(Number.NEGATIVE_INFINITY));
+            Bridge.Test.Assert.areEqual(2146435072, Bridge.getHashCode(Number.POSITIVE_INFINITY));
+            Bridge.Test.Assert.areEqual(4293918720, Bridge.getHashCode(Number.NEGATIVE_INFINITY));
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1968", {
+        testGenericNullable: function () {
+            var type1 = System.Double;
+            var type2 = System.Nullable$1(System.Double);
+            var value1 = Bridge.createInstance(type1);
+            var value2 = Bridge.createInstance(type2);
+
+            Bridge.Test.Assert.false(Bridge.referenceEquals(type1, type2));
+            Bridge.Test.Assert.false(Bridge.referenceEquals(value1, value2));
+
+            Bridge.Test.Assert.false(Bridge.Reflection.isClass(type1));
+            Bridge.Test.Assert.false(Bridge.Reflection.isClass(type2));
+
+            Bridge.Test.Assert.areEqual(0, value1);
+            Bridge.Test.Assert.null(value2);
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1969", {
+        statics: {
+            buffer: null
+        },
+        testStaticConstructorsForBaseClasses: function () {
+            Bridge.ClientTest.Batch3.BridgeIssues.Bridge1969.buffer = "";
+            Bridge.ClientTest.Batch3.BridgeIssues.Bridge1969.Test3.foo();
+            Bridge.Test.Assert.areEqual("Test3", Bridge.ClientTest.Batch3.BridgeIssues.Bridge1969.buffer);
+
+            Bridge.ClientTest.Batch3.BridgeIssues.Bridge1969.buffer = "";
+            var test = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1969.Test3();
+            Bridge.Test.Assert.areEqual("Test2Test1", Bridge.ClientTest.Batch3.BridgeIssues.Bridge1969.buffer);
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1969.Test1", {
+        statics: {
+            ctor: function () {
+                Bridge.ClientTest.Batch3.BridgeIssues.Bridge1969.buffer = System.String.concat(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1969.buffer, "Test1");
+            }
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1970", {
+        testRunClassConstructor: function () {
+            var type1 = Bridge.Reflection.getType("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1970.Test, Bridge.ClientTest.Batch3");
+
+            Bridge.Test.Assert.areEqual(true, Bridge.Reflection.fieldAccess(Bridge.Reflection.getMembers(type1, 4, 284, "IsInitialized"), null));
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1970.Test", {
+        statics: {
+            isInitialized: false,
+            config: {
+                init: function () {
+                    this.isInitialized = Bridge.ClientTest.Batch3.BridgeIssues.Bridge1970.Test.getIsInitializedValue();
+                }
+            },
+            getIsInitializedValue: function () {
+                return true;
+            }
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1996", {
+        testTemplateForGetEnumerator: function () {
+            var $t;
+            var holder = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge1996.ArrayHolder([1, 2, 3]);
+
+            var i = 0;
+            $t = new Bridge.ArrayEnumerator(holder.array);
+            while ($t.moveNext()) {
+                var item = $t.getCurrent();
+                Bridge.Test.Assert.areEqual(((i = (i + 1) | 0)), item);
+            }
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1996.ArrayHolder", {
+        inherits: [System.Collections.IEnumerable],
+        array: null,
+        ctor: function (array) {
+            this.$initialize();
+            this.array = array;
+        }
+    });
 
     Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge240A", {
         config: {
@@ -9293,7 +10893,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
     Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge306Component$1", function (TProps) { return {
         statics: {
             new: function (TComponent, props) {
-                return System.String.concat(System.String.concat(Bridge.Reflection.getTypeFullName(Bridge.getType(props)), ":"), props);
+                return System.String.concat(Bridge.Reflection.getTypeFullName(Bridge.getType(props)), ":", props);
             }
         }
     }; });
@@ -9482,10 +11082,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 2493372384;
-            hash = hash * 23 + (this.A == null ? 0 : Bridge.getHashCode(this.A));
-            return hash;
+            var h = Bridge.addHash([2493372384, this.A]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge407)) {
@@ -9676,14 +11274,26 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
         }
     });
 
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge483", {
+        testPropertyWithNameSameAsType: function () {
+            var t = Bridge.merge(new Bridge.ClientTest.Batch3.BridgeIssues.Test(), {
+                myType: Bridge.merge(new Bridge.ClientTest.Batch3.BridgeIssues.MyType(), {
+                    value: 7
+                } )
+            } );
+
+            Bridge.Test.Assert.areEqual(7, t.getMyOtherType().value);
+        }
+    });
+
     Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge485", {
         statics: {
             testUseCase: function () {
-                var list = System.Linq.Enumerable.from([new $_.$AnonymousType$14("", "")]).skip(1).toList(Object);
-                list.add(new $_.$AnonymousType$14("Ruth", "Babe"));
-                list.add(new $_.$AnonymousType$14("Johnson", "Walter"));
-                list.add(new $_.$AnonymousType$14("Cobb", "Ty"));
-                list.add(new $_.$AnonymousType$14("Schmidt", "Mike"));
+                var list = System.Linq.Enumerable.from([new $_.$AnonymousType$15("", "")]).skip(1).toList(Object);
+                list.add(new $_.$AnonymousType$15("Ruth", "Babe"));
+                list.add(new $_.$AnonymousType$15("Johnson", "Walter"));
+                list.add(new $_.$AnonymousType$15("Cobb", "Ty"));
+                list.add(new $_.$AnonymousType$15("Schmidt", "Mike"));
 
                 var query = System.Linq.Enumerable.from(list).where($_.Bridge.ClientTest.Batch3.BridgeIssues.Bridge485.f1).select($_.Bridge.ClientTest.Batch3.BridgeIssues.Bridge485.f2);
 
@@ -9694,7 +11304,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
         }
     });
 
-    Bridge.define("$AnonymousType$14", $_, {
+    Bridge.define("$AnonymousType$15", $_, {
         $kind: "anonymous",
         ctor: function (lastName, firstName) {
             this.lastName = lastName;
@@ -9707,17 +11317,14 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return this.firstName;
         },
         equals: function (o) {
-            if (!Bridge.is(o, $_.$AnonymousType$14)) {
+            if (!Bridge.is(o, $_.$AnonymousType$15)) {
                 return false;
             }
             return Bridge.equals(this.lastName, o.lastName) && Bridge.equals(this.firstName, o.firstName);
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 7192687542;
-            hash = hash * 23 + (this.lastName == null ? 0 : Bridge.getHashCode(this.lastName));
-            hash = hash * 23 + (this.firstName == null ? 0 : Bridge.getHashCode(this.firstName));
-            return hash;
+            var h = Bridge.addHash([7209464758, this.lastName, this.firstName]);
+            return h;
         },
         toJSON: function () {
             return {
@@ -9734,7 +11341,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return p.lastName.length === 4;
         },
         f2: function (p) {
-            return new $_.$AnonymousType$14(p.lastName, p.firstName);
+            return new $_.$AnonymousType$15(p.lastName, p.firstName);
         }
     });
 
@@ -9903,18 +11510,18 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 case 0: {
                                     Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.setQUnitAsyncDone(Bridge.Test.Assert.async());
 
-                                    $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.doSomethingAsync();
-                                    $step = 1;
-                                    $task1.continueWith($asyncBody, true);
-                                    return;
+                                        $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.doSomethingAsync();
+                                        $step = 1;
+                                        $task1.continueWith($asyncBody, true);
+                                        return;
                                 }
                                 case 1: {
                                     $taskResult1 = $task1.getAwaitedResult();
                                     result = $taskResult1;
 
-                                    Bridge.Test.Assert.areEqual$1("A(0)A(1)B(0)B(1)B(2)", result, "#508 DoSomethingAsync");
+                                        Bridge.Test.Assert.areEqual$1("A(0)A(1)B(0)B(1)B(2)", result, "#508 DoSomethingAsync");
 
-                                    Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.getQUnitAsyncDone()();
+                                        Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.getQUnitAsyncDone()();
                                     return;
                                 }
                                 default: {
@@ -9950,23 +11557,23 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                     case 0: {
                                         result = "";
 
-                                        i = 0;
-                                        $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.initPage();
-                                        $step = 1;
-                                        $task1.continueWith($asyncBody);
-                                        return;
+                                            i = 0;
+                                            $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.initPage();
+                                            $step = 1;
+                                            $task1.continueWith($asyncBody);
+                                            return;
                                     }
                                     case 1: {
                                         $taskResult1 = $task1.getAwaitedResult();
                                         np = $taskResult1;
-                                        $step = 2;
-                                        continue;
+                                            $step = 2;
+                                            continue;
                                     }
                                     case 2: {
                                         if ( np != null ) {
-                                            $step = 3;
-                                            continue;
-                                        }
+                                                $step = 3;
+                                                continue;
+                                            }
                                         $step = 6;
                                         continue;
                                     }
@@ -9975,9 +11582,9 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                     }
                                     case 4: {
                                         $task2 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.nextPage();
-                                        $step = 5;
-                                        $task2.continueWith($asyncBody);
-                                        return;
+                                            $step = 5;
+                                            $task2.continueWith($asyncBody);
+                                            return;
                                     }
                                     case 5: {
                                         $taskResult2 = $task2.getAwaitedResult();
@@ -9986,25 +11593,25 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                         continue;
                                     }
                                     case 6: {
-                                    
-                                        Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.count = 0;
-                                        i = 0;
-                                        $task3 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.initPage();
-                                        $step = 7;
-                                        $task3.continueWith($asyncBody);
-                                        return;
+                                        
+                                            Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.count = 0;
+                                            i = 0;
+                                            $task3 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.initPage();
+                                            $step = 7;
+                                            $task3.continueWith($asyncBody);
+                                            return;
                                     }
                                     case 7: {
                                         $taskResult3 = $task3.getAwaitedResult();
                                         np1 = $taskResult3;
-                                        $step = 8;
-                                        continue;
+                                            $step = 8;
+                                            continue;
                                     }
                                     case 8: {
                                         if ( np1 != null ) {
-                                            $step = 9;
-                                            continue;
-                                        }
+                                                $step = 9;
+                                                continue;
+                                            }
                                         $step = 11;
                                         continue;
                                     }
@@ -10017,9 +11624,9 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                         continue;
                                     }
                                     case 11: {
-                                    
-                                        $tcs.setResult(result);
-                                        return;
+                                        
+                                            $tcs.setResult(result);
+                                            return;
                                     }
                                     default: {
                                         $tcs.setResult(null);
@@ -10050,15 +11657,15 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 switch ($step) {
                                     case 0: {
                                         $task1 = System.Threading.Tasks.Task.delay(0);
-                                        $step = 1;
-                                        $task1.continueWith($asyncBody);
-                                        return;
+                                            $step = 1;
+                                            $task1.continueWith($asyncBody);
+                                            return;
                                     }
                                     case 1: {
                                         $task1.getAwaitedResult();
                                         Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.count = (Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.count + 1) | 0;
-                                        $tcs.setResult(Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.count < 2 ? new $_.$AnonymousType$15() : null);
-                                        return;
+                                            $tcs.setResult(Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.count < 2 ? new $_.$AnonymousType$14() : null);
+                                            return;
                                     }
                                     default: {
                                         $tcs.setResult(null);
@@ -10089,15 +11696,15 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 switch ($step) {
                                     case 0: {
                                         $task1 = System.Threading.Tasks.Task.delay(0);
-                                        $step = 1;
-                                        $task1.continueWith($asyncBody);
-                                        return;
+                                            $step = 1;
+                                            $task1.continueWith($asyncBody);
+                                            return;
                                     }
                                     case 1: {
                                         $task1.getAwaitedResult();
                                         Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.count = (Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.count + 1) | 0;
-                                        $tcs.setResult(Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.count < 3 ? new $_.$AnonymousType$15() : null);
-                                        return;
+                                            $tcs.setResult(Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.count < 3 ? new $_.$AnonymousType$14() : null);
+                                            return;
                                     }
                                     default: {
                                         $tcs.setResult(null);
@@ -10116,30 +11723,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             },
             nextPage1: function () {
                 Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.count = (Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.count + 1) | 0;
-                return Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.count < 4 ? new $_.$AnonymousType$15() : null;
+                return Bridge.ClientTest.Batch3.BridgeIssues.Bridge508.count < 4 ? new $_.$AnonymousType$14() : null;
             }
-        }
-    });
-
-    Bridge.define("$AnonymousType$15", $_, {
-        $kind: "anonymous",
-        ctor: function () {
-        },
-        equals: function (o) {
-            if (!Bridge.is(o, $_.$AnonymousType$15)) {
-                return false;
-            }
-            return ;
-        },
-        getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 7209464758;
-            return hash;
-        },
-        toJSON: function () {
-            return {
-
-            };
         }
     });
 
@@ -10435,13 +12020,13 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                 Bridge.Test.Assert.areEqual$1(10, v1.length, "Float32Array Length");
 
                 /* 
-                 * Commented out. Reason: Only Firefox implements them.
-                 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array
-                var mA = v1.Join();
-                v1.Reverse();
-                var mB = v1.Slice();
-                var mC = v1.Sort();
-                 */
+             * Commented out. Reason: Only Firefox implements them.
+             * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array
+            var mA = v1.Join();
+            v1.Reverse();
+            var mB = v1.Slice();
+            var mC = v1.Sort();
+             */
 
                 var expectedToStringFloat32Array1 = isToStringToTypeNameLogic ? "[object Float32Array]" : "0,11,0,0,0,5,0,0,0,99";
                 Bridge.Test.Assert.areEqual$1(expectedToStringFloat32Array1, v1.toLocaleString(), "Float32Array ToLocaleString");
@@ -10840,7 +12425,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                 var a = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge559A3.ctor(1);
                 var b = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge559A3.ctor(2);
 
-                var r = System.String.concat(System.String.concat(a.getData(), "|"), b.getData());
+                var r = System.String.concat(a.getData(), "|", b.getData());
                 Bridge.Test.Assert.areEqual$1("1|2", r, "Bridge559 TestUseCase3");
             }
         }
@@ -11046,10 +12631,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 4379733844;
-            hash = hash * 23 + (this.Number == null ? 0 : Bridge.getHashCode(this.Number));
-            return hash;
+            var h = Bridge.addHash([4379733844, this.Number]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge577.Bridge577UnitB)) {
@@ -11159,21 +12742,33 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                 Bridge.Test.Assert.areEqual$1(0, elapsedSpan.getSeconds(), "Bridge582 TestTicks minutes");
             },
             testSubtractTimeSpan: function () {
-                var date1 = new Date(1996, 6 - 1, 3, 22, 15, 0);
-                var date2 = new Date(1996, 12 - 1, 6, 13, 2, 0);
-                var date3 = new Date(1996, 10 - 1, 12, 8, 42, 0);
+                var date1 = new Date(1996, 1 - 1, 1, 1, 1, 1, 1);
+                var date2 = new Date(1996, 2 - 1, 2, 2, 2, 2, 2);
+                var date3 = new Date(1996, 3 - 1, 3, 3, 3, 3, 3);
 
                 var diff1 = Bridge.Date.subdd(date2, date1);
-                Bridge.Test.Assert.true$1(diff1.equalsT(new System.TimeSpan(185, 14, 47, 0)), "Bridge582 TestSubtractTimeSpan diff1");
+
+                Bridge.Test.Assert.areEqual$1(32, diff1.getDays(), "diff1 Days is 32");
+                Bridge.Test.Assert.areEqual$1(1, diff1.getHours(), "diff1 Hours is 1");
+                Bridge.Test.Assert.areEqual$1(1, diff1.getMinutes(), "diff1 Minutes is 1");
+                Bridge.Test.Assert.areEqual$1(1, diff1.getSeconds(), "diff1 Seconds is 1");
+                Bridge.Test.Assert.areEqual$1(1, diff1.getMilliseconds(), "diff1 Milliseconds is 1");
+
+                var ts1 = new System.TimeSpan(32, 1, 1, 1, 1);
+
+                Bridge.Test.Assert.areEqual$1(32, ts1.getDays(), "ts1 Days is 32");
+                Bridge.Test.Assert.areEqual$1(1, ts1.getHours(), "ts1 Hours is 1");
+                Bridge.Test.Assert.areEqual$1(1, ts1.getMinutes(), "ts1 Minutes is 1");
+                Bridge.Test.Assert.areEqual$1(1, ts1.getSeconds(), "ts1 Seconds is 1");
+                Bridge.Test.Assert.areEqual$1(1, ts1.getMilliseconds(), "ts1 Milliseconds is 1");
+
+                Bridge.Test.Assert.true$1(diff1.equalsT(ts1), "Bridge582 TestSubtractTimeSpan diff1");
 
                 var date4 = new Date(date3 - new Date((diff1).ticks.div(10000).toNumber()));
-                Bridge.Test.Assert.true$1(Bridge.equalsT(date4, new Date(1996, 4 - 1, 9, 17, 55, 0)), "Bridge582 TestSubtractTimeSpan date4");
+                Bridge.Test.Assert.true$1(Bridge.equalsT(date4, new Date(1996, 1 - 1, 31, 2, 2, 2, 2)), "Bridge582 TestSubtractTimeSpan date4");
 
-                var diff2 = Bridge.Date.subdd(date2, date3);
-                Bridge.Test.Assert.true$1(diff2.equalsT(new System.TimeSpan(55, 4, 20, 0)), "Bridge582 TestSubtractTimeSpan diff2");
-
-                var date5 = Bridge.Date.subdt(date1, diff2);
-                Bridge.Test.Assert.true$1(Bridge.equalsT(date5, new Date(1996, 4 - 1, 9, 17, 55, 0)), "Bridge582 TestSubtractTimeSpan date5");
+                var diff2 = Bridge.Date.subdd(date3, date1);
+                Bridge.Test.Assert.true$1(diff2.equalsT(new System.TimeSpan(62, 2, 2, 2, 2)), "Bridge582 TestSubtractTimeSpan diff2");
             },
             testTimeOfDay: function () {
                 var date = new Date(2013, 9 - 1, 14, 9, 28, 0);
@@ -11502,10 +13097,10 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
 
     Bridge.apply($_.Bridge.ClientTest.Batch3.BridgeIssues.Bridge597A, {
         f1: function (value, index) {
-            return System.String.concat(System.String.concat(index, ":"), value);
+            return System.String.concat(index + ":", value);
         },
         f2: function (value, index) {
-            return System.String.concat(System.String.concat(System.String.concat(System.String.concat(this._something, ":"), index), ":"), value);
+            return System.String.concat(this._something, ":", index, ":", value);
         }
     });
 
@@ -11558,10 +13153,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 2493520092;
-            hash = hash * 23 + (this.value == null ? 0 : Bridge.getHashCode(this.value));
-            return hash;
+            var h = Bridge.addHash([2493520092, this.value]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge603A)) {
@@ -11616,11 +13209,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 2493520348;
-            hash = hash * 23 + (this.value == null ? 0 : Bridge.getHashCode(this.value));
-            hash = hash * 23 + (this.intValue == null ? 0 : Bridge.getHashCode(this.intValue));
-            return hash;
+            var h = Bridge.addHash([2493520348, this.value, this.intValue]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge603B)) {
@@ -11665,7 +13255,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
     Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge606A", {
         statics: {
             example2: function (source, x, y) {
-                return System.String.concat(System.String.concat(System.String.concat(System.String.concat(source, " - "), x), " - "), y);
+                return System.String.concat(source, " - ", x, " - ", y);
             }
         }
     });
@@ -12334,11 +13924,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return this.isDefined;
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 6182311598;
-            hash = hash * 23 + (this.value == null ? 0 : Bridge.getHashCode(this.value));
-            hash = hash * 23 + (this.isDefined == null ? 0 : Bridge.getHashCode(this.isDefined));
-            return hash;
+            var h = Bridge.addHash([6182311598, this.value, this.isDefined]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge660Optional$1(T))) {
@@ -12587,18 +14174,18 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                             switch ($step) {
                                 case 0: {
                                     done = Bridge.Test.Assert.async();
-                                    c = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge690A();
-                                    $task1 = c.start();
-                                    $step = 1;
-                                    $task1.continueWith($asyncBody, true);
-                                    return;
+                                        c = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge690A();
+                                        $task1 = c.start();
+                                        $step = 1;
+                                        $task1.continueWith($asyncBody, true);
+                                        return;
                                 }
                                 case 1: {
                                     $taskResult1 = $task1.getAwaitedResult();
                                     r = $taskResult1;
 
-                                    Bridge.Test.Assert.areEqual$1(8, r, "Bridge690 TestUseCaseForInstance");
-                                    done();
+                                        Bridge.Test.Assert.areEqual$1(8, r, "Bridge690 TestUseCaseForInstance");
+                                        done();
                                     return;
                                 }
                                 default: {
@@ -12623,17 +14210,17 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                             switch ($step) {
                                 case 0: {
                                     done = Bridge.Test.Assert.async();
-                                    $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge690B.start();
-                                    $step = 1;
-                                    $task1.continueWith($asyncBody, true);
-                                    return;
+                                        $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge690B.start();
+                                        $step = 1;
+                                        $task1.continueWith($asyncBody, true);
+                                        return;
                                 }
                                 case 1: {
                                     $taskResult1 = $task1.getAwaitedResult();
                                     r = $taskResult1;
 
-                                    Bridge.Test.Assert.areEqual$1(59, r, "Bridge690 TestUseCaseForStatic");
-                                    done();
+                                        Bridge.Test.Assert.areEqual$1(59, r, "Bridge690 TestUseCaseForStatic");
+                                        done();
                                     return;
                                 }
                                 default: {
@@ -12664,14 +14251,14 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                             switch ($step) {
                                 case 0: {
                                     $task1 = System.Threading.Tasks.Task.delay(100);
-                                    $step = 1;
-                                    $task1.continueWith($asyncBody);
-                                    return;
+                                        $step = 1;
+                                        $task1.continueWith($asyncBody);
+                                        return;
                                 }
                                 case 1: {
                                     $task1.getAwaitedResult();
                                     $tcs.setResult(((((i1 + i2) | 0) + this.i3) | 0));
-                                    return;
+                                        return;
                                 }
                                 default: {
                                     $tcs.setResult(null);
@@ -12703,14 +14290,14 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                             switch ($step) {
                                 case 0: {
                                     $task1 = this.asyncSum(2, 3);
-                                    $step = 1;
-                                    $task1.continueWith($asyncBody);
-                                    return;
+                                        $step = 1;
+                                        $task1.continueWith($asyncBody);
+                                        return;
                                 }
                                 case 1: {
                                     $taskResult1 = $task1.getAwaitedResult();
                                     $tcs.setResult($taskResult1);
-                                    return;
+                                        return;
                                 }
                                 default: {
                                     $tcs.setResult(null);
@@ -12746,14 +14333,14 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 switch ($step) {
                                     case 0: {
                                         $task1 = System.Threading.Tasks.Task.delay(100);
-                                        $step = 1;
-                                        $task1.continueWith($asyncBody);
-                                        return;
+                                            $step = 1;
+                                            $task1.continueWith($asyncBody);
+                                            return;
                                     }
                                     case 1: {
                                         $task1.getAwaitedResult();
                                         $tcs.setResult(((((i1 + i2) | 0) + Bridge.ClientTest.Batch3.BridgeIssues.Bridge690B.i3) | 0));
-                                        return;
+                                            return;
                                     }
                                     default: {
                                         $tcs.setResult(null);
@@ -12785,14 +14372,14 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 switch ($step) {
                                     case 0: {
                                         $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge690B.asyncSum(19, 23);
-                                        $step = 1;
-                                        $task1.continueWith($asyncBody);
-                                        return;
+                                            $step = 1;
+                                            $task1.continueWith($asyncBody);
+                                            return;
                                     }
                                     case 1: {
                                         $taskResult1 = $task1.getAwaitedResult();
                                         $tcs.setResult($taskResult1);
-                                        return;
+                                            return;
                                     }
                                     default: {
                                         $tcs.setResult(null);
@@ -12897,10 +14484,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 12610;
-            hash = hash * 23 + (this.field1 == null ? 0 : Bridge.getHashCode(this.field1));
-            return hash;
+            var h = Bridge.addHash([12610, this.field1]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge692.B1)) {
@@ -12928,10 +14513,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return this.field1;
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 12866;
-            hash = hash * 23 + (this.field1 == null ? 0 : Bridge.getHashCode(this.field1));
-            return hash;
+            var h = Bridge.addHash([12866, this.field1]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge692.B2)) {
@@ -12973,10 +14556,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return this.field1;
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 12611;
-            hash = hash * 23 + (this.field1 == null ? 0 : Bridge.getHashCode(this.field1));
-            return hash;
+            var h = Bridge.addHash([12611, this.field1]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge692.C1)) {
@@ -13010,10 +14591,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
         setProp1: function (value) {
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 12867;
-            hash = hash * 23 + (this.field1 == null ? 0 : Bridge.getHashCode(this.field1));
-            return hash;
+            var h = Bridge.addHash([12867, this.field1]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge692.C2)) {
@@ -13042,10 +14621,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 13123;
-            hash = hash * 23 + (this.Prop1 == null ? 0 : Bridge.getHashCode(this.Prop1));
-            return hash;
+            var h = Bridge.addHash([13123, this.Prop1]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge692.C3)) {
@@ -13206,8 +14783,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 while (i < 5) {
                                     $t2 = (function () {
                                         if (System.Linq.Enumerable.from(testList).any(function (x) {
-                                            return x === i;
-                                        })) {
+                                                return x === i;
+                                            })) {
                                             return {jump: 3, v: "ThirdLoop"};
                                         }
                                         i = (i + 1) | 0;
@@ -13216,8 +14793,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 }
 
                                 if (System.Linq.Enumerable.from(testList).any(function (x) {
-                                    return x === i;
-                                })) {
+                                        return x === i;
+                                    })) {
                                     return {jump: 3, v: "SecondLoop"};
                                 }
                                 i = (i + 1) | 0;
@@ -13226,8 +14803,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                         }
 
                         if (System.Linq.Enumerable.from(testList).any(function (x) {
-                            return x === i;
-                        })) {
+                                return x === i;
+                            })) {
                             return {jump: 3, v: "FirstLoop"};
                         }
                         i = (i + 1) | 0;
@@ -13276,7 +14853,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                 Bridge.Test.Assert.areEqual$1(3, Bridge.ClientTest.Batch3.BridgeIssues.Bridge722.M1((c1.setItem("path", 3), 3)), "Bridge722 M1 3");
                 Bridge.Test.Assert.areEqual$1(4, Bridge.ClientTest.Batch3.BridgeIssues.Bridge722.M1((asset1 = (c1.setItem("path", 4), 4))), "Bridge722 M1 4");
 
-                var c2 = new $_.$AnonymousType$15();
+                var c2 = new $_.$AnonymousType$14();
                 var asset2 = (c2.path = 5, 5);
                 Bridge.Test.Assert.areEqual$1(5, asset2, "Bridge722 asset2");
                 Bridge.Test.Assert.areEqual$1(5, c2.path, "Bridge722 c2");
@@ -13421,7 +14998,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             convertAllItems: function (T, T2, value, $function) {
                 var $t;
                 var result = new (System.Collections.Generic.List$1(T2))();
-                $t = Bridge.getEnumerator(value);
+                $t = Bridge.getEnumerator(value, T);
                 while ($t.moveNext()) {
                     var item = $t.getCurrent();
                     result.add($function(item));
@@ -13532,10 +15109,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 2594249179;
-            hash = hash * 23 + (this.Data == null ? 0 : Bridge.getHashCode(this.Data));
-            return hash;
+            var h = Bridge.addHash([2594249179, this.Data]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge762B)) {
@@ -13608,7 +15183,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             },
             testUseCase: function () {
                 var $t;
-                var o = new $_.$AnonymousType$15();
+                var o = new $_.$AnonymousType$14();
                 o;
                 {
                     var i = 555;
@@ -13632,7 +15207,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
     Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge782", {
         statics: {
             testUseCase: function () {
-                var o = new $_.$AnonymousType$15();
+                var o = new $_.$AnonymousType$14();
                 Bridge.Test.Assert.true$1(o.__foo == null, "Bridge782");
             }
         }
@@ -13722,10 +15297,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             } );
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 3605481978;
-            hash = hash * 23 + (this.Value == null ? 0 : Bridge.getHashCode(this.Value));
-            return hash;
+            var h = Bridge.addHash([3605481978, this.Value]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge785.DataStruct)) {
@@ -13789,10 +15362,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 2627803362;
-            hash = hash * 23 + (this.field1 == null ? 0 : Bridge.getHashCode(this.field1));
-            return hash;
+            var h = Bridge.addHash([2627803362, this.field1]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge789A)) {
@@ -14036,10 +15607,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 66;
-            hash = hash * 23 + (this.field == null ? 0 : Bridge.getHashCode(this.field));
-            return hash;
+            var h = Bridge.addHash([66, this.field]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Bridge.ClientTest.Batch3.BridgeIssues.Bridge815.B)) {
@@ -14142,16 +15711,15 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
     Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge823", {
         statics: {
             getTicksReturnsCorrectValue: function () {
-                var val = System.Int64([1817194880,220]);
-                var result = System.Int64([-57829376,2204230]);
+                var val = System.Int64([-57829376,2204230]);
 
-                var ticks = System.Int64((new Date(val.toNumber())).getTime()).mul(10000);
-                var ticksPlusOne = System.Int64((new Date(val.toNumber())).getTime()).mul(10000).add(System.Int64(1));
-                var ticksString = System.Int64((new Date(val.toNumber())).getTime()).mul(10000).toString();
+                var ticks = System.Int64((new Date(val.toNumber()/10000)).getTime()).mul(10000);
+                var ticksPlusOne = System.Int64((new Date(val.toNumber()/10000)).getTime()).mul(10000).add(System.Int64(1));
+                var ticksString = System.Int64((new Date(val.toNumber()/10000)).getTime()).mul(10000).toString();
 
-                Bridge.Test.Assert.areDeepEqual$1(result, ticks, "Ticks returning correct int value");
-                Bridge.Test.Assert.areDeepEqual$1(result.add(System.Int64(1)), ticksPlusOne, "Adding to a Tick value is correct");
-                Bridge.Test.Assert.areDeepEqual$1(result.toString(), ticksString, "Ticks returning correct value if .ToString() called on int");
+                Bridge.Test.Assert.areDeepEqual$1(val, ticks, "Ticks returning correct int value");
+                Bridge.Test.Assert.areDeepEqual$1(val.add(System.Int64(1)), ticksPlusOne, "Adding to a Tick value is correct");
+                Bridge.Test.Assert.areDeepEqual$1(val.toString(), ticksString, "Ticks returning correct value if .ToString() called on int");
             }
         }
     });
@@ -14232,31 +15800,31 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 switch ($step) {
                                     case 0: {
                                         if (method == null) {
-                                            throw new System.ArgumentNullException("method");
-                                        }
+                                                throw new System.ArgumentNullException("method");
+                                            }
                                         $step = 1;
                                         continue;
                                     }
                                     case 1: {
                                         task = System.Threading.Tasks.Task.fromResult(new System.Exception("Success"));
-                                        if (throwException) {
-                                            throw new System.Exception("test");
-                                        }
+                                            if (throwException) {
+                                                throw new System.Exception("test");
+                                            }
 
-                                        $task1 = task;
-                                        $step = 2;
-                                        $task1.continueWith($asyncBody);
-                                        return;
+                                            $task1 = task;
+                                            $step = 2;
+                                            $task1.continueWith($asyncBody);
+                                            return;
                                     }
                                     case 2: {
                                         $taskResult1 = $task1.getAwaitedResult();
                                         $tcs.setResult($taskResult1);
-                                        return;
+                                            return;
                                     }
                                     case 3: {
                                         $tcs.setResult(new System.Exception(System.String.concat("Fail: ", exception.getMessage())));
-                                        return;
-                                        $async_e = null;
+                                            return;
+                                            $async_e = null;
                                         $step = 4;
                                         continue;
                                     }
@@ -14301,27 +15869,27 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 case 0: {
                                     done = Bridge.Test.Assert.async();
 
-                                    $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge830.testMethod("", false);
-                                    $step = 1;
-                                    $task1.continueWith($asyncBody, true);
-                                    return;
+                                        $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge830.testMethod("", false);
+                                        $step = 1;
+                                        $task1.continueWith($asyncBody, true);
+                                        return;
                                 }
                                 case 1: {
                                     $taskResult1 = $task1.getAwaitedResult();
                                     res = $taskResult1;
-                                    Bridge.Test.Assert.areEqual("Success", res.getMessage());
+                                        Bridge.Test.Assert.areEqual("Success", res.getMessage());
 
-                                    $task2 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge830.testMethod("", true);
-                                    $step = 2;
-                                    $task2.continueWith($asyncBody, true);
-                                    return;
+                                        $task2 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge830.testMethod("", true);
+                                        $step = 2;
+                                        $task2.continueWith($asyncBody, true);
+                                        return;
                                 }
                                 case 2: {
                                     $taskResult2 = $task2.getAwaitedResult();
                                     res = $taskResult2;
-                                    Bridge.Test.Assert.areEqual("Fail: test", res.getMessage());
+                                        Bridge.Test.Assert.areEqual("Fail: test", res.getMessage());
 
-                                    done();
+                                        done();
                                     return;
                                 }
                                 default: {
@@ -14550,13 +16118,13 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
 
                 switch (myValue) {
                     case 0: 
-                    
-                        myValue = 2;
+                        
+                    myValue = 2;
                     
                         break;
                     case 1: 
-                    
-                        myValue = 3;
+                        
+                    myValue = 3;
                     
                         break;
                 }
@@ -14794,9 +16362,9 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 switch ($step) {
                                     case 0: {
                                         $task1 = System.Threading.Tasks.Task.delay(1);
-                                        $step = 1;
-                                        $task1.continueWith($asyncBody);
-                                        return;
+                                            $step = 1;
+                                            $task1.continueWith($asyncBody);
+                                            return;
                                     }
                                     case 1: {
                                         $task1.getAwaitedResult();
@@ -14835,35 +16403,35 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 case 0: {
                                     asyncComplete = Bridge.Test.Assert.async();
 
-                                    myvar = [new $_.$AnonymousType$16(1), new $_.$AnonymousType$16(2)];
-                                    sum = 0;
-                                    $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge906.myfunc();
-                                    $step = 1;
-                                    $task1.continueWith($asyncBody, true);
-                                    return;
+                                        myvar = [new $_.$AnonymousType$16(1), new $_.$AnonymousType$16(2)];
+                                        sum = 0;
+                                        $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge906.myfunc();
+                                        $step = 1;
+                                        $task1.continueWith($asyncBody, true);
+                                        return;
                                 }
                                 case 1: {
                                     $task1.getAwaitedResult();
-                                
-                                    $t = Bridge.getEnumerator(myvar);
-                                    while ($t.moveNext()) {
-                                        d = $t.getCurrent();
-                                        if (d.value > 0) {
-                                            sum = (sum + d.value) | 0;
+                                    
+                                        $t = Bridge.getEnumerator(myvar);
+                                        while ($t.moveNext()) {
+                                            d = $t.getCurrent();
+                                            if (d.value > 0) {
+                                                sum = (sum + d.value) | 0;
+                                            }
                                         }
-                                    }
 
-                                    $task2 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge906.myfunc();
-                                    $step = 2;
-                                    $task2.continueWith($asyncBody, true);
-                                    return;
+                                        $task2 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge906.myfunc();
+                                        $step = 2;
+                                        $task2.continueWith($asyncBody, true);
+                                        return;
                                 }
                                 case 2: {
                                     $task2.getAwaitedResult();
-                                
-                                    Bridge.Test.Assert.areEqual(3, sum);
+                                    
+                                        Bridge.Test.Assert.areEqual(3, sum);
 
-                                    asyncComplete();
+                                        asyncComplete();
                                     return;
                                 }
                                 default: {
@@ -14892,37 +16460,37 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 case 0: {
                                     asyncComplete = Bridge.Test.Assert.async();
 
-                                    myvar = [new $_.$AnonymousType$16(-3), new $_.$AnonymousType$16(2)];
-                                    sum = 0;
-                                    $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge906.myfunc();
-                                    $step = 1;
-                                    $task1.continueWith($asyncBody, true);
-                                    return;
+                                        myvar = [new $_.$AnonymousType$16(-3), new $_.$AnonymousType$16(2)];
+                                        sum = 0;
+                                        $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge906.myfunc();
+                                        $step = 1;
+                                        $task1.continueWith($asyncBody, true);
+                                        return;
                                 }
                                 case 1: {
                                     $task1.getAwaitedResult();
-                                
-                                    $t = Bridge.getEnumerator(myvar);
-                                    while ($t.moveNext()) {
-                                        d = $t.getCurrent();
-                                        if (d.value > 0) {
-                                            sum = (sum + d.value) | 0;
-                                        } else {
-                                            sum = (sum - d.value) | 0;
+                                    
+                                        $t = Bridge.getEnumerator(myvar);
+                                        while ($t.moveNext()) {
+                                            d = $t.getCurrent();
+                                            if (d.value > 0) {
+                                                sum = (sum + d.value) | 0;
+                                            } else {
+                                                sum = (sum - d.value) | 0;
+                                            }
                                         }
-                                    }
 
-                                    $task2 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge906.myfunc();
-                                    $step = 2;
-                                    $task2.continueWith($asyncBody, true);
-                                    return;
+                                        $task2 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge906.myfunc();
+                                        $step = 2;
+                                        $task2.continueWith($asyncBody, true);
+                                        return;
                                 }
                                 case 2: {
                                     $task2.getAwaitedResult();
-                                
-                                    Bridge.Test.Assert.areEqual(5, sum);
+                                    
+                                        Bridge.Test.Assert.areEqual(5, sum);
 
-                                    asyncComplete();
+                                        asyncComplete();
                                     return;
                                 }
                                 default: {
@@ -14952,10 +16520,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return Bridge.equals(this.value, o.value);
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 7226241974;
-            hash = hash * 23 + (this.value == null ? 0 : Bridge.getHashCode(this.value));
-            return hash;
+            var h = Bridge.addHash([7226241974, this.value]);
+            return h;
         },
         toJSON: function () {
             return {
@@ -15000,14 +16566,14 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 switch ($step) {
                                     case 0: {
                                         $task1 = System.Threading.Tasks.Task.delay(1);
-                                        $step = 1;
-                                        $task1.continueWith($asyncBody);
-                                        return;
+                                            $step = 1;
+                                            $task1.continueWith($asyncBody);
+                                            return;
                                     }
                                     case 1: {
                                         $task1.getAwaitedResult();
                                         $tcs.setResult(1);
-                                        return;
+                                            return;
                                     }
                                     default: {
                                         $tcs.setResult(null);
@@ -15037,19 +16603,19 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                             switch ($step) {
                                 case 0: {
                                     asyncComplete = Bridge.Test.Assert.async();
-                                    result = 0;
-                                    $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge912.myfunc();
-                                    $step = 1;
-                                    $task1.continueWith($asyncBody, true);
-                                    return;
+                                        result = 0;
+                                        $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge912.myfunc();
+                                        $step = 1;
+                                        $task1.continueWith($asyncBody, true);
+                                        return;
                                 }
                                 case 1: {
                                     $taskResult1 = $task1.getAwaitedResult();
                                     result = $taskResult1;
 
-                                    Bridge.Test.Assert.areEqual(1, result);
+                                        Bridge.Test.Assert.areEqual(1, result);
 
-                                    asyncComplete();
+                                        asyncComplete();
                                     return;
                                 }
                                 default: {
@@ -15092,19 +16658,19 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                             switch ($step) {
                                 case 0: {
                                     asyncComplete = Bridge.Test.Assert.async();
-                                    a = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge918();
-                                    $task1 = a.test();
-                                    $step = 1;
-                                    $task1.continueWith($asyncBody, true);
-                                    return;
+                                        a = new Bridge.ClientTest.Batch3.BridgeIssues.Bridge918();
+                                        $task1 = a.test();
+                                        $step = 1;
+                                        $task1.continueWith($asyncBody, true);
+                                        return;
                                 }
                                 case 1: {
                                     $taskResult1 = $task1.getAwaitedResult();
                                     result = Bridge.cast($taskResult1, System.Int32);
 
-                                    Bridge.Test.Assert.areEqual(1, result);
+                                        Bridge.Test.Assert.areEqual(1, result);
 
-                                    asyncComplete();
+                                        asyncComplete();
                                     return;
                                 }
                                 default: {
@@ -15131,14 +16697,14 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                             switch ($step) {
                                 case 0: {
                                     $task1 = System.Threading.Tasks.Task.delay(1);
-                                    $step = 1;
-                                    $task1.continueWith($asyncBody);
-                                    return;
+                                        $step = 1;
+                                        $task1.continueWith($asyncBody);
+                                        return;
                                 }
                                 case 1: {
                                     $task1.getAwaitedResult();
                                     $tcs.setResult(1);
-                                    return;
+                                        return;
                                 }
                                 default: {
                                     $tcs.setResult(null);
@@ -15187,15 +16753,15 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 switch ($step) {
                                     case 0: {
                                         done = Bridge.Test.Assert.async();
-                                        result = false;
+                                            result = false;
                                         $step = 1;
                                         continue;
                                     }
                                     case 1: {
                                         $task1 = System.Threading.Tasks.Task.delay(1);
-                                        $step = 2;
-                                        $task1.continueWith($asyncBody, true);
-                                        return;
+                                            $step = 2;
+                                            $task1.continueWith($asyncBody, true);
+                                            return;
                                     }
                                     case 2: {
                                         $task1.getAwaitedResult();
@@ -15204,32 +16770,32 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                     }
                                     case 3: {
                                         try {
-                                            throw new System.Exception("test");
-                                        }
-                                        catch ($e1) {
-                                            $e1 = System.Exception.create($e1);
-                                        }
+                                                throw new System.Exception("test");
+                                            }
+                                            catch ($e1) {
+                                                $e1 = System.Exception.create($e1);
+                                            }
 
-                                        result = true;
+                                            result = true;
 
-                                        if ($jumpFromFinally > -1) {
-                                            $step = $jumpFromFinally;
-                                            $jumpFromFinally = null;
-                                        } else if ($async_e) {
-                                            throw $async_e;
-                                            return;
-                                        } else if (Bridge.isDefined($returnValue)) {
-                                            $tcs.setResult($returnValue);
-                                            return;
-                                        }
+                                            if ($jumpFromFinally > -1) {
+                                                $step = $jumpFromFinally;
+                                                $jumpFromFinally = null;
+                                            } else if ($async_e) {
+                                                throw $async_e;
+                                                return;
+                                            } else if (Bridge.isDefined($returnValue)) {
+                                                $tcs.setResult($returnValue);
+                                                return;
+                                            }
                                         $step = 4;
                                         continue;
                                     }
                                     case 4: {
-                                    
-                                        Bridge.Test.Assert.true(result);
+                                        
+                                            Bridge.Test.Assert.true(result);
 
-                                        done();
+                                            done();
                                         return;
                                     }
                                     default: {
@@ -15277,9 +16843,9 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                     }
                                     case 1: {
                                         $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge929.test();
-                                        $step = 2;
-                                        $task1.continueWith($asyncBody, true);
-                                        return;
+                                            $step = 2;
+                                            $task1.continueWith($asyncBody, true);
+                                            return;
                                     }
                                     case 2: {
                                         $task1.getAwaitedResult();
@@ -15289,13 +16855,13 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                     }
                                     case 3: {
                                         Bridge.Test.Assert.areEqual("test", e.getMessage());
-                                        $async_e = null;
+                                            $async_e = null;
                                         $step = 4;
                                         continue;
                                     }
                                     case 4: {
-                                    
-                                        done();
+                                        
+                                            done();
                                         return;
                                     }
                                     default: {
@@ -15334,9 +16900,9 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
 
                                     case 1: {
                                         $task1 = System.Threading.Tasks.Task.delay(1);
-                                        $step = 2;
-                                        $task1.continueWith($asyncBody);
-                                        return;
+                                            $step = 2;
+                                            $task1.continueWith($asyncBody);
+                                            return;
                                     }
                                     case 2: {
                                         $task1.getAwaitedResult();
@@ -15346,13 +16912,13 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                     }
                                     case 3: {
                                         try {
-                                            throw new System.Exception("catch");
-                                        }
-                                        catch ($e1) {
-                                            $e1 = System.Exception.create($e1);
-                                        }
-                                        throw $async_e;
-                                        $async_e = null;
+                                                throw new System.Exception("catch");
+                                            }
+                                            catch ($e1) {
+                                                $e1 = System.Exception.create($e1);
+                                            }
+                                            throw $async_e;
+                                            $async_e = null;
                                         $step = 4;
                                         continue;
                                     }
@@ -15400,9 +16966,9 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 switch ($step) {
                                     case 0: {
                                         $task1 = System.Threading.Tasks.Task.fromResult(1);
-                                        $step = 1;
-                                        $task1.continueWith($asyncBody);
-                                        return;
+                                            $step = 1;
+                                            $task1.continueWith($asyncBody);
+                                            return;
                                     }
                                     case 1: {
                                         $taskResult1 = $task1.getAwaitedResult();
@@ -15442,26 +17008,26 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                 switch ($step) {
                                     case 0: {
                                         res = true;
-                                        $task1 = System.Threading.Tasks.Task.delay(1);
-                                        $step = 1;
-                                        $task1.continueWith($asyncBody);
-                                        return;
+                                            $task1 = System.Threading.Tasks.Task.delay(1);
+                                            $step = 1;
+                                            $task1.continueWith($asyncBody);
+                                            return;
                                     }
                                     case 1: {
                                         $task1.getAwaitedResult();
-                                    
-                                        if (res) {
-                                            $step = 2;
+                                        
+                                            if (res) {
+                                                $step = 2;
+                                                continue;
+                                            } 
+                                            $step = 4;
                                             continue;
-                                        } 
-                                        $step = 4;
-                                        continue;
                                     }
                                     case 2: {
                                         $task2 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge930.test();
-                                        $step = 3;
-                                        $task2.continueWith($asyncBody);
-                                        return;
+                                            $step = 3;
+                                            $task2.continueWith($asyncBody);
+                                            return;
                                     }
                                     case 3: {
                                         $task2.getAwaitedResult();
@@ -15469,11 +17035,11 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                         continue;
                                     }
                                     case 4: {
-                                    
-                                        $task3 = System.Threading.Tasks.Task.delay(1);
-                                        $step = 5;
-                                        $task3.continueWith($asyncBody);
-                                        return;
+                                        
+                                            $task3 = System.Threading.Tasks.Task.delay(1);
+                                            $step = 5;
+                                            $task3.continueWith($asyncBody);
+                                            return;
                                     }
                                     case 5: {
                                         $task3.getAwaitedResult();
@@ -15516,9 +17082,9 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                     }
                                     case 1: {
                                         $task1 = Bridge.ClientTest.Batch3.BridgeIssues.Bridge930.test1();
-                                        $step = 2;
-                                        $task1.continueWith($asyncBody, true);
-                                        return;
+                                            $step = 2;
+                                            $task1.continueWith($asyncBody, true);
+                                            return;
                                     }
                                     case 2: {
                                         $task1.getAwaitedResult();
@@ -15528,13 +17094,13 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                                     }
                                     case 3: {
                                         Bridge.Test.Assert.areEqual("test", e.getMessage());
-                                        $async_e = null;
+                                            $async_e = null;
                                         $step = 4;
                                         continue;
                                     }
                                     case 4: {
-                                    
-                                        done();
+                                        
+                                            done();
                                         return;
                                     }
                                     default: {
@@ -15723,15 +17289,15 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
 
                 var f2 = function () {
                     return Bridge.toArray(System.Linq.Enumerable.from([4, 5, 6]).select(function (value) {
-                        return ((value + offset) | 0);
-                    })).join(", ");
+                                return ((value + offset) | 0);
+                            })).join(", ");
                 };
 
                 var f3 = function () {
                     var f4 = function () {
                         return Bridge.toArray(System.Linq.Enumerable.from([7, 8, 9]).select(function (value) {
-                            return ((value + offset) | 0);
-                        })).join(", ");
+                                    return ((value + offset) | 0);
+                                })).join(", ");
                     };
 
                     return f4();
@@ -15769,8 +17335,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
         f3: function () {
             var offset2 = 2;
             return Bridge.toArray(System.Linq.Enumerable.from([4, 5, 6]).select(function (value) {
-                return ((value + offset2) | 0);
-            })).join(", ");
+                        return ((value + offset2) | 0);
+                    })).join(", ");
         }
     });
 
@@ -15807,6 +17373,18 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
         f1: function (x) {
             return x;
         }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.ItemExtensions", {
+        statics: {
+            setValue: function (item) {
+                return item;
+            }
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.MyOtherType", {
+        value: 0
     });
 
     Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.N1122", {
@@ -15991,6 +17569,13 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             properties: {
                 Name: null
             }
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Test", {
+        myType: null,
+        getMyOtherType: function () {
+            return this.myType;
         }
     });
 
@@ -16330,7 +17915,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                     diff = -diff;
                 }
 
-                Bridge.Test.Assert.true$1(diff < 1E-08, System.String.concat(System.String.concat(System.String.concat(System.String.concat(message, "actual: "), System.Double.format(actual, 'G')), "expeted:"), System.Double.format(expected, 'G')));
+                Bridge.Test.Assert.true$1(diff < 1E-08, System.String.concat(message, "actual: ", System.Double.format(actual, 'G'), "expeted:", System.Double.format(expected, 'G')));
             },
             N410: function () {
                 // Decimal consts
@@ -16488,7 +18073,7 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             },
             N428: function () {
                 var number2 = System.Decimal(11.37);
-                var sum = System.String.concat("0.13 + ", Bridge.Int.format(number2, 'G'));
+                var sum = "0.13 + " + Bridge.Int.format(number2, 'G');
 
                 Bridge.Test.Assert.areEqual$1("0.13 + 11.37", sum, "0.13 + 11.37");
             },
@@ -16559,8 +18144,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                 for (var i = 0; i < 10; i = (i + 1) | 0) {
                     $t = (function () {
                         if (!System.Linq.Enumerable.from(testList).any(function (x) {
-                            return x === i;
-                        })) {
+                                return x === i;
+                            })) {
                             return {jump:1};
                         }
 
@@ -16584,8 +18169,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
 
                 Bridge.Test.Assert.areEqual$1(false, Bridge.equals(a, b), "a.Equals(b)");
                 Bridge.Test.Assert.areNotEqual$1(true, Bridge.equals(a, Bridge.merge(new Bridge.ClientTest.Batch3.BridgeIssues.Bridge470(), {
-                    setData: 1
-                } )), "a.Equals(new Bridge470 { Data = 1 })");
+                        setData: 1
+                    } )), "a.Equals(new Bridge470 { Data = 1 })");
                 Bridge.Test.Assert.areEqual$1(false, Bridge.equals(a, null), "a.Equals(null)");
 
                 Bridge.Test.Assert.areEqual$1(true, a.equals2(b, b), "a.Equals(b, b)");
@@ -16619,11 +18204,11 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
                 Bridge.Test.Assert.areEqual$1(true, System.Linq.Enumerable.from(test1).contains(b, comparer), "test1 Contains b");
                 Bridge.Test.Assert.areEqual$1(true, System.Linq.Enumerable.from(test1).contains(c, comparer), "test1 Contains c");
                 Bridge.Test.Assert.areEqual$1(false, System.Linq.Enumerable.from(test1).contains(Bridge.merge(new Bridge.ClientTest.Batch3.BridgeIssues.Bridge470(), {
-                    setData: 4
-                } ), comparer), "test1 Contains 4");
+                        setData: 4
+                    } ), comparer), "test1 Contains 4");
                 Bridge.Test.Assert.areEqual$1(false, System.Linq.Enumerable.from(test1).contains(Bridge.merge(new Bridge.ClientTest.Batch3.BridgeIssues.Bridge470(), {
-                    setData: 5
-                } ), comparer), "test1 Contains 5");
+                        setData: 5
+                    } ), comparer), "test1 Contains 5");
             },
             N499: function () {
                 var v1 = new System.Version.ctor();
@@ -16647,10 +18232,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return Bridge.equals(this.i, o.i);
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 7243019190;
-            hash = hash * 23 + (this.i == null ? 0 : Bridge.getHashCode(this.i));
-            return hash;
+            var h = Bridge.addHash([7243019190, this.i]);
+            return h;
         },
         toJSON: function () {
             return {
@@ -16662,30 +18245,30 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
     Bridge.ns("Bridge.ClientTest.Batch3.BridgeIssues.TestBridgeIssues", $_);
 
     Bridge.apply($_.Bridge.ClientTest.Batch3.BridgeIssues.TestBridgeIssues, {
-        f1: function (_o27) {
-            _o27.add(0);
-            _o27.add(1);
-            _o27.add(2);
-            _o27.add(3);
-            _o27.add(4);
-            return _o27;
+        f1: function (_o35) {
+            _o35.add(0);
+            _o35.add(1);
+            _o35.add(2);
+            _o35.add(3);
+            _o35.add(4);
+            return _o35;
         },
-        f2: function (_o28) {
-            _o28.add(3, "b");
-            _o28.add(6, "z");
-            _o28.add(9, "x");
-            return _o28;
+        f2: function (_o36) {
+            _o36.add(3, "b");
+            _o36.add(6, "z");
+            _o36.add(9, "x");
+            return _o36;
         },
         f3: function (i) {
             return ((i * 2) | 0);
         },
-        f4: function (_o29) {
-            _o29.add(0);
-            _o29.add(1);
-            _o29.add(2);
-            _o29.add(3);
-            _o29.add(4);
-            return _o29;
+        f4: function (_o37) {
+            _o37.add(0);
+            _o37.add(1);
+            _o37.add(2);
+            _o37.add(3);
+            _o37.add(4);
+            return _o37;
         }
     });
 
@@ -17032,10 +18615,8 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             this.$initialize();
         },
         getHashCode: function () {
-            var hash = 17;
-            hash = hash * 23 + 3904302783;
-            hash = hash * 23 + (this.field == null ? 0 : Bridge.getHashCode(this.field));
-            return hash;
+            var h = Bridge.addHash([3904302783, this.field]);
+            return h;
         },
         equals: function (o) {
             if (!Bridge.is(o, Demo.Bridge1231.Class1$1.MyStruct(T))) {
@@ -17159,10 +18740,10 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
         Bridge$ClientTest$Batch3$BridgeIssues$Bridge1768$I1$1$T$setItem: function (index, value) {
         },
         Bridge$ClientTest$Batch3$BridgeIssues$Bridge1768$I1$1$T$getCount: function () {
-            return 1;
+            return 10;
         },
         Bridge$ClientTest$Batch3$BridgeIssues$Bridge1768$I1$1$T$add: function (item) {
-            return 2;
+            return 20;
         }
     }; });
 
@@ -17199,6 +18780,114 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
             return "Test1<TValues>";
         }
     }; });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852.MatchDispatcherMessages", {
+        inherits: [Bridge.ClientTest.Batch3.BridgeIssues.Bridge1852DispatcherMessageExtensions.IMatchDispatcherMessages],
+        config: {
+            alias: [
+            "doSomething", "Bridge$ClientTest$Batch3$BridgeIssues$Bridge1852DispatcherMessageExtensions$IMatchDispatcherMessages$doSomething"
+            ]
+        },
+        doSomething: function (T, name) {
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1854.SomeReader$1", function (T) { return {
+        inherits: [Bridge.ClientTest.Batch3.BridgeIssues.Bridge1854.IRead$1(T),Object(T)],
+        _param: null,
+        config: {
+            alias: [
+            "read", "Object$" + Bridge.getTypeAlias(T) + "$read",
+            "read", "Bridge$ClientTest$Batch3$BridgeIssues$Bridge1854$IRead$1$" + Bridge.getTypeAlias(T) + "$read"
+            ]
+        },
+        ctor: function (param) {
+            this.$initialize();
+            this._param = param;
+        },
+        read: function () {
+            return this._param;
+        }
+    }; });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1856.Signal$1", function (T) { return {
+        inherits: [Bridge.ClientTest.Batch3.BridgeIssues.Bridge1856.IObservable$1(T)],
+        config: {
+            alias: [
+            "observe", "Bridge$ClientTest$Batch3$BridgeIssues$Bridge1856$IObservable$1$" + Bridge.getTypeAlias(T) + "$observe"
+            ]
+        },
+        ctor: function (x) {
+            this.$initialize();
+        },
+        observe: function (a) {
+        }
+    }; });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1899.B", {
+        inherits: [Bridge.ClientTest.Batch3.BridgeIssues.Bridge1899.A],
+        value: 0,
+        ctor: function () {
+            this.$initialize();
+            Bridge.ClientTest.Batch3.BridgeIssues.Bridge1899.A.ctor.call(this);
+            this.setValue$1(1);
+        },
+        $ctor1: function (i) {
+            this.$initialize();
+            Bridge.ClientTest.Batch3.BridgeIssues.Bridge1899.A.ctor.call(this);
+            this.setValue$2(i);
+        },
+        getValue$1: function () {
+            return this.value;
+        },
+        setValue$1: function (value) {
+
+            this.value = value;
+        },
+        setValue$2: function (value) {
+            this.value = (value + 10) | 0;
+        },
+        getResult: function () {
+            return this.value;
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1899.Item", {
+        inherits: [Bridge.ClientTest.Batch3.BridgeIssues.Bridge1899.IItem],
+        config: {
+            alias: [
+            "getValue", "Bridge$ClientTest$Batch3$BridgeIssues$Bridge1899$IItem$getValue",
+            "setValue", "Bridge$ClientTest$Batch3$BridgeIssues$Bridge1899$IItem$setValue"
+            ]
+        },
+        getValue: function () {
+            return 1; // getter
+        },
+        getValue$2: function () {
+            return 2; // function
+        },
+        setValue: function () {
+
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1911_DerivedItem$1", function (T) { return {
+        inherits: [Bridge.ClientTest.Batch3.BridgeIssues.Bridge1911_BaseItem$1(T)],
+        statics: {
+            getValue: function (T1) {
+                return 2;
+            }
+        }
+    }; });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1969.Test2", {
+        inherits: [Bridge.ClientTest.Batch3.BridgeIssues.Bridge1969.Test1],
+        statics: {
+            ctor: function () {
+                Bridge.ClientTest.Batch3.BridgeIssues.Bridge1969.buffer = System.String.concat(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1969.buffer, "Test2");
+            }
+        }
+    });
 
     Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge240B", {
         inherits: [Bridge.ClientTest.Batch3.BridgeIssues.Bridge240A],
@@ -17410,6 +19099,10 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
         }
     });
 
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.MyType", {
+        inherits: [Bridge.ClientTest.Batch3.BridgeIssues.MyOtherType]
+    });
+
     Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.C15", {
         inherits: [Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.C14,Bridge.ClientTest.Batch3.BridgeIssues.Bridge1025.I9$1(System.Int32)],
         config: {
@@ -17478,6 +19171,17 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
         }
     }; });
 
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge1969.Test3", {
+        inherits: [Bridge.ClientTest.Batch3.BridgeIssues.Bridge1969.Test2],
+        statics: {
+            ctor: function () {
+                Bridge.ClientTest.Batch3.BridgeIssues.Bridge1969.buffer = System.String.concat(Bridge.ClientTest.Batch3.BridgeIssues.Bridge1969.buffer, "Test3");
+            },
+            foo: function () {
+            }
+        }
+    });
+
     Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge436Third", {
         inherits: [Bridge.ClientTest.Batch3.BridgeIssues.Bridge436Second],
         toObject: function () {
@@ -17544,5 +19248,9 @@ Bridge.assembly("Bridge.ClientTest.Batch3", function ($asm, globals) {
         inherits: [Bridge.ClientTest.Batch3.BridgeIssues.Bridge1339.Foo3]
     });
 
-    Bridge.setMetadata(console, function () { return {"members":[{"accessibility":2,"name":".ctor","type":1,"sname":"ctor"},{"accessibility":2,"name":"Clear","isStatic":true,"type":8,"sname":"clear","returnType":Object},{"accessibility":2,"name":"Read","isStatic":true,"type":8,"tpcount":0,"def":function () { return prompt(); },"returnType":String},{"accessibility":2,"name":"ReadLine","isStatic":true,"type":8,"tpcount":0,"def":function () { return prompt(); },"returnType":String},{"accessibility":2,"name":"ReadLine","isStatic":true,"type":8,"paramsInfo":[{"name":"text","parameterType":String,"position":0}],"tpcount":0,"def":function (text) { return prompt(text); },"returnType":String,"params":[String]},{"accessibility":2,"name":"ReadLine","isStatic":true,"type":8,"paramsInfo":[{"name":"text","parameterType":String,"position":0},{"name":"value","parameterType":String,"position":1}],"tpcount":0,"def":function (text, value) { return prompt(text, value); },"returnType":String,"params":[String,String]},{"accessibility":2,"name":"Write","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":Boolean,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(value); },"returnType":Object,"params":[Boolean]},{"accessibility":2,"name":"Write","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":System.Char,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(String.fromCharCode(value)); },"returnType":Object,"params":[System.Char]},{"accessibility":2,"name":"Write","isStatic":true,"type":8,"paramsInfo":[{"name":"buffer","parameterType":Array,"position":0}],"sname":"write","returnType":Object,"params":[Array]},{"accessibility":2,"name":"Write","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":System.Decimal,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(value.toString()); },"returnType":Object,"params":[System.Decimal]},{"accessibility":2,"name":"Write","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":System.Double,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(value); },"returnType":Object,"params":[System.Double]},{"accessibility":2,"name":"Write","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":System.Int32,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(value); },"returnType":Object,"params":[System.Int32]},{"accessibility":2,"name":"Write","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":System.Int64,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(value.toString()); },"returnType":Object,"params":[System.Int64]},{"accessibility":2,"name":"Write","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":Object,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(value); },"returnType":Object,"params":[Object]},{"accessibility":2,"name":"Write","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":System.Single,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(value); },"returnType":Object,"params":[System.Single]},{"accessibility":2,"name":"Write","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":String,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(value); },"returnType":Object,"params":[String]},{"accessibility":2,"name":"Write","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":System.UInt32,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(value); },"returnType":Object,"params":[System.UInt32]},{"accessibility":2,"name":"Write","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":System.UInt64,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(value.toString()); },"returnType":Object,"params":[System.UInt64]},{"accessibility":2,"name":"Write","isStatic":true,"type":8,"paramsInfo":[{"name":"format","parameterType":String,"position":0},{"name":"arg0","parameterType":Object,"position":1}],"tpcount":0,"def":function (format, arg0) { return Bridge.Console.log(System.String.format(format, arg0)); },"returnType":Object,"params":[String,Object]},{"accessibility":2,"name":"Write","isStatic":true,"type":8,"paramsInfo":[{"name":"format","parameterType":String,"position":0},{"name":"arg","isParams":true,"parameterType":Array,"position":1}],"tpcount":0,"def":function (format, arg) { return Bridge.Console.log(System.String.format(format, arg)); },"returnType":Object,"params":[String,Array]},{"accessibility":2,"name":"Write","isStatic":true,"type":8,"paramsInfo":[{"name":"format","parameterType":String,"position":0},{"name":"arg0","parameterType":Object,"position":1},{"name":"arg1","parameterType":Object,"position":2}],"tpcount":0,"def":function (format, arg0, arg1) { return Bridge.Console.log(System.String.format(format, arg0, arg1)); },"returnType":Object,"params":[String,Object,Object]},{"accessibility":2,"name":"Write","isStatic":true,"type":8,"paramsInfo":[{"name":"format","parameterType":String,"position":0},{"name":"arg0","parameterType":Object,"position":1},{"name":"arg1","parameterType":Object,"position":2},{"name":"arg2","parameterType":Object,"position":3}],"tpcount":0,"def":function (format, arg0, arg1, arg2) { return Bridge.Console.log(System.String.format(format, arg0, arg1, arg2)); },"returnType":Object,"params":[String,Object,Object,Object]},{"accessibility":2,"name":"Write","isStatic":true,"type":8,"paramsInfo":[{"name":"format","parameterType":String,"position":0},{"name":"arg0","parameterType":Object,"position":1},{"name":"arg1","parameterType":Object,"position":2},{"name":"arg2","parameterType":Object,"position":3},{"name":"arg3","parameterType":Object,"position":4}],"tpcount":0,"def":function (format, arg0, arg1, arg2, arg3) { return Bridge.Console.log(System.String.format(format, arg0, arg1, arg2, arg3)); },"returnType":Object,"params":[String,Object,Object,Object,Object]},{"accessibility":2,"name":"WriteLine","isStatic":true,"type":8,"tpcount":0,"def":function () { return Bridge.Console.log(); },"returnType":Object},{"accessibility":2,"name":"WriteLine","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":Boolean,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(value); },"returnType":Object,"params":[Boolean]},{"accessibility":2,"name":"WriteLine","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":System.Char,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(String.fromCharCode(value)); },"returnType":Object,"params":[System.Char]},{"accessibility":2,"name":"WriteLine","isStatic":true,"type":8,"paramsInfo":[{"name":"buffer","parameterType":Array,"position":0}],"sname":"writeLine","returnType":Object,"params":[Array]},{"accessibility":2,"name":"WriteLine","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":System.Decimal,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(value.toString()); },"returnType":Object,"params":[System.Decimal]},{"accessibility":2,"name":"WriteLine","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":System.Double,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(System.Double.format(value)); },"returnType":Object,"params":[System.Double]},{"accessibility":2,"name":"WriteLine","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":System.Enum,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(System.Enum.toString(Bridge.getType(value), value)); },"returnType":Object,"params":[System.Enum]},{"accessibility":2,"name":"WriteLine","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":System.Int32,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(value); },"returnType":Object,"params":[System.Int32]},{"accessibility":2,"name":"WriteLine","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":System.Int64,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(value.toString()); },"returnType":Object,"params":[System.Int64]},{"accessibility":2,"name":"WriteLine","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":System.Decimal,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(value && value.toString()); },"returnType":Object,"params":[System.Decimal]},{"accessibility":2,"name":"WriteLine","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":System.Int64,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(value && value.toString()); },"returnType":Object,"params":[System.Int64]},{"accessibility":2,"name":"WriteLine","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":System.UInt64,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(value && value.toString()); },"returnType":Object,"params":[System.UInt64]},{"accessibility":2,"name":"WriteLine","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":Object,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(value); },"returnType":Object,"params":[Object]},{"accessibility":2,"name":"WriteLine","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":System.Single,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(System.Single.format(value)); },"returnType":Object,"params":[System.Single]},{"accessibility":2,"name":"WriteLine","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":String,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(value); },"returnType":Object,"params":[String]},{"accessibility":2,"name":"WriteLine","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":System.UInt32,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(value); },"returnType":Object,"params":[System.UInt32]},{"accessibility":2,"name":"WriteLine","isStatic":true,"type":8,"paramsInfo":[{"name":"value","parameterType":System.UInt64,"position":0}],"tpcount":0,"def":function (value) { return Bridge.Console.log(value.toString()); },"returnType":Object,"params":[System.UInt64]},{"accessibility":2,"name":"WriteLine","isStatic":true,"type":8,"paramsInfo":[{"name":"format","parameterType":String,"position":0},{"name":"arg0","parameterType":Object,"position":1}],"tpcount":0,"def":function (format, arg0) { return Bridge.Console.log(System.String.format(format, arg0)); },"returnType":Object,"params":[String,Object]},{"accessibility":2,"name":"WriteLine","isStatic":true,"type":8,"paramsInfo":[{"name":"format","parameterType":String,"position":0},{"name":"arg","isParams":true,"parameterType":Array,"position":1}],"tpcount":0,"def":function (format, arg) { return Bridge.Console.log(System.String.format(format, arg)); },"returnType":Object,"params":[String,Array]},{"accessibility":2,"name":"WriteLine","isStatic":true,"type":8,"paramsInfo":[{"name":"format","parameterType":String,"position":0},{"name":"arg0","parameterType":Object,"position":1},{"name":"arg1","parameterType":Object,"position":2}],"tpcount":0,"def":function (format, arg0, arg1) { return Bridge.Console.log(System.String.format(format, arg0, arg1)); },"returnType":Object,"params":[String,Object,Object]},{"accessibility":2,"name":"WriteLine","isStatic":true,"type":8,"paramsInfo":[{"name":"format","parameterType":String,"position":0},{"name":"arg0","parameterType":Object,"position":1},{"name":"arg1","parameterType":Object,"position":2},{"name":"arg2","parameterType":Object,"position":3}],"tpcount":0,"def":function (format, arg0, arg1, arg2) { return Bridge.Console.log(System.String.format(format, arg0, arg1, arg2)); },"returnType":Object,"params":[String,Object,Object,Object]},{"accessibility":2,"name":"WriteLine","isStatic":true,"type":8,"paramsInfo":[{"name":"format","parameterType":String,"position":0},{"name":"arg0","parameterType":Object,"position":1},{"name":"arg1","parameterType":Object,"position":2},{"name":"arg2","parameterType":Object,"position":3},{"name":"arg3","parameterType":Object,"position":4}],"tpcount":0,"def":function (format, arg0, arg1, arg2, arg3) { return Bridge.Console.log(System.String.format(format, arg0, arg1, arg2, arg3)); },"returnType":Object,"params":[String,Object,Object,Object,Object]}]}; });
+    var $m = Bridge.setMetadata,
+        $n = [System.Collections.Generic,System,Bridge.ClientTest.Batch3.BridgeIssues];
+    $m($n[2].Bridge1900, function () { return {"m":[{"a":2,"n":"GetValue","is":true,"t":8,"pi":[{"n":"value","out":true,"pt":Object,"ps":0}],"tpc":1,"sn":"getValue","rt":$n[0].List$1(Object),"p":[Object]},{"a":1,"n":"TestOutRef","is":true,"t":8,"pi":[{"n":"value","out":true,"pt":$n[1].Int32,"ps":0},{"n":"s","ref":true,"pt":String,"ps":1}],"sn":"testOutRef","rt":Boolean,"p":[$n[1].Int32,String]},{"a":1,"n":"TryGetValue1","is":true,"t":8,"pi":[{"n":"value","out":true,"pt":$n[1].Int32,"ps":0}],"sn":"tryGetValue1","rt":Boolean,"p":[$n[1].Int32]},{"a":1,"n":"TryGetValue2","is":true,"t":8,"pi":[{"n":"value","out":true,"pt":$n[1].Int32,"ps":0},{"n":"value2","out":true,"pt":String,"ps":1}],"sn":"tryGetValue2","rt":Boolean,"p":[$n[1].Int32,String]}]}; });
+    $m($n[2].Bridge1970.Test, function () { return {"m":[{"a":2,"n":"IsInitialized","is":true,"t":4,"rt":Boolean,"sn":"isInitialized","ro":true}]}; });
+    $m(console, function () { return {"m":[{"a":2,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"Clear","is":true,"t":8,"sn":"clear","rt":Object},{"a":2,"n":"Read","is":true,"t":8,"tpc":0,"def":function () { return prompt(); },"rt":String},{"a":2,"n":"ReadLine","is":true,"t":8,"tpc":0,"def":function () { return prompt(); },"rt":String},{"a":2,"n":"ReadLine","is":true,"t":8,"pi":[{"n":"text","pt":String,"ps":0}],"tpc":0,"def":function (text) { return prompt(text); },"rt":String,"p":[String]},{"a":2,"n":"ReadLine","is":true,"t":8,"pi":[{"n":"text","pt":String,"ps":0},{"n":"value","pt":String,"ps":1}],"tpc":0,"def":function (text, value) { return prompt(text, value); },"rt":String,"p":[String,String]},{"a":2,"n":"Write","is":true,"t":8,"pi":[{"n":"value","pt":Boolean,"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(value); },"rt":Object,"p":[Boolean]},{"a":2,"n":"Write","is":true,"t":8,"pi":[{"n":"value","pt":$n[1].Char,"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(String.fromCharCode(value)); },"rt":Object,"p":[$n[1].Char]},{"a":2,"n":"Write","is":true,"t":8,"pi":[{"n":"buffer","pt":Array,"ps":0}],"sn":"write","rt":Object,"p":[Array]},{"a":2,"n":"Write","is":true,"t":8,"pi":[{"n":"value","pt":$n[1].Decimal,"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(value.toString()); },"rt":Object,"p":[$n[1].Decimal]},{"a":2,"n":"Write","is":true,"t":8,"pi":[{"n":"value","pt":$n[1].Double,"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(value); },"rt":Object,"p":[$n[1].Double]},{"a":2,"n":"Write","is":true,"t":8,"pi":[{"n":"value","pt":$n[1].Int32,"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(value); },"rt":Object,"p":[$n[1].Int32]},{"a":2,"n":"Write","is":true,"t":8,"pi":[{"n":"value","pt":$n[1].Int64,"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(value.toString()); },"rt":Object,"p":[$n[1].Int64]},{"a":2,"n":"Write","is":true,"t":8,"pi":[{"n":"value","pt":Object,"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(value); },"rt":Object,"p":[Object]},{"a":2,"n":"Write","is":true,"t":8,"pi":[{"n":"value","pt":$n[1].Single,"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(value); },"rt":Object,"p":[$n[1].Single]},{"a":2,"n":"Write","is":true,"t":8,"pi":[{"n":"value","pt":String,"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(value); },"rt":Object,"p":[String]},{"a":2,"n":"Write","is":true,"t":8,"pi":[{"n":"value","pt":$n[1].UInt32,"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(value); },"rt":Object,"p":[$n[1].UInt32]},{"a":2,"n":"Write","is":true,"t":8,"pi":[{"n":"value","pt":$n[1].UInt64,"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(value.toString()); },"rt":Object,"p":[$n[1].UInt64]},{"a":2,"n":"Write","is":true,"t":8,"pi":[{"n":"format","pt":String,"ps":0},{"n":"arg0","pt":Object,"ps":1}],"tpc":0,"def":function (format, arg0) { return Bridge.Console.log(System.String.format(format, arg0)); },"rt":Object,"p":[String,Object]},{"a":2,"n":"Write","is":true,"t":8,"pi":[{"n":"format","pt":String,"ps":0},{"n":"arg","ip":true,"pt":Array,"ps":1}],"tpc":0,"def":function (format, arg) { return Bridge.Console.log(System.String.format(format, arg)); },"rt":Object,"p":[String,Array]},{"a":2,"n":"Write","is":true,"t":8,"pi":[{"n":"format","pt":String,"ps":0},{"n":"arg0","pt":Object,"ps":1},{"n":"arg1","pt":Object,"ps":2}],"tpc":0,"def":function (format, arg0, arg1) { return Bridge.Console.log(System.String.format(format, arg0, arg1)); },"rt":Object,"p":[String,Object,Object]},{"a":2,"n":"Write","is":true,"t":8,"pi":[{"n":"format","pt":String,"ps":0},{"n":"arg0","pt":Object,"ps":1},{"n":"arg1","pt":Object,"ps":2},{"n":"arg2","pt":Object,"ps":3}],"tpc":0,"def":function (format, arg0, arg1, arg2) { return Bridge.Console.log(System.String.format(format, arg0, arg1, arg2)); },"rt":Object,"p":[String,Object,Object,Object]},{"a":2,"n":"Write","is":true,"t":8,"pi":[{"n":"format","pt":String,"ps":0},{"n":"arg0","pt":Object,"ps":1},{"n":"arg1","pt":Object,"ps":2},{"n":"arg2","pt":Object,"ps":3},{"n":"arg3","pt":Object,"ps":4}],"tpc":0,"def":function (format, arg0, arg1, arg2, arg3) { return Bridge.Console.log(System.String.format(format, arg0, arg1, arg2, arg3)); },"rt":Object,"p":[String,Object,Object,Object,Object]},{"a":2,"n":"WriteLine","is":true,"t":8,"tpc":0,"def":function () { return Bridge.Console.log(); },"rt":Object},{"a":2,"n":"WriteLine","is":true,"t":8,"pi":[{"n":"value","pt":Boolean,"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(value); },"rt":Object,"p":[Boolean]},{"a":2,"n":"WriteLine","is":true,"t":8,"pi":[{"n":"value","pt":$n[1].Char,"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(String.fromCharCode(value)); },"rt":Object,"p":[$n[1].Char]},{"a":2,"n":"WriteLine","is":true,"t":8,"pi":[{"n":"buffer","pt":Array,"ps":0}],"sn":"writeLine","rt":Object,"p":[Array]},{"a":2,"n":"WriteLine","is":true,"t":8,"pi":[{"n":"value","pt":$n[1].Decimal,"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(value.toString()); },"rt":Object,"p":[$n[1].Decimal]},{"a":2,"n":"WriteLine","is":true,"t":8,"pi":[{"n":"value","pt":$n[1].Double,"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(System.Double.format(value)); },"rt":Object,"p":[$n[1].Double]},{"a":2,"n":"WriteLine","is":true,"t":8,"pi":[{"n":"value","pt":$n[1].Enum,"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(System.Enum.toString(Bridge.getType(value), value)); },"rt":Object,"p":[$n[1].Enum]},{"a":2,"n":"WriteLine","is":true,"t":8,"pi":[{"n":"value","pt":$n[1].Int32,"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(value); },"rt":Object,"p":[$n[1].Int32]},{"a":2,"n":"WriteLine","is":true,"t":8,"pi":[{"n":"value","pt":$n[1].Int64,"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(value.toString()); },"rt":Object,"p":[$n[1].Int64]},{"a":2,"n":"WriteLine","is":true,"t":8,"pi":[{"n":"value","pt":$n[1].Nullable$1(System.Decimal),"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(value && value.toString()); },"rt":Object,"p":[$n[1].Nullable$1(System.Decimal)]},{"a":2,"n":"WriteLine","is":true,"t":8,"pi":[{"n":"value","pt":$n[1].Nullable$1(System.Int64),"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(value && value.toString()); },"rt":Object,"p":[$n[1].Nullable$1(System.Int64)]},{"a":2,"n":"WriteLine","is":true,"t":8,"pi":[{"n":"value","pt":$n[1].Nullable$1(System.UInt64),"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(value && value.toString()); },"rt":Object,"p":[$n[1].Nullable$1(System.UInt64)]},{"a":2,"n":"WriteLine","is":true,"t":8,"pi":[{"n":"value","pt":Object,"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(value); },"rt":Object,"p":[Object]},{"a":2,"n":"WriteLine","is":true,"t":8,"pi":[{"n":"value","pt":$n[1].Single,"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(System.Single.format(value)); },"rt":Object,"p":[$n[1].Single]},{"a":2,"n":"WriteLine","is":true,"t":8,"pi":[{"n":"value","pt":String,"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(value); },"rt":Object,"p":[String]},{"a":2,"n":"WriteLine","is":true,"t":8,"pi":[{"n":"value","pt":$n[1].UInt32,"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(value); },"rt":Object,"p":[$n[1].UInt32]},{"a":2,"n":"WriteLine","is":true,"t":8,"pi":[{"n":"value","pt":$n[1].UInt64,"ps":0}],"tpc":0,"def":function (value) { return Bridge.Console.log(value.toString()); },"rt":Object,"p":[$n[1].UInt64]},{"a":2,"n":"WriteLine","is":true,"t":8,"pi":[{"n":"format","pt":String,"ps":0},{"n":"arg0","pt":Object,"ps":1}],"tpc":0,"def":function (format, arg0) { return Bridge.Console.log(System.String.format(format, arg0)); },"rt":Object,"p":[String,Object]},{"a":2,"n":"WriteLine","is":true,"t":8,"pi":[{"n":"format","pt":String,"ps":0},{"n":"arg","ip":true,"pt":Array,"ps":1}],"tpc":0,"def":function (format, arg) { return Bridge.Console.log(System.String.format(format, arg)); },"rt":Object,"p":[String,Array]},{"a":2,"n":"WriteLine","is":true,"t":8,"pi":[{"n":"format","pt":String,"ps":0},{"n":"arg0","pt":Object,"ps":1},{"n":"arg1","pt":Object,"ps":2}],"tpc":0,"def":function (format, arg0, arg1) { return Bridge.Console.log(System.String.format(format, arg0, arg1)); },"rt":Object,"p":[String,Object,Object]},{"a":2,"n":"WriteLine","is":true,"t":8,"pi":[{"n":"format","pt":String,"ps":0},{"n":"arg0","pt":Object,"ps":1},{"n":"arg1","pt":Object,"ps":2},{"n":"arg2","pt":Object,"ps":3}],"tpc":0,"def":function (format, arg0, arg1, arg2) { return Bridge.Console.log(System.String.format(format, arg0, arg1, arg2)); },"rt":Object,"p":[String,Object,Object,Object]},{"a":2,"n":"WriteLine","is":true,"t":8,"pi":[{"n":"format","pt":String,"ps":0},{"n":"arg0","pt":Object,"ps":1},{"n":"arg1","pt":Object,"ps":2},{"n":"arg2","pt":Object,"ps":3},{"n":"arg3","pt":Object,"ps":4}],"tpc":0,"def":function (format, arg0, arg1, arg2, arg3) { return Bridge.Console.log(System.String.format(format, arg0, arg1, arg2, arg3)); },"rt":Object,"p":[String,Object,Object,Object,Object]}]}; });
 });

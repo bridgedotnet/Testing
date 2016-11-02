@@ -1,4 +1,11 @@
-﻿Bridge.assembly("Bridge.ClientTest.Batch2", function ($asm, globals) {
+﻿/**
+ * Bridge Test library - special tests with custom config options like useTypedArrays
+ * @version 15.3.0
+ * @author Object.NET, Inc.
+ * @copyright Copyright 2008-2016 Object.NET, Inc.
+ * @compiler Bridge.NET 15.3.0
+ */
+Bridge.assembly("Bridge.ClientTest.Batch2", function ($asm, globals) {
     "use strict";
 
     Bridge.define("Bridge.ClientTest.Batch2.BridgeIssues.Bridge1385", {
@@ -261,15 +268,15 @@
         foreachWithArrayItemCallbackWorks: function () {
             var result = "";
             ["a", "b", "c"].forEach(function (s) {
-                result = System.String.concat(result, s);
-            });
+                    result = System.String.concat(result, s);
+                });
             Bridge.Test.Assert.areEqual("abc", result);
         },
         foreachWithArrayCallbackWorks: function () {
             var result = "";
             Bridge.Linq.Enumerable.from(["a", "b", "c"]).forEach(function (s, i) {
-                result = System.String.concat(result, (System.String.concat(s, i)));
-            });
+                    result = System.String.concat(result, (System.String.concat(s, i)));
+                });
             Bridge.Test.Assert.areEqual("a0b1c2", result);
         },
         indexOfWithoutStartIndexWorks: function () {
@@ -371,7 +378,7 @@
             var $t;
             var list = ["x", "y"];
             var result = "";
-            $t = Bridge.getEnumerator(list);
+            $t = Bridge.getEnumerator(list, String);
             while ($t.moveNext()) {
                 var s = $t.getCurrent();
                 result = System.String.concat(result, s);
