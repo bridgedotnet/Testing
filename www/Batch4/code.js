@@ -1,9 +1,9 @@
-﻿/**
+/**
  * Bridge Test library - general C# language tests for Portarelle
- * @version 15.3.0
+ * @version 15.5.0
  * @author Object.NET, Inc.
  * @copyright Copyright 2008-2016 Object.NET, Inc.
- * @compiler Bridge.NET 15.3.0
+ * @compiler Bridge.NET 15.5.0
  */
 Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflection.Resource2.bin":"EBESExQV","Bridge.ClientTest.Batch4.Reflection.Resource1.bin":"AAECAwQFBgc="}, function ($asm, globals) {
     "use strict";
@@ -114,9 +114,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual(42, c3.i);
         },
         createInstanceWithNoArgumentsWorksForClassWithJsonDefaultConstructor: function () {
-            var c1 = Bridge.createInstance(Object);
-            var c2 = Bridge.createInstance(Object);
-            var c3 = this.instantiate(Object);
+            var c1 = Bridge.createInstance(Bridge.ClientTest.Batch4.ActivatorTests.C7);
+            var c2 = Bridge.createInstance(Bridge.ClientTest.Batch4.ActivatorTests.C7);
+            var c3 = this.instantiate(Bridge.ClientTest.Batch4.ActivatorTests.C7);
 
             Bridge.Test.Assert.areEqual(Object, c1.constructor);
             Bridge.Test.Assert.areEqual(Object, c2.constructor);
@@ -189,6 +189,10 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             this.$initialize();
             this.i = 42;
         }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch4.ActivatorTests.C7", {
+        $literal: true
     });
 
     Bridge.define("Bridge.ClientTest.Batch4.ActivatorTests.C8$1", function (T) { return {
@@ -422,7 +426,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         },
         sortWithCompareCallbackWorks: function () {
             var arr = [1, 6, 6, 4, 2];
-            System.Array.sort(arr, new (System.Collections.Generic.Comparer$1(System.Int32))($_.Bridge.ClientTest.Batch4.ArrayTests.f1));
+            System.Array.sort(arr, new (System.Collections.Generic.Comparer$1(System.Int32))($asm.$.Bridge.ClientTest.Batch4.ArrayTests.f1));
             Bridge.Test.Assert.areEqual([6, 6, 4, 2, 1], arr);
         },
         foreachWhenCastToIListWorks: function () {
@@ -536,11 +540,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    var $_ = {};
+    Bridge.ns("Bridge.ClientTest.Batch4.ArrayTests", $asm.$);
 
-    Bridge.ns("Bridge.ClientTest.Batch4.ArrayTests", $_);
-
-    Bridge.apply($_.Bridge.ClientTest.Batch4.ArrayTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.ArrayTests, {
         f1: function (x, y) {
             return ((y - x) | 0);
         }
@@ -589,14 +591,14 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual$1(1, new (System.Collections.Generic.Comparer$1(Bridge.ClientTest.Batch4.Collections.Generic.ComparerTests.C))(System.Collections.Generic.Comparer$1.$default.fn).compare(new Bridge.ClientTest.Batch4.Collections.Generic.ComparerTests.C(8), new Bridge.ClientTest.Batch4.Collections.Generic.ComparerTests.C(3)), "Compare(8, 3) should be 1");
         },
         createWorks: function () {
-            var comparer = new (System.Collections.Generic.Comparer$1(System.Int32))($_.Bridge.ClientTest.Batch4.Collections.Generic.ComparerTests.f1);
+            var comparer = new (System.Collections.Generic.Comparer$1(System.Int32))($asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ComparerTests.f1);
             Bridge.Test.Assert.areEqual$1(42, comparer.compare(8, 3), "The result should be 42");
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.Collections.Generic.ComparerTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.Collections.Generic.ComparerTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.Collections.Generic.ComparerTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ComparerTests, {
         f1: function (x, y) {
             Bridge.Test.Assert.areEqual$1(8, x, "x should be 8");
             Bridge.Test.Assert.areEqual$1(3, y, "y should be 3");
@@ -763,7 +765,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         },
         keysWorks: function () {
             var $t;
-            var d = $_.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f1(new (System.Collections.Generic.Dictionary$2(String,String))());
+            var d = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f1(new (System.Collections.Generic.Dictionary$2(String,String))());
             var keys = d.getKeys();
             Bridge.Test.Assert.true(Bridge.is(keys, System.Collections.Generic.IEnumerable$1(String)));
             Bridge.Test.Assert.true(Bridge.is(keys, System.Collections.Generic.ICollection$1(String)));
@@ -785,7 +787,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         },
         valuesWorks: function () {
             var $t;
-            var d = $_.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f2(new (System.Collections.Generic.Dictionary$2(System.Int32,String))());
+            var d = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f2(new (System.Collections.Generic.Dictionary$2(System.Int32,String))());
             var values = d.getValues();
             Bridge.Test.Assert.true(Bridge.is(values, System.Collections.Generic.IEnumerable$1(String)));
             Bridge.Test.Assert.true(Bridge.is(values, System.Collections.Generic.ICollection$1(String)));
@@ -806,11 +808,11 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual(2, count);
         },
         indexerGetterWorksForExistingItems: function () {
-            var d = $_.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f3(new (System.Collections.Generic.Dictionary$2(System.Int32,String))());
+            var d = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f3(new (System.Collections.Generic.Dictionary$2(System.Int32,String))());
             Bridge.Test.Assert.areEqual("a", d.get(1));
         },
         indexerSetterWorks: function () {
-            var d = $_.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f4(new (System.Collections.Generic.Dictionary$2(System.Int32,String))());
+            var d = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f4(new (System.Collections.Generic.Dictionary$2(System.Int32,String))());
             d.set(2, "c");
             d.set(3, "d");
             Bridge.Test.Assert.areEqual(d.getCount(), 3);
@@ -819,7 +821,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual("d", d.get(3));
         },
         indexerGetterThrowsForNonExistingItems: function () {
-            var d = $_.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f5(new (System.Collections.Generic.Dictionary$2(System.Int32,String))());
+            var d = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f5(new (System.Collections.Generic.Dictionary$2(System.Int32,String))());
             try {
                 var x = d.get(10);
                 Bridge.Test.Assert.true(false);
@@ -833,7 +835,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             }
         },
         addWorks: function () {
-            var d = $_.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f6(new (System.Collections.Generic.Dictionary$2(System.Int32,String))());
+            var d = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f6(new (System.Collections.Generic.Dictionary$2(System.Int32,String))());
             d.add(3, "c");
             Bridge.Test.Assert.areEqual(d.getCount(), 3);
             Bridge.Test.Assert.areEqual("a", d.get(1));
@@ -841,7 +843,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual("c", d.get(3));
         },
         addThrowsIfItemAlreadyExists: function () {
-            var d = $_.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f7(new (System.Collections.Generic.Dictionary$2(System.Int32,String))());
+            var d = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f7(new (System.Collections.Generic.Dictionary$2(System.Int32,String))());
             try {
                 d.add(2, "b");
                 Bridge.Test.Assert.true(false);
@@ -855,18 +857,18 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             }
         },
         clearWorks: function () {
-            var d = $_.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f8(new (System.Collections.Generic.Dictionary$2(System.Int32,String))());
+            var d = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f8(new (System.Collections.Generic.Dictionary$2(System.Int32,String))());
             d.clear();
             Bridge.Test.Assert.areEqual(0, d.getCount());
         },
         containsKeyWorks: function () {
-            var d = $_.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f9(new (System.Collections.Generic.Dictionary$2(System.Int32,String))());
+            var d = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f9(new (System.Collections.Generic.Dictionary$2(System.Int32,String))());
             Bridge.Test.Assert.true(d.containsKey(1));
             Bridge.Test.Assert.false(d.containsKey(3));
         },
         enumeratingWorks: function () {
             var $t;
-            var d = $_.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f10(new (System.Collections.Generic.Dictionary$2(String,String))());
+            var d = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f10(new (System.Collections.Generic.Dictionary$2(String,String))());
             var count = 0;
             $t = Bridge.getEnumerator(d);
             while ($t.moveNext()) {
@@ -883,14 +885,14 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual(2, count);
         },
         removeWorks: function () {
-            var d = $_.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f11(new (System.Collections.Generic.Dictionary$2(System.Int32,String))());
+            var d = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f11(new (System.Collections.Generic.Dictionary$2(System.Int32,String))());
             Bridge.Test.Assert.areStrictEqual(true, d.remove(2));
             Bridge.Test.Assert.areStrictEqual(false, d.remove(3));
             Bridge.Test.Assert.areEqual(1, d.getCount());
             Bridge.Test.Assert.areEqual("a", d.get(1));
         },
         tryGetValueWithIntKeysWorks: function () {
-            var d = $_.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f12(new (System.Collections.Generic.Dictionary$2(String,System.Int32))());
+            var d = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f12(new (System.Collections.Generic.Dictionary$2(String,System.Int32))());
             var i = { };
 
             Bridge.Test.Assert.true(d.tryGetValue("a", i));
@@ -899,7 +901,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual(0, i.v);
         },
         tryGetValueWithObjectKeysWorks: function () {
-            var d = $_.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f13(new (System.Collections.Generic.Dictionary$2(String,Object))());
+            var d = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f13(new (System.Collections.Generic.Dictionary$2(String,Object))());
             var o = { };
 
             Bridge.Test.Assert.true(d.tryGetValue("a", o));
@@ -908,16 +910,16 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areStrictEqual(null, o.v);
         },
         canUseCustomComparer: function () {
-            var d = $_.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f14(new (System.Collections.Generic.Dictionary$2(String, System.Int32))(null, new Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.TestEqualityComparer()));
+            var d = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.f14(new (System.Collections.Generic.Dictionary$2(String, System.Int32))(null, new Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests.TestEqualityComparer()));
             d.set("a2", 100);
             Bridge.Test.Assert.areEqual(100, d.get("a3"));
             Bridge.Test.Assert.areEqual(2, d.getCount());
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.Collections.Generic.GenericDictionaryTests, {
         f1: function (_o10) {
             _o10.add("1", "a");
             _o10.add("2", "b");
@@ -1165,7 +1167,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             var d = new Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.MyDictionary.ctor();
             Bridge.Test.Assert.areEqual(0, d.getCount());
 
-            var d2 = new Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.MyDictionary.$ctor1($_.Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.f1(new (System.Collections.Generic.Dictionary$2(System.Int32,String))()));
+            var d2 = new Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.MyDictionary.$ctor1($asm.$.Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.f1(new (System.Collections.Generic.Dictionary$2(System.Int32,String))()));
             Bridge.Test.Assert.areEqual(1, d2.getCount());
 
             var d3 = new Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.MyDictionary.ctor();
@@ -1174,7 +1176,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         keysWorks: function () {
             var $t;
             var actualKeys = [3, 6, 9];
-            var d = new Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.MyDictionary.$ctor1($_.Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.f2(new (System.Collections.Generic.Dictionary$2(System.Int32,String))()));
+            var d = new Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.MyDictionary.$ctor1($asm.$.Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.f2(new (System.Collections.Generic.Dictionary$2(System.Int32,String))()));
             var keys = Bridge.cast(d, System.Collections.Generic.IDictionary$2(System.Int32,String)).System$Collections$Generic$IDictionary$2$System$Int32$String$getKeys();
             Bridge.Test.Assert.true(Bridge.is(keys, System.Collections.Generic.IEnumerable$1(System.Int32)));
             Bridge.Test.Assert.true(Bridge.hasValue(keys));
@@ -1189,7 +1191,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual(actualKeys.length, i);
         },
         getItemWorks: function () {
-            var d = new Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.MyDictionary.$ctor1($_.Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.f3(new (System.Collections.Generic.Dictionary$2(System.Int32,String))()));
+            var d = new Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.MyDictionary.$ctor1($asm.$.Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.f3(new (System.Collections.Generic.Dictionary$2(System.Int32,String))()));
             var di = Bridge.cast(d, System.Collections.Generic.IDictionary$2(System.Int32,String));
             var di2 = Bridge.cast(d, System.Collections.Generic.IDictionary$2(System.Int32,String));
 
@@ -1224,7 +1226,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         valuesWorks: function () {
             var $t;
             var actualValues = ["b", "z", "x"];
-            var d2 = new Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.MyDictionary.$ctor1($_.Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.f4(new (System.Collections.Generic.Dictionary$2(System.Int32,String))()));
+            var d2 = new Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.MyDictionary.$ctor1($asm.$.Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.f4(new (System.Collections.Generic.Dictionary$2(System.Int32,String))()));
             var values = Bridge.cast(d2, System.Collections.Generic.IDictionary$2(System.Int32,String)).System$Collections$Generic$IDictionary$2$System$Int32$String$getValues();
             Bridge.Test.Assert.true(Bridge.is(values, System.Collections.IEnumerable));
 
@@ -1239,7 +1241,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual(actualValues.length, i);
         },
         containsKeyWorks: function () {
-            var d = new Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.MyDictionary.$ctor1($_.Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.f5(new (System.Collections.Generic.Dictionary$2(System.Int32,String))()));
+            var d = new Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.MyDictionary.$ctor1($asm.$.Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.f5(new (System.Collections.Generic.Dictionary$2(System.Int32,String))()));
             Bridge.Test.Assert.true(Bridge.is(new Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.MyDictionary.ctor(), System.Collections.Generic.IDictionary$2(System.Int32,String)));
             // #1626
             //var di = (IReadOnlyDictionary<int, string>)d;
@@ -1254,7 +1256,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.false(di2.System$Collections$Generic$IDictionary$2$System$Int32$String$containsKey(353));
         },
         tryGetValueWorks: function () {
-            var d = new Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.MyDictionary.$ctor1($_.Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.f6(new (System.Collections.Generic.Dictionary$2(System.Int32,String))()));
+            var d = new Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.MyDictionary.$ctor1($asm.$.Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.f6(new (System.Collections.Generic.Dictionary$2(System.Int32,String))()));
             // #1626
             //var di = (IReadOnlyDictionary<int, string>)d;
             var di2 = Bridge.cast(d, System.Collections.Generic.IDictionary$2(System.Int32,String));
@@ -1298,14 +1300,14 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             }
         },
         clearWorks: function () {
-            var d = new Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.MyDictionary.$ctor1($_.Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.f7(new (System.Collections.Generic.Dictionary$2(System.Int32,String))()));
+            var d = new Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.MyDictionary.$ctor1($asm.$.Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.f7(new (System.Collections.Generic.Dictionary$2(System.Int32,String))()));
 
             Bridge.Test.Assert.areEqual(3, d.getCount());
             d.clear();
             Bridge.Test.Assert.areEqual(0, d.getCount());
         },
         removeWorks: function () {
-            var d = new Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.MyDictionary.$ctor1($_.Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.f8(new (System.Collections.Generic.Dictionary$2(System.Int32,String))()));
+            var d = new Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.MyDictionary.$ctor1($asm.$.Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.f8(new (System.Collections.Generic.Dictionary$2(System.Int32,String))()));
             var di = Bridge.cast(d, System.Collections.Generic.IDictionary$2(System.Int32,String));
 
             Bridge.Test.Assert.areStrictEqual(true, d.remove(6));
@@ -1319,7 +1321,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.true(di.System$Collections$Generic$IDictionary$2$System$Int32$String$containsKey(13));
         },
         setItemWorks: function () {
-            var d = new Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.MyDictionary.$ctor1($_.Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.f9(new (System.Collections.Generic.Dictionary$2(System.Int32,String))()));
+            var d = new Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.MyDictionary.$ctor1($asm.$.Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests.f9(new (System.Collections.Generic.Dictionary$2(System.Int32,String))()));
             var di = Bridge.cast(d, System.Collections.Generic.IDictionary$2(System.Int32,String));
 
             d.setItem(3, "check");
@@ -1332,9 +1334,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.Collections.Generic.IDictionaryTests, {
         f1: function (_o1) {
             _o1.add(3, "c");
             return _o1;
@@ -1890,8 +1892,6 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
                 $yield.push(2);
                 this._sb.appendLine("throwing");
                 throw new System.Exception("test");
-                this._sb.appendLine("yielding 3");
-                $yield.push(3);
             }
             finally {
                 this._sb.appendLine("in finally");
@@ -1923,8 +1923,6 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
                 $yield.push(2);
                 this._sb.appendLine("throwing");
                 throw new System.Exception("test");
-                this._sb.appendLine("yielding 3");
-                $yield.push(3);
             }
             finally {
                 this._sb.appendLine("in finally");
@@ -2041,17 +2039,17 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         },
         countWorks: function () {
             Bridge.Test.Assert.areEqual(0, new (System.Collections.Generic.List$1(String))().getCount());
-            Bridge.Test.Assert.areEqual(1, $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f1(new (System.Collections.Generic.List$1(String))()).getCount());
-            Bridge.Test.Assert.areEqual(2, $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f2(new (System.Collections.Generic.List$1(String))()).getCount());
+            Bridge.Test.Assert.areEqual(1, $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f1(new (System.Collections.Generic.List$1(String))()).getCount());
+            Bridge.Test.Assert.areEqual(2, $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f2(new (System.Collections.Generic.List$1(String))()).getCount());
         },
         indexingWorks: function () {
-            Bridge.Test.Assert.areEqual("x", $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f3(new (System.Collections.Generic.List$1(String))()).getItem(0));
-            Bridge.Test.Assert.areEqual("y", $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f4(new (System.Collections.Generic.List$1(String))()).getItem(1));
+            Bridge.Test.Assert.areEqual("x", $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f3(new (System.Collections.Generic.List$1(String))()).getItem(0));
+            Bridge.Test.Assert.areEqual("y", $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f4(new (System.Collections.Generic.List$1(String))()).getItem(1));
         },
         foreachWorks: function () {
             var $t;
             var result = "";
-            $t = Bridge.getEnumerator($_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f5(new (System.Collections.Generic.List$1(String))()));
+            $t = Bridge.getEnumerator($asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f5(new (System.Collections.Generic.List$1(String))()));
             while ($t.moveNext()) {
                 var s = $t.getCurrent();
                 result = System.String.concat(result, s);
@@ -2059,7 +2057,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual("xy", result);
         },
         getEnumeratorWorks: function () {
-            var e = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f6(new (System.Collections.Generic.List$1(String))()).getEnumerator();
+            var e = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f6(new (System.Collections.Generic.List$1(String))()).getEnumerator();
             Bridge.Test.Assert.true(e.System$Collections$IEnumerator$moveNext());
             Bridge.Test.Assert.areEqual("x", e[Bridge.geti(e, "System$Collections$Generic$IEnumerator$1$String$getCurrent$1", "getCurrent$1")]());
             Bridge.Test.Assert.true(e.System$Collections$IEnumerator$moveNext());
@@ -2067,128 +2065,128 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.false(e.System$Collections$IEnumerator$moveNext());
         },
         addWorks: function () {
-            var l = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f7(new (System.Collections.Generic.List$1(String))());
+            var l = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f7(new (System.Collections.Generic.List$1(String))());
             l.add("a");
             Bridge.Test.Assert.areEqual(["x", "y", "a"], l.toArray());
         },
         addRangeWorks: function () {
-            var l = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f8(new (System.Collections.Generic.List$1(String))());
+            var l = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f8(new (System.Collections.Generic.List$1(String))());
             l.addRange(["a", "b", "c"]);
             Bridge.Test.Assert.areEqual(["x", "y", "a", "b", "c"], l.toArray());
         },
         clearWorks: function () {
-            var l = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f9(new (System.Collections.Generic.List$1(String))());
+            var l = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f9(new (System.Collections.Generic.List$1(String))());
             l.clear();
             Bridge.Test.Assert.areEqual(l.getCount(), 0);
         },
         concatWorks: function () {
-            var list = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f10(new (System.Collections.Generic.List$1(String))());
+            var list = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f10(new (System.Collections.Generic.List$1(String))());
             Bridge.Test.Assert.areEqual(["a", "b", "c"], System.Linq.Enumerable.from(list).concat(["c"]).toArray());
-            Bridge.Test.Assert.areEqual(["a", "b", "c", "d"], System.Linq.Enumerable.from(list).concat($_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f11(new (System.Collections.Generic.List$1(String))())).toArray());
+            Bridge.Test.Assert.areEqual(["a", "b", "c", "d"], System.Linq.Enumerable.from(list).concat($asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f11(new (System.Collections.Generic.List$1(String))())).toArray());
             Bridge.Test.Assert.areEqual(["a", "b"], list.toArray());
         },
         containsWorks: function () {
-            var list = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f12(new (System.Collections.Generic.List$1(String))());
+            var list = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f12(new (System.Collections.Generic.List$1(String))());
             Bridge.Test.Assert.true(list.contains("x"));
             Bridge.Test.Assert.false(list.contains("z"));
         },
         containsUsesEqualsMethod: function () {
-            var l = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f13(new (System.Collections.Generic.List$1(Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C))());
+            var l = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f13(new (System.Collections.Generic.List$1(Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C))());
             Bridge.Test.Assert.true(l.contains(new Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C(2)));
             Bridge.Test.Assert.false(l.contains(new Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C(4)));
         },
         sliceWithoutEndWorks: function () {
-            Bridge.Test.Assert.areEqual(["c", "d"], $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f14(new (System.Collections.Generic.List$1(String))()).slice(2).toArray());
+            Bridge.Test.Assert.areEqual(["c", "d"], $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f14(new (System.Collections.Generic.List$1(String))()).slice(2).toArray());
         },
         sliceWithEndWorks: function () {
-            Bridge.Test.Assert.areEqual(["b", "c"], $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f15(new (System.Collections.Generic.List$1(String))()).slice(1, 3).toArray());
+            Bridge.Test.Assert.areEqual(["b", "c"], $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f15(new (System.Collections.Generic.List$1(String))()).slice(1, 3).toArray());
         },
         indexOfWithoutStartIndexWorks: function () {
             Bridge.Test.Assert.areEqual(1, ["a", "b", "c", "b"].indexOf("b"));
         },
         indexOfWithoutStartIndexUsesEqualsMethod: function () {
-            var l = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f16(new (System.Collections.Generic.List$1(Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C))());
+            var l = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f16(new (System.Collections.Generic.List$1(Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C))());
             Bridge.Test.Assert.areEqual(1, l.indexOf(new Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C(2)));
             Bridge.Test.Assert.areEqual(-1, l.indexOf(new Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C(4)));
         },
         indexOfWithStartIndexWorks: function () {
-            Bridge.Test.Assert.areEqual(3, $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f17(new (System.Collections.Generic.List$1(String))()).indexOf("b", 2));
+            Bridge.Test.Assert.areEqual(3, $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f17(new (System.Collections.Generic.List$1(String))()).indexOf("b", 2));
         },
         indexOfWithStartIndexUsesEqualsMethod: function () {
-            Bridge.Test.Assert.areEqual(3, $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f18(new (System.Collections.Generic.List$1(Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C))()).indexOf(new Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C(2), 2));
+            Bridge.Test.Assert.areEqual(3, $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f18(new (System.Collections.Generic.List$1(Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C))()).indexOf(new Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C(2), 2));
         },
         insertWorks: function () {
-            var l = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f19(new (System.Collections.Generic.List$1(String))());
+            var l = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f19(new (System.Collections.Generic.List$1(String))());
             l.insert(1, "a");
             Bridge.Test.Assert.areEqual(["x", "a", "y"], l.toArray());
         },
         insertRangeWorks: function () {
-            var l = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f20(new (System.Collections.Generic.List$1(String))());
+            var l = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f20(new (System.Collections.Generic.List$1(String))());
             l.insertRange(1, ["a", "b"]);
             Bridge.Test.Assert.areEqual(["x", "a", "b", "y"], l.toArray());
         },
         joinWithoutDelimiterWorks: function () {
-            Bridge.Test.Assert.areEqual("a,b,c,b", $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f21(new (System.Collections.Generic.List$1(String))()).join());
+            Bridge.Test.Assert.areEqual("a,b,c,b", $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f21(new (System.Collections.Generic.List$1(String))()).join());
         },
         joinWithDelimiterWorks: function () {
-            Bridge.Test.Assert.areEqual("a|b|c|b", $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f22(new (System.Collections.Generic.List$1(String))()).join("|"));
+            Bridge.Test.Assert.areEqual("a|b|c|b", $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f22(new (System.Collections.Generic.List$1(String))()).join("|"));
         },
         removeWorks: function () {
-            var list = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f23(new (System.Collections.Generic.List$1(String))());
+            var list = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f23(new (System.Collections.Generic.List$1(String))());
             Bridge.Test.Assert.true(list.remove("a"));
             Bridge.Test.Assert.areEqual(["b", "c", "a"], list.toArray());
         },
         removeReturnsFalseIfTheElementWasNotFound: function () {
-            var list = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f24(new (System.Collections.Generic.List$1(String))());
+            var list = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f24(new (System.Collections.Generic.List$1(String))());
             Bridge.Test.Assert.false(list.remove("d"));
             Bridge.Test.Assert.areEqual(["a", "b", "c", "a"], list.toArray());
         },
         removeCanRemoveNullItem: function () {
-            var list = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f25(new (System.Collections.Generic.List$1(String))());
+            var list = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f25(new (System.Collections.Generic.List$1(String))());
             Bridge.Test.Assert.true(list.remove(null));
             Bridge.Test.Assert.areEqual(["a", "c", null], list.toArray());
         },
         removeUsesEqualsMethod: function () {
-            var list = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f26(new (System.Collections.Generic.List$1(Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C))());
+            var list = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f26(new (System.Collections.Generic.List$1(Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C))());
             list.remove(new Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C(2));
             Bridge.Test.Assert.areEqual(2, list.getCount());
             Bridge.Test.Assert.areEqual(1, list.getItem(0).i);
             Bridge.Test.Assert.areEqual(3, list.getItem(1).i);
         },
         removeAtWorks: function () {
-            var list = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f27(new (System.Collections.Generic.List$1(String))());
+            var list = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f27(new (System.Collections.Generic.List$1(String))());
             list.removeAt(1);
             Bridge.Test.Assert.areEqual(["a", "c", "a"], list.toArray());
         },
         removeRangeWorks: function () {
-            var list = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f28(new (System.Collections.Generic.List$1(String))());
+            var list = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f28(new (System.Collections.Generic.List$1(String))());
             list.removeRange(1, 2);
             Bridge.Test.Assert.areEqual(["a", "d"], list.toArray());
         },
         reverseWorks: function () {
-            var list = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f29(new (System.Collections.Generic.List$1(System.Int32))());
+            var list = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f29(new (System.Collections.Generic.List$1(System.Int32))());
             list.reverse();
             Bridge.Test.Assert.areEqual([2, 3, 1, 4, 3, 1], list.toArray());
         },
         sortWithDefaultCompareWorks: function () {
-            var list = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f30(new (System.Collections.Generic.List$1(System.Int32))());
+            var list = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f30(new (System.Collections.Generic.List$1(System.Int32))());
             list.sort();
             Bridge.Test.Assert.areEqual([1, 2, 4, 6, 6], list.toArray());
         },
         sortWithCompareCallbackWorks: function () {
-            var list = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f31(new (System.Collections.Generic.List$1(System.Int32))());
-            list.sort($_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f32);
+            var list = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f31(new (System.Collections.Generic.List$1(System.Int32))());
+            list.sort($asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f32);
             Bridge.Test.Assert.areEqual([6, 6, 4, 2, 1], list.toArray());
         },
         sortWithIComparerWorks: function () {
             var $t;
-            var list = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f33(new (System.Collections.Generic.List$1(System.Int32))());
+            var list = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f33(new (System.Collections.Generic.List$1(System.Int32))());
             ($t=new Bridge.ClientTest.Batch4.Collections.Generic.ListTests.TestReverseComparer(), list.sort(Bridge.fn.bind($t, $t.compare)));
             Bridge.Test.Assert.areEqual([6, 6, 4, 2, 1], list.toArray());
         },
         foreachWhenCastToIEnumerableWorks: function () {
             var $t;
-            var list = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f34(new (System.Collections.Generic.List$1(String))());
+            var list = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f34(new (System.Collections.Generic.List$1(String))());
             var result = "";
             $t = Bridge.getEnumerator(list, String);
             while ($t.moveNext()) {
@@ -2198,7 +2196,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual("xy", result);
         },
         iEnumerableGetEnumeratorWorks: function () {
-            var l = Bridge.cast($_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f35(new (System.Collections.Generic.List$1(String))()), System.Collections.Generic.IEnumerable$1(String));
+            var l = Bridge.cast($asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f35(new (System.Collections.Generic.List$1(String))()), System.Collections.Generic.IEnumerable$1(String));
             var e = Bridge.getEnumerator(l, String);
             Bridge.Test.Assert.true(e.System$Collections$IEnumerator$moveNext());
             Bridge.Test.Assert.areEqual("x", e[Bridge.geti(e, "System$Collections$Generic$IEnumerator$1$String$getCurrent$1", "getCurrent$1")]());
@@ -2207,70 +2205,70 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.false(e.System$Collections$IEnumerator$moveNext());
         },
         iCollectionCountWorks: function () {
-            var l = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f36(new (System.Collections.Generic.List$1(String))());
+            var l = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f36(new (System.Collections.Generic.List$1(String))());
             Bridge.Test.Assert.areEqual(3, System.Array.getCount(l, String));
         },
         iCollectionAddWorks: function () {
-            var l = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f37(new (System.Collections.Generic.List$1(String))());
+            var l = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f37(new (System.Collections.Generic.List$1(String))());
             System.Array.add(l, "a", String);
             Bridge.Test.Assert.areEqual(["x", "y", "z", "a"], System.Linq.Enumerable.from(l).toArray());
         },
         iCollectionClearWorks: function () {
-            var l = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f38(new (System.Collections.Generic.List$1(String))());
+            var l = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f38(new (System.Collections.Generic.List$1(String))());
             System.Array.clear(l, String);
             Bridge.Test.Assert.areEqual(System.Array.init(0, null), System.Linq.Enumerable.from(l).toArray());
         },
         iCollectionContainsWorks: function () {
-            var l = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f39(new (System.Collections.Generic.List$1(String))());
+            var l = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f39(new (System.Collections.Generic.List$1(String))());
             Bridge.Test.Assert.true(System.Array.contains(l, "y", String));
             Bridge.Test.Assert.false(System.Array.contains(l, "a", String));
         },
         iCollectionContainsUsesEqualsMethod: function () {
-            var l = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f40(new (System.Collections.Generic.List$1(Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C))());
+            var l = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f40(new (System.Collections.Generic.List$1(Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C))());
             Bridge.Test.Assert.true(System.Array.contains(l, new Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C(2), Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C));
             Bridge.Test.Assert.false(System.Array.contains(l, new Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C(4), Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C));
         },
         iCollectionRemoveWorks: function () {
-            var l = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f41(new (System.Collections.Generic.List$1(String))());
+            var l = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f41(new (System.Collections.Generic.List$1(String))());
             Bridge.Test.Assert.true(System.Array.remove(l, "y", String));
             Bridge.Test.Assert.false(System.Array.remove(l, "a", String));
             Bridge.Test.Assert.areEqual(["x", "z"], System.Linq.Enumerable.from(l).toArray());
         },
         iCollectionRemoveCanRemoveNullItem: function () {
-            var list = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f42(new (System.Collections.Generic.List$1(String))());
+            var list = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f42(new (System.Collections.Generic.List$1(String))());
             Bridge.Test.Assert.true(System.Array.remove(list, null, String));
             Bridge.Test.Assert.areEqual(["a", "c", null], System.Linq.Enumerable.from(list).toArray());
         },
         iCollectionRemoveUsesEqualsMethod: function () {
-            var list = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f43(new (System.Collections.Generic.List$1(Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C))());
+            var list = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f43(new (System.Collections.Generic.List$1(Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C))());
             System.Array.remove(list, new Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C(2), Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C);
             Bridge.Test.Assert.areEqual(2, System.Array.getCount(list, Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C));
             Bridge.Test.Assert.areEqual(1, System.Array.getItem(list, 0, Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C).i);
             Bridge.Test.Assert.areEqual(3, System.Array.getItem(list, 1, Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C).i);
         },
         iListIndexingWorks: function () {
-            var l = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f44(new (System.Collections.Generic.List$1(String))());
+            var l = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f44(new (System.Collections.Generic.List$1(String))());
             Bridge.Test.Assert.areEqual("y", System.Array.getItem(l, 1, String));
             System.Array.setItem(l, 1, "a", String);
             Bridge.Test.Assert.areEqual(["x", "a", "z"], System.Linq.Enumerable.from(l).toArray());
         },
         iListIndexOfWorks: function () {
-            var l = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f45(new (System.Collections.Generic.List$1(String))());
+            var l = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f45(new (System.Collections.Generic.List$1(String))());
             Bridge.Test.Assert.areEqual(1, System.Array.indexOf(l, "y", 0, null, String));
             Bridge.Test.Assert.areEqual(-1, System.Array.indexOf(l, "a", 0, null, String));
         },
         iListIndexOfUsesEqualsMethod: function () {
-            var l = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f46(new (System.Collections.Generic.List$1(Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C))());
+            var l = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f46(new (System.Collections.Generic.List$1(Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C))());
             Bridge.Test.Assert.areEqual(1, System.Array.indexOf(l, new Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C(2), 0, null, Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C));
             Bridge.Test.Assert.areEqual(-1, System.Array.indexOf(l, new Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C(4), 0, null, Bridge.ClientTest.Batch4.Collections.Generic.ListTests.C));
         },
         iListInsertWorks: function () {
-            var l = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f47(new (System.Collections.Generic.List$1(String))());
+            var l = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f47(new (System.Collections.Generic.List$1(String))());
             System.Array.insert(l, 1, "a", String);
             Bridge.Test.Assert.areEqual(["x", "a", "y", "z"], System.Linq.Enumerable.from(l).toArray());
         },
         iListRemoveAtWorks: function () {
-            var l = $_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f48(new (System.Collections.Generic.List$1(String))());
+            var l = $asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests.f48(new (System.Collections.Generic.List$1(String))());
             System.Array.removeAt(l, 1, String);
             Bridge.Test.Assert.areEqual(["x", "z"], System.Linq.Enumerable.from(l).toArray());
         },
@@ -2285,9 +2283,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.Collections.Generic.ListTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.Collections.Generic.ListTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.Collections.Generic.ListTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.Collections.Generic.ListTests, {
         f1: function (_o24) {
             _o24.add("x");
             return _o24;
@@ -2873,34 +2871,34 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual(expected, actual.toArray());
         },
         setInt8Works: function () {
-            this.setTest($_.Bridge.ClientTest.Batch4.Collections.TypedArrays.DataViewTests.f1, [0, 14, 242]);
+            this.setTest($asm.$.Bridge.ClientTest.Batch4.Collections.TypedArrays.DataViewTests.f1, [0, 14, 242]);
         },
         setUint8Works: function () {
-            this.setTest($_.Bridge.ClientTest.Batch4.Collections.TypedArrays.DataViewTests.f2, [0, 14, 242]);
+            this.setTest($asm.$.Bridge.ClientTest.Batch4.Collections.TypedArrays.DataViewTests.f2, [0, 14, 242]);
         },
         setInt16Works: function () {
-            this.setTest($_.Bridge.ClientTest.Batch4.Collections.TypedArrays.DataViewTests.f3, [0, 0, 255, 252, 252, 255, 255, 252, 0, 14, 14, 0, 0, 14, 0]);
+            this.setTest($asm.$.Bridge.ClientTest.Batch4.Collections.TypedArrays.DataViewTests.f3, [0, 0, 255, 252, 252, 255, 255, 252, 0, 14, 14, 0, 0, 14, 0]);
         },
         setUint16Works: function () {
-            this.setTest($_.Bridge.ClientTest.Batch4.Collections.TypedArrays.DataViewTests.f4, [0, 0, 140, 35, 35, 140, 140, 35, 0, 14, 14, 0, 0, 14, 0]);
+            this.setTest($asm.$.Bridge.ClientTest.Batch4.Collections.TypedArrays.DataViewTests.f4, [0, 0, 140, 35, 35, 140, 140, 35, 0, 14, 14, 0, 0, 14, 0]);
         },
         setInt32Works: function () {
-            this.setTest($_.Bridge.ClientTest.Batch4.Collections.TypedArrays.DataViewTests.f5, [0, 0, 0, 0, 255, 255, 255, 252, 252, 255, 255, 255, 255, 255, 255, 252, 0, 0, 0, 14, 14, 0, 0, 0, 0, 0, 0, 14, 0, 0]);
+            this.setTest($asm.$.Bridge.ClientTest.Batch4.Collections.TypedArrays.DataViewTests.f5, [0, 0, 0, 0, 255, 255, 255, 252, 252, 255, 255, 255, 255, 255, 255, 252, 0, 0, 0, 14, 14, 0, 0, 0, 0, 0, 0, 14, 0, 0]);
         },
         setUint32Works: function () {
-            this.setTest($_.Bridge.ClientTest.Batch4.Collections.TypedArrays.DataViewTests.f6, [0, 0, 0, 0, 207, 224, 18, 143, 143, 18, 224, 207, 207, 224, 18, 143, 0, 0, 0, 14, 14, 0, 0, 0, 0, 0, 0, 14, 0, 0]);
+            this.setTest($asm.$.Bridge.ClientTest.Batch4.Collections.TypedArrays.DataViewTests.f6, [0, 0, 0, 0, 207, 224, 18, 143, 143, 18, 224, 207, 207, 224, 18, 143, 0, 0, 0, 14, 14, 0, 0, 0, 0, 0, 0, 14, 0, 0]);
         },
         setFloat32Works: function () {
-            this.setTest($_.Bridge.ClientTest.Batch4.Collections.TypedArrays.DataViewTests.f7, [0, 0, 0, 0, 63, 192, 0, 0, 0, 0, 192, 63, 63, 192, 0, 0]);
+            this.setTest($asm.$.Bridge.ClientTest.Batch4.Collections.TypedArrays.DataViewTests.f7, [0, 0, 0, 0, 63, 192, 0, 0, 0, 0, 192, 63, 63, 192, 0, 0]);
         },
         setFloat64Works: function () {
-            this.setTest($_.Bridge.ClientTest.Batch4.Collections.TypedArrays.DataViewTests.f8, [0, 0, 0, 0, 0, 0, 0, 0, 63, 248, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 248, 63, 63, 248, 0, 0, 0, 0, 0, 0]);
+            this.setTest($asm.$.Bridge.ClientTest.Batch4.Collections.TypedArrays.DataViewTests.f8, [0, 0, 0, 0, 0, 0, 0, 0, 63, 248, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 248, 63, 63, 248, 0, 0, 0, 0, 0, 0]);
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.Collections.TypedArrays.DataViewTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.Collections.TypedArrays.DataViewTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.Collections.TypedArrays.DataViewTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.Collections.TypedArrays.DataViewTests, {
         f1: function (v) {
             v.setInt8(1, 14);
             v.setInt8(2, -14);
@@ -5003,13 +5001,13 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.true(Bridge.Reflection.isClass(Function));
             Bridge.Test.Assert.areEqual("Function", Bridge.Reflection.getTypeFullName(Function));
             Bridge.Test.Assert.areEqual("Function", Bridge.Reflection.getTypeFullName(Function));
-            Bridge.Test.Assert.true(Bridge.is($_.Bridge.ClientTest.Batch4.DelegateTests.f1, Function));
+            Bridge.Test.Assert.true(Bridge.is($asm.$.Bridge.ClientTest.Batch4.DelegateTests.f1, Function));
 
             var interfaces = Bridge.Reflection.getInterfaces(Function);
             Bridge.Test.Assert.areEqual(0, interfaces.length);
         },
         creatingAndInvokingADelegateWorks: function () {
-            var d = Bridge.fn.bind(this, $_.Bridge.ClientTest.Batch4.DelegateTests.f2);
+            var d = Bridge.fn.bind(this, $asm.$.Bridge.ClientTest.Batch4.DelegateTests.f2);
             Bridge.Test.Assert.areEqual(25, d(13));
         },
         addForCreateWorks: function (x) {
@@ -5121,7 +5119,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual(1, l3);
         },
         subtractingDelegateFromItselfReturnsNull: function () {
-            var a = $_.Bridge.ClientTest.Batch4.DelegateTests.f1;
+            var a = $asm.$.Bridge.ClientTest.Batch4.DelegateTests.f1;
             var a2 = Bridge.fn.remove(a, a);
             Bridge.Test.Assert.true(Bridge.staticEquals(a2, null));
         },
@@ -5130,7 +5128,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         removeWorksWithMethodGroupConversion_SPI_1563: function () {
             // #1563
 
-            var a = $_.Bridge.ClientTest.Batch4.DelegateTests.f1;
+            var a = $asm.$.Bridge.ClientTest.Batch4.DelegateTests.f1;
 
             var a2 = a + Bridge.fn.bind(this, this.a);
             var a3 = a2 - Bridge.fn.bind(this, this.a);
@@ -5181,7 +5179,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual("1", sb.toString());
         },
         cloningDelegateToADifferentTypeIsANoOp: function () {
-            var d1 = $_.Bridge.ClientTest.Batch4.DelegateTests.f1;
+            var d1 = $asm.$.Bridge.ClientTest.Batch4.DelegateTests.f1;
             var d2 = d1;
             Bridge.Test.Assert.true(Bridge.referenceEquals(d1, d2));
         },
@@ -5267,9 +5265,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.DelegateTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.DelegateTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.DelegateTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.DelegateTests, {
         f1: function () {
         },
         f2: function (x) {
@@ -5409,34 +5407,34 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             });
         },
         forAll: function () {
-            Bridge.Test.Assert.throws$7(System.ArgumentNullException, $_.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f1, "ArgumentNullException");
-            this.assertNoExceptions($_.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f3);
-            Bridge.Test.Assert.false(System.Diagnostics.Contracts.Contract.forAll(2, 5, $_.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f2));
-            Bridge.Test.Assert.true(System.Diagnostics.Contracts.Contract.forAll(2, 5, $_.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f4));
+            Bridge.Test.Assert.throws$7(System.ArgumentNullException, $asm.$.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f1, "ArgumentNullException");
+            this.assertNoExceptions($asm.$.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f3);
+            Bridge.Test.Assert.false(System.Diagnostics.Contracts.Contract.forAll(2, 5, $asm.$.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f2));
+            Bridge.Test.Assert.true(System.Diagnostics.Contracts.Contract.forAll(2, 5, $asm.$.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f4));
         },
         forAllWithCollection: function () {
-            Bridge.Test.Assert.throws$7(System.ArgumentNullException, $_.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f5, "ArgumentNullException");
-            this.assertNoExceptions($_.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f6);
-            Bridge.Test.Assert.false(System.Diagnostics.Contracts.Contract.forAll$1([1, 2, 3], $_.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f2));
-            Bridge.Test.Assert.true(System.Diagnostics.Contracts.Contract.forAll$1([1, 2, 3], $_.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f4));
+            Bridge.Test.Assert.throws$7(System.ArgumentNullException, $asm.$.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f5, "ArgumentNullException");
+            this.assertNoExceptions($asm.$.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f6);
+            Bridge.Test.Assert.false(System.Diagnostics.Contracts.Contract.forAll$1([1, 2, 3], $asm.$.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f2));
+            Bridge.Test.Assert.true(System.Diagnostics.Contracts.Contract.forAll$1([1, 2, 3], $asm.$.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f4));
         },
         exists: function () {
-            Bridge.Test.Assert.throws$7(System.ArgumentNullException, $_.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f7, "ArgumentNullException");
-            this.assertNoExceptions($_.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f9);
-            Bridge.Test.Assert.true(System.Diagnostics.Contracts.Contract.exists(1, 5, $_.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f8));
-            Bridge.Test.Assert.false(System.Diagnostics.Contracts.Contract.exists(1, 5, $_.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f10));
+            Bridge.Test.Assert.throws$7(System.ArgumentNullException, $asm.$.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f7, "ArgumentNullException");
+            this.assertNoExceptions($asm.$.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f9);
+            Bridge.Test.Assert.true(System.Diagnostics.Contracts.Contract.exists(1, 5, $asm.$.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f8));
+            Bridge.Test.Assert.false(System.Diagnostics.Contracts.Contract.exists(1, 5, $asm.$.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f10));
         },
         existsWithCollection: function () {
-            Bridge.Test.Assert.throws$7(System.ArgumentNullException, $_.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f11, "ArgumentNullException");
-            this.assertNoExceptions($_.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f12);
-            Bridge.Test.Assert.true(System.Diagnostics.Contracts.Contract.exists$1([1, 2, 3], $_.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f8));
-            Bridge.Test.Assert.false(System.Diagnostics.Contracts.Contract.exists$1([1, 2, 3], $_.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f10));
+            Bridge.Test.Assert.throws$7(System.ArgumentNullException, $asm.$.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f11, "ArgumentNullException");
+            this.assertNoExceptions($asm.$.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f12);
+            Bridge.Test.Assert.true(System.Diagnostics.Contracts.Contract.exists$1([1, 2, 3], $asm.$.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f8));
+            Bridge.Test.Assert.false(System.Diagnostics.Contracts.Contract.exists$1([1, 2, 3], $asm.$.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f10));
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests, {
         f1: function () {
             System.Diagnostics.Contracts.Contract.forAll(2, 5, null);
         },
@@ -5444,7 +5442,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             return s !== 3;
         },
         f3: function () {
-            System.Diagnostics.Contracts.Contract.forAll(2, 5, $_.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f2);
+            System.Diagnostics.Contracts.Contract.forAll(2, 5, $asm.$.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f2);
         },
         f4: function (s) {
             return s !== 6;
@@ -5453,7 +5451,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             System.Diagnostics.Contracts.Contract.forAll$1([1, 2, 3], null);
         },
         f6: function () {
-            System.Diagnostics.Contracts.Contract.forAll$1([1, 2, 3], $_.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f2);
+            System.Diagnostics.Contracts.Contract.forAll$1([1, 2, 3], $asm.$.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f2);
         },
         f7: function () {
             System.Diagnostics.Contracts.Contract.exists(1, 5, null);
@@ -5462,7 +5460,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             return s === 3;
         },
         f9: function () {
-            System.Diagnostics.Contracts.Contract.exists(1, 5, $_.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f8);
+            System.Diagnostics.Contracts.Contract.exists(1, 5, $asm.$.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f8);
         },
         f10: function (s) {
             return s === 6;
@@ -5471,7 +5469,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             System.Diagnostics.Contracts.Contract.exists$1([1, 2, 3], null);
         },
         f12: function () {
-            System.Diagnostics.Contracts.Contract.exists$1([1, 2, 3], $_.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f8);
+            System.Diagnostics.Contracts.Contract.exists$1([1, 2, 3], $asm.$.Bridge.ClientTest.Batch4.Diagnostics.Contracts.ContractTests.f8);
         }
     });
 
@@ -6506,7 +6504,6 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         throwingAndCatchingExceptionsWorks: function () {
             try {
                 throw new Bridge.ClientTest.Batch4.ExceptionTests.E2("The message");
-                Bridge.Test.Assert.fail$1("Should not get to statement after throw");
             }
             catch ($e1) {
                 $e1 = System.Exception.create($e1);
@@ -6519,12 +6516,10 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
                     throw $e1;
                 }
             }
-            Bridge.Test.Assert.fail$1("Should not get to statement after catch");
         },
         exceptionOfWrongTypeIsNotCaught: function () {
             try {
                 throw new Bridge.ClientTest.Batch4.ExceptionTests.E1("The message");
-                Bridge.Test.Assert.fail$1("Should not get to statement after throw");
             }
             catch ($e1) {
                 $e1 = System.Exception.create($e1);
@@ -6544,7 +6539,6 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         canCatchExceptionAsBaseType: function () {
             try {
                 throw new Bridge.ClientTest.Batch4.ExceptionTests.E2("The message");
-                Bridge.Test.Assert.fail$1("Should not get to statement after throw");
             }
             catch ($e1) {
                 $e1 = System.Exception.create($e1);
@@ -6557,7 +6551,6 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
                     throw $e1;
                 }
             }
-            Bridge.Test.Assert.fail$1("Should not get to statement after catch");
         },
         canCatchStringAsException: function () {
             try {
@@ -6735,7 +6728,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             var g = new System.Guid.$ctor1([120, 149, 98, 168, 38, 122, 69, 97, 144, 50, 217, 26, 61, 84, 189, 104]);
             Bridge.Test.Assert.true$1(Bridge.is(g, System.Guid), "Should be Guid");
             Bridge.Test.Assert.areEqual$1("a8629578-7a26-6145-9032-d91a3d54bd68", g.toString(), "value");
-            Bridge.Test.Assert.throws$4($_.Bridge.ClientTest.Batch4.GuidTests.f1, System.ArgumentException, "Invalid array should throw");
+            Bridge.Test.Assert.throws$4($asm.$.Bridge.ClientTest.Batch4.GuidTests.f1, System.ArgumentException, "Invalid array should throw");
         },
         int32Int16Int16ByteArrayConstructorWorks: function () {
             var g = new System.Guid.$ctor3(2023056040, 9850, 17761, [144, 50, 217, 26, 61, 84, 189, 104]);
@@ -6765,7 +6758,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual$1("a6993c0a-a8cb-45d9-994b-90e7203e4fc6", g2.toString(), "g2");
             Bridge.Test.Assert.areEqual$1("a6993c0a-a8cb-45d9-994b-90e7203e4fc6", g3.toString(), "g3");
             Bridge.Test.Assert.areEqual$1("a6993c0a-a8cb-45d9-994b-90e7203e4fc6", g4.toString(), "g4");
-            Bridge.Test.Assert.throws$4($_.Bridge.ClientTest.Batch4.GuidTests.f2, System.FormatException, "Invalid should throw");
+            Bridge.Test.Assert.throws$4($asm.$.Bridge.ClientTest.Batch4.GuidTests.f2, System.FormatException, "Invalid should throw");
         },
         parseWorks: function () {
             var g1 = System.Guid.parse("A6993C0A-A8CB-45D9-994B-90E7203E4FC6");
@@ -6780,7 +6773,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual$1("a6993c0a-a8cb-45d9-994b-90e7203e4fc6", g2.toString(), "g2");
             Bridge.Test.Assert.areEqual$1("a6993c0a-a8cb-45d9-994b-90e7203e4fc6", g3.toString(), "g3");
             Bridge.Test.Assert.areEqual$1("a6993c0a-a8cb-45d9-994b-90e7203e4fc6", g4.toString(), "g4");
-            Bridge.Test.Assert.throws$4($_.Bridge.ClientTest.Batch4.GuidTests.f3, System.FormatException, "Invalid should throw");
+            Bridge.Test.Assert.throws$4($asm.$.Bridge.ClientTest.Batch4.GuidTests.f3, System.FormatException, "Invalid should throw");
         },
         parseExactWorks: function () {
             var g1 = System.Guid.parseExact("A6993C0A-A8CB-45D9-994B-90E7203E4FC6", "D");
@@ -6795,10 +6788,10 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual$1("a6993c0a-a8cb-45d9-994b-90e7203e4fc6", g2.toString(), "g2");
             Bridge.Test.Assert.areEqual$1("a6993c0a-a8cb-45d9-994b-90e7203e4fc6", g3.toString(), "g3");
             Bridge.Test.Assert.areEqual$1("a6993c0a-a8cb-45d9-994b-90e7203e4fc6", g4.toString(), "g4");
-            Bridge.Test.Assert.throws$4($_.Bridge.ClientTest.Batch4.GuidTests.f4, System.FormatException, "Invalid B should throw");
-            Bridge.Test.Assert.throws$4($_.Bridge.ClientTest.Batch4.GuidTests.f5, System.FormatException, "Invalid P should throw");
-            Bridge.Test.Assert.throws$4($_.Bridge.ClientTest.Batch4.GuidTests.f6, System.FormatException, "Invalid N should throw");
-            Bridge.Test.Assert.throws$4($_.Bridge.ClientTest.Batch4.GuidTests.f7, System.FormatException, "Invalid D should throw");
+            Bridge.Test.Assert.throws$4($asm.$.Bridge.ClientTest.Batch4.GuidTests.f4, System.FormatException, "Invalid B should throw");
+            Bridge.Test.Assert.throws$4($asm.$.Bridge.ClientTest.Batch4.GuidTests.f5, System.FormatException, "Invalid P should throw");
+            Bridge.Test.Assert.throws$4($asm.$.Bridge.ClientTest.Batch4.GuidTests.f6, System.FormatException, "Invalid N should throw");
+            Bridge.Test.Assert.throws$4($asm.$.Bridge.ClientTest.Batch4.GuidTests.f7, System.FormatException, "Invalid D should throw");
         },
         tryParseWorks: function () {
             var g1 = { v : new System.Guid() }, g2 = { v : new System.Guid() }, g3 = { v : new System.Guid() }, g4 = { v : new System.Guid() }, g5 = { v : new System.Guid() };
@@ -6910,9 +6903,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.GuidTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.GuidTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.GuidTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.GuidTests, {
         f1: function () {
             new System.Guid.$ctor1([120, 149, 98, 168, 38, 122]);
         },
@@ -7076,7 +7069,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         },
         lambdaWorks: function () {
             var $t, $t1, $t2, $t3, $t4, $t5, $t6, $t7, $t8, $t9;
-            var asserter = $_.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f1;
+            var asserter = $asm.$.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f1;
 
             var f1 = ($t={ ntype: 9, t: System.Int32, value: 42 }, { ntype: 18, t: Function, rt: $t.t, body: $t, p: Bridge.toList([]) });
             var f2 = ($t1 = { ntype: 38, t: System.Int32, n: "a" }, ($t2={ ntype: 9, t: String, value: "X" }, { ntype: 18, t: Function, rt: $t2.t, body: $t2, p: Bridge.toList([$t1]) }));
@@ -7142,7 +7135,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         },
         binaryExpressionsWork: function () {
             var $t, $t1, $t2, $t3, $t4, $t5, $t6, $t7, $t8, $t9, $t10, $t11, $t12, $t13, $t14, $t15, $t16, $t17, $t18, $t19, $t20, $t21, $t22, $t23, $t24, $t25, $t26, $t27, $t28, $t29, $t30, $t31, $t32, $t33, $t34, $t35, $t36, $t37, $t38, $t39, $t40, $t41, $t42, $t43, $t44, $t45, $t46, $t47, $t48, $t49, $t50, $t51, $t52, $t53, $t54, $t55, $t56, $t57, $t58, $t59, $t60, $t61, $t62, $t63, $t64, $t65, $t66, $t67, $t68, $t69, $t70, $t71, $t72, $t73, $t74, $t75, $t76, $t77, $t78, $t79, $t80, $t81, $t82, $t83, $t84, $t85, $t86, $t87, $t88, $t89, $t90, $t91, $t92, $t93, $t94, $t95, $t96, $t97, $t98, $t99, $t100, $t101, $t102, $t103, $t104, $t105, $t106, $t107, $t108, $t109, $t110, $t111, $t112, $t113, $t114, $t115, $t116, $t117, $t118, $t119, $t120, $t121, $t122, $t123, $t124, $t125, $t126, $t127, $t128, $t129, $t130, $t131, $t132, $t133, $t134, $t135, $t136, $t137, $t138, $t139, $t140, $t141, $t142, $t143, $t144, $t145, $t146, $t147, $t148, $t149, $t150, $t151, $t152, $t153, $t154, $t155, $t156, $t157, $t158, $t159, $t160, $t161, $t162, $t163, $t164, $t165, $t166, $t167, $t168, $t169, $t170, $t171, $t172, $t173, $t174, $t175, $t176, $t177;
-            var asserter = $_.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f2;
+            var asserter = $asm.$.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f2;
 
             var e1 = ($t = { ntype: 38, t: System.Int32, n: "a" }, $t1 = { ntype: 38, t: System.Int32, n: "b" }, ($t2={ ntype: 26, t: System.Int32, left: $t, right: $t1 }, { ntype: 18, t: Function, rt: $t2.t, body: $t2, p: Bridge.toList([$t,$t1]) }));
             var e2 = ($t3 = { ntype: 38, t: System.Int32, n: "a" }, $t4 = { ntype: 38, t: System.Int32, n: "b" }, ($t5={ ntype: 25, t: System.Int32, left: $t3, right: $t4 }, { ntype: 18, t: Function, rt: $t5.t, body: $t5, p: Bridge.toList([$t3,$t4]) }));
@@ -7396,7 +7389,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         },
         unaryExpressionsWork: function () {
             var $t, $t1, $t2, $t3, $t4, $t5, $t6, $t7, $t8, $t9, $t10, $t11, $t12, $t13, $t14, $t15, $t16, $t17, $t18, $t19, $t20, $t21, $t22, $t23, $t24, $t25, $t26, $t27, $t28, $t29, $t30, $t31, $t32, $t33, $t34, $t35, $t36, $t37, $t38, $t39;
-            var asserter = $_.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f3;
+            var asserter = $asm.$.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f3;
 
             var e1 = ($t = { ntype: 38, t: System.Int32, n: "a" }, ($t1={ ntype: 29, t: System.Int32, operand: $t }, { ntype: 18, t: Function, rt: $t1.t, body: $t1, p: Bridge.toList([$t]) }));
             var e2 = ($t2 = { ntype: 38, t: System.Int32, n: "a" }, ($t3={ ntype: 28, t: System.Int32, operand: $t2 }, { ntype: 18, t: Function, rt: $t3.t, body: $t3, p: Bridge.toList([$t2]) }));
@@ -7511,7 +7504,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         },
         conversionsWork: function () {
             var $t, $t1, $t2, $t3, $t4, $t5, $t6, $t7, $t8, $t9, $t10, $t11, $t12, $t13;
-            var asserter = $_.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f3;
+            var asserter = $asm.$.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f3;
 
             var e1 = ($t = { ntype: 38, t: Object, n: "a" }, ($t1={ ntype: 10, t: System.Int32, operand: $t }, { ntype: 18, t: Function, rt: $t1.t, body: $t1, p: Bridge.toList([$t]) }));
             var e2 = ($t2 = { ntype: 38, t: Object, n: "a" }, ($t3={ ntype: 10, t: Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.C, operand: $t2 }, { ntype: 18, t: Function, rt: $t3.t, body: $t3, p: Bridge.toList([$t2]) }));
@@ -7619,7 +7612,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         },
         callWorks: function () {
             var $t, $t1, $t2, $t3, $t4, $t5, $t6, $t7, $t8, $t9, $t10, $t11, $t12, $t13, $t14, $t15, $t16, $t17, $t18, $t19, $t20, $t21;
-            var asserter = $_.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f4;
+            var asserter = $asm.$.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f4;
 
             var e1 = ($t = { ntype: 38, t: Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.C, n: "i" }, $t1 = { ntype: 38, t: System.Int32, n: "a" }, $t2 = { ntype: 38, t: String, n: "b" }, ($t4=($t3=Bridge.getMetadata(Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.C).m[2], { ntype: 6, t: $t3.rt, obj: $t, method: $t3, args: Bridge.toList([$t1,$t2]) }), { ntype: 18, t: Function, rt: $t4.t, body: $t4, p: Bridge.toList([$t,$t1,$t2]) }));
             var e2 = ($t5 = { ntype: 38, t: System.Int32, n: "a" }, $t6 = { ntype: 38, t: String, n: "b" }, ($t8=($t7=Bridge.getMetadata(Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.C).m[3], { ntype: 6, t: $t7.rt, obj: null, method: $t7, args: Bridge.toList([$t5,$t6]) }), { ntype: 18, t: Function, rt: $t8.t, body: $t8, p: Bridge.toList([$t5,$t6]) }));
@@ -7673,7 +7666,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             var e2 = { ntype: 17, t: String, expression: { ntype: 38, t: Function, n: "a" }, args: Bridge.toList([{ ntype: 38, t: System.Int32, n: "b" }, { ntype: 38, t: String, n: "c" }]) };
             var e3 = { ntype: 17, t: String, expression: { ntype: 38, t: Function, n: "a" }, args: Bridge.toList(new (Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.MyEnumerable$1(Object))([{ ntype: 38, t: System.Int32, n: "b" }, { ntype: 38, t: String, n: "c" }])) };
 
-            var asserter = $_.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f5;
+            var asserter = $asm.$.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f5;
 
             asserter(e1.body, "e1");
             asserter(e2, "e2");
@@ -7758,7 +7751,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             var e13 = ($t20=Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.C, 4, 284, "F1"), { ntype: 23, t: $t20.rt, expression: { ntype: 38, t: Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.C, n: "a" }, member: $t20 });
             var e14 = ($t21=Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.C, 16, 284, "P1"), { ntype: 23, t: $t21.rt, expression: { ntype: 38, t: Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.C, n: "a" }, member: $t21 });
 
-            var asserter = $_.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f6;
+            var asserter = $asm.$.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f6;
 
             asserter(e1.body, "F1", 234, "e1");
             asserter(e2.body, "F2", 24, "e2");
@@ -7800,7 +7793,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             var pb2 = { ntype: 38, t: System.Int32, n: "b" };
             var pc2 = { ntype: 38, t: System.Int32, n: "c" };
 
-            var asserter = $_.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f7;
+            var asserter = $asm.$.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f7;
 
             var e1 = ($t=Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.C, 16, 284, "Item"), { ntype: 55, t: $t.rt, obj: pa1, indexer: $t, arguments: Bridge.toList([pb1, pc1]) });
             var e2 = ($t1=Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.C, 16, 284, "Item"), { ntype: 55, t: $t1.rt, obj: pa1, indexer: $t1, arguments: Bridge.toList(new (Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.MyEnumerable$1(Object))([pb1, pc1])) });
@@ -7816,7 +7809,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         },
         objectConstructionWorks: function () {
             var $t, $t1, $t2, $t3, $t4, $t5, $t6, $t7, $t8, $t9, $t10, $t11, $t12, $t13;
-            var asserter = $_.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f8;
+            var asserter = $asm.$.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f8;
 
             var e1 = ($t1=($t=Bridge.getMetadata(Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.C).m[0], { ntype: 31, t: $t.td, constructor: $t, arguments: Bridge.toList([]) }), { ntype: 18, t: Function, rt: $t1.t, body: $t1, p: Bridge.toList([]) });
             var e2 = ($t2 = { ntype: 38, t: System.Int32, n: "a" }, $t3 = { ntype: 38, t: System.Int32, n: "b" }, ($t5=($t4=Bridge.getMetadata(Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.C).m[1], { ntype: 31, t: $t4.td, constructor: $t4, arguments: Bridge.toList([$t2,$t3]) }), { ntype: 18, t: Function, rt: $t5.t, body: $t5, p: Bridge.toList([$t2,$t3]) }));
@@ -7836,7 +7829,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         },
         anonymousTypeConstructionWorks: function () {
             var $t, $t1, $t2, $t3, $t4;
-            var e = ($t = { ntype: 38, t: System.Int32, n: "a" }, $t1 = { ntype: 38, t: System.Int32, n: "b" }, ($t3={ ntype: 10, t: Object, operand: ($t2={"td":$_.$AnonymousType$1,"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"}, { ntype: 31, t: $t2.td, constructor: $t2, arguments: Bridge.toList([$t,$t1]), m: Bridge.toList([{"td":$_.$AnonymousType$1,"a":2,"n":"A","t":16,"rt":System.Int32,"g":{"td":$_.$AnonymousType$1,"a":2,"n":"get_A","t":8,"sn":"getA","rt":System.Int32}},{"td":$_.$AnonymousType$1,"a":2,"n":"B","t":16,"rt":System.Int32,"g":{"td":$_.$AnonymousType$1,"a":2,"n":"get_B","t":8,"sn":"getB","rt":System.Int32}}]) }) }, { ntype: 18, t: Function, rt: $t3.t, body: $t3, p: Bridge.toList([$t,$t1]) }));
+            var e = ($t = { ntype: 38, t: System.Int32, n: "a" }, $t1 = { ntype: 38, t: System.Int32, n: "b" }, ($t3={ ntype: 10, t: Object, operand: ($t2={"td":$asm.$AnonymousType$1,"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"}, { ntype: 31, t: $t2.td, constructor: $t2, arguments: Bridge.toList([$t,$t1]), m: Bridge.toList([{"td":$asm.$AnonymousType$1,"a":2,"n":"A","t":16,"rt":System.Int32,"g":{"td":$asm.$AnonymousType$1,"a":2,"n":"get_A","t":8,"sn":"getA","rt":System.Int32}},{"td":$asm.$AnonymousType$1,"a":2,"n":"B","t":16,"rt":System.Int32,"g":{"td":$asm.$AnonymousType$1,"a":2,"n":"get_B","t":8,"sn":"getB","rt":System.Int32}}]) }) }, { ntype: 18, t: Function, rt: $t3.t, body: $t3, p: Bridge.toList([$t,$t1]) }));
             Bridge.Test.Assert.areEqual(10, e.body.ntype);
 
             var ne = ($t4 = ($t4 = e.body, Bridge.cast($t4, Bridge.hasValue($t4) && ([4,10,11,28,29,30,34,40,44,49,54,60,62,77,78,79,80,82,83,84].indexOf($t4.ntype) >= 0))).operand, Bridge.as($t4, Bridge.hasValue($t4) && ($t4.ntype === 31)));
@@ -7851,10 +7844,10 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             var propB = ne.m.get(1);
             Bridge.Test.Assert.true$1(Bridge.is(propA, System.Reflection.PropertyInfo), "A should be property");
             Bridge.Test.Assert.areEqual$1("A", propA.n, "A name");
-            Bridge.Test.Assert.areEqual$1(42, Bridge.Reflection.midel(Bridge.cast(propA, System.Reflection.PropertyInfo).g, new $_.$AnonymousType$1(42, 17))(null), "A getter result");
+            Bridge.Test.Assert.areEqual$1(42, Bridge.Reflection.midel(Bridge.cast(propA, System.Reflection.PropertyInfo).g, new $asm.$AnonymousType$1(42, 17))(null), "A getter result");
             Bridge.Test.Assert.true$1(Bridge.is(propB, System.Reflection.PropertyInfo), "B should be property");
             Bridge.Test.Assert.areEqual$1("B", propB.n, "B name");
-            Bridge.Test.Assert.areEqual$1(17, Bridge.Reflection.midel(Bridge.cast(propB, System.Reflection.PropertyInfo).g, new $_.$AnonymousType$1(42, 17))(null), "B getter result");
+            Bridge.Test.Assert.areEqual$1(17, Bridge.Reflection.midel(Bridge.cast(propB, System.Reflection.PropertyInfo).g, new $asm.$AnonymousType$1(42, 17))(null), "B getter result");
 
             var instance = Bridge.Reflection.invokeCI(ne.constructor, [42, 17]);
             Bridge.Test.Assert.areEqual$1(42, instance.a, "Constructor invocation result A");
@@ -7863,7 +7856,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         transparentIdentifiersWork: function () {
             var $t, $t1, $t2, $t3, $t4, $t5, $t6, $t7, $t8, $t9, $t10;
             var c = new (Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.ClassWithQueryPattern$1(System.Int32))(42);
-            var f = ($t9=($t8={"td":Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.ClassWithQueryPattern$1($_.$AnonymousType$2),"a":2,"n":"Select","t":8,"pi":[{"n":"f","pt":Function,"ps":0}],"tpc":1,"sn":"select","rt":Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.ClassWithQueryPattern$1(System.Int32),"p":[Function]}, { ntype: 6, t: $t8.rt, obj: ($t3={"td":Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.ClassWithQueryPattern$1(System.Int32),"a":2,"n":"Select","t":8,"pi":[{"n":"f","pt":Function,"ps":0}],"tpc":1,"sn":"select","rt":Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.ClassWithQueryPattern$1(Object),"p":[Function]}, { ntype: 6, t: $t3.rt, obj: {"ntype":23,"t":Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.ClassWithQueryPattern$1(System.Int32),"expression":{"ntype":9,"t":Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.ClassWithQueryPattern$1(System.Int32),"value":{}},"member":{"td":Object,"n":"c","t":16,"rt":Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.ClassWithQueryPattern$1(System.Int32),"g":{"td":Object,"n":"getc","t":8,"rt":Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.ClassWithQueryPattern$1(System.Int32),"p":[],"def":function(){ return c}},"s":{"td":Object,"n":"setc","t":8,"rt":Object,"p":[Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.ClassWithQueryPattern$1(System.Int32)],"def":function($){ c = $; }}}}, method: $t3, args: Bridge.toList([($t = { ntype: 38, t: System.Int32, n: "a" }, ($t2=($t1={"td":$_.$AnonymousType$2,"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"}, { ntype: 31, t: $t1.td, constructor: $t1, arguments: Bridge.toList([$t,{ ntype: 0, t: System.Int32, left: $t, right: { ntype: 9, t: System.Int32, value: 1 } }]), m: Bridge.toList([{"td":$_.$AnonymousType$2,"a":2,"n":"a","t":16,"rt":System.Int32,"g":{"td":$_.$AnonymousType$2,"a":2,"n":"get_a","t":8,"sn":"geta","rt":System.Int32}},{"td":$_.$AnonymousType$2,"a":2,"n":"b","t":16,"rt":System.Int32,"g":{"td":$_.$AnonymousType$2,"a":2,"n":"get_b","t":8,"sn":"getb","rt":System.Int32}}]) }), { ntype: 18, t: Function, rt: $t2.t, body: $t2, p: Bridge.toList([$t]) }))]) }), method: $t8, args: Bridge.toList([($t4 = { ntype: 38, t: $_.$AnonymousType$2, n: "x0" }, ($t7={ ntype: 0, t: System.Int32, left: ($t5={"td":$_.$AnonymousType$2,"a":2,"n":"a","t":16,"rt":System.Int32,"g":{"td":$_.$AnonymousType$2,"a":2,"n":"get_a","t":8,"sn":"geta","rt":System.Int32}}, { ntype: 23, t: $t5.rt, expression: $t4, member: $t5 }), right: ($t6={"td":$_.$AnonymousType$2,"a":2,"n":"b","t":16,"rt":System.Int32,"g":{"td":$_.$AnonymousType$2,"a":2,"n":"get_b","t":8,"sn":"getb","rt":System.Int32}}, { ntype: 23, t: $t6.rt, expression: $t4, member: $t6 }) }, { ntype: 18, t: Function, rt: $t7.t, body: $t7, p: Bridge.toList([$t4]) }))]) }), { ntype: 18, t: Function, rt: $t9.t, body: $t9, p: Bridge.toList([]) });
+            var f = ($t9=($t8={"td":Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.ClassWithQueryPattern$1($asm.$AnonymousType$2),"a":2,"n":"Select","t":8,"pi":[{"n":"f","pt":Function,"ps":0}],"tpc":1,"sn":"select","rt":Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.ClassWithQueryPattern$1(System.Int32),"p":[Function]}, { ntype: 6, t: $t8.rt, obj: ($t3={"td":Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.ClassWithQueryPattern$1(System.Int32),"a":2,"n":"Select","t":8,"pi":[{"n":"f","pt":Function,"ps":0}],"tpc":1,"sn":"select","rt":Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.ClassWithQueryPattern$1(Object),"p":[Function]}, { ntype: 6, t: $t3.rt, obj: {"ntype":23,"t":Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.ClassWithQueryPattern$1(System.Int32),"expression":{"ntype":9,"t":Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.ClassWithQueryPattern$1(System.Int32),"value":{}},"member":{"td":Object,"n":"c","t":16,"rt":Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.ClassWithQueryPattern$1(System.Int32),"g":{"td":Object,"n":"getc","t":8,"rt":Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.ClassWithQueryPattern$1(System.Int32),"p":[],"def":function(){ return c}},"s":{"td":Object,"n":"setc","t":8,"rt":Object,"p":[Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.ClassWithQueryPattern$1(System.Int32)],"def":function($){ c = $; }}}}, method: $t3, args: Bridge.toList([($t = { ntype: 38, t: System.Int32, n: "a" }, ($t2=($t1={"td":$asm.$AnonymousType$2,"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"}, { ntype: 31, t: $t1.td, constructor: $t1, arguments: Bridge.toList([$t,{ ntype: 0, t: System.Int32, left: $t, right: { ntype: 9, t: System.Int32, value: 1 } }]), m: Bridge.toList([{"td":$asm.$AnonymousType$2,"a":2,"n":"a","t":16,"rt":System.Int32,"g":{"td":$asm.$AnonymousType$2,"a":2,"n":"get_a","t":8,"sn":"geta","rt":System.Int32}},{"td":$asm.$AnonymousType$2,"a":2,"n":"b","t":16,"rt":System.Int32,"g":{"td":$asm.$AnonymousType$2,"a":2,"n":"get_b","t":8,"sn":"getb","rt":System.Int32}}]) }), { ntype: 18, t: Function, rt: $t2.t, body: $t2, p: Bridge.toList([$t]) }))]) }), method: $t8, args: Bridge.toList([($t4 = { ntype: 38, t: $asm.$AnonymousType$2, n: "x0" }, ($t7={ ntype: 0, t: System.Int32, left: ($t5={"td":$asm.$AnonymousType$2,"a":2,"n":"a","t":16,"rt":System.Int32,"g":{"td":$asm.$AnonymousType$2,"a":2,"n":"get_a","t":8,"sn":"geta","rt":System.Int32}}, { ntype: 23, t: $t5.rt, expression: $t4, member: $t5 }), right: ($t6={"td":$asm.$AnonymousType$2,"a":2,"n":"b","t":16,"rt":System.Int32,"g":{"td":$asm.$AnonymousType$2,"a":2,"n":"get_b","t":8,"sn":"getb","rt":System.Int32}}, { ntype: 23, t: $t6.rt, expression: $t4, member: $t6 }) }, { ntype: 18, t: Function, rt: $t7.t, body: $t7, p: Bridge.toList([$t4]) }))]) }), { ntype: 18, t: Function, rt: $t9.t, body: $t9, p: Bridge.toList([]) });
             var outer = ($t10 = f.body, Bridge.cast($t10, Bridge.hasValue($t10) && ($t10.ntype === 6)));
             //var outerLambda = (LambdaExpression)outer.Arguments[0];
             var inner = ($t10 = outer.obj, Bridge.cast($t10, Bridge.hasValue($t10) && ($t10.ntype === 6)));
@@ -7882,10 +7875,10 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             var propB = ne.m.get(1);
             Bridge.Test.Assert.true$1(Bridge.is(propA, System.Reflection.PropertyInfo), "A should be property");
             Bridge.Test.Assert.areEqual$1("a", propA.n, "a name");
-            Bridge.Test.Assert.areEqual$1(42, Bridge.Reflection.midel(Bridge.cast(propA, System.Reflection.PropertyInfo).g, new $_.$AnonymousType$2(42, 17))(null), "a getter result");
+            Bridge.Test.Assert.areEqual$1(42, Bridge.Reflection.midel(Bridge.cast(propA, System.Reflection.PropertyInfo).g, new $asm.$AnonymousType$2(42, 17))(null), "a getter result");
             Bridge.Test.Assert.true$1(Bridge.is(propB, System.Reflection.PropertyInfo), "B should be property");
             Bridge.Test.Assert.areEqual$1("b", propB.n, "b name");
-            Bridge.Test.Assert.areEqual$1(17, Bridge.Reflection.midel(Bridge.cast(propB, System.Reflection.PropertyInfo).g, new $_.$AnonymousType$2(42, 17))(null), "b getter result");
+            Bridge.Test.Assert.areEqual$1(17, Bridge.Reflection.midel(Bridge.cast(propB, System.Reflection.PropertyInfo).g, new $asm.$AnonymousType$2(42, 17))(null), "b getter result");
 
             var instance = Bridge.Reflection.invokeCI(ne.constructor, [42, 17]);
             Bridge.Test.Assert.areEqual$1(42, instance.a, "Constructor invocation result a");
@@ -8086,7 +8079,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         },
         memberInitWorks: function () {
             var $t, $t1, $t2, $t3, $t4, $t5, $t6, $t7, $t8, $t9;
-            var asserter = $_.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f9;
+            var asserter = $asm.$.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f9;
 
             var pa = { ntype: 38, t: System.Int32, n: "a" };
             var pb = { ntype: 38, t: System.Int32, n: "b" };
@@ -8258,7 +8251,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             var e3 = { ntype: 60, t: Object };
             var e4 = { ntype: 60, t: System.Exception };
 
-            var asserter = $_.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f10;
+            var asserter = $asm.$.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f10;
 
             asserter(e1, Object, true, "e1");
             asserter(e2, System.Exception, true, "e2");
@@ -8394,7 +8387,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             var e14 = { ntype: 53, t: String, kind: 0, target: lbl2, value: c };
             var e15 = { ntype: 53, t: String, kind: 2, target: lbl2, value: c };
 
-            var asserter = $_.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f11;
+            var asserter = $asm.$.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f11;
 
             asserter(e1, Object, 2, lbl1, null, "e1");
             asserter(e2, Object, 2, lbl2, c, "e2");
@@ -8520,7 +8513,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             var e5 = (function(a, b, c, d) { return { ntype: 59, t: d.get(0).body.t, switchValue: a, defaultBody: b, comparison: c, cases: d }; })(c2, d, op, Bridge.toList(new (Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.MyEnumerable$1(Object))([sc3, sc4])));
             var e6 = { ntype: 59, t: Object, switchValue: c2, defaultBody: d, comparison: op, cases: Bridge.toList(new (Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.MyEnumerable$1(Object))([sc3, sc4])) };
 
-            var asserter = $_.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f12;
+            var asserter = $asm.$.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests.f12;
 
             asserter(e1, String, c1, null, [sc1, sc2], null, "e1");
             asserter(e2, String, c1, d, [sc1, sc2], null, "e2");
@@ -8664,7 +8657,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.define("$AnonymousType$1", $_, {
+    Bridge.define("$AnonymousType$1", $asm, {
         $kind: "anonymous",
         ctor: function (a, b) {
             this.a = a;
@@ -8677,13 +8670,13 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             return this.b;
         },
         equals: function (o) {
-            if (!Bridge.is(o, $_.$AnonymousType$1)) {
+            if (!Bridge.is(o, $asm.$AnonymousType$1)) {
                 return false;
             }
             return Bridge.equals(this.a, o.a) && Bridge.equals(this.b, o.b);
         },
         getHashCode: function () {
-            var h = Bridge.addHash([6320272310, this.a, this.b]);
+            var h = Bridge.addHash([7550196186, this.a, this.b]);
             return h;
         },
         toJSON: function () {
@@ -8694,7 +8687,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.define("$AnonymousType$2", $_, {
+    Bridge.define("$AnonymousType$2", $asm, {
         $kind: "anonymous",
         ctor: function (a, b) {
             this.a = a;
@@ -8707,13 +8700,13 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             return this.b;
         },
         equals: function (o) {
-            if (!Bridge.is(o, $_.$AnonymousType$2)) {
+            if (!Bridge.is(o, $asm.$AnonymousType$2)) {
                 return false;
             }
             return Bridge.equals(this.a, o.a) && Bridge.equals(this.b, o.b);
         },
         getHashCode: function () {
-            var h = Bridge.addHash([6320337846, this.a, this.b]);
+            var h = Bridge.addHash([7550196187, this.a, this.b]);
             return h;
         },
         toJSON: function () {
@@ -8724,9 +8717,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.Linq.Expressions.ExpressionTests, {
         f1: function (expr, returnType, parmNames, parmTypes, title) {
             var $t;
             Bridge.Test.Assert.true$1(($t = expr, Bridge.is($t, Bridge.hasValue($t) && ($t.ntype === 18))), System.String.concat(title, " is lambda"));
@@ -9660,7 +9653,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             }
         },
         unboxingValueOfWrongTypeThrowsAnException: function () {
-            Bridge.Test.Assert.throws($_.Bridge.ClientTest.Batch4.NullableTests.f1);
+            Bridge.Test.Assert.throws($asm.$.Bridge.ClientTest.Batch4.NullableTests.f1);
         },
         getValueOrDefaultWithArgWorks: function () {
             var a = 3, b = null;
@@ -9822,6 +9815,12 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areStrictEqual(5, Bridge.Int.clip32(System.Nullable.lift(Bridge.ClientTest.Batch4.NullableTests.MyType.op_Addition, a, b)));
             Bridge.Test.Assert.areStrictEqual(null, Bridge.Int.clip32(System.Nullable.lift(Bridge.ClientTest.Batch4.NullableTests.MyType.op_Addition, a, c)));
         },
+        liftedUnaryMinusWorksWithUserDefinedOperators_SPI_1634: function () {
+            var a = Bridge.ClientTest.Batch4.NullableTests.MyType.op_Implicit(2), c = null;
+            // #1634
+            Bridge.Test.Assert.areStrictEqual(Bridge.Int.clip32(System.Nullable.lift(Bridge.ClientTest.Batch4.NullableTests.MyType.op_UnaryNegation, a)), -2);
+            Bridge.Test.Assert.areStrictEqual(Bridge.Int.clip32(System.Nullable.lift(Bridge.ClientTest.Batch4.NullableTests.MyType.op_UnaryNegation, c)), null);
+        },
         liftedBooleanAndWorks: function () {
             var a = true, b = true, c = false, d = false, e = null, f = null;
             Bridge.Test.Assert.areStrictEqual(true, System.Nullable.and(a, b));
@@ -9895,9 +9894,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.NullableTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.NullableTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.NullableTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.NullableTests, {
         f1: function () {
             var o = "x";
             var x = System.Nullable.getValue(Bridge.cast(o, System.Int32));
@@ -9954,7 +9953,11 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             }
             return Bridge.equals(this.v, o.v);
         },
-        $clone: function (to) { return this; }
+        $clone: function (to) {
+            var s = to || new Bridge.ClientTest.Batch4.NullableTests.MyType();
+            s.v = this.v;
+            return s;
+        }
     });
 
     Bridge.define("Bridge.ClientTest.Batch4.NumberFormatInfoTests", {
@@ -10347,13 +10350,13 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             $t = Bridge.getEnumerator([asm.getCustomAttributes(), asm.getCustomAttributes(true), asm.getCustomAttributes(false)]);
             while ($t.moveNext()) {
                 var a = $t.getCurrent();
-                Bridge.Test.Assert.false(a.some($_.Bridge.ClientTest.Batch4.Reflection.AssemblyTests.f1));
-                var a2 = a.filter($_.Bridge.ClientTest.Batch4.Reflection.AssemblyTests.f2);
+                Bridge.Test.Assert.false(a.some($asm.$.Bridge.ClientTest.Batch4.Reflection.AssemblyTests.f1));
+                var a2 = a.filter($asm.$.Bridge.ClientTest.Batch4.Reflection.AssemblyTests.f2);
                 Bridge.Test.Assert.areEqual(1, a2.length);
                 Bridge.Test.Assert.true(Bridge.cast(a2[0], Bridge.ClientTest.Batch4.Reflection.AssemblyTests.A2Attribute).getX() === 64);
                 Bridge.Test.Assert.true(Bridge.cast(a2[0], Bridge.ClientTest.Batch4.Reflection.AssemblyTests.A2Attribute).getP() === 23);
 
-                var a3 = a.filter($_.Bridge.ClientTest.Batch4.Reflection.AssemblyTests.f3);
+                var a3 = a.filter($asm.$.Bridge.ClientTest.Batch4.Reflection.AssemblyTests.f3);
                 Bridge.Test.Assert.areEqual(1, a3.length);
                 Bridge.Test.Assert.true(Bridge.cast(a3[0], Bridge.ClientTest.Batch4.Reflection.AssemblyTests.A3Attribute).getX() === 15);
                 Bridge.Test.Assert.true(Bridge.cast(a3[0], Bridge.ClientTest.Batch4.Reflection.AssemblyTests.A3Attribute).getP() === 45);
@@ -10373,7 +10376,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         },
         getManifestResourceNamesWorks: function () {
             var names = $asm.getManifestResourceNames();
-            names.sort($_.Bridge.ClientTest.Batch4.Reflection.AssemblyTests.f4);
+            names.sort($asm.$.Bridge.ClientTest.Batch4.Reflection.AssemblyTests.f4);
             Bridge.Test.Assert.areEqual(["Bridge.ClientTest.Batch4.Reflection.Resource1.bin", "Bridge.ClientTest.Batch4.Reflection.Resource2.bin"], names);
         },
         getManifestResourceDataAsBase64WithoutTypeWorks: function () {
@@ -10398,9 +10401,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.Reflection.AssemblyTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.Reflection.AssemblyTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.Reflection.AssemblyTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.Reflection.AssemblyTests, {
         f1: function (x) {
             return Bridge.referenceEquals(Bridge.Reflection.getTypeName(Bridge.getType(x)), "A1Attribute");
         },
@@ -10529,9 +10532,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         applyingNewInstanceOfMultipleUseAttributeAddsTheAttribute: function () {
             var arr = Bridge.Reflection.getAttributes(Bridge.ClientTest.Batch4.Reflection.AttributeTests.C6, null, true);
             Bridge.Test.Assert.areEqual$1(3, arr.length, "Should have 2 attributes");
-            Bridge.Test.Assert.areEqual$1(arr.filter($_.Bridge.ClientTest.Batch4.Reflection.AttributeTests.f1).length, 1, "Should have one A1");
-            Bridge.Test.Assert.areEqual$1(arr.filter($_.Bridge.ClientTest.Batch4.Reflection.AttributeTests.f2).length, 2, "Should have two A2");
-            var a2 = Bridge.cast(arr.filter($_.Bridge.ClientTest.Batch4.Reflection.AttributeTests.f2), Array);
+            Bridge.Test.Assert.areEqual$1(arr.filter($asm.$.Bridge.ClientTest.Batch4.Reflection.AttributeTests.f1).length, 1, "Should have one A1");
+            Bridge.Test.Assert.areEqual$1(arr.filter($asm.$.Bridge.ClientTest.Batch4.Reflection.AttributeTests.f2).length, 2, "Should have two A2");
+            var a2 = Bridge.cast(arr.filter($asm.$.Bridge.ClientTest.Batch4.Reflection.AttributeTests.f2), Array);
             Bridge.Test.Assert.true(a2[0].getV() === 2 || a2[1].getV() === 2);
             Bridge.Test.Assert.true(a2[0].getV() === 6 || a2[1].getV() === 6);
         },
@@ -10618,15 +10621,15 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual$1(1, Bridge.Reflection.getAttributes(Bridge.ClientTest.Batch4.Reflection.AttributeTests.C22, Bridge.ClientTest.Batch4.Reflection.AttributeTests.A12Attribute, false).length, "A12");
             Bridge.Test.Assert.areEqual$1(1, Bridge.Reflection.getAttributes(Bridge.ClientTest.Batch4.Reflection.AttributeTests.C22, Bridge.ClientTest.Batch4.Reflection.AttributeTests.A13Attribute, false).length, "A13");
             Bridge.Test.Assert.areEqual$1(0, Bridge.Reflection.getAttributes(Bridge.ClientTest.Batch4.Reflection.AttributeTests.C22, Bridge.ClientTest.Batch4.Reflection.AttributeTests.A14Attribute, false).length, "A14");
-            Bridge.Test.Assert.areEqual$1(1, (Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.AttributeTests.C22, 8, 284, "M").at || []).filter(function(a) { return Bridge.is(a, Bridge.ClientTest.Batch4.Reflection.AttributeTests.A12Attribute); }).length, "A12");
-            Bridge.Test.Assert.areEqual$1(1, (Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.AttributeTests.C22, 8, 284, "M").at || []).filter(function(a) { return Bridge.is(a, Bridge.ClientTest.Batch4.Reflection.AttributeTests.A13Attribute); }).length, "A13");
-            Bridge.Test.Assert.areEqual$1(0, (Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.AttributeTests.C22, 8, 284, "M").at || []).filter(function(a) { return Bridge.is(a, Bridge.ClientTest.Batch4.Reflection.AttributeTests.A14Attribute); }).length, "A14");
+            Bridge.Test.Assert.areEqual$1(1, System.Attribute.getCustomAttributes(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.AttributeTests.C22, 8, 284, "M"), Bridge.ClientTest.Batch4.Reflection.AttributeTests.A12Attribute, false).length, "A12");
+            Bridge.Test.Assert.areEqual$1(1, System.Attribute.getCustomAttributes(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.AttributeTests.C22, 8, 284, "M"), Bridge.ClientTest.Batch4.Reflection.AttributeTests.A13Attribute, false).length, "A13");
+            Bridge.Test.Assert.areEqual$1(0, System.Attribute.getCustomAttributes(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.AttributeTests.C22, 8, 284, "M"), Bridge.ClientTest.Batch4.Reflection.AttributeTests.A14Attribute, false).length, "A14");
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.Reflection.AttributeTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.Reflection.AttributeTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.Reflection.AttributeTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.Reflection.AttributeTests, {
         f1: function (a) {
             return Bridge.is(a, Bridge.ClientTest.Batch4.Reflection.AttributeTests.A1Attribute);
         },
@@ -10780,7 +10783,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         inherits: [System.Attribute],
         config: {
             properties: {
-                E: 0
+                E: "v1"
             }
         },
         ctor: function (e) {
@@ -10867,13 +10870,13 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
 
     Bridge.define("Bridge.ClientTest.Batch4.Reflection.GetMembersTests", {
         assertEquivalent: function (actual, expected) {
-            var actualValues = actual.filter($_.Bridge.ClientTest.Batch4.Reflection.GetMembersTests.f1).map($_.Bridge.ClientTest.Batch4.Reflection.GetMembersTests.f2).filter($_.Bridge.ClientTest.Batch4.Reflection.GetMembersTests.f3);
+            var actualValues = actual.filter($asm.$.Bridge.ClientTest.Batch4.Reflection.GetMembersTests.f1).map($asm.$.Bridge.ClientTest.Batch4.Reflection.GetMembersTests.f2).filter($asm.$.Bridge.ClientTest.Batch4.Reflection.GetMembersTests.f3);
             actualValues.sort();
             expected.sort();
             Bridge.Test.Assert.areEqual(expected, actualValues);
         },
         assertEqual: function (actual, expected) {
-            var actualValue = actual != null ? Bridge.cast((actual.at || []).filter(function(a) { return Bridge.is(a, Bridge.ClientTest.Batch4.Reflection.GetMembersTests.A1Attribute); })[0], Bridge.ClientTest.Batch4.Reflection.GetMembersTests.A1Attribute).getI() : null;
+            var actualValue = actual != null ? Bridge.cast(System.Attribute.getCustomAttributes(actual, Bridge.ClientTest.Batch4.Reflection.GetMembersTests.A1Attribute, true)[0], Bridge.ClientTest.Batch4.Reflection.GetMembersTests.A1Attribute).getI() : null;
             Bridge.Test.Assert.areEqual(expected, actualValue);
         },
         assertAmbiguous: function (action) {
@@ -10949,7 +10952,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             this.assertEqual(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.GetMembersTests.D2, 8, 284, "MB"), 112);
             this.assertEqual(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.GetMembersTests.D2, 8, 284, "MD"), 312);
             this.assertEqual(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.GetMembersTests.D2, 8, 284, "M"), 311);
-            this.assertAmbiguous($_.Bridge.ClientTest.Batch4.Reflection.GetMembersTests.f4);
+            this.assertAmbiguous($asm.$.Bridge.ClientTest.Batch4.Reflection.GetMembersTests.f4);
             this.assertEqual(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.GetMembersTests.D2, 8, 284, "F"), null);
             this.assertEqual(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.GetMembersTests.D2, 8, 284, "X"), null);
 
@@ -10969,8 +10972,8 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             this.assertEqual(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.GetMembersTests.D2, 8, 20 | 256, "M"), 311);
             this.assertEqual(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.GetMembersTests.D2, 8, 24 | 256, "MS"), 321);
             this.assertEqual(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.GetMembersTests.D2, 8, 88 | 256, "MS"), 321);
-            this.assertAmbiguous($_.Bridge.ClientTest.Batch4.Reflection.GetMembersTests.f5);
-            this.assertAmbiguous($_.Bridge.ClientTest.Batch4.Reflection.GetMembersTests.f6);
+            this.assertAmbiguous($asm.$.Bridge.ClientTest.Batch4.Reflection.GetMembersTests.f5);
+            this.assertAmbiguous($asm.$.Bridge.ClientTest.Batch4.Reflection.GetMembersTests.f6);
             this.assertEqual(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.GetMembersTests.D2, 8, 20 | 256, "F"), null);
             this.assertEqual(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.GetMembersTests.D2, 8, 20 | 256, "X"), null);
 
@@ -11036,7 +11039,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             this.assertEqual(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.GetMembersTests.D2, 16, 284, "P"), 351);
             this.assertEqual(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.GetMembersTests.D2, 16, 284, "F"), null);
             this.assertEqual(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.GetMembersTests.D2, 16, 284, "X"), null);
-            this.assertAmbiguous($_.Bridge.ClientTest.Batch4.Reflection.GetMembersTests.f7);
+            this.assertAmbiguous($asm.$.Bridge.ClientTest.Batch4.Reflection.GetMembersTests.f7);
             this.assertEqual(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.GetMembersTests.C3, 16, 284, "Item"), 1);
         },
         getPropertyWithNameAndBindingFlagsWorks: function () {
@@ -11050,7 +11053,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             this.assertEqual(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.GetMembersTests.D2, 16, 20 | 256, "P"), 351);
             this.assertEqual(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.GetMembersTests.D2, 16, 24 | 256, "PS"), 361);
             this.assertEqual(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.GetMembersTests.D2, 16, 88 | 256, "PS"), 361);
-            this.assertAmbiguous($_.Bridge.ClientTest.Batch4.Reflection.GetMembersTests.f8);
+            this.assertAmbiguous($asm.$.Bridge.ClientTest.Batch4.Reflection.GetMembersTests.f8);
             this.assertEqual(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.GetMembersTests.C3, 16, 20 | 256, "Item"), 1);
             this.assertEqual(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.GetMembersTests.C3, 16, 24 | 256, "Item"), null);
             this.assertEqual(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.GetMembersTests.D2, 16, 20 | 256, "F"), null);
@@ -11173,14 +11176,14 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.Reflection.GetMembersTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.Reflection.GetMembersTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.Reflection.GetMembersTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.Reflection.GetMembersTests, {
         f1: function (m) {
             return !Bridge.referenceEquals(m.td, Object);
         },
         f2: function (m) {
-            var arr = Bridge.cast((m.at || []).filter(function(a) { return Bridge.is(a, Bridge.ClientTest.Batch4.Reflection.GetMembersTests.A1Attribute); }), Array);
+            var arr = Bridge.cast(System.Attribute.getCustomAttributes(m, Bridge.ClientTest.Batch4.Reflection.GetMembersTests.A1Attribute, true), Array);
             return arr.length > 0 ? arr[0].getI() : 0;
         },
         f3: function (x) {
@@ -11527,7 +11530,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         },
         methodNameIsTheCSharpName: function () {
             var members = Bridge.cast(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.ReflectionTests.C4, 31, 28), Array);
-            Bridge.Test.Assert.areEqual$1(3, members.filter($_.Bridge.ClientTest.Batch4.Reflection.ReflectionTests.f1).length, "All methods should have name M");
+            Bridge.Test.Assert.areEqual$1(3, members.filter($asm.$.Bridge.ClientTest.Batch4.Reflection.ReflectionTests.f1).length, "All methods should have name M");
         },
         typeParametersAreReplacedWithObjectForReturnAndParameterTypesForOpenGenericTypes: function () {
             var m = Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.ReflectionTests.C5$2, 8, 284, "M");
@@ -11782,12 +11785,12 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual([2, [17, 32]], r2);
         },
         invokeWorksForAllKindsOfConstructors: function () {
-            var c1 = Bridge.cast(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.ReflectionTests.C10, 31, 28).filter($_.Bridge.ClientTest.Batch4.Reflection.ReflectionTests.f2)[0], System.Reflection.ConstructorInfo);
+            var c1 = Bridge.cast(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.ReflectionTests.C10, 31, 28).filter($asm.$.Bridge.ClientTest.Batch4.Reflection.ReflectionTests.f2)[0], System.Reflection.ConstructorInfo);
             var o1 = Bridge.cast(Bridge.Reflection.invokeCI(c1, [42]), Bridge.ClientTest.Batch4.Reflection.ReflectionTests.C10);
             Bridge.Test.Assert.areEqual$1(42, o1.x, "o1.X");
             Bridge.Test.Assert.areEqual$1("X", o1.s, "o1.S");
 
-            var c2 = Bridge.cast(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.ReflectionTests.C10, 31, 28).filter($_.Bridge.ClientTest.Batch4.Reflection.ReflectionTests.f3)[0], System.Reflection.ConstructorInfo);
+            var c2 = Bridge.cast(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.ReflectionTests.C10, 31, 28).filter($asm.$.Bridge.ClientTest.Batch4.Reflection.ReflectionTests.f3)[0], System.Reflection.ConstructorInfo);
             var o2 = Bridge.cast(Bridge.Reflection.invokeCI(c2, [14, "Hello"]), Bridge.ClientTest.Batch4.Reflection.ReflectionTests.C10);
             Bridge.Test.Assert.areEqual$1(14, o2.x, "o2.X");
             Bridge.Test.Assert.areEqual$1("Hello", o2.s, "o2.S");
@@ -12462,30 +12465,30 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual$1("The_value", c15.v, "Item.SetValue.value");
         },
         testMemberAttribute: function (member, expectedA1) {
-            var all = (member.at || []);
+            var all = System.Attribute.getCustomAttributes(member, false);
             Bridge.Test.Assert.areEqual(2, all.length);
             Bridge.Test.Assert.true(Bridge.is(all[0], Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A1Attribute) || Bridge.is(all[1], Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A1Attribute));
             Bridge.Test.Assert.true(Bridge.is(all[0], Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A3Attribute) || Bridge.is(all[1], Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A3Attribute));
             Bridge.Test.Assert.areEqual(expectedA1, Bridge.cast((Bridge.is(all[0], Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A1Attribute) ? all[0] : all[1]), Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A1Attribute).getX());
 
-            all = (member.at || []);
+            all = System.Attribute.getCustomAttributes(member, false, true);
             Bridge.Test.Assert.areEqual(2, all.length);
             Bridge.Test.Assert.true(Bridge.is(all[0], Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A1Attribute) || Bridge.is(all[1], Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A1Attribute));
             Bridge.Test.Assert.true(Bridge.is(all[0], Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A3Attribute) || Bridge.is(all[1], Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A3Attribute));
             Bridge.Test.Assert.areEqual(expectedA1, Bridge.cast((Bridge.is(all[0], Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A1Attribute) ? all[0] : all[1]), Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A1Attribute).getX());
 
-            all = (member.at || []).filter(function(a) { return Bridge.is(a, Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A1Attribute); });
+            all = System.Attribute.getCustomAttributes(member, Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A1Attribute);
             Bridge.Test.Assert.areEqual(1, all.length);
             Bridge.Test.Assert.true(Bridge.is(all[0], Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A1Attribute));
             Bridge.Test.Assert.areEqual(expectedA1, Bridge.cast(all[0], Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A1Attribute).getX());
 
-            all = (member.at || []).filter(function(a) { return Bridge.is(a, Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A1Attribute); });
+            all = System.Attribute.getCustomAttributes(member, Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A1Attribute, false);
             Bridge.Test.Assert.areEqual(1, all.length);
             Bridge.Test.Assert.true(Bridge.is(all[0], Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A1Attribute));
             Bridge.Test.Assert.areEqual(expectedA1, Bridge.cast(all[0], Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A1Attribute).getX());
 
-            Bridge.Test.Assert.areEqual(0, (member.at || []).filter(function(a) { return Bridge.is(a, Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A4Attribute); }).length);
-            Bridge.Test.Assert.areEqual(0, (member.at || []).filter(function(a) { return Bridge.is(a, Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A4Attribute); }).length);
+            Bridge.Test.Assert.areEqual(0, System.Attribute.getCustomAttributes(member, Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A4Attribute).length);
+            Bridge.Test.Assert.areEqual(0, System.Attribute.getCustomAttributes(member, Bridge.ClientTest.Batch4.Reflection.ReflectionTests.A4Attribute, false).length);
         },
         memberAttributesWork: function () {
             this.testMemberAttribute(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.ReflectionTests.C18, 1, 284, null, System.Array.init(0, null)), 1);
@@ -12498,7 +12501,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             this.testMemberAttribute(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.ReflectionTests.C18, 2, 284, "E").ad, 8);
             this.testMemberAttribute(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.ReflectionTests.C18, 2, 284, "E").r, 9);
 
-            Bridge.Test.Assert.areEqual(0, (Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.ReflectionTests.C2, 8, 284, "M1").at || []).length);
+            Bridge.Test.Assert.areEqual(0, System.Attribute.getCustomAttributes(Bridge.Reflection.getMembers(Bridge.ClientTest.Batch4.Reflection.ReflectionTests.C2, 8, 284, "M1"), false).length);
         },
         membersReflectableAttributeWorks: function () {
             var c25 = Bridge.ClientTest.Batch4.Reflection.ReflectionTests.C25;
@@ -12592,9 +12595,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.Reflection.ReflectionTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.Reflection.ReflectionTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.Reflection.ReflectionTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.Reflection.ReflectionTests, {
         f1: function (m) {
             return Bridge.referenceEquals(m.n, "M");
         },
@@ -13527,7 +13530,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.false$1(Bridge.hasValue(null), "#138");
         },
         getTypeWorksOnObjects: function () {
-            var a = $_.Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.f1;
+            var a = $asm.$.Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.f1;
             Bridge.Test.Assert.areEqual("Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.C1", Bridge.Reflection.getTypeFullName(Bridge.getType(new Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.C1())));
             Bridge.Test.Assert.areEqual("Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.C2$1[[System.Int32, mscorlib]]", Bridge.Reflection.getTypeFullName(Bridge.getType(new (Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.C2$1(System.Int32))())));
             Bridge.Test.Assert.areEqual("Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.C2$1[[String]]", Bridge.Reflection.getTypeFullName(Bridge.getType(new (Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.C2$1(String))())));
@@ -13538,14 +13541,14 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual("Array", Bridge.Reflection.getTypeFullName(Bridge.getType([1, 2])));
         },
         getTypeOnNullInstanceThrowsException: function () {
-            Bridge.Test.Assert.throws($_.Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.f2);
+            Bridge.Test.Assert.throws($asm.$.Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.f2);
         },
         cast: function (T, o) {
             return Bridge.cast(o, T);
         },
         castOperatorForSerializableTypeWithoutTypeCheckCodeAlwaysSucceedsGeneric: function () {
             var o = {  };
-            var b = this.cast(Object, o);
+            var b = this.cast(Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.OL, o);
             Bridge.Test.Assert.true(Bridge.referenceEquals(o, b));
         },
         typeCheckForSubTypeOfGenericType: function () {
@@ -13556,9 +13559,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests, {
         f1: function () {
         },
         f2: function () {
@@ -13619,6 +13622,10 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         $variance: [0,1]
     }; });
 
+    Bridge.define("Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.OL", {
+        $literal: true
+    });
+
     Bridge.define("Bridge.ClientTest.Batch4.Reflection.TypeSystemTests", {
         getAssemblyWithVersion: function () {
             return "Bridge.ClientTest.Batch4";
@@ -13645,7 +13652,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual("Bridge.ClientTest.Batch4.Reflection", Bridge.Reflection.getTypeNamespace(Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.DS2));
         },
         instantiatingClassWithConstructorThatNeedsToBeAppliedWorks: function () {
-            var args = $_.Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.f1(new (System.Collections.Generic.List$1(Object))());
+            var args = $asm.$.Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.f1(new (System.Collections.Generic.List$1(Object))());
             var obj = Bridge.Reflection.applyConstructor(Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.ClassWithExpandParamsCtor, args.toArray());
 
             Bridge.Test.Assert.areEqual(args.toArray(), obj.ctorArgs);
@@ -14231,8 +14238,8 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual(42, c.x);
         },
         instanceOfWorksForSerializableTypesWithCustomTypeCheckCode: function () {
-            var o1 = new $_.$AnonymousType$3(1);
-            var o2 = new $_.$AnonymousType$4(1, 2);
+            var o1 = new $asm.$AnonymousType$3(1);
+            var o2 = new $asm.$AnonymousType$4(1, 2);
             Bridge.Test.Assert.false$1(Bridge.Reflection.isInstanceOfType(o1, Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.DS2), "o1 should not be of type");
             //Assert.True (typeof(DS2).IsInstanceOfType(o2), "o2 should be of type");
         },
@@ -14272,8 +14279,8 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.true$1(Bridge.is("firstValue", String), "#1");
             Bridge.Test.Assert.true$1(Bridge.is("firstValue", String), "#2");
             Bridge.Test.Assert.false$1(Bridge.is(0, String), "#3");
-            Bridge.Test.Assert.false$1(this.doesItThrow($_.Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.f2), "#4");
-            Bridge.Test.Assert.true$1(this.doesItThrow($_.Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.f3), "#5");
+            Bridge.Test.Assert.false$1(this.doesItThrow($asm.$.Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.f2), "#4");
+            Bridge.Test.Assert.true$1(this.doesItThrow($asm.$.Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.f3), "#5");
 
             Bridge.Test.Assert.notNull$1(Bridge.as("firstValue", String, true), "#6");
             Bridge.Test.Assert.notNull$1(Bridge.as("firstValue", String, true), "#7");
@@ -14287,8 +14294,8 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.true$1(Bridge.is("firstValue", String), "#1");
             Bridge.Test.Assert.true$1(Bridge.is("firstValue", String), "#2");
             Bridge.Test.Assert.false$1(Bridge.is(0, String), "#3");
-            Bridge.Test.Assert.false$1(this.doesItThrow($_.Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.f2), "#4");
-            Bridge.Test.Assert.true$1(this.doesItThrow($_.Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.f3), "#5");
+            Bridge.Test.Assert.false$1(this.doesItThrow($asm.$.Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.f2), "#4");
+            Bridge.Test.Assert.true$1(this.doesItThrow($asm.$.Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.f3), "#5");
 
             Bridge.Test.Assert.notNull$1(Bridge.as("firstValue", String, true), "#6");
             Bridge.Test.Assert.notNull$1(Bridge.as("firstValue", String, true), "#7");
@@ -14304,7 +14311,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.define("$AnonymousType$3", $_, {
+    Bridge.define("$AnonymousType$3", $asm, {
         $kind: "anonymous",
         ctor: function (x) {
             this.x = x;
@@ -14313,13 +14320,13 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             return this.x;
         },
         equals: function (o) {
-            if (!Bridge.is(o, $_.$AnonymousType$3)) {
+            if (!Bridge.is(o, $asm.$AnonymousType$3)) {
                 return false;
             }
             return Bridge.equals(this.x, o.x);
         },
         getHashCode: function () {
-            var h = Bridge.addHash([6320403382, this.x]);
+            var h = Bridge.addHash([7550196188, this.x]);
             return h;
         },
         toJSON: function () {
@@ -14329,7 +14336,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.define("$AnonymousType$4", $_, {
+    Bridge.define("$AnonymousType$4", $asm, {
         $kind: "anonymous",
         ctor: function (x, y) {
             this.x = x;
@@ -14342,13 +14349,13 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             return this.y;
         },
         equals: function (o) {
-            if (!Bridge.is(o, $_.$AnonymousType$4)) {
+            if (!Bridge.is(o, $asm.$AnonymousType$4)) {
                 return false;
             }
             return Bridge.equals(this.x, o.x) && Bridge.equals(this.y, o.y);
         },
         getHashCode: function () {
-            var h = Bridge.addHash([6320468918, this.x, this.y]);
+            var h = Bridge.addHash([7550196189, this.x, this.y]);
             return h;
         },
         toJSON: function () {
@@ -14359,9 +14366,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.Reflection.TypeSystemTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.Reflection.TypeSystemTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.Reflection.TypeSystemTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.Reflection.TypeSystemTests, {
         f1: function (_o71) {
             _o71.add(42);
             _o71.add("x");
@@ -14781,7 +14788,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual$1("string", typeof "X", "#6");
             // #1620
             Bridge.Test.Assert.areEqual$1("function", typeof new Function("", ""), "#7");
-            Bridge.Test.Assert.areEqual$1("object", typeof new $_.$AnonymousType$5(), "#8");
+            Bridge.Test.Assert.areEqual$1("object", typeof new $asm.$AnonymousType$5(), "#8");
         },
         deleteWorks_SPI_1571: function () {
             // #1571
@@ -14825,18 +14832,18 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.define("$AnonymousType$5", $_, {
+    Bridge.define("$AnonymousType$5", $asm, {
         $kind: "anonymous",
         ctor: function () {
         },
         equals: function (o) {
-            if (!Bridge.is(o, $_.$AnonymousType$5)) {
+            if (!Bridge.is(o, $asm.$AnonymousType$5)) {
                 return false;
             }
             return ;
         },
         getHashCode: function () {
-            var h = Bridge.addHash([6320534454]);
+            var h = Bridge.addHash([7550196190]);
             return h;
         },
         toJSON: function () {
@@ -14921,7 +14928,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             var o = null;
 
             Bridge.ClientTest.Batch4.TestHelper.safe(function () {
-                o = Bridge.cast(JSON.parse("{ \"i\": 3, \"s\": \"test\" }", $_.Bridge.ClientTest.Batch4.Serialization.JsonTests.f1), Bridge.ClientTest.Batch4.Serialization.JsonTests.TestClass2);
+                o = Bridge.cast(JSON.parse("{ \"i\": 3, \"s\": \"test\" }", $asm.$.Bridge.ClientTest.Batch4.Serialization.JsonTests.f1), Bridge.ClientTest.Batch4.Serialization.JsonTests.TestClass2);
             });
 
             var i = 0;
@@ -14941,7 +14948,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             // Test restructure to keep assertion count correct (prevent uncaught test exception)
             var o = null;
             Bridge.ClientTest.Batch4.TestHelper.safe(function () {
-                o = Bridge.merge(Bridge.createInstance(Bridge.ClientTest.Batch4.Serialization.JsonTests.TestClass2), JSON.parse("{ \"i\": 3, \"s\": \"test\" }", $_.Bridge.ClientTest.Batch4.Serialization.JsonTests.f1));
+                o = Bridge.merge(Bridge.createInstance(Bridge.ClientTest.Batch4.Serialization.JsonTests.TestClass2), JSON.parse("{ \"i\": 3, \"s\": \"test\" }", $asm.$.Bridge.ClientTest.Batch4.Serialization.JsonTests.f1));
             });
 
             var i = 0;
@@ -14983,25 +14990,25 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual("{\"i\":3}", JSON.stringify(Bridge.merge(new Bridge.ClientTest.Batch4.Serialization.JsonTests.TestClass2(), {
                 i: 3,
                 s: "test"
-            } ), $_.Bridge.ClientTest.Batch4.Serialization.JsonTests.f2));
+            } ), $asm.$.Bridge.ClientTest.Batch4.Serialization.JsonTests.f2));
         },
         stringifyWithCallbackAndIndentCountWorks: function () {
             Bridge.Test.Assert.areEqual("{\n    \"i\": 3\n}", JSON.stringify(Bridge.merge(new Bridge.ClientTest.Batch4.Serialization.JsonTests.TestClass2(), {
                 i: 3,
                 s: "test"
-            } ), $_.Bridge.ClientTest.Batch4.Serialization.JsonTests.f2, 4));
+            } ), $asm.$.Bridge.ClientTest.Batch4.Serialization.JsonTests.f2, 4));
         },
         stringifyWithCallbackAndIndentTextWorks: function () {
             Bridge.Test.Assert.areEqual("{\n    \"i\": 3\n}", JSON.stringify(Bridge.merge(new Bridge.ClientTest.Batch4.Serialization.JsonTests.TestClass2(), {
                 i: 3,
                 s: "test"
-            } ), $_.Bridge.ClientTest.Batch4.Serialization.JsonTests.f2, "    "));
+            } ), $asm.$.Bridge.ClientTest.Batch4.Serialization.JsonTests.f2, "    "));
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.Serialization.JsonTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.Serialization.JsonTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.Serialization.JsonTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.Serialization.JsonTests, {
         f1: function (s, x) {
             Bridge.cast(x, Bridge.ClientTest.Batch4.Serialization.JsonTests.TestClass2).i = 100;
             return x;
@@ -15222,12 +15229,12 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         },
         parseWorks: function () {
             Bridge.Test.Assert.areEqual(234, System.Byte.parse("234"));
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.ByteTests.f1);
-            Bridge.Test.Assert.throws$6(System.ArgumentNullException, $_.Bridge.ClientTest.Batch4.SimpleTypes.ByteTests.f2);
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.ByteTests.f3);
-            Bridge.Test.Assert.throws$6(System.OverflowException, $_.Bridge.ClientTest.Batch4.SimpleTypes.ByteTests.f4);
-            Bridge.Test.Assert.throws$6(System.OverflowException, $_.Bridge.ClientTest.Batch4.SimpleTypes.ByteTests.f5);
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.ByteTests.f6);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.ByteTests.f1);
+            Bridge.Test.Assert.throws$6(System.ArgumentNullException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.ByteTests.f2);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.ByteTests.f3);
+            Bridge.Test.Assert.throws$6(System.OverflowException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.ByteTests.f4);
+            Bridge.Test.Assert.throws$6(System.OverflowException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.ByteTests.f5);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.ByteTests.f6);
         },
         toStringWithoutRadixWorks: function () {
             Bridge.Test.Assert.areEqual("123", (123).toString());
@@ -15270,9 +15277,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.ByteTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.ByteTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.SimpleTypes.ByteTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.SimpleTypes.ByteTests, {
         f1: function () {
             System.Byte.parse("");
         },
@@ -15376,9 +15383,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         },
         parseWorks: function () {
             Bridge.Test.Assert.areEqual(97, System.Char.charCodeAt("a", 0));
-            Bridge.Test.Assert.throws$6(System.ArgumentNullException, $_.Bridge.ClientTest.Batch4.SimpleTypes.CharTests.f1);
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.CharTests.f2);
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.CharTests.f3);
+            Bridge.Test.Assert.throws$6(System.ArgumentNullException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.CharTests.f1);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.CharTests.f2);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.CharTests.f3);
         },
         formatWorks: function () {
             Bridge.Test.Assert.areEqual("0023", System.Char.format((35), "x4"));
@@ -15462,9 +15469,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.CharTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.CharTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.SimpleTypes.CharTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.SimpleTypes.CharTests, {
         f1: function () {
             System.Char.charCodeAt(null, 0);
         },
@@ -16061,7 +16068,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual(12, dt.getDate());
         },
         parseExactReturnsNullIfTheInputIsInvalid: function () {
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.DateTimeTests.f1);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.DateTimeTests.f1);
         },
         parseExactWithCultureWorks: function () {
             var dt = Bridge.Date.parseExact("2012-12-08", "yyyy-dd-MM", System.Globalization.CultureInfo.invariantCulture);
@@ -16072,7 +16079,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual(12, dt.getDate());
         },
         parseExactWithCultureReturnsNullIfTheInputIsInvalid: function () {
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.DateTimeTests.f2);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.DateTimeTests.f2);
         },
         parseExactUtcWorks: function () {
             var dt = Bridge.Date.parseExact("2012-12-08", "yyyy-dd-MM", null, true);
@@ -16083,7 +16090,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual(12, dt.getUTCDate());
         },
         parseExactUtcReturnsNullIfTheInputIsInvalid: function () {
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.DateTimeTests.f3);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.DateTimeTests.f3);
         },
         parseExactUtcWithCultureWorks: function () {
             var dt = Bridge.Date.parseExact("2012-12-08", "yyyy-dd-MM", System.Globalization.CultureInfo.invariantCulture, true);
@@ -16094,7 +16101,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual(12, dt.getUTCDate());
         },
         parseExactUtcWithCultureReturnsNullIfTheInputIsInvalid: function () {
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.DateTimeTests.f4);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.DateTimeTests.f4);
         },
         toDateStringWorks: function () {
             var dt = new Date(2011, 7 - 1, 12, 13, 42);
@@ -16352,9 +16359,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.DateTimeTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.DateTimeTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.SimpleTypes.DateTimeTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.SimpleTypes.DateTimeTests, {
         f1: function () {
             var dt = Bridge.Date.parseExact("X", "yyyy-dd-MM");
         },
@@ -17161,8 +17168,8 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             });
             this.assertIsDecimalAndEqualTo(d2, 123.456);
 
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.DecimalTests.f1);
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.DecimalTests.f2);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.DecimalTests.f1);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.DecimalTests.f2);
             Bridge.Test.Assert.areEqual(System.Double.format((12.0), 'G'), Bridge.Int.format(System.Decimal("12."), 'G'));
             //Assert.Throws<OverflowException>(() => decimal.Parse("999999999999999999999999999999"));
         },
@@ -17917,9 +17924,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.DecimalTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.DecimalTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.SimpleTypes.DecimalTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.SimpleTypes.DecimalTests, {
         f1: function () {
             System.Decimal("A123");
         },
@@ -18130,7 +18137,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         conversionsToEnumAreTreatedAsConversionsToTheUnderlyingType_SPI_1596: function () {
             Bridge.Test.Assert.areEqual(0, System.Nullable.getValue(Bridge.cast(0, System.Int32)));
             // #1596
-            Bridge.Test.Assert.throws$6(System.InvalidCastException, $_.Bridge.ClientTest.Batch4.SimpleTypes.EnumTests.f1);
+            Bridge.Test.Assert.throws$6(System.InvalidCastException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.EnumTests.f1);
         },
         getValuesWorks: function () {
             var values = System.Enum.getValues(Bridge.ClientTest.Batch4.SimpleTypes.EnumTests.TestEnum);
@@ -18148,9 +18155,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.EnumTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.EnumTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.SimpleTypes.EnumTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.SimpleTypes.EnumTests, {
         f1: function () {
             var _ = System.Nullable.getValue(Bridge.cast(0.5, System.Int32));
         }
@@ -18299,12 +18306,12 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         },
         parseWorks: function () {
             Bridge.Test.Assert.areEqual(234, System.Int16.parse("234"));
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.Int16Tests.f1);
-            Bridge.Test.Assert.throws$6(System.ArgumentNullException, $_.Bridge.ClientTest.Batch4.SimpleTypes.Int16Tests.f2);
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.Int16Tests.f3);
-            Bridge.Test.Assert.throws$6(System.OverflowException, $_.Bridge.ClientTest.Batch4.SimpleTypes.Int16Tests.f4);
-            Bridge.Test.Assert.throws$6(System.OverflowException, $_.Bridge.ClientTest.Batch4.SimpleTypes.Int16Tests.f5);
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.Int16Tests.f6);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.Int16Tests.f1);
+            Bridge.Test.Assert.throws$6(System.ArgumentNullException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.Int16Tests.f2);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.Int16Tests.f3);
+            Bridge.Test.Assert.throws$6(System.OverflowException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.Int16Tests.f4);
+            Bridge.Test.Assert.throws$6(System.OverflowException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.Int16Tests.f5);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.Int16Tests.f6);
         },
         toStringWithoutRadixWorks: function () {
             Bridge.Test.Assert.areEqual("123", (123).toString());
@@ -18347,9 +18354,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.Int16Tests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.Int16Tests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.SimpleTypes.Int16Tests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.SimpleTypes.Int16Tests, {
         f1: function () {
             System.Int16.parse("");
         },
@@ -18515,12 +18522,12 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual(57574, System.Int32.parse("57574"));
             Bridge.Test.Assert.areEqual(-14, System.Int32.parse("-14"));
 
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.Int32Tests.f1);
-            Bridge.Test.Assert.throws$6(System.ArgumentNullException, $_.Bridge.ClientTest.Batch4.SimpleTypes.Int32Tests.f2);
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.Int32Tests.f3);
-            Bridge.Test.Assert.throws$6(System.OverflowException, $_.Bridge.ClientTest.Batch4.SimpleTypes.Int32Tests.f4);
-            Bridge.Test.Assert.throws$6(System.OverflowException, $_.Bridge.ClientTest.Batch4.SimpleTypes.Int32Tests.f5);
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.Int32Tests.f6);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.Int32Tests.f1);
+            Bridge.Test.Assert.throws$6(System.ArgumentNullException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.Int32Tests.f2);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.Int32Tests.f3);
+            Bridge.Test.Assert.throws$6(System.OverflowException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.Int32Tests.f4);
+            Bridge.Test.Assert.throws$6(System.OverflowException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.Int32Tests.f5);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.Int32Tests.f6);
         },
         toStringWithoutRadixWorks: function () {
             Bridge.Test.Assert.areEqual("123", (123).toString());
@@ -18602,9 +18609,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.Int32Tests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.Int32Tests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.SimpleTypes.Int32Tests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.SimpleTypes.Int32Tests, {
         f1: function () {
             System.Int32.parse("");
         },
@@ -18734,12 +18741,12 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         parseWorks: function () {
             Bridge.Test.Assert.areEqual(System.Int64([568732647,3]), System.Int64.parse("13453634535"));
             Bridge.Test.Assert.areEqual(System.Int64([-1258093817,-54542]), System.Int64.parse("-234253069384953"));
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.Int64Tests.f1);
-            Bridge.Test.Assert.throws$6(System.ArgumentNullException, $_.Bridge.ClientTest.Batch4.SimpleTypes.Int64Tests.f2);
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.Int64Tests.f3);
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.Int64Tests.f4);
-            Bridge.Test.Assert.throws$6(System.OverflowException, $_.Bridge.ClientTest.Batch4.SimpleTypes.Int64Tests.f5);
-            Bridge.Test.Assert.throws$6(System.OverflowException, $_.Bridge.ClientTest.Batch4.SimpleTypes.Int64Tests.f6);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.Int64Tests.f1);
+            Bridge.Test.Assert.throws$6(System.ArgumentNullException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.Int64Tests.f2);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.Int64Tests.f3);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.Int64Tests.f4);
+            Bridge.Test.Assert.throws$6(System.OverflowException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.Int64Tests.f5);
+            Bridge.Test.Assert.throws$6(System.OverflowException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.Int64Tests.f6);
         },
         castingOfLargeDoublesToInt64Works: function () {
             var d1 = 5000000000.5, d2 = -d1;
@@ -18793,9 +18800,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.Int64Tests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.Int64Tests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.SimpleTypes.Int64Tests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.SimpleTypes.Int64Tests, {
         f1: function () {
             System.Int64.parse("");
         },
@@ -18991,11 +18998,11 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         parseWorks: function () {
             Bridge.Test.Assert.areEqual(124, System.SByte.parse("124"));
             Bridge.Test.Assert.areEqual(-123, System.SByte.parse("-123"));
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.SByteTests.f1);
-            Bridge.Test.Assert.throws$6(System.ArgumentNullException, $_.Bridge.ClientTest.Batch4.SimpleTypes.SByteTests.f2);
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.SByteTests.f3);
-            Bridge.Test.Assert.throws$6(System.OverflowException, $_.Bridge.ClientTest.Batch4.SimpleTypes.SByteTests.f4);
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.SByteTests.f5);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.SByteTests.f1);
+            Bridge.Test.Assert.throws$6(System.ArgumentNullException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.SByteTests.f2);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.SByteTests.f3);
+            Bridge.Test.Assert.throws$6(System.OverflowException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.SByteTests.f4);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.SByteTests.f5);
         },
         toStringWithoutRadixWorks: function () {
             Bridge.Test.Assert.areEqual("123", (123).toString());
@@ -19038,9 +19045,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.SByteTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.SByteTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.SimpleTypes.SByteTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.SimpleTypes.SByteTests, {
         f1: function () {
             System.SByte.parse("");
         },
@@ -19493,7 +19500,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.areEqual("xxcxxcxxc", ("abcabcabc").replace(new RegExp("a|b", "g"), "x"));
         },
         replaceRegexWithReplaceCallbackWorks: function () {
-            Bridge.Test.Assert.areEqual("xycxycxyc", ("abcabcabc").replace(new RegExp("a|b", "g"), $_.Bridge.ClientTest.Batch4.SimpleTypes.StringTests.f1));
+            Bridge.Test.Assert.areEqual("xycxycxyc", ("abcabcabc").replace(new RegExp("a|b", "g"), $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.StringTests.f1));
         },
         searchWorks: function () {
             Bridge.Test.Assert.areEqual(2, ("abcabcabc").search(new RegExp("ca")));
@@ -19691,9 +19698,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.StringTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.StringTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.SimpleTypes.StringTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.SimpleTypes.StringTests, {
         f1: function (s) {
             return Bridge.referenceEquals(s, "a") ? "x" : "y";
         }
@@ -20182,12 +20189,12 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         },
         parseWorks: function () {
             Bridge.Test.Assert.areEqual(23445, System.UInt16.parse("23445"));
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.UInt16Tests.f1);
-            Bridge.Test.Assert.throws$6(System.ArgumentNullException, $_.Bridge.ClientTest.Batch4.SimpleTypes.UInt16Tests.f2);
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.UInt16Tests.f3);
-            Bridge.Test.Assert.throws$6(System.OverflowException, $_.Bridge.ClientTest.Batch4.SimpleTypes.UInt16Tests.f4);
-            Bridge.Test.Assert.throws$6(System.OverflowException, $_.Bridge.ClientTest.Batch4.SimpleTypes.UInt16Tests.f5);
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.UInt16Tests.f6);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.UInt16Tests.f1);
+            Bridge.Test.Assert.throws$6(System.ArgumentNullException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.UInt16Tests.f2);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.UInt16Tests.f3);
+            Bridge.Test.Assert.throws$6(System.OverflowException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.UInt16Tests.f4);
+            Bridge.Test.Assert.throws$6(System.OverflowException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.UInt16Tests.f5);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.UInt16Tests.f6);
         },
         toStringWithoutRadixWorks: function () {
             Bridge.Test.Assert.areEqual("123", (123).toString());
@@ -20230,9 +20237,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.UInt16Tests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.UInt16Tests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.SimpleTypes.UInt16Tests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.SimpleTypes.UInt16Tests, {
         f1: function () {
             System.UInt16.parse("");
         },
@@ -20371,12 +20378,12 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         },
         parseWorks: function () {
             Bridge.Test.Assert.areEqual(23445, System.UInt32.parse("23445"));
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.UInt32Tests.f1);
-            Bridge.Test.Assert.throws$6(System.ArgumentNullException, $_.Bridge.ClientTest.Batch4.SimpleTypes.UInt32Tests.f2);
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.UInt32Tests.f3);
-            Bridge.Test.Assert.throws$6(System.OverflowException, $_.Bridge.ClientTest.Batch4.SimpleTypes.UInt32Tests.f4);
-            Bridge.Test.Assert.throws$6(System.OverflowException, $_.Bridge.ClientTest.Batch4.SimpleTypes.UInt32Tests.f5);
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.UInt32Tests.f6);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.UInt32Tests.f1);
+            Bridge.Test.Assert.throws$6(System.ArgumentNullException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.UInt32Tests.f2);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.UInt32Tests.f3);
+            Bridge.Test.Assert.throws$6(System.OverflowException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.UInt32Tests.f4);
+            Bridge.Test.Assert.throws$6(System.OverflowException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.UInt32Tests.f5);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.UInt32Tests.f6);
         },
         toStringWithoutRadixWorks: function () {
             Bridge.Test.Assert.areEqual("123", (123).toString());
@@ -20419,9 +20426,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.UInt32Tests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.UInt32Tests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.SimpleTypes.UInt32Tests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.SimpleTypes.UInt32Tests, {
         f1: function () {
             System.UInt32.parse("");
         },
@@ -20562,12 +20569,12 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         },
         parseWorks: function () {
             Bridge.Test.Assert.areEqual(System.UInt64(23445), System.UInt64.parse("23445"));
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.UInt64Tests.f1);
-            Bridge.Test.Assert.throws$6(System.ArgumentNullException, $_.Bridge.ClientTest.Batch4.SimpleTypes.UInt64Tests.f2);
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.UInt64Tests.f3);
-            Bridge.Test.Assert.throws$6(System.OverflowException, $_.Bridge.ClientTest.Batch4.SimpleTypes.UInt64Tests.f4);
-            Bridge.Test.Assert.throws$6(System.FormatException, $_.Bridge.ClientTest.Batch4.SimpleTypes.UInt64Tests.f5);
-            Bridge.Test.Assert.throws$6(System.OverflowException, $_.Bridge.ClientTest.Batch4.SimpleTypes.UInt64Tests.f6);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.UInt64Tests.f1);
+            Bridge.Test.Assert.throws$6(System.ArgumentNullException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.UInt64Tests.f2);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.UInt64Tests.f3);
+            Bridge.Test.Assert.throws$6(System.OverflowException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.UInt64Tests.f4);
+            Bridge.Test.Assert.throws$6(System.FormatException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.UInt64Tests.f5);
+            Bridge.Test.Assert.throws$6(System.OverflowException, $asm.$.Bridge.ClientTest.Batch4.SimpleTypes.UInt64Tests.f6);
         },
         toStringWithoutRadixWorks: function () {
             Bridge.Test.Assert.areEqual("123", (System.UInt64(123)).toString());
@@ -20610,9 +20617,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.UInt64Tests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.SimpleTypes.UInt64Tests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.SimpleTypes.UInt64Tests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.SimpleTypes.UInt64Tests, {
         f1: function () {
             System.UInt64.parse("");
         },
@@ -20905,7 +20912,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             var tcs = new System.Threading.Tasks.TaskCompletionSource();
             var task = tcs.task;
 
-            var someMethod = function () {
+            var someMethod = Bridge.fn.bind(this, function () {
                 var $step = 0,
                     $task1, 
                     $jumpFromFinally, 
@@ -20933,7 +20940,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
                     }, arguments);
 
                 $asyncBody();
-            };
+            });
 
             someMethod();
 
@@ -20955,7 +20962,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             var tcs = new System.Threading.Tasks.TaskCompletionSource();
             var task = tcs.task;
 
-            var someMethod = function () {
+            var someMethod = Bridge.fn.bind(this, function () {
                 var $step = 0,
                     $task1, 
                     $jumpFromFinally, 
@@ -20994,7 +21001,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
 
                 $asyncBody();
                 return $tcs.task;
-            };
+            });
 
             var asyncTask = someMethod();
 
@@ -21022,7 +21029,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             var task = tcs.task;
             var ex = new System.Exception("Some text");
 
-            var someMethod = function () {
+            var someMethod = Bridge.fn.bind(this, function () {
                 var $step = 0,
                     $task1, 
                     $jumpFromFinally, 
@@ -21062,7 +21069,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
 
                 $asyncBody();
                 return $tcs.task;
-            };
+            });
 
             var asyncTask = someMethod();
 
@@ -21091,7 +21098,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             var task = tcs.task;
             var ex = new System.Exception("Some text");
 
-            var someMethod = function () {
+            var someMethod = Bridge.fn.bind(this, function () {
                 var $step = 0,
                     $task1, 
                     $jumpFromFinally, 
@@ -21130,7 +21137,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
 
                 $asyncBody();
                 return $tcs.task;
-            };
+            });
 
             var asyncTask = someMethod();
 
@@ -21161,7 +21168,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             var ex = new System.Exception("Some text");
             tcs.setException(ex);
 
-            var someMethod = function () {
+            var someMethod = Bridge.fn.bind(this, function () {
                 var $step = 0,
                     $task1, 
                     $jumpFromFinally, 
@@ -21219,7 +21226,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
 
                 $asyncBody();
                 return $tcs.task;
-            };
+            });
 
             someMethod();
 
@@ -21236,7 +21243,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             var tcs = new System.Threading.Tasks.TaskCompletionSource();
             var task = tcs.task;
 
-            var someMethod = function () {
+            var someMethod = Bridge.fn.bind(this, function () {
                 var $step = 0,
                     $task1, 
                     $jumpFromFinally, 
@@ -21275,7 +21282,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
 
                 $asyncBody();
                 return $tcs.task;
-            };
+            });
 
             var asyncTask = someMethod();
 
@@ -21614,8 +21621,8 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         },
         registrationsCanBeCompared: function () {
             var cts = new System.Threading.CancellationTokenSource();
-            var ctr1 = cts.token.register($_.Bridge.ClientTest.Batch4.Threading.CancellationTokenTests.f1);
-            var ctr2 = cts.token.register($_.Bridge.ClientTest.Batch4.Threading.CancellationTokenTests.f1);
+            var ctr1 = cts.token.register($asm.$.Bridge.ClientTest.Batch4.Threading.CancellationTokenTests.f1);
+            var ctr2 = cts.token.register($asm.$.Bridge.ClientTest.Batch4.Threading.CancellationTokenTests.f1);
 
             Bridge.Test.Assert.true$1(ctr1.equalsT(ctr1), "#1");
             Bridge.Test.Assert.false$1(ctr1.equalsT(ctr2), "#2");
@@ -21712,9 +21719,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.Threading.CancellationTokenTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.Threading.CancellationTokenTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.Threading.CancellationTokenTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.Threading.CancellationTokenTests, {
         f1: function () {
         }
     });
@@ -21758,7 +21765,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         taskFromPromiseWithResultFactoryWorksWhenPromiseCompletes: function () {
             var completeAsync = Bridge.Test.Assert.async();
 
-            var trh = $_.Bridge.ClientTest.Batch4.Threading.PromiseTests.f1;
+            var trh = $asm.$.Bridge.ClientTest.Batch4.Threading.PromiseTests.f1;
 
             var promise = this.createPromise();
             var task = System.Threading.Tasks.Task.fromPromise(promise, trh);
@@ -22001,9 +22008,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.Threading.PromiseTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.Threading.PromiseTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.Threading.PromiseTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.Threading.PromiseTests, {
         f1: function (i, s, j) {
             return Bridge.merge(new Bridge.ClientTest.Batch4.Threading.PromiseTests.TaskResult(), {
                 setI: i,
@@ -22028,7 +22035,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             this.$initialize();
             this.setThens(new (System.Collections.Generic.List$1(Bridge.ClientTest.Batch4.Threading.PromiseTests.SimplePromise.A))());
 
-            this.doThen = Bridge.fn.bind(this, $_.Bridge.ClientTest.Batch4.Threading.PromiseTests.SimplePromise.f1);
+            this.doThen = Bridge.fn.bind(this, $asm.$.Bridge.ClientTest.Batch4.Threading.PromiseTests.SimplePromise.f1);
         },
         then: function (fulfilledHandler, errorHandler, progressHandler) {
             if (errorHandler === void 0) { errorHandler = null; }
@@ -22092,9 +22099,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.Threading.PromiseTests.SimplePromise", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.Threading.PromiseTests.SimplePromise", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.Threading.PromiseTests.SimplePromise, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.Threading.PromiseTests.SimplePromise, {
         f1: function (f, e, p) {
             this.getThens().add(Bridge.merge(new Bridge.ClientTest.Batch4.Threading.PromiseTests.SimplePromise.A(), {
                 setFilled: f,
@@ -22315,7 +22322,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
 
             var caughtException = null;
 
-            var someMethod = function () {
+            var someMethod = Bridge.fn.bind(this, function () {
                 var $step = 0,
                     $task1, 
                     $taskResult1, 
@@ -22372,7 +22379,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
                     }, arguments);
 
                 $asyncBody();
-            };
+            });
 
             someMethod();
 
@@ -22544,7 +22551,7 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
 
             var continuedTask = null;
 
-            continuedTask = task.continueWith($_.Bridge.ClientTest.Batch4.Threading.TaskTests.f1);
+            continuedTask = task.continueWith($asm.$.Bridge.ClientTest.Batch4.Threading.TaskTests.f1);
 
             Bridge.Test.Assert.false$1(Bridge.referenceEquals(task, continuedTask), "task and continuedTask should not be the same");
 
@@ -23516,9 +23523,9 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         }
     });
 
-    Bridge.ns("Bridge.ClientTest.Batch4.Threading.TaskTests", $_);
+    Bridge.ns("Bridge.ClientTest.Batch4.Threading.TaskTests", $asm.$);
 
-    Bridge.apply($_.Bridge.ClientTest.Batch4.Threading.TaskTests, {
+    Bridge.apply($asm.$.Bridge.ClientTest.Batch4.Threading.TaskTests, {
         f1: function (t) {
             eval("throw 'This is a test message'");
         }
@@ -23643,10 +23650,10 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             Bridge.Test.Assert.null$1((System.Nullable.lift(Bridge.ClientTest.Batch4.UserDefinedStructTests.S7.op_Addition, a, c)), "#2");
         },
         canLiftUserDefinedUnaryOperator_SPI_1634: function () {
-            var a = new Bridge.ClientTest.Batch4.UserDefinedStructTests.S7.$ctor1(42); //, b = null;
+            var a = new Bridge.ClientTest.Batch4.UserDefinedStructTests.S7.$ctor1(42), b = null;
             Bridge.Test.Assert.areEqual$1(-42, ((-System.Nullable.getValue(a).i) | 0), "#1");
             // #1634 #SPI
-            //Assert.Null(-b, "#2");
+            Bridge.Test.Assert.null$1(System.Nullable.lift(Bridge.ClientTest.Batch4.UserDefinedStructTests.S7.op_UnaryNegation, b), "#2");
         },
         canLiftUserDefinedConversionOperator_SPI_1611: function () {
             var a = new Bridge.ClientTest.Batch4.UserDefinedStructTests.S7.$ctor1(42), b = null;
@@ -23912,7 +23919,11 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             }
             return Bridge.equals(this.i, o.i);
         },
-        $clone: function (to) { return this; }
+        $clone: function (to) {
+            var s = to || new Bridge.ClientTest.Batch4.UserDefinedStructTests.S1();
+            s.i = this.i;
+            return s;
+        }
     });
 
     Bridge.define("Bridge.ClientTest.Batch4.UserDefinedStructTests.S2", {
@@ -23942,7 +23953,15 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             }
             return Bridge.equals(this.i, o.i) && Bridge.equals(this.d, o.d) && Bridge.equals(this.DT, o.DT) && Bridge.equals(this.o, o.o) && Bridge.equals(this.t, o.t);
         },
-        $clone: function (to) { return this; }
+        $clone: function (to) {
+            var s = to || new Bridge.ClientTest.Batch4.UserDefinedStructTests.S2();
+            s.i = this.i;
+            s.d = this.d;
+            s.DT = this.DT;
+            s.o = this.o;
+            s.t = this.t;
+            return s;
+        }
     });
 
     Bridge.define("Bridge.ClientTest.Batch4.UserDefinedStructTests.S2G$1", function (TT) { return {
@@ -23972,7 +23991,15 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             }
             return Bridge.equals(this.i, o.i) && Bridge.equals(this.d, o.d) && Bridge.equals(this.DT, o.DT) && Bridge.equals(this.o, o.o) && Bridge.equals(this.t, o.t);
         },
-        $clone: function (to) { return this; }
+        $clone: function (to) {
+            var s = to || new (Bridge.ClientTest.Batch4.UserDefinedStructTests.S2G$1(TT))();
+            s.i = this.i;
+            s.d = this.d;
+            s.DT = this.DT;
+            s.o = this.o;
+            s.t = this.t;
+            return s;
+        }
     }; });
 
     Bridge.define("Bridge.ClientTest.Batch4.UserDefinedStructTests.S3", {
@@ -24034,7 +24061,12 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             }
             return Bridge.equals(this.I1, o.I1) && Bridge.equals(this.I2, o.I2);
         },
-        $clone: function (to) { return this; }
+        $clone: function (to) {
+            var s = to || new Bridge.ClientTest.Batch4.UserDefinedStructTests.S4();
+            s.I1 = this.I1;
+            s.I2 = this.I2;
+            return s;
+        }
     });
 
     Bridge.define("Bridge.ClientTest.Batch4.UserDefinedStructTests.S5", {
@@ -24056,7 +24088,11 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         equals: function (o) {
             return Math.abs(((System.Nullable.getValue(Bridge.cast(o, Bridge.ClientTest.Batch4.UserDefinedStructTests.S5)).i - this.i) | 0)) <= 1;
         },
-        $clone: function (to) { return this; }
+        $clone: function (to) {
+            var s = to || new Bridge.ClientTest.Batch4.UserDefinedStructTests.S5();
+            s.i = this.i;
+            return s;
+        }
     });
 
     Bridge.define("Bridge.ClientTest.Batch4.UserDefinedStructTests.S6", {
@@ -24078,7 +24114,11 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             }
             return Bridge.equals(this.i, o.i);
         },
-        $clone: function (to) { return this; }
+        $clone: function (to) {
+            var s = to || new Bridge.ClientTest.Batch4.UserDefinedStructTests.S6();
+            s.i = this.i;
+            return s;
+        }
     });
 
     Bridge.define("Bridge.ClientTest.Batch4.UserDefinedStructTests.S6G$1", function (TT) { return {
@@ -24100,7 +24140,11 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             }
             return Bridge.equals(this.i, o.i);
         },
-        $clone: function (to) { return this; }
+        $clone: function (to) {
+            var s = to || new (Bridge.ClientTest.Batch4.UserDefinedStructTests.S6G$1(TT))();
+            s.i = this.i;
+            return s;
+        }
     }; });
 
     Bridge.define("Bridge.ClientTest.Batch4.UserDefinedStructTests.S7", {
@@ -24135,7 +24179,11 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
             }
             return Bridge.equals(this.i, o.i);
         },
-        $clone: function (to) { return this; }
+        $clone: function (to) {
+            var s = to || new Bridge.ClientTest.Batch4.UserDefinedStructTests.S7();
+            s.i = this.i;
+            return s;
+        }
     });
 
     Bridge.define("Bridge.ClientTest.Batch4.ExceptionTests.E2", {
@@ -24788,8 +24836,16 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         inherits: [Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.Y1$1(Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.X1)]
     });
 
+    Bridge.define("Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.Y1X2", {
+        inherits: [Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.Y1$1(Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.X2)]
+    });
+
     Bridge.define("Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.Y2X1", {
         inherits: [Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.Y2$1(Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.X1)]
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.Y2X2", {
+        inherits: [Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.Y2$1(Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.X2)]
     });
 
     Bridge.define("Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.Y3$2", function (T1, T2) { return {
@@ -24826,8 +24882,16 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
         inherits: [Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.IsAssignableFromTypes.Y1$1(Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.IsAssignableFromTypes.X1)]
     });
 
+    Bridge.define("Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.IsAssignableFromTypes.Y1X2", {
+        inherits: [Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.IsAssignableFromTypes.Y1$1(Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.IsAssignableFromTypes.X2)]
+    });
+
     Bridge.define("Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.IsAssignableFromTypes.Y2X1", {
         inherits: [Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.IsAssignableFromTypes.Y2$1(Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.IsAssignableFromTypes.X1)]
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.IsAssignableFromTypes.Y2X2", {
+        inherits: [Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.IsAssignableFromTypes.Y2$1(Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.IsAssignableFromTypes.X2)]
     });
 
     Bridge.define("Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.IsAssignableFromTypes.Y3$2", function (T1, T2) { return {
@@ -24844,14 +24908,6 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
 
     Bridge.define("Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.C12", {
         inherits: [Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.C11$1(Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.K)]
-    });
-
-    Bridge.define("Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.Y1X2", {
-        inherits: [Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.Y1$1(Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.X2)]
-    });
-
-    Bridge.define("Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.Y2X2", {
-        inherits: [Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.Y2$1(Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.X2)]
     });
 
     Bridge.define("Bridge.ClientTest.Batch4.Reflection.TypeSystemLanguageSupportTests.Y3X1X1", {
@@ -24872,14 +24928,6 @@ Bridge.assembly("Bridge.ClientTest.Batch4", {"Bridge.ClientTest.Batch4.Reflectio
 
     Bridge.define("Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.C", {
         inherits: [Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.B,Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.I4]
-    });
-
-    Bridge.define("Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.IsAssignableFromTypes.Y1X2", {
-        inherits: [Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.IsAssignableFromTypes.Y1$1(Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.IsAssignableFromTypes.X2)]
-    });
-
-    Bridge.define("Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.IsAssignableFromTypes.Y2X2", {
-        inherits: [Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.IsAssignableFromTypes.Y2$1(Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.IsAssignableFromTypes.X2)]
     });
 
     Bridge.define("Bridge.ClientTest.Batch4.Reflection.TypeSystemTests.IsAssignableFromTypes.Y3X1X1", {
