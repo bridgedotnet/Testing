@@ -1,6 +1,7 @@
 /// <reference path="..\..\Runner\resources\qunit\qunit.d.ts" />
 /// <reference path="..\..\Runner\TypeScript\App1\bridge.d.ts" />
 /// <reference path="..\..\Runner\TypeScript\App1\interfaces.d.ts" />
+"use strict";
 QUnit.module("TypeScript - Interfaces");
 QUnit.test("Simple field and property", function (assert) {
     var instance = new Interfaces.Class1();
@@ -27,63 +28,63 @@ QUnit.test("Property setter and getter with same names as methods", function (as
 });
 function TestInstance1(assert, instance) {
     var interface1 = instance;
-    assert.deepEqual(interface1.Interfaces$Interface1$getProperty(), 100, "Interface1 Property getter");
-    assert.deepEqual(instance.field, 200, "Class1 Field initial value");
-    interface1.Interfaces$Interface1$setProperty(300);
-    assert.deepEqual(instance.getProperty(), 300, "Class1 Property setter");
+    assert.deepEqual(interface1.Interfaces$Interface1$Property, 100, "Interface1 Property getter");
+    assert.deepEqual(instance.Field, 200, "Class1 Field initial value");
+    interface1.Interfaces$Interface1$Property = 300;
+    assert.deepEqual(instance.Property, 300, "Class1 Property setter");
 }
 function TestInstance2(assert, instance) {
     var interface2 = instance;
-    interface2.method1();
-    assert.deepEqual(interface2.Interfaces$Interface1$getProperty(), 2, "Method1() through Property");
-    assert.deepEqual(instance.field, 1, "Method1() through Fileld");
-    interface2.method2("1234567");
-    assert.deepEqual(instance.field, 7, "Method2() through Field");
-    assert.deepEqual(interface2.method3(), instance.field, "Method3 through Field");
-    assert.ok(interface2.method4(instance), "Method4 through return result");
-    assert.deepEqual(instance.field, interface2.Interfaces$Interface1$getProperty(), "Method4 through Field");
+    interface2.Interfaces$Interface2$Method1();
+    assert.deepEqual(interface2.Interfaces$Interface1$Property, 2, "Method1() through Property");
+    assert.deepEqual(instance.Field, 1, "Method1() through Fileld");
+    interface2.Interfaces$Interface2$Method2("1234567");
+    assert.deepEqual(instance.Field, 7, "Method2() through Field");
+    assert.deepEqual(interface2.Interfaces$Interface2$Method3(), instance.Field, "Method3 through Field");
+    assert.ok(interface2.Interfaces$Interface2$Method4(instance), "Method4 through return result");
+    assert.deepEqual(instance.Field, interface2.Interfaces$Interface1$Property, "Method4 through Field");
 }
 function TestInstance3(assert, instance) {
     var interface3 = instance;
-    var interface2 = interface3.method5(interface3);
-    assert.deepEqual(interface3.Interfaces$Interface1$getProperty(), interface2.Interfaces$Interface1$getProperty(), "Method5 through Property");
+    var interface2 = interface3.Interfaces$Interface3$Method5(interface3);
+    assert.deepEqual(interface3.Interfaces$Interface1$Property, interface2.Interfaces$Interface1$Property, "Method5 through Property");
     var instance1 = instance;
-    assert.deepEqual(instance1.field, instance.field, "Method5 through Field");
+    assert.deepEqual(instance1.Field, instance.Field, "Method5 through Field");
 }
 function TestInstance4(assert, instance) {
     var interface4 = instance;
     var boolValue = false;
     var boolRef = { v: boolValue };
-    instance.method6(boolRef);
+    instance.Method6(boolRef);
     assert.deepEqual(boolRef.v, true, "Method6() out bool parameter");
     boolRef.v = false;
-    instance.method7(1, boolRef);
+    instance.Method7(1, boolRef);
     assert.deepEqual(boolRef.v, true, "Method7() int, out bool parameter");
     var stringValue = "ABC_";
     var stringRef = { v: stringValue };
-    instance.method8(stringRef);
+    instance.Method8(stringRef);
     assert.deepEqual(stringRef.v, "ABC_Method8", "Method8() ref string parameter");
     stringRef.v = "ABC_";
-    instance.method9(1, stringRef);
+    instance.Method9(1, stringRef);
     assert.deepEqual(stringRef.v, "ABC_1", "Method9() int, ref string parameter");
     stringRef.v = "ABC_";
     boolRef.v = false;
-    instance.method10(2, boolRef, stringRef);
+    instance.Method10(2, boolRef, stringRef);
     assert.deepEqual(boolRef.v, true, "Method10() int, ref bool, out bool parameter");
     assert.deepEqual(stringRef.v, "ABC_2", "Method10() int, ref bool, ref string parameter");
 }
 function TestInstance6(assert, instance) {
     var interface6 = instance;
-    interface6.Interfaces$Interface6$setProperty(1);
-    assert.deepEqual(instance.getProperty(), 1, "Property getter and setter");
-    interface6.Interfaces$Interface6$setProperty$3("12");
-    assert.deepEqual(instance.getMethodProperty(), 2, "setProperty$1(string) and MethodProperty");
-    assert.deepEqual(instance.getProperty$1(), 2, "setPropert$1(string) and getProperty");
-    assert.notDeepEqual(instance.getProperty(), instance.getProperty$1(), "getProperty and getProperty$3");
-    interface6.Interfaces$Interface6$setProperty$2(3);
-    assert.deepEqual(instance.getMethodProperty(), 3, "setProperty(int) and MethodProperty");
-    assert.deepEqual(instance.getProperty$1(), 3, "setPropert$1(int) and getProperty");
-    assert.notDeepEqual(instance.getProperty(), instance.getProperty$1(), "getProperty$3 and getProperty");
+    interface6.Interfaces$Interface6$Property = 1;
+    assert.deepEqual(instance.Property, 1, "Property getter and setter");
+    interface6.Interfaces$Interface6$SetProperty$1("12");
+    assert.deepEqual(instance.MethodProperty, 2, "setProperty$1(string) and MethodProperty");
+    assert.deepEqual(instance.GetProperty(), 2, "setPropert$1(string) and getProperty");
+    assert.notDeepEqual(instance.Property, instance.GetProperty(), "getProperty and getProperty$3");
+    interface6.Interfaces$Interface6$SetProperty(3);
+    assert.deepEqual(instance.MethodProperty, 3, "setProperty(int) and MethodProperty");
+    assert.deepEqual(instance.GetProperty(), 3, "setPropert$1(int) and getProperty");
+    assert.notDeepEqual(instance.Property, instance.GetProperty(), "getProperty$3 and getProperty");
     //var interface61: Interfaces.Interface61 = instance;
     //var interface62: Interfaces.Interface62 = instance;
 }
