@@ -17,15 +17,15 @@ QUnit.test("#281", function (assert) {
     assert.deepEqual(t.DoSomething(Misc.A.EnumTest.EnumA.M2), Misc.A.EnumTest.EnumA.M2, "Use enum declared inside a class");
 });
 QUnit.test("#336", function (assert) {
-    var l1 = new (System.Collections.Generic.List$1(String))(["4"]);
-    var l2 = new (System.Collections.Generic.List$1(String))(["1", "2"]);
+    var l1 = new (System.Collections.Generic.List$1(String).$ctor1)(["4"]);
+    var l2 = new (System.Collections.Generic.List$1(String).$ctor1)(["1", "2"]);
     l1.insertRange(0, l2);
     assert.deepEqual(l1.toArray(), ["1", "2", "4"], "InsertRange works (1)");
 });
 QUnit.test("#338", function (assert) {
-    var list = new (System.Collections.Generic.List$1(String))(["4"]);
+    var list = new (System.Collections.Generic.List$1(String).$ctor1)(["4"]);
     var interfacedList = list;
-    assert.deepEqual(interfacedList.get(0), "4", "Bridge.List$1(String) is Bridge.IList$1<String>");
+    assert.deepEqual(interfacedList.getItem(0), "4", "Bridge.List$1(String) is Bridge.IList$1<String>");
 });
 QUnit.test("#1060", function (assert) {
     var a = new (TypeScript.Issues.N1060.B$1(Number))();
@@ -87,7 +87,7 @@ QUnit.test("#2264", function (assert) {
     assert.notEqual(b.Values, null);
     var enumerator = b.Values.getEnumerator();
     enumerator.moveNext();
-    assert.deepEqual(enumerator.getCurrent(), "first");
+    assert.deepEqual(enumerator.Current, "first");
 });
 QUnit.test("#2438", function (assert) {
     var a = new TypeScript.Issues.N2438();
@@ -146,4 +146,22 @@ QUnit.test("#2911", function (assert) {
     initButton.addEventListener("onclick", TypeScript.Issues.N2911.initButton_Clicked);
     // TypeScript syntax would broke if TypeScript.Issues.N2911.initButton_Clicked used generic syntax
     assert.ok(true);
+});
+QUnit.test("#2984 Encoding", function (assert) {
+    var text = "Hello!";
+    var bytes = System.Text.Encoding.UTF8.GetBytes$2(text);
+    assert.deepEqual(bytes, new Uint8Array([72, 101, 108, 108, 111, 33]));
+    var returnText = System.Text.Encoding.UTF8.GetString(bytes);
+    assert.equal(returnText, "Hello!");
+});
+QUnit.test("#3061 IEquatable", function (assert) {
+    var t1 = new TypeScript.Issues.N3061.Truck();
+    t1.Horses = 500;
+    var t2 = new TypeScript.Issues.N3061.Tractor();
+    t2.Horses = 500;
+    assert.ok(t1.equalsT(t2));
+    assert.ok(t1.equalsT$1(t2));
+    t2.Horses = 501;
+    assert.notOk(t1.equalsT(t2));
+    assert.notOk(t1.equalsT$1(t2));
 });
