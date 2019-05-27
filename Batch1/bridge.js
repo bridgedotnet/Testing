@@ -9659,7 +9659,12 @@ Bridge.define("System.Type", {
                 if (this.$min === null) {
                     var d = new Date(0);
 
+                    d.setMilliseconds(0);
+                    d.setSeconds(0);
+                    d.setMinutes(0);
+                    d.setHours(0);
                     d.setFullYear(1);
+
                     d.kind = 0;
                     d.ticks = this.getMinTicks();
 
@@ -9754,11 +9759,12 @@ Bridge.define("System.Type", {
                 var kind = (d.kind !== undefined) ? d.kind : 0;
 
                 if (kind === 1) {
-                    return System.Int64(d.getTime()).mul(10000).add(this.$getMinOffset());
+                    d.ticks = System.Int64(d.getTime()).mul(10000).add(this.$getMinOffset());
                 } else {
-                    return System.Int64(d.getTime()).mul(10000).add(this.$getMinOffset()).sub(this.$getTzOffset(d));
+                    d.ticks = System.Int64(d.getTime()).mul(10000).add(this.$getMinOffset()).sub(this.$getTzOffset(d));
                 }
 
+                return d.ticks;
             },
 
             create: function (year, month, day, hour, minute, second, millisecond, kind) {
@@ -10631,8 +10637,7 @@ Bridge.define("System.Type", {
                     }
                 }
 
-                var d = new Date(year, month - 1, date, hh, mm, ss, ff);
-                d.kind = kind;
+                var d = this.create(year, month, date, hh, mm, ss, ff, kind);
 
                 if (kind === 2) {
                     if (adjust === true) {
@@ -10705,7 +10710,19 @@ Bridge.define("System.Type", {
             },
 
             dateAddSubTimeSpan: function (d, t, direction) {
-                return Bridge.hasValue$1(d, t) ? this.create$2(this.getTicks(d).add(t.getTicks().mul(direction)), d.kind) : null;
+                if (Bridge.hasValue$1(d, t)) {
+                    var ticks = t.getTicks().mul(direction),
+                        dt = new Date(d.getTime());
+
+                    dt.setMilliseconds(dt.getMilliseconds() + ticks.div(10000).toNumber());
+
+                    dt.kind = d.kind;
+                    dt.ticks = this.getTicks(dt);
+
+                    return dt;
+                }
+
+                return null;
             },
 
             subdt: function (d, t) {
@@ -10846,15 +10863,36 @@ Bridge.define("System.Type", {
             },
 
             getYear: function (d) {
-                return d.getFullYear();
+                var kind = (d.kind !== undefined) ? d.kind : 0,
+                    ticks = this.getTicks(d);
+
+                if (kind === 1 && d.getTimezoneOffset() < 0 && ticks.lt(this.TicksPerDay)) {
+                    return d.getFullYear();
+                }
+
+                return kind === 1 ? d.getUTCFullYear() : d.getFullYear();
             },
 
             getMonth: function (d) {
-                return d.getMonth() + 1;
+                var kind = (d.kind !== undefined) ? d.kind : 0,
+                    ticks = this.getTicks(d);
+
+                if (kind === 1 && d.getTimezoneOffset() < 0 && ticks.lt(this.TicksPerDay)) {
+                    return d.getMonth() + 1;
+                }
+
+                return kind === 1 ? d.getUTCMonth() + 1 : d.getMonth() + 1;
             },
 
             getDay: function (d) {
-                return d.getDate();
+                var kind = (d.kind !== undefined) ? d.kind : 0,
+                    ticks = this.getTicks(d);
+
+                if (kind === 1 && d.getTimezoneOffset() < 0 && ticks.lt(this.TicksPerDay)) {
+                    return d.getDate();
+                }
+
+                return kind === 1 ? d.getUTCDate() : d.getDate();
             },
 
             getHour: function (d) {
