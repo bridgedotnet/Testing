@@ -1,3 +1,3 @@
 # Testing
 
-Test results can be viewed online at http://testing.bridge.net
+Test results can be viewed online at https://testing.bridge.net
