@@ -31514,16 +31514,16 @@ Bridge.$N1391Result =                     r;
                         if (deltaHr > 0) {
                             if (System.DateTime.getMinute(date1) > System.DateTime.getMinute(date0)) {
                                 deltaHr = (deltaHr - 1) | 0;
-                                deltaMn = (System.DateTime.getMinute(date1) - System.DateTime.getMinute(date0)) | 0;
+                                deltaMn = (60 - (((System.DateTime.getMinute(date1) - System.DateTime.getMinute(date0)) | 0))) | 0;
                             } else if (System.DateTime.getMinute(date1) < System.DateTime.getMinute(date0)) {
-                                deltaMn = (System.DateTime.getMinute(date1) + (((60 - System.DateTime.getMinute(date0)) | 0))) | 0;
+                                deltaMn = (System.DateTime.getMinute(date0) - System.DateTime.getMinute(date1)) | 0;
                             }
                         } else {
                             if (System.DateTime.getMinute(date1) > System.DateTime.getMinute(date0)) {
                                 deltaMn = (System.DateTime.getMinute(date0) - System.DateTime.getMinute(date1)) | 0;
                             } else if (System.DateTime.getMinute(date1) < System.DateTime.getMinute(date0)) {
                                 deltaHr = (deltaHr + 1) | 0;
-                                deltaMn = (System.DateTime.getMinute(date0) - (((60 + System.DateTime.getMinute(date1)) | 0))) | 0;
+                                deltaMn = ((((System.DateTime.getMinute(date0) - System.DateTime.getMinute(date1)) | 0)) - 60) | 0;
                             }
                         }
                     } else {
