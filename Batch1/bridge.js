@@ -694,7 +694,8 @@
             }
 
             if (Bridge.isDate(value)) {
-                var val = value.ticks !== undefined ? value.ticks : System.DateTime.getTicks(val);
+                var val = value.ticks !== undefined ? value.ticks : System.DateTime.getTicks(value);
+
                 return val.toNumber() & 0xFFFFFFFF;
             }
 
@@ -1303,7 +1304,7 @@
         },
 
         isDate: function (obj) {
-            return obj instanceof Date;
+            return obj instanceof Date || Object.prototype.toString.call(obj) === "[object Date]";
         },
 
         isNull: function (value) {
@@ -9654,19 +9655,11 @@ Bridge.define("System.Type", {
                 return this.$default;
             },
 
-            // UTC Min Value
             getMinValue: function () {
                 if (this.$min === null) {
-                    var d = new Date(0);
-
+                    var d = new Date(1, 0, 1, 0, 0, 0, 0);
+                    
                     d.setFullYear(1);
-                    d.setMonth(0);
-                    d.setDate(0);
-                    d.setHours(0);
-                    d.setMinutes(0);
-                    d.setSeconds(0);
-                    d.setMilliseconds(0);
-
                     d.kind = 0;
                     d.ticks = this.getMinTicks();
 
@@ -9676,7 +9669,6 @@ Bridge.define("System.Type", {
                 return this.$min;
             },
 
-            // UTC Max Value
             getMaxValue: function () {
                 if (this.$max === null) {
                     var d = new Date(9999, 11, 31, 23, 59, 59, 999);
@@ -9690,7 +9682,6 @@ Bridge.define("System.Type", {
                 return this.$max;
             },
 
-            // Return the TimezoneOffset in Ticks
             $getTzOffset: function (d) {
                 // 60 seconds * 1000 milliseconds * 10000
                 return System.Int64(d.getTimezoneOffset()).mul(600000000);
@@ -10752,23 +10743,26 @@ Bridge.define("System.Type", {
 
             addDays: function (d, v) {
                 var kind = (d.kind !== undefined) ? d.kind : 0,
-                    h = d.getUTCHours(),
-                    m = d.getUTCMinutes(),
-                    s = d.getUTCSeconds(),
-                    ms = d.getUTCMilliseconds(),
                     dt = new Date(d.getTime());
 
-                dt.setUTCDate(d.getUTCDate() + v);
-                dt.setUTCHours(h);
-                dt.setUTCMinutes(m);
-                dt.setUTCSeconds(s);
-                dt.setUTCMilliseconds(ms);
+                if (kind === 1) {
+                    dt.setUTCDate(dt.getUTCDate() + (Math.floor(v) * 1));
+
+                    if (v % 1 !== 0) {
+                        dt.setUTCMilliseconds(dt.getUTCMilliseconds() + Math.round((v % 1) * 864e5));
+                    }
+                } else {
+                    dt.setDate(dt.getDate() + (Math.floor(v) * 1));
+
+                    if (v % 1 !== 0) {
+                        dt.setMilliseconds(dt.getMilliseconds() + Math.round((v % 1) * 864e5));
+                    }
+                }
 
                 dt.kind = kind;
-                dt = v % 1 !== 0 ? this.addMilliseconds(dt, Math.round((v % 1) * 864e5)) : dt;
                 dt.ticks = this.getTicks(dt);
 
-                return dt
+                return dt;
             },
 
             addHours: function (d, v) {
