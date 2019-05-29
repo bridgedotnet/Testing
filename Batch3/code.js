@@ -7616,15 +7616,34 @@ Bridge.$N1391Result =                     r;
         methods: {
             TestPreformanceNowIsDouble: function () {
                 var p;
-                for (var i = 1; i < 1000; i = (i + 1) | 0) {
+                var attempts = 10000;
+                for (var i = 1; i < attempts; i = (i + 1) | 0) {
                     p = Bridge.global.performance.now();
                     if (!this.HasNoFraction(p)) {
-                        Bridge.Test.NUnit.Assert.True(true, "Did " + i + " attempt(s) to check performance.now() returns float");
+                        Bridge.Test.NUnit.Assert.True(true, "Returned float from performance.now() in " + i + "/" + attempts + " attempts.");
                         return;
                     }
                 }
 
-                Bridge.Test.NUnit.Assert.Fail("performance.now() did 1000 attemps to check if it returns float");
+                /* 
+                  Firefox 60+ would never return a float from performance.now.
+                  According to
+                  https://developer.mozilla.org/en-US/docs/Web/API/Performance/now:
+                    "The timestamp is not actually high-resolution. To mitigate
+                     security threats such as Spectre, browsers currently round
+                     the results to varying degrees.
+                  >>>(Firefox started rounding to 1 millisecond in Firefox 60.)
+                     Some browsers may also slightly randomize the timestamp. The
+                     precision may improve again in future releases; browser
+                     developers are still investigating these timing attacks and
+                     how best to mitigate them."
+                */
+                if (Bridge.Browser.firefoxVersion >= 60) {
+                    Bridge.Test.NUnit.Assert.True(true, "Firefox 60+ has performance.now() return exact 1ms-step values.");
+                    return;
+                } else {
+                    Bridge.Test.NUnit.Assert.Fail("Not returned float from performance.now() in " + attempts + " attempts.");
+                }
             },
             HasNoFraction: function (n) {
                 return n % 1 === 0;
@@ -35839,6 +35858,54 @@ Bridge.$N1391Result =                     r;
         }
     });
 
+    /**
+     * The tests here ensures DateTime value when not bound any value is its
+     MinValue(), or 1/1/0001 12:00:00 AM.
+     *
+     * @public
+     * @class Bridge.ClientTest.Batch3.BridgeIssues.Bridge3734
+     */
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge3734", {
+        statics: {
+            fields: {
+                A: null,
+                B: null
+            },
+            ctors: {
+                init: function () {
+                    this.A = System.DateTime.getDefaultValue();
+                    this.B = System.DateTime.getDefaultValue();
+                    this.B = System.DateTime.getMinValue();
+                }
+            },
+            methods: {
+                /**
+                 * Tests by checking the static DateTime instances against the value
+                 they assumed.
+                 *
+                 * @static
+                 * @public
+                 * @this Bridge.ClientTest.Batch3.BridgeIssues.Bridge3734
+                 * @memberof Bridge.ClientTest.Batch3.BridgeIssues.Bridge3734
+                 * @return  {void}
+                 */
+                TestDateTimeInitialize: function () {
+                    // The format from native .NET app is '1/1/0001 12:00:00 AM'
+                    var initDateStr = "01/01/0001 00:00:00";
+                    var aDateStr = System.DateTime.format(Bridge.ClientTest.Batch3.BridgeIssues.Bridge3734.A);
+                    var bDateStr = System.DateTime.format(Bridge.ClientTest.Batch3.BridgeIssues.Bridge3734.B);
+
+                    Bridge.Test.NUnit.Assert.AreEqual(initDateStr, aDateStr, "DateTime A (" + (aDateStr || "") + ") is '" + (initDateStr || "") + "'.");
+                    Bridge.Test.NUnit.Assert.AreEqual(initDateStr, bDateStr, "DateTime B (" + (bDateStr || "") + ") is '" + (initDateStr || "") + "'.");
+                    Bridge.Test.NUnit.Assert.AreEqual(System.Int64(0), System.DateTime.getTicks(Bridge.ClientTest.Batch3.BridgeIssues.Bridge3734.A), "DateTime A has 0 ticks.");
+                    Bridge.Test.NUnit.Assert.AreEqual(System.Int64(0), System.DateTime.getTicks(Bridge.ClientTest.Batch3.BridgeIssues.Bridge3734.B), "DateTime B has 0 ticks.");
+                    Bridge.Test.NUnit.Assert.True(Bridge.equals(Bridge.ClientTest.Batch3.BridgeIssues.Bridge3734.A, System.DateTime.getMinValue()), "A is min value.");
+                    Bridge.Test.NUnit.Assert.True(Bridge.equals(Bridge.ClientTest.Batch3.BridgeIssues.Bridge3734.B, System.DateTime.getMinValue()), "B is min value.");
+                }
+            }
+        }
+    });
+
     Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge37383", {
         statics: {
             methods: {
@@ -36446,6 +36513,118 @@ Bridge.$N1391Result =                     r;
         }
     });
 
+    /**
+     * The tests here ensures parsing DateTime strings in UTC results in the
+     exact same date/time in UTC, and UTC setting is preserved.
+     *
+     * @public
+     * @class Bridge.ClientTest.Batch3.BridgeIssues.Bridge3770
+     */
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge3770", {
+        statics: {
+            methods: {
+                /**
+                 * Tests by parsing a date string, then specifying it is UTC, then
+                 checking the object time zone and value.
+                 *
+                 * @static
+                 * @public
+                 * @this Bridge.ClientTest.Batch3.BridgeIssues.Bridge3770
+                 * @memberof Bridge.ClientTest.Batch3.BridgeIssues.Bridge3770
+                 * @return  {void}
+                 */
+                TestUtcParseLogic: function () {
+                    var time = System.DateTime.parse("2018-11-04T00:00:00.000Z");
+
+                    time = System.DateTime.specifyKind(time, 1);
+
+                    Bridge.Test.NUnit.Assert.AreEqual("Utc", System.Enum.toString(System.DateTimeKind, System.DateTime.getKind(time)), "Parsed time is in UTC.");
+
+                    Bridge.Test.NUnit.Assert.AreEqual("2018-11-04 00:00:00Z", System.DateTime.format(time, "u"), "Parsed time .ToString(\"u\") is '2018-11-04 00:00:00Z'.");
+                }
+            }
+        }
+    });
+
+    /**
+     * The tests here ensures a datetime object crossing daylight saving
+     time zone via .AddDays() retains a DST-independent value in the
+     resulting math.
+     *
+     * @public
+     * @class Bridge.ClientTest.Batch3.BridgeIssues.Bridge3771
+     */
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge3771", {
+        statics: {
+            methods: {
+                /**
+                 * Tests by creating a date then removing 7 days, then checking
+                 whether the result is exactly 7 days before it (without hours
+                 shift due to time zone change).
+                 *
+                 * @static
+                 * @public
+                 * @this Bridge.ClientTest.Batch3.BridgeIssues.Bridge3771
+                 * @memberof Bridge.ClientTest.Batch3.BridgeIssues.Bridge3771
+                 * @return  {void}
+                 */
+                TestDateTimeAddDaysAcrossTZ: function () {
+                    var time = System.DateTime.create(2018, 11, 4, 0, 0, 0, 0, 1);
+
+                    time = System.DateTime.addDays(time, -7.0);
+
+                    Bridge.Test.NUnit.Assert.AreEqual("Utc", System.Enum.toString(System.DateTimeKind, System.DateTime.getKind(time)), "Time subject to .AddDays() is in UTC.");
+                    Bridge.Test.NUnit.Assert.AreEqual("2018-10-28 00:00:00Z", System.DateTime.format(time, "u"), "Time subject to .AddDays() is '2018-10-28 00:00:00Z'.");
+                }
+            }
+        }
+    });
+
+    /**
+     * The tests here ensures a datetime object crossing daylight saving
+     time zone (this specifically used to fail in pacific time -8h) would
+     not result three times in 1 PM while incrementing the date.
+     *
+     * @public
+     * @class Bridge.ClientTest.Batch3.BridgeIssues.Bridge3773
+     */
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge3773", {
+        statics: {
+            methods: {
+                /**
+                 * Tests by issuing a date where daylight saving kicks in in the 
+                 affected time zone and checks whether it reaches 1PM less than
+                 two times. To some time zones (like BRT) it won't reach 1PM at all.
+                 *
+                 * @static
+                 * @public
+                 * @this Bridge.ClientTest.Batch3.BridgeIssues.Bridge3773
+                 * @memberof Bridge.ClientTest.Batch3.BridgeIssues.Bridge3773
+                 * @return  {void}
+                 */
+                TestDateTimeAddDaysAcrossTZ: function () {
+                    var dtloc;
+                    var step = new System.TimeSpan(0, 15, 0);
+                    var dateUtc = System.DateTime.create(2018, 11, 4, 7, 45, 0, 0, 1);
+
+                    var oneAmCount = 0;
+
+                    for (var i = 0; i < 20; i = (i + 1) | 0) {
+                        dtloc = System.DateTime.toLocalTime(dateUtc);
+
+                        if (System.DateTime.getHour(dtloc) === 1 && System.DateTime.getMinute(dtloc) === 0) {
+                            oneAmCount = (oneAmCount + 1) | 0;
+                        }
+
+                        dateUtc = System.DateTime.adddt(dateUtc, step);
+                    }
+
+                    Bridge.Test.NUnit.Assert.True(oneAmCount <= 2, "Within the increments of DateTime, 1 PM happened at most twice. In this sample, it appeared: " + oneAmCount + "x.");
+                }
+            }
+        }
+    });
+
     Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge3775", {
         statics: {
             methods: {
@@ -36493,6 +36672,37 @@ Bridge.$N1391Result =                     r;
             }
         }
     }; });
+
+    /**
+     * The tests here consists in ensuring DateTime.AddDays() results are
+     comparable with DateTime instances.
+     *
+     * @public
+     * @class Bridge.ClientTest.Batch3.BridgeIssues.Bridge3777
+     */
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge3777", {
+        statics: {
+            methods: {
+                /**
+                 * Tests by creating two DateTime instances, one from Now and another
+                 from .AddDays(3) to that instance, then compare whether they are
+                 different.
+                 *
+                 * @static
+                 * @public
+                 * @this Bridge.ClientTest.Batch3.BridgeIssues.Bridge3777
+                 * @memberof Bridge.ClientTest.Batch3.BridgeIssues.Bridge3777
+                 * @return  {void}
+                 */
+                TestAddDays: function () {
+                    var d = System.DateTime.getNow();
+                    var d2 = System.DateTime.addDays(d, 3);
+
+                    Bridge.Test.NUnit.Assert.AreEqual(-1, Bridge.compare(d, d2), "DateTime value is different than its .AddDays(3) result.");
+                }
+            }
+        }
+    });
 
     Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge3785", {
         statics: {
@@ -38828,13 +39038,27 @@ Bridge.$N1391Result =                     r;
                  * @return  {void}
                  */
                 TestGenericArrayAllocPerformance: function () {
+                    var thresms = 50;
+                    var threstimes = 1.5;
+
+                    // Firefox requires a much more "relaxed" threshold. It was not
+                    // much affected by the issue, but the timings go wild depending
+                    // on the performance of the tested system.
+                    if (Bridge.Browser.firefoxVersion > 0) {
+                        thresms = 200;
+
+                        // Locally on a 4790K, it does not hit 2x ratio, but in the
+                        // saucelabs hosts, it can go as high as 4.5x!
+                        threstimes = 5;
+                    }
+
                     var tialloc = Bridge.ClientTest.Batch3.BridgeIssues.Bridge3930.probePerformance(false, false); // int alloc
                     var tiresiz = Bridge.ClientTest.Batch3.BridgeIssues.Bridge3930.probePerformance(false, true); // int resize
-                    Bridge.Test.NUnit.Assert.True(((tialloc.sub(System.Int64(50))).lt(tiresiz)) || (System.Int64.toNumber(tialloc) < (System.Int64.toNumber(tiresiz) * 1.5)), "The performance ratio alloc:resize for int is within an acceptable threshold (" + tialloc + ":" + tiresiz + ").");
+                    Bridge.Test.NUnit.Assert.True(((tialloc.sub(System.Int64(thresms))).lt(tiresiz)) || (System.Int64.toNumber(tialloc) < (System.Int64.toNumber(tiresiz) * threstimes)), "The performance ratio alloc:resize for int is within an acceptable threshold (" + tialloc + ":" + tiresiz + ").");
 
                     var tsalloc = Bridge.ClientTest.Batch3.BridgeIssues.Bridge3930.probePerformance(true, false); // string alloc
                     var tsresiz = Bridge.ClientTest.Batch3.BridgeIssues.Bridge3930.probePerformance(true, true); // string resize
-                    Bridge.Test.NUnit.Assert.True(((tsalloc.sub(System.Int64(50))).lt(tsresiz)) || (System.Int64.toNumber(tsalloc) < (System.Int64.toNumber(tsresiz) * 1.5)), "The performance ratio alloc:resize for string is within an acceptable threshold (" + tsalloc + ":" + tsresiz + ").");
+                    Bridge.Test.NUnit.Assert.True(((tsalloc.sub(System.Int64(thresms))).lt(tsresiz)) || (System.Int64.toNumber(tsalloc) < (System.Int64.toNumber(tsresiz) * threstimes)), "The performance ratio alloc:resize for string is within an acceptable threshold (" + tsalloc + ":" + tsresiz + ").");
                 },
                 /**
                  * Coordinates the allocation given the reftype or resize conditions
@@ -39473,6 +39697,16 @@ Bridge.$N1391Result =                     r;
 
                     Bridge.Test.NUnit.Assert.AreEqual("wait what?", testarr[System.Array.index(104, testarr)], "Assigning array at integer position equivalent to the ASCII 'h' 'character' works, replacing the previous assignment.");
                     Bridge.Test.NUnit.Assert.AreEqual("wait what?", testarr[System.Array.index(104, testarr)], "Assigning array at integer position equivalent to the ASCII 'h' replaced its (int)'h' element.");
+                }
+            }
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Batch3.BridgeIssues.Bridge3970", {
+        statics: {
+            methods: {
+                TestNamespaceAndClassSameName: function () {
+                    Bridge.Test.NUnit.Assert.NotNull(NameBridge3970.App.Run(), "The scenario can be translated correctly.");
                 }
             }
         }
@@ -47797,6 +48031,74 @@ Bridge.$N1391Result =                     r;
             }
         }
     });
+
+    Bridge.define("NameBridge3970.App", {
+        statics: {
+            methods: {
+                Run: function () {
+                    return NameBridge3970.SpecialList$1(NameBridge3970.CategorySetGroup).Empty.Update($asm.$.NameBridge3970.App.f3);
+                }
+            }
+        }
+    });
+
+    Bridge.ns("NameBridge3970.App", $asm.$);
+
+    Bridge.apply($asm.$.NameBridge3970.App, {
+        f1: function (_) {
+            return _.CategorySets;
+        },
+        f2: function (cs) {
+            return cs;
+        },
+        f3: function (pcs) {
+            return pcs.With(NameBridge3970.SpecialList$1(NameBridge3970.CategorySet), $asm.$.NameBridge3970.App.f1, pcs.CategorySets.Update($asm.$.NameBridge3970.App.f2));
+        }
+    });
+
+    Bridge.define("NameBridge3970.Category");
+
+    Bridge.define("NameBridge3970.CategorySet", {
+        props: {
+            Categories: null
+        },
+        methods: {
+            With: function (TProp, propIdentifier, newValue) {
+                return this;
+            }
+        }
+    });
+
+    Bridge.define("NameBridge3970.CategorySetGroup", {
+        props: {
+            CategorySets: null
+        },
+        methods: {
+            With: function (TProp, propIdentifier, newValue) {
+                return this;
+            }
+        }
+    });
+
+    Bridge.define("NameBridge3970.NameBridge3970");
+
+    Bridge.define("NameBridge3970.SpecialList$1", function (T) { return {
+        statics: {
+            props: {
+                Empty: null
+            },
+            ctors: {
+                init: function () {
+                    this.Empty = new (NameBridge3970.SpecialList$1(T))();
+                }
+            }
+        },
+        methods: {
+            Update: function (updater) {
+                return this;
+            }
+        }
+    }; });
 
     Bridge.define("Other.Util", {
         statics: {
