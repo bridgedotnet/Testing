@@ -9658,8 +9658,10 @@ Bridge.define("System.Type", {
             getMinValue: function () {
                 if (this.$min === null) {
                     var d = new Date(1, 0, 1, 0, 0, 0, 0);
-                    
+
                     d.setFullYear(1);
+                    d.setSeconds(0);
+
                     d.kind = 0;
                     d.ticks = this.getMinTicks();
 
@@ -9820,6 +9822,7 @@ Bridge.define("System.Type", {
                 var d = new Date();
 
                 d.kind = 2;
+                d.ticks = this.getTicks(d);
 
                 return d;
             },
@@ -9828,6 +9831,7 @@ Bridge.define("System.Type", {
                 var d = new Date();
 
                 d.kind = 1;
+                d.ticks = this.getTicks(d);
 
                 return d;
             },
@@ -10836,12 +10840,20 @@ Bridge.define("System.Type", {
             },
 
             getDate: function (d) {
-                var dt = new Date(d.getTime());
+                var kind = (d.kind !== undefined) ? d.kind : 0,
+                    dt = new Date(d.getTime());
 
-                dt.setHours(0);
-                dt.setMinutes(0);
-                dt.setSeconds(0);
-                dt.setMilliseconds(0);
+                if (kind === 1) {
+                    dt.setUTCHours(0);
+                    dt.setUTCMinutes(0);
+                    dt.setUTCSeconds(0);
+                    dt.setUTCMilliseconds(0);
+                } else {
+                    dt.setHours(0);
+                    dt.setMinutes(0);
+                    dt.setSeconds(0);
+                    dt.setMilliseconds(0);
+                }
 
                 dt.ticks = this.getTicks(dt);
 
