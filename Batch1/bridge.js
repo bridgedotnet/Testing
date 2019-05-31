@@ -9799,6 +9799,10 @@ Bridge.define("System.Type", {
                     d.setFullYear(1);
                 } else {
                     d = new Date(ticks.sub(this.$getMinOffset()).div(10000).toNumber());
+
+                    if (kind !== 1) {
+                        d.setTime(d.getTime() + (d.getTimezoneOffset() * 60000));
+                    }
                 }
 
                 d.kind = (kind !== undefined) ? kind : 0;
@@ -9822,7 +9826,6 @@ Bridge.define("System.Type", {
                 var d = new Date();
 
                 d.kind = 2;
-                d.ticks = this.getTicks(d);
 
                 return d;
             },
@@ -9831,7 +9834,6 @@ Bridge.define("System.Type", {
                 var d = new Date();
 
                 d.kind = 1;
-                d.ticks = this.getTicks(d);
 
                 return d;
             },
